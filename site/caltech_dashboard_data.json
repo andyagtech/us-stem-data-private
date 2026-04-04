@@ -1,0 +1,1238 @@
+{
+  "yearly": {
+    "1980": {
+      "total": 100,
+      "Chinese": 5,
+      "Korean": 1,
+      "Indian": 1,
+      "Vietnamese": 1,
+      "Other": 92,
+      "Chinese_HC": 4
+    },
+    "1981": {
+      "total": 118,
+      "Chinese": 5,
+      "Korean": 2,
+      "Indian": 0,
+      "Vietnamese": 0,
+      "Other": 111,
+      "Chinese_HC": 2
+    },
+    "1982": {
+      "total": 121,
+      "Chinese": 6,
+      "Korean": 1,
+      "Indian": 1,
+      "Vietnamese": 0,
+      "Other": 113,
+      "Chinese_HC": 5
+    },
+    "1983": {
+      "total": 134,
+      "Chinese": 5,
+      "Korean": 0,
+      "Indian": 1,
+      "Vietnamese": 0,
+      "Other": 128,
+      "Chinese_HC": 5
+    },
+    "1984": {
+      "total": 121,
+      "Chinese": 7,
+      "Korean": 0,
+      "Indian": 3,
+      "Vietnamese": 1,
+      "Other": 110,
+      "Chinese_HC": 6
+    },
+    "1985": {
+      "total": 130,
+      "Chinese": 4,
+      "Korean": 1,
+      "Indian": 0,
+      "Vietnamese": 0,
+      "Other": 125,
+      "Chinese_HC": 2
+    },
+    "1986": {
+      "total": 133,
+      "Chinese": 9,
+      "Korean": 1,
+      "Indian": 0,
+      "Vietnamese": 0,
+      "Other": 123,
+      "Chinese_HC": 7
+    },
+    "1987": {
+      "total": 148,
+      "Chinese": 12,
+      "Korean": 1,
+      "Indian": 2,
+      "Vietnamese": 0,
+      "Other": 133,
+      "Chinese_HC": 10
+    },
+    "1988": {
+      "total": 145,
+      "Chinese": 17,
+      "Korean": 2,
+      "Indian": 1,
+      "Vietnamese": 0,
+      "Other": 125,
+      "Chinese_HC": 12
+    },
+    "1989": {
+      "total": 133,
+      "Chinese": 4,
+      "Korean": 4,
+      "Indian": 0,
+      "Vietnamese": 1,
+      "Other": 124,
+      "Chinese_HC": 3
+    },
+    "1990": {
+      "total": 149,
+      "Chinese": 20,
+      "Korean": 1,
+      "Indian": 1,
+      "Vietnamese": 2,
+      "Other": 125,
+      "Chinese_HC": 19
+    },
+    "1991": {
+      "total": 154,
+      "Chinese": 16,
+      "Korean": 2,
+      "Indian": 2,
+      "Vietnamese": 1,
+      "Other": 133,
+      "Chinese_HC": 13
+    },
+    "1992": {
+      "total": 134,
+      "Chinese": 19,
+      "Korean": 4,
+      "Indian": 3,
+      "Vietnamese": 0,
+      "Other": 108,
+      "Chinese_HC": 18
+    },
+    "1993": {
+      "total": 158,
+      "Chinese": 15,
+      "Korean": 6,
+      "Indian": 1,
+      "Vietnamese": 0,
+      "Other": 136,
+      "Chinese_HC": 14
+    },
+    "1994": {
+      "total": 151,
+      "Chinese": 24,
+      "Korean": 5,
+      "Indian": 2,
+      "Vietnamese": 1,
+      "Other": 119,
+      "Chinese_HC": 23
+    },
+    "1995": {
+      "total": 165,
+      "Chinese": 31,
+      "Korean": 4,
+      "Indian": 2,
+      "Vietnamese": 1,
+      "Other": 127,
+      "Chinese_HC": 27
+    },
+    "1996": {
+      "total": 153,
+      "Chinese": 17,
+      "Korean": 4,
+      "Indian": 2,
+      "Vietnamese": 0,
+      "Other": 130,
+      "Chinese_HC": 16
+    },
+    "1997": {
+      "total": 153,
+      "Chinese": 29,
+      "Korean": 2,
+      "Indian": 3,
+      "Vietnamese": 0,
+      "Other": 119,
+      "Chinese_HC": 26
+    },
+    "1998": {
+      "total": 159,
+      "Chinese": 19,
+      "Korean": 3,
+      "Indian": 0,
+      "Vietnamese": 0,
+      "Other": 137,
+      "Chinese_HC": 19
+    },
+    "1999": {
+      "total": 142,
+      "Chinese": 20,
+      "Korean": 1,
+      "Indian": 0,
+      "Vietnamese": 0,
+      "Other": 121,
+      "Chinese_HC": 16
+    },
+    "2000": {
+      "total": 114,
+      "Chinese": 19,
+      "Korean": 2,
+      "Indian": 1,
+      "Vietnamese": 0,
+      "Other": 92,
+      "Chinese_HC": 17
+    },
+    "2001": {
+      "total": 158,
+      "Chinese": 27,
+      "Korean": 2,
+      "Indian": 1,
+      "Vietnamese": 0,
+      "Other": 128,
+      "Chinese_HC": 22
+    },
+    "2002": {
+      "total": 140,
+      "Chinese": 24,
+      "Korean": 1,
+      "Indian": 0,
+      "Vietnamese": 1,
+      "Other": 114,
+      "Chinese_HC": 22
+    },
+    "2003": {
+      "total": 136,
+      "Chinese": 21,
+      "Korean": 1,
+      "Indian": 3,
+      "Vietnamese": 1,
+      "Other": 110,
+      "Chinese_HC": 20
+    },
+    "2004": {
+      "total": 166,
+      "Chinese": 21,
+      "Korean": 2,
+      "Indian": 3,
+      "Vietnamese": 0,
+      "Other": 140,
+      "Chinese_HC": 21
+    },
+    "2005": {
+      "total": 182,
+      "Chinese": 20,
+      "Korean": 3,
+      "Indian": 4,
+      "Vietnamese": 0,
+      "Other": 155,
+      "Chinese_HC": 19
+    },
+    "2006": {
+      "total": 177,
+      "Chinese": 32,
+      "Korean": 2,
+      "Indian": 2,
+      "Vietnamese": 0,
+      "Other": 141,
+      "Chinese_HC": 29
+    },
+    "2007": {
+      "total": 205,
+      "Chinese": 29,
+      "Korean": 8,
+      "Indian": 2,
+      "Vietnamese": 1,
+      "Other": 165,
+      "Chinese_HC": 28
+    },
+    "2008": {
+      "total": 184,
+      "Chinese": 24,
+      "Korean": 6,
+      "Indian": 2,
+      "Vietnamese": 0,
+      "Other": 152,
+      "Chinese_HC": 21
+    },
+    "2009": {
+      "total": 193,
+      "Chinese": 33,
+      "Korean": 3,
+      "Indian": 1,
+      "Vietnamese": 0,
+      "Other": 156,
+      "Chinese_HC": 32
+    },
+    "2010": {
+      "total": 178,
+      "Chinese": 22,
+      "Korean": 7,
+      "Indian": 1,
+      "Vietnamese": 0,
+      "Other": 148,
+      "Chinese_HC": 21
+    },
+    "2011": {
+      "total": 168,
+      "Chinese": 16,
+      "Korean": 5,
+      "Indian": 1,
+      "Vietnamese": 1,
+      "Other": 145,
+      "Chinese_HC": 15
+    },
+    "2012": {
+      "total": 171,
+      "Chinese": 32,
+      "Korean": 2,
+      "Indian": 1,
+      "Vietnamese": 1,
+      "Other": 135,
+      "Chinese_HC": 23
+    },
+    "2013": {
+      "total": 235,
+      "Chinese": 34,
+      "Korean": 10,
+      "Indian": 4,
+      "Vietnamese": 3,
+      "Other": 184,
+      "Chinese_HC": 32
+    },
+    "2014": {
+      "total": 181,
+      "Chinese": 28,
+      "Korean": 5,
+      "Indian": 2,
+      "Vietnamese": 0,
+      "Other": 146,
+      "Chinese_HC": 23
+    },
+    "2015": {
+      "total": 182,
+      "Chinese": 28,
+      "Korean": 4,
+      "Indian": 2,
+      "Vietnamese": 1,
+      "Other": 147,
+      "Chinese_HC": 22
+    },
+    "2016": {
+      "total": 190,
+      "Chinese": 35,
+      "Korean": 8,
+      "Indian": 2,
+      "Vietnamese": 0,
+      "Other": 145,
+      "Chinese_HC": 31
+    },
+    "2017": {
+      "total": 180,
+      "Chinese": 38,
+      "Korean": 5,
+      "Indian": 1,
+      "Vietnamese": 2,
+      "Other": 134,
+      "Chinese_HC": 36
+    },
+    "2018": {
+      "total": 191,
+      "Chinese": 33,
+      "Korean": 7,
+      "Indian": 1,
+      "Vietnamese": 1,
+      "Other": 149,
+      "Chinese_HC": 29
+    },
+    "2019": {
+      "total": 207,
+      "Chinese": 43,
+      "Korean": 8,
+      "Indian": 2,
+      "Vietnamese": 1,
+      "Other": 153,
+      "Chinese_HC": 36
+    },
+    "2020": {
+      "total": 147,
+      "Chinese": 28,
+      "Korean": 8,
+      "Indian": 1,
+      "Vietnamese": 2,
+      "Other": 108,
+      "Chinese_HC": 26
+    },
+    "2021": {
+      "total": 183,
+      "Chinese": 46,
+      "Korean": 6,
+      "Indian": 2,
+      "Vietnamese": 0,
+      "Other": 129,
+      "Chinese_HC": 42
+    },
+    "2022": {
+      "total": 204,
+      "Chinese": 44,
+      "Korean": 8,
+      "Indian": 1,
+      "Vietnamese": 2,
+      "Other": 149,
+      "Chinese_HC": 40
+    },
+    "2023": {
+      "total": 228,
+      "Chinese": 58,
+      "Korean": 5,
+      "Indian": 5,
+      "Vietnamese": 0,
+      "Other": 160,
+      "Chinese_HC": 51
+    },
+    "2024": {
+      "total": 199,
+      "Chinese": 65,
+      "Korean": 4,
+      "Indian": 3,
+      "Vietnamese": 2,
+      "Other": 125,
+      "Chinese_HC": 55
+    },
+    "2025": {
+      "total": 221,
+      "Chinese": 52,
+      "Korean": 6,
+      "Indian": 4,
+      "Vietnamese": 3,
+      "Other": 156,
+      "Chinese_HC": 49
+    }
+  },
+  "rolling": {
+    "1982": {
+      "n": 594,
+      "chinese_pct": 4.7,
+      "hc_pct": 3.7
+    },
+    "1983": {
+      "n": 624,
+      "chinese_pct": 4.3,
+      "hc_pct": 3.2
+    },
+    "1984": {
+      "n": 639,
+      "chinese_pct": 4.9,
+      "hc_pct": 3.9
+    },
+    "1985": {
+      "n": 666,
+      "chinese_pct": 5.6,
+      "hc_pct": 4.5
+    },
+    "1986": {
+      "n": 677,
+      "chinese_pct": 7.2,
+      "hc_pct": 5.5
+    },
+    "1987": {
+      "n": 689,
+      "chinese_pct": 6.7,
+      "hc_pct": 4.9
+    },
+    "1988": {
+      "n": 708,
+      "chinese_pct": 8.8,
+      "hc_pct": 7.2
+    },
+    "1989": {
+      "n": 729,
+      "chinese_pct": 9.5,
+      "hc_pct": 7.8
+    },
+    "1990": {
+      "n": 715,
+      "chinese_pct": 10.6,
+      "hc_pct": 9.1
+    },
+    "1991": {
+      "n": 728,
+      "chinese_pct": 10.2,
+      "hc_pct": 9.2
+    },
+    "1992": {
+      "n": 746,
+      "chinese_pct": 12.6,
+      "hc_pct": 11.7
+    },
+    "1993": {
+      "n": 762,
+      "chinese_pct": 13.8,
+      "hc_pct": 12.5
+    },
+    "1994": {
+      "n": 761,
+      "chinese_pct": 13.9,
+      "hc_pct": 12.9
+    },
+    "1995": {
+      "n": 780,
+      "chinese_pct": 14.9,
+      "hc_pct": 13.6
+    },
+    "1996": {
+      "n": 781,
+      "chinese_pct": 15.4,
+      "hc_pct": 14.2
+    },
+    "1997": {
+      "n": 772,
+      "chinese_pct": 15.0,
+      "hc_pct": 13.5
+    },
+    "1998": {
+      "n": 721,
+      "chinese_pct": 14.4,
+      "hc_pct": 13.0
+    },
+    "1999": {
+      "n": 726,
+      "chinese_pct": 15.7,
+      "hc_pct": 13.8
+    },
+    "2000": {
+      "n": 713,
+      "chinese_pct": 15.3,
+      "hc_pct": 13.5
+    },
+    "2001": {
+      "n": 690,
+      "chinese_pct": 16.1,
+      "hc_pct": 14.1
+    },
+    "2002": {
+      "n": 714,
+      "chinese_pct": 15.7,
+      "hc_pct": 14.3
+    },
+    "2003": {
+      "n": 782,
+      "chinese_pct": 14.5,
+      "hc_pct": 13.3
+    },
+    "2004": {
+      "n": 801,
+      "chinese_pct": 14.7,
+      "hc_pct": 13.9
+    },
+    "2005": {
+      "n": 866,
+      "chinese_pct": 14.2,
+      "hc_pct": 13.5
+    },
+    "2006": {
+      "n": 914,
+      "chinese_pct": 13.8,
+      "hc_pct": 12.9
+    },
+    "2007": {
+      "n": 941,
+      "chinese_pct": 14.7,
+      "hc_pct": 13.7
+    },
+    "2008": {
+      "n": 937,
+      "chinese_pct": 14.9,
+      "hc_pct": 14.0
+    },
+    "2009": {
+      "n": 928,
+      "chinese_pct": 13.4,
+      "hc_pct": 12.6
+    },
+    "2010": {
+      "n": 894,
+      "chinese_pct": 14.2,
+      "hc_pct": 12.5
+    },
+    "2011": {
+      "n": 945,
+      "chinese_pct": 14.5,
+      "hc_pct": 13.0
+    },
+    "2012": {
+      "n": 933,
+      "chinese_pct": 14.1,
+      "hc_pct": 12.2
+    },
+    "2013": {
+      "n": 937,
+      "chinese_pct": 14.7,
+      "hc_pct": 12.3
+    },
+    "2014": {
+      "n": 959,
+      "chinese_pct": 16.4,
+      "hc_pct": 13.7
+    },
+    "2015": {
+      "n": 968,
+      "chinese_pct": 16.8,
+      "hc_pct": 14.9
+    },
+    "2016": {
+      "n": 924,
+      "chinese_pct": 17.5,
+      "hc_pct": 15.3
+    },
+    "2017": {
+      "n": 950,
+      "chinese_pct": 18.6,
+      "hc_pct": 16.2
+    },
+    "2018": {
+      "n": 915,
+      "chinese_pct": 19.3,
+      "hc_pct": 17.3
+    },
+    "2019": {
+      "n": 908,
+      "chinese_pct": 20.7,
+      "hc_pct": 18.6
+    },
+    "2020": {
+      "n": 932,
+      "chinese_pct": 20.8,
+      "hc_pct": 18.6
+    },
+    "2021": {
+      "n": 969,
+      "chinese_pct": 22.6,
+      "hc_pct": 20.1
+    },
+    "2022": {
+      "n": 961,
+      "chinese_pct": 25.1,
+      "hc_pct": 22.3
+    },
+    "2023": {
+      "n": 1035,
+      "chinese_pct": 25.6,
+      "hc_pct": 22.9
+    }
+  },
+  "fields": [
+    {
+      "field": "Medical Engineering",
+      "total": 30,
+      "Chinese": 13,
+      "Korean": 0,
+      "Indian": 0,
+      "Vietnamese": 0,
+      "Other": 17,
+      "Chinese_HC": 11,
+      "chinese_pct": 43.3
+    },
+    {
+      "field": "Control and Dynamical Systems",
+      "total": 32,
+      "Chinese": 12,
+      "Korean": 0,
+      "Indian": 1,
+      "Vietnamese": 0,
+      "Other": 19,
+      "Chinese_HC": 9,
+      "chinese_pct": 37.5
+    },
+    {
+      "field": "Neurobiology",
+      "total": 23,
+      "Chinese": 8,
+      "Korean": 0,
+      "Indian": 0,
+      "Vietnamese": 0,
+      "Other": 15,
+      "Chinese_HC": 7,
+      "chinese_pct": 34.8
+    },
+    {
+      "field": "Environmental Science and Engineering",
+      "total": 51,
+      "Chinese": 17,
+      "Korean": 1,
+      "Indian": 0,
+      "Vietnamese": 2,
+      "Other": 31,
+      "Chinese_HC": 16,
+      "chinese_pct": 33.3
+    },
+    {
+      "field": "Computing and Mathematical Sciences",
+      "total": 33,
+      "Chinese": 11,
+      "Korean": 0,
+      "Indian": 0,
+      "Vietnamese": 1,
+      "Other": 21,
+      "Chinese_HC": 9,
+      "chinese_pct": 33.3
+    },
+    {
+      "field": "Geophysics",
+      "total": 37,
+      "Chinese": 12,
+      "Korean": 0,
+      "Indian": 0,
+      "Vietnamese": 0,
+      "Other": 25,
+      "Chinese_HC": 11,
+      "chinese_pct": 32.4
+    },
+    {
+      "field": "Social Science",
+      "total": 51,
+      "Chinese": 16,
+      "Korean": 1,
+      "Indian": 0,
+      "Vietnamese": 0,
+      "Other": 34,
+      "Chinese_HC": 14,
+      "chinese_pct": 31.4
+    },
+    {
+      "field": "Computer Science",
+      "total": 13,
+      "Chinese": 4,
+      "Korean": 0,
+      "Indian": 1,
+      "Vietnamese": 0,
+      "Other": 8,
+      "Chinese_HC": 4,
+      "chinese_pct": 30.8
+    },
+    {
+      "field": "Applied And Computational Mathematics",
+      "total": 27,
+      "Chinese": 8,
+      "Korean": 0,
+      "Indian": 0,
+      "Vietnamese": 0,
+      "Other": 19,
+      "Chinese_HC": 8,
+      "chinese_pct": 29.6
+    },
+    {
+      "field": "Physics",
+      "total": 223,
+      "Chinese": 65,
+      "Korean": 3,
+      "Indian": 5,
+      "Vietnamese": 1,
+      "Other": 149,
+      "Chinese_HC": 59,
+      "chinese_pct": 29.1
+    },
+    {
+      "field": "Planetary Sciences",
+      "total": 35,
+      "Chinese": 10,
+      "Korean": 0,
+      "Indian": 0,
+      "Vietnamese": 1,
+      "Other": 24,
+      "Chinese_HC": 9,
+      "chinese_pct": 28.6
+    },
+    {
+      "field": "Systems Biology",
+      "total": 14,
+      "Chinese": 4,
+      "Korean": 2,
+      "Indian": 0,
+      "Vietnamese": 0,
+      "Other": 8,
+      "Chinese_HC": 4,
+      "chinese_pct": 28.6
+    },
+    {
+      "field": "Molecular Biology and Biochemistry",
+      "total": 11,
+      "Chinese": 3,
+      "Korean": 0,
+      "Indian": 1,
+      "Vietnamese": 0,
+      "Other": 7,
+      "Chinese_HC": 3,
+      "chinese_pct": 27.3
+    },
+    {
+      "field": "Electrical Engineering",
+      "total": 119,
+      "Chinese": 32,
+      "Korean": 10,
+      "Indian": 2,
+      "Vietnamese": 0,
+      "Other": 75,
+      "Chinese_HC": 29,
+      "chinese_pct": 26.9
+    },
+    {
+      "field": "Materials Science",
+      "total": 104,
+      "Chinese": 28,
+      "Korean": 4,
+      "Indian": 1,
+      "Vietnamese": 1,
+      "Other": 70,
+      "Chinese_HC": 26,
+      "chinese_pct": 26.9
+    },
+    {
+      "field": "Mathematics",
+      "total": 68,
+      "Chinese": 18,
+      "Korean": 6,
+      "Indian": 1,
+      "Vietnamese": 0,
+      "Other": 43,
+      "Chinese_HC": 13,
+      "chinese_pct": 26.5
+    },
+    {
+      "field": "Geochemistry",
+      "total": 25,
+      "Chinese": 6,
+      "Korean": 0,
+      "Indian": 0,
+      "Vietnamese": 0,
+      "Other": 19,
+      "Chinese_HC": 6,
+      "chinese_pct": 24.0
+    },
+    {
+      "field": "Applied Physics",
+      "total": 113,
+      "Chinese": 27,
+      "Korean": 8,
+      "Indian": 1,
+      "Vietnamese": 0,
+      "Other": 77,
+      "Chinese_HC": 26,
+      "chinese_pct": 23.9
+    },
+    {
+      "field": "Biology",
+      "total": 88,
+      "Chinese": 20,
+      "Korean": 2,
+      "Indian": 2,
+      "Vietnamese": 0,
+      "Other": 64,
+      "Chinese_HC": 17,
+      "chinese_pct": 22.7
+    },
+    {
+      "field": "Chemical Engineering",
+      "total": 93,
+      "Chinese": 20,
+      "Korean": 6,
+      "Indian": 0,
+      "Vietnamese": 0,
+      "Other": 67,
+      "Chinese_HC": 17,
+      "chinese_pct": 21.5
+    },
+    {
+      "field": "Mechanical Engineering",
+      "total": 116,
+      "Chinese": 22,
+      "Korean": 5,
+      "Indian": 0,
+      "Vietnamese": 0,
+      "Other": 89,
+      "Chinese_HC": 20,
+      "chinese_pct": 19.0
+    },
+    {
+      "field": "Biochemistry and Molecular Biophysics",
+      "total": 72,
+      "Chinese": 13,
+      "Korean": 1,
+      "Indian": 1,
+      "Vietnamese": 3,
+      "Other": 54,
+      "Chinese_HC": 11,
+      "chinese_pct": 18.1
+    },
+    {
+      "field": "Unknown",
+      "total": 344,
+      "Chinese": 58,
+      "Korean": 10,
+      "Indian": 0,
+      "Vietnamese": 3,
+      "Other": 273,
+      "Chinese_HC": 48,
+      "chinese_pct": 16.9
+    },
+    {
+      "field": "Bioengineering",
+      "total": 77,
+      "Chinese": 13,
+      "Korean": 1,
+      "Indian": 1,
+      "Vietnamese": 0,
+      "Other": 62,
+      "Chinese_HC": 13,
+      "chinese_pct": 16.9
+    },
+    {
+      "field": "Astrophysics",
+      "total": 54,
+      "Chinese": 8,
+      "Korean": 0,
+      "Indian": 2,
+      "Vietnamese": 0,
+      "Other": 44,
+      "Chinese_HC": 7,
+      "chinese_pct": 14.8
+    },
+    {
+      "field": "Aeronautics",
+      "total": 76,
+      "Chinese": 7,
+      "Korean": 1,
+      "Indian": 2,
+      "Vietnamese": 1,
+      "Other": 65,
+      "Chinese_HC": 5,
+      "chinese_pct": 9.2
+    },
+    {
+      "field": "Computation and Neural Systems",
+      "total": 48,
+      "Chinese": 4,
+      "Korean": 3,
+      "Indian": 1,
+      "Vietnamese": 0,
+      "Other": 40,
+      "Chinese_HC": 4,
+      "chinese_pct": 8.3
+    },
+    {
+      "field": "Applied Mechanics",
+      "total": 12,
+      "Chinese": 1,
+      "Korean": 2,
+      "Indian": 0,
+      "Vietnamese": 0,
+      "Other": 9,
+      "Chinese_HC": 1,
+      "chinese_pct": 8.3
+    },
+    {
+      "field": "Space Engineering",
+      "total": 39,
+      "Chinese": 3,
+      "Korean": 0,
+      "Indian": 1,
+      "Vietnamese": 0,
+      "Other": 35,
+      "Chinese_HC": 3,
+      "chinese_pct": 7.7
+    },
+    {
+      "field": "Civil Engineering",
+      "total": 16,
+      "Chinese": 1,
+      "Korean": 1,
+      "Indian": 0,
+      "Vietnamese": 1,
+      "Other": 13,
+      "Chinese_HC": 1,
+      "chinese_pct": 6.2
+    },
+    {
+      "field": "Geobiology",
+      "total": 17,
+      "Chinese": 0,
+      "Korean": 1,
+      "Indian": 0,
+      "Vietnamese": 0,
+      "Other": 16,
+      "Chinese_HC": 0,
+      "chinese_pct": 0.0
+    },
+    {
+      "field": "Geology",
+      "total": 31,
+      "Chinese": 0,
+      "Korean": 0,
+      "Indian": 0,
+      "Vietnamese": 0,
+      "Other": 31,
+      "Chinese_HC": 0,
+      "chinese_pct": 0.0
+    }
+  ],
+  "field_trend": {
+    "Physics": {
+      "2000-09": {
+        "n": 185,
+        "pct": 14.6
+      },
+      "2010-19": {
+        "n": 206,
+        "pct": 14.6
+      },
+      "2020-25": {
+        "n": 122,
+        "pct": 37.7
+      }
+    },
+    "Electrical Engineering": {
+      "2000-09": {
+        "n": 157,
+        "pct": 29.9
+      },
+      "2010-19": {
+        "n": 127,
+        "pct": 31.5
+      },
+      "2020-25": {
+        "n": 57,
+        "pct": 21.1
+      }
+    },
+    "Mechanical Engineering": {
+      "2000-09": {
+        "n": 76,
+        "pct": 23.7
+      },
+      "2010-19": {
+        "n": 81,
+        "pct": 9.9
+      },
+      "2020-25": {
+        "n": 70,
+        "pct": 24.3
+      }
+    },
+    "Applied Physics": {
+      "2000-09": {
+        "n": 75,
+        "pct": 14.7
+      },
+      "2010-19": {
+        "n": 63,
+        "pct": 9.5
+      },
+      "2020-25": {
+        "n": 74,
+        "pct": 32.4
+      }
+    },
+    "Materials Science": {
+      "2000-09": {
+        "n": 50,
+        "pct": 18.0
+      },
+      "2010-19": {
+        "n": 98,
+        "pct": 24.5
+      },
+      "2020-25": {
+        "n": 45,
+        "pct": 26.7
+      }
+    },
+    "Chemical Engineering": {
+      "2000-09": {
+        "n": 88,
+        "pct": 10.2
+      },
+      "2010-19": {
+        "n": 90,
+        "pct": 17.8
+      },
+      "2020-25": {
+        "n": 53,
+        "pct": 18.9
+      }
+    },
+    "Biology": {
+      "2000-09": {
+        "n": 106,
+        "pct": 13.2
+      },
+      "2010-19": {
+        "n": 96,
+        "pct": 16.7
+      },
+      "2020-25": {
+        "n": 55,
+        "pct": 21.8
+      }
+    },
+    "Bioengineering": {
+      "2000-09": {
+        "n": 23,
+        "pct": 21.7
+      },
+      "2010-19": {
+        "n": 53,
+        "pct": 17.0
+      },
+      "2020-25": {
+        "n": 53,
+        "pct": 18.9
+      }
+    },
+    "Aeronautics": {
+      "2000-09": {
+        "n": 80,
+        "pct": 11.2
+      },
+      "2010-19": {
+        "n": 90,
+        "pct": 4.4
+      },
+      "2020-25": {
+        "n": 34,
+        "pct": 14.7
+      }
+    },
+    "Biochemistry and Molecular Biophysics": {
+      "2000-09": {
+        "n": 53,
+        "pct": 11.3
+      },
+      "2010-19": {
+        "n": 74,
+        "pct": 14.9
+      },
+      "2020-25": {
+        "n": 39,
+        "pct": 15.4
+      }
+    },
+    "Mathematics": {
+      "2000-09": {
+        "n": 48,
+        "pct": 18.8
+      },
+      "2010-19": {
+        "n": 59,
+        "pct": 23.7
+      },
+      "2020-25": {
+        "n": 38,
+        "pct": 26.3
+      }
+    },
+    "Astrophysics": {
+      "2000-09": {
+        "n": 25,
+        "pct": 4.0
+      },
+      "2010-19": {
+        "n": 45,
+        "pct": 4.4
+      },
+      "2020-25": {
+        "n": 29,
+        "pct": 20.7
+      }
+    },
+    "Environmental Science and Engineering": {
+      "2000-09": {
+        "n": 36,
+        "pct": 16.7
+      },
+      "2010-19": {
+        "n": 45,
+        "pct": 33.3
+      },
+      "2020-25": {
+        "n": 27,
+        "pct": 33.3
+      }
+    },
+    "Social Science": {
+      "2000-09": {
+        "n": 44,
+        "pct": 2.3
+      },
+      "2010-19": {
+        "n": 52,
+        "pct": 19.2
+      },
+      "2020-25": {
+        "n": 25,
+        "pct": 28.0
+      }
+    },
+    "Computation and Neural Systems": {
+      "2000-09": {
+        "n": 61,
+        "pct": 4.9
+      },
+      "2010-19": {
+        "n": 58,
+        "pct": 13.8
+      },
+      "2020-25": {
+        "n": 20,
+        "pct": 10.0
+      }
+    }
+  },
+  "degree_demo": {
+    "PhD_all": {
+      "total": 10732,
+      "Chinese": 1242,
+      "Korean": 194,
+      "Indian": 86,
+      "Other": 9179
+    },
+    "PhD_recent": {
+      "total": 2132,
+      "Chinese": 470,
+      "Korean": 69,
+      "Indian": 24,
+      "Other": 1555
+    },
+    "Masters_all": {
+      "total": 677,
+      "Chinese": 32,
+      "Korean": 1,
+      "Indian": 5,
+      "Other": 637
+    },
+    "Masters_recent": {
+      "total": 15,
+      "Chinese": 5,
+      "Korean": 0,
+      "Indian": 2,
+      "Other": 8
+    },
+    "Engineer_all": {
+      "total": 512,
+      "Chinese": 17,
+      "Korean": 3,
+      "Indian": 2,
+      "Other": 489
+    }
+  },
+  "summary": {
+    "total_records": 12387,
+    "total_phds": 10732,
+    "years_covered": "1920-2026"
+  }
+}

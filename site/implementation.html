@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Technical implementation of the PhD Demographics data pipeline — functional architecture, immutable state, 6-step composition.">
+<meta property="og:title" content="Implementation — PhD Demographics">
+<meta property="og:description" content="A functional data pipeline: harvest, process, enrich, and deploy thesis data from 101 US research universities.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og-image.png">
+<meta property="og:url" content="https://phd-demographics.andy-barr.com/implementation.html">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<title>Implementation — PhD Demographics</title>
+<style>
+:root {
+  --bg: #0f172a; --surface: #1e293b; --surface2: #334155;
+  --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8;
+  --border: #334155; --green: #4ade80; --red: #f87171;
+  --purple: #a78bfa; --orange: #fb923c; --pink: #f472b6;
+  --teal: #2dd4bf; --yellow: #facc15;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
+
+/* Layout: content center-left, diagram pinned right */
+.page-wrap { display: flex; max-width: 1440px; margin: 0 auto; min-height: 100vh; justify-content: center; }
+.content-col { flex: 0 1 680px; padding: 2.5rem 2rem 6rem 3rem; }
+.diagram-col { width: 380px; flex-shrink: 0; position: relative; }
+.diagram-sticky { position: sticky; top: 2rem; padding: 2rem 2rem 2rem 0; }
+
+/* Typography */
+h1 { font-size: 1.7rem; font-weight: 800; margin-bottom: 0.3rem; }
+.subtitle { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
+h2 { font-size: 1.25rem; font-weight: 700; margin: 2.5rem 0 0.5rem; padding-top: 1rem; }
+h3 { font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.3rem; color: var(--accent); }
+p { margin-bottom: 0.8rem; font-size: 0.88rem; color: var(--text-muted); }
+p strong { color: var(--text); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Section markers */
+.step-section { scroll-margin-top: 2rem; }
+.step-section h2 { display: flex; align-items: center; gap: 0.6rem; }
+.step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; font-size: 0.78rem; font-weight: 700; flex-shrink: 0; }
+
+/* Code blocks */
+pre { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1rem; font-size: 0.78rem; overflow-x: auto; margin: 0.6rem 0 1rem; color: var(--text-muted); font-family: 'SF Mono', Monaco, Consolas, monospace; line-height: 1.5; }
+code { font-family: 'SF Mono', Monaco, Consolas, monospace; font-size: 0.82rem; background: var(--surface); padding: 1px 5px; border-radius: 3px; color: var(--accent); }
+
+/* Info cards */
+.info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; margin: 0.8rem 0 1.2rem; font-size: 0.82rem; }
+.info-card .card-title { font-weight: 700; color: var(--text); margin-bottom: 0.3rem; font-size: 0.85rem; }
+.info-card ul { padding-left: 1.2rem; margin: 0.3rem 0 0; }
+.info-card li { margin: 0.15rem 0; color: var(--text-muted); }
+
+/* Stats row */
+.stat-row { display: flex; gap: 0.8rem; margin: 0.8rem 0 1.2rem; flex-wrap: wrap; }
+.stat-chip { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.6rem 0.9rem; text-align: center; flex: 1; min-width: 100px; }
+.stat-chip .val { font-size: 1.1rem; font-weight: 800; }
+.stat-chip .lbl { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 2px; }
+
+/* Source tag */
+.source-tag { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.4rem; }
+.source-tag code { font-size: 0.7rem; }
+
+/* Divider */
+hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+/* Responsive: tablet — even two-column split */
+@media (max-width: 1100px) {
+  .page-wrap { justify-content: stretch; }
+  .content-col { flex: 1; padding: 2rem 1.5rem 4rem 2rem; }
+  .diagram-col { width: 320px; flex-shrink: 0; }
+}
+/* Responsive: small tablet / large phone — hide diagram */
+@media (max-width: 900px) {
+  .page-wrap { justify-content: center; }
+  .content-col { flex: 0 1 720px; padding: 1.5rem; }
+  .diagram-col { display: none; }
+}
+/* Responsive: phone */
+@media (max-width: 600px) {
+  .content-col { padding: 1rem; }
+  h1 { font-size: 1.3rem; }
+  h2 { font-size: 1.1rem; }
+  .stat-row { gap: 0.5rem; }
+  .stat-chip { min-width: 80px; padding: 0.4rem 0.6rem; }
+  .stat-chip .val { font-size: 0.95rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+<!-- ============================================================ -->
+<!-- LEFT: Content -->
+<!-- ============================================================ -->
+<div class="content-col">
+  <h1>Implementation</h1>
+  <p class="subtitle">A functional data pipeline that transforms thesis metadata from 101 universities into an enriched, deployable research site.</p>
+
+  <div class="stat-row">
+    <div class="stat-chip"><div class="val" style="color:var(--accent)">294K</div><div class="lbl">Records</div></div>
+    <div class="stat-chip"><div class="val" style="color:var(--green)">101</div><div class="lbl">Universities</div></div>
+    <div class="stat-chip"><div class="val" style="color:var(--purple)">7</div><div class="lbl">Gov Data Sources</div></div>
+    <div class="stat-chip"><div class="val" style="color:var(--orange)">6</div><div class="lbl">Pipeline Steps</div></div>
+  </div>
+
+  <!-- ── THE PROBLEM ── -->
+  <h2>The Messy Reality</h2>
+  <p>There is no standardized way to get thesis and dissertation data from American universities. Every institution is different. Some run DSpace, others run bepress Digital Commons, others run Hyrax, EPrints, Figshare, or custom platforms. Some expose rich degree metadata; others give you nothing but a title and a name. Some truncate descriptions at 500 characters. Some put the department in the subject field, others in the contributor field, others in an OAI set name, and some don't record it at all.</p>
+
+  <p>The federal data is no better. USCIS truncates employer names at 35 characters, so <code>"THE CURATORS OF THE UNIVERSITY OF MISSOURI"</code> becomes <code>"THE CURATORS OF THE UNIV OF MISSOU"</code>. The same university might appear under 5 different legal names across H-1B, LCA, OPT, and PERM filings. DOL publishes LCA data as 3.6 GB of Excel files with inconsistent column names across fiscal years. OPT data comes as PDFs. IPEDS uses numeric UNITID keys. NSF uses different institution names than IPEDS.</p>
+
+  <p>The result is a system held together by <strong>105 university-specific configurations</strong>, <strong>292 employer name mappings</strong>, <strong>8 department extraction strategies</strong>, an <strong>8-step degree inference chain</strong>, and hundreds of ad hoc rules for edge cases that were discovered one university at a time. A bepress repository in Arkansas formats its ETD metadata differently than a DSpace instance in Massachusetts, which formats it differently than a Figshare deployment at Carnegie Mellon.</p>
+
+  <p>This is, inherently, a messy problem. The question is how to manage the mess.</p>
+
+  <!-- ── ARCHITECTURE ── -->
+  <h2>Functional Architecture</h2>
+  <p>The answer is a <strong>functional pipeline with immutable state</strong>. Rather than a tangle of scripts that read and write files in unpredictable order &mdash; which is how this project started, and which led to data corruption bugs where one script would silently overwrite another's output &mdash; the pipeline composes discrete steps that each take state in and produce state out.</p>
+
+  <p>The pipeline follows <strong>railway-oriented programming</strong>: each step receives an immutable <code>PipelineState</code> and returns a new one with outcomes appended. If any step fails, subsequent steps are automatically skipped. No step can silently corrupt another's output because the data flow is explicit and unidirectional.</p>
+  <pre>pipeline = compose(
+    step1_harvest,
+    step2_process,
+    step3_parse_federal,
+    step4_enrich,
+    step5_generate,
+    step6_deploy,
+)
+state = pipeline(initial_state)  # PipelineState flows through</pre>
+  <p>All state is frozen (<code>@dataclass(frozen=True)</code>). No mutation. Each step produces a <code>StepOutcome</code> with success/failure status, metrics, errors, and warnings. The manifest tracks exactly when each step last ran for each university, what the record counts were, and whether the data quality is acceptable.</p>
+
+  <p>The hundreds of special cases don't go away &mdash; they can't, because the underlying data really is that heterogeneous &mdash; but they're <strong>contained within well-defined boundaries</strong>. University-specific configs live in <code>universities.json</code>. Employer name variants live in <code>entity_map.json</code>. Department extraction strategies are dispatched by config key. Each rule is discoverable, testable, and auditable rather than scattered across ad hoc scripts.</p>
+
+  <div class="info-card">
+    <div class="card-title">Design Principles</div>
+    <ul>
+      <li><strong>Immutable state</strong> &mdash; frozen dataclasses, no side effects in core logic. You can't accidentally overwrite enriched data by re-running the HTML generator.</li>
+      <li><strong>Pure core, effectful shell</strong> &mdash; I/O only at boundaries (HTTP, files, S3). Business logic is testable without network calls.</li>
+      <li><strong>Single source of truth</strong> &mdash; <code>universities.json</code> (101 configs), <code>entity_map.json</code> (292 mappings), <code>manifest.json</code> (tracking). Not three config files that might disagree.</li>
+      <li><strong>Idempotent steps</strong> &mdash; re-running any step produces the same output. Safe to retry after failures.</li>
+      <li><strong>Explicit data ownership</strong> &mdash; only Step 4 (Enrich) writes to <code>site/data/</code>. Step 5 (Generate) reads it but never writes to it. This single rule eliminated an entire class of data corruption bugs.</li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <!-- ── STEP 1: HARVEST ── -->
+  <div class="step-section" id="step-harvest" data-step="harvest">
+    <h2><span class="step-num" style="background:rgba(56,189,248,0.15);color:var(--accent)">1</span> Harvest</h2>
+    <p>Fetch thesis and dissertation metadata from university OAI-PMH repositories. Each university exposes structured metadata via the <a href="https://www.openarchives.org/pmh/" target="_blank">Open Archives Initiative Protocol</a>, but every repository is different.</p>
+
+    <h3>Build Harvest Plan</h3>
+    <p>A pure function examines the manifest to determine which universities need re-harvesting. If a CSV already exists and the checksum matches, the university is skipped. The plan considers last-run timestamps and record counts to decide what's stale.</p>
+
+    <h3>Repository Platforms</h3>
+    <p>The scraper handles <strong>10 different repository platforms</strong>, each with its own quirks:</p>
+    <div class="info-card">
+      <ul>
+        <li><strong>bepress</strong> (53 repos) &mdash; Digital Commons. Uses <code>publication:</code> set specs. Most support <code>oai_etdms</code> for degree metadata.</li>
+        <li><strong>DSpace</strong> (41 repos) &mdash; Standard DSpace 5/6/7. Uses <code>com_</code> or <code>col_</code> set handles. Some have REST APIs for richer metadata.</li>
+        <li><strong>Hyrax</strong> (2 repos) &mdash; Oregon State, CU Boulder. Samvera/Hyrax framework with custom schemas.</li>
+        <li><strong>Figshare</strong> (1 repo) &mdash; CMU. REST API enrichment for thesis records stored in Figshare.</li>
+        <li><strong>EPrints, Invenio, Blacklight</strong> &mdash; Rare platforms with institution-specific parsing.</li>
+      </ul>
+    </div>
+
+    <h3>Metadata Prefixes</h3>
+    <p>The same university can expose different levels of detail depending on the prefix requested:</p>
+    <div class="info-card">
+      <ul>
+        <li><strong>oai_dc</strong> &mdash; Dublin Core (standard). Title, creator, date, subject, description, type. Used by most repositories.</li>
+        <li><strong>oai_etdms</strong> &mdash; ETD Metadata Standard. Adds <code>degree.name</code> (e.g., "Doctor of Philosophy"), <code>degree.level</code> ("Dissertation" vs "Thesis"), and <code>degree.discipline</code> (department). Switching 5 bepress repos from oai_dc to oai_etdms improved their degree labeling from &lt;20% to 85&ndash;100%.</li>
+      </ul>
+    </div>
+
+    <h3>REST API Enrichment</h3>
+    <p><strong>10 universities</strong> get supplementary metadata via DSpace REST API calls using concurrent fetching (15 threads). This extracts fields not available through OAI-PMH:</p>
+    <div class="info-card">
+      <ul>
+        <li><strong>NC State, Rice, Cornell, Harvard</strong> &mdash; <code>thesis.degree.discipline</code>, <code>thesis.degree.level</code></li>
+        <li><strong>U Delaware, RPI, Temple</strong> &mdash; <code>dc.description.degree</code>, <code>dc.description.department</code></li>
+        <li><strong>U Penn</strong> &mdash; Custom <code>upenn.graduate.group</code> field for department</li>
+        <li><strong>UW Seattle</strong> &mdash; HTML citation metadata scrape (not REST)</li>
+      </ul>
+      <p style="margin:0.4rem 0 0;font-size:0.78rem;color:#64748b;">Checkpoints every 500 records. Resolves OAI handle URIs to DSpace UUIDs via <code>/pid/find</code>.</p>
+    </div>
+
+    <h3>Write CSV + Checkpoint</h3>
+    <p>Each university produces <code>data/western_us_dissertations/{key}_etds.csv</code> with 19 columns. SHA-256 checksums and resumption tokens are checkpointed for crash recovery.</p>
+
+    <div class="stat-row">
+      <div class="stat-chip"><div class="val" style="color:var(--accent)">101</div><div class="lbl">Repositories</div></div>
+      <div class="stat-chip"><div class="val" style="color:var(--green)">294K</div><div class="lbl">Records</div></div>
+      <div class="stat-chip"><div class="val" style="color:var(--purple)">10</div><div class="lbl">Platforms</div></div>
+    </div>
+    <p class="source-tag">Source: <code>pipeline/step1_harvest.py</code> &rarr; <code>scripts/scrape_oai_etds.py</code>, <code>scripts/enrich_concurrent.py</code></p>
+  </div>
+
+  <hr>
+
+  <!-- ── STEP 2: PROCESS ── -->
+  <div class="step-section" id="step-process" data-step="process">
+    <h2><span class="step-num" style="background:rgba(74,222,128,0.15);color:var(--green)">2</span> Process</h2>
+    <p>Transform raw CSVs into structured, labeled records. This is the most logic-dense step &mdash; 105 university configurations, 16 different department extraction strategies, and an 8-step degree inference chain determine PhD vs Master's and normalize department names for every record.</p>
+
+    <h3>Per-University Configuration</h3>
+    <p><strong>105 config entries</strong> handle the diversity across institutions. Some universities need multiple configs (PhD and Master's from separate collections, merged at output):</p>
+    <div class="info-card">
+      <ul>
+        <li><strong>Caltech</strong> &mdash; PhD-only collection scraped from department website. Uses <code>degree_filter: 'phd'</code>, custom field mappings (<code>creator_field: 'name'</code>, <code>url_field: 'thesis_url'</code>).</li>
+        <li><strong>Missouri S&amp;T</strong> &mdash; Two separate OAI sets (doctoral dissertations + master's theses), each with <code>degree_label</code> override. Merged via <code>_merge: True</code>.</li>
+        <li><strong>UC System</strong> &mdash; Single CSV, 9 configs (one per campus) using <code>campus_filter</code>. All <code>degree_label: 'phd'</code> since the system archives dissertations only.</li>
+        <li><strong>UT Dallas</strong> &mdash; Two data sources (OAI + REST API grad school), with <code>exclude_type: 'article|image|photograph'</code> to filter noise from mixed collections.</li>
+        <li><strong>Iowa State</strong> &mdash; <code>exclude_type: 'article'</code> to remove published articles mixed into the ETD collection.</li>
+      </ul>
+    </div>
+
+    <h3>Infer Degree Type</h3>
+    <p>An 8-step inference chain determines PhD vs Master's. Each step is tried in priority order; the first match wins:</p>
+    <div class="info-card">
+      <ul>
+        <li><strong>1. Config override</strong> &mdash; <code>degree_label: 'phd'</code> or <code>'ms'</code>. Used for 20 configs where the collection is known (Caltech, UC System, Missouri S&amp;T splits).</li>
+        <li><strong>2. Explicit degree fields</strong> &mdash; <code>degree_type</code>, <code>degree_name</code>, <code>degree</code> columns from REST API enrichment or OAI metadata.</li>
+        <li><strong>3. ETD degree_level</strong> &mdash; From oai_etdms: <code>"Dissertation"</code> &rarr; PhD, <code>"Thesis"</code> &rarr; MS. Handles variants like Mississippi State's <code>"Graduate Thesis - Open Access"</code>.</li>
+        <li><strong>4. OAI set membership</strong> &mdash; <code>publication:dissertations</code> &rarr; PhD. Columbia uses <code>degree_level:doctoral</code> and <code>degree_level:master</code> sets.</li>
+        <li><strong>5. Type field</strong> &mdash; Dublin Core <code>type</code>: <code>"doctoral"</code> &rarr; PhD, <code>"masters"</code> &rarr; MS. Generic <code>"Thesis"</code> alone is NOT mapped (ambiguous).</li>
+        <li><strong>6. Relation field</strong> &mdash; Penn State stores <code>PHD</code>/<code>MASTERS</code> in the relation field.</li>
+        <li><strong>7. Description regex</strong> &mdash; MIT's primary labeling source: pattern matching on <code>Ph.D.</code>, <code>S.M.</code>, <code>M.S.</code>, <code>M.Eng</code>, <code>Sc.D.</code>, etc. Catches ~51% of MIT records; the other 49% have descriptions too short to classify.</li>
+        <li><strong>8. Late OAI fallback</strong> &mdash; <code>publication:theses</code> &rarr; MS, but only if no <code>publication:dissertations</code> set exists (disambiguating repos that split vs repos that lump everything).</li>
+      </ul>
+    </div>
+    <p>Current labeling rate: <strong>~82%</strong> across all universities. The oai_etdms switch brought BYU from 6% to 97%, Mississippi State from 7% to 100%, and U Arkansas from 9% to 100%.</p>
+
+    <h3>Extract Department</h3>
+    <p><strong>8 university-specific extractors</strong> plus a generic fallback handle the wide variety of ways departments appear in metadata:</p>
+    <div class="info-card">
+      <ul>
+        <li><strong>OAI set mapping</strong> (8 configs) &mdash; Missouri S&amp;T, MTU, SDSU map OAI set specs to department names via lookup tables (e.g., <code>mec_aereng</code> &rarr; "Mechanical & Aerospace Eng").</li>
+        <li><strong>Subject field</strong> (86 configs) &mdash; Generic regex extraction on the DC subject field. Handles hierarchies like <code>"Engineering -- Software"</code>.</li>
+        <li><strong>Contributor field</strong> &mdash; Georgia Tech, Virginia Tech, U Buffalo extract departments from the DC contributor field (advisor department affiliations).</li>
+        <li><strong>Column-based</strong> (4 configs) &mdash; UC system, UW Seattle, UVA read from a dedicated <code>department</code> column. Handles Python list strings like <code>"['Dental Sciences', 'Dentistry']"</code>.</li>
+        <li><strong>Custom per-university</strong> &mdash; RPI (subject format), UT Dallas (subject format), U Missouri (hierarchical), Stony Brook (REST enrichment), Stanford (department normalization).</li>
+      </ul>
+      <p style="margin:0.4rem 0 0;font-size:0.78rem;color:#64748b;">Fallback chain: enriched fields &rarr; primary dept_source &rarr; title &rarr; OAI set names &rarr; description &rarr; "General"</p>
+    </div>
+
+    <h3>STEM / Non-STEM Split</h3>
+    <p>Once a department name is extracted, it's classified as STEM or non-STEM against a taxonomy of <strong>65 non-STEM departments</strong> (Education, English, History, Political Science, Business, etc.). The entire pipeline then runs twice &mdash; once for each track:</p>
+    <div class="info-card">
+      <div class="card-title">Parallel Processing Tracks</div>
+      <p style="margin:0.4rem 0;font-size:0.82rem;color:#94a3b8;">Every step from here forward produces two independent outputs. A record classified into "Computer Science" flows through the STEM track; a record in "Education" flows through the non-STEM track.</p>
+      <ul>
+        <li><strong>STEM</strong> &rarr; <code>data/processed/stem/{key}.json</code> &rarr; <code>site/data/stem/{key}.json</code> &rarr; <code>site/stem.html</code></li>
+        <li><strong>Non-STEM</strong> &rarr; <code>data/processed/nonstem/{key}.json</code> &rarr; <code>site/data/nonstem/{key}.json</code> &rarr; <code>site/non_stem.html</code></li>
+      </ul>
+    </div>
+
+    <h3>Deduplicate</h3>
+    <p>Records are deduplicated by <code>(name, year, dept, title[:50])</code>. Typically removes 1&ndash;2% where universities have overlapping OAI sets or dual-indexed collections.</p>
+
+    <h3>AI-Assisted Classification (Optional)</h3>
+    <p>For the ~56K records that remain unlabeled after the 8-step inference chain, two supplementary classifiers are available:</p>
+    <div class="info-card">
+      <ul>
+        <li><strong>sklearn classifier</strong> &mdash; TF-IDF on 228K labeled thesis titles + LogisticRegression. Free, fast, ~72% cross-validation accuracy. Applied 13K high-confidence predictions, bringing overall labeling from 74.5% to 82.9%.</li>
+        <li><strong>Claude Haiku API</strong> &mdash; Batch-classifies titles in groups of 50 with department context. ~85% accuracy, ~$4 for all 56K records. Cached in <code>pipeline/ai_classifications.json</code> to avoid re-classifying.</li>
+      </ul>
+    </div>
+
+    <h3>Output Formats</h3>
+    <p>Step 2 produces three output formats for different consumers:</p>
+    <div class="info-card">
+      <div class="card-title">Intermediate: Per-University JSON</div>
+      <p style="margin:0.3rem 0;font-size:0.82rem;color:#94a3b8;"><code>data/processed/{stem,nonstem}/{key}.json</code> &mdash; compact arrays consumed by Step 4 (Enrich) and Step 5 (Generate). Each record is a 8-element array: <code>[dept, year, name, classification, confidence, title, url, degree]</code></p>
+    </div>
+    <div class="info-card">
+      <div class="card-title">Archival: Parquet (ZSTD)</div>
+      <p style="margin:0.3rem 0;font-size:0.82rem;color:#94a3b8;"><code>data/processed/stem_records.parquet</code> (12 MB) and <code>nonstem_records.parquet</code> (5 MB). Columnar format with named fields: <code>university</code>, <code>department</code>, <code>year</code>, <code>name</code>, <code>title</code>, <code>url</code>, <code>degree</code>. ZSTD-compressed via DuckDB. Designed for reproducibility &mdash; anyone can load these in DuckDB, pandas, or R to validate the methodology.</p>
+    </div>
+    <pre style="font-size:0.75rem;">-- Validate degree labeling in DuckDB:
+SELECT university,
+       COUNT(*) as total,
+       COUNT(CASE WHEN degree='phd' THEN 1 END) as phd,
+       COUNT(CASE WHEN degree='ms' THEN 1 END) as ms,
+       ROUND(100.0 * COUNT(NULLIF(degree,'')) / COUNT(*), 1) as labeled_pct
+FROM 'data/processed/stem_records.parquet'
+GROUP BY university ORDER BY total DESC;</pre>
+
+    <div class="stat-row">
+      <div class="stat-chip"><div class="val" style="color:var(--green)">82%</div><div class="lbl">Labeled</div></div>
+      <div class="stat-chip"><div class="val" style="color:var(--accent)">225K</div><div class="lbl">PhD</div></div>
+      <div class="stat-chip"><div class="val" style="color:var(--yellow)">98K</div><div class="lbl">Master's</div></div>
+      <div class="stat-chip"><div class="val" style="color:var(--text-muted)">84K</div><div class="lbl">Unlabeled</div></div>
+    </div>
+    <p class="source-tag">Source: <code>pipeline/step2_process.py</code> &rarr; <code>scripts/generate_name_lists.py</code></p>
+  </div>
+
+  <hr>
+
+  <!-- ── STEP 3: PARSE FEDERAL ── -->
+  <div class="step-section" id="step-federal" data-step="federal">
+    <h2><span class="step-num" style="background:rgba(167,139,250,0.15);color:var(--purple)">3</span> Parse Federal</h2>
+    <p>Parse official US government data sources into per-university aggregates. These datasets track the immigration-via-education pipeline from graduation through work authorization to permanent residency.</p>
+
+    <h3>H-1B Employer Data Hub</h3>
+    <p><a href="https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub" target="_blank">USCIS</a> publishes approval/denial counts by employer and fiscal year. We parse FY2010&ndash;2026 CSVs (both UTF-16 crosstab and standard formats) and match employer names to university keys.</p>
+
+    <h3>Entity Name Resolution</h3>
+    <p><strong>292 employer name mappings</strong> in <code>entity_map.json</code> handle the many ways universities appear in federal filings:</p>
+    <div class="info-card">
+      <ul>
+        <li><strong>USCIS truncation</strong> &mdash; Pre-2020 files truncate at ~35 characters: <code>"THE CURATORS OF THE UNIV OF MISSOU"</code>, <code>"UNIVERSITY OF ILLINOIS AT URBANA-"</code></li>
+        <li><strong>Abbreviations</strong> &mdash; <code>"UNIVERSITY"</code> &rarr; <code>"UNIV"</code>, <code>"INSTITUTE"</code> &rarr; <code>"INST"</code>: <code>"VIRGINIA POLYTECHNIC INST &amp; STATE UNIV"</code></li>
+        <li><strong>Legal names</strong> &mdash; <code>"THE LELAND STANFORD JR UNIVERSITY"</code> (4 variants), <code>"BOARD OF TRUSTEES OF THE UNIVERSITY OF ILLINOIS"</code></li>
+        <li><strong>Multi-campus systems</strong> &mdash; <code>"UNIVERSITY OF CALIFORNIA, BERKELEY"</code> vs <code>"UNIVERSITY OF CALIFORNIA BERKELEY"</code> vs <code>"UNIVERSITY OF CALIFORNIA AT BERKELEY"</code> (8 UC campuses, 3+ variants each)</li>
+        <li><strong>Punctuation</strong> &mdash; <code>"COLUMBIA UNIVERSITY IN THE CITY OF NEW YORK"</code> (5 variants with different comma/article patterns)</li>
+      </ul>
+    </div>
+
+    <h3>LCA Disclosure Data</h3>
+    <p><a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" target="_blank">DOL</a> Labor Condition Applications (FY2015&ndash;2025): 32 Excel files totaling 3.6 GB. Extracts job titles (normalized to remove Excel artifacts like <code>="Assistant Professor"</code>), SOC occupation codes, wage statistics with percentile breakdowns, and yearly certification counts.</p>
+    <p><strong>DuckDB acceleration:</strong> XLSX files are converted to CSV once (cached in <code>lca/csv_cache/</code>), then queried via DuckDB SQL for fast employer-name joins. Falls back to openpyxl row-by-row parsing (~25 min) if DuckDB is unavailable.</p>
+
+    <h3>OPT / STEM OPT</h3>
+    <p><a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank">ICE/SEVP SEVIS</a> data (CY 2017&ndash;2024): OPT, STEM OPT 24-month extension, and CPT work authorization counts by university. Pre-parsed from PDF tables published by DHS. National trends show 11x OPT growth from 2007 to 2024.</p>
+
+    <h3>PERM (Green Card)</h3>
+    <p><a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" target="_blank">DOL PERM</a> permanent labor certification data: employer-sponsored green card applications and approval rates. 72 universities with data.</p>
+
+    <div class="stat-row">
+      <div class="stat-chip"><div class="val" style="color:var(--purple)">98</div><div class="lbl">H-1B Unis</div></div>
+      <div class="stat-chip"><div class="val" style="color:var(--orange)">78</div><div class="lbl">LCA Unis</div></div>
+      <div class="stat-chip"><div class="val" style="color:var(--teal)">59</div><div class="lbl">OPT Unis</div></div>
+      <div class="stat-chip"><div class="val" style="color:var(--pink)">72</div><div class="lbl">PERM Unis</div></div>
+    </div>
+    <p class="source-tag">Source: <code>pipeline/step3_parse_federal.py</code></p>
+  </div>
+
+  <hr>
+
+  <!-- ── STEP 4: ENRICH ── -->
+  <div class="step-section" id="step-enrich" data-step="enrich">
+    <h2><span class="step-num" style="background:rgba(251,146,60,0.15);color:var(--orange)">4</span> Enrich</h2>
+    <p>Merge all data sources into final per-university JSON files. <strong>This is the only step that writes to <code>site/data/</code></strong> &mdash; a critical design rule that prevents the overwrite bugs that plagued earlier versions.</p>
+
+    <h3>Merge Federal Data</h3>
+    <p>Each university's processed records are combined with H-1B, OPT, LCA, and PERM data from Step 3. This is the only step that writes to <code>site/data/</code> &mdash; a critical invariant that prevents the overwrite bugs found in earlier versions of the pipeline.</p>
+
+    <h3>System H-1B Mapping</h3>
+    <p>Multi-campus universities often file H-1B petitions under the parent system's legal name. <code>system_h1b_map.json</code> maps campuses to their parent system (e.g., Missouri S&amp;T &rarr; UM System), so campus-level views show the system's aggregate data with a disclaimer explaining the attribution.</p>
+
+    <h3>Add IPEDS / HERD / GSS</h3>
+    <p>Three additional federal data sources are merged per university, matched by IPEDS UNITID:</p>
+    <div class="info-card">
+      <ul>
+        <li><strong><a href="https://nces.ed.gov/ipeds/" target="_blank">IPEDS</a></strong> (NCES) &mdash; Enrollment demographics, completions by citizenship/race/gender, tuition, financial aid. Key metric: NRA share of STEM doctoral completions.</li>
+        <li><strong><a href="https://ncses.nsf.gov/surveys/higher-education-research-development" target="_blank">NSF HERD</a></strong> &mdash; R&amp;D expenditure time series (2010&ndash;2024) by university. Shows funding growth trajectory.</li>
+        <li><strong><a href="https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-in-science-and-engineering" target="_blank">NSF GSS</a></strong> &mdash; Graduate enrollment by field and citizenship status. Shows NRA share per STEM discipline.</li>
+      </ul>
+    </div>
+
+    <h3>Attach Department Links</h3>
+    <p>Department-level links to faculty directories, PhD student listings, and repository search pages from <code>data/dept_links.json</code>. These let users jump from a thesis record directly to the department that produced it.</p>
+
+    <h3>Write Site JSONs</h3>
+    <p>Final enriched JSONs are written to <code>site/data/stem/{key}.json</code> and <code>site/data/nonstem/{key}.json</code> &mdash; 202 files total. These are both the pipeline's definitive output and the files served directly to the browser.</p>
+    <div class="info-card">
+      <div class="card-title">Final JSON Schema (per university)</div>
+      <pre style="margin:0.3rem 0;font-size:0.75rem;background:none;border:none;padding:0;color:#94a3b8;">{
+  "key": "mit",
+  "name": "MIT",
+  "nra": 43.8,
+  "records": [[dept, year, name, class, conf, title, url, degree], ...],
+  "h1b": {"FY2020": {"initial_approvals": 123, ...}, ...},
+  "opt": {"CY2020": {"opt": 456, "stem_opt": 234}, ...},
+  "lca": {"total_lcas": 890, "top_titles": [...], "wage_median": 85000},
+  "perm": {"total": 45, "certified": 42},
+  "enrollment": {"total": 7201, "foreign": 2983, "foreign_pct": 41.4},
+  "funding": {"yearly_rd_thousands": {"2024": 1945000}},
+  "dept_links": {"Computer Science": {"home": "...", "faculty": "..."}}
+}</pre>
+    </div>
+    <div class="stat-row">
+      <div class="stat-chip"><div class="val" style="color:var(--orange)">202</div><div class="lbl">JSON Files</div></div>
+      <div class="stat-chip"><div class="val" style="color:var(--accent)">50MB</div><div class="lbl">Total Size</div></div>
+    </div>
+    <p class="source-tag">Source: <code>pipeline/step4_enrich.py</code></p>
+  </div>
+
+  <hr>
+
+  <!-- ── STEP 5: GENERATE ── -->
+  <div class="step-section" id="step-generate" data-step="generate">
+    <h2><span class="step-num" style="background:rgba(244,114,182,0.15);color:var(--pink)">5</span> Generate</h2>
+    <p>Build the HTML pages from enriched JSON files. This step has <strong>read-only access</strong> to <code>site/data/</code> &mdash; it never modifies the per-university JSONs.</p>
+
+    <h3>Nationwide Statistics</h3>
+    <p>The landing page displays 4 interactive Chart.js visualizations: STEM PhD completions by citizenship (IPEDS), OPT growth pipeline (SEVIS), R&amp;D funding vs American PhDs (HERD + IPEDS), and NRA enrollment by STEM field (GSS).</p>
+
+    <h3>University Index</h3>
+    <p>A lightweight index (key, name, NRA%, record count) is embedded in the HTML. Individual university data is lazy-loaded on demand via fetch to minimize initial page weight.</p>
+
+    <h3>Client-Side Rendering</h3>
+    <p>Each university's records are rendered client-side: departments, year blocks, name rows with direct thesis links, degree badges, origin classification flags, and expandable H-1B/OPT/LCA/PERM panels with Chart.js visualizations.</p>
+
+    <h3>Deep Linking</h3>
+    <p>Every university, department, year, and data panel has a shareable URL fragment. Coach marks teach first-time visitors how to copy deep links with a single click.</p>
+
+    <p class="source-tag">Source: <code>pipeline/step5_generate.py</code> &rarr; <code>scripts/generate_name_lists_html.py</code></p>
+  </div>
+
+  <hr>
+
+  <!-- ── STEP 6: DEPLOY ── -->
+  <div class="step-section" id="step-deploy" data-step="deploy">
+    <h2><span class="step-num" style="background:rgba(45,212,191,0.15);color:var(--teal)">6</span> Deploy</h2>
+    <p>Upload the site to AWS with optimized caching and compression for fast global delivery.</p>
+
+    <h3>Pre-Compress JSON</h3>
+    <p>All JSON files are gzipped at compression level 9 before upload. Uploaded with <code>Content-Encoding: gzip</code> header so browsers decompress transparently.</p>
+
+    <h3>Upload to S3</h3>
+    <p>Files are uploaded with tiered cache headers:</p>
+    <div class="info-card">
+      <ul>
+        <li><strong>HTML</strong> &mdash; <code>max-age=300</code> (5 minutes) &mdash; allows quick updates</li>
+        <li><strong>JSON data</strong> &mdash; <code>max-age=3600</code> (1 hour) &mdash; pre-gzipped</li>
+        <li><strong>Static assets</strong> &mdash; <code>max-age=604800</code> (1 week) &mdash; JS, images, favicon</li>
+      </ul>
+    </div>
+
+    <h3>Invalidate CloudFront</h3>
+    <p>A full invalidation (<code>/*</code>) is issued after upload to ensure edge caches serve fresh content immediately. CloudFront provides HTTP/2, TLS termination, and sub-100ms latency worldwide.</p>
+
+    <div class="stat-row">
+      <div class="stat-chip"><div class="val" style="color:var(--teal)">227</div><div class="lbl">Files</div></div>
+      <div class="stat-chip"><div class="val" style="color:var(--accent)">~3MB</div><div class="lbl">Gzipped</div></div>
+      <div class="stat-chip"><div class="val" style="color:var(--green)">&lt;100ms</div><div class="lbl">Edge Latency</div></div>
+    </div>
+    <p class="source-tag">Source: <code>pipeline/step6_deploy.py</code></p>
+  </div>
+
+  <hr>
+
+  <!-- ── LIVING WITH MESS ── -->
+  <h2>Living with Complexity</h2>
+  <p>The pipeline currently has 105 university configs, 292 entity name mappings, 16 department extraction strategies, and an 8-step degree inference chain with dozens of regex patterns. This is not elegant, and it's not meant to be. It's a direct reflection of the problem: 101 universities, each running different software, following different metadata standards, with different ideas about what fields to populate and how to format them.</p>
+
+  <p>Every one of those ad hoc rules exists because someone discovered a specific university doing something unexpected. MIT puts degree types in the description field. Penn State puts them in the relation field. Columbia uses OAI set names with <code>degree_level:doctoral</code>. BYU returns <code>"MS"</code> as a degree name, while Binghamton returns <code>"Master of Arts (MA)"</code>. USCIS truncates Stanford's legal name to <code>"THE LELAND STANFORD JR UNIVERSITY"</code> in some years but not others.</p>
+
+  <p>The functional pipeline doesn't eliminate this complexity &mdash; nothing can. What it does is <strong>make the complexity auditable</strong>. Every special case is a config entry, a mapping, or a clearly-scoped extraction function. When a new university is added or an existing one changes its repository software, the fix is a config change and a re-run, not a debugging expedition across 30 interleaved scripts. The manifest tells you exactly what state each university is in. The immutable state guarantees that fixing one university can't break another.</p>
+
+  <p>The system is, by nature, an accumulation of discovered edge cases. The pipeline is the structure that keeps that accumulation from becoming unmaintainable.</p>
+
+  <hr>
+
+  <!-- ── CLI ── -->
+  <h2>CLI Usage</h2>
+  <pre># Run full pipeline
+python -m pipeline run
+
+# Run specific step(s)
+python -m pipeline run --step enrich,generate,deploy
+
+# Single university
+python -m pipeline run --university mit
+
+# Dry run
+python -m pipeline run --dry-run
+
+# Status check
+python -m pipeline status</pre>
+
+  <hr>
+
+  <h2>Project Structure</h2>
+  <pre>pipeline/
+  __init__.py              # Step registry
+  __main__.py              # CLI entry point
+  runner.py                # compose_pipeline()
+  state.py                 # Frozen dataclasses
+  universities.json        # 101 university configs
+  entity_map.json          # 292 employer name mappings
+  system_h1b_map.json      # Multi-campus H-1B fallback
+  manifest.json            # Per-university tracking
+  degree_classifier.pkl    # sklearn model
+  ai_classifications.json  # Claude Haiku cache
+  step1_harvest.py         # OAI-PMH scraping
+  step2_process.py         # Record classification
+  step2b_ai_classify.py    # AI degree classification
+  step3_parse_federal.py   # H-1B, LCA, OPT, PERM
+  step4_enrich.py          # Merge all sources
+  step5_generate.py        # HTML generation
+  step6_deploy.py          # S3 + CloudFront</pre>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- RIGHT: Sticky SVG Diagram -->
+<!-- ============================================================ -->
+<div class="diagram-col">
+  <div class="diagram-sticky">
+    <svg id="pipeline-svg" viewBox="0 0 320 680" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <defs>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L8,3 L0,6" fill="#475569" />
+        </marker>
+        <marker id="arrow-active" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L8,3 L0,6" fill="#38bdf8" />
+        </marker>
+      </defs>
+
+      <!-- Step groups — each has a collapsed box and an expandable detail area -->
+
+      <!-- ── HARVEST ── -->
+      <g id="g-harvest" class="step-group" data-step="harvest">
+        <rect class="step-box" x="40" y="16" width="240" height="44" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+        <text class="step-label" x="160" y="43" text-anchor="middle" fill="#94a3b8" font-size="13" font-weight="700">1. Harvest</text>
+        <!-- expanded substeps (hidden by default) -->
+        <g class="substeps" opacity="0" style="transition:opacity 0.4s">
+          <rect x="60" y="66" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="82" text-anchor="middle" fill="#64748b" font-size="10">Build harvest plan</text>
+          <rect x="60" y="94" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="110" text-anchor="middle" fill="#64748b" font-size="10">Fetch OAI-PMH pages</text>
+          <rect x="60" y="122" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="138" text-anchor="middle" fill="#64748b" font-size="10">Parse XML (dc / etdms)</text>
+          <rect x="60" y="150" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="166" text-anchor="middle" fill="#64748b" font-size="10">Write CSV + checkpoint</text>
+        </g>
+      </g>
+
+      <!-- arrow 1→2 -->
+      <line class="step-arrow" data-from="harvest" x1="160" y1="60" x2="160" y2="80" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+      <!-- ── PROCESS ── -->
+      <g id="g-process" class="step-group" data-step="process">
+        <rect class="step-box" x="40" y="96" width="240" height="44" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+        <text class="step-label" x="160" y="123" text-anchor="middle" fill="#94a3b8" font-size="13" font-weight="700">2. Process</text>
+        <g class="substeps" opacity="0" style="transition:opacity 0.4s">
+          <rect x="60" y="146" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="162" text-anchor="middle" fill="#64748b" font-size="10">Infer degree type (8 steps)</text>
+          <rect x="60" y="174" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="190" text-anchor="middle" fill="#64748b" font-size="10">Extract department</text>
+          <rect x="60" y="202" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="218" text-anchor="middle" fill="#64748b" font-size="10">STEM / non-STEM split</text>
+          <rect x="60" y="230" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="246" text-anchor="middle" fill="#64748b" font-size="10">Deduplicate</text>
+        </g>
+      </g>
+
+      <!-- arrow 2→3 -->
+      <line class="step-arrow" data-from="process" x1="160" y1="140" x2="160" y2="160" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+      <!-- ── PARSE FEDERAL ── -->
+      <g id="g-federal" class="step-group" data-step="federal">
+        <rect class="step-box" x="40" y="176" width="240" height="44" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+        <text class="step-label" x="160" y="203" text-anchor="middle" fill="#94a3b8" font-size="13" font-weight="700">3. Parse Federal</text>
+        <g class="substeps" opacity="0" style="transition:opacity 0.4s">
+          <rect x="60" y="226" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="242" text-anchor="middle" fill="#64748b" font-size="10">Parse H-1B CSVs</text>
+          <rect x="60" y="254" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="270" text-anchor="middle" fill="#64748b" font-size="10">Parse LCA Excel (DuckDB)</text>
+          <rect x="60" y="282" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="298" text-anchor="middle" fill="#64748b" font-size="10">Load OPT / PERM</text>
+          <rect x="60" y="310" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="326" text-anchor="middle" fill="#64748b" font-size="10">Entity name resolution</text>
+        </g>
+      </g>
+
+      <!-- arrow 3→4 -->
+      <line class="step-arrow" data-from="federal" x1="160" y1="220" x2="160" y2="240" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+      <!-- ── ENRICH ── -->
+      <g id="g-enrich" class="step-group" data-step="enrich">
+        <rect class="step-box" x="40" y="256" width="240" height="44" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+        <text class="step-label" x="160" y="283" text-anchor="middle" fill="#94a3b8" font-size="13" font-weight="700">4. Enrich</text>
+        <g class="substeps" opacity="0" style="transition:opacity 0.4s">
+          <rect x="60" y="306" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="322" text-anchor="middle" fill="#64748b" font-size="10">Merge federal data</text>
+          <rect x="60" y="334" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="350" text-anchor="middle" fill="#64748b" font-size="10">Add IPEDS / HERD / GSS</text>
+          <rect x="60" y="362" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="378" text-anchor="middle" fill="#64748b" font-size="10">Attach dept links</text>
+          <rect x="60" y="390" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="406" text-anchor="middle" fill="#64748b" font-size="10">Write site/data/ JSONs</text>
+        </g>
+      </g>
+
+      <!-- arrow 4→5 -->
+      <line class="step-arrow" data-from="enrich" x1="160" y1="300" x2="160" y2="320" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+      <!-- ── GENERATE ── -->
+      <g id="g-generate" class="step-group" data-step="generate">
+        <rect class="step-box" x="40" y="336" width="240" height="44" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+        <text class="step-label" x="160" y="363" text-anchor="middle" fill="#94a3b8" font-size="13" font-weight="700">5. Generate</text>
+        <g class="substeps" opacity="0" style="transition:opacity 0.4s">
+          <rect x="60" y="386" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="402" text-anchor="middle" fill="#64748b" font-size="10">Nationwide statistics</text>
+          <rect x="60" y="414" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="430" text-anchor="middle" fill="#64748b" font-size="10">University index</text>
+          <rect x="60" y="442" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="458" text-anchor="middle" fill="#64748b" font-size="10">Client-side rendering</text>
+          <rect x="60" y="470" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="486" text-anchor="middle" fill="#64748b" font-size="10">Deep linking + sharing</text>
+        </g>
+      </g>
+
+      <!-- arrow 5→6 -->
+      <line class="step-arrow" data-from="generate" x1="160" y1="380" x2="160" y2="400" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+      <!-- ── DEPLOY ── -->
+      <g id="g-deploy" class="step-group" data-step="deploy">
+        <rect class="step-box" x="40" y="416" width="240" height="44" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+        <text class="step-label" x="160" y="443" text-anchor="middle" fill="#94a3b8" font-size="13" font-weight="700">6. Deploy</text>
+        <g class="substeps" opacity="0" style="transition:opacity 0.4s">
+          <rect x="60" y="466" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="482" text-anchor="middle" fill="#64748b" font-size="10">Pre-compress JSON</text>
+          <rect x="60" y="494" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="510" text-anchor="middle" fill="#64748b" font-size="10">Upload to S3</text>
+          <rect x="60" y="522" width="200" height="24" rx="5" fill="#0f172a" stroke="#334155" stroke-width="0.75"/>
+          <text x="160" y="538" text-anchor="middle" fill="#64748b" font-size="10">Invalidate CloudFront</text>
+        </g>
+      </g>
+
+      <!-- State flow label -->
+      <text x="160" y="490" text-anchor="middle" fill="#334155" font-size="9" font-style="italic" class="state-label">PipelineState flows through each step</text>
+    </svg>
+  </div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SCROLL-DRIVEN ANIMATION -->
+<!-- ============================================================ -->
+<script>
+(function() {
+  const STEPS = ['harvest','process','federal','enrich','generate','deploy'];
+  const COLORS = {
+    harvest: '#38bdf8', process: '#4ade80', federal: '#a78bfa',
+    enrich: '#fb923c', generate: '#f472b6', deploy: '#2dd4bf'
+  };
+
+  // Layout constants for SVG repositioning
+  const BOX_H = 44;
+  const GAP = 12;
+  const SUB_H = 24;
+  const SUB_GAP = 4;
+  const START_Y = 16;
+  const ARROW_GAP = 20;
+
+  // Count substeps per step
+  const subCounts = {};
+  STEPS.forEach(s => {
+    const g = document.getElementById('g-' + s);
+    subCounts[s] = g ? g.querySelectorAll('.substeps rect').length : 0;
+  });
+
+  let activeStep = null;
+
+  function layoutSVG(expandedStep) {
+    let y = START_Y;
+    const svg = document.getElementById('pipeline-svg');
+
+    STEPS.forEach((step, i) => {
+      const g = document.getElementById('g-' + step);
+      const box = g.querySelector('.step-box');
+      const label = g.querySelector('.step-label');
+      const subs = g.querySelector('.substeps');
+      const isActive = step === expandedStep;
+      const color = COLORS[step];
+
+      // Position main box
+      box.setAttribute('y', y);
+      label.setAttribute('y', y + 27);
+
+      // Style active vs inactive
+      if (isActive) {
+        box.setAttribute('stroke', color);
+        box.setAttribute('stroke-width', '2');
+        box.setAttribute('fill', '#1e293b');
+        box.style.filter = 'url(#glow)';
+        label.setAttribute('fill', color);
+        subs.setAttribute('opacity', '1');
+      } else {
+        box.setAttribute('stroke', expandedStep ? '#283040' : '#334155');
+        box.setAttribute('stroke-width', '1.5');
+        box.setAttribute('fill', expandedStep ? '#161e2e' : '#1e293b');
+        box.style.filter = '';
+        label.setAttribute('fill', expandedStep ? '#4a5568' : '#94a3b8');
+        subs.setAttribute('opacity', '0');
+      }
+
+      // Position substeps
+      let subY = y + BOX_H + 6;
+      const subRects = subs.querySelectorAll('rect');
+      const subTexts = subs.querySelectorAll('text');
+      subRects.forEach((r, j) => {
+        r.setAttribute('y', subY);
+        if (isActive) {
+          r.setAttribute('stroke', color);
+          r.setAttribute('stroke-opacity', '0.4');
+          r.setAttribute('fill', 'rgba(15,23,42,0.8)');
+        } else {
+          r.setAttribute('stroke', '#334155');
+          r.setAttribute('stroke-opacity', '1');
+          r.setAttribute('fill', '#0f172a');
+        }
+        subTexts[j].setAttribute('y', subY + 16);
+        if (isActive) subTexts[j].setAttribute('fill', '#94a3b8');
+        else subTexts[j].setAttribute('fill', '#64748b');
+        subY += SUB_H + SUB_GAP;
+      });
+
+      // Advance y
+      y += BOX_H;
+      if (isActive) y += (SUB_H + SUB_GAP) * subCounts[step] + 6;
+
+      // Position arrow after this step (if not last)
+      if (i < STEPS.length - 1) {
+        const arrows = svg.querySelectorAll('.step-arrow');
+        // Find the arrow for this step
+        for (const a of arrows) {
+          if (a.dataset.from === step) {
+            a.setAttribute('y1', y + 2);
+            a.setAttribute('y2', y + ARROW_GAP - 2);
+            if (isActive) {
+              a.setAttribute('stroke', color);
+              a.setAttribute('marker-end', 'url(#arrow-active)');
+            } else {
+              a.setAttribute('stroke', expandedStep ? '#283040' : '#475569');
+              a.setAttribute('marker-end', 'url(#arrow)');
+            }
+            break;
+          }
+        }
+        y += ARROW_GAP;
+      }
+    });
+
+    // Update viewBox to fit
+    const totalH = y + 40;
+    svg.setAttribute('viewBox', `0 0 320 ${totalH}`);
+
+    // Position state flow label
+    const stateLabel = svg.querySelector('.state-label');
+    if (stateLabel) {
+      stateLabel.setAttribute('y', y + 20);
+      stateLabel.setAttribute('opacity', expandedStep ? '0' : '0.6');
+    }
+  }
+
+  // Initial layout (nothing expanded)
+  layoutSVG(null);
+
+  // Intersection Observer to detect which section is visible
+  const sections = document.querySelectorAll('.step-section');
+  const observer = new IntersectionObserver((entries) => {
+    // Find the most visible section
+    let bestEntry = null;
+    let bestRatio = 0;
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio > bestRatio) {
+        bestRatio = entry.intersectionRatio;
+        bestEntry = entry;
+      }
+    });
+
+    if (bestEntry) {
+      const step = bestEntry.target.dataset.step;
+      if (step !== activeStep) {
+        activeStep = step;
+        layoutSVG(step);
+      }
+    }
+  }, {
+    rootMargin: '-20% 0px -40% 0px',
+    threshold: [0, 0.1, 0.2, 0.3, 0.5, 0.7, 1.0]
+  });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Also watch for scroll to top (no section active)
+  const topObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+        activeStep = null;
+        layoutSVG(null);
+      }
+    });
+  }, { threshold: [0.3] });
+
+  // Observe the first non-step element as a proxy for "at top"
+  const firstH2 = document.querySelector('.content-col h2:not(.step-section h2)');
+  if (firstH2) topObserver.observe(firstH2);
+
+  // Clicking a step in the SVG scrolls to that section
+  STEPS.forEach(step => {
+    const g = document.getElementById('g-' + step);
+    if (g) {
+      g.style.cursor = 'pointer';
+      g.addEventListener('click', () => {
+        const section = document.getElementById('step-' + step);
+        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+  });
+})();
+</script>
+<script src="/nav.js"></script>
+</body>
+</html>

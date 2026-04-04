@@ -1,0 +1,3133 @@
+{
+  "binghamton": {
+    "records": {
+      "total": 94,
+      "phd": 3,
+      "ms": 0,
+      "unlabeled": 91,
+      "label_pct": 3.2
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 1,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 506,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.134710",
+      "records": 0,
+      "phd": 0,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "boise_state": {
+    "records": {
+      "total": 789,
+      "phd": 39,
+      "ms": 0,
+      "unlabeled": 750,
+      "label_pct": 4.9
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 334,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.476886",
+      "records": 394,
+      "phd": 24,
+      "ms": 0,
+      "unlabeled": 370,
+      "labeling_pct": 6.1,
+      "filter": "non-stem"
+    }
+  },
+  "bu": {
+    "records": {
+      "total": 10651,
+      "phd": 1688,
+      "ms": 1735,
+      "unlabeled": 7228,
+      "label_pct": 32.1
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 1802,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.345690",
+      "records": 7004,
+      "phd": 1199,
+      "ms": 1651,
+      "unlabeled": 4154,
+      "labeling_pct": 40.7,
+      "filter": "non-stem"
+    }
+  },
+  "byu": {
+    "records": {
+      "total": 2393,
+      "phd": 139,
+      "ms": 4,
+      "unlabeled": 2250,
+      "label_pct": 6.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 15,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 284,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.437528",
+      "records": 1516,
+      "phd": 301,
+      "ms": 1118,
+      "unlabeled": 97,
+      "labeling_pct": 93.6,
+      "filter": "non-stem"
+    }
+  },
+  "caltech": {
+    "records": {
+      "total": 2354,
+      "phd": 2354,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 16,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 2401,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.651249",
+      "records": 0,
+      "phd": 0,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "clemson": {
+    "records": {
+      "total": 1534,
+      "phd": 1534,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 5,
+      "lca": true,
+      "lca_total": 937,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.144495",
+      "records": 598,
+      "phd": 598,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "cmu": {
+    "records": {
+      "total": 2985,
+      "phd": 309,
+      "ms": 2,
+      "unlabeled": 2674,
+      "label_pct": 10.4
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 1784,
+      "perm": true,
+      "enrollment": true,
+      "funding": false,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.583224",
+      "records": 739,
+      "phd": 124,
+      "ms": 10,
+      "unlabeled": 605,
+      "labeling_pct": 18.1,
+      "filter": "non-stem"
+    }
+  },
+  "columbia": {
+    "records": {
+      "total": 3683,
+      "phd": 3378,
+      "ms": 305,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 5023,
+      "perm": true,
+      "enrollment": true,
+      "funding": false,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.607587",
+      "records": 3545,
+      "phd": 2801,
+      "ms": 744,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "cornell": {
+    "records": {
+      "total": 5590,
+      "phd": 683,
+      "ms": 1724,
+      "unlabeled": 3183,
+      "label_pct": 43.1
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 2016,
+      "perm": true,
+      "enrollment": true,
+      "funding": false,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.594093",
+      "records": 754,
+      "phd": 210,
+      "ms": 165,
+      "unlabeled": 379,
+      "labeling_pct": 49.7,
+      "filter": "non-stem"
+    }
+  },
+  "cuny": {
+    "records": {
+      "total": 1600,
+      "phd": 1321,
+      "ms": 279,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 12,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 510,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.431212",
+      "records": 2875,
+      "phd": 2145,
+      "ms": 721,
+      "unlabeled": 9,
+      "labeling_pct": 99.7,
+      "filter": "non-stem"
+    }
+  },
+  "dartmouth": {
+    "records": {
+      "total": 266,
+      "phd": 266,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 679,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.495301",
+      "records": 8,
+      "phd": 8,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "duke": {
+    "records": {
+      "total": 2261,
+      "phd": 2260,
+      "ms": 1,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 3345,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.298626",
+      "records": 976,
+      "phd": 976,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "gatech": {
+    "records": {
+      "total": 5959,
+      "phd": 4614,
+      "ms": 1345,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 16,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 1696,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.182363",
+      "records": 405,
+      "phd": 251,
+      "ms": 154,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "gmu": {
+    "records": {
+      "total": 1545,
+      "phd": 554,
+      "ms": 0,
+      "unlabeled": 991,
+      "label_pct": 35.9
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 748,
+      "perm": true,
+      "enrollment": true,
+      "funding": false,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.639271",
+      "records": 1087,
+      "phd": 633,
+      "ms": 0,
+      "unlabeled": 454,
+      "labeling_pct": 58.2,
+      "filter": "non-stem"
+    }
+  },
+  "harvard": {
+    "records": {
+      "total": 4194,
+      "phd": 3610,
+      "ms": 3,
+      "unlabeled": 581,
+      "label_pct": 86.1
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 4260,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.361058",
+      "records": 2107,
+      "phd": 1977,
+      "ms": 2,
+      "unlabeled": 128,
+      "labeling_pct": 93.9,
+      "filter": "non-stem"
+    }
+  },
+  "iowa_state": {
+    "records": {
+      "total": 6770,
+      "phd": 2016,
+      "ms": 4754,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 15,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 1863,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.141744",
+      "records": 1726,
+      "phd": 429,
+      "ms": 1297,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "kstate": {
+    "records": {
+      "total": 2678,
+      "phd": 483,
+      "ms": 1736,
+      "unlabeled": 459,
+      "label_pct": 82.9
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 1022,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.132626",
+      "records": 1959,
+      "phd": 1396,
+      "ms": 378,
+      "unlabeled": 185,
+      "labeling_pct": 90.6,
+      "filter": "non-stem"
+    }
+  },
+  "la_tech": {
+    "records": {
+      "total": 208,
+      "phd": 208,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 13,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 184,
+      "perm": false,
+      "enrollment": true,
+      "funding": false,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.569104",
+      "records": 146,
+      "phd": 146,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "lsu": {
+    "records": {
+      "total": 2967,
+      "phd": 1680,
+      "ms": 1287,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 14,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 1407,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.179613",
+      "records": 1735,
+      "phd": 1093,
+      "ms": 642,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "marquette": {
+    "records": {
+      "total": 301,
+      "phd": 301,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 344,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.493604",
+      "records": 299,
+      "phd": 299,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "mines": {
+    "records": {
+      "total": 7970,
+      "phd": 2534,
+      "ms": 5297,
+      "unlabeled": 139,
+      "label_pct": 98.3
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 16,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 249,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.418409",
+      "records": 25,
+      "phd": 2,
+      "ms": 13,
+      "unlabeled": 10,
+      "labeling_pct": 60.0,
+      "filter": "non-stem"
+    }
+  },
+  "missouri_st": {
+    "records": {
+      "total": 1468,
+      "phd": 842,
+      "ms": 626,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 7,
+      "lca": true,
+      "lca_total": 104,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "Missouri S&T files H-1B under 'The Curators of the University of Missouri' (system-wide, includes all UM campuses).",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.100588",
+      "records": 22,
+      "phd": 0,
+      "ms": 22,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "mit": {
+    "records": {
+      "total": 12906,
+      "phd": 3303,
+      "ms": 3312,
+      "unlabeled": 6291,
+      "label_pct": 51.3
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 565883,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.245730",
+      "records": 2376,
+      "phd": 524,
+      "ms": 545,
+      "unlabeled": 1307,
+      "labeling_pct": 45.0,
+      "filter": "non-stem"
+    }
+  },
+  "msstate": {
+    "records": {
+      "total": 2389,
+      "phd": 171,
+      "ms": 0,
+      "unlabeled": 2218,
+      "label_pct": 7.2
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 804,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.443635",
+      "records": 0,
+      "phd": 0,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "msu": {
+    "records": {
+      "total": 3912,
+      "phd": 838,
+      "ms": 1,
+      "unlabeled": 3073,
+      "label_pct": 21.4
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 7,
+      "lca": true,
+      "lca_total": 2954,
+      "perm": true,
+      "enrollment": true,
+      "funding": false,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.618385",
+      "records": 2260,
+      "phd": 654,
+      "ms": 0,
+      "unlabeled": 1606,
+      "labeling_pct": 28.9,
+      "filter": "non-stem"
+    }
+  },
+  "mtu": {
+    "records": {
+      "total": 1621,
+      "phd": 688,
+      "ms": 932,
+      "unlabeled": 1,
+      "label_pct": 99.9
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 6,
+      "lca": true,
+      "lca_total": 368,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.101872",
+      "records": 117,
+      "phd": 60,
+      "ms": 57,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "nau": {
+    "records": {
+      "total": 370,
+      "phd": 0,
+      "ms": 354,
+      "unlabeled": 16,
+      "label_pct": 95.7
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 15,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 253,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.492121",
+      "records": 382,
+      "phd": 1,
+      "ms": 352,
+      "unlabeled": 29,
+      "labeling_pct": 92.4,
+      "filter": "non-stem"
+    }
+  },
+  "ncstate": {
+    "records": {
+      "total": 6626,
+      "phd": 4203,
+      "ms": 1896,
+      "unlabeled": 527,
+      "label_pct": 92.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 4,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 2009,
+      "perm": false,
+      "enrollment": true,
+      "funding": false,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.567587",
+      "records": 685,
+      "phd": 403,
+      "ms": 224,
+      "unlabeled": 58,
+      "labeling_pct": 91.5,
+      "filter": "non-stem"
+    }
+  },
+  "niu": {
+    "records": {
+      "total": 991,
+      "phd": 84,
+      "ms": 0,
+      "unlabeled": 907,
+      "label_pct": 8.5
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 15,
+      "opt": true,
+      "opt_years": 6,
+      "lca": true,
+      "lca_total": 334,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.487289",
+      "records": 1040,
+      "phd": 181,
+      "ms": 0,
+      "unlabeled": 859,
+      "labeling_pct": 17.4,
+      "filter": "non-stem"
+    }
+  },
+  "njit": {
+    "records": {
+      "total": 738,
+      "phd": 541,
+      "ms": 197,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 13,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 384,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.116348",
+      "records": 23,
+      "phd": 16,
+      "ms": 7,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "northern_colorado": {
+    "records": {
+      "total": 153,
+      "phd": 153,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 9,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 106,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.482607",
+      "records": 592,
+      "phd": 592,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "northwestern": {
+    "records": {
+      "total": 2292,
+      "phd": 2241,
+      "ms": 51,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 14,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 3733,
+      "perm": true,
+      "enrollment": true,
+      "funding": false,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.631727",
+      "records": 1090,
+      "phd": 1085,
+      "ms": 5,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "olemiss": {
+    "records": {
+      "total": 890,
+      "phd": 23,
+      "ms": 589,
+      "unlabeled": 278,
+      "label_pct": 68.8
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 14,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 1743,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.463919",
+      "records": 983,
+      "phd": 27,
+      "ms": 826,
+      "unlabeled": 130,
+      "labeling_pct": 86.8,
+      "filter": "non-stem"
+    }
+  },
+  "pdx": {
+    "records": {
+      "total": 988,
+      "phd": 78,
+      "ms": 0,
+      "unlabeled": 910,
+      "label_pct": 7.9
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 186,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.499598",
+      "records": 778,
+      "phd": 50,
+      "ms": 0,
+      "unlabeled": 728,
+      "labeling_pct": 6.4,
+      "filter": "non-stem"
+    }
+  },
+  "penn_state": {
+    "records": {
+      "total": 9639,
+      "phd": 6294,
+      "ms": 3246,
+      "unlabeled": 99,
+      "label_pct": 99.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 2697,
+      "perm": true,
+      "enrollment": true,
+      "funding": false,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.607783",
+      "records": 0,
+      "phd": 0,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "purdue": {
+    "records": {
+      "total": 8058,
+      "phd": 7604,
+      "ms": 454,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 4254,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.125038",
+      "records": 1847,
+      "phd": 1746,
+      "ms": 101,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "rice": {
+    "records": {
+      "total": 4650,
+      "phd": 1111,
+      "ms": 1505,
+      "unlabeled": 2034,
+      "label_pct": 56.3
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 5,
+      "lca": true,
+      "lca_total": 1075,
+      "perm": true,
+      "enrollment": true,
+      "funding": false,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.576235",
+      "records": 1285,
+      "phd": 349,
+      "ms": 487,
+      "unlabeled": 449,
+      "labeling_pct": 65.1,
+      "filter": "non-stem"
+    }
+  },
+  "rit": {
+    "records": {
+      "total": 2574,
+      "phd": 2293,
+      "ms": 281,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 12,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 455,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.134473",
+      "records": 374,
+      "phd": 211,
+      "ms": 163,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "rpi": {
+    "records": {
+      "total": 1586,
+      "phd": 1183,
+      "ms": 368,
+      "unlabeled": 35,
+      "label_pct": 97.8
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 14,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 901,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.108867",
+      "records": 1,
+      "phd": 0,
+      "ms": 1,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "sdsu": {
+    "records": {
+      "total": 1264,
+      "phd": 399,
+      "ms": 828,
+      "unlabeled": 37,
+      "label_pct": 97.1
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 16,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 358,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.102895",
+      "records": 160,
+      "phd": 34,
+      "ms": 125,
+      "unlabeled": 1,
+      "labeling_pct": 99.4,
+      "filter": "non-stem"
+    }
+  },
+  "siu": {
+    "records": {
+      "total": 620,
+      "phd": 620,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 5,
+      "opt": true,
+      "opt_years": 1,
+      "lca": true,
+      "lca_total": 598,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.479391",
+      "records": 524,
+      "phd": 524,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "smu": {
+    "records": {
+      "total": 487,
+      "phd": 78,
+      "ms": 0,
+      "unlabeled": 409,
+      "label_pct": 16.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 11,
+      "opt": true,
+      "opt_years": 5,
+      "lca": true,
+      "lca_total": 402,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.490315",
+      "records": 0,
+      "phd": 0,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "stanford": {
+    "records": {
+      "total": 7032,
+      "phd": 7032,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 707,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.560055",
+      "records": 1929,
+      "phd": 1929,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "stony_brook": {
+    "records": {
+      "total": 561,
+      "phd": 397,
+      "ms": 0,
+      "unlabeled": 164,
+      "label_pct": 70.8
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 3,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 793,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.108701",
+      "records": 167,
+      "phd": 108,
+      "ms": 0,
+      "unlabeled": 59,
+      "labeling_pct": 64.7,
+      "filter": "non-stem"
+    }
+  },
+  "syracuse": {
+    "records": {
+      "total": 975,
+      "phd": 187,
+      "ms": 0,
+      "unlabeled": 788,
+      "label_pct": 19.2
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 525,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.402572",
+      "records": 548,
+      "phd": 236,
+      "ms": 0,
+      "unlabeled": 312,
+      "labeling_pct": 43.1,
+      "filter": "non-stem"
+    }
+  },
+  "temple": {
+    "records": {
+      "total": 2505,
+      "phd": 1601,
+      "ms": 557,
+      "unlabeled": 347,
+      "label_pct": 86.1
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 2117,
+      "perm": true,
+      "enrollment": true,
+      "funding": false,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.634797",
+      "records": 636,
+      "phd": 495,
+      "ms": 79,
+      "unlabeled": 62,
+      "labeling_pct": 90.3,
+      "filter": "non-stem"
+    }
+  },
+  "ttu": {
+    "records": {
+      "total": 1288,
+      "phd": 270,
+      "ms": 931,
+      "unlabeled": 87,
+      "label_pct": 93.2
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 2528,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.219148",
+      "records": 738,
+      "phd": 219,
+      "ms": 474,
+      "unlabeled": 45,
+      "labeling_pct": 93.9,
+      "filter": "non-stem"
+    }
+  },
+  "uarizona": {
+    "records": {
+      "total": 6225,
+      "phd": 2907,
+      "ms": 3281,
+      "unlabeled": 37,
+      "label_pct": 99.4
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 13,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 2032,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.316524",
+      "records": 3834,
+      "phd": 2206,
+      "ms": 1609,
+      "unlabeled": 19,
+      "labeling_pct": 99.5,
+      "filter": "non-stem"
+    }
+  },
+  "uarkansas": {
+    "records": {
+      "total": 2332,
+      "phd": 297,
+      "ms": 2,
+      "unlabeled": 2033,
+      "label_pct": 12.8
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 2836,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.443421",
+      "records": 1302,
+      "phd": 680,
+      "ms": 622,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "ubuffalo": {
+    "records": {
+      "total": 890,
+      "phd": 506,
+      "ms": 335,
+      "unlabeled": 49,
+      "label_pct": 94.5
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 9,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 1320,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.200814",
+      "records": 309,
+      "phd": 238,
+      "ms": 28,
+      "unlabeled": 43,
+      "labeling_pct": 86.1,
+      "filter": "non-stem"
+    }
+  },
+  "ucberkeley": {
+    "records": {
+      "total": 5334,
+      "phd": 5334,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 14,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 2375,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.528886",
+      "records": 2118,
+      "phd": 2118,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "ucdavis": {
+    "records": {
+      "total": 2510,
+      "phd": 2510,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 11,
+      "opt": true,
+      "opt_years": 7,
+      "lca": true,
+      "lca_total": 2771,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.541374",
+      "records": 701,
+      "phd": 701,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "ucf": {
+    "records": {
+      "total": 2539,
+      "phd": 941,
+      "ms": 1154,
+      "unlabeled": 444,
+      "label_pct": 82.5
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 12,
+      "opt": true,
+      "opt_years": 3,
+      "lca": true,
+      "lca_total": 641,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.152162",
+      "records": 1837,
+      "phd": 975,
+      "ms": 86,
+      "unlabeled": 776,
+      "labeling_pct": 57.8,
+      "filter": "non-stem"
+    }
+  },
+  "ucirvine": {
+    "records": {
+      "total": 3745,
+      "phd": 3745,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 13,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 1266,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.534803",
+      "records": 1575,
+      "phd": 1575,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "ucla": {
+    "records": {
+      "total": 5793,
+      "phd": 5793,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 5,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 2896,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.513309",
+      "records": 2955,
+      "phd": 2955,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "ucmerced": {
+    "records": {
+      "total": 676,
+      "phd": 676,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 14,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 230,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.553248",
+      "records": 244,
+      "phd": 244,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "ucriverside": {
+    "records": {
+      "total": 2358,
+      "phd": 2358,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 11,
+      "opt": true,
+      "opt_years": 3,
+      "lca": true,
+      "lca_total": 1035,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.538322",
+      "records": 908,
+      "phd": 908,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "ucsb": {
+    "records": {
+      "total": 2127,
+      "phd": 2127,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 1,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 1104,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.545385",
+      "records": 1056,
+      "phd": 1056,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "ucsc": {
+    "records": {
+      "total": 1499,
+      "phd": 1499,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 5,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 530,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.551206",
+      "records": 695,
+      "phd": 695,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "ucsd": {
+    "records": {
+      "total": 6149,
+      "phd": 6149,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 13,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 3340,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.519761",
+      "records": 1596,
+      "phd": 1596,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "ucsf": {
+    "records": {
+      "total": 1246,
+      "phd": 1246,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 3,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 3800,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.552082",
+      "records": 210,
+      "phd": 210,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "udel": {
+    "records": {
+      "total": 2375,
+      "phd": 2158,
+      "ms": 11,
+      "unlabeled": 206,
+      "label_pct": 91.3
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 15,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 725,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.418213",
+      "records": 34,
+      "phd": 34,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "udenver": {
+    "records": {
+      "total": 599,
+      "phd": 69,
+      "ms": 0,
+      "unlabeled": 530,
+      "label_pct": 11.5
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 276,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.474857",
+      "records": 836,
+      "phd": 126,
+      "ms": 0,
+      "unlabeled": 710,
+      "labeling_pct": 15.1,
+      "filter": "non-stem"
+    }
+  },
+  "uf": {
+    "records": {
+      "total": 7901,
+      "phd": 5282,
+      "ms": 2387,
+      "unlabeled": 232,
+      "label_pct": 97.1
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 16,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 3557,
+      "perm": true,
+      "enrollment": true,
+      "funding": false,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.626989",
+      "records": 1201,
+      "phd": 780,
+      "ms": 405,
+      "unlabeled": 16,
+      "labeling_pct": 98.7,
+      "filter": "non-stem"
+    }
+  },
+  "uhouston": {
+    "records": {
+      "total": 3466,
+      "phd": 652,
+      "ms": 2,
+      "unlabeled": 2812,
+      "label_pct": 18.9
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 1629,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.211966",
+      "records": 1678,
+      "phd": 285,
+      "ms": 1,
+      "unlabeled": 1392,
+      "labeling_pct": 17.0,
+      "filter": "non-stem"
+    }
+  },
+  "uiuc": {
+    "records": {
+      "total": 4508,
+      "phd": 221,
+      "ms": 0,
+      "unlabeled": 4287,
+      "label_pct": 4.9
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 2,
+      "opt": true,
+      "opt_years": 8,
+      "lca": false,
+      "lca_total": 0,
+      "perm": true,
+      "enrollment": true,
+      "funding": false,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.580486",
+      "records": 1079,
+      "phd": 117,
+      "ms": 0,
+      "unlabeled": 962,
+      "labeling_pct": 10.8,
+      "filter": "non-stem"
+    }
+  },
+  "ukansas": {
+    "records": {
+      "total": 2858,
+      "phd": 1438,
+      "ms": 1420,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 14,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 2120,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.277083",
+      "records": 3048,
+      "phd": 1594,
+      "ms": 1454,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "ulouisville": {
+    "records": {
+      "total": 1205,
+      "phd": 188,
+      "ms": 0,
+      "unlabeled": 1017,
+      "label_pct": 15.6
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 898,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.451758",
+      "records": 899,
+      "phd": 199,
+      "ms": 0,
+      "unlabeled": 700,
+      "labeling_pct": 22.1,
+      "filter": "non-stem"
+    }
+  },
+  "umass": {
+    "records": {
+      "total": 2001,
+      "phd": 1058,
+      "ms": 415,
+      "unlabeled": 528,
+      "label_pct": 73.6
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 13,
+      "opt": true,
+      "opt_years": 6,
+      "lca": true,
+      "lca_total": 818,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.198835",
+      "records": 2256,
+      "phd": 1744,
+      "ms": 193,
+      "unlabeled": 319,
+      "labeling_pct": 85.9,
+      "filter": "non-stem"
+    }
+  },
+  "umd": {
+    "records": {
+      "total": 3798,
+      "phd": 2873,
+      "ms": 925,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 16,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 2484,
+      "perm": true,
+      "enrollment": true,
+      "funding": false,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.576482",
+      "records": 15,
+      "phd": 8,
+      "ms": 7,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "umemphis": {
+    "records": {
+      "total": 1301,
+      "phd": 178,
+      "ms": 2,
+      "unlabeled": 1121,
+      "label_pct": 13.8
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 1,
+      "lca": true,
+      "lca_total": 366,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.456011",
+      "records": 888,
+      "phd": 170,
+      "ms": 0,
+      "unlabeled": 718,
+      "labeling_pct": 19.1,
+      "filter": "non-stem"
+    }
+  },
+  "umissouri": {
+    "records": {
+      "total": 2532,
+      "phd": 16,
+      "ms": 2321,
+      "unlabeled": 195,
+      "label_pct": 92.3
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 7,
+      "lca": true,
+      "lca_total": 2871,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.116102",
+      "records": 1474,
+      "phd": 16,
+      "ms": 1300,
+      "unlabeled": 158,
+      "labeling_pct": 89.3,
+      "filter": "non-stem"
+    }
+  },
+  "umn": {
+    "records": {
+      "total": 6501,
+      "phd": 4061,
+      "ms": 1796,
+      "unlabeled": 644,
+      "label_pct": 90.1
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 16,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 3724,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.288438",
+      "records": 2698,
+      "phd": 2058,
+      "ms": 244,
+      "unlabeled": 396,
+      "labeling_pct": 85.3,
+      "filter": "non-stem"
+    }
+  },
+  "umt": {
+    "records": {
+      "total": 853,
+      "phd": 268,
+      "ms": 470,
+      "unlabeled": 115,
+      "label_pct": 86.5
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 16,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 214,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.467461",
+      "records": 785,
+      "phd": 211,
+      "ms": 463,
+      "unlabeled": 111,
+      "labeling_pct": 85.9,
+      "filter": "non-stem"
+    }
+  },
+  "und": {
+    "records": {
+      "total": 901,
+      "phd": 51,
+      "ms": 846,
+      "unlabeled": 4,
+      "label_pct": 99.6
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 14,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 428,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.470689",
+      "records": 674,
+      "phd": 37,
+      "ms": 637,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "unh": {
+    "records": {
+      "total": 437,
+      "phd": 437,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 381,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.494404",
+      "records": 142,
+      "phd": 142,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "unl": {
+    "records": {
+      "total": 1349,
+      "phd": 1349,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 15,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 36,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.187432",
+      "records": 1006,
+      "phd": 1006,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "unlv": {
+    "records": {
+      "total": 1258,
+      "phd": 537,
+      "ms": 628,
+      "unlabeled": 93,
+      "label_pct": 92.6
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 9,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 433,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.408185",
+      "records": 1219,
+      "phd": 666,
+      "ms": 373,
+      "unlabeled": 180,
+      "labeling_pct": 85.2,
+      "filter": "non-stem"
+    }
+  },
+  "unm": {
+    "records": {
+      "total": 121,
+      "phd": 20,
+      "ms": 0,
+      "unlabeled": 101,
+      "label_pct": 16.5
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 865,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.495119",
+      "records": 93,
+      "phd": 23,
+      "ms": 0,
+      "unlabeled": 70,
+      "labeling_pct": 24.7,
+      "filter": "non-stem"
+    }
+  },
+  "unt": {
+    "records": {
+      "total": 1618,
+      "phd": 196,
+      "ms": 0,
+      "unlabeled": 1422,
+      "label_pct": 12.1
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 7,
+      "lca": true,
+      "lca_total": 904,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.399675",
+      "records": 2225,
+      "phd": 362,
+      "ms": 0,
+      "unlabeled": 1863,
+      "labeling_pct": 16.3,
+      "filter": "non-stem"
+    }
+  },
+  "uoregon": {
+    "records": {
+      "total": 1591,
+      "phd": 279,
+      "ms": 1,
+      "unlabeled": 1311,
+      "label_pct": 17.6
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 779,
+      "perm": true,
+      "enrollment": true,
+      "funding": false,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.564790",
+      "records": 1143,
+      "phd": 295,
+      "ms": 2,
+      "unlabeled": 846,
+      "labeling_pct": 26.0,
+      "filter": "non-stem"
+    }
+  },
+  "upenn": {
+    "records": {
+      "total": 5015,
+      "phd": 4482,
+      "ms": 187,
+      "unlabeled": 346,
+      "label_pct": 93.1
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 13,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 5616,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.389197",
+      "records": 3806,
+      "phd": 2141,
+      "ms": 771,
+      "unlabeled": 894,
+      "labeling_pct": 76.5,
+      "filter": "non-stem"
+    }
+  },
+  "usc_columbia": {
+    "records": {
+      "total": 2204,
+      "phd": 224,
+      "ms": 0,
+      "unlabeled": 1980,
+      "label_pct": 10.2
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 16,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 1775,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.417925",
+      "records": 2182,
+      "phd": 305,
+      "ms": 0,
+      "unlabeled": 1877,
+      "labeling_pct": 14.0,
+      "filter": "non-stem"
+    }
+  },
+  "usd": {
+    "records": {
+      "total": 141,
+      "phd": 12,
+      "ms": 0,
+      "unlabeled": 129,
+      "label_pct": 8.5
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 11,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 258,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.496202",
+      "records": 162,
+      "phd": 13,
+      "ms": 0,
+      "unlabeled": 149,
+      "labeling_pct": 8.0,
+      "filter": "non-stem"
+    }
+  },
+  "usf": {
+    "records": {
+      "total": 2759,
+      "phd": 1493,
+      "ms": 1263,
+      "unlabeled": 3,
+      "label_pct": 99.9
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 16,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 1024,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.260387",
+      "records": 1973,
+      "phd": 1209,
+      "ms": 698,
+      "unlabeled": 66,
+      "labeling_pct": 96.7,
+      "filter": "non-stem"
+    }
+  },
+  "usm": {
+    "records": {
+      "total": 395,
+      "phd": 395,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 16,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 206,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.490192",
+      "records": 698,
+      "phd": 698,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "utah_state": {
+    "records": {
+      "total": 1493,
+      "phd": 101,
+      "ms": 1,
+      "unlabeled": 1391,
+      "label_pct": 6.8
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 502,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.459341",
+      "records": 595,
+      "phd": 45,
+      "ms": 0,
+      "unlabeled": 550,
+      "labeling_pct": 7.6,
+      "filter": "non-stem"
+    }
+  },
+  "utarlington": {
+    "records": {
+      "total": 2221,
+      "phd": 1333,
+      "ms": 888,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 8,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 744,
+      "perm": false,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.204591",
+      "records": 756,
+      "phd": 471,
+      "ms": 283,
+      "unlabeled": 2,
+      "labeling_pct": 99.7,
+      "filter": "non-stem"
+    }
+  },
+  "utaustin": {
+    "records": {
+      "total": 11532,
+      "phd": 5481,
+      "ms": 5316,
+      "unlabeled": 735,
+      "label_pct": 93.6
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 13,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 2730,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.233292",
+      "records": 3372,
+      "phd": 2053,
+      "ms": 1204,
+      "unlabeled": 115,
+      "labeling_pct": 96.6,
+      "filter": "non-stem"
+    }
+  },
+  "utdallas": {
+    "records": {
+      "total": 2226,
+      "phd": 1260,
+      "ms": 947,
+      "unlabeled": 19,
+      "label_pct": 99.1
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 14,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 932,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.107639",
+      "records": 822,
+      "phd": 484,
+      "ms": 334,
+      "unlabeled": 4,
+      "labeling_pct": 99.5,
+      "filter": "non-stem"
+    }
+  },
+  "utk": {
+    "records": {
+      "total": 4627,
+      "phd": 2295,
+      "ms": 3,
+      "unlabeled": 2329,
+      "label_pct": 49.7
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 11,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 2872,
+      "perm": true,
+      "enrollment": true,
+      "funding": false,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.651110",
+      "records": 2336,
+      "phd": 1316,
+      "ms": 4,
+      "unlabeled": 1016,
+      "labeling_pct": 56.5,
+      "filter": "non-stem"
+    }
+  },
+  "uutah": {
+    "records": {
+      "total": 1568,
+      "phd": 1064,
+      "ms": 0,
+      "unlabeled": 504,
+      "label_pct": 67.9
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 14,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 2561,
+      "perm": true,
+      "enrollment": true,
+      "funding": false,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.609535",
+      "records": 381,
+      "phd": 265,
+      "ms": 0,
+      "unlabeled": 116,
+      "labeling_pct": 69.6,
+      "filter": "non-stem"
+    }
+  },
+  "uva": {
+    "records": {
+      "total": 962,
+      "phd": 708,
+      "ms": 254,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 15,
+      "opt": true,
+      "opt_years": 7,
+      "lca": true,
+      "lca_total": 2959,
+      "perm": true,
+      "enrollment": true,
+      "funding": false,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.609696",
+      "records": 3,
+      "phd": 0,
+      "ms": 3,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "uw_seattle": {
+    "records": {
+      "total": 4770,
+      "phd": 2551,
+      "ms": 2218,
+      "unlabeled": 1,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 16,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 2669,
+      "perm": true,
+      "enrollment": true,
+      "funding": false,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.591096",
+      "records": 1804,
+      "phd": 967,
+      "ms": 837,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "uwmadison": {
+    "records": {
+      "total": 461,
+      "phd": 0,
+      "ms": 461,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 5,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 1255,
+      "perm": true,
+      "enrollment": true,
+      "funding": false,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.568490",
+      "records": 216,
+      "phd": 0,
+      "ms": 216,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "vt": {
+    "records": {
+      "total": 12676,
+      "phd": 5468,
+      "ms": 7204,
+      "unlabeled": 4,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 12,
+      "opt": true,
+      "opt_years": 7,
+      "lca": true,
+      "lca_total": 26,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.165658",
+      "records": 2998,
+      "phd": 1618,
+      "ms": 1380,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "washu": {
+    "records": {
+      "total": 2000,
+      "phd": 470,
+      "ms": 3,
+      "unlabeled": 1527,
+      "label_pct": 23.6
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 7,
+      "lca": true,
+      "lca_total": 1863,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.294248",
+      "records": 1194,
+      "phd": 417,
+      "ms": 1,
+      "unlabeled": 776,
+      "labeling_pct": 35.0,
+      "filter": "non-stem"
+    }
+  },
+  "wayne_state": {
+    "records": {
+      "total": 1058,
+      "phd": 1058,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 5,
+      "lca": true,
+      "lca_total": 1140,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.264043",
+      "records": 740,
+      "phd": 740,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  },
+  "wsu": {
+    "records": {
+      "total": 758,
+      "phd": 81,
+      "ms": 0,
+      "unlabeled": 677,
+      "label_pct": 10.7
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 5,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 1099,
+      "perm": false,
+      "enrollment": true,
+      "funding": false,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.570540",
+      "records": 245,
+      "phd": 40,
+      "ms": 0,
+      "unlabeled": 205,
+      "labeling_pct": 16.3,
+      "filter": "non-stem"
+    }
+  },
+  "wvu": {
+    "records": {
+      "total": 2524,
+      "phd": 1171,
+      "ms": 1213,
+      "unlabeled": 140,
+      "label_pct": 94.5
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": false,
+      "opt_years": 0,
+      "lca": true,
+      "lca_total": 1714,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.251628",
+      "records": 1302,
+      "phd": 680,
+      "ms": 513,
+      "unlabeled": 109,
+      "labeling_pct": 91.6,
+      "filter": "non-stem"
+    }
+  },
+  "yale": {
+    "records": {
+      "total": 919,
+      "phd": 919,
+      "ms": 0,
+      "unlabeled": 0,
+      "label_pct": 100.0
+    },
+    "data_sources": {
+      "h1b": true,
+      "h1b_years": 17,
+      "opt": true,
+      "opt_years": 8,
+      "lca": true,
+      "lca_total": 4192,
+      "perm": true,
+      "enrollment": true,
+      "funding": true,
+      "dept_links": true
+    },
+    "h1b_system_note": "",
+    "process": {
+      "last_run": "2026-04-04T01:41:20.351427",
+      "records": 524,
+      "phd": 524,
+      "ms": 0,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
+      "filter": "non-stem"
+    }
+  }
+}
