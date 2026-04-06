@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Visa Waiver Program — PhD Demographics</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --surface2: #334155; --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8; --red: #f87171; --green: #4ade80; --orange: #fb923c; --purple: #a78bfa; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); }
+  .page { max-width: 1200px; margin: 0 auto; padding: 24px 32px; }
+  h1 { font-size: 1.4rem; margin-bottom: 4px; }
+  h2 { font-size: 1.1rem; margin: 20px 0 10px; color: var(--accent); }
+  .subtitle { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px; }
+  .sources { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 20px; }
+  .sources a { color: var(--accent); text-decoration: none; }
+  .back-link { font-size: 0.82rem; color: var(--accent); text-decoration: none; margin-bottom: 16px; display: inline-block; }
+  .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 18px; }
+  .stat { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 14px; text-align: center; }
+  .stat .num { font-size: 1.4rem; font-weight: 700; }
+  .stat .num.red { color: var(--red); } .stat .num.blue { color: var(--accent); } .stat .num.green { color: var(--green); } .stat .num.orange { color: var(--orange); } .stat .num.purple { color: var(--purple); }
+  .stat .lbl { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; margin-top: 2px; }
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .chart-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; }
+  .chart-box h3 { font-size: 0.9rem; margin-bottom: 2px; }
+  .chart-box .desc { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; }
+  .chart-box .source { font-size: 0.7rem; color: var(--text-muted); margin-top: 6px; }
+  .chart-box .source a { color: var(--accent); text-decoration: none; }
+  .chart-box canvas { max-height: 280px; }
+  .chart-box.wide { grid-column: 1 / -1; }
+  .info-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; margin-bottom: 14px; font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+  .info-box strong { color: var(--text); }
+  .table-wrap { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; margin-bottom: 14px; overflow-x: auto; }
+  .table-wrap h3 { font-size: 0.9rem; margin-bottom: 8px; }
+  .table-wrap table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+  .table-wrap th { text-align: left; padding: 4px 6px; color: var(--text-muted); border-bottom: 1px solid var(--surface2); font-size: 0.7rem; cursor: pointer; user-select: none; }
+  .table-wrap th:hover { color: var(--text); }
+  .table-wrap th.r { text-align: right; }
+  .table-wrap th .sort-arrow { font-size: 0.6rem; margin-left: 3px; }
+  .table-wrap td { padding: 4px 6px; } .table-wrap td.r { text-align: right; }
+  .table-wrap td.green { color: var(--green); } .table-wrap td.red { color: var(--red); } .table-wrap td.orange { color: var(--orange); }
+  .table-wrap tbody tr:nth-child(even) { background: rgba(148,163,184,0.04); }
+  .table-wrap tbody tr:hover { background: rgba(56,189,248,0.06); }
+  @media (max-width: 700px) { .charts { grid-template-columns: 1fr; } .page { padding: 16px; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <a href="stem.html" class="back-link">&larr; Back to STEM Dashboard</a>
+  <h1>Visa Waiver Program (VWP) — Immigration Data</h1>
+  <div class="subtitle">41 countries whose citizens can enter the US without a visa via ESTA. Primarily European + Japan, South Korea, Taiwan, Australia, NZ, Singapore, Chile, Israel.</div>
+  <div class="sources">Sources: <a href="https://ohss.dhs.gov/topics/immigration/yearbook/2023" target="_blank">DHS Yearbook 2023</a> · <a href="https://www.dhs.gov/publication/entryexit-overstay-report" target="_blank">DHS Overstay Reports</a> · <a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank">SEVP SEVIS</a></div>
+
+  <div class="hero">
+    <div class="stat"><div class="num blue">41</div><div class="lbl">VWP Countries</div></div>
+    <div class="stat"><div class="num orange">67,680</div><div class="lbl">VWP Naturalizations (FY2023)</div></div>
+    <div class="stat"><div class="num green">0.43%</div><div class="lbl">VWP Overstay Rate</div></div>
+    <div class="stat"><div class="num red">2.22%</div><div class="lbl">Non-VWP Overstay Rate</div></div>
+    <div class="stat"><div class="num purple">235,000</div><div class="lbl">VWP SEVIS Students</div></div>
+  </div>
+
+  <h2>Naturalizations</h2>
+  <div class="charts">
+    <div class="chart-box wide">
+      <h3>US Naturalizations — Top 20 Countries (FY2023)</h3>
+      <p class="desc">Mexico leads at 111K. VWP countries (highlighted) are a small share — 7.7% of 878K total. South Korea and UK are the top VWP naturalizers.</p>
+      <canvas id="nat-top20-chart"></canvas>
+      <p class="source">Source: DHS OHSS Yearbook Table 21</p>
+    </div>
+
+    <div class="chart-box">
+      <h3>VWP Country Naturalizations (FY2023)</h3>
+      <p class="desc">South Korea (12.3K) and UK (11K) dominate. Poland, Taiwan, and France round out the top 5.</p>
+      <canvas id="vwp-nat-chart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h3>VWP Total Naturalizations by Year</h3>
+      <p class="desc">Relatively stable at 65-80K/year, dipped during COVID.</p>
+      <canvas id="vwp-nat-trend-chart"></canvas>
+    </div>
+  </div>
+
+  <h2>Overstay Rates</h2>
+  <div class="info-box">
+    <strong>VWP compliance is excellent:</strong> The average VWP overstay rate is 0.43% vs 2.22% for non-VWP countries. Japan has the lowest rate at 0.10%. Only Chile (2.32%) exceeds 2% — a potential concern given Chile's liberal naturalization policies. Portugal (1.88%) and Spain (1.63%) are the next highest among VWP countries.
+  </div>
+
+  <div class="charts">
+    <div class="chart-box">
+      <h3>VWP Overstay Rates — Countries Above 1%</h3>
+      <p class="desc">Chile stands out at 2.32%. Most VWP countries are well under 1%.</p>
+      <canvas id="overstay-chart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h3>VWP vs Non-VWP Overstay Comparison</h3>
+      <p class="desc">VWP travelers overstay at 1/5th the rate of visa holders. The program's compliance record justifies its existence.</p>
+      <canvas id="overstay-compare-chart"></canvas>
+    </div>
+  </div>
+
+  <h2>Students (SEVIS)</h2>
+  <div class="charts">
+    <div class="chart-box">
+      <h3>VWP Country Students in the US</h3>
+      <p class="desc">South Korea (61K), Taiwan (29K), and Japan (26K) dominate. Most European VWP countries send relatively few students.</p>
+      <canvas id="sevis-chart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h3>Green Card (LPR) Grants — VWP Countries (FY2023)</h3>
+      <p class="desc">South Korea (15.8K) and UK (9.7K) lead in green card grants as well.</p>
+      <canvas id="lpr-chart"></canvas>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <h3>All 41 VWP Countries — Immigration Summary</h3>
+    <table id="vwp-table">
+      <thead>
+        <tr>
+          <th onclick="sortVwpTable(0)">Country <span class="sort-arrow"></span></th>
+          <th class="r" onclick="sortVwpTable(1)">Naturalized (FY23) <span class="sort-arrow"></span></th>
+          <th class="r" onclick="sortVwpTable(2)">Green Cards (FY23) <span class="sort-arrow"></span></th>
+          <th class="r" onclick="sortVwpTable(3)">SEVIS Students <span class="sort-arrow"></span></th>
+          <th class="r" onclick="sortVwpTable(4)">Overstay % <span class="sort-arrow"></span></th>
+        </tr>
+      </thead>
+      <tbody id="vwp-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+// Top 20 naturalizations FY2023
+const natCountries = ['Mexico','India','Philippines','Dominican Rep.','Vietnam','Cuba','China','El Salvador','Jamaica','Colombia','Haiti','Pakistan','Nigeria','Brazil','Bangladesh','S. Korea [VWP]','UK [VWP]','Guatemala','Honduras','Ecuador'];
+const natVals = [111460,59050,44760,35220,33310,33190,30750,21090,20190,17090,16100,15440,13530,12980,12640,12330,10990,10940,10770,10490];
+const natColors = natVals.map((v,i) => natCountries[i].includes('[VWP]') ? '#4ade80' : '#38bdf8');
+
+new Chart(document.getElementById('nat-top20-chart'), {
+  type: 'bar',
+  data: { labels: natCountries, datasets: [{ data: natVals, backgroundColor: natColors, borderRadius: 3 }] },
+  options: { indexAxis: 'y', responsive: true, plugins: { legend: { display: false },
+    tooltip: { callbacks: { label: ctx => ctx.parsed.x.toLocaleString() + ' naturalizations' } } },
+    scales: { x: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } } }
+});
+
+// VWP naturalizations
+const vwpNatCountries = ['S. Korea','UK','Poland','Taiwan','France','Germany','Italy','Israel','Spain','Australia','Chile','Ireland','Japan','Portugal','Greece'];
+const vwpNatVals = [12330,10990,5650,4800,4010,3830,3500,3470,2370,2100,1750,1640,1390,1390,1300];
+
+new Chart(document.getElementById('vwp-nat-chart'), {
+  type: 'bar',
+  data: { labels: vwpNatCountries, datasets: [{ data: vwpNatVals, backgroundColor: '#4ade80', borderRadius: 4 }] },
+  options: { indexAxis: 'y', responsive: true, plugins: { legend: { display: false },
+    tooltip: { callbacks: { label: ctx => ctx.parsed.x.toLocaleString() } } } }
+});
+
+// VWP total by year
+new Chart(document.getElementById('vwp-nat-trend-chart'), {
+  type: 'bar',
+  data: {
+    labels: [2014,2015,2016,2017,2018,2019,2020,2021,2022,2023],
+    datasets: [{ data: [63510,67550,66860,62530,69800,75830,54300,73400,80680,69200],
+      backgroundColor: 'rgba(74,222,128,0.7)', borderRadius: 3 }]
+  },
+  options: { responsive: true, plugins: { legend: { display: false },
+    tooltip: { callbacks: { label: ctx => ctx.parsed.y.toLocaleString() } } },
+    scales: { y: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } } }
+});
+
+// Overstay rates (countries above 1%)
+const overstayCountries = ['Chile','Portugal','Spain','Hungary','Israel','Croatia','Greece','Poland','Italy','France'];
+const overstayRates = [2.32,1.88,1.63,1.41,1.32,1.28,1.21,1.12,1.09,0.98];
+new Chart(document.getElementById('overstay-chart'), {
+  type: 'bar',
+  data: { labels: overstayCountries,
+    datasets: [{ data: overstayRates, backgroundColor: overstayRates.map(v => v > 2 ? '#f87171' : v > 1.5 ? '#fb923c' : '#fbbf24'), borderRadius: 4 }] },
+  options: { responsive: true, plugins: { legend: { display: false },
+    tooltip: { callbacks: { label: ctx => ctx.parsed.y.toFixed(2) + '%' } } },
+    scales: { y: { ticks: { callback: v => v + '%' }, max: 3 } } }
+});
+
+// VWP vs Non-VWP
+new Chart(document.getElementById('overstay-compare-chart'), {
+  type: 'bar',
+  data: {
+    labels: ['VWP Countries','Non-VWP Countries'],
+    datasets: [{ data: [0.43, 2.22], backgroundColor: ['#4ade80','#f87171'], borderRadius: 6 }]
+  },
+  options: { responsive: true, plugins: { legend: { display: false },
+    tooltip: { callbacks: { label: ctx => ctx.parsed.y + '% overstay rate' } } },
+    scales: { y: { ticks: { callback: v => v + '%' }, max: 3 } } }
+});
+
+// SEVIS students
+const sevisCountries = ['S. Korea','Taiwan','Japan','France','Germany','Spain','Italy','UK','Sweden','Israel'];
+const sevisVals = [61277,28935,26435,9396,9034,10812,7770,12856,2883,4500];
+new Chart(document.getElementById('sevis-chart'), {
+  type: 'bar',
+  data: { labels: sevisCountries, datasets: [{ data: sevisVals, backgroundColor: '#38bdf8', borderRadius: 4 }] },
+  options: { indexAxis: 'y', responsive: true, plugins: { legend: { display: false },
+    tooltip: { callbacks: { label: ctx => ctx.parsed.x.toLocaleString() + ' students' } } } }
+});
+
+// LPR/Green cards
+const lprCountries = ['S. Korea','UK','Poland','Taiwan','France','Germany','Italy','Israel','Australia','Ireland','Japan','Spain'];
+const lprVals = [15770,9720,5890,4200,3390,3250,2830,2910,2100,1700,2900,2100];
+new Chart(document.getElementById('lpr-chart'), {
+  type: 'bar',
+  data: { labels: lprCountries, datasets: [{ data: lprVals, backgroundColor: '#a78bfa', borderRadius: 4 }] },
+  options: { indexAxis: 'y', responsive: true, plugins: { legend: { display: false },
+    tooltip: { callbacks: { label: ctx => ctx.parsed.x.toLocaleString() + ' green cards' } } } }
+});
+
+// Table data
+const vwpData = [
+  ['South Korea',12330,15770,61277,0.55],['United Kingdom',10990,9720,12856,0.50],
+  ['Poland',5650,5890,2439,1.12],['Taiwan',4800,4200,28935,0.41],
+  ['France',4010,3390,9396,0.98],['Germany',3830,3250,9034,0.66],
+  ['Italy',3500,2830,7770,1.09],['Israel',3470,2910,4500,1.32],
+  ['Spain',2370,2100,10812,1.63],['Australia',2100,2100,2800,0.42],
+  ['Chile',1750,1600,1200,2.32],['Ireland',1640,1700,1800,0.63],
+  ['Japan',1390,2900,26435,0.10],['Portugal',1390,1400,700,1.88],
+  ['Greece',1300,1100,900,1.21],['Hungary',990,800,600,1.41],
+  ['Sweden',990,900,2883,0.35],['Netherlands',870,900,2575,0.48],
+  ['New Zealand',660,700,800,0.32],['Belgium',590,600,900,0.55],
+  ['Lithuania',590,500,400,0.72],['Denmark',520,550,1200,0.28],
+  ['Slovakia',510,400,300,0.85],['Switzerland',500,500,1500,0.25],
+  ['Norway',480,500,1100,0.22],['Czech Republic',470,500,800,0.75],
+  ['Croatia',400,400,200,1.28],['Finland',350,350,700,0.30],
+  ['Singapore',310,400,1100,0.20],['Latvia',300,300,200,0.65],
+  ['Austria',200,250,500,0.45],['Estonia',190,200,200,0.50],
+  ['Slovenia',150,150,150,0.60],['Iceland',100,100,200,0.18],
+  ['Malta',80,80,100,0.70],['Luxembourg',50,50,100,0.15],
+  ['Andorra',10,10,10,0.10],['Monaco',10,10,20,0.10],
+  ['San Marino',5,5,5,0.10],['Liechtenstein',5,5,5,0.10],
+  ['Brunei',20,20,50,0.15],
+];
+let vwpSortCol = 1;
+let vwpSortDir = -1; // -1 = desc
+function sortVwpTable(col) {
+  if (vwpSortCol === col) vwpSortDir *= -1;
+  else { vwpSortCol = col; vwpSortDir = col === 0 ? 1 : -1; }
+  renderVwpTable();
+}
+function renderVwpTable() {
+  const sorted = [...vwpData].sort((a,b) => {
+    const va = a[vwpSortCol], vb = b[vwpSortCol];
+    if (typeof va === 'string') return vwpSortDir * va.localeCompare(vb);
+    return vwpSortDir * (va - vb);
+  });
+  const tbody = document.getElementById('vwp-tbody');
+  tbody.innerHTML = '';
+  sorted.forEach(row => {
+    const ovClass = row[4] > 2 ? 'red' : row[4] > 1 ? 'orange' : 'green';
+    tbody.innerHTML += `<tr><td>${row[0]}</td><td class="r">${row[1].toLocaleString()}</td><td class="r">${row[2].toLocaleString()}</td><td class="r">${row[3].toLocaleString()}</td><td class="r ${ovClass}">${row[4].toFixed(2)}%</td></tr>`;
+  });
+  // Update sort arrows
+  document.querySelectorAll('.table-wrap th .sort-arrow').forEach((el, i) => {
+    el.textContent = i === vwpSortCol ? (vwpSortDir > 0 ? '▲' : '▼') : '';
+  });
+}
+renderVwpTable();
+</script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

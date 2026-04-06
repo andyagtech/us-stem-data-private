@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Immigration via Education Pipeline — All Universities</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0f172a; --surface: #1e293b; --surface2: #334155;
+    --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8;
+    --red: #f87171; --green: #4ade80;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); }
+
+  .page-header { padding: 24px 32px 16px; max-width: 1400px; margin: 0 auto; }
+  .page-header h1 { font-size: 1.4rem; margin-bottom: 4px; }
+  .page-header .subtitle { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 12px; }
+  .page-header .sources { font-size: 0.75rem; color: var(--text-muted); }
+  .page-header .sources a { color: var(--accent); text-decoration: none; }
+
+  .controls { padding: 0 32px 16px; max-width: 1400px; margin: 0 auto; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .controls input { background: var(--surface); border: 1px solid var(--surface2); color: var(--text); padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; width: 260px; }
+  .controls input::placeholder { color: var(--text-muted); }
+  .controls select { background: var(--surface); border: 1px solid var(--surface2); color: var(--text); padding: 6px 10px; border-radius: 6px; font-size: 0.85rem; }
+  .stats-bar { font-size: 0.8rem; color: var(--text-muted); margin-left: auto; }
+
+  .grid { max-width: 1400px; margin: 0 auto; padding: 0 32px 32px; display: grid; grid-template-columns: repeat(auto-fill, minmax(620px, 1fr)); gap: 16px; }
+
+  .uni-card { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; }
+  .uni-card.no-data { opacity: 0.5; }
+  .uni-card h2 { font-size: 1rem; margin-bottom: 2px; }
+  .uni-card h2 a { color: var(--text); text-decoration: none; }
+  .uni-card h2 a:hover { color: var(--accent); }
+  .uni-card .pipeline { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 10px; }
+  .uni-card .pipeline .val { font-weight: 600; }
+  .uni-card .pipeline .opt-val { color: var(--accent); }
+  .uni-card .pipeline .stem-val { color: #a78bfa; }
+  .uni-card .pipeline .h1b-val { color: var(--accent); }
+  .uni-card .pipeline .perm-val { color: var(--green); }
+  .uni-card .chart-row { display: flex; gap: 12px; margin-bottom: 8px; }
+  .uni-card .chart-row > div { flex: 1; min-width: 0; }
+  .uni-card .chart-label { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 4px; }
+  .uni-card canvas { max-height: 160px; }
+  .uni-card .lca-table { width: 100%; border-collapse: collapse; margin-top: 4px; }
+  .uni-card .lca-table th { text-align: left; padding: 2px 6px; font-size: 0.7rem; color: var(--text-muted); border-bottom: 1px solid var(--surface2); }
+  .uni-card .lca-table th.r { text-align: right; }
+  .uni-card .lca-table td { padding: 2px 6px; font-size: 0.75rem; }
+  .uni-card .lca-table td.r { text-align: right; }
+  .uni-card .lca-table td.accent { color: var(--accent); }
+  .uni-card .lca-table td.muted { color: var(--text-muted); }
+  .uni-card .perm-line { font-size: 0.75rem; color: var(--text-muted); padding-top: 6px; border-top: 1px solid var(--surface2); margin-top: 6px; }
+  .uni-card .perm-line a { color: var(--accent); text-decoration: none; }
+  .uni-card .sys-note { font-size: 0.72rem; color: var(--text-muted); font-style: italic; margin-bottom: 6px; }
+  .hidden { display: none !important; }
+
+  @media (max-width: 700px) {
+    .grid { grid-template-columns: 1fr; padding: 0 12px 12px; }
+    .uni-card .chart-row { flex-direction: column; }
+    .controls { padding: 0 12px 12px; }
+    .page-header { padding: 16px 12px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Immigration via Education Pipeline</h1>
+  <div class="subtitle">H-1B, OPT, LCA, and PERM data for 101 US research universities</div>
+  <div class="sources">Sources:
+    <a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers/sevis-by-the-numbers-data" target="_blank">ICE/SEVP</a> (OPT, CY 2017-2024) ·
+    <a href="https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub" target="_blank">USCIS</a> (H-1B, FY 2010-2026) ·
+    <a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" target="_blank">DOL</a> (LCA + PERM)
+  </div>
+</div>
+
+<div class="controls">
+  <input type="text" id="search" placeholder="Filter universities...">
+  <select id="sort-by">
+    <option value="name">Sort: Name</option>
+    <option value="h1b-desc">Sort: H-1B (most)</option>
+    <option value="opt-desc">Sort: OPT (most)</option>
+    <option value="perm-desc">Sort: PERM (most)</option>
+    <option value="lca-desc">Sort: LCA (most)</option>
+  </select>
+  <div class="stats-bar" id="stats-bar"></div>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<script>
+const UNIVERSITIES = [
+  ["binghamton","Binghamton"],["boise_state","Boise State"],["bu","Boston U"],["byu","BYU"],
+  ["caltech","Caltech"],["clemson","Clemson"],["cmu","Carnegie Mellon"],["columbia","Columbia"],
+  ["cornell","Cornell"],["cuny","CUNY Grad Center"],["dartmouth","Dartmouth"],["duke","Duke"],
+  ["gatech","Georgia Tech"],["gmu","George Mason"],["harvard","Harvard"],["iowa_state","Iowa State"],
+  ["kstate","Kansas State"],["la_tech","Louisiana Tech"],["lsu","LSU"],["marquette","Marquette"],
+  ["mines","CO School of Mines"],["missouri_st","Missouri S&T"],["mit","MIT"],
+  ["msstate","Mississippi State"],["msu","Michigan State"],["mtu","Michigan Tech"],
+  ["nau","Northern Arizona"],["ncstate","NC State"],["niu","Northern Illinois"],["njit","NJIT"],
+  ["northern_colorado","U Northern Colorado"],["northwestern","Northwestern"],["olemiss","Ole Miss"],
+  ["pdx","Portland State"],["penn_state","Penn State"],["purdue","Purdue"],["rice","Rice"],
+  ["rit","RIT"],["rpi","RPI"],["sdsu","SD State"],["siu","Southern Illinois"],["smu","SMU"],
+  ["stanford","Stanford"],["stony_brook","Stony Brook"],["syracuse","Syracuse"],["temple","Temple"],
+  ["ttu","Texas Tech"],["uarizona","U Arizona"],["uarkansas","U Arkansas"],["ubuffalo","U Buffalo"],
+  ["ucberkeley","UC Berkeley"],["ucdavis","UC Davis"],["ucf","UCF"],["ucirvine","UC Irvine"],
+  ["ucla","UCLA"],["ucmerced","UC Merced"],["ucriverside","UC Riverside"],["ucsb","UC Santa Barbara"],
+  ["ucsc","UC Santa Cruz"],["ucsd","UC San Diego"],["ucsf","UCSF"],["udel","U Delaware"],
+  ["udenver","U Denver"],["uf","U Florida"],["uhouston","U Houston"],["uiuc","UIUC"],
+  ["ukansas","U Kansas"],["ulouisville","U Louisville"],["umass","UMass Amherst"],["umd","U Maryland"],
+  ["umemphis","U Memphis"],["umissouri","U Missouri"],["umn","U Minnesota"],["umt","U Montana"],
+  ["und","U North Dakota"],["unh","U New Hampshire"],["unl","U Nebraska-Lincoln"],["unlv","UNLV"],
+  ["unm","U New Mexico"],["unt","U North Texas"],["uoregon","U Oregon"],["upenn","U Penn"],
+  ["usc_columbia","U South Carolina"],["usd","U South Dakota"],["usf","U South Florida"],
+  ["usm","U Southern Miss"],["utah_state","Utah State"],["utarlington","UT Arlington"],
+  ["utaustin","UT Austin"],["utdallas","UT Dallas"],["utk","U Tennessee"],["uutah","U Utah"],
+  ["uva","U Virginia"],["uw_seattle","UW Seattle"],["uwmadison","UW Madison"],
+  ["vt","Virginia Tech"],["washu","Wash U St Louis"],["wayne_state","Wayne State"],
+  ["wsu","Washington State"],["wvu","West Virginia U"],["yale","Yale"]
+];
+
+const DATA = {};
+let charts = {};
+let loaded = 0;
+
+async function loadAll() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '<div style="color:var(--text-muted);padding:20px;">Loading data for 101 universities...</div>';
+
+  const promises = UNIVERSITIES.map(async ([key, name]) => {
+    try {
+      const r = await fetch(`/data/stem/${key}.json`);
+      if (r.ok) DATA[key] = await r.json();
+    } catch(e) {}
+    loaded++;
+    if (loaded % 20 === 0 || loaded === UNIVERSITIES.length) {
+      document.getElementById('stats-bar').textContent = `Loaded ${loaded}/${UNIVERSITIES.length}`;
+    }
+  });
+  await Promise.all(promises);
+  render();
+}
+
+function getSortValue(key, sortBy) {
+  const d = DATA[key];
+  if (!d) return -1;
+  if (sortBy === 'name') return 0;
+  if (sortBy === 'h1b-desc') {
+    const h = d.h1b || [];
+    return h.length ? h.reduce((s, r) => s + r[1], 0) : 0;
+  }
+  if (sortBy === 'opt-desc') {
+    const o = d.opt || {};
+    const years = Object.keys(o);
+    if (!years.length) return 0;
+    const latest = o[years.sort().pop()];
+    return latest?.opt?.students_employed || 0;
+  }
+  if (sortBy === 'perm-desc') return d.perm?.total || 0;
+  if (sortBy === 'lca-desc') return d.lca?.total_lcas || 0;
+  return 0;
+}
+
+function render() {
+  // Destroy existing charts
+  Object.values(charts).forEach(arr => arr.forEach(c => c.destroy()));
+  charts = {};
+
+  const grid = document.getElementById('grid');
+  const filter = document.getElementById('search').value.toLowerCase();
+  const sortBy = document.getElementById('sort-by').value;
+
+  let unis = UNIVERSITIES.filter(([key, name]) =>
+    !filter || name.toLowerCase().includes(filter) || key.includes(filter)
+  );
+
+  if (sortBy !== 'name') {
+    unis.sort((a, b) => getSortValue(b[0], sortBy) - getSortValue(a[0], sortBy));
+  }
+
+  grid.innerHTML = '';
+  let shown = 0;
+
+  for (const [key, name] of unis) {
+    const d = DATA[key];
+    if (!d) continue;
+
+    const h1bData = d.h1b || [];
+    const opt = d.opt || {};
+    const optYears = Object.keys(opt).sort();
+    const lca = d.lca || {};
+    const perm = d.perm || {};
+    const hasData = h1bData.length || optYears.length || lca.total_lcas || perm.total;
+
+    const card = document.createElement('div');
+    card.className = 'uni-card' + (hasData ? '' : ' no-data');
+
+    // Header
+    let html = `<h2><a href="/stem.html#${key}?h1b=1" target="_blank">${name}</a></h2>`;
+
+    // System note
+    if (d.h1b_system_note) {
+      html += `<div class="sys-note">${d.h1b_system_note}</div>`;
+    }
+
+    // Pipeline summary
+    const latestOpt = optYears.length ? opt[optYears[optYears.length - 1]] : null;
+    const latestH1b = h1bData.length ? h1bData[h1bData.length - 1] : null;
+    const parts = [];
+    if (latestOpt?.opt?.students_employed) parts.push(`<span class="val opt-val">${latestOpt.opt.students_employed.toLocaleString()}</span> OPT`);
+    if (latestOpt?.stem_opt?.students_employed) parts.push(`<span class="val stem-val">${latestOpt.stem_opt.students_employed.toLocaleString()}</span> STEM OPT`);
+    if (latestH1b) parts.push(`<span class="val h1b-val">${latestH1b[1].toLocaleString()}</span> H-1B (FY${latestH1b[0]})`);
+    if (perm?.certified) parts.push(`<span class="val perm-val">${perm.certified}</span> PERM`);
+    if (parts.length) {
+      html += `<div class="pipeline">${parts.join(' &rarr; ')}</div>`;
+    } else {
+      html += `<div class="pipeline" style="color:var(--text-muted);">No immigration data available</div>`;
+    }
+
+    // Chart canvases
+    const optId = `opt-${key}`;
+    const h1bId = `h1b-${key}`;
+    html += `<div class="chart-row">`;
+    html += `<div><div class="chart-label">OPT Students Employed (ICE/SEVP)</div><canvas id="${optId}"></canvas></div>`;
+    html += `<div><div class="chart-label">H-1B Petitions Filed as Employer (USCIS)</div><canvas id="${h1bId}"></canvas></div>`;
+    html += `</div>`;
+
+    // LCA table
+    if (lca.top_titles?.length) {
+      const tw = lca.title_wages || {};
+      html += `<div class="chart-label" style="margin-top:4px;">Top H-1B Job Titles & Salaries (DOL LCA) — ${lca.total_lcas || ''} total</div>`;
+      html += `<table class="lca-table"><tr><th>Job Title</th><th class="r">Count</th><th class="r">Median</th><th class="r">Min</th><th class="r">Max</th></tr>`;
+      for (const [title, count] of lca.top_titles.slice(0, 5)) {
+        const w = tw[title];
+        html += `<tr><td>${title}</td><td class="r accent">${count}</td>`;
+        html += `<td class="r">${w ? '$' + w.median.toLocaleString() : ''}</td>`;
+        html += `<td class="r muted">${w ? '$' + w.min.toLocaleString() : ''}</td>`;
+        html += `<td class="r muted">${w ? '$' + w.max.toLocaleString() : ''}</td></tr>`;
+      }
+      html += `</table>`;
+      if (lca.wage_median) {
+        html += `<div style="font-size:0.72rem;color:var(--text-muted);margin-top:2px;">Overall median: <strong style="color:var(--text);">$${lca.wage_median.toLocaleString()}</strong> (25th: $${lca.wage_25th.toLocaleString()}, 75th: $${lca.wage_75th.toLocaleString()})</div>`;
+      }
+    }
+
+    // PERM
+    if (perm?.total > 0) {
+      html += `<div class="perm-line"><strong>Green Card (PERM):</strong> ${perm.certified} certified, ${perm.total} total`;
+      if (perm.top_titles?.length) html += ` — ${perm.top_titles.map(t => t[0]).join(', ')}`;
+      html += `</div>`;
+    }
+
+    card.innerHTML = html;
+    grid.appendChild(card);
+    shown++;
+
+    // Render charts after DOM insertion
+    charts[key] = [];
+
+    // OPT chart
+    if (optYears.length > 1) {
+      const optVals = optYears.map(y => opt[y]?.opt?.students_employed || 0);
+      const stemVals = optYears.map(y => opt[y]?.stem_opt?.students_employed || 0);
+      charts[key].push(new Chart(document.getElementById(optId), {
+        type: 'line',
+        data: {
+          labels: optYears.map(y => 'CY' + y),
+          datasets: [
+            { label: 'OPT (all)', data: optVals, borderColor: 'rgba(56,189,248,0.9)', backgroundColor: 'rgba(56,189,248,0.1)', fill: true, tension: 0.3, pointRadius: 3 },
+            { label: 'STEM OPT', data: stemVals, borderColor: 'rgba(167,139,250,0.9)', backgroundColor: 'rgba(167,139,250,0.1)', fill: true, tension: 0.3, pointRadius: 3 },
+          ]
+        },
+        options: {
+          responsive: true, animation: false,
+          plugins: { legend: { labels: { color: '#94a3b8', font: { size: 10 } } } },
+          scales: {
+            x: { ticks: { color: '#94a3b8', font: { size: 9 } }, grid: { display: false } },
+            y: { ticks: { color: '#94a3b8', font: { size: 9 } }, grid: { color: 'rgba(148,163,184,0.1)' }, beginAtZero: true },
+          },
+        },
+      }));
+    } else {
+      const ctx = document.getElementById(optId).getContext('2d');
+      ctx.fillStyle = '#64748b';
+      ctx.font = '11px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(optYears.length === 1 ? 'Only 1 year of data' : 'No OPT data (not in SEVP Top 100)', 150, 60);
+    }
+
+    // H-1B chart
+    if (h1bData.length > 0) {
+      charts[key].push(new Chart(document.getElementById(h1bId), {
+        type: 'bar',
+        data: {
+          labels: h1bData.map(d => 'FY' + d[0]),
+          datasets: [
+            { label: 'Approvals', data: h1bData.map(d => d[1]), backgroundColor: 'rgba(56,189,248,0.7)', borderRadius: 3 },
+            { label: 'Denials', data: h1bData.map(d => d[2]), backgroundColor: 'rgba(248,113,113,0.7)', borderRadius: 3 },
+          ]
+        },
+        options: {
+          responsive: true, animation: false,
+          plugins: { legend: { labels: { color: '#94a3b8', font: { size: 10 } } } },
+          scales: {
+            x: { stacked: true, ticks: { color: '#94a3b8', font: { size: 9 }, maxRotation: 45 }, grid: { display: false } },
+            y: { stacked: true, ticks: { color: '#94a3b8', font: { size: 9 } }, grid: { color: 'rgba(148,163,184,0.1)' } },
+          },
+        },
+      }));
+    }
+  }
+
+  document.getElementById('stats-bar').textContent = `Showing ${shown} of ${UNIVERSITIES.length} universities`;
+}
+
+let debounce;
+document.getElementById('search').addEventListener('input', () => {
+  clearTimeout(debounce);
+  debounce = setTimeout(render, 200);
+});
+document.getElementById('sort-by').addEventListener('change', render);
+
+loadAll();
+</script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

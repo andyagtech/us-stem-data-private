@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>United Kingdom International Students — PhD Demographics</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --surface2: #334155; --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8; --red: #f87171; --green: #4ade80; --orange: #fb923c; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); }
+  .page { max-width: 1200px; margin: 0 auto; padding: 24px 32px; }
+  h1 { font-size: 1.4rem; margin-bottom: 4px; }
+  .subtitle { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px; }
+  .sources { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 20px; }
+  .sources a { color: var(--accent); text-decoration: none; }
+  .back-link { font-size: 0.82rem; color: var(--accent); text-decoration: none; margin-bottom: 16px; display: inline-block; }
+  .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 18px; }
+  .stat { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 14px; text-align: center; }
+  .stat .num { font-size: 1.5rem; font-weight: 700; }
+  .stat .num.red { color: var(--red); } .stat .num.blue { color: var(--accent); } .stat .num.green { color: var(--green); } .stat .num.orange { color: var(--orange); }
+  .stat .lbl { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; margin-top: 2px; }
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .chart-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; }
+  .chart-box h3 { font-size: 0.9rem; margin-bottom: 2px; }
+  .chart-box .desc { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; }
+  .chart-box .source { font-size: 0.7rem; color: var(--text-muted); margin-top: 6px; }
+  .chart-box .source a { color: var(--accent); text-decoration: none; }
+  .chart-box canvas { max-height: 280px; }
+  .chart-box.wide { grid-column: 1 / -1; }
+  .table-wrap { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; margin-bottom: 14px; overflow-x: auto; }
+  .table-wrap h3 { font-size: 0.9rem; margin-bottom: 8px; }
+  .table-wrap table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  .table-wrap th { text-align: left; padding: 4px 8px; color: var(--text-muted); border-bottom: 1px solid var(--surface2); font-size: 0.72rem; }
+  .table-wrap th.r { text-align: right; }
+  .table-wrap td { padding: 4px 8px; }
+  .table-wrap td.r { text-align: right; }
+  .table-wrap td.green { color: var(--green); }
+  .table-wrap td.red { color: var(--red); }
+  @media (max-width: 700px) { .charts { grid-template-columns: 1fr; } .page { padding: 16px; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <a href="stem.html" class="back-link">&larr; Back to STEM Dashboard</a>
+  <h1>United Kingdom — International Student Pipeline</h1>
+  <div class="subtitle">HESA enrollment, student visa grants, and Graduate Route post-study work visas</div>
+  <div class="sources">Sources: <a href="https://www.hesa.ac.uk/data-and-analysis/students/where-from" target="_blank">HESA</a> (enrollment) · <a href="https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables" target="_blank">Home Office</a> (visas)</div>
+
+  <div class="hero">
+    <div class="stat"><div class="num red">732,285</div><div class="lbl">International Students (2023/24)</div></div>
+    <div class="stat"><div class="num orange">166,310</div><div class="lbl">From India (22.7%)</div></div>
+    <div class="stat"><div class="num blue">149,885</div><div class="lbl">From China (20.5%)</div></div>
+    <div class="stat"><div class="num green">237,452</div><div class="lbl">Graduate Route Visas (2025)</div></div>
+  </div>
+
+  <div class="charts">
+    <div class="chart-box wide">
+      <h3>International Student Enrollment in UK</h3>
+      <p class="desc">Non-UK domicile students enrolled in UK higher education. Grew 67% from 438K (2015/16) to 732K (2023/24).</p>
+      <canvas id="enrollment-chart"></canvas>
+      <p class="source">Source: HESA Student Statistics (academic years ending in year shown)</p>
+    </div>
+
+    <div class="chart-box">
+      <h3>Student Visa Grants</h3>
+      <p class="desc">Sponsored study visas issued. Peaked at 467K in 2022 before tightening.</p>
+      <canvas id="visa-chart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h3>India vs China Visa Grants</h3>
+      <p class="desc">India surged from 18K (2018) to 138K (2022) then fell back. China stable at ~100K.</p>
+      <canvas id="country-visa-chart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h3>Graduate Route Visas</h3>
+      <p class="desc">Post-study work visa launched July 2021. India accounts for ~46% of grants.</p>
+      <canvas id="grad-route-chart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h3>Top Countries of Origin (HESA 2023/24)</h3>
+      <canvas id="top-countries-chart"></canvas>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <h3>Key Comparisons — UK vs US vs Canada</h3>
+    <table>
+      <thead><tr><th>Metric</th><th class="r">US</th><th class="r">UK</th><th class="r">Canada</th></tr></thead>
+      <tbody>
+        <tr><td>International students</td><td class="r">~1.1M</td><td class="r">732K</td><td class="r">996K</td></tr>
+        <tr><td>Top source: India</td><td class="r">~331K</td><td class="r">166K</td><td class="r">393K</td></tr>
+        <tr><td>Top source: China</td><td class="r">~267K</td><td class="r">150K</td><td class="r">100K</td></tr>
+        <tr><td>Post-study work visa</td><td class="r">OPT (12-36mo)</td><td class="r">Graduate Route (2yr)</td><td class="r">PGWP (1-3yr)</td></tr>
+        <tr><td>Trend (2024)</td><td class="r red">Declining</td><td class="r red">-3.5%</td><td class="r red">-4%</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+// HESA enrollment
+new Chart(document.getElementById('enrollment-chart'), {
+  type: 'bar',
+  data: {
+    labels: ['2015/16','2016/17','2017/18','2018/19','2019/20','2020/21','2021/22','2022/23','2023/24'],
+    datasets: [{ label: 'International Students', data: [438000,443320,450480,469395,496315,554375,600180,675200,732285],
+      backgroundColor: 'rgba(56,189,248,0.7)', borderRadius: 3 }]
+  },
+  options: { responsive: true, plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.parsed.y.toLocaleString() } } },
+    scales: { y: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } }, x: { ticks: { font: { size: 10 } } } } }
+});
+
+// Visa grants
+new Chart(document.getElementById('visa-chart'), {
+  type: 'bar',
+  data: {
+    labels: [2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],
+    datasets: [{ label: 'Visa Grants', data: [200000,200000,210000,215151,253946,198539,356053,467534,439219,378452,359823],
+      backgroundColor: [0,1,2,3,4,5,6,7,8,9,10].map(i => i >= 8 ? 'rgba(248,113,113,0.7)' : 'rgba(56,189,248,0.7)'), borderRadius: 3 }]
+  },
+  options: { responsive: true, plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.parsed.y.toLocaleString() } } },
+    scales: { y: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } } }
+});
+
+// India vs China visa grants
+const visaYears = [2018,2019,2020,2021,2022,2023,2024,2025];
+new Chart(document.getElementById('country-visa-chart'), {
+  type: 'line',
+  data: {
+    labels: visaYears,
+    datasets: [
+      { label: 'India', data: [18027,33895,43876,79949,138157,118611,88610,84576], borderColor: '#fb923c', fill: false, tension: 0.3, pointRadius: 3, borderWidth: 2 },
+      { label: 'China', data: [96948,114807,79316,116042,100837,105277,100365,83607], borderColor: '#ef4444', fill: false, tension: 0.3, pointRadius: 3, borderWidth: 2 },
+    ]
+  },
+  options: { responsive: true, interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { position: 'top', labels: { boxWidth: 10, font: { size: 10 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString() } } },
+    scales: { y: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } } }
+});
+
+// Graduate Route
+new Chart(document.getElementById('grad-route-chart'), {
+  type: 'bar',
+  data: {
+    labels: ['2022','2023','2024','2025'],
+    datasets: [{ label: 'Graduate Route Grants', data: [66000,157000,237452,237452], backgroundColor: 'rgba(74,222,128,0.7)', borderRadius: 3 }]
+  },
+  options: { responsive: true, plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.parsed.y.toLocaleString() } } },
+    scales: { y: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } } }
+});
+
+// Top countries horizontal bar
+const countries = ['India','China','Nigeria','Pakistan','USA','Hong Kong','Malaysia','Nepal','Bangladesh','Saudi Arabia'];
+const counts = [166310,149885,57505,45720,23250,17250,12760,12715,12285,9680];
+new Chart(document.getElementById('top-countries-chart'), {
+  type: 'bar',
+  data: {
+    labels: countries,
+    datasets: [{ data: counts, backgroundColor: counts.map((v,i) => i < 2 ? '#ef4444' : i < 4 ? '#fb923c' : '#38bdf8'), borderRadius: 4 }]
+  },
+  options: { indexAxis: 'y', responsive: true, plugins: { legend: { display: false },
+    tooltip: { callbacks: { label: ctx => ctx.parsed.x.toLocaleString() + ' students' } } },
+    scales: { x: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } } }
+});
+</script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

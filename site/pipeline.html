@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Immigration Pipeline Analysis — PhD Demographics</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --surface2: #334155; --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8; --red: #f87171; --green: #4ade80; --orange: #fb923c; --purple: #a78bfa; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); }
+  .page { max-width: 1200px; margin: 0 auto; padding: 24px 32px; }
+  h1 { font-size: 1.4rem; margin-bottom: 4px; }
+  h2 { font-size: 1.1rem; margin: 24px 0 12px; color: var(--accent); }
+  .subtitle { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px; }
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .chart-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; }
+  .chart-box h3 { font-size: 0.9rem; margin-bottom: 2px; }
+  .chart-box .desc { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; }
+  .chart-box .source { font-size: 0.7rem; color: var(--text-muted); margin-top: 6px; }
+  .chart-box .source a { color: var(--accent); text-decoration: none; }
+  .chart-box canvas { max-height: 320px; }
+  .chart-box.wide { grid-column: 1 / -1; }
+  .info-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; margin-bottom: 14px; font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+  .info-box strong { color: var(--text); }
+  @media (max-width: 700px) { .charts { grid-template-columns: 1fr; } .page { padding: 16px; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>Immigration Pipeline Analysis</h1>
+  <div class="subtitle">Cross-dataset analysis: F-1 student visa → enrollment → PhD → OPT → H-1B → EB green card. How foreign nationals move through the US academic-to-employment pipeline.</div>
+
+  <!-- A: Full Pipeline by Country -->
+  <h2>A. Full Pipeline by Country</h2>
+  <div class="info-box">
+    <strong>The funnel narrows dramatically.</strong> India has 350K students but only 2,649 earn PhDs. China earns 6,756 PhDs (more than India) but gets far fewer H-1B visas (32K vs 151K). EB green cards are the ultimate bottleneck — the entire pipeline produces more graduates than permanent residency slots can absorb.
+  </div>
+  <div class="charts">
+    <div class="chart-box wide">
+      <h3>Student → PhD → Work → Green Card Pipeline (Top 10 Countries)</h3>
+      <canvas id="pipeline-chart" style="max-height:400px;"></canvas>
+      <p class="source">Sources: SEVP SEVIS (enrollment), State Dept (F-1/H-1B visas), NSF SED (PhDs), State Dept (EB green cards)</p>
+    </div>
+  </div>
+
+  <!-- B: China vs India -->
+  <h2>B. China vs India — The Great Divergence</h2>
+  <div class="charts">
+    <div class="chart-box">
+      <h3>F-1 Student Visa Issuances</h3>
+      <p class="desc">China peaked at 274K (FY2015) and collapsed to 83K. India surged past China in FY2024.</p>
+      <canvas id="f1-diverge-chart"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>H-1B Work Visa Issuances</h3>
+      <p class="desc">India dominates H-1B at 151K vs China's 32K. India grew 157% since 2010; China grew 182% but from a much smaller base.</p>
+      <canvas id="h1b-diverge-chart"></canvas>
+    </div>
+  </div>
+
+  <!-- C: Stay Rate vs Refusal Rate -->
+  <h2>C. Stay Rate vs Visa Refusal Rate</h2>
+  <div class="info-box">
+    <strong>Countries with harder visa access tend to have higher stay rates.</strong> Iran has a 62% B-visa refusal rate and 91% of its PhD graduates intend to stay in the US. Saudi Arabia is the outlier: low refusal (20%) but only 14% stay rate. Bubble size = PhD count.
+  </div>
+  <div class="charts">
+    <div class="chart-box wide">
+      <h3>B-Visa Refusal Rate vs PhD Stay Intention (by Country)</h3>
+      <canvas id="scatter-chart" style="max-height:400px;"></canvas>
+      <p class="source">Sources: State Dept B-visa refusal rates (FY2025), NSF SED Table 2-8 (% intending to stay, 2018-2024)</p>
+    </div>
+  </div>
+
+  <!-- D: EB Bottleneck -->
+  <h2>D. EB Green Card Bottleneck</h2>
+  <div class="charts">
+    <div class="chart-box wide">
+      <h3>PhD Production vs EB Green Cards Issued (Top 15 Countries)</h3>
+      <p class="desc">China gets 19.7K EB visas but many are EB-5 investor visas (9.5K), not employment-based. India's EB wait times exceed 10 years.</p>
+      <canvas id="eb-chart" style="max-height:350px;"></canvas>
+      <p class="source">Sources: NSF SED (PhDs, 2024), State Dept Table V (EB visas, FY2024)</p>
+    </div>
+  </div>
+
+  <!-- G: National Pipeline Indexed -->
+  <h2>E. National Pipeline Growth (Indexed to 2010)</h2>
+  <div class="info-box">
+    <strong>STEM-OPT has grown 10x since 2010</strong> while F-1 student visas are essentially flat. OPT — not H-1B — is now the primary post-graduation work authorization pathway. The gap between OPT growth and H-1B growth shows increasing reliance on temporary training programs over formal work visas.
+  </div>
+  <div class="charts">
+    <div class="chart-box wide">
+      <h3>Work Authorization Growth (2010 = 100)</h3>
+      <canvas id="indexed-chart" style="max-height:350px;"></canvas>
+      <p class="source">Sources: ICE/SEVP (OPT/CPT), USCIS (H-1B petitions), State Dept (F-1/J-1/O-1 issuances)</p>
+    </div>
+  </div>
+
+  <!-- E: STEM Heat Map -->
+  <h2>F. STEM Students by Country × US State</h2>
+  <div class="charts">
+    <div class="chart-box wide">
+      <h3>Top 10 Countries × Top 10 States (SEVIS STEM, Mar 2026)</h3>
+      <p class="desc">India-Texas (51K) and India-California (33K) are the densest cells. Chinese students are more evenly distributed.</p>
+      <canvas id="heatmap-chart" style="max-height:400px;"></canvas>
+      <p class="source">Source: SEVP SEVIS STEM-designated program data, March 2026</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// A: Pipeline by Country (top 10)
+const pLabels = ['India','China','S. Korea','Brazil','Canada','Nepal','Vietnam','Bangladesh','Nigeria','Iran'];
+const pSevis = [350237,229463,42160,40216,36961,34853,34016,26650,22816,14440];
+const pF1 = [86067,82654,14786,7431,242,13184,18454,6089,3694,4780];
+const pPhd = [2649,6756,1061,308,374,306,183,593,304,500];
+const pH1b = [150647,31735,2289,1801,80,780,832,371,1120,191];
+const pEB = [16808,19727,8109,11646,4251,1788,2393,2200,2683,2311];
+
+new Chart(document.getElementById('pipeline-chart'), {
+  type: 'bar',
+  data: {
+    labels: pLabels,
+    datasets: [
+      { label: 'SEVIS Students', data: pSevis, backgroundColor: 'rgba(56,189,248,0.7)' },
+      { label: 'F-1 Visas (FY24)', data: pF1, backgroundColor: 'rgba(74,222,128,0.7)' },
+      { label: 'PhDs (2024)', data: pPhd, backgroundColor: 'rgba(251,146,60,0.7)' },
+      { label: 'H-1B Visas (FY24)', data: pH1b, backgroundColor: 'rgba(167,139,250,0.7)' },
+      { label: 'EB Green Cards (FY24)', data: pEB, backgroundColor: 'rgba(248,113,113,0.7)' },
+    ]
+  },
+  options: {
+    responsive: true,
+    interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { position: 'top', labels: { boxWidth: 12, font: { size: 10 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString() } } },
+    scales: { y: { type: 'logarithmic', ticks: { callback: v => v >= 1000 ? (v/1000).toFixed(0)+'K' : v } } }
+  }
+});
+
+// B: F-1 divergence
+const dYears = [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
+const chinaF1 = [113772,153026,189402,217593,244927,274460,148016,112817,105904,107367,7068,40526,56957,68195,82654];
+const indiaF1 = [25783,25649,23446,36141,56653,74831,62537,44741,53570,56823,10032,37281,56260,131118,86067];
+new Chart(document.getElementById('f1-diverge-chart'), {
+  type: 'line', data: { labels: dYears, datasets: [
+    { label: 'China', data: chinaF1, borderColor: '#ef4444', tension: 0.3, pointRadius: 2, borderWidth: 2 },
+    { label: 'India', data: indiaF1, borderColor: '#fb923c', tension: 0.3, pointRadius: 2, borderWidth: 2 },
+  ]},
+  options: { responsive: true, interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { position: 'top', labels: { boxWidth: 10, font: { size: 10 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString() } } },
+    scales: { y: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } } }
+});
+
+// B: H-1B divergence
+const chinaH1b = [11242,10849,11077,12632,14871,18306,21657,22993,23894,29278,20043,7453,30459,35261,31735];
+const indiaH1b = [58664,72438,80630,99705,108817,119952,126692,129097,115474,115113,20653,30804,128428,173893,150647];
+new Chart(document.getElementById('h1b-diverge-chart'), {
+  type: 'line', data: { labels: dYears, datasets: [
+    { label: 'China', data: chinaH1b, borderColor: '#ef4444', tension: 0.3, pointRadius: 2, borderWidth: 2 },
+    { label: 'India', data: indiaH1b, borderColor: '#fb923c', tension: 0.3, pointRadius: 2, borderWidth: 2 },
+  ]},
+  options: { responsive: true, interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { position: 'top', labels: { boxWidth: 10, font: { size: 10 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString() } } },
+    scales: { y: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } } }
+});
+
+// C: Stay rate vs refusal (bubble scatter)
+new Chart(document.getElementById('scatter-chart'), {
+  type: 'bubble',
+  data: { datasets: [
+    { label: 'Asia', data: [
+      {x:22.0,y:88.4,r:12,country:'India'},{x:20.2,y:79.3,r:15,country:'China'},{x:62.4,y:90.8,r:8,country:'Iran'},
+      {x:52.3,y:77.7,r:5,country:'Pakistan'},{x:5.7,y:55.8,r:4,country:'Japan'},{x:22.3,y:69.7,r:6,country:'Turkey'},
+      {x:61.5,y:89.2,r:8,country:'Bangladesh'},{x:6.0,y:14.1,r:8,country:'Saudi Arabia'},{x:6.9,y:42.0,r:5,country:'S. Korea'},
+      {x:22.1,y:83.1,r:4,country:'Vietnam'}
+    ], backgroundColor: 'rgba(248,113,113,0.6)' },
+    { label: 'Africa', data: [
+      {x:57.0,y:90.1,r:5,country:'Nigeria'},{x:64.3,y:92.6,r:4,country:'Ghana'},{x:47.6,y:86.6,r:4,country:'Egypt'}
+    ], backgroundColor: 'rgba(251,146,60,0.6)' },
+    { label: 'Europe', data: [
+      {x:40.4,y:87.6,r:4,country:'Russia'},{x:12.7,y:59.5,r:4,country:'Italy'},{x:12.2,y:67.3,r:4,country:'Germany'},
+      {x:20.4,y:55.1,r:4,country:'UK'},{x:9.7,y:62.7,r:3,country:'France'},{x:23.7,y:67.5,r:3,country:'Spain'}
+    ], backgroundColor: 'rgba(56,189,248,0.6)' },
+    { label: 'Americas', data: [
+      {x:21.4,y:76.2,r:5,country:'Mexico'},{x:14.9,y:75.3,r:5,country:'Brazil'},{x:32.8,y:72.4,r:4,country:'Colombia'}
+    ], backgroundColor: 'rgba(74,222,128,0.6)' },
+  ]},
+  options: { responsive: true,
+    plugins: { legend: { position: 'top', labels: { boxWidth: 10, font: { size: 10 } } },
+      tooltip: { callbacks: {
+        label: ctx => { const d = ctx.raw; return `${d.country}: refusal ${d.x}%, stay ${d.y}%`; }
+      }}},
+    scales: {
+      x: { title: { display: true, text: 'B-Visa Refusal Rate (%)', font: { size: 11 } }, ticks: { callback: v => v + '%' } },
+      y: { title: { display: true, text: 'PhD Stay Intention (%)', font: { size: 11 } }, ticks: { callback: v => v + '%' }, min: 0, max: 100 }
+    }
+  }
+});
+
+// D: EB bottleneck
+const ebLabels = ['China','India','S. Korea','Brazil','Bangladesh','Iran','Taiwan','Canada','Nigeria','Mexico'];
+const ebPhds = [6756,2649,1061,308,593,500,419,374,304,235];
+const ebGreen = [19727,16808,8109,11646,2200,2311,1978,4251,2683,4488];
+new Chart(document.getElementById('eb-chart'), {
+  type: 'bar', data: { labels: ebLabels, datasets: [
+    { label: 'PhDs Awarded (2024)', data: ebPhds, backgroundColor: 'rgba(56,189,248,0.7)', borderRadius: 3 },
+    { label: 'EB Green Cards (FY2024)', data: ebGreen, backgroundColor: 'rgba(74,222,128,0.7)', borderRadius: 3 },
+  ]},
+  options: { responsive: true, interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { position: 'top', labels: { boxWidth: 12, font: { size: 10 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString() } } },
+    scales: { y: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } } }
+});
+
+// E: National pipeline indexed
+const iYears = [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
+const stemOpt = [100,144,170,201,229,294,447,689,744,771,683,658,693,663,1020];
+const opt = [100,110,122,132,152,194,255,275,256,246,222,202,210,299,341];
+const h1bPet = [100,108,125,121,135,160,181,103,null,117,230,181,208,182,188];
+const f1Iss = [100,116,126,139,155,167,123,102,94,101,29,93,107,116,104];
+const cpt = [100,111,119,133,161,194,213,231,264,213,169,159,226,228,227];
+const o1Iss = [100,103,123,144,148,161,185,198,192,196,103,85,222,221,227];
+
+new Chart(document.getElementById('indexed-chart'), {
+  type: 'line', data: { labels: iYears, datasets: [
+    { label: 'STEM-OPT (10x)', data: stemOpt, borderColor: '#ef4444', borderWidth: 2.5, tension: 0.3, pointRadius: 2 },
+    { label: 'OPT', data: opt, borderColor: '#38bdf8', borderWidth: 2, tension: 0.3, pointRadius: 2 },
+    { label: 'CPT', data: cpt, borderColor: '#4ade80', borderWidth: 2, tension: 0.3, pointRadius: 2 },
+    { label: 'O-1 Visas', data: o1Iss, borderColor: '#a78bfa', borderWidth: 1.5, tension: 0.3, pointRadius: 1, borderDash: [4,4] },
+    { label: 'H-1B Petitions', data: h1bPet, borderColor: '#fb923c', borderWidth: 2, tension: 0.3, pointRadius: 2 },
+    { label: 'F-1 Visas', data: f1Iss, borderColor: '#64748b', borderWidth: 1.5, tension: 0.3, pointRadius: 1 },
+  ]},
+  options: { responsive: true, interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { position: 'top', labels: { boxWidth: 12, font: { size: 10 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + (ctx.parsed.y||0).toFixed(0) + ' (2010=100)' } } },
+    scales: { y: { title: { display: true, text: 'Index (2010 = 100)', font: { size: 10 } } } } }
+});
+
+// F: STEM heatmap (as grouped bar - heatmap needs plugin)
+const hmCountries = ['India','China','Nepal','S. Korea','Bangladesh','Vietnam','Taiwan','Nigeria','Iran','Saudi Arabia'];
+const hmStates = ['CA','TX','NY','MA','IL','NJ','OH','PA','FL','MI'];
+const hmMatrix = [
+  [32540,51003,17780,18550,22355,20408,14529,12067,11840,12199],
+  [16896,7488,13398,10345,9264,5413,6703,5189,3983,5423],
+  [2063,4199,3068,998,1157,2082,1604,1193,871,522],
+  [5497,2975,3186,1521,1348,1590,795,627,769,543],
+  [1085,2792,3193,1128,1041,2058,1010,752,619,488],
+  [3163,2693,1521,978,809,612,440,430,1052,332],
+  [4620,1804,1753,1416,973,1088,752,478,453,293],
+  [1009,2428,1193,541,610,723,629,504,1134,368],
+  [2337,1281,934,956,575,340,599,324,246,412],
+  [1046,1069,563,647,485,235,612,307,240,523],
+];
+// Normalize to get colors
+const hmMax = Math.max(...hmMatrix.flat());
+
+new Chart(document.getElementById('heatmap-chart'), {
+  type: 'bar',
+  data: {
+    labels: hmCountries,
+    datasets: hmStates.map((st, si) => ({
+      label: st,
+      data: hmCountries.map((_, ci) => hmMatrix[ci][si]),
+      backgroundColor: ['#38bdf8','#fb923c','#4ade80','#a78bfa','#f87171','#fbbf24','#f472b6','#64748b','#34d399','#818cf8'][si],
+      borderRadius: 2,
+    }))
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { position: 'top', labels: { boxWidth: 10, font: { size: 9 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString() + ' STEM students' } } },
+    scales: {
+      x: { stacked: true, ticks: { font: { size: 9 } } },
+      y: { stacked: true, ticks: { callback: v => (v/1000).toFixed(0) + 'K' } }
+    }
+  }
+});
+</script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

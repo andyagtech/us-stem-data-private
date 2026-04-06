@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Canada International Students — PhD Demographics</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0f172a; --surface: #1e293b; --surface2: #334155;
+    --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8;
+    --red: #f87171; --green: #4ade80; --orange: #fb923c;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); }
+  .page { max-width: 1200px; margin: 0 auto; padding: 24px 32px; }
+  h1 { font-size: 1.4rem; margin-bottom: 4px; }
+  .subtitle { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px; }
+  .sources { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 20px; }
+  .sources a { color: var(--accent); text-decoration: none; }
+  .back-link { font-size: 0.82rem; color: var(--accent); text-decoration: none; margin-bottom: 16px; display: inline-block; }
+
+  .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 18px; }
+  .stat { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 14px; text-align: center; }
+  .stat .num { font-size: 1.5rem; font-weight: 700; }
+  .stat .num.red { color: var(--red); }
+  .stat .num.blue { color: var(--accent); }
+  .stat .num.green { color: var(--green); }
+  .stat .num.orange { color: var(--orange); }
+  .stat .lbl { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; margin-top: 2px; }
+
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .chart-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; }
+  .chart-box h3 { font-size: 0.9rem; margin-bottom: 2px; }
+  .chart-box .desc { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; }
+  .chart-box .source { font-size: 0.7rem; color: var(--text-muted); margin-top: 6px; }
+  .chart-box .source a { color: var(--accent); text-decoration: none; }
+  .chart-box canvas { max-height: 280px; }
+  .chart-box.wide { grid-column: 1 / -1; }
+
+  .table-wrap { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; margin-bottom: 14px; overflow-x: auto; }
+  .table-wrap h3 { font-size: 0.9rem; margin-bottom: 8px; }
+  .table-wrap table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  .table-wrap th { text-align: left; padding: 4px 8px; color: var(--text-muted); border-bottom: 1px solid var(--surface2); font-size: 0.72rem; }
+  .table-wrap th.r { text-align: right; }
+  .table-wrap td { padding: 4px 8px; }
+  .table-wrap td.r { text-align: right; }
+  .table-wrap td.accent { color: var(--accent); font-weight: 600; }
+  .table-wrap td.red { color: var(--red); }
+  .table-wrap td.green { color: var(--green); }
+
+  @media (max-width: 700px) {
+    .charts { grid-template-columns: 1fr; }
+    .page { padding: 16px; }
+    .hero { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <a href="stem.html" class="back-link">&larr; Back to STEM Dashboard</a>
+  <h1>Canada — International Student Pipeline</h1>
+  <div class="subtitle">Study permit holders, top source countries, and post-graduation work permits</div>
+  <div class="sources">Source: <a href="https://open.canada.ca/data/en/dataset/90115b00-f9b8-49e8-afa3-b4cff8facaee" target="_blank">Immigration, Refugees and Citizenship Canada (IRCC)</a> Open Data — Study Permit Holders Monthly Updates</div>
+
+  <div class="hero">
+    <div class="stat"><div class="num red">996,340</div><div class="lbl">International Students (Dec 2024)</div></div>
+    <div class="stat"><div class="num orange">392,810</div><div class="lbl">From India (39.4%)</div></div>
+    <div class="stat"><div class="num blue">99,650</div><div class="lbl">From China (10.0%)</div></div>
+    <div class="stat"><div class="num green">+713%</div><div class="lbl">Growth since 2000</div></div>
+  </div>
+
+  <div class="charts">
+    <div class="chart-box wide">
+      <h3>Total International Students in Canada</h3>
+      <p class="desc">Study permit holders with valid permits on December 31st. Growth from 122K (2000) to 1.04M peak (2023), declining in 2024 due to new permit caps.</p>
+      <canvas id="total-chart"></canvas>
+      <p class="source">Source: IRCC Open Data — year-end stock by country of citizenship, 2000-2024</p>
+    </div>
+
+    <div class="chart-box">
+      <h3>Top Source Countries</h3>
+      <p class="desc">India's dominance grew from 40K (2015) to 426K (2023), then declined. China peaked at 142K in 2018.</p>
+      <canvas id="countries-chart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h3>Emerging Source Countries</h3>
+      <p class="desc">Nigeria, Philippines, and Nepal saw explosive growth. Nepal grew 1,809% since 2019.</p>
+      <canvas id="emerging-chart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h3>New Study Permits Issued</h3>
+      <p class="desc">Annual flow of new permits. Peaked at 700K in 2023, dropping sharply in 2024-2025 under new caps.</p>
+      <canvas id="flow-chart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h3>India vs China Share</h3>
+      <p class="desc">India's share grew from 14% (2015) to 41% (2023). China declined from 33% to 10%.</p>
+      <canvas id="share-chart"></canvas>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <h3>Top 20 Countries — International Students in Canada (Dec 31 Stock)</h3>
+    <table id="country-table">
+      <thead>
+        <tr><th>Country</th><th class="r">2015</th><th class="r">2018</th><th class="r">2020</th><th class="r">2022</th><th class="r">2023</th><th class="r">2024</th><th class="r">Change 2015-2024</th></tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+// Year-end stock data (Dec 31 valid permit holders)
+const YEARS = ['2000','2001','2002','2003','2004','2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024'];
+const TOTALS = [122620,145865,158040,164420,168490,170345,172290,179005,184090,203925,225235,248405,274675,301455,330050,352275,410550,490710,566850,637710,527095,616295,803550,1037130,996340];
+
+const COUNTRIES = {
+  'India': [1735,2130,2620,2890,3085,3315,3945,5575,7795,10200,13240,17150,21695,29340,38870,48755,69635,104300,171500,219310,179480,217235,318225,426195,392810],
+  'China': [17835,22825,24960,27420,31275,33300,35205,38580,41590,49455,56380,61700,68390,75745,82295,117825,130615,139930,141710,139640,116135,105405,99300,101640,99650],
+  'Nigeria': [795,830,880,945,1170,1720,2100,2755,3425,4505,5140,5530,5960,6520,7450,9915,10175,10740,11150,13320,10515,10610,21530,45770,45110],
+  'Philippines': [2530,2515,2820,2770,2415,2580,2730,2645,2745,3490,3595,3665,3705,3700,3625,3570,3510,3770,5215,9130,9050,12255,32290,48660,43785],
+  'France': [8375,9175,9330,8915,8570,8520,8775,9960,10805,12425,14280,15205,16035,16930,18175,20205,20570,21325,22500,23730,18195,18210,26980,26825,25080],
+  'Iran': [2505,2750,2960,2775,2530,2400,2445,2555,2730,3465,4925,6045,7050,7855,8350,9290,9255,8830,10505,12885,13970,14515,21025,24910,23185],
+  'Nepal': [200,175,120,90,80,80,95,120,150,260,455,620,750,910,1080,1215,1345,1745,2175,3495,3985,4535,11660,20365,22045],
+  'Vietnam': [775,850,880,830,805,805,880,1370,1750,2360,3110,4585,6110,7340,8430,9595,11170,14175,20140,23685,18815,16780,16025,17095,17790],
+  'Korea': [14250,16870,16355,14090,13885,14870,16000,18940,20160,22855,22545,23305,24485,24705,24270,19785,19510,18610,24040,22170,18065,14840,16410,15865,14380],
+  'Mexico': [1665,1720,1870,2010,2185,2240,2365,2810,3070,3440,3660,3650,3510,3635,3760,5165,6880,8810,10505,12870,10685,10135,14825,16895,14955],
+};
+
+// New permits issued per year (flow)
+const FLOW_YEARS = [2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
+const FLOW_TOTALS = [226860,275405,327435,367050,411855,271105,461045,567350,700590,530925,403520];
+
+// 1. Total chart
+new Chart(document.getElementById('total-chart'), {
+  type: 'bar',
+  data: {
+    labels: YEARS,
+    datasets: [{
+      label: 'International Students',
+      data: TOTALS,
+      backgroundColor: TOTALS.map((v,i) => i >= YEARS.indexOf('2024') ? 'rgba(248,113,113,0.7)' : 'rgba(56,189,248,0.7)'),
+      borderRadius: 3,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ctx.parsed.y.toLocaleString() + ' students' } }
+    },
+    scales: {
+      y: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } },
+      x: { ticks: { maxRotation: 45, font: { size: 10 } } }
+    }
+  }
+});
+
+// 2. Top countries
+const topColors = ['#fb923c','#ef4444','#4ade80','#a78bfa','#38bdf8','#fbbf24'];
+const topCountries = ['India','China','Nigeria','Philippines','France','Iran'];
+new Chart(document.getElementById('countries-chart'), {
+  type: 'line',
+  data: {
+    labels: YEARS.slice(15), // 2015 onwards
+    datasets: topCountries.map((c, i) => ({
+      label: c === "China" ? "China" : c,
+      data: COUNTRIES[c].slice(15),
+      borderColor: topColors[i],
+      fill: false, tension: 0.3, pointRadius: 2, borderWidth: 2,
+    }))
+  },
+  options: {
+    responsive: true,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { position: 'top', labels: { boxWidth: 10, font: { size: 10 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString() } }
+    },
+    scales: { y: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } }
+  }
+});
+
+// 3. Emerging countries
+const emergColors = ['#4ade80','#a78bfa','#fbbf24','#38bdf8'];
+const emergCountries = ['Nigeria','Philippines','Nepal','Vietnam'];
+new Chart(document.getElementById('emerging-chart'), {
+  type: 'line',
+  data: {
+    labels: YEARS.slice(15),
+    datasets: emergCountries.map((c, i) => ({
+      label: c,
+      data: COUNTRIES[c].slice(15),
+      borderColor: emergColors[i],
+      fill: false, tension: 0.3, pointRadius: 2, borderWidth: 2,
+    }))
+  },
+  options: {
+    responsive: true,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { position: 'top', labels: { boxWidth: 10, font: { size: 10 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString() } }
+    },
+    scales: { y: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } }
+  }
+});
+
+// 4. Flow chart
+new Chart(document.getElementById('flow-chart'), {
+  type: 'bar',
+  data: {
+    labels: FLOW_YEARS,
+    datasets: [{
+      label: 'New Permits',
+      data: FLOW_TOTALS,
+      backgroundColor: FLOW_TOTALS.map((v,i) => i >= 9 ? 'rgba(248,113,113,0.7)' : 'rgba(56,189,248,0.7)'),
+      borderRadius: 3,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ctx.parsed.y.toLocaleString() + ' permits' } }
+    },
+    scales: { y: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } }
+  }
+});
+
+// 5. Share chart
+const indiaShare = COUNTRIES['India'].map((v,i) => (v/TOTALS[i]*100));
+const chinaShare = COUNTRIES['China'].map((v,i) => (v/TOTALS[i]*100));
+new Chart(document.getElementById('share-chart'), {
+  type: 'line',
+  data: {
+    labels: YEARS,
+    datasets: [
+      { label: 'India %', data: indiaShare, borderColor: '#fb923c', fill: false, tension: 0.3, pointRadius: 2, borderWidth: 2 },
+      { label: 'China %', data: chinaShare, borderColor: '#ef4444', fill: false, tension: 0.3, pointRadius: 2, borderWidth: 2 },
+    ]
+  },
+  options: {
+    responsive: true,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { position: 'top', labels: { boxWidth: 10, font: { size: 10 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1) + '%' } }
+    },
+    scales: { y: { ticks: { callback: v => v.toFixed(0) + '%' } } }
+  }
+});
+
+// 6. Country table
+const tableCountries = ['India','China','Nigeria','Philippines','France','Iran','Nepal','Vietnam','Korea','Mexico',
+  'Bangladesh','United States of America','Algeria','Ghana','Ukraine'];
+const tbody = document.getElementById('table-body');
+const showYears = [15,18,20,22,23,24]; // indices for 2015,2018,2020,2022,2023,2024
+tableCountries.forEach(c => {
+  if (!COUNTRIES[c]) return;
+  const vals = COUNTRIES[c];
+  const v2015 = vals[15] || 0;
+  const v2024 = vals[24] || 0;
+  const change = v2015 > 0 ? ((v2024 - v2015) / v2015 * 100).toFixed(0) : '—';
+  const changeClass = change > 0 ? 'green' : change < 0 ? 'red' : '';
+  const name = c === "China, People's Republic of" ? "China" : c === "Korea, Republic of" ? "South Korea" : c === "United States of America" ? "USA" : c;
+  let row = `<tr><td>${name}</td>`;
+  showYears.forEach(i => {
+    row += `<td class="r">${(vals[i]||0).toLocaleString()}</td>`;
+  });
+  row += `<td class="r ${changeClass}">${change > 0 ? '+' : ''}${change}%</td></tr>`;
+  tbody.innerHTML += row;
+});
+</script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

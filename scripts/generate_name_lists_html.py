@@ -60,8 +60,8 @@ def build_html(all_data, mode='stem'):
         })
         nav_items.append(
             f'<a href="javascript:void(0)" class="nav-item" data-key="{uni_key}" onclick="showUni(\'{uni_key}\');">'
-            f'{uni_name} <span class="nav-nra">{nra}%</span> '
-            f'<span class="nav-count">{len(records):,}</span></a>'
+            f'{uni_name} <span class="nav-nra">{nra}%</span>'
+            f'<span class="opt-dot"></span></a>'
         )
 
     data_json = json.dumps(index_unis, ensure_ascii=False, separators=(',', ':'))
@@ -128,7 +128,14 @@ def build_html(all_data, mode='stem'):
   .nav-item:hover {{ background: var(--surface2); color: var(--text); }}
   .nav-item.active {{ border-left-color: var(--accent); color: var(--accent); background: rgba(56,189,248,0.08); }}
   .nav-nra {{ font-size: 0.7rem; color: var(--text-muted); }}
-  .nav-count {{ font-size: 0.65rem; color: var(--text-muted); }}
+  .opt-dot {{ display: none; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-left: 5px; vertical-align: middle; }}
+  .h1b-active .nav-item.has-opt .opt-dot {{ display: inline-block; }}
+  .sidebar-section {{ padding: 12px 16px 5px; font-size: 0.68rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; display: flex; align-items: center; gap: 6px; user-select: none; }}
+  .sidebar-section:hover {{ color: #7dd3fc; }}
+  .sidebar-section .chevron {{ font-size: 0.55rem; transition: transform 0.15s; color: var(--surface2); }}
+  .sidebar-group.collapsed .sidebar-section .chevron {{ transform: rotate(-90deg); }}
+  .sidebar-group.collapsed .sidebar-group-content {{ display: none; }}
+  .nav-page {{ font-size: 0.82rem; padding: 6px 16px; }}
 
   .main {{ margin-left: 220px; flex: 1; padding: 24px 32px; max-width: 1200px; }}
   h1 {{ font-size: 1.4rem; margin-bottom: 4px; }}
@@ -363,8 +370,42 @@ def build_html(all_data, mode='stem'):
 
 <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="Open navigation menu">\u2630</button>
 <nav class="sidebar" id="sidebar" aria-label="University navigation">
-  <h3>Universities ({len(all_data)})</h3>
-  {"".join(nav_items)}
+  <h3>PhD Demographics</h3>
+  <div class="sidebar-group" id="sg-national">
+    <div class="sidebar-section" onclick="toggleSidebarGroup('sg-national')"><span class="chevron">\u25BC</span> National</div>
+    <div class="sidebar-group-content">
+      <a href="javascript:void(0)" class="nav-item nav-page" onclick="showNational();">National Charts</a>
+      <a href="ipeds_dashboard.html" class="nav-item nav-page">IPEDS PhD Dashboard</a>
+      <a href="immigration.html" class="nav-item nav-page">Immigration Pipeline</a>
+      <a href="pipeline.html" class="nav-item nav-page">Pipeline Analysis</a>
+    </div>
+  </div>
+  <div class="sidebar-group" id="sg-universities">
+    <div class="sidebar-section" onclick="toggleSidebarGroup('sg-universities')"><span class="chevron">\u25BC</span> Universities ({len(all_data)})</div>
+    <div class="sidebar-group-content">
+      {"".join(nav_items)}
+    </div>
+  </div>
+  <div class="sidebar-group" id="sg-international">
+    <div class="sidebar-section" onclick="toggleSidebarGroup('sg-international')"><span class="chevron">\u25BC</span> International</div>
+    <div class="sidebar-group-content">
+      <a href="india.html" class="nav-item nav-page">India (Outbound)</a>
+      <a href="china.html" class="nav-item nav-page">China (Outbound)</a>
+      <a href="canada.html" class="nav-item nav-page">Canada</a>
+      <a href="uk.html" class="nav-item nav-page">United Kingdom</a>
+      <a href="eu.html" class="nav-item nav-page">EU &amp; Germany</a>
+      <a href="mexico.html" class="nav-item nav-page">Mexico</a>
+      <a href="vwp.html" class="nav-item nav-page">Visa Waiver Program</a>
+    </div>
+  </div>
+  <div class="sidebar-group" id="sg-reference">
+    <div class="sidebar-section" onclick="toggleSidebarGroup('sg-reference')"><span class="chevron">\u25BC</span> Reference</div>
+    <div class="sidebar-group-content">
+      <a href="data_sources.html" class="nav-item nav-page">Data Sources &amp; Methodology</a>
+      <a href="data_catalog.json" class="nav-item nav-page">Data Catalog (JSON)</a>
+      <a href="llms.txt" class="nav-item nav-page">WebMCP Integration</a>
+    </div>
+  </div>
 </nav>
 <div class="sidebar-overlay" onclick="toggleSidebar()" role="presentation"></div>
 
@@ -400,12 +441,26 @@ def build_html(all_data, mode='stem'):
         <p class="nat-desc">OPT authorizations grew 11x since 2007. The 2016 STEM OPT 24-month rule dramatically expanded foreign work authorization.</p>
         <canvas id="nat-opt-chart"></canvas>
         <p class="source">Source: <a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank">ICE/SEVP SEVIS</a></p>
+        <p class="source" style="margin-top:4px;font-size:0.7rem;"><strong>OPT</strong> (Optional Practical Training): 12-month post-graduation work authorization for F-1 visa holders. <strong>STEM OPT</strong>: additional 24-month extension for STEM graduates (expanded from 17 months in 2016). <strong>CPT</strong> (Curricular Practical Training): work authorization during enrollment, must be part of established curriculum.</p>
       </div>
       <div class="nat-chart-box">
         <h3>R&amp;D Funding vs American STEM PhDs</h3>
         <p class="nat-desc">University R&amp;D spending nearly doubled since 2010. American PhD production grew only 11%.</p>
         <canvas id="nat-funding-chart"></canvas>
-        <p class="source">Source: <a href="https://ncses.nsf.gov/surveys/higher-education-research-development" target="_blank">NSF HERD Survey</a>, IPEDS</p>
+        <p class="source">Source: <a href="https://ncses.nsf.gov/surveys/higher-education-research-development" target="_blank">NSF HERD Survey</a>, <a href="https://nces.ed.gov/ipeds/" target="_blank">IPEDS</a></p>
+        <p class="source" style="margin-top:4px;font-size:0.7rem;"><strong>American STEM PhDs</strong> = Total STEM doctorate completions minus Non-Resident Alien (NRA) completions, from IPEDS. Includes US citizens and permanent residents of all races/ethnicities. <strong>R&amp;D Spending</strong> = total university R&amp;D expenditures from the NSF Higher Education Research &amp; Development (HERD) Survey.</p>
+      </div>
+      <div class="nat-chart-box">
+        <h3>Total Foreign Work Authorizations</h3>
+        <p class="nat-desc">Combined OPT + H-1B work authorizations issued per year. Foreign nationals working in the US via university pipeline.</p>
+        <canvas id="nat-total-pipeline-chart"></canvas>
+        <p class="source">Source: ICE/SEVP SEVIS, <a href="https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub" target="_blank">USCIS H-1B Employer Data Hub</a></p>
+      </div>
+      <div class="nat-chart-box">
+        <h3>US Visa Issuances by Type</h3>
+        <p class="nat-desc">F-1 (student), H-1B (specialty worker), J-1 (exchange visitor), and O-1 (extraordinary ability) visa stamps issued annually at US consulates.</p>
+        <canvas id="nat-visa-chart"></canvas>
+        <p class="source">Source: <a href="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-statistics.html" target="_blank">US State Department Visa Statistics</a></p>
       </div>
       <div class="nat-chart-box">
         <h3>NRA Enrollment by STEM Field</h3>
@@ -648,6 +703,44 @@ function initNationalCharts() {{
     }}
   }}));
 
+  // -- Total Foreign Work Authorizations (OPT + H-1B) --
+  const pipeYears = [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
+  const pipeOpt = [50992,56300,62427,67502,77369,99016,129811,140152,130512,125215,112930,102985,106791,152361,173939];
+  const pipeStemOpt = [9356,13504,15937,18782,21456,27493,41782,64481,69650,72116,63906,61543,64844,62036,95384];
+  const pipeCpt = [57409,63911,68482,76223,92528,111135,122529,132380,151525,116338,97368,91352,129849,131117,130586];
+  const pipeH1b = [8677,12418,8559,10775,11879,9198,9067,9285,9099,11707,28390,34546,23366,10382,10739];
+  const pipeTotal = pipeYears.map((_, i) => pipeOpt[i] + pipeStemOpt[i] + pipeCpt[i] + pipeH1b[i]);
+
+  natCharts.push(new Chart(document.getElementById('nat-total-pipeline-chart'), {{
+    type: 'bar',
+    data: {{
+      labels: pipeYears,
+      datasets: [
+        {{ label: 'OPT', data: pipeOpt, backgroundColor: 'rgba(56,189,248,0.7)', borderRadius: 2 }},
+        {{ label: 'STEM OPT', data: pipeStemOpt, backgroundColor: 'rgba(167,139,250,0.7)', borderRadius: 2 }},
+        {{ label: 'CPT', data: pipeCpt, backgroundColor: 'rgba(52,211,153,0.7)', borderRadius: 2 }},
+        {{ label: 'H-1B (universities)', data: pipeH1b, backgroundColor: 'rgba(251,146,60,0.7)', borderRadius: 2 }},
+      ]
+    }},
+    options: {{
+      responsive: true,
+      interaction: {{ mode: 'index', intersect: false }},
+      plugins: {{
+        legend: {{ position: 'top', labels: {{ boxWidth: 12, padding: 10, font: {{ size: 11 }} }} }},
+        tooltip: {{
+          callbacks: {{
+            label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString(),
+            afterBody: items => 'Total: ' + pipeTotal[items[0].dataIndex].toLocaleString()
+          }}
+        }}
+      }},
+      scales: {{
+        x: {{ stacked: true, grid: {{ display: false }} }},
+        y: {{ stacked: true, ticks: {{ callback: v => (v/1000).toFixed(0) + 'K' }} }}
+      }}
+    }}
+  }}));
+
   // -- R&D Funding vs American PhDs (dual axis) --
   const fundYears = [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
   const rdBillions = [21.2,22.3,22.7,23.3,23.5,24.1,25.1,26.2,27.7,29.0,29.9,31.0,33.5,37.7,40.8];
@@ -706,6 +799,39 @@ function initNationalCharts() {{
       }},
       scales: {{
         x: {{ max: 70, ticks: {{ callback: v => v + '%' }} }}
+      }}
+    }}
+  }}));
+
+  // -- US Visa Issuances by Type --
+  const visaYears = [2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
+  const f1Data = [298393,340711,331208,385210,447410,486900,534320,595569,644233,471728,393573,362929,388839,111387,357839,411131,445418,400737];
+  const h1bIss = [154726,129464,110367,117409,129134,135530,153223,161369,172748,180057,179049,179049,188123,124398,61569,206002,265777,219659];
+  const j1Data = [322514,313279,311970,322330,312063,313544,310329,318844,340532,338477,309015,325070,347560,75479,129662,284486,316693,322820];
+  const o1Data = [9014,9635,8696,8589,10590,11932,12789,13865,14337,15918,16497,16818,17751,8838,7294,19102,18994,19457];
+  const l1Data = [84532,84078,64696,74719,70728,62430,66700,71513,78537,79306,78178,74388,76988,35228,24863,72958,76671,71799];
+
+  natCharts.push(new Chart(document.getElementById('nat-visa-chart'), {{
+    type: 'line',
+    data: {{
+      labels: visaYears,
+      datasets: [
+        {{ label: 'F-1 (Student)', data: f1Data, borderColor: '#38bdf8', backgroundColor: 'rgba(56,189,248,0.1)', fill: true, tension: 0.3, pointRadius: 2, borderWidth: 2 }},
+        {{ label: 'J-1 (Exchange)', data: j1Data, borderColor: '#4ade80', fill: false, tension: 0.3, pointRadius: 2, borderWidth: 2 }},
+        {{ label: 'H-1B (Worker)', data: h1bIss, borderColor: '#fb923c', fill: false, tension: 0.3, pointRadius: 2, borderWidth: 2 }},
+        {{ label: 'L-1 (Transfer)', data: l1Data, borderColor: '#f472b6', fill: false, tension: 0.3, pointRadius: 2, borderWidth: 2 }},
+        {{ label: 'O-1 (Extraordinary)', data: o1Data, borderColor: '#a78bfa', fill: false, tension: 0.3, pointRadius: 1, borderWidth: 1.5, borderDash: [4,4] }},
+      ]
+    }},
+    options: {{
+      responsive: true,
+      interaction: {{ mode: 'index', intersect: false }},
+      plugins: {{
+        legend: {{ position: 'top', labels: {{ boxWidth: 12, padding: 10, font: {{ size: 11 }} }} }},
+        tooltip: {{ callbacks: {{ label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString() }} }}
+      }},
+      scales: {{
+        y: {{ ticks: {{ callback: v => (v/1000).toFixed(0) + 'K' }} }}
       }}
     }}
   }}));
@@ -934,6 +1060,10 @@ function toggleSidebar() {{
   document.getElementById('sidebar').classList.toggle('open');
 }}
 
+function toggleSidebarGroup(id) {{
+  document.getElementById(id).classList.toggle('collapsed');
+}}
+
 function showUni(key, skipHash) {{
   // Close mobile sidebar if open
   document.getElementById('sidebar').classList.remove('open');
@@ -1025,11 +1155,16 @@ function toggleEnrollment() {{
 }}
 
 let h1bVisible = false;
+const OPT_UNIS = new Set(["binghamton","bu","clemson","cmu","columbia","cornell","duke","gatech","gmu","harvard","iowa_state","missouri_st","mit","msu","ncstate","njit","northwestern","penn_state","purdue","rice","rit","smu","stanford","stony_brook","syracuse","ttu","ubuffalo","ucberkeley","ucdavis","ucf","ucirvine","ucla","ucriverside","ucsd","uf","uhouston","uiuc","umass","umd","umemphis","umissouri","umn","unt","upenn","usf","utarlington","utaustin","utdallas","uutah","uva","uw_seattle","uwmadison","vt","washu","wayne_state","yale"]);
+document.querySelectorAll('.nav-item[data-key]').forEach(a => {{
+  if (OPT_UNIS.has(a.dataset.key)) a.classList.add('has-opt');
+}});
 function toggleH1b() {{
   h1bVisible = !h1bVisible;
   const el = document.getElementById('h1b-toggle');
   el.classList.toggle('active', h1bVisible);
   el.setAttribute('aria-checked', h1bVisible);
+  document.body.classList.toggle('h1b-active', h1bVisible);
   updateH1bPanel();
   updateUrlState();
 }}
@@ -1491,6 +1626,11 @@ function updateOldToggle() {{
   const hasPre2010 = document.querySelectorAll('#content .pre-2010').length > 0;
   document.getElementById('old-toggle').style.display = hasPre2010 ? '' : 'none';
   document.getElementById('old-toggle-sep').style.display = hasPre2010 ? '' : 'none';
+}}
+
+function showNational() {{
+  resetView();
+  document.getElementById('sidebar').classList.remove('open');
 }}
 
 function resetView() {{

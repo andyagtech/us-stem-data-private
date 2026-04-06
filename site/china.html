@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>China Outbound Students — PhD Demographics</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --surface2: #334155; --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8; --red: #f87171; --green: #4ade80; --orange: #fb923c; --purple: #a78bfa; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); }
+  .page { max-width: 1200px; margin: 0 auto; padding: 24px 32px; }
+  h1 { font-size: 1.4rem; margin-bottom: 4px; }
+  h2 { font-size: 1.1rem; margin: 20px 0 10px; color: var(--accent); }
+  .subtitle { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px; }
+  .sources { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 20px; }
+  .sources a { color: var(--accent); text-decoration: none; }
+  .back-link { font-size: 0.82rem; color: var(--accent); text-decoration: none; margin-bottom: 16px; display: inline-block; }
+  .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 18px; }
+  .stat { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 14px; text-align: center; }
+  .stat .num { font-size: 1.4rem; font-weight: 700; }
+  .stat .num.red { color: var(--red); } .stat .num.blue { color: var(--accent); } .stat .num.green { color: var(--green); } .stat .num.orange { color: var(--orange); } .stat .num.purple { color: var(--purple); }
+  .stat .lbl { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; margin-top: 2px; }
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .chart-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; }
+  .chart-box h3 { font-size: 0.9rem; margin-bottom: 2px; }
+  .chart-box .desc { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; }
+  .chart-box .source { font-size: 0.7rem; color: var(--text-muted); margin-top: 6px; }
+  .chart-box .source a { color: var(--accent); text-decoration: none; }
+  .chart-box canvas { max-height: 280px; }
+  .chart-box.wide { grid-column: 1 / -1; }
+  .info-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; margin-bottom: 14px; font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+  .info-box strong { color: var(--text); }
+  .table-wrap { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; margin-bottom: 14px; overflow-x: auto; }
+  .table-wrap h3 { font-size: 0.9rem; margin-bottom: 8px; }
+  .table-wrap table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  .table-wrap th { text-align: left; padding: 4px 8px; color: var(--text-muted); border-bottom: 1px solid var(--surface2); font-size: 0.72rem; }
+  .table-wrap th.r { text-align: right; }
+  .table-wrap td { padding: 4px 8px; } .table-wrap td.r { text-align: right; }
+  .table-wrap td.green { color: var(--green); } .table-wrap td.red { color: var(--red); }
+  @media (max-width: 700px) { .charts { grid-template-columns: 1fr; } .page { padding: 16px; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <a href="stem.html" class="back-link">&larr; Back to STEM Dashboard</a>
+  <h1>China — Outbound Student Mobility</h1>
+  <div class="subtitle">1 million Chinese students abroad (UNESCO 2023). US enrollment peaked in 2019/20 and has declined 29%. An 86.7% cumulative return rate signals a structural shift.</div>
+  <div class="sources">Sources: <a href="https://opendoorsdata.org" target="_blank">IIE Open Doors</a> · <a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank">DHS SEVP</a> · <a href="https://open.canada.ca" target="_blank">IRCC</a> · <a href="https://www.hesa.ac.uk" target="_blank">HESA</a> · UNESCO UIS · China MOE</div>
+
+  <div class="hero">
+    <div class="stat"><div class="num red">1.02M</div><div class="lbl">Abroad (UNESCO 2023)</div></div>
+    <div class="stat"><div class="num orange">265,919</div><div class="lbl">In US (Open Doors 2025)</div></div>
+    <div class="stat"><div class="num blue">-28.6%</div><div class="lbl">US Decline from Peak</div></div>
+    <div class="stat"><div class="num green">86.7%</div><div class="lbl">Cumulative Return Rate</div></div>
+    <div class="stat"><div class="num purple">8.88M</div><div class="lbl">Total Sent Abroad (1978-2024)</div></div>
+  </div>
+
+  <!-- US Enrollment -->
+  <h2>United States — Peak and Decline</h2>
+  <div class="charts">
+    <div class="chart-box wide">
+      <h3>Chinese Students in the US (Open Doors)</h3>
+      <p class="desc">Rose from 128K (2009/10) to peak of 373K (2019/20), then declined 29% to 266K (2024/25). COVID, Proclamation 10043, and rising domestic alternatives all contributed.</p>
+      <canvas id="us-chart"></canvas>
+      <p class="source">Source: IIE Open Doors annual reports</p>
+    </div>
+
+    <div class="chart-box">
+      <h3>SEVIS Active Records</h3>
+      <p class="desc">Point-in-time student records. Peaked at 261K (Jan 2024), now 229K (Mar 2026).</p>
+      <canvas id="sevis-chart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h3>China vs India in the US</h3>
+      <p class="desc">India surpassed China in 2023/24 for the first time since 2009. The crossover is accelerating.</p>
+      <canvas id="vs-india-chart"></canvas>
+    </div>
+  </div>
+
+  <!-- Global Destinations -->
+  <h2>Global Diversification</h2>
+  <div class="info-box">
+    <strong>Diversifying away from the US:</strong> Chinese students are increasingly choosing the UK, Australia, Japan, Hong Kong, and Singapore. While US enrollment dropped 29%, UK visa grants remain stable at ~100K/year, Japan is recovering to pre-pandemic levels, and Hong Kong attracted ~45K mainland students in 2024. Canada peaked in 2018 and is declining under permit cap policies.
+  </div>
+
+  <div class="charts">
+    <div class="chart-box">
+      <h3>Destinations: US vs UK vs Australia</h3>
+      <p class="desc">US declining, UK stable, Australia recovering post-COVID.</p>
+      <canvas id="dest-trend-chart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h3>East Asian Destinations</h3>
+      <p class="desc">Japan (124K) and South Korea (84K) are major destinations. Hong Kong hosts ~45K mainland students.</p>
+      <canvas id="asia-dest-chart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h3>Canada Study Permits (New Issued)</h3>
+      <p class="desc">Peaked at 89K (2018), declined to 52K (2025). China is now #2 behind India in Canada.</p>
+      <canvas id="canada-chart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h3>Germany: India Surpasses China</h3>
+      <p class="desc">India overtook China in 2022/23 and is accelerating. China has plateaued at ~39K.</p>
+      <canvas id="germany-chart"></canvas>
+    </div>
+  </div>
+
+  <!-- Return Rates & Policy -->
+  <h2>Return Rates &amp; Policy Context</h2>
+  <div class="charts">
+    <div class="chart-box">
+      <h3>Cumulative Return Rate (1978-2024)</h3>
+      <p class="desc">86.7% of Chinese students who completed their studies abroad have returned — 6.44M of 7.43M. 495K returned in 2024 alone (+19% YoY).</p>
+      <canvas id="return-chart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h3>Key Policy Factors</h3>
+      <div class="info-box" style="border: none; padding: 0; margin: 0;">
+        <p><strong>Proclamation 10043</strong> (May 2020): Blocks F/J visas for Chinese grad students and researchers with ties to military-civil fusion entities. Est. 3-5K blocked/year.</p>
+        <p style="margin-top:8px;"><strong>2025 Rubio Visa Crackdown</strong>: Extended scrutiny beyond PP10043 list. Enhanced vetting for all Chinese STEM applicants.</p>
+        <p style="margin-top:8px;"><strong>Australia</strong>: Introduced enrollment caps in 2025. Chinese students affected but less than Indian/Nepali students.</p>
+        <p style="margin-top:8px;"><strong>Domestic pull</strong>: China's "Double First-Class" university initiative and growing tech sector offer increasingly competitive alternatives.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <h3>Chinese Students by Destination (Latest Available)</h3>
+    <table>
+      <thead><tr><th>Destination</th><th class="r">Students</th><th class="r">Year</th><th>Trend</th></tr></thead>
+      <tbody>
+        <tr><td>United States</td><td class="r">265,919</td><td class="r">2024/25</td><td class="red">-29% from peak</td></tr>
+        <tr><td>Australia</td><td class="r">~165,000</td><td class="r">2024</td><td class="green">Recovering</td></tr>
+        <tr><td>United Kingdom</td><td class="r">149,885</td><td class="r">2023/24</td><td class="red">-4% YoY</td></tr>
+        <tr><td>Japan</td><td class="r">123,485</td><td class="r">2024</td><td class="green">+6.9% YoY</td></tr>
+        <tr><td>Canada</td><td class="r">99,650</td><td class="r">Dec 2024</td><td class="red">-30% from peak</td></tr>
+        <tr><td>South Korea</td><td class="r">~84,000</td><td class="r">2024</td><td>Stable</td></tr>
+        <tr><td>Hong Kong</td><td class="r">~45,000</td><td class="r">2024</td><td class="green">Growing</td></tr>
+        <tr><td>Germany</td><td class="r">~38,600</td><td class="r">2024/25</td><td class="red">-7% from peak</td></tr>
+        <tr><td>Singapore</td><td class="r">~25,000</td><td class="r">2023</td><td>Stable</td></tr>
+        <tr><td>Netherlands</td><td class="r">~5,500</td><td class="r">2023</td><td>Stable</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+// US Open Doors
+const usYears = [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
+const usData = [127628,157558,194029,235597,274439,304040,328547,350755,363341,369548,372532,317299,290086,289526,277398,265919];
+
+new Chart(document.getElementById('us-chart'), {
+  type: 'bar',
+  data: {
+    labels: usYears.map(y => y-1+'/'+String(y).slice(2)),
+    datasets: [{ data: usData,
+      backgroundColor: usData.map((v,i) => i >= 10 ? 'rgba(248,113,113,0.7)' : 'rgba(56,189,248,0.7)'), borderRadius: 3 }]
+  },
+  options: { responsive: true, plugins: { legend: { display: false },
+    tooltip: { callbacks: { label: ctx => ctx.parsed.y.toLocaleString() } } },
+    scales: { y: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } }, x: { ticks: { font: { size: 9 }, maxRotation: 45 } } } }
+});
+
+// SEVIS snapshots
+new Chart(document.getElementById('sevis-chart'), {
+  type: 'line',
+  data: {
+    labels: ['Jan 2024','Dec 2024','Aug 2025','Dec 2025','Mar 2026'],
+    datasets: [{ label: 'Active SEVIS', data: [260740,254500,218598,238589,229463],
+      borderColor: '#38bdf8', backgroundColor: 'rgba(56,189,248,0.1)', fill: true, tension: 0.3, pointRadius: 4, borderWidth: 2 }]
+  },
+  options: { responsive: true, plugins: { legend: { display: false },
+    tooltip: { callbacks: { label: ctx => ctx.parsed.y.toLocaleString() } } },
+    scales: { y: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } } }
+});
+
+// China vs India in US
+const indiaUS = [104897,103895,100270,96754,102673,132888,165918,186267,196271,202014,193124,167582,199182,268923,331602,363019];
+new Chart(document.getElementById('vs-india-chart'), {
+  type: 'line',
+  data: {
+    labels: usYears,
+    datasets: [
+      { label: 'China', data: usData, borderColor: '#ef4444', tension: 0.3, pointRadius: 2, borderWidth: 2 },
+      { label: 'India', data: indiaUS, borderColor: '#fb923c', tension: 0.3, pointRadius: 2, borderWidth: 2 },
+    ]
+  },
+  options: { responsive: true, interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { position: 'top', labels: { boxWidth: 10, font: { size: 10 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString() } } },
+    scales: { y: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } } }
+});
+
+// US vs UK vs Australia
+const trendYears = [2019,2020,2021,2022,2023,2024];
+new Chart(document.getElementById('dest-trend-chart'), {
+  type: 'line',
+  data: {
+    labels: trendYears,
+    datasets: [
+      { label: 'US', data: [369548,372532,317299,290086,289526,277398], borderColor: '#38bdf8', tension: 0.3, pointRadius: 3, borderWidth: 2 },
+      { label: 'Australia', data: [212000,167000,130000,133200,153000,165000], borderColor: '#4ade80', tension: 0.3, pointRadius: 3, borderWidth: 2 },
+      { label: 'UK (enrolled)', data: [null,null,null,null,156425,149885], borderColor: '#a78bfa', tension: 0.3, pointRadius: 3, borderWidth: 2 },
+    ]
+  },
+  options: { responsive: true, interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { position: 'top', labels: { boxWidth: 10, font: { size: 10 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + (ctx.parsed.y||0).toLocaleString() } } },
+    scales: { y: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } } }
+});
+
+// East Asian destinations
+const asiaYears = [2019,2020,2021,2022,2023,2024];
+new Chart(document.getElementById('asia-dest-chart'), {
+  type: 'line',
+  data: {
+    labels: asiaYears,
+    datasets: [
+      { label: 'Japan', data: [124436,121845,114950,103882,115490,123485], borderColor: '#fb923c', tension: 0.3, pointRadius: 3, borderWidth: 2 },
+      { label: 'South Korea', data: [null,null,null,null,null,84000], borderColor: '#f472b6', tension: 0.3, pointRadius: 3, borderWidth: 2 },
+    ]
+  },
+  options: { responsive: true, interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { position: 'top', labels: { boxWidth: 10, font: { size: 10 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + (ctx.parsed.y||0).toLocaleString() } } },
+    scales: { y: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } } }
+});
+
+// Canada
+new Chart(document.getElementById('canada-chart'), {
+  type: 'bar',
+  data: {
+    labels: [2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],
+    datasets: [{ data: [68500,80865,87470,89440,87950,61620,58740,54205,60735,58625,51885],
+      backgroundColor: [0,1,2,3,4,5,6,7,8,9,10].map(i => i >= 8 ? 'rgba(248,113,113,0.7)' : 'rgba(56,189,248,0.7)'), borderRadius: 3 }]
+  },
+  options: { responsive: true, plugins: { legend: { display: false },
+    tooltip: { callbacks: { label: ctx => ctx.parsed.y.toLocaleString() + ' permits' } } },
+    scales: { y: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } } }
+});
+
+// Germany: India vs China
+new Chart(document.getElementById('germany-chart'), {
+  type: 'line',
+  data: {
+    labels: ['2018/19','2019/20','2020/21','2021/22','2022/23','2023/24','2024/25'],
+    datasets: [
+      { label: 'India', data: [20000,25000,25000,34000,42600,49008,59000], borderColor: '#fb923c', tension: 0.3, pointRadius: 3, borderWidth: 2 },
+      { label: 'China', data: [39900,41000,41000,40000,39700,38687,38600], borderColor: '#ef4444', tension: 0.3, pointRadius: 3, borderWidth: 2 },
+    ]
+  },
+  options: { responsive: true, interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { position: 'top', labels: { boxWidth: 10, font: { size: 10 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ~' + ctx.parsed.y.toLocaleString() } } },
+    scales: { y: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } } }
+});
+
+// Return rates
+new Chart(document.getElementById('return-chart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Returned (6.44M)','Abroad (1.00M)','Did not complete (1.45M)'],
+    datasets: [{ data: [6440000,1000000,1450000], backgroundColor: ['#4ade80','#38bdf8','#64748b'] }]
+  },
+  options: { responsive: true, plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: { size: 11 } } },
+    tooltip: { callbacks: { label: ctx => ctx.label + ' (' + (ctx.parsed/8880000*100).toFixed(1) + '%)' } } } }
+});
+</script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

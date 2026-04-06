@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Mexico International Students — PhD Demographics</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --surface2: #334155; --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8; --red: #f87171; --green: #4ade80; --orange: #fb923c; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); }
+  .page { max-width: 1200px; margin: 0 auto; padding: 24px 32px; }
+  h1 { font-size: 1.4rem; margin-bottom: 4px; }
+  .subtitle { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px; }
+  .sources { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 20px; }
+  .sources a { color: var(--accent); text-decoration: none; }
+  .back-link { font-size: 0.82rem; color: var(--accent); text-decoration: none; margin-bottom: 16px; display: inline-block; }
+  .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 18px; }
+  .stat { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 14px; text-align: center; }
+  .stat .num { font-size: 1.5rem; font-weight: 700; }
+  .stat .num.red { color: var(--red); } .stat .num.blue { color: var(--accent); } .stat .num.green { color: var(--green); } .stat .num.orange { color: var(--orange); }
+  .stat .lbl { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; margin-top: 2px; }
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .chart-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; }
+  .chart-box h3 { font-size: 0.9rem; margin-bottom: 2px; }
+  .chart-box .desc { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; }
+  .chart-box .source { font-size: 0.7rem; color: var(--text-muted); margin-top: 6px; }
+  .chart-box .source a { color: var(--accent); text-decoration: none; }
+  .chart-box canvas { max-height: 280px; }
+  .chart-box.wide { grid-column: 1 / -1; }
+  .info-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; margin-bottom: 14px; font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+  .info-box strong { color: var(--text); }
+  @media (max-width: 700px) { .charts { grid-template-columns: 1fr; } .page { padding: 16px; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <a href="stem.html" class="back-link">&larr; Back to STEM Dashboard</a>
+  <h1>Mexico — International Student Mobility</h1>
+  <div class="subtitle">Mexican students studying abroad and in the US — enrollment, fields, and destinations</div>
+  <div class="sources">Sources: <a href="https://opendoorsdata.org" target="_blank">IIE Open Doors</a> · <a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank">DHS SEVP SEVIS</a> · UNESCO UIS</div>
+
+  <div class="hero">
+    <div class="stat"><div class="num blue">17,851</div><div class="lbl">Active SEVIS Records (Mar 2026)</div></div>
+    <div class="stat"><div class="num orange">15,474</div><div class="lbl">In US (Open Doors 2023/24)</div></div>
+    <div class="stat"><div class="num green">36,922</div><div class="lbl">Total Students Abroad (UNESCO 2022)</div></div>
+    <div class="stat"><div class="num red">8,104</div><div class="lbl">STEM Students in US</div></div>
+  </div>
+
+  <div class="charts">
+    <div class="chart-box">
+      <h3>Mexican Students in the US</h3>
+      <p class="desc">Peaked at 17K in 2014/15, declined through pandemic, recovering to 15.5K. Mexico ranks 11th among source countries.</p>
+      <canvas id="us-trend-chart"></canvas>
+      <p class="source">Source: IIE Open Doors (partial series)</p>
+    </div>
+
+    <div class="chart-box">
+      <h3>Mexican Students Abroad — All Destinations</h3>
+      <p class="desc">36,922 Mexicans studying abroad (UNESCO 2022). US and Canada dominate, but Spain and Germany are significant.</p>
+      <canvas id="destinations-chart"></canvas>
+      <p class="source">Source: UNESCO UIS 2022</p>
+    </div>
+
+    <div class="chart-box">
+      <h3>Study Level in the US (SEVIS Mar 2026)</h3>
+      <p class="desc">Bachelor's is the largest category (7,034), followed by Master's (3,361) and Doctorate (1,841).</p>
+      <canvas id="level-chart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h3>Top US States (SEVIS Mar 2026)</h3>
+      <p class="desc">Nearly half of Mexican students in the US are in border states Texas and California.</p>
+      <canvas id="states-chart"></canvas>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>Context:</strong> Mexico's college-age population grew from ~2 million in 2000 to 4 million in 2025, yet outbound student mobility remains low relative to population. The former CONACYT international scholarship program has been largely eliminated under the current administration's reorganization into SECIHTI (2024-25). Mexico does not systematically report inbound international student data to OECD; the most recent ANUIES Patlani survey (~2014/15) counted ~15,600 international students studying in Mexico.
+  </div>
+</div>
+
+<script>
+// Mexican students in US (Open Doors)
+new Chart(document.getElementById('us-trend-chart'), {
+  type: 'line',
+  data: {
+    labels: ['2014/15','2018/19','2019/20','2022/23','2023/24'],
+    datasets: [{ label: 'Students', data: [17052,15229,14348,14541,15474],
+      borderColor: '#38bdf8', backgroundColor: 'rgba(56,189,248,0.15)', fill: true, tension: 0.3, pointRadius: 4, borderWidth: 2 }]
+  },
+  options: { responsive: true, plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.parsed.y.toLocaleString() } } },
+    scales: { y: { beginAtZero: false, ticks: { callback: v => (v/1000).toFixed(1) + 'K' } } } }
+});
+
+// Destinations
+const dests = ['US','Canada','Spain','Australia','Germany','UK','France'];
+const destVals = [15474,16980,5540,3620,3600,2510,1600];
+new Chart(document.getElementById('destinations-chart'), {
+  type: 'bar',
+  data: {
+    labels: dests,
+    datasets: [{ data: destVals, backgroundColor: ['#38bdf8','#ef4444','#fb923c','#4ade80','#fbbf24','#a78bfa','#f472b6'], borderRadius: 4 }]
+  },
+  options: { responsive: true, plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.parsed.y.toLocaleString() + ' students' } } },
+    scales: { y: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } } }
+});
+
+// Study level
+const levels = ["Bachelor's","Master's","Associate","Doctorate","Other"];
+const levelVals = [7034,3361,1661,1841,3954];
+new Chart(document.getElementById('level-chart'), {
+  type: 'doughnut',
+  data: {
+    labels: levels,
+    datasets: [{ data: levelVals, backgroundColor: ['#38bdf8','#fb923c','#4ade80','#a78bfa','#64748b'] }]
+  },
+  options: { responsive: true, plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: { size: 11 } } },
+    tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.parsed.toLocaleString() } } } }
+});
+
+// Top states
+const states = ['Texas','California','New York','Massachusetts','Arizona','Florida','Illinois','Pennsylvania'];
+const stateVals = [4953,1979,1348,833,750,643,596,462];
+new Chart(document.getElementById('states-chart'), {
+  type: 'bar',
+  data: {
+    labels: states,
+    datasets: [{ data: stateVals, backgroundColor: stateVals.map((v,i) => i < 2 ? '#fb923c' : '#38bdf8'), borderRadius: 4 }]
+  },
+  options: { indexAxis: 'y', responsive: true, plugins: { legend: { display: false },
+    tooltip: { callbacks: { label: ctx => ctx.parsed.x.toLocaleString() + ' students' } } } }
+});
+</script>
+<script src="/sidebar.js"></script>
+</body>
+</html>
