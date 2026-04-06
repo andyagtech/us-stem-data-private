@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Query — PhD Demographics</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<style>
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --surface2: #232733;
+    --border: #2d3148; --text: #e2e8f0; --muted: #8892b0;
+    --accent: #38bdf8; --accent2: #818cf8; --green: #34d399;
+    --orange: #fb923c; --red: #f87171;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+
+  /* -- Project Nav -- */
+  .project-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+    height: 32px; background: #0b0d14; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; padding: 0 16px; gap: 6px;
+    font-size: 0.7rem;
+  }
+  .project-nav a {
+    color: var(--muted); text-decoration: none; padding: 3px 8px;
+    border-radius: 4px; transition: all 0.15s; white-space: nowrap;
+  }
+  .project-nav a:hover { color: var(--text); background: rgba(56,189,248,0.08); }
+  .project-nav a.active { color: var(--accent); background: rgba(56,189,248,0.1); }
+  .project-nav .nav-sep { color: var(--border); margin: 0 2px; }
+  .project-nav .nav-home { font-weight: 700; color: var(--accent); }
+
+  /* -- Header -- */
+  .header {
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: 12px 24px; display: flex; align-items: center; gap: 16px;
+    margin-top: 32px; position: relative;
+  }
+  .header h1 { font-size: 0.95rem; font-weight: 700; }
+  .header h1 span { color: var(--accent); }
+  .header .powered {
+    font-size: 0.68rem; color: var(--muted); margin-left: auto;
+  }
+  .header .powered a { color: var(--accent); text-decoration: none; }
+
+  /* -- Layout -- */
+  .main { display: flex; flex: 1; min-height: 0; }
+
+  /* -- Sidebar: Tables -- */
+  .sidebar {
+    width: 240px; min-width: 240px; background: var(--surface);
+    border-right: 1px solid var(--border); overflow-y: auto;
+    display: flex; flex-direction: column;
+  }
+  .sidebar-section {
+    padding: 10px 14px 6px; font-size: 0.65rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted);
+  }
+  .sidebar-drop {
+    padding: 16px 14px; border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+  .sidebar-drop .drop-area {
+    border: 1.5px dashed var(--border); border-radius: 8px;
+    padding: 14px 8px; cursor: pointer; transition: all 0.2s;
+    font-size: 0.75rem; color: var(--muted);
+  }
+  .sidebar-drop .drop-area:hover, .sidebar-drop .drop-area.dragover {
+    border-color: var(--accent); color: var(--accent);
+    background: rgba(56,189,248,0.04);
+  }
+  .sidebar-drop input { display: none; }
+  .query-history-section { flex: 1; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
+  .query-history-list { flex: 1; overflow-y: auto; padding: 4px 10px 8px; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+  .query-history-list::-webkit-scrollbar { width: 5px; }
+  .query-history-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  .qh-item {
+    padding: 5px 8px; font-size: 0.68rem; font-family: var(--mono);
+    color: var(--muted); cursor: pointer; border-radius: 4px;
+    transition: all 0.12s; white-space: nowrap; overflow: hidden;
+    text-overflow: ellipsis; border-left: 2px solid transparent;
+    margin-bottom: 2px;
+  }
+  .qh-item:hover { color: var(--text); background: rgba(56,189,248,0.06); border-left-color: var(--accent); }
+  .qh-item .qh-time { font-size: 0.58rem; color: var(--border); margin-right: 4px; }
+  .qh-empty { color: var(--border); font-size: 0.68rem; padding: 8px 4px; text-align: center; font-style: italic; }
+  .qh-clear { font-size: 0.6rem; color: var(--red); cursor: pointer; opacity: 0.5; transition: opacity 0.15s; padding: 2px 0; }
+  .qh-clear:hover { opacity: 1; }
+  .export-item {
+    padding: 5px 10px; font-size: 0.73rem; cursor: pointer;
+    display: flex; align-items: center; gap: 6px;
+    color: var(--muted); transition: all 0.12s; border-radius: 4px;
+  }
+  .export-item:hover { color: var(--text); background: rgba(56,189,248,0.06); }
+  .export-item .ei-icon { font-size: 0.65rem; opacity: 0.4; }
+  .export-item .ei-name { flex: 1; font-size: 0.72rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .export-item .ei-status { font-size: 0.62rem; font-family: var(--mono); color: var(--border); }
+  .table-item {
+    padding: 6px 14px; font-size: 0.78rem; cursor: pointer;
+    display: flex; align-items: center; gap: 8px;
+    color: var(--muted); transition: all 0.12s;
+  }
+  .table-item:hover { color: var(--text); background: rgba(56,189,248,0.04); }
+  .table-item .t-icon { font-size: 0.7rem; opacity: 0.5; }
+  .table-item .t-name { font-family: var(--mono); font-size: 0.75rem; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .table-item .t-rows { font-size: 0.65rem; color: var(--border); }
+  .table-item .t-remove {
+    opacity: 0; font-size: 0.7rem; color: var(--red); cursor: pointer;
+    padding: 2px 4px; border-radius: 3px;
+  }
+  .table-item:hover .t-remove { opacity: 0.6; }
+  .table-item .t-remove:hover { opacity: 1; background: rgba(248,113,113,0.1); }
+  .col-list { padding: 0 14px 8px 30px; }
+  .col-list .col-item {
+    font-family: var(--mono); font-size: 0.68rem; color: var(--muted);
+    padding: 1px 0; cursor: pointer; display: flex; gap: 6px;
+  }
+  .col-list .col-item:hover { color: var(--accent); }
+  .col-list .col-type { color: var(--border); font-size: 0.6rem; }
+  .loading-spinner {
+    display: inline-block; width: 14px; height: 14px;
+    border: 2px solid var(--border); border-top-color: var(--accent);
+    border-radius: 50%; animation: spin 0.7s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* -- Editor + Results -- */
+  .editor-panel { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+
+  .query-area {
+    padding: 12px 16px; border-bottom: 1px solid var(--border);
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .query-editor {
+    width: 100%; min-height: 100px; max-height: 300px; resize: vertical;
+    background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+    color: var(--text); font-family: var(--mono); font-size: 0.82rem;
+    padding: 12px 14px; line-height: 1.6; outline: none;
+  }
+  .query-editor:focus { border-color: var(--accent); }
+  .query-bar {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+  .run-btn {
+    padding: 7px 18px; background: var(--accent); color: #000;
+    border: none; border-radius: 6px; font-weight: 700;
+    font-size: 0.8rem; cursor: pointer; font-family: var(--font);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .run-btn:hover { filter: brightness(1.15); }
+  .run-btn:disabled { opacity: 0.4; cursor: default; }
+  .run-btn kbd {
+    font-family: var(--mono); font-size: 0.65rem; opacity: 0.6;
+    background: rgba(0,0,0,0.2); padding: 1px 5px; border-radius: 3px;
+  }
+  .query-status {
+    font-size: 0.72rem; color: var(--muted); margin-left: 4px;
+  }
+  .query-status.error { color: var(--red); }
+  .query-status.success { color: var(--green); }
+  .query-status.warning { color: var(--orange); }
+  .running-indicator {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    font-size: 0.82rem; font-family: var(--mono); color: var(--accent);
+    letter-spacing: 0.02em; opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .running-indicator.active { opacity: 1; }
+  .example-queries {
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .example-btn {
+    font-size: 0.68rem; padding: 3px 10px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 4px; color: var(--muted);
+    cursor: pointer; font-family: var(--font); white-space: nowrap;
+  }
+  .example-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* -- Results Table -- */
+  .results-area { flex: 1; overflow: auto; }
+  .results-area table {
+    width: 100%; border-collapse: collapse; font-size: 0.76rem;
+  }
+  .results-area thead th {
+    background: var(--surface); padding: 7px 12px; text-align: left;
+    font-family: var(--mono); font-size: 0.72rem; font-weight: 600;
+    border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 5;
+    white-space: nowrap;
+  }
+  .results-area tbody td {
+    padding: 5px 12px; border-bottom: 1px solid rgba(45,49,72,0.4);
+    font-family: var(--mono); font-size: 0.72rem; white-space: nowrap;
+    max-width: 300px; overflow: hidden; text-overflow: ellipsis;
+  }
+  .results-area tbody tr:hover td { background: rgba(56,189,248,0.03); }
+  .results-area td.null { color: var(--muted); font-style: italic; }
+  .results-area td.num { color: var(--accent); }
+  .empty-state {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; height: 100%; color: var(--muted);
+    font-size: 0.85rem; gap: 8px; padding: 40px;
+  }
+  .empty-state .hint { font-size: 0.75rem; }
+</style>
+</head>
+<body>
+
+<nav class="project-nav">
+  <a href="index.html" class="nav-home">PhD Demographics</a>
+  <span class="nav-sep">|</span>
+  <a href="stem.html">STEM</a>
+  <a href="non_stem.html">Non-STEM</a>
+  <a href="pipeline.html">Pipeline</a>
+  <a href="immigration.html">Immigration</a>
+  <a href="data_sources.html">Sources</a>
+  <a href="query.html" class="active">Query</a>
+</nav>
+
+<div class="header">
+  <h1><span>Data</span> Query</h1>
+  <span class="running-indicator" id="runningIndicator"></span>
+  <span class="powered">
+    291K STEM + 136K Non-STEM records &middot;
+    Powered by <a href="https://github.com/hyparam/squirreling" target="_blank">Squirreling</a>
+    + <a href="https://github.com/hyparam/hyparquet" target="_blank">hyparquet</a>
+  </span>
+</div>
+
+<div class="main">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-section" style="padding-top:12px">Pipeline Exports</div>
+    <div id="exportList" style="padding:4px 10px 8px">
+      <div style="color:var(--border);font-size:0.68rem;padding:4px">Checking...</div>
+    </div>
+    <div style="height:1px;background:var(--border);margin:4px 14px"></div>
+    <div class="sidebar-section">Loaded Tables (<span id="tableCount">0</span>)</div>
+    <div id="tableList"></div>
+    <div style="height:1px;background:var(--border);margin:4px 14px"></div>
+    <div class="sidebar-drop">
+      <div class="drop-area" id="dropArea">
+        &#128451; Drop .parquet<br>or click to browse
+      </div>
+      <input type="file" id="fileInput" accept=".parquet,.parq" multiple>
+    </div>
+    <div style="height:1px;background:var(--border);margin:4px 14px"></div>
+    <div class="query-history-section">
+      <div class="sidebar-section" style="display:flex;align-items:center;justify-content:space-between">
+        <span>Query History</span>
+        <span class="qh-clear" id="clearQueryHistory" title="Clear history">&times; clear</span>
+      </div>
+      <div class="query-history-list" id="queryHistoryList">
+        <div class="qh-empty">No queries yet</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Editor + Results -->
+  <div class="editor-panel">
+    <div class="query-area">
+      <textarea class="query-editor" id="queryEditor" placeholder="SELECT * FROM table_name LIMIT 100" spellcheck="false"></textarea>
+      <div class="query-bar">
+        <button class="run-btn" id="runBtn">&#9654; Run <kbd>&#8984;&#9166;</kbd></button>
+        <span class="query-status" id="queryStatus"></span>
+        <div class="example-queries" id="exampleQueries"></div>
+      </div>
+    </div>
+    <div class="results-area" id="resultsArea">
+      <div class="empty-state">
+        <div style="font-size:2rem;opacity:0.3">&#128063;</div>
+        <div>Load Parquet files and run SQL queries</div>
+        <div class="hint">Squirreling runs entirely in your browser &mdash; no server needed</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+// ============================================================
+// IMPORTS
+// ============================================================
+import { parquetMetadataAsync, parquetRead, parquetSchema } from 'https://esm.sh/hyparquet@1';
+import { compressors } from 'https://esm.sh/hyparquet-compressors@1';
+import { executeSql, collect } from 'https://esm.sh/squirreling@0';
+
+// ============================================================
+// STATE
+// ============================================================
+const tables = {};       // name → { rows: [...], columns: [...], rowCount, fileSize }
+const tableSchemas = {};  // name → [{ name, type }]
+
+const queryEditor = document.getElementById('queryEditor');
+const runBtn = document.getElementById('runBtn');
+const queryStatus = document.getElementById('queryStatus');
+const resultsArea = document.getElementById('resultsArea');
+const tableList = document.getElementById('tableList');
+const tableCount = document.getElementById('tableCount');
+const dropArea = document.getElementById('dropArea');
+const fileInput = document.getElementById('fileInput');
+const exampleQueries = document.getElementById('exampleQueries');
+
+// ============================================================
+// KNOWN EXPORTS — served from reports/exports/
+// ============================================================
+const KNOWN_EXPORTS = [
+  { file: 'stem_records.parquet',     label: 'STEM Records (291K)' },
+  { file: 'nonstem_records.parquet',  label: 'Non-STEM Records (136K)' },
+];
+const CANDIDATE_BASES = ['data/exports/', '/data/exports/'];
+let EXPORTS_BASE = null;
+
+async function detectExportsBase() {
+  // fetch() is blocked over file:// due to CORS — skip auto-probe
+  if (location.protocol === 'file:') return null;
+  const testFile = KNOWN_EXPORTS[0].file;
+  for (const base of CANDIDATE_BASES) {
+    try {
+      const resp = await fetch(base + testFile, { method: 'HEAD' });
+      if (resp.ok) return base;
+    } catch (_) {}
+  }
+  return null;
+}
+
+async function probeAndLoadExports() {
+  const exportList = document.getElementById('exportList');
+  EXPORTS_BASE = await detectExportsBase();
+  if (!EXPORTS_BASE) {
+    const msg = location.protocol === 'file:'
+      ? 'Auto-loading is not available via file://. Drop .parquet files below, or use the Docker web server (port 8888).'
+      : 'No exports found. Run pipeline or drop files below.';
+    exportList.innerHTML = '<div style="color:var(--border);font-size:0.68rem;padding:4px">' + msg + '</div>';
+    queryEditor.value = '';
+    return;
+  }
+  const available = [];
+  for (const ex of KNOWN_EXPORTS) {
+    try {
+      const resp = await fetch(EXPORTS_BASE + ex.file, { method: 'HEAD' });
+      if (resp.ok) available.push(ex);
+    } catch (_) {}
+  }
+  if (available.length === 0) {
+    exportList.innerHTML = '<div style="color:var(--border);font-size:0.68rem;padding:4px">No exports found. Run pipeline or drop files below.</div>';
+    queryEditor.value = 'SELECT \'Drop a .parquet file to get started\' AS message';
+    return;
+  }
+  exportList.innerHTML = available.map(ex => `
+    <div class="export-item" data-file="${ex.file}" data-label="${ex.label}">
+      <span class="ei-icon">&#128451;</span>
+      <span class="ei-name">${ex.label}</span>
+      <span class="ei-status">load</span>
+    </div>
+  `).join('');
+
+  exportList.querySelectorAll('.export-item').forEach(el => {
+    el.addEventListener('click', () => loadExport(el));
+  });
+
+  // Auto-load all available exports
+  for (const el of exportList.querySelectorAll('.export-item')) {
+    await loadExport(el);
+  }
+}
+
+async function loadExport(el) {
+  const file = el.dataset.file;
+  const tableName = file.replace(/\.parq(uet)?$/i, '').replace(/[^a-zA-Z0-9_]/g, '_');
+  if (tables[tableName]) {
+    // Already loaded — set as active, update examples, and run preview
+    setActiveTable(tableName);
+    queryEditor.value = `SELECT *\nFROM ${tableName}\nLIMIT 100`;
+    runQuery();
+    return;
+  }
+
+  el.querySelector('.ei-status').textContent = '...';
+  el.style.opacity = '0.5';
+  try {
+    const resp = await fetch(EXPORTS_BASE + file);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const arrayBuffer = await resp.arrayBuffer();
+    await loadParquetBuffer(arrayBuffer, tableName);
+    el.querySelector('.ei-status').textContent = '\u2713';
+    el.querySelector('.ei-status').style.color = 'var(--green)';
+    el.style.opacity = '1';
+  } catch (err) {
+    el.querySelector('.ei-status').textContent = '\u2717';
+    el.querySelector('.ei-status').style.color = 'var(--red)';
+    el.style.opacity = '1';
+    setStatus(`Failed to load ${file}: ${err.message}`, 'error');
+  }
+}
+probeAndLoadExports();
+
+// ============================================================
+// FILE LOADING (drag/drop + browse)
+// ============================================================
+dropArea.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', (e) => { for (const f of e.target.files) loadParquetFile(f); });
+dropArea.addEventListener('dragover', (e) => { e.preventDefault(); dropArea.classList.add('dragover'); });
+dropArea.addEventListener('dragleave', () => dropArea.classList.remove('dragover'));
+dropArea.addEventListener('drop', (e) => {
+  e.preventDefault(); dropArea.classList.remove('dragover');
+  for (const f of e.dataTransfer.files) loadParquetFile(f);
+});
+
+async function loadParquetFile(file) {
+  const tableName = file.name.replace(/\.parq(uet)?$/i, '').replace(/[^a-zA-Z0-9_]/g, '_');
+  addTableLoading(tableName);
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    await loadParquetBuffer(arrayBuffer, tableName);
+  } catch (err) {
+    setStatus(`Failed to load ${file.name}: ${err.message}`, 'error');
+    removeTableFromList(tableName);
+  }
+}
+
+const MAX_ROWS = 500000; // Cap rows loaded into memory for browser safety
+
+async function loadParquetBuffer(arrayBuffer, tableName) {
+  const metadata = await parquetMetadataAsync(arrayBuffer);
+  const schema = parquetSchema(metadata);
+  const columns = schema.children.map(c => c.element);
+  const totalRows = Number(metadata.num_rows);
+  const rowEnd = Math.min(totalRows, MAX_ROWS);
+
+  const rows = [];
+  await parquetRead({
+    file: arrayBuffer,
+    compressors,
+    rowStart: 0,
+    rowEnd,
+    rowFormat: 'object',
+    onComplete: data => {
+      for (let i = 0; i < data.length; i++) rows.push(data[i]);
+    },
+  });
+
+  if (totalRows > MAX_ROWS) {
+    setStatus(`${tableName}: loaded first ${MAX_ROWS.toLocaleString()} of ${totalRows.toLocaleString()} rows (capped for browser performance)`, 'warning');
+  }
+
+  tables[tableName] = rows;
+  tableSchemas[tableName] = columns.map(c => ({ name: c.name, type: getTypeName(c) }));
+
+  activeTable = tableName;
+  renderTableList();
+  updateExampleQueries();
+
+  // Auto-run a preview query for the first table loaded
+  if (Object.keys(tables).length === 1) {
+    queryEditor.value = `SELECT *\nFROM ${tableName}\nLIMIT 100`;
+    runQuery();
+  }
+}
+
+// ============================================================
+// QUERY EXECUTION
+// ============================================================
+const runningIndicator = document.getElementById('runningIndicator');
+let dotInterval = null;
+
+function showRunning() {
+  let dots = 3;
+  runningIndicator.textContent = 'Running Query...';
+  runningIndicator.classList.add('active');
+  dotInterval = setInterval(() => {
+    dots = (dots % 6) + 1;
+    runningIndicator.textContent = 'Running Query' + '.'.repeat(dots);
+  }, 800);
+}
+
+function hideRunning() {
+  clearInterval(dotInterval);
+  dotInterval = null;
+  runningIndicator.classList.remove('active');
+}
+
+async function runQuery() {
+  const query = queryEditor.value.trim();
+  if (!query) return;
+
+  addToQueryHistory(query);
+  runBtn.disabled = true;
+  setStatus('Running...', '');
+  showRunning();
+  // Yield to browser so it can paint the indicator before heavy work
+  await new Promise(r => requestAnimationFrame(() => setTimeout(r, 0)));
+  const t0 = performance.now();
+
+  try {
+    const asyncRows = executeSql({ tables, query });
+    const rows = await collect(asyncRows);
+    const elapsed = ((performance.now() - t0) / 1000).toFixed(3);
+
+    if (rows.length === 0) {
+      resultsArea.innerHTML = '<div class="empty-state"><div>Query returned 0 rows</div></div>';
+      setStatus(`0 rows in ${elapsed}s`, 'success');
+    } else {
+      renderResults(rows);
+      setStatus(`${rows.length.toLocaleString()} row${rows.length > 1 ? 's' : ''} in ${elapsed}s`, 'success');
+    }
+  } catch (err) {
+    setStatus(err.message, 'error');
+    resultsArea.innerHTML = `<div class="empty-state" style="color:var(--red)"><div style="font-size:1.5rem">&#9888;</div><div>${escapeHtml(err.message)}</div></div>`;
+    console.error(err);
+  } finally {
+    runBtn.disabled = false;
+    hideRunning();
+  }
+}
+
+// Run on click or Cmd/Ctrl+Enter
+runBtn.addEventListener('click', runQuery);
+queryEditor.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+    e.preventDefault();
+    runQuery();
+  }
+  // Tab inserts 2 spaces
+  if (e.key === 'Tab') {
+    e.preventDefault();
+    const s = queryEditor.selectionStart;
+    queryEditor.value = queryEditor.value.substring(0, s) + '  ' + queryEditor.value.substring(queryEditor.selectionEnd);
+    queryEditor.selectionStart = queryEditor.selectionEnd = s + 2;
+  }
+});
+
+// ============================================================
+// RENDER RESULTS TABLE
+// ============================================================
+function renderResults(rows) {
+  if (!rows.length) return;
+  const cols = Object.keys(rows[0]);
+
+  const headerHtml = cols.map(c => `<th>${escapeHtml(c)}</th>`).join('');
+  const bodyHtml = rows.map((row, i) => {
+    const cells = cols.map(c => {
+      const v = row[c];
+      if (v === null || v === undefined) return '<td class="null">null</td>';
+      if (typeof v === 'number' || typeof v === 'bigint') return `<td class="num">${v}</td>`;
+      const s = String(v);
+      return `<td title="${escapeHtml(s)}">${escapeHtml(s.length > 80 ? s.slice(0,77) + '...' : s)}</td>`;
+    }).join('');
+    return `<tr>${cells}</tr>`;
+  }).join('');
+
+  resultsArea.innerHTML = `<table><thead><tr>${headerHtml}</tr></thead><tbody>${bodyHtml}</tbody></table>`;
+}
+
+// ============================================================
+// SIDEBAR TABLE LIST
+// ============================================================
+function addTableLoading(name) {
+  const el = document.createElement('div');
+  el.className = 'table-item';
+  el.id = `tbl-${name}`;
+  el.innerHTML = `<span class="loading-spinner"></span><span class="t-name">${escapeHtml(name)}</span>`;
+  tableList.appendChild(el);
+  tableCount.textContent = tableList.children.length;
+}
+
+function removeTableFromList(name) {
+  const el = document.getElementById(`tbl-${name}`);
+  if (el) el.remove();
+  tableCount.textContent = Object.keys(tables).length;
+}
+
+function renderTableList() {
+  tableList.innerHTML = '';
+  for (const [name, rows] of Object.entries(tables)) {
+    const schema = tableSchemas[name] || [];
+    const el = document.createElement('div');
+    el.innerHTML = `
+      <div class="table-item" data-table="${name}">
+        <span class="t-icon">&#128451;</span>
+        <span class="t-name">${escapeHtml(name)}</span>
+        <span class="t-rows">${rows.length.toLocaleString()}</span>
+        <span class="t-remove" data-remove="${name}" title="Remove table">&times;</span>
+      </div>
+      <div class="col-list" id="cols-${name}" style="display:none">
+        ${schema.map(c => `<div class="col-item" data-col="${c.name}"><span>${escapeHtml(c.name)}</span><span class="col-type">${c.type}</span></div>`).join('')}
+      </div>
+    `;
+    tableList.appendChild(el);
+
+    // Toggle column list
+    const tableItem = el.querySelector('.table-item');
+    const colList = el.querySelector('.col-list');
+    tableItem.addEventListener('click', (e) => {
+      if (e.target.dataset.remove) return;
+      colList.style.display = colList.style.display === 'none' ? 'block' : 'none';
+      setActiveTable(name);
+    });
+
+    // Remove table
+    el.querySelector('.t-remove').addEventListener('click', (e) => {
+      e.stopPropagation();
+      const tName = e.target.dataset.remove;
+      delete tables[tName];
+      delete tableSchemas[tName];
+      renderTableList();
+      updateExampleQueries();
+    });
+
+    // Click column to insert into query
+    el.querySelectorAll('.col-item').forEach(ci => {
+      ci.addEventListener('click', () => {
+        const colName = ci.dataset.col;
+        const pos = queryEditor.selectionStart;
+        const before = queryEditor.value.substring(0, pos);
+        const after = queryEditor.value.substring(queryEditor.selectionEnd);
+        queryEditor.value = before + colName + after;
+        queryEditor.selectionStart = queryEditor.selectionEnd = pos + colName.length;
+        queryEditor.focus();
+      });
+    });
+  }
+  tableCount.textContent = Object.keys(tables).length;
+}
+
+// ============================================================
+// EXAMPLE QUERIES — file-specific + global
+// ============================================================
+let activeTable = null;
+
+// Per-table sample queries based on actual schemas
+const TABLE_QUERIES = {
+  'stem_records': [
+    { label: 'Preview', sql: `SELECT *\nFROM stem_records\nLIMIT 100` },
+    { label: 'By university', sql: `SELECT university, COUNT(*) AS records\nFROM stem_records\nGROUP BY university\nORDER BY records DESC` },
+    { label: 'By year', sql: `SELECT year, COUNT(*) AS records\nFROM stem_records\nGROUP BY year\nORDER BY year` },
+    { label: 'Top departments', sql: `SELECT department, COUNT(*) AS records\nFROM stem_records\nGROUP BY department\nORDER BY records DESC\nLIMIT 30` },
+    { label: 'PhDs by university', sql: `SELECT university, COUNT(*) AS phds\nFROM stem_records\nWHERE degree = 'phd'\nGROUP BY university\nORDER BY phds DESC` },
+    { label: 'Search by name', sql: `SELECT university, department, year, name, title\nFROM stem_records\nWHERE name LIKE '%Zhang%'\nLIMIT 50` },
+    { label: 'MIT records', sql: `SELECT department, year, name, title\nFROM stem_records\nWHERE university = 'mit'\nORDER BY year DESC, department\nLIMIT 100` },
+    { label: 'CS departments', sql: `SELECT university, COUNT(*) AS records\nFROM stem_records\nWHERE department LIKE '%Computer%'\nGROUP BY university\nORDER BY records DESC` },
+    { label: 'STEM + Non-STEM', sql: `SELECT 'STEM' AS category, COUNT(*) AS total FROM stem_records\nUNION ALL\nSELECT 'Non-STEM', COUNT(*) FROM nonstem_records` },
+  ],
+  'nonstem_records': [
+    { label: 'Preview', sql: `SELECT *\nFROM nonstem_records\nLIMIT 100` },
+    { label: 'By university', sql: `SELECT university, COUNT(*) AS records\nFROM nonstem_records\nGROUP BY university\nORDER BY records DESC` },
+    { label: 'Top departments', sql: `SELECT department, COUNT(*) AS records\nFROM nonstem_records\nGROUP BY department\nORDER BY records DESC\nLIMIT 30` },
+  ],
+};
+
+function setActiveTable(name) {
+  activeTable = name;
+  history.replaceState(null, '', location.pathname + '#' + encodeURIComponent(name));
+  updateExampleQueries();
+}
+
+function updateExampleQueries() {
+  const names = Object.keys(tables);
+  if (names.length === 0) { exampleQueries.innerHTML = ''; return; }
+
+  const target = activeTable && tables[activeTable] ? activeTable : names[0];
+  const examples = [];
+
+  // File-specific queries first
+  if (TABLE_QUERIES[target]) {
+    examples.push(...TABLE_QUERIES[target]);
+  } else {
+    // Generic for unknown tables
+    examples.push({ label: 'Preview', sql: `SELECT *\nFROM ${target}\nLIMIT 100` });
+    examples.push({ label: 'Count', sql: `SELECT COUNT(*) AS total\nFROM ${target}` });
+  }
+
+  // Cross-table queries
+  if (tables['stem_records'] && tables['nonstem_records']) {
+    examples.push({ label: 'All records', sql: `SELECT 'STEM' AS type, university, department, year, name, title\nFROM stem_records\nUNION ALL\nSELECT 'Non-STEM', university, department, year, name, title\nFROM nonstem_records\nLIMIT 200` });
+  }
+
+  exampleQueries.innerHTML = examples.map(e =>
+    `<button class="example-btn" title="${escapeHtml(e.sql)}">${e.label}</button>`
+  ).join('');
+
+  exampleQueries.querySelectorAll('.example-btn').forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      queryEditor.value = examples[i].sql;
+      runQuery();
+    });
+  });
+}
+
+// ============================================================
+// HELPERS
+// ============================================================
+function setStatus(msg, type) {
+  queryStatus.textContent = msg;
+  queryStatus.className = 'query-status' + (type ? ' ' + type : '');
+}
+
+function getTypeName(col) {
+  const pt = ['BOOLEAN','INT32','INT64','INT96','FLOAT','DOUBLE','BYTE_ARRAY','FIXED_LEN'];
+  if (col.logicalType) {
+    const lt = col.logicalType;
+    if (typeof lt === 'object') {
+      if (lt.stringType !== undefined) return 'STRING';
+      if (lt.intType) return `INT${lt.intType.bitWidth}`;
+      if (lt.decimalType) return 'DECIMAL';
+      if (lt.timestampType) return 'TIMESTAMP';
+      if (lt.dateType !== undefined) return 'DATE';
+    }
+  }
+  if (col.converted_type !== undefined) {
+    const ct = ['','UTF8','MAP','MAP_KV','LIST','ENUM','DECIMAL','DATE','TIME_MS','TIME_US','TS_MS','TS_US','UINT8','UINT16','UINT32','UINT64','INT8','INT16','INT32','INT64'];
+    return ct[col.converted_type] || pt[col.type] || 'UNKNOWN';
+  }
+  return pt[col.type] || 'UNKNOWN';
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ============================================================
+// QUERY HISTORY
+// ============================================================
+const queryHistoryList = document.getElementById('queryHistoryList');
+const clearQueryHistoryBtn = document.getElementById('clearQueryHistory');
+const QH_KEY = 'cms_sql_query_history';
+let queryHistory = [];
+
+try { queryHistory = JSON.parse(sessionStorage.getItem(QH_KEY) || '[]'); } catch(_) {}
+renderQueryHistory();
+
+function addToQueryHistory(sql) {
+  const trimmed = sql.trim();
+  if (!trimmed) return;
+  // Remove duplicate if exists
+  queryHistory = queryHistory.filter(h => h.sql !== trimmed);
+  queryHistory.unshift({ sql: trimmed, time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
+  // Cap at 50
+  if (queryHistory.length > 50) queryHistory.length = 50;
+  try { sessionStorage.setItem(QH_KEY, JSON.stringify(queryHistory)); } catch(_) {}
+  renderQueryHistory();
+}
+
+function renderQueryHistory() {
+  if (!queryHistory.length) {
+    queryHistoryList.innerHTML = '<div class="qh-empty">No queries yet</div>';
+    return;
+  }
+  queryHistoryList.innerHTML = queryHistory.map((h, i) =>
+    `<div class="qh-item" data-qhi="${i}" title="${escapeHtml(h.sql)}"><span class="qh-time">${h.time}</span>${escapeHtml(h.sql.replace(/\n/g, ' ').substring(0, 80))}</div>`
+  ).join('');
+  queryHistoryList.querySelectorAll('.qh-item').forEach(el => {
+    el.addEventListener('click', () => {
+      const idx = parseInt(el.dataset.qhi);
+      if (queryHistory[idx]) {
+        queryEditor.value = queryHistory[idx].sql;
+        runQuery();
+      }
+    });
+  });
+}
+
+clearQueryHistoryBtn.addEventListener('click', () => {
+  queryHistory = [];
+  try { sessionStorage.removeItem(QH_KEY); } catch(_) {}
+  renderQueryHistory();
+});
+
+// ============================================================
+// CHAT WIDGET BRIDGE — handle double-click SQL from chat
+// ============================================================
+window.addEventListener('chat-fill-sql', (e) => {
+  const sql = e.detail && e.detail.sql;
+  if (sql) {
+    queryEditor.value = sql;
+    runQuery();
+  }
+});
+</script>
+<script src="cached-answers.js"></script>
+<script src="chat-widget.js"></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Chat Analytics — Admin</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --surface2: #334155; --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8; --red: #f87171; --green: #4ade80; --orange: #fb923c; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); }
+  .page { max-width: 1400px; margin: 0 auto; padding: 24px 32px; }
+  h1 { font-size: 1.4rem; margin-bottom: 4px; }
+  .subtitle { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px; }
+  .controls { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+  .controls select, .controls button { background: var(--surface); border: 1px solid var(--surface2); color: var(--text); padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; }
+  .controls button:hover { background: var(--surface2); }
+  .controls .status { font-size: 0.78rem; color: var(--text-muted); margin-left: auto; }
+
+  .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 18px; }
+  .stat { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 14px; text-align: center; }
+  .stat .num { font-size: 1.5rem; font-weight: 700; }
+  .stat .num.blue { color: var(--accent); } .stat .num.green { color: var(--green); } .stat .num.orange { color: var(--orange); } .stat .num.red { color: var(--red); }
+  .stat .lbl { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; margin-top: 2px; }
+
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .chart-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; }
+  .chart-box h3 { font-size: 0.9rem; margin-bottom: 8px; }
+  .chart-box canvas { max-height: 250px; }
+
+  .log-table { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; overflow-x: auto; }
+  .log-table h3 { font-size: 0.9rem; margin-bottom: 8px; }
+  .log-table table { width: 100%; border-collapse: collapse; font-size: 0.75rem; }
+  .log-table th { text-align: left; padding: 6px 8px; color: var(--text-muted); border-bottom: 1px solid var(--surface2); font-size: 0.7rem; cursor: pointer; }
+  .log-table td { padding: 6px 8px; border-bottom: 1px solid rgba(51,65,85,0.3); vertical-align: top; }
+  .log-table tr:hover { background: rgba(56,189,248,0.04); }
+  .log-table .msg { max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .log-table .msg:hover { white-space: normal; word-break: break-word; }
+  .log-table .reply { max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-muted); }
+  .log-table .reply:hover { white-space: normal; word-break: break-word; }
+  .log-table .tool { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 0.65rem; font-weight: 600; }
+  .tool-navigate { background: rgba(56,189,248,0.15); color: var(--accent); }
+  .tool-query { background: rgba(74,222,128,0.15); color: var(--green); }
+  .tool-none { background: rgba(148,163,184,0.1); color: var(--text-muted); }
+  .latency-fast { color: var(--green); }
+  .latency-med { color: var(--orange); }
+  .latency-slow { color: var(--red); }
+  @media (max-width: 700px) { .charts { grid-template-columns: 1fr; } .page { padding: 16px; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>Chat Analytics Dashboard</h1>
+  <div class="subtitle">User queries, tool usage, and response latency for the "Ask about Academia" chat assistant.</div>
+
+  <div class="controls">
+    <select id="days-select">
+      <option value="1">Last 24 hours</option>
+      <option value="7" selected>Last 7 days</option>
+      <option value="30">Last 30 days</option>
+      <option value="90">Last 90 days</option>
+    </select>
+    <button onclick="loadData()">Refresh</button>
+    <span class="status" id="status">Loading...</span>
+  </div>
+
+  <div class="hero">
+    <div class="stat"><div class="num blue" id="stat-total">—</div><div class="lbl">Total Chats</div></div>
+    <div class="stat"><div class="num green" id="stat-ips">—</div><div class="lbl">Unique Users</div></div>
+    <div class="stat"><div class="num orange" id="stat-latency">—</div><div class="lbl">Avg Latency</div></div>
+    <div class="stat"><div class="num red" id="stat-tools">—</div><div class="lbl">Tool Calls</div></div>
+  </div>
+
+  <div class="charts">
+    <div class="chart-box"><h3>Chats per Day</h3><canvas id="daily-chart"></canvas></div>
+    <div class="chart-box"><h3>Tool Usage</h3><canvas id="tool-chart"></canvas></div>
+  </div>
+
+  <div class="log-table">
+    <h3>Recent Conversations</h3>
+    <table>
+      <thead><tr><th>Time</th><th>IP</th><th>Message</th><th>Reply</th><th>Tools</th><th>Latency</th></tr></thead>
+      <tbody id="log-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+const API = 'https://hbz6ni2dctktw4bpzm6kb4u64i0uzbde.lambda-url.us-east-1.on.aws/';
+let dailyChart, toolChart;
+
+async function loadData() {
+  const days = document.getElementById('days-select').value;
+  document.getElementById('status').textContent = 'Loading...';
+
+  try {
+    const [statsResp, logsResp] = await Promise.all([
+      fetch(`${API}?action=stats&days=${days}`),
+      fetch(`${API}?action=recent&days=${days}`),
+    ]);
+    const stats = await statsResp.json();
+    const logs = await logsResp.json();
+
+    // Hero stats
+    document.getElementById('stat-total').textContent = stats.total_chats.toLocaleString();
+    document.getElementById('stat-ips').textContent = stats.unique_ips.toLocaleString();
+    document.getElementById('stat-latency').textContent = stats.avg_latency_ms ? (stats.avg_latency_ms / 1000).toFixed(1) + 's' : '—';
+    const toolTotal = (stats.tool_usage.navigate || 0) + (stats.tool_usage.query || 0);
+    document.getElementById('stat-tools').textContent = toolTotal.toLocaleString();
+
+    // Daily chart
+    const dayLabels = Object.keys(stats.by_day).sort();
+    const dayValues = dayLabels.map(d => stats.by_day[d]);
+    if (dailyChart) dailyChart.destroy();
+    dailyChart = new Chart(document.getElementById('daily-chart'), {
+      type: 'bar',
+      data: { labels: dayLabels, datasets: [{ data: dayValues, backgroundColor: 'rgba(56,189,248,0.7)', borderRadius: 3 }] },
+      options: { responsive: true, plugins: { legend: { display: false } }, scales: { x: { ticks: { font: { size: 9 } } } } }
+    });
+
+    // Tool chart
+    if (toolChart) toolChart.destroy();
+    toolChart = new Chart(document.getElementById('tool-chart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Navigate', 'SQL Query', 'Text Only'],
+        datasets: [{ data: [stats.tool_usage.navigate || 0, stats.tool_usage.query || 0, stats.tool_usage.none || 0],
+          backgroundColor: ['#38bdf8', '#4ade80', '#64748b'] }]
+      },
+      options: { responsive: true, plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: { size: 11 } } } } }
+    });
+
+    // Logs table
+    const tbody = document.getElementById('log-body');
+    tbody.innerHTML = '';
+    for (const log of (logs.logs || []).slice(0, 200)) {
+      const time = log.timestamp ? log.timestamp.replace('T', ' ').replace('Z', '') : '';
+      const latMs = log.latency_ms || 0;
+      const latClass = latMs < 3000 ? 'latency-fast' : latMs < 6000 ? 'latency-med' : 'latency-slow';
+      const tools = (log.tools_used || ['none']).map(t => {
+        const cls = t === 'navigate' ? 'tool-navigate' : t === 'query' ? 'tool-query' : 'tool-none';
+        return `<span class="tool ${cls}">${t}</span>`;
+      }).join(' ');
+
+      tbody.innerHTML += `<tr>
+        <td style="white-space:nowrap;font-size:0.7rem;">${time}</td>
+        <td style="font-size:0.7rem;font-family:monospace;">${(log.ip||'').substring(0,20)}</td>
+        <td class="msg">${escapeHtml(log.message || '')}</td>
+        <td class="reply">${escapeHtml(log.reply_preview || '')}</td>
+        <td>${tools}</td>
+        <td class="${latClass}">${(latMs/1000).toFixed(1)}s</td>
+      </tr>`;
+    }
+
+    document.getElementById('status').textContent = `${stats.total_chats} chats from ${stats.unique_ips} users (${days}d)`;
+  } catch (e) {
+    document.getElementById('status').textContent = 'Error: ' + e.message;
+  }
+}
+
+function escapeHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+document.getElementById('days-select').addEventListener('change', loadData);
+loadData();
+</script>
+</body>
+</html>

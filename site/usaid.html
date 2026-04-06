@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>US Government Scholarships &amp; NGOs — PhD Demographics</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --surface2: #334155; --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8; --red: #f87171; --green: #4ade80; --orange: #fb923c; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); }
+  .page { max-width: 1200px; margin: 0 auto; padding: 24px 32px; }
+  h1 { font-size: 1.4rem; margin-bottom: 4px; }
+  h2 { font-size: 1.1rem; margin: 20px 0 10px; color: var(--accent); }
+  .subtitle { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px; }
+  .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 18px; }
+  .stat { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 14px; text-align: center; }
+  .stat .num { font-size: 1.4rem; font-weight: 700; }
+  .stat .num.red { color: var(--red); } .stat .num.blue { color: var(--accent); } .stat .num.green { color: var(--green); } .stat .num.orange { color: var(--orange); }
+  .stat .lbl { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; margin-top: 2px; }
+  .info-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; margin-bottom: 14px; font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+  .info-box strong { color: var(--text); }
+  .info-box a { color: var(--accent); text-decoration: none; }
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .chart-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; }
+  .chart-box h3 { font-size: 0.9rem; margin-bottom: 2px; }
+  .chart-box .desc { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; }
+  .chart-box canvas { max-height: 280px; }
+  .chart-box.wide { grid-column: 1 / -1; }
+  .table-wrap { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; margin-bottom: 14px; overflow-x: auto; }
+  .table-wrap h3 { font-size: 0.9rem; margin-bottom: 8px; }
+  .table-wrap table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  .table-wrap th { text-align: left; padding: 4px 8px; color: var(--text-muted); border-bottom: 1px solid var(--surface2); font-size: 0.72rem; }
+  .table-wrap th.r { text-align: right; }
+  .table-wrap td { padding: 4px 8px; } .table-wrap td.r { text-align: right; }
+  @media (max-width: 700px) { .charts { grid-template-columns: 1fr; } .page { padding: 16px; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>US Government Scholarships &amp; Foreign Student Funding</h1>
+  <div class="subtitle">Only ~2% of 1.18M international students in the US receive US government funding. The vast majority are self-funded or family-funded.</div>
+
+  <div class="hero">
+    <div class="stat"><div class="num blue">~2%</div><div class="lbl">Govt-Funded Students</div></div>
+    <div class="stat"><div class="num orange">52%</div><div class="lbl">Self/Family Funded</div></div>
+    <div class="stat"><div class="num green">~8,000</div><div class="lbl">Fulbright Grants/Year</div></div>
+    <div class="stat"><div class="num red">$780M</div><div class="lbl">ECA Budget (FY2024)</div></div>
+  </div>
+
+  <div class="charts">
+    <div class="chart-box">
+      <h3>International Student Funding Sources</h3>
+      <p class="desc">Open Doors data on primary funding source for international students in the US.</p>
+      <canvas id="funding-chart"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>Major US Government Programs</h3>
+      <p class="desc">Annual participants/grants by program. Fulbright dwarfs all others.</p>
+      <canvas id="programs-chart"></canvas>
+    </div>
+  </div>
+
+  <h2>Programs Overview</h2>
+
+  <div class="table-wrap">
+    <h3>US Government Scholarship &amp; Exchange Programs</h3>
+    <table>
+      <thead><tr><th>Program</th><th>Agency</th><th class="r">Annual Scale</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Fulbright Program</strong></td><td>State Dept (ECA)</td><td class="r">~8,000 grants</td><td>Premier exchange program. ~4,000 foreign students to US, ~4,000 US scholars abroad. 160+ countries.</td></tr>
+        <tr><td><strong>IVLP</strong></td><td>State Dept</td><td class="r">~4,000/yr</td><td>International Visitor Leadership Program. Short-term visits for current/emerging foreign leaders.</td></tr>
+        <tr><td><strong>Humphrey Fellowship</strong></td><td>State Dept</td><td class="r">~150-200/yr</td><td>Mid-career professionals from developing countries. 10-month program at US universities.</td></tr>
+        <tr><td><strong>HESN</strong></td><td>USAID</td><td class="r">$115M invested</td><td>Higher Education Solutions Network. 8 university development labs (MIT, Berkeley, Duke, etc.)</td></tr>
+        <tr><td><strong>Cochran Fellowship</strong></td><td>USDA</td><td class="r">~500/yr</td><td>Short-term agricultural training for developing country professionals.</td></tr>
+        <tr><td><strong>Borlaug Fellowship</strong></td><td>USDA</td><td class="r">~100/yr</td><td>Food security research. ~900 fellows since 2004 from 69 countries.</td></tr>
+        <tr><td><strong>Country-specific (USAID)</strong></td><td>USAID</td><td class="r">Varies</td><td>Pakistan ($23.1M, 3K scholarships), Egypt (1K at AUC), Myanmar ($45M), Indonesia ($5M)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box">
+    <strong>2025 USAID Shutdown:</strong> The 2025 USAID restructuring/shutdown has frozen or terminated most international education programs. The Development Experience Clearinghouse (DEC) — USAID's primary data archive — is offline. Historical data is now available only through third-party archives:
+    <ul style="margin-top:8px;">
+      <li><a href="https://foreignassistance.andrewheiss.com/" target="_blank">ForeignAssistance.gov backup</a> (Andrew Heiss) — full CSV downloads through Dec 2024</li>
+      <li><a href="https://decfinder.devme.ai" target="_blank">DEC Finder</a> — 111K+ curated USAID documents</li>
+    </ul>
+  </div>
+
+  <h2>USAID Country-Specific Programs</h2>
+  <div class="charts">
+    <div class="chart-box wide">
+      <h3>Major USAID Education Investments</h3>
+      <canvas id="usaid-chart"></canvas>
+    </div>
+  </div>
+</div>
+
+<script>
+// Funding sources
+new Chart(document.getElementById('funding-chart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Self/Family (52%)','Foreign Govt (14%)','US College (18%)','US Govt (~2%)','Other (14%)'],
+    datasets: [{ data: [52,14,18,2,14], backgroundColor: ['#38bdf8','#fb923c','#4ade80','#f87171','#64748b'] }]
+  },
+  options: { responsive: true, plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: { size: 10 } } } } }
+});
+
+// Programs
+new Chart(document.getElementById('programs-chart'), {
+  type: 'bar',
+  data: {
+    labels: ['Fulbright','IVLP','USAID\nPartnerships','Cochran','Humphrey','Borlaug'],
+    datasets: [{ data: [8000,4000,2000,500,175,100], backgroundColor: '#38bdf8', borderRadius: 4 }]
+  },
+  options: { indexAxis: 'y', responsive: true, plugins: { legend: { display: false },
+    tooltip: { callbacks: { label: ctx => '~' + ctx.parsed.x.toLocaleString() + ' participants/yr' } } } }
+});
+
+// USAID country investments
+new Chart(document.getElementById('usaid-chart'), {
+  type: 'bar',
+  data: {
+    labels: ['Myanmar ($45M)','Pakistan ($23.1M)','HESN Labs ($115M total)','Indonesia ($5M)','Egypt (AUC)'],
+    datasets: [{ data: [45,23.1,14.4,5,3], backgroundColor: ['#fb923c','#4ade80','#38bdf8','#a78bfa','#f87171'], borderRadius: 4 }]
+  },
+  options: { responsive: true, plugins: { legend: { display: false },
+    tooltip: { callbacks: { label: ctx => '$' + ctx.parsed.y.toFixed(1) + 'M' } } },
+    scales: { y: { ticks: { callback: v => '$' + v + 'M' } } } }
+});
+</script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

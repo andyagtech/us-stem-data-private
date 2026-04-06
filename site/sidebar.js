@@ -23,6 +23,7 @@
       { href: 'vwp.html', label: 'Visa Waiver Program' },
     ]},
     { title: 'Reference', items: [
+      { href: 'query.html', label: 'Data Query (SQL)' },
       { href: 'data_sources.html', label: 'Data Sources & Methodology' },
       { href: 'data_catalog.json', label: 'Data Catalog (JSON)' },
       { href: 'llms.txt', label: 'WebMCP Integration' },
@@ -111,4 +112,9 @@
   // Remove back-link since sidebar provides navigation
   const backLink = document.querySelector('.back-link');
   if (backLink) backLink.style.display = 'none';
+
+  // Load chat widget
+  const chatScript = document.createElement('script');
+  chatScript.src = '/chat-widget.js';
+  document.body.appendChild(chatScript);
 })();

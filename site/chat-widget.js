@@ -21,14 +21,14 @@
   let isLoading = false;
 
   const css = `
-    #chat-bubble { position: fixed; bottom: 20px; right: 20px; z-index: 1000; width: 52px; height: 52px; border-radius: 50%; background: #38bdf8; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; transition: transform 0.2s; }
-    #chat-bubble:hover { transform: scale(1.1); }
-    #chat-panel { position: fixed; bottom: 80px; right: 20px; z-index: 1000; width: 380px; max-height: 500px; background: #1e293b; border: 1px solid #334155; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.4); display: none; flex-direction: column; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    #chat-bubble { position: fixed; bottom: 20px; right: 20px; z-index: 1000; width: 52px; height: 52px; border-radius: 50%; background: #38bdf8; border: none; cursor: pointer; box-shadow: 0 4px 16px rgba(56,189,248,0.4); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; transition: transform 0.2s; padding: 0; color: #0f172a; }
+    #chat-bubble:hover { transform: scale(1.1); box-shadow: 0 4px 20px rgba(56,189,248,0.6); }
+    #chat-panel { position: fixed; bottom: 84px; right: 20px; z-index: 1000; width: 400px; max-height: 520px; background: #1e293b; border: 1px solid #334155; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.5); display: none; flex-direction: column; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
     #chat-panel.open { display: flex; }
     .chat-header { padding: 12px 16px; border-bottom: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; }
     .chat-header span { font-size: 0.85rem; font-weight: 600; color: #e2e8f0; }
     .chat-header button { background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 1.1rem; padding: 0 4px; }
-    .chat-messages { flex: 1; overflow-y: auto; padding: 12px; max-height: 340px; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 12px; max-height: 360px; }
     .chat-msg { margin-bottom: 10px; font-size: 0.82rem; line-height: 1.5; }
     .chat-msg.user { text-align: right; }
     .chat-msg.user .chat-content { background: #334155; color: #e2e8f0; display: inline-block; padding: 8px 12px; border-radius: 12px 12px 2px 12px; max-width: 85%; text-align: left; }
@@ -54,7 +54,7 @@
   // Chat bubble
   const bubble = document.createElement('button');
   bubble.id = 'chat-bubble';
-  bubble.innerHTML = '💬';
+  bubble.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>';
   bubble.title = 'Ask about the data';
   bubble.onclick = () => { isOpen = !isOpen; panel.classList.toggle('open', isOpen); if (isOpen) input.focus(); };
   document.body.appendChild(bubble);
@@ -64,11 +64,11 @@
   panel.id = 'chat-panel';
   panel.innerHTML = `
     <div class="chat-header">
-      <span>PhD Demographics Assistant</span>
+      <span style="display:flex;align-items:center;gap:8px;"><img src="/andy-avatar.jpeg" style="width:28px;height:28px;border-radius:50%;object-fit:cover;" alt=""> Ask about Academia</span>
       <button onclick="document.getElementById('chat-panel').classList.remove('open')">&times;</button>
     </div>
     <div class="chat-messages" id="chat-messages">
-      <div class="chat-msg assistant"><div class="chat-content">Hi! I can help you explore international student data, visa trends, and university demographics. What would you like to know?</div></div>
+      <div class="chat-msg assistant"><div class="chat-content">Hi! I'm Andy's AI assistant. Ask me about international student data, visa trends, or any university on this site. I can also navigate you to the right chart or data section.</div></div>
     </div>
     <div class="chat-input-row">
       <input type="text" id="chat-input" placeholder="Ask about the data..." maxlength="2000">
@@ -119,42 +119,63 @@
     messagesEl.scrollTop = messagesEl.scrollHeight;
 
     try {
-      const resp = await fetch(CHAT_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: msg,
-          conversationHistory: history,
-        }),
-      });
+      // Retry once on failure (handles cold starts)
+      let resp;
+      for (let attempt = 0; attempt < 2; attempt++) {
+        try {
+          resp = await fetch(CHAT_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              message: msg,
+              conversationHistory: history,
+            }),
+          });
+          if (resp.ok) break;
+        } catch (e) {
+          if (attempt === 0) { await new Promise(r => setTimeout(r, 1000)); continue; }
+          throw e;
+        }
+      }
 
       typing.remove();
 
-      if (!resp.ok) {
-        const err = await resp.json().catch(() => ({ error: 'Service unavailable' }));
+      if (!resp || !resp.ok) {
+        const err = resp ? await resp.json().catch(() => ({ error: 'Service unavailable' })) : { error: 'Connection failed' };
         addMessage('error', err.error || 'Something went wrong.');
       } else {
         const data = await resp.json();
         const reply = data.reply || 'No response.';
         let replyHtml = markdownToHtml(reply);
 
-        // Handle navigation actions from tool calls
-        if (data.navigation && data.navigation.length > 0) {
-          for (const nav of data.navigation) {
-            const page = nav.page || '';
-            const sectionId = nav.section_id || '';
-            const desc = nav.description || 'View data';
-            const currentPage = location.pathname.split('/').pop() || '';
-            const href = sectionId ? `${page}#${sectionId}` : page;
-            const isSamePage = (currentPage === page || (!page && sectionId));
+        // Handle tool actions (navigation + SQL queries)
+        if (data.actions && data.actions.length > 0) {
+          for (const action of data.actions) {
+            if (action.type === 'navigate') {
+              const page = action.page || '';
+              const sectionId = action.section_id || '';
+              const label = action.label || 'View data';
+              const currentPage = location.pathname.split('/').pop() || '';
+              const href = sectionId ? `${page}#${sectionId}` : page;
+              const isSamePage = (currentPage === page);
 
-            replyHtml += `<div style="margin-top:8px;padding:8px 10px;background:#0f172a;border:1px solid #334155;border-radius:6px;font-size:0.78rem;">`;
-            if (isSamePage && sectionId) {
-              replyHtml += `<a href="javascript:void(0)" onclick="document.getElementById('${sectionId}')?.scrollIntoView({behavior:'smooth',block:'start'});document.getElementById('chat-panel').classList.remove('open');" style="color:#38bdf8;text-decoration:none;font-weight:600;">→ ${desc}</a>`;
-            } else {
-              replyHtml += `<a href="/${href}" style="color:#38bdf8;text-decoration:none;font-weight:600;">→ ${desc}</a>`;
+              replyHtml += `<div style="margin-top:8px;padding:8px 10px;background:#0f172a;border:1px solid #334155;border-radius:6px;font-size:0.78rem;">`;
+              if (isSamePage && sectionId) {
+                replyHtml += `<a href="javascript:void(0)" onclick="document.getElementById('${sectionId}')?.scrollIntoView({behavior:'smooth',block:'start'});document.getElementById('chat-panel').classList.remove('open');" style="color:#38bdf8;text-decoration:none;font-weight:600;">📊 ${label}</a>`;
+              } else {
+                replyHtml += `<a href="/${href}" target="_blank" style="color:#38bdf8;text-decoration:none;font-weight:600;">📊 ${label}</a>`;
+              }
+              replyHtml += `</div>`;
+
+            } else if (action.type === 'query') {
+              const sql = action.sql || '';
+              const explanation = action.explanation || '';
+              replyHtml += `<div style="margin-top:8px;padding:10px;background:#0f172a;border:1px solid #334155;border-radius:6px;font-size:0.75rem;">`;
+              if (explanation) replyHtml += `<div style="color:#94a3b8;margin-bottom:6px;">${explanation}</div>`;
+              replyHtml += `<pre style="background:#1e293b;padding:8px;border-radius:4px;overflow-x:auto;font-family:monospace;font-size:0.72rem;color:#e2e8f0;white-space:pre-wrap;margin-bottom:6px;">${sql.replace(/</g,'&lt;')}</pre>`;
+              replyHtml += `<a href="/query.html" target="_blank" style="color:#38bdf8;text-decoration:none;font-weight:600;font-size:0.78rem;">🔍 Run on Query Page</a>`;
+              replyHtml += `</div>`;
             }
-            replyHtml += `</div>`;
           }
         }
 

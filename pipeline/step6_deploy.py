@@ -27,9 +27,10 @@ AWS_PROFILE = os.environ.get("AWS_PROFILE", "personal")
 CACHE_RULES = {
     ".html": "public, max-age=300, stale-while-revalidate=86400",  # 5 min + stale ok for 24h
     ".json": "public, max-age=3600",  # 1 hour
-    ".js": "public, max-age=604800",  # 1 week
+    ".js": "public, max-age=300, stale-while-revalidate=86400",  # 5 min + stale ok for 24h
     ".ico": "public, max-age=604800",
     ".png": "public, max-age=604800",
+    ".jpeg": "public, max-age=604800",
 }
 
 CONTENT_TYPES = {
@@ -38,6 +39,7 @@ CONTENT_TYPES = {
     ".js": "application/javascript",
     ".ico": "image/x-icon",
     ".png": "image/png",
+    ".jpeg": "image/jpeg",
 }
 
 
@@ -104,9 +106,25 @@ def step6_deploy(state: PipelineState) -> PipelineState:
             except Exception as e:
                 errors.append(f"Compress/upload failed: {key}: {e}")
 
+    # Step 2b: Upload Parquet data files (for SQL query page)
+    exports_dir = site_dir / "data" / "exports"
+    if exports_dir.is_dir():
+        print("  Uploading Parquet exports...")
+        for f in sorted(exports_dir.glob("*.parquet")):
+            key = f"data/exports/{f.name}"
+            result = subprocess.run(
+                ["aws", "s3", "cp", str(f), f"{S3_URI}{key}",
+                 "--profile", AWS_PROFILE,
+                 "--cache-control", "public, max-age=3600",
+                 "--content-type", "application/octet-stream"],
+                capture_output=True, text=True,
+            )
+            if result.returncode == 0:
+                uploaded += 1
+
     # Step 3: Upload static assets
     print("  Uploading static assets...")
-    for ext in [".ico", ".png", ".js"]:
+    for ext in [".ico", ".png", ".js", ".jpeg"]:
         for f in site_dir.glob(f"*{ext}"):
             key = f.name
             cache = CACHE_RULES.get(ext, "public, max-age=604800")

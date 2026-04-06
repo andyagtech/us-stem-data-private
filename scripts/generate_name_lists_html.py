@@ -401,6 +401,7 @@ def build_html(all_data, mode='stem'):
   <div class="sidebar-group" id="sg-reference">
     <div class="sidebar-section" onclick="toggleSidebarGroup('sg-reference')"><span class="chevron">\u25BC</span> Reference</div>
     <div class="sidebar-group-content">
+      <a href="query.html" class="nav-item nav-page">Data Query (SQL)</a>
       <a href="data_sources.html" class="nav-item nav-page">Data Sources &amp; Methodology</a>
       <a href="data_catalog.json" class="nav-item nav-page">Data Catalog (JSON)</a>
       <a href="llms.txt" class="nav-item nav-page">WebMCP Integration</a>
@@ -461,6 +462,17 @@ def build_html(all_data, mode='stem'):
         <p class="nat-desc">F-1 (student), H-1B (specialty worker), J-1 (exchange visitor), and O-1 (extraordinary ability) visa stamps issued annually at US consulates.</p>
         <canvas id="nat-visa-chart"></canvas>
         <p class="source">Source: <a href="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-statistics.html" target="_blank">US State Department Visa Statistics</a></p>
+      </div>
+      <div class="nat-chart-box">
+        <h3>Cumulative Visa Calculator</h3>
+        <p class="nat-desc">Total visa issuances between two years. Select a range to see cumulative counts.</p>
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap;">
+          <select id="cum-start" style="background:var(--surface2);border:1px solid var(--surface2);color:var(--text);padding:4px 8px;border-radius:4px;font-size:0.82rem;"></select>
+          <span style="color:var(--text-muted);font-size:0.82rem;">to</span>
+          <select id="cum-end" style="background:var(--surface2);border:1px solid var(--surface2);color:var(--text);padding:4px 8px;border-radius:4px;font-size:0.82rem;"></select>
+        </div>
+        <div id="cum-results" style="font-size:0.82rem;line-height:1.8;"></div>
+        <p class="source">Source: US State Department visa issuances at consulates abroad</p>
       </div>
       <div class="nat-chart-box">
         <h3>NRA Enrollment by STEM Field</h3>
@@ -835,6 +847,44 @@ function initNationalCharts() {{
       }}
     }}
   }}));
+
+  // Cumulative visa calculator
+  const cumData = {{
+    'F-1 (Student)': {{2007:298393,2008:340711,2009:331208,2010:385210,2011:447410,2012:486900,2013:534320,2014:595569,2015:644233,2016:471728,2017:393573,2018:362929,2019:388839,2020:111387,2021:357839,2022:411131,2023:445418,2024:400737}},
+    'H-1B (Worker)': {{2007:154726,2008:129464,2009:110367,2010:117409,2011:129134,2012:135530,2013:153223,2014:161369,2015:172748,2016:180057,2017:179049,2018:179049,2019:188123,2020:124398,2021:61569,2022:206002,2023:265777,2024:219659}},
+    'J-1 (Exchange)': {{2007:322514,2008:313279,2009:311970,2010:322330,2011:312063,2012:313544,2013:310329,2014:318844,2015:340532,2016:338477,2017:309015,2018:325070,2019:347560,2020:75479,2021:129662,2022:284486,2023:316693,2024:322820}},
+    'L-1 (Transfer)': {{2007:84532,2008:84078,2009:64696,2010:74719,2011:70728,2012:62430,2013:66700,2014:71513,2015:78537,2016:79306,2017:78178,2018:74388,2019:76988,2020:35228,2021:24863,2022:72958,2023:76671,2024:71799}},
+    'O-1 (Extraordinary)': {{2007:9014,2008:9635,2009:8696,2010:8589,2011:10590,2012:11932,2013:12789,2014:13865,2015:14337,2016:15918,2017:16497,2018:16818,2019:17751,2020:8838,2021:7294,2022:19102,2023:18994,2024:19457}},
+    'OPT (Work Auth)': {{2007:24836,2008:45304,2009:46116,2010:50992,2011:56300,2012:62427,2013:67502,2014:77369,2015:99016,2016:129811,2017:140152,2018:130512,2019:125215,2020:112930,2021:102985,2022:106791,2023:152361,2024:173939}},
+    'STEM OPT Extension': {{2007:2,2008:2128,2009:5869,2010:9356,2011:13504,2012:15937,2013:18782,2014:21456,2015:27493,2016:41782,2017:64481,2018:69650,2019:72116,2020:63906,2021:61543,2022:64844,2023:62036,2024:95384}},
+  }};
+  const cumYears = Array.from({{length: 18}}, (_, i) => 2007 + i);
+  const startSel = document.getElementById('cum-start');
+  const endSel = document.getElementById('cum-end');
+  cumYears.forEach(y => {{
+    startSel.innerHTML += `<option value="${{y}}" ${{y===2012?'selected':''}}>${{y}}</option>`;
+    endSel.innerHTML += `<option value="${{y}}" ${{y===2016?'selected':''}}>${{y}}</option>`;
+  }});
+  function updateCum() {{
+    const s = parseInt(startSel.value), e = parseInt(endSel.value);
+    if (s > e) {{ document.getElementById('cum-results').innerHTML = '<span style="color:var(--red);">Start year must be ≤ end year</span>'; return; }}
+    let html = '<table style="width:100%;border-collapse:collapse;">';
+    html += '<tr style="border-bottom:1px solid var(--surface2);"><th style="text-align:left;padding:3px 0;font-size:0.75rem;color:var(--text-muted);">Visa Type</th><th style="text-align:right;padding:3px 0;font-size:0.75rem;color:var(--text-muted);">Cumulative</th><th style="text-align:right;padding:3px 0;font-size:0.75rem;color:var(--text-muted);">Avg/Year</th></tr>';
+    let grandTotal = 0;
+    const span = e - s + 1;
+    for (const [label, data] of Object.entries(cumData)) {{
+      let total = 0;
+      for (let y = s; y <= e; y++) total += data[y] || 0;
+      grandTotal += total;
+      html += `<tr><td style="padding:3px 0;">${{label}}</td><td style="text-align:right;color:var(--accent);font-weight:600;">${{total.toLocaleString()}}</td><td style="text-align:right;color:var(--text-muted);">${{Math.round(total/span).toLocaleString()}}</td></tr>`;
+    }}
+    html += `<tr style="border-top:1px solid var(--surface2);font-weight:700;"><td style="padding:4px 0;">All Types</td><td style="text-align:right;color:var(--accent);">${{grandTotal.toLocaleString()}}</td><td style="text-align:right;color:var(--text-muted);">${{Math.round(grandTotal/span).toLocaleString()}}/yr</td></tr>`;
+    html += '</table>';
+    document.getElementById('cum-results').innerHTML = html;
+  }}
+  startSel.onchange = updateCum;
+  endSel.onchange = updateCum;
+  updateCum();
 }}
 
 function destroyNationalCharts() {{
@@ -1956,7 +2006,7 @@ const _origShowUni = showUni;
 <script>
 // Coach marks for first-time visitors
 (function() {{
-  if (localStorage.getItem('coach_done_v2') || location.hash.length > 1) return;
+  if (localStorage.getItem('coach_done_v3') || location.hash.length > 1) return;
 
   let step = 0;
   const overlay = document.createElement('div');
@@ -1993,7 +2043,7 @@ const _origShowUni = showUni;
     step = 1;
     const firstNav = document.querySelector('.nav-item');
     if (!firstNav) return cleanup();
-    tooltip.innerHTML = '<div class="coach-arrow left"></div><div class="coach-step">Step 1 of 3</div><div class="coach-text">Click a university to see its thesis and dissertation records.</div><button class="coach-dismiss" onclick="window._coachNext()">Got it</button>';
+    tooltip.innerHTML = '<div class="coach-arrow left"></div><div class="coach-step">Step 1 of 4</div><div class="coach-text"><strong>Sidebar navigation:</strong> Browse by university, or explore national charts, international comparisons, and pipeline analysis in the collapsible sections above.</div><button class="coach-dismiss" onclick="window._coachNext()">Got it</button>';
     document.body.appendChild(overlay);
     document.body.appendChild(highlight);
     document.body.appendChild(tooltip);
@@ -2007,7 +2057,7 @@ const _origShowUni = showUni;
       const dept = document.querySelector('.dept-header');
       if (dept) {{
         clearInterval(waitForDept);
-        tooltip.innerHTML = '<div class="coach-arrow top"></div><div class="coach-step">Step 2 of 3</div><div class="coach-text">Expand a field to see individual names, years, and links to the original thesis.</div><button class="coach-dismiss" onclick="window._coachNext()">Next</button>';
+        tooltip.innerHTML = '<div class="coach-arrow top"></div><div class="coach-step">Step 2 of 4</div><div class="coach-text">Expand a department to see individual names, years, and links to the original thesis or dissertation.</div><button class="coach-dismiss" onclick="window._coachNext()">Next</button>';
         positionAt(dept, 'bottom');
       }}
     }}, 200);
@@ -2022,28 +2072,38 @@ const _origShowUni = showUni;
       const shareEl = document.querySelector('.dept-header .share-anchor');
       if (shareEl) {{
         clearInterval(waitForShare);
-        tooltip.innerHTML = '<div class="coach-arrow right"></div><div class="coach-step">Step 3 of 3</div><div class="coach-text">Click the \U0001F517 icon on any department, year, or panel to copy a direct link. Share it with anyone — they\'ll land right here.</div><button class="coach-dismiss" onclick="window._coachNext()">Done</button>';
+        tooltip.innerHTML = '<div class="coach-arrow right"></div><div class="coach-step">Step 3 of 4</div><div class="coach-text">Click the \U0001F517 icon on any department, year, or panel to copy a shareable link.</div><button class="coach-dismiss" onclick="window._coachNext()">Next</button>';
         positionAt(shareEl, 'left');
       }}
     }}, 200);
     setTimeout(() => clearInterval(waitForShare), 5000);
   }}
 
+  function showStep4() {{
+    step = 4;
+    const toggleBar = document.querySelector('.toggle-bar') || document.querySelector('.toggle-wrap');
+    if (!toggleBar) return cleanup();
+    tooltip.innerHTML = '<div class="coach-arrow top"></div><div class="coach-step">Step 4 of 4</div><div class="coach-text"><strong>Toggle panels:</strong> Enable R&D Funding, Enrollment, and H-1B & OPT to see financial and immigration data for each university. The blue dots in the sidebar show which universities have OPT data.</div><button class="coach-dismiss" onclick="window._coachNext()">Done</button>';
+    positionAt(toggleBar, 'bottom');
+  }}
+
   function cleanup() {{
     overlay.remove();
     highlight.remove();
     tooltip.remove();
-    localStorage.setItem('coach_done_v2', '1');
+    localStorage.setItem('coach_done_v3', '1');
   }}
 
   window._coachNext = function() {{
     if (step === 1) {{
       // Click the first university to demo
-      const firstNav = document.querySelector('.nav-item');
+      const firstNav = document.querySelector('.nav-item[data-key]');
       if (firstNav) firstNav.click();
       showStep2();
     }} else if (step === 2) {{
       showStep3();
+    }} else if (step === 3) {{
+      showStep4();
     }} else {{
       cleanup();
     }}
@@ -2152,6 +2212,7 @@ const _origShowUni = showUni;
 
 }})();
 </script>
+<script src="/chat-widget.js"></script>
 </body>
 </html>"""
 

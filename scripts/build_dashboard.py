@@ -41,7 +41,7 @@ log = logging.getLogger("build_dashboard")
 # Demographic column mapping across IPEDS eras
 # ---------------------------------------------------------------------------
 
-# 1995-2009 CRACE codes → canonical names
+# 1995-2007 CRACE codes → canonical names
 CRACE_MAP = {
     "CRACE15": "Total_Men",
     "CRACE16": "Total_Women",
@@ -61,7 +61,7 @@ CRACE_MAP = {
     "CRACE14": "Unknown_Women",
 }
 
-# 2010+ named columns → canonical names
+# 2008+ named columns → canonical names (IPEDS switched format in 2008)
 MODERN_MAP = {
     "CTOTALM": "Total_Men",
     "CTOTALW": "Total_Women",
@@ -120,7 +120,9 @@ def _extract_demographics(df: pd.DataFrame, year: int) -> pd.DataFrame:
 
     result = df[["UNITID", "CIPCODE", "AWLEVEL"]].copy()
 
-    if year >= 2010:
+    # 2008+ files use modern named columns (CNRALM, CTOTALM, etc.)
+    # even though 2008-2009 are AWLEVEL transition years
+    if year >= 2008:
         for raw_col, canon in MODERN_MAP.items():
             if raw_col in cols:
                 result[canon] = pd.to_numeric(df[raw_col], errors="coerce").fillna(0).clip(lower=0).astype(int)
@@ -836,6 +838,7 @@ new Chart(document.getElementById('chartStates'), {
   }
 });
 </script>
+<script src="/sidebar.js"></script>
 </body>
 </html>"""
 
