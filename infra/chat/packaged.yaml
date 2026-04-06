@@ -1,0 +1,134 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: "PhD Demographics AI Chat Assistant \u2014 Secure Lambda + DynamoDB rate\
+  \ limiting"
+Parameters:
+  Environment:
+    Type: String
+    Default: prod
+    AllowedValues:
+    - dev
+    - prod
+  AllowedOrigin:
+    Type: String
+    Default: https://phd-demographics.andy-barr.com
+    Description: "CORS origin \u2014 only this domain can call the API"
+  ChatProvider:
+    Type: String
+    Default: openai
+    AllowedValues:
+    - bedrock
+    - openai
+    - openrouter
+    Description: AI provider (bedrock=IAM auth, openai/openrouter=SSM API key)
+  ChatModel:
+    Type: String
+    Default: gpt-4o
+    Description: Model ID (provider-specific)
+Globals:
+  Function:
+    Runtime: python3.12
+    Timeout: 30
+    MemorySize: 256
+    Environment:
+      Variables:
+        RATE_LIMIT_TABLE:
+          Ref: RateLimitTable
+        ALLOWED_ORIGIN:
+          Ref: AllowedOrigin
+        CHAT_PROVIDER:
+          Ref: ChatProvider
+        CHAT_MODEL:
+          Ref: ChatModel
+        OPENAI_API_KEY_SSM: /cms-pipeline/openai-api-key
+        OPENROUTER_API_KEY_SSM: /phd-demographics/openrouter-api-key
+Resources:
+  RateLimitTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName:
+        Fn::Sub: phd-demographics-chat-ratelimit-${Environment}
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+      - AttributeName: pk
+        AttributeType: S
+      KeySchema:
+      - AttributeName: pk
+        KeyType: HASH
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: true
+    Metadata:
+      SamResourceId: RateLimitTable
+  ChatFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName:
+        Fn::Sub: phd-demographics-chat-${Environment}
+      Handler: cloud.chat.handler.handler
+      CodeUri: s3://aws-sam-cli-managed-default-samclisourcebucket-9yjglh5suvrj/phd-demographics-chat/e241e7d9343b57ed7f62f79113b88d3e
+      Policies:
+      - Statement:
+        - Effect: Allow
+          Action:
+          - bedrock:InvokeModel
+          - bedrock:InvokeModelWithResponseStream
+          Resource: '*'
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: RateLimitTable
+      - Statement:
+        - Effect: Allow
+          Action:
+          - ssm:GetParameter
+          Resource:
+          - Fn::Sub: arn:aws:ssm:us-east-1:${AWS::AccountId}:parameter/phd-demographics/*
+          - Fn::Sub: arn:aws:ssm:us-east-1:${AWS::AccountId}:parameter/cms-pipeline/*
+    Metadata:
+      SamResourceId: ChatFunction
+  ChatFunctionUrl:
+    Type: AWS::Lambda::Url
+    Properties:
+      TargetFunctionArn:
+        Ref: ChatFunction
+      AuthType: NONE
+      Cors:
+        AllowCredentials: false
+        AllowHeaders:
+        - content-type
+        AllowMethods:
+        - POST
+        - OPTIONS
+        AllowOrigins:
+        - Ref: AllowedOrigin
+    Metadata:
+      SamResourceId: ChatFunctionUrl
+  ChatFunctionUrlPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName:
+        Ref: ChatFunction
+      Action: lambda:InvokeFunctionUrl
+      Principal: '*'
+      FunctionUrlAuthType: NONE
+    Metadata:
+      SamResourceId: ChatFunctionUrlPermission
+Outputs:
+  ChatEndpoint:
+    Description: Chat API endpoint URL (put this in site/chat-widget.js)
+    Value:
+      Fn::GetAtt:
+      - ChatFunctionUrl
+      - FunctionUrl
+  RateLimitTableName:
+    Description: DynamoDB rate limit table
+    Value:
+      Ref: RateLimitTable
+  Provider:
+    Description: Active AI provider
+    Value:
+      Ref: ChatProvider
+  Model:
+    Description: Active AI model
+    Value:
+      Ref: ChatModel
