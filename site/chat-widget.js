@@ -159,11 +159,14 @@
               const href = sectionId ? `${page}#${sectionId}` : page;
               const isSamePage = (currentPage === page);
 
-              replyHtml += `<div style="margin-top:8px;padding:8px 10px;background:#0f172a;border:1px solid #334155;border-radius:6px;font-size:0.78rem;">`;
+              replyHtml += `<div style="margin-top:8px;padding:8px 10px;background:#0f172a;border:1px solid #334155;border-radius:6px;font-size:0.78rem;display:flex;gap:8px;align-items:center;">`;
               if (isSamePage && sectionId) {
-                replyHtml += `<a href="javascript:void(0)" onclick="document.getElementById('${sectionId}')?.scrollIntoView({behavior:'smooth',block:'start'});document.getElementById('chat-panel').classList.remove('open');" style="color:#38bdf8;text-decoration:none;font-weight:600;">📊 ${label}</a>`;
+                // Same page — smooth scroll, keep history
+                replyHtml += `<a href="#${sectionId}" onclick="event.preventDefault();var el=document.getElementById('${sectionId}');if(el){el.scrollIntoView({behavior:'smooth',block:'start'});history.pushState(null,'','#${sectionId}');}" style="color:#38bdf8;text-decoration:none;font-weight:600;flex:1;">📊 ${label}</a>`;
               } else {
-                replyHtml += `<a href="/${href}" target="_blank" style="color:#38bdf8;text-decoration:none;font-weight:600;">📊 ${label}</a>`;
+                // Different page — navigate (same tab for better back-button support)
+                replyHtml += `<a href="/${href}" style="color:#38bdf8;text-decoration:none;font-weight:600;flex:1;">📊 ${label}</a>`;
+                replyHtml += `<a href="/${href}" target="_blank" style="color:#64748b;font-size:0.7rem;text-decoration:none;" title="Open in new tab">↗</a>`;
               }
               replyHtml += `</div>`;
 
@@ -183,6 +186,29 @@
         history.push({ role: 'user', content: msg });
         history.push({ role: 'assistant', content: reply });
         if (history.length > 40) history = history.slice(-20);
+
+        // Auto-navigate when there's a clear navigation action
+        const navActions = (data.actions || []).filter(a => a.type === 'navigate');
+        if (navActions.length === 1) {
+          const nav = navActions[0];
+          const page = nav.page || '';
+          const sectionId = nav.section_id || '';
+          const currentPage = location.pathname.split('/').pop() || '';
+          const isSamePage = (currentPage === page);
+
+          setTimeout(() => {
+            if (isSamePage && sectionId) {
+              const el = document.getElementById(sectionId) || document.getElementById(sectionId + '-section');
+              if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                history.pushState(null, '', '#' + sectionId);
+              }
+            } else {
+              const href = sectionId ? `/${page}#${sectionId}` : `/${page}`;
+              window.location.href = href;
+            }
+          }, 800); // brief delay so user sees the reply first
+        }
       }
     } catch (e) {
       typing.remove();

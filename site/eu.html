@@ -30,6 +30,9 @@
   .chart-box .source a { color: var(--accent); text-decoration: none; }
   .chart-box canvas { max-height: 280px; }
   .chart-box.wide { grid-column: 1 / -1; }
+  .chart-box:target { border-color: #38bdf8; box-shadow: 0 0 0 2px rgba(56,189,248,0.3); }
+  .share-btn { font-size: 0.7rem; text-decoration: none; opacity: 0.3; transition: opacity 0.15s; margin-left: 6px; }
+  .share-btn:hover { opacity: 1; }
   .table-wrap { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; margin-bottom: 14px; overflow-x: auto; }
   .table-wrap h3 { font-size: 0.9rem; margin-bottom: 8px; }
   .table-wrap table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
@@ -55,32 +58,32 @@
   </div>
 
   <div class="charts">
-    <div class="chart-box wide">
-      <h3>International Students in Germany</h3>
+    <div class="chart-box wide" id="germany-total-chart-section">
+      <h3>International Students in Germany <a href="#germany-total-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#germany-total-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
       <p class="desc">Total foreign students (Bildungsauslaender + Bildungsinlaender) grew from 301K (2013/14) to 469K (2023/24). 43% study Engineering.</p>
       <canvas id="germany-total-chart"></canvas>
       <p class="source">Source: Destatis via DAAD Wissenschaft weltoffen</p>
     </div>
 
-    <div class="chart-box">
-      <h3>India vs China in Germany</h3>
+    <div class="chart-box" id="india-china-chart-section">
+      <h3>India vs China in Germany <a href="#india-china-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#india-china-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
       <p class="desc">India surpassed China in 2022/23 and is accelerating. India grew +262% since 2016 while China peaked and declined.</p>
       <canvas id="india-china-chart"></canvas>
     </div>
 
-    <div class="chart-box">
-      <h3>Top Countries in Germany (2023/24)</h3>
+    <div class="chart-box" id="top-countries-chart-section">
+      <h3>Top Countries in Germany (2023/24) <a href="#top-countries-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#top-countries-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
       <canvas id="top-countries-chart"></canvas>
     </div>
 
-    <div class="chart-box">
-      <h3>EU Destination Countries (2023)</h3>
+    <div class="chart-box" id="eu-destinations-chart-section">
+      <h3>EU Destination Countries (2023) <a href="#eu-destinations-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#eu-destinations-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
       <p class="desc">Germany hosts 24% of the EU's 1.76M international students, followed by France (16%) and Netherlands (10%).</p>
       <canvas id="eu-destinations-chart"></canvas>
     </div>
 
-    <div class="chart-box">
-      <h3>EU Students in the US (SEVIS Mar 2026)</h3>
+    <div class="chart-box" id="eu-in-us-chart-section">
+      <h3>EU Students in the US (SEVIS Mar 2026) <a href="#eu-in-us-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#eu-in-us-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
       <p class="desc">European students studying in the US. UK leads with 12,856 active SEVIS records.</p>
       <canvas id="eu-in-us-chart"></canvas>
     </div>

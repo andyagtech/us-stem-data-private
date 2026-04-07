@@ -32,6 +32,9 @@
 
   .uni-card { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; }
   .uni-card.no-data { opacity: 0.5; }
+  .share-btn { font-size: 0.7rem; text-decoration: none; opacity: 0.3; transition: opacity 0.15s; vertical-align: middle; }
+  .share-btn:hover { opacity: 1; }
+  .uni-card:target { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(56,189,248,0.3); }
   .uni-card h2 { font-size: 1rem; margin-bottom: 2px; }
   .uni-card h2 a { color: var(--text); text-decoration: none; }
   .uni-card h2 a:hover { color: var(--accent); }
@@ -197,9 +200,10 @@ function render() {
 
     const card = document.createElement('div');
     card.className = 'uni-card' + (hasData ? '' : ' no-data');
+    card.id = key;
 
-    // Header
-    let html = `<h2><a href="/stem.html#${key}?h1b=1" target="_blank">${name}</a></h2>`;
+    // Header with share button
+    let html = `<h2><a href="/stem.html#${key}?h1b=1" target="_blank">${name}</a> <a href="#${key}" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+'/immigration.html#${key}');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h2>`;
 
     // System note
     if (d.h1b_system_note) {
@@ -314,6 +318,14 @@ function render() {
   }
 
   document.getElementById('stats-bar').textContent = `Showing ${shown} of ${UNIVERSITIES.length} universities`;
+
+  // Scroll to hash anchor after render
+  if (location.hash) {
+    const target = document.getElementById(location.hash.slice(1));
+    if (target) {
+      setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+    }
+  }
 }
 
 let debounce;

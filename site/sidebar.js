@@ -1,46 +1,69 @@
 // Shared sidebar + footer for all pages
 (function() {
-  const currentPage = location.pathname.split('/').pop() || 'stem.html';
+  const currentPath = location.pathname;
+  const currentPage = currentPath.split('/').pop() || 'stem.html';
+  // Detect if we're on a university page like /universities/mit.html
+  const uniMatch = currentPath.match(/\/universities\/([a-z0-9_]+)\.html/);
+  const currentUniKey = uniMatch ? uniMatch[1] : null;
 
   const sections = [
     { title: 'National', items: [
-      { href: 'stem.html', label: 'National Charts' },
-      { href: 'ipeds_dashboard.html', label: 'IPEDS PhD Dashboard' },
-      { href: 'immigration.html', label: 'Immigration Pipeline' },
-      { href: 'pipeline.html', label: 'Pipeline Analysis' },
-    ]},
-    { title: 'Universities', items: [
-      { href: 'stem.html', label: 'STEM (101 Universities)' },
-      { href: 'non_stem.html', label: 'Non-STEM' },
+      { href: '/stem.html', label: 'National Charts' },
+      { href: '/ipeds_dashboard.html', label: 'IPEDS PhD Dashboard' },
+      { href: '/immigration.html', label: 'Immigration Pipeline' },
+      { href: '/pipeline.html', label: 'Pipeline Analysis' },
     ]},
     { title: 'International', items: [
-      { href: 'india.html', label: 'India (Outbound)' },
-      { href: 'china.html', label: 'China (Outbound)' },
-      { href: 'canada.html', label: 'Canada' },
-      { href: 'uk.html', label: 'United Kingdom' },
-      { href: 'eu.html', label: 'EU & Germany' },
-      { href: 'mexico.html', label: 'Mexico' },
-      { href: 'vwp.html', label: 'Visa Waiver Program' },
+      { href: '/india.html', label: 'India (Outbound)' },
+      { href: '/china.html', label: 'China (Outbound)' },
+      { href: '/canada.html', label: 'Canada' },
+      { href: '/uk.html', label: 'United Kingdom' },
+      { href: '/eu.html', label: 'EU & Germany' },
+      { href: '/mexico.html', label: 'Mexico' },
+      { href: '/vwp.html', label: 'Visa Waiver Program' },
     ]},
     { title: 'Reference', items: [
-      { href: 'query.html', label: 'Data Query (SQL)' },
-      { href: 'data_sources.html', label: 'Data Sources & Methodology' },
-      { href: 'data_catalog.json', label: 'Data Catalog (JSON)' },
-      { href: 'llms.txt', label: 'WebMCP Integration' },
+      { href: '/query.html', label: 'Data Query (SQL)' },
+      { href: '/data_sources.html', label: 'Data Sources & Methodology' },
+      { href: '/data_catalog.json', label: 'Data Catalog (JSON)' },
+      { href: '/llms.txt', label: 'WebMCP Integration' },
     ]},
   ];
 
+  let universities = [];
+
   function buildGroups() {
-    return sections.map(s => {
+    const groupHtml = sections.map(s => {
       const items = s.items.map(p => {
-        const active = currentPage === p.href ? ' active' : '';
+        const itemPath = p.href.replace(/^\//, '');
+        const active = currentPage === itemPath ? ' active' : '';
         return `<a href="${p.href}" class="sb-item${active}">${p.label}</a>`;
       }).join('');
       return `<div class="sb-group">
         <div class="sb-section" onclick="this.parentElement.classList.toggle('collapsed')"><span class="sb-chev">\u25BC</span> ${s.title}</div>
         <div class="sb-content">${items}</div>
       </div>`;
+    });
+
+    // Insert Universities group between National and International
+    // Use stem.html#key so the full SPA (with toggles/panels) handles each university
+    const uniItems = universities.map(u => {
+      const active = currentUniKey === u.key ? ' active' : '';
+      const dot = u.has_opt ? '<span class="opt-dot"></span>' : '';
+      return `<a href="/stem.html#${u.key}" class="sb-item sb-uni${active}" data-key="${u.key}"><span>${u.name}</span><span class="sb-uni-meta"><span class="sb-uni-nra">${u.nra}%</span>${dot}</span></a>`;
     }).join('');
+    const uniGroup = `<div class="sb-group">
+        <div class="sb-section" onclick="this.parentElement.classList.toggle('collapsed')"><span class="sb-chev">\u25BC</span> Universities (${universities.length})</div>
+        <div class="sb-content">${uniItems}</div>
+      </div>`;
+
+    // National (0), Universities (1), International (2 → was 1), Reference (3 → was 2)
+    return [groupHtml[0], uniGroup, groupHtml[1], groupHtml[2]].join('');
+  }
+
+  function rerender() {
+    const body = document.querySelector('#shared-sidebar .sb-body');
+    if (body) body.innerHTML = buildGroups();
   }
 
   const html = `
@@ -69,6 +92,11 @@
     .sb-item { display: block; padding: 5px 16px; color: #94a3b8; text-decoration: none; font-size: 0.8rem; border-left: 3px solid transparent; transition: all 0.1s; }
     .sb-item:hover { background: #334155; color: #e2e8f0; }
     .sb-item.active { border-left-color: #38bdf8; color: #38bdf8; background: rgba(56,189,248,0.08); }
+    .sb-uni { display: flex; justify-content: space-between; align-items: baseline; }
+    .sb-uni-meta { display: flex; align-items: center; gap: 4px; }
+    .sb-uni-nra { font-size: 0.7rem; color: #64748b; }
+    .opt-dot { display: none; width: 7px; height: 7px; border-radius: 50%; background: #38bdf8; vertical-align: middle; }
+    .h1b-active .opt-dot { display: inline-block; }
     .sb-footer-links { border-top: 1px solid #334155; padding: 6px 0; }
     .has-sidebar .page { margin-left: 220px; }
     .site-footer { text-align: center; padding: 24px 16px; font-size: 0.72rem; color: #64748b; border-top: 1px solid #334155; margin-top: 24px; }
@@ -112,6 +140,20 @@
   // Remove back-link since sidebar provides navigation
   const backLink = document.querySelector('.back-link');
   if (backLink) backLink.style.display = 'none';
+
+  // Load universities list and rerender sidebar with all 101 unis
+  fetch('/data/universities_index.json')
+    .then(r => r.json())
+    .then(data => {
+      universities = data.universities || [];
+      rerender();
+      // Auto-scroll active university into view
+      if (currentUniKey) {
+        const active = document.querySelector(`#shared-sidebar .sb-uni.active`);
+        if (active) active.scrollIntoView({ block: 'center' });
+      }
+    })
+    .catch(() => {/* fail silently — sidebar still has other groups */});
 
   // Load chat widget
   const chatScript = document.createElement('script');

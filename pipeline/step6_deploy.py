@@ -80,6 +80,47 @@ def step6_deploy(state: PipelineState) -> PipelineState:
         if result.returncode == 0:
             uploaded += 1
 
+    # Step 1b: Upload pre-rendered university pages (gzipped for bandwidth)
+    universities_dir = site_dir / "universities"
+    if universities_dir.is_dir():
+        print("  Pre-compressing and uploading university pages...")
+        for mode_dir in [universities_dir, universities_dir / "nonstem"]:
+            if not mode_dir.is_dir():
+                continue
+            rel_prefix = "universities/" if mode_dir == universities_dir else "universities/nonstem/"
+            for f in sorted(mode_dir.glob("*.html")):
+                key = f"{rel_prefix}{f.name}"
+                try:
+                    gz_path = _gzip_file(f)
+                    result = subprocess.run(
+                        ["aws", "s3", "cp", str(gz_path), f"{S3_URI}{key}",
+                         "--profile", AWS_PROFILE,
+                         "--cache-control", CACHE_RULES.get(".html", "public, max-age=300"),
+                         "--content-type", "text/html; charset=utf-8",
+                         "--content-encoding", "gzip"],
+                        capture_output=True, text=True,
+                    )
+                    gz_path.unlink()
+                    if result.returncode == 0:
+                        uploaded += 1
+                    else:
+                        errors.append(f"Upload failed: {key}")
+                except Exception as e:
+                    errors.append(f"Compress/upload failed: {key}: {e}")
+
+    # Step 1c: Upload sitemap.xml
+    sitemap_path = site_dir / "sitemap.xml"
+    if sitemap_path.exists():
+        result = subprocess.run(
+            ["aws", "s3", "cp", str(sitemap_path), f"{S3_URI}sitemap.xml",
+             "--profile", AWS_PROFILE,
+             "--cache-control", "public, max-age=3600",
+             "--content-type", "application/xml"],
+            capture_output=True, text=True,
+        )
+        if result.returncode == 0:
+            uploaded += 1
+
     # Step 2: Upload JSON data files (pre-compressed with gzip)
     print("  Pre-compressing and uploading JSON data...")
     for mode in ["stem", "nonstem"]:

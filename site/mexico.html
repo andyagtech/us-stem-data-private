@@ -30,6 +30,9 @@
   .chart-box .source a { color: var(--accent); text-decoration: none; }
   .chart-box canvas { max-height: 280px; }
   .chart-box.wide { grid-column: 1 / -1; }
+  .chart-box:target { border-color: #38bdf8; box-shadow: 0 0 0 2px rgba(56,189,248,0.3); }
+  .share-btn { font-size: 0.7rem; text-decoration: none; opacity: 0.3; transition: opacity 0.15s; margin-left: 6px; }
+  .share-btn:hover { opacity: 1; }
   .info-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; margin-bottom: 14px; font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
   .info-box strong { color: var(--text); }
   @media (max-width: 700px) { .charts { grid-template-columns: 1fr; } .page { padding: 16px; } }
@@ -50,28 +53,28 @@
   </div>
 
   <div class="charts">
-    <div class="chart-box">
-      <h3>Mexican Students in the US</h3>
+    <div class="chart-box" id="us-trend-chart-section">
+      <h3>Mexican Students in the US <a href="#us-trend-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#us-trend-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
       <p class="desc">Peaked at 17K in 2014/15, declined through pandemic, recovering to 15.5K. Mexico ranks 11th among source countries.</p>
       <canvas id="us-trend-chart"></canvas>
       <p class="source">Source: IIE Open Doors (partial series)</p>
     </div>
 
-    <div class="chart-box">
-      <h3>Mexican Students Abroad — All Destinations</h3>
+    <div class="chart-box" id="destinations-chart-section">
+      <h3>Mexican Students Abroad — All Destinations <a href="#destinations-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#destinations-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
       <p class="desc">36,922 Mexicans studying abroad (UNESCO 2022). US and Canada dominate, but Spain and Germany are significant.</p>
       <canvas id="destinations-chart"></canvas>
       <p class="source">Source: UNESCO UIS 2022</p>
     </div>
 
-    <div class="chart-box">
-      <h3>Study Level in the US (SEVIS Mar 2026)</h3>
+    <div class="chart-box" id="level-chart-section">
+      <h3>Study Level in the US (SEVIS Mar 2026) <a href="#level-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#level-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
       <p class="desc">Bachelor's is the largest category (7,034), followed by Master's (3,361) and Doctorate (1,841).</p>
       <canvas id="level-chart"></canvas>
     </div>
 
-    <div class="chart-box">
-      <h3>Top US States (SEVIS Mar 2026)</h3>
+    <div class="chart-box" id="states-chart-section">
+      <h3>Top US States (SEVIS Mar 2026) <a href="#states-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#states-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
       <p class="desc">Nearly half of Mexican students in the US are in border states Texas and California.</p>
       <canvas id="states-chart"></canvas>
     </div>

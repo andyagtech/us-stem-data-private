@@ -31,6 +31,9 @@
   .chart-box .source a { color: var(--accent); text-decoration: none; }
   .chart-box canvas { max-height: 280px; }
   .chart-box.wide { grid-column: 1 / -1; }
+  .chart-box:target { border-color: #38bdf8; box-shadow: 0 0 0 2px rgba(56,189,248,0.3); }
+  .share-btn { font-size: 0.7rem; text-decoration: none; opacity: 0.3; transition: opacity 0.15s; margin-left: 6px; }
+  .share-btn:hover { opacity: 1; }
   .info-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; margin-bottom: 14px; font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
   .info-box strong { color: var(--text); }
   .table-wrap { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; margin-bottom: 14px; overflow-x: auto; }
@@ -61,32 +64,32 @@
   <!-- STEM / Higher Ed Pipeline -->
   <h2>STEM &amp; Higher Education Pipeline</h2>
   <div class="charts">
-    <div class="chart-box wide">
-      <h3>Indian Students in US vs Canada</h3>
+    <div class="chart-box wide" id="us-canada-chart-section">
+      <h3>Indian Students in US vs Canada <a href="#us-canada-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#us-canada-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
       <p class="desc">Canada surpassed the US as the top destination in 2022. Both are now declining — Canada under permit caps, US under policy uncertainty.</p>
       <canvas id="us-canada-chart"></canvas>
       <p class="source">Source: IIE Open Doors (US), IRCC year-end stock (Canada)</p>
     </div>
 
-    <div class="chart-box">
-      <h3>Top Destinations (Latest Available)</h3>
+    <div class="chart-box" id="destinations-chart-section">
+      <h3>Top Destinations (Latest Available) <a href="#destinations-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#destinations-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
       <canvas id="destinations-chart"></canvas>
     </div>
 
-    <div class="chart-box">
-      <h3>US Field of Study (2023/24)</h3>
+    <div class="chart-box" id="field-chart-section">
+      <h3>US Field of Study (2023/24) <a href="#field-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#field-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
       <p class="desc">91% of Indian students in the US are in STEM. Math/CS alone is 43%.</p>
       <canvas id="field-chart"></canvas>
     </div>
 
-    <div class="chart-box">
-      <h3>US Study Level (SEVIS Mar 2026)</h3>
+    <div class="chart-box" id="level-chart-section">
+      <h3>US Study Level (SEVIS Mar 2026) <a href="#level-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#level-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
       <p class="desc">Master's students dominate — 277K of 350K active records. Doctorate is only 29K.</p>
       <canvas id="level-chart"></canvas>
     </div>
 
-    <div class="chart-box">
-      <h3>Growth by Destination (2015 = 100)</h3>
+    <div class="chart-box" id="growth-chart-section">
+      <h3>Growth by Destination (2015 = 100) <a href="#growth-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#growth-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
       <p class="desc">Canada grew 8x from 2015 to 2023 before declining. UK doubled. Germany tripled.</p>
       <canvas id="growth-chart"></canvas>
     </div>
@@ -99,14 +102,14 @@
   </div>
 
   <div class="charts">
-    <div class="chart-box">
-      <h3>Medical Students by Destination</h3>
+    <div class="chart-box" id="medical-dest-chart-section">
+      <h3>Medical Students by Destination <a href="#medical-dest-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#medical-dest-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
       <p class="desc">Georgia and Kyrgyzstan are the largest destinations. China collapsed post-COVID. Ukraine lost ~18K students in 2022.</p>
       <canvas id="medical-dest-chart"></canvas>
     </div>
 
-    <div class="chart-box">
-      <h3>FMGE Pass Rate by Country (2024)</h3>
+    <div class="chart-box" id="fmge-chart-section">
+      <h3>FMGE Pass Rate by Country (2024) <a href="#fmge-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#fmge-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
       <p class="desc">Georgia has the highest pass rate at 36%. Kyrgyzstan and Ukraine are under 15%. Overall: 61,616 candidates, 10,269 passed.</p>
       <canvas id="fmge-chart"></canvas>
     </div>

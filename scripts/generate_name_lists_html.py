@@ -60,8 +60,8 @@ def build_html(all_data, mode='stem'):
         })
         nav_items.append(
             f'<a href="javascript:void(0)" class="nav-item" data-key="{uni_key}" onclick="showUni(\'{uni_key}\');">'
-            f'{uni_name} <span class="nav-nra">{nra}%</span>'
-            f'<span class="opt-dot"></span></a>'
+            f'<span>{uni_name}</span>'
+            f'<span><span class="nav-nra">{nra}%</span><span class="opt-dot"></span></span></a>'
         )
 
     data_json = json.dumps(index_unis, ensure_ascii=False, separators=(',', ':'))
@@ -124,7 +124,7 @@ def build_html(all_data, mode='stem'):
   a:focus-visible, button:focus-visible, select:focus-visible {{ outline: 2px solid var(--accent); outline-offset: 2px; }}
   .nav-item:focus-visible {{ outline: 2px solid var(--accent); outline-offset: -2px; }}
   .sidebar h3 {{ padding: 0 16px 12px; font-size: 0.85rem; color: var(--accent); }}
-  .nav-item {{ display: block; padding: 8px 16px; color: var(--text-muted); text-decoration: none; font-size: 0.85rem; border-left: 3px solid transparent; transition: all 0.1s; }}
+  .nav-item {{ display: flex; justify-content: space-between; align-items: baseline; padding: 8px 16px; color: var(--text-muted); text-decoration: none; font-size: 0.85rem; border-left: 3px solid transparent; transition: all 0.1s; }}
   .nav-item:hover {{ background: var(--surface2); color: var(--text); }}
   .nav-item.active {{ border-left-color: var(--accent); color: var(--accent); background: rgba(56,189,248,0.08); }}
   .nav-nra {{ font-size: 0.7rem; color: var(--text-muted); }}
@@ -416,7 +416,8 @@ def build_html(all_data, mode='stem'):
     <a href="{"stem.html" if is_nonstem else "non_stem.html"}" class="top-nav-btn">{"STEM View" if is_nonstem else "Non-STEM View"}</a>
     <a href="data_sources.html" class="top-nav-btn">Data Sources</a>
   </header>
-  <h1>{"Non-STEM " if is_nonstem else ""}Thesis &amp; Dissertation Lists — High <abbr title="Non-Resident Alien: a person who is not a citizen or national of the United States and who is in this country on a visa or temporary basis" style="text-decoration:underline dotted;cursor:help;">NRA</abbr> Universities</h1>
+  <h1>{"Non-STEM " if is_nonstem else ""}Thesis &amp; Dissertation Lists — High NRA Universities</h1>
+  <p class="subtitle" style="font-size:0.78rem;color:var(--text-muted);margin-top:-2px;">NRA = Non-Resident Alien. Universities ranked by NRA share of STEM doctoral completions (IPEDS).</p>
   <p class="subtitle">{"Non-STEM fields (Education, Humanities, Social Sciences, etc.). " if is_nonstem else ""}Every name links to the university's institutional repository for direct verification. {sum(u['count'] for u in index_unis):,} total records across {len(all_data_sorted)} schools.</p>
   <div style="background:rgba(251,191,36,0.12);border:1px solid rgba(251,191,36,0.3);border-radius:8px;padding:8px 14px;margin:10px 0 4px;font-size:0.82rem;color:#fbbf24;">Data scraping still in progress. Record counts may change as new data is collected.</div>
 
@@ -501,15 +502,16 @@ def build_html(all_data, mode='stem'):
           Each name links directly to the original record for verification.
         </p>
         <p style="margin-top:8px;">
-          <strong>IPEDS <abbr title="Non-Resident Alien: a person who is not a citizen or national of the United States and who is in this country on a visa or temporary basis" style="text-decoration:underline dotted;cursor:help;">NRA</abbr> %</strong>
-          refers to the percentage of STEM doctoral completions awarded to
-          <a href="https://nces.ed.gov/ipeds/report-your-data/race-ethnicity-reporting-changes" target="_blank">Non-Resident Aliens</a>
-          at each university, as reported in the
-          <a href="https://nces.ed.gov/ipeds/" target="_blank">Integrated Postsecondary Education Data System (IPEDS)</a>
-          maintained by the National Center for Education Statistics (NCES).
-          Completions data is from the
-          <a href="https://nces.ed.gov/ipeds/use-the-data/survey-components/9/completions" target="_blank">IPEDS Completions Survey</a>.
-          Universities are ranked by <abbr title="Non-Resident Alien" style="text-decoration:underline dotted;cursor:help;">NRA</abbr> share of STEM PhDs.
+          <strong>IPEDS NRA %</strong> — NRA stands for
+          <a href="https://nces.ed.gov/ipeds/report-your-data/race-ethnicity-reporting-changes" target="_blank">Non-Resident Alien</a>,
+          the IPEDS classification for students on temporary visas (F-1, J-1, etc.) who are not
+          US citizens or permanent residents. The percentage shown (e.g., Missouri S&amp;T 73.2%)
+          represents the <strong>share of STEM doctoral degrees completed</strong> by NRA students at that
+          university, as reported in the
+          <a href="https://nces.ed.gov/ipeds/use-the-data/survey-components/9/completions" target="_blank">IPEDS Completions Survey</a>
+          from the National Center for Education Statistics (NCES).
+          This is a <strong>graduation metric</strong> — it counts PhD degrees awarded, not enrollment.
+          Universities are ranked by this NRA share of STEM doctoral completions.
         </p>
         <p style="margin-top:8px;">
           <strong>Origin estimates</strong> are produced by a name-classification model and should be treated as approximate.
@@ -993,7 +995,7 @@ function renderUni(uni) {{
   const repoBase = getRepoBase(uni);
   const repoLink = repoBase ? ` &middot; <a href="${{repoBase}}" target="_blank" style="color:var(--accent);text-decoration:none;font-size:0.8rem;">Institutional Repository</a>` : '';
   const uniSlug = slug(uni.key || uni.name);
-  let html = `<h2 id="${{uniSlug}}">${{esc(uni.name)}} <span class="uni-nra">IPEDS <abbr title="Non-Resident Alien: a person who is not a citizen or national of the United States and who is in this country on a visa or temporary basis" style="text-decoration:underline dotted;cursor:help;">NRA</abbr>: ${{uni.nra}}%</span></h2>`;
+  let html = `<h2 id="${{uniSlug}}">${{esc(uni.name)}} <span class="uni-nra">IPEDS NRA: ${{uni.nra}}%</span></h2>`;
   html += `<div class="uni-stats">${{allTotal.toLocaleString()}} records across ${{depts.length}} departments &middot; ${{statsParts.join(' &middot; ')}}`;
   if (originParts.length > 0) html += `<span class="uni-origin-stats"> &middot; ${{originParts.join(' &middot; ')}}</span>`;
   html += `${{repoLink}}</div>`;
@@ -1030,6 +1032,14 @@ function renderUni(uni) {{
         if (yrCounts[o] > 0) {{ const [flag] = ORIGINS[o]; yrBadge.push(`${{flag}}${{yrCounts[o]}}`); }}
       }});
       const pctClass = yrPct >= 40 ? 'pct-high' : yrPct >= 20 ? 'pct-med' : '';
+
+      // Skip years where only MS records exist and no PhD/unlabeled (to avoid "0 dissertations" clutter)
+      if (phdRecs.length === 0 && msRecs.length > 0) {{
+        // Only MS records — render a compact year entry that's only visible when MS toggle is on
+        const msRows = buildNameRows(msRecs);
+        yearHtml += `<div class="year-block ms-group" id="${{uniSlug}}--${{yr}}"><div class="year-header" onclick="this.parentElement.classList.toggle('yr-collapsed')"><span class="year-toggle">\u25bc</span><span style="color:var(--accent);font-weight:700">${{yr}}</span>&nbsp;&nbsp;${{msRecs.length}} master's ${{msRecs.length !== 1 ? 'theses' : 'thesis'}}</div><div class="year-names">${{msRows}}</div></div>`;
+        return;
+      }}
 
       // Build year header label
       let headerLabel = `${{phdRecs.length}} dissertation${{phdRecs.length !== 1 ? 's' : ''}}`;
@@ -1094,6 +1104,7 @@ function renderUni(uni) {{
       if (deptLinks.home) deptLinkHtml += ` <a href="${{deptLinks.home}}" target="_blank" onclick="event.stopPropagation()" style="color:var(--accent);font-size:0.75rem;text-decoration:none;" title="Department homepage">Dept</a>`;
       if (deptLinks.faculty) deptLinkHtml += ` <a href="${{deptLinks.faculty}}" target="_blank" onclick="event.stopPropagation()" style="color:var(--accent);font-size:0.75rem;text-decoration:none;" title="Faculty directory">Faculty</a>`;
       if (deptLinks.students) deptLinkHtml += ` <a href="${{deptLinks.students}}" target="_blank" onclick="event.stopPropagation()" style="color:var(--accent);font-size:0.75rem;text-decoration:none;" title="PhD student directory">Students</a>`;
+      if (deptLinks.directory) deptLinkHtml += ` <a href="${{deptLinks.directory}}" target="_blank" onclick="event.stopPropagation()" style="color:var(--accent);font-size:0.75rem;text-decoration:none;" title="Graduate student directory">Directory</a>`;
       if (deptLinks.repo_search) deptLinkHtml += ` <a href="${{deptLinks.repo_search}}" target="_blank" onclick="event.stopPropagation()" style="color:var(--accent);font-size:0.75rem;text-decoration:none;" title="Search repository for this department">Repo</a>`;
     }}
 
