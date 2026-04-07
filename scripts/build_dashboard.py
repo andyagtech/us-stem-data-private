@@ -115,28 +115,57 @@ RACE_LABELS = {
 
 
 def _extract_demographics(df: pd.DataFrame, year: int) -> pd.DataFrame:
-    """Extract and normalize demographic columns from raw completions."""
+    """Extract and normalize demographic columns from raw completions.
+
+    IPEDS race category coding changed in 2010 (data year 2010-11). The
+    "modern" columns (CWHITT, CASIAT, CNRALT, ...) only exist from 2011+.
+    Files from 2008-2010 still use the legacy CRACE01-CRACE14 columns for
+    race breakdowns, even though they may already use CTOTALT for total.
+    To avoid silently dropping race breakdowns for 2008-2010, we apply
+    BOTH maps and let the legacy (CRACE) columns win for race fields,
+    while keeping modern CTOTALT/CTOTALM/CTOTALW for the totals.
+    """
     cols = set(df.columns)
 
     result = df[["UNITID", "CIPCODE", "AWLEVEL"]].copy()
 
-    # 2008+ files use modern named columns (CNRALM, CTOTALM, etc.)
-    # even though 2008-2009 are AWLEVEL transition years
-    if year >= 2008:
-        for raw_col, canon in MODERN_MAP.items():
+    def _apply(map_):
+        for raw_col, canon in map_.items():
             if raw_col in cols:
                 result[canon] = pd.to_numeric(df[raw_col], errors="coerce").fillna(0).clip(lower=0).astype(int)
+
+    if year >= 2011:
+        # Modern era: race breakdowns use new column names exclusively.
+        _apply(MODERN_MAP)
+    elif year >= 2008:
+        # Transition era: use modern map for totals, legacy CRACE for races.
+        # Apply modern first so CRACE values overwrite the (likely empty) modern race columns.
+        _apply(MODERN_MAP)
+        _apply(CRACE_MAP)
+        # Pre-2011 race breakdowns don't include Two-or-More or NHPI as
+        # separate categories — those will simply be absent for these years.
+        for group in RACE_GROUPS:
+            m_col = f"{group}_Men"
+            w_col = f"{group}_Women"
+            t_col = f"{group}_Total"
+            if m_col in result.columns and w_col in result.columns:
+                result[t_col] = result[m_col] + result[w_col]
+        # Total fallback if CTOTALT was missing
+        if "Total" not in result.columns and "CRACE15" in cols and "CRACE16" in cols:
+            result["Total_Men"] = pd.to_numeric(df["CRACE15"], errors="coerce").fillna(0).clip(lower=0).astype(int)
+            result["Total_Women"] = pd.to_numeric(df["CRACE16"], errors="coerce").fillna(0).clip(lower=0).astype(int)
+            result["Total"] = result["Total_Men"] + result["Total_Women"]
     elif year >= 1995:
-        for raw_col, canon in CRACE_MAP.items():
-            if raw_col in cols:
-                result[canon] = pd.to_numeric(df[raw_col], errors="coerce").fillna(0).clip(lower=0).astype(int)
-        # Compute totals from men+women for race groups
+        _apply(CRACE_MAP)
         for group in RACE_GROUPS:
             m_col = f"{group}_Men"
             w_col = f"{group}_Women"
             t_col = f"{group}_Total"
             if m_col in result.columns and w_col in result.columns and t_col not in result.columns:
                 result[t_col] = result[m_col] + result[w_col]
+        if "Total_Men" not in result.columns and "CRACE15" in cols and "CRACE16" in cols:
+            result["Total_Men"] = pd.to_numeric(df["CRACE15"], errors="coerce").fillna(0).clip(lower=0).astype(int)
+            result["Total_Women"] = pd.to_numeric(df["CRACE16"], errors="coerce").fillna(0).clip(lower=0).astype(int)
         if "Total_Men" in result.columns and "Total_Women" in result.columns and "Total" not in result.columns:
             result["Total"] = result["Total_Men"] + result["Total_Women"]
     else:
@@ -326,6 +355,22 @@ def aggregate_for_dashboard(enriched: pd.DataFrame) -> dict:
         "institutions": state_totals["Institutions"].tolist(),
     }
 
+    # --- 8b. State trends over time (top 15 states) ---
+    top_states = state_totals["State"].head(15).tolist()
+    sy = (
+        state_data[state_data["State"].isin(top_states)]
+        .groupby(["Year", "State"])["Total"].sum()
+        .unstack("State", fill_value=0)
+        .sort_index()
+    )
+    # Reorder columns to match top_states ranking
+    sy = sy[[s for s in top_states if s in sy.columns]]
+    data["state_trends"] = {
+        "years": [int(y) for y in sy.index.tolist()],
+        "states": list(sy.columns),
+        "values": {s: [int(v) for v in sy[s].tolist()] for s in sy.columns},
+    }
+
     # --- 9. Institution detail for search (all institutions) ---
     inst_all = enriched.groupby("UNITID").agg(
         Total=("Total", "sum"),
@@ -499,7 +544,19 @@ def generate_html(dashboard_data: dict, output_path: str):
 
   <div class="panel" id="panel-states">
     <div class="card">
-      <h2>STEM PhD Completions by State</h2>
+      <h2>STEM PhD Completions by State Over Time</h2>
+      <p class="note" style="color:var(--text-muted);font-size:0.85rem;margin:4px 0 12px;">Top 15 states by all-time STEM PhD output. Click a state in the legend to toggle. Use the year range below to focus on a specific period.</p>
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:10px;flex-wrap:wrap;font-size:0.85rem;">
+        <label style="color:var(--text-muted);">From <select id="stateYearFrom" style="background:var(--surface);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;"></select></label>
+        <label style="color:var(--text-muted);">To <select id="stateYearTo" style="background:var(--surface);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;"></select></label>
+        <label style="color:var(--text-muted);">View
+          <select id="stateChartMode" style="background:var(--surface);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:4px;">
+            <option value="line">Line — over time</option>
+            <option value="bar">Bar — totals in range</option>
+            <option value="stack">Stacked — composition</option>
+          </select>
+        </label>
+      </div>
       <div class="chart-container tall"><canvas id="chartStates"></canvas></div>
     </div>
   </div>
@@ -824,19 +881,91 @@ function filterInstitutions() {
 }
 filterInstitutions();
 
-// --- States bar ---
-new Chart(document.getElementById('chartStates'), {
-  type: 'bar',
-  data: {
-    labels: D.state_totals.states.slice(0, 30),
-    datasets: [{ data: D.state_totals.totals.slice(0, 30), backgroundColor: '#38bdf8cc' }]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { display: false } },
-    scales: { y: { title: { display: true, text: 'Total PhD Completions' } } }
+// --- States: time-aware ---
+(function(){
+  if (!D.state_trends) return;
+  var st = D.state_trends;
+  var palette = ['#38bdf8','#f472b6','#4ade80','#facc15','#a78bfa','#fb923c','#2dd4bf','#f87171','#818cf8','#a3e635','#e879f9','#22d3ee','#fbbf24','#34d399','#fb7185'];
+  var stateColor = {};
+  st.states.forEach(function(s, i){ stateColor[s] = palette[i % palette.length]; });
+
+  var fromSel = document.getElementById('stateYearFrom');
+  var toSel = document.getElementById('stateYearTo');
+  var modeSel = document.getElementById('stateChartMode');
+  st.years.forEach(function(y){
+    var o1 = document.createElement('option'); o1.value = y; o1.textContent = y; fromSel.appendChild(o1);
+    var o2 = document.createElement('option'); o2.value = y; o2.textContent = y; toSel.appendChild(o2);
+  });
+  fromSel.value = st.years[0];
+  toSel.value = st.years[st.years.length - 1];
+
+  var chart = null;
+  function render(){
+    var fromY = parseInt(fromSel.value, 10);
+    var toY = parseInt(toSel.value, 10);
+    if (fromY > toY) { var t = fromY; fromY = toY; toY = t; }
+    var idx = st.years.map(function(y, i){ return (y >= fromY && y <= toY) ? i : -1; }).filter(function(i){ return i >= 0; });
+    var years = idx.map(function(i){ return st.years[i]; });
+    var mode = modeSel.value;
+    if (chart) { chart.destroy(); chart = null; }
+    var ctx = document.getElementById('chartStates').getContext('2d');
+    if (mode === 'bar') {
+      // Sum within range, show as ranked bar
+      var sums = st.states.map(function(s){
+        var v = st.values[s];
+        var sum = 0;
+        idx.forEach(function(i){ sum += v[i]; });
+        return { state: s, total: sum };
+      }).sort(function(a, b){ return b.total - a.total; });
+      chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: sums.map(function(x){ return x.state; }),
+          datasets: [{ data: sums.map(function(x){ return x.total; }), backgroundColor: sums.map(function(x){ return stateColor[x.state] + 'cc'; }) }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false }, tooltip: { callbacks: { title: function(c){ return c[0].label + ' — ' + fromY + '–' + toY; } } } },
+          scales: { y: { title: { display: true, text: 'Total STEM PhDs in range' }, ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } }, x: { ticks: { color: '#94a3b8' }, grid: { display: false } } }
+        }
+      });
+    } else {
+      // line or stack
+      var datasets = st.states.map(function(s){
+        return {
+          label: s,
+          data: idx.map(function(i){ return st.values[s][i]; }),
+          borderColor: stateColor[s],
+          backgroundColor: mode === 'stack' ? stateColor[s] + 'aa' : stateColor[s] + '22',
+          borderWidth: 2,
+          fill: mode === 'stack',
+          tension: 0.25,
+          pointRadius: years.length <= 12 ? 3 : 0,
+        };
+      });
+      chart = new Chart(ctx, {
+        type: 'line',
+        data: { labels: years, datasets: datasets },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { position: 'bottom', labels: { color: '#cbd5e1', boxWidth: 14, font: { size: 11 } } },
+            tooltip: { callbacks: { footer: function(items){ var sum = items.reduce(function(a, b){ return a + b.parsed.y; }, 0); return 'Total: ' + sum.toLocaleString(); } } }
+          },
+          scales: {
+            y: { stacked: mode === 'stack', title: { display: true, text: 'STEM PhD Completions per Year' }, ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } },
+            x: { ticks: { color: '#94a3b8' }, grid: { display: false } }
+          }
+        }
+      });
+    }
   }
-});
+  fromSel.addEventListener('change', render);
+  toSel.addEventListener('change', render);
+  modeSel.addEventListener('change', render);
+  render();
+})();
 </script>
 <script src="/sidebar.js"></script>
 </body>

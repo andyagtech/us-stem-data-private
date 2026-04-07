@@ -9,8 +9,12 @@
   // Pages where sidebar should be a floating drawer (closed by default,
   // doesn't take horizontal space). Used for pages whose own layout
   // already pins a workspace-specific left panel.
-  const DRAWER_PAGES = new Set([]);
+  const DRAWER_PAGES = new Set(['query.html']);
   const isDrawerMode = DRAWER_PAGES.has(currentPage);
+  // On pages with their own workspace sidebar, also pin the hamburger
+  // hint to the lower-left so it doesn't collide.
+  const CORNER_PAGES = new Set(['query.html']);
+  const isCornerHint = CORNER_PAGES.has(currentPage);
 
   // Persist collapse state across navigations
   function getCollapsedSections() {
@@ -25,10 +29,30 @@
 
   const sections = [
     { title: 'National', items: [
-      { href: '/stem.html', label: 'National Charts' },
-      { href: '/ipeds_dashboard.html', label: 'IPEDS PhD Dashboard' },
+      { href: '/stem.html', label: 'National Charts', anchors: [
+        { hash: 'nat-phd', label: 'STEM PhD by Citizenship' },
+        { hash: 'nat-opt', label: 'OPT Pipeline' },
+        { hash: 'nat-funding', label: 'R&D vs American PhDs' },
+        { hash: 'nat-total-pipeline', label: 'Total Foreign Work Auth' },
+        { hash: 'nat-visas', label: 'US Visa Issuances' },
+        { hash: 'nat-visa-calc', label: 'Cumulative Visa Calculator' },
+        { hash: 'nat-fields', label: 'NRA by STEM Field' },
+      ]},
+      { href: '/ipeds_dashboard.html', label: 'IPEDS PhD Dashboard', anchors: [
+        { hash: 'panel-trends', label: 'Trends' },
+        { hash: 'panel-demographics', label: 'Demographics' },
+        { hash: 'panel-institutions', label: 'Institutions' },
+        { hash: 'panel-states', label: 'States' },
+      ]},
       { href: '/immigration.html', label: 'Immigration Pipeline' },
-      { href: '/pipeline.html', label: 'Pipeline Analysis' },
+      { href: '/pipeline.html', label: 'Pipeline Analysis', anchors: [
+        { hash: 'pipeline-chart-section', label: 'A. Full Pipeline' },
+        { hash: 'f1-diverge-chart-section', label: 'B. China vs India' },
+        { hash: 'scatter-chart-section', label: 'C. Stay vs Refusal' },
+        { hash: 'eb-chart-section', label: 'D. EB Bottleneck' },
+        { hash: 'indexed-chart-section', label: 'E. Pipeline Growth' },
+        { hash: 'heatmap-chart-section', label: 'F. Country × State' },
+      ]},
     ]},
     { title: 'International', items: [
       { href: '/india.html', label: 'India (Outbound)' },
@@ -51,11 +75,22 @@
   let universities = [];
 
   function buildGroups() {
+    const currentHash = (location.hash || '').replace(/^#/, '');
     const groupHtml = sections.map(s => {
       const items = s.items.map(p => {
         const itemPath = p.href.replace(/^\//, '');
-        const active = currentPage === itemPath ? ' active' : '';
-        return `<a href="${p.href}" class="sb-item${active}">${p.label}</a>`;
+        const isCurrentPage = currentPage === itemPath;
+        const active = isCurrentPage ? ' active' : '';
+        let html = `<a href="${p.href}" class="sb-item${active}">${p.label}</a>`;
+        // Render in-page anchor sub-items only on the page they belong to
+        if (p.anchors && isCurrentPage) {
+          const subs = p.anchors.map(a => {
+            const subActive = currentHash === a.hash ? ' active' : '';
+            return `<a href="#${a.hash}" class="sb-item sb-sub${subActive}">${a.label}</a>`;
+          }).join('');
+          html += subs;
+        }
+        return html;
       }).join('');
       const collapsed = collapsedSections.has(s.title) ? ' collapsed' : '';
       return `<div class="sb-group${collapsed}" data-section="${s.title}">
@@ -116,13 +151,16 @@
     .sb-header { padding: 14px 16px 8px; border-bottom: 1px solid #334155; }
     .sb-logo { font-size: 0.9rem; font-weight: 700; color: #38bdf8; text-decoration: none; display: block; }
     .sb-sub { font-size: 0.68rem; color: #64748b; display: block; margin-top: 2px; }
-    .sb-body { flex: 1; overflow-y: auto; padding-top: 6px; }
+    .sb-body { flex: 1; overflow-y: auto; padding-top: 6px; scrollbar-gutter: stable; }
     .sb-section { padding: 12px 16px 5px; font-size: 0.68rem; font-weight: 700; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; display: flex; align-items: center; gap: 6px; user-select: none; }
     .sb-section:hover { color: #7dd3fc; }
     .sb-chev { font-size: 0.55rem; transition: transform 0.15s; color: #64748b; }
     .sb-group.collapsed .sb-chev { transform: rotate(-90deg); }
     .sb-group.collapsed .sb-content { display: none; }
     .sb-item { display: block; padding: 5px 16px; color: #94a3b8; text-decoration: none; font-size: 0.8rem; border-left: 3px solid transparent; transition: all 0.1s; }
+    .sb-sub { padding: 3px 16px 3px 28px; font-size: 0.74rem; color: #64748b; }
+    .sb-sub:hover { color: #cbd5e1; }
+    .sb-sub.active { color: #38bdf8; }
     .sb-item:hover { background: #334155; color: #e2e8f0; }
     .sb-item.active { border-left-color: #38bdf8; color: #38bdf8; background: rgba(56,189,248,0.08); }
     .sb-uni { display: flex; justify-content: space-between; align-items: baseline; }
@@ -143,6 +181,8 @@
       .sb-mobile-btn { display: block !important; }
     }
     .sb-mobile-btn { display: none; position: fixed; top: 8px; left: 8px; z-index: 99; background: #1e293b; border: 1px solid #334155; color: #94a3b8; font-size: 1.2rem; padding: 6px 10px; border-radius: 6px; cursor: pointer; }
+    /* On pages with their own workspace sidebar, pin the hint to lower-left */
+    body.sb-corner .sb-mobile-btn { top: auto; bottom: 16px; left: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.35); }
     /* Drawer mode: closed by default, opens on hamburger click. Doesn't take horizontal space. */
     body.sb-drawer #shared-sidebar { left: -260px; width: 260px; box-shadow: 4px 0 24px rgba(0,0,0,0.4); }
     body.sb-drawer #shared-sidebar.open { left: 0; }
@@ -163,6 +203,7 @@
   document.body.prepend(nav);
   document.body.classList.add('has-sidebar');
   if (isDrawerMode) document.body.classList.add('sb-drawer');
+  if (isCornerHint) document.body.classList.add('sb-corner');
 
   // Mobile toggle
   const btn = document.createElement('button');

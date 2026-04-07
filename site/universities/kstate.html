@@ -467,39 +467,39 @@ with socio-econo</li>
 
     <!-- Charts -->
     <div class="nat-charts">
-      <div class="nat-chart-box">
+      <div class="nat-chart-box" id="nat-phd">
         <h3>STEM PhD Completions by Citizenship</h3>
         <p class="nat-desc">NRA share grew from 32% to 34% while total PhDs rose 50% — American graduate production barely moved</p>
         <canvas id="nat-phd-chart"></canvas>
         <p class="source">Source: <a href="https://nces.ed.gov/ipeds/" target="_blank">IPEDS Completions Survey</a></p>
       </div>
-      <div class="nat-chart-box">
+      <div class="nat-chart-box" id="nat-opt">
         <h3>OPT Work Authorization Pipeline</h3>
         <p class="nat-desc">OPT authorizations grew 11x since 2007. The 2016 STEM OPT 24-month rule dramatically expanded foreign work authorization.</p>
         <canvas id="nat-opt-chart"></canvas>
         <p class="source">Source: <a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank">ICE/SEVP SEVIS</a></p>
         <p class="source" style="margin-top:4px;font-size:0.7rem;"><strong>OPT</strong> (Optional Practical Training): 12-month post-graduation work authorization for F-1 visa holders. <strong>STEM OPT</strong>: additional 24-month extension for STEM graduates (expanded from 17 months in 2016). <strong>CPT</strong> (Curricular Practical Training): work authorization during enrollment, must be part of established curriculum.</p>
       </div>
-      <div class="nat-chart-box">
+      <div class="nat-chart-box" id="nat-funding">
         <h3>R&amp;D Funding vs American STEM PhDs</h3>
         <p class="nat-desc">University R&amp;D spending nearly doubled since 2010. American PhD production grew only 11%.</p>
         <canvas id="nat-funding-chart"></canvas>
         <p class="source">Source: <a href="https://ncses.nsf.gov/surveys/higher-education-research-development" target="_blank">NSF HERD Survey</a>, <a href="https://nces.ed.gov/ipeds/" target="_blank">IPEDS</a></p>
         <p class="source" style="margin-top:4px;font-size:0.7rem;"><strong>American STEM PhDs</strong> = Total STEM doctorate completions minus Non-Resident Alien (NRA) completions, from IPEDS. Includes US citizens and permanent residents of all races/ethnicities. <strong>R&amp;D Spending</strong> = total university R&amp;D expenditures from the NSF Higher Education Research &amp; Development (HERD) Survey.</p>
       </div>
-      <div class="nat-chart-box">
+      <div class="nat-chart-box" id="nat-total-pipeline">
         <h3>Total Foreign Work Authorizations</h3>
         <p class="nat-desc">Combined OPT + H-1B work authorizations issued per year. Foreign nationals working in the US via university pipeline.</p>
         <canvas id="nat-total-pipeline-chart"></canvas>
         <p class="source">Source: ICE/SEVP SEVIS, <a href="https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub" target="_blank">USCIS H-1B Employer Data Hub</a></p>
       </div>
-      <div class="nat-chart-box">
+      <div class="nat-chart-box" id="nat-visas">
         <h3>US Visa Issuances by Type</h3>
         <p class="nat-desc">F-1 (student), H-1B (specialty worker), J-1 (exchange visitor), and O-1 (extraordinary ability) visa stamps issued annually at US consulates.</p>
         <canvas id="nat-visa-chart"></canvas>
         <p class="source">Source: <a href="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-statistics.html" target="_blank">US State Department Visa Statistics</a></p>
       </div>
-      <div class="nat-chart-box">
+      <div class="nat-chart-box" id="nat-visa-calc">
         <h3>Cumulative Visa Calculator</h3>
         <p class="nat-desc">Total visa issuances between two years. Select a range to see cumulative counts.</p>
         <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap;">
@@ -510,7 +510,7 @@ with socio-econo</li>
         <div id="cum-results" style="font-size:0.82rem;line-height:1.8;"></div>
         <p class="source">Source: US State Department visa issuances at consulates abroad</p>
       </div>
-      <div class="nat-chart-box">
+      <div class="nat-chart-box" id="nat-fields">
         <h3>NRA Enrollment by STEM Field</h3>
         <p class="nat-desc">In Computer Science and Engineering, the majority of graduate students are non-resident aliens.</p>
         <canvas id="nat-field-chart"></canvas>
@@ -608,16 +608,22 @@ with socio-econo</li>
     <a class="share-anchor" onclick="shareAnchor((currentKey||'')+'--enrollment',event)" title="Copy link to enrollment panel" style="position:absolute;top:12px;right:12px;">🔗</a>
     <h3 id="enrollment-title">Graduate Enrollment Demographics</h3>
     <div class="funding-source">Sources: <a href="https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-in-science-and-engineering" target="_blank">NSF GSS</a> (Enrollment, 2024) · <a href="https://nces.ed.gov/ipeds/" target="_blank">IPEDS Completions</a> (PhD Trend, 2010–2024)</div>
+    <div id="enrollment-stats" style="margin-bottom:14px;"></div>
     <div class="funding-panels">
       <div>
         <div style="font-weight:600;font-size:0.85rem;margin-bottom:6px;">Enrollment by Citizenship (<a href="https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-in-science-and-engineering" target="_blank" style="color:var(--accent);text-decoration:none;">NSF GSS</a>)</div>
-        <div id="enrollment-stats" style="margin-bottom:10px;"></div>
         <canvas id="enrollment-field-chart"></canvas>
       </div>
       <div>
         <div style="font-weight:600;font-size:0.85rem;margin-bottom:6px;">PhD Completions Trend (<a href="https://nces.ed.gov/ipeds/" target="_blank" style="color:var(--accent);text-decoration:none;">IPEDS</a>)</div>
         <canvas id="completions-trend-chart"></canvas>
       </div>
+    </div>
+    <div id="enrollment-race-row" style="margin-top:18px;display:none;">
+      <div style="font-weight:600;font-size:0.85rem;margin-bottom:6px;">Self-Reported Race / Citizenship of All Graduate Students (<a href="https://nces.ed.gov/ipeds/" target="_blank" style="color:var(--accent);text-decoration:none;">IPEDS Fall Enrollment</a>)</div>
+      <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:8px;">How graduate students self-identify on IPEDS. Nonresident Alien is a citizenship status, not a race — students on temporary visas are reported separately and never asked their race. The remainder ("Other / Unknown") includes American Indian/Alaska Native, Native Hawaiian/Pacific Islander, Two-or-More Races, and students who declined to report.</div>
+      <canvas id="enrollment-race-chart" style="max-height:90px;"></canvas>
+      <div id="enrollment-race-legend" style="display:flex;flex-wrap:wrap;gap:14px;font-size:0.72rem;margin-top:8px;color:var(--text-muted);"></div>
     </div>
   </div>
 
@@ -6193,6 +6199,7 @@ let fundingVisible = false;
 let enrollmentVisible = false;
 let enrollmentFieldChart = null;
 let completionsTrendChart = null;
+let enrollmentRaceChart = null;
 let fundingChart = null;
 let financeChart = null;
 
@@ -6887,16 +6894,23 @@ function updateH1bPanel() {
   } else {
     optCtx.getContext('2d').clearRect(0, 0, optCtx.width, optCtx.height);
   }
-  // Show empty-state HTML overlay if no OPT data (canvas text doesn't render reliably)
+  // Show empty-state HTML overlay whenever the chart cannot render a trend
   let optEmpty = document.getElementById('opt-empty-state');
-  if (!optYears.length) {
+  if (optYears.length < 2) {
     if (!optEmpty) {
       optEmpty = document.createElement('div');
       optEmpty.id = 'opt-empty-state';
-      optEmpty.style.cssText = 'padding:20px 12px;text-align:center;color:var(--text-muted);font-size:0.78rem;line-height:1.6;background:rgba(148,163,184,0.04);border-radius:6px;margin-top:8px;';
+      optEmpty.style.cssText = 'padding:24px 12px;text-align:center;color:var(--text-muted);font-size:0.8rem;line-height:1.6;background:rgba(148,163,184,0.04);border:1px dashed rgba(148,163,184,0.2);border-radius:6px;margin-top:8px;min-height:160px;display:flex;flex-direction:column;justify-content:center;';
       optCtx.parentElement.appendChild(optEmpty);
     }
-    optEmpty.innerHTML = '<div style="font-weight:600;color:var(--text);margin-bottom:6px;">No per-school OPT data available</div>OPT data is only published for the SEVP Top 100 schools by the <a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank" style="color:var(--accent);text-decoration:none;">ICE/SEVP SEVIS By the Numbers</a> reports (CY2017-2024). This university is not in that ranking.';
+    if (optYears.length === 0) {
+      optEmpty.innerHTML = '<div style="font-weight:700;letter-spacing:0.04em;color:var(--text-muted);text-transform:uppercase;font-size:0.75rem;margin-bottom:8px;">Data Not Available</div><div>OPT data is only published for the SEVP Top 100 schools (<a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank" style="color:var(--accent);text-decoration:none;">ICE/SEVP SEVIS By the Numbers</a>, CY2017-2024). This university is not in that ranking.</div>';
+    } else {
+      const y = optYears[0];
+      const o = opt[y]?.opt?.students_employed || 0;
+      const s = opt[y]?.stem_opt?.students_employed || 0;
+      optEmpty.innerHTML = `<div style="font-weight:700;letter-spacing:0.04em;color:var(--text-muted);text-transform:uppercase;font-size:0.75rem;margin-bottom:8px;">Insufficient Data for Trend</div><div>Only one year (CY${y}) of <a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank" style="color:var(--accent);text-decoration:none;">SEVP</a> reporting available: ${o.toLocaleString()} OPT, ${s.toLocaleString()} STEM OPT students employed.</div>`;
+    }
     optCtx.style.display = 'none';
   } else if (optEmpty) {
     optEmpty.remove();
@@ -6928,6 +6942,23 @@ function updateH1bPanel() {
         },
       },
     });
+  } else {
+    ctx.getContext('2d').clearRect(0, 0, ctx.width, ctx.height);
+  }
+  // H-1B empty state
+  let h1bEmpty = document.getElementById('h1b-empty-state');
+  if (h1bData.length === 0) {
+    if (!h1bEmpty) {
+      h1bEmpty = document.createElement('div');
+      h1bEmpty.id = 'h1b-empty-state';
+      h1bEmpty.style.cssText = 'padding:24px 12px;text-align:center;color:var(--text-muted);font-size:0.8rem;line-height:1.6;background:rgba(148,163,184,0.04);border:1px dashed rgba(148,163,184,0.2);border-radius:6px;margin-top:8px;min-height:160px;display:flex;flex-direction:column;justify-content:center;';
+      ctx.parentElement.appendChild(h1bEmpty);
+    }
+    h1bEmpty.innerHTML = '<div style="font-weight:700;letter-spacing:0.04em;color:var(--text-muted);text-transform:uppercase;font-size:0.75rem;margin-bottom:8px;">Data Not Available</div><div>No H-1B petitions filed under this university\'s legal entity name in the <a href="https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub" target="_blank" style="color:var(--accent);text-decoration:none;">USCIS Employer Data Hub</a> (FY2010-FY2026). The university may file under a different legal name or use a separate health-system entity.</div>';
+    ctx.style.display = 'none';
+  } else if (h1bEmpty) {
+    h1bEmpty.remove();
+    ctx.style.display = '';
   }
 
   // LCA + PERM details
@@ -7099,6 +7130,69 @@ function updateEnrollmentPanel() {
         }
       }
     });
+  }
+
+  // IPEDS self-reported race/citizenship horizontal stacked bar
+  const ipedsRow = document.getElementById('enrollment-race-row');
+  const ipedsLegend = document.getElementById('enrollment-race-legend');
+  const ipedsCanvas = document.getElementById('enrollment-race-chart');
+  if (enrollmentRaceChart) { enrollmentRaceChart.destroy(); enrollmentRaceChart = null; }
+  const ie = uni.enrollment_ipeds;
+  if (ie && ie.total_grad > 0) {
+    ipedsRow.style.display = '';
+    const cats = [
+      { key: 'nra', label: 'Nonresident Alien', color: '#f87171' },
+      { key: 'white', label: 'White', color: '#e2e8f0' },
+      { key: 'asian', label: 'Asian', color: '#38bdf8' },
+      { key: 'hispanic', label: 'Hispanic / Latino', color: '#facc15' },
+      { key: 'black', label: 'Black / African American', color: '#a78bfa' },
+    ];
+    const known = cats.reduce((s, c) => s + (ie[c.key] || 0), 0);
+    const other = Math.max(0, ie.total_grad - known);
+    cats.push({ key: 'other', label: 'Other / Unknown', color: '#64748b' });
+    ie.other = other;
+    const total = ie.total_grad;
+    const data = cats.map(c => ie[c.key] || 0);
+    const pcts = data.map(v => (v / total) * 100);
+    enrollmentRaceChart = new Chart(ipedsCanvas.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: [''],
+        datasets: cats.map((c, i) => ({
+          label: c.label,
+          data: [pcts[i]],
+          backgroundColor: c.color,
+          borderWidth: 0,
+          stack: 's',
+          rawCount: data[i],
+        })),
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(item) {
+                const c = item.dataset.rawCount;
+                return `${item.dataset.label}: ${c.toLocaleString()} (${item.parsed.x.toFixed(1)}%)`;
+              }
+            }
+          }
+        },
+        scales: {
+          x: { stacked: true, max: 100, ticks: { color: '#94a3b8', callback: v => v + '%' }, grid: { color: 'rgba(148,163,184,0.08)' } },
+          y: { stacked: true, display: false },
+        },
+      },
+    });
+    ipedsLegend.innerHTML = cats.map((c, i) =>
+      `<span style="display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:11px;height:11px;background:${c.color};border-radius:2px;"></span>${c.label} <span style="color:#94a3b8;">${data[i].toLocaleString()} (${pcts[i].toFixed(1)}%)</span></span>`
+    ).join('');
+  } else {
+    ipedsRow.style.display = 'none';
   }
 
   // Add footnote about green card holders
@@ -7488,8 +7582,9 @@ function shareLink() {
   if (state) applyUrlState(state);
 })();
 
-// Preload search index in background after page loads
-setTimeout(loadSearchIndex, 2000);
+// Search index (3+ MB containing every university) is now lazy-loaded
+// only when the user actually focuses or types in the search box.
+// See the 'focus' handler attached to #search-input below.
 
 // Handle back/forward navigation
 window.addEventListener('hashchange', function() {

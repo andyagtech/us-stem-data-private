@@ -24,13 +24,6 @@
     padding: 12px 24px; display: flex; align-items: center; gap: 16px;
     position: relative;
   }
-  /* Shift workspace right of the shared sidebar (220px), but not in drawer mode. */
-  body.has-sidebar:not(.sb-drawer) .header,
-  body.has-sidebar:not(.sb-drawer) .main { margin-left: 220px; }
-  @media (max-width: 900px) {
-    body.has-sidebar .header,
-    body.has-sidebar .main { margin-left: 0; }
-  }
   .header h1 { font-size: 0.95rem; font-weight: 700; }
   .header h1 span { color: var(--accent); }
   .header .powered {
