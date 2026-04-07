@@ -144,8 +144,8 @@ def build_html(all_data, mode='stem'):
   .uni-nra {{ font-size: 0.85rem; color: var(--accent); font-weight: 400; }}
   .uni-stats {{ font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px; }}
 
-  .toggle-bar {{ display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: var(--surface); border-radius: 10px; border: 1px solid var(--surface2); margin-bottom: 16px; flex-wrap: wrap; }}
-  .toggle-wrap {{ display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; }}
+  .toggle-bar {{ display: flex; align-items: center; justify-content: space-around; gap: 8px; padding: 10px 16px; background: var(--surface); border-radius: 10px; border: 1px solid var(--surface2); margin-bottom: 16px; flex-wrap: wrap; }}
+  .toggle-wrap {{ display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; flex: 1; min-width: 160px; justify-content: center; }}
   .toggle-label {{ font-size: 0.82rem; font-weight: 600; color: var(--text); }}
   .toggle-switch {{ position: relative; width: 40px; height: 22px; background: var(--surface2); border-radius: 11px; transition: background 0.2s; flex-shrink: 0; }}
   .toggle-switch::after {{ content: ''; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; background: var(--text-muted); border-radius: 50%; transition: all 0.2s; }}
@@ -174,8 +174,9 @@ def build_html(all_data, mode='stem'):
   .funding-chart-wrap .funding-source {{ font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px; }}
   .funding-chart-wrap .funding-source a {{ color: var(--accent); text-decoration: none; }}
   .funding-chart-wrap canvas {{ max-height: 220px; }}
-  .funding-panels {{ display: flex; gap: 16px; flex-wrap: wrap; }}
-  .funding-panels > div {{ flex: 1; min-width: 280px; }}
+  .funding-panels {{ display: flex; gap: 16px; flex-wrap: wrap; align-items: stretch; }}
+  .funding-panels > div {{ flex: 1; min-width: 280px; display: flex; flex-direction: column; }}
+  .funding-panels canvas {{ flex: 1 1 auto; min-height: 220px; }}
   .finance-breakdown {{ margin-top: 12px; }}
   .finance-bar {{ display: flex; height: 28px; border-radius: 6px; overflow: hidden; margin: 8px 0 6px; }}
   .finance-bar > div {{ transition: width 0.3s; }}
@@ -403,6 +404,7 @@ def build_html(all_data, mode='stem'):
     <div class="sidebar-group-content">
       <a href="query.html" class="nav-item nav-page">Data Query (SQL)</a>
       <a href="data_sources.html" class="nav-item nav-page">Data Sources &amp; Methodology</a>
+      <a href="implementation.html" class="nav-item nav-page">Implementation</a>
       <a href="data_catalog.json" class="nav-item nav-page">Data Catalog (JSON)</a>
       <a href="llms.txt" class="nav-item nav-page">WebMCP Integration</a>
     </div>
@@ -529,34 +531,25 @@ def build_html(all_data, mode='stem'):
         <div class="toggle-switch"></div>
         <span class="toggle-label">Show Master's Theses</span>
       </div>
-      <div class="legend-sep"></div>
       <div class="toggle-wrap" onclick="toggleFunding()" id="funding-toggle" role="switch" aria-checked="false" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){{event.preventDefault();this.click();}}">
         <div class="toggle-switch"></div>
         <span class="toggle-label">R&amp;D Funding</span>
       </div>
-      <div class="legend-sep"></div>
       <div class="toggle-wrap" onclick="toggleEnrollment()" id="enrollment-toggle" role="switch" aria-checked="false" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){{event.preventDefault();this.click();}}">
         <div class="toggle-switch"></div>
         <span class="toggle-label">Enrollment</span>
       </div>
-      <div class="legend-sep"></div>
       <div class="toggle-wrap" onclick="toggleH1b()" id="h1b-toggle" role="switch" aria-checked="false" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){{event.preventDefault();this.click();}}">
         <div class="toggle-switch"></div>
         <span class="toggle-label">H-1B &amp; OPT</span>
       </div>
-      <div class="legend-sep" id="old-toggle-sep" style="display:none;"></div>
       <div class="toggle-wrap" onclick="toggleOld()" id="old-toggle" style="display:none;">
         <div class="toggle-switch"></div>
         <span class="toggle-label">Show Pre-2010 Records</span>
       </div>
-      <div class="legend-sep" style="display:none;"></div>
       <div class="legend-key flags-only-legend" style="display:none;">
         {"".join(legend_key_items)}
       </div>
-      <div class="legend-sep"></div>
-      <select id="dept-filter" class="dept-filter-select" onchange="applyDeptFilter(this.value)">
-        <option value="">All departments</option>
-      </select>
     </div>
     <div class="search-results" id="search-results"></div>
   </div>
@@ -586,11 +579,11 @@ def build_html(all_data, mode='stem'):
       <div>
         <div style="font-weight:600;font-size:0.85rem;margin-bottom:6px;">Enrollment by Citizenship (<a href="https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-in-science-and-engineering" target="_blank" style="color:var(--accent);text-decoration:none;">NSF GSS</a>)</div>
         <div id="enrollment-stats" style="margin-bottom:10px;"></div>
-        <canvas id="enrollment-field-chart" style="max-height:220px;"></canvas>
+        <canvas id="enrollment-field-chart"></canvas>
       </div>
       <div>
         <div style="font-weight:600;font-size:0.85rem;margin-bottom:6px;">PhD Completions Trend (<a href="https://nces.ed.gov/ipeds/" target="_blank" style="color:var(--accent);text-decoration:none;">IPEDS</a>)</div>
-        <canvas id="completions-trend-chart" style="max-height:220px;"></canvas>
+        <canvas id="completions-trend-chart"></canvas>
       </div>
     </div>
   </div>
@@ -1122,8 +1115,35 @@ function toggleSidebar() {{
 }}
 
 function toggleSidebarGroup(id) {{
-  document.getElementById(id).classList.toggle('collapsed');
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.classList.toggle('collapsed');
+  // Persist collapse state to localStorage (shared with sidebar.js).
+  // Map sidebar-group IDs to the section titles used by sidebar.js.
+  const map = {{ 'sg-national': 'National', 'sg-universities': 'Universities',
+                'sg-international': 'International', 'sg-reference': 'Reference' }};
+  const section = map[id];
+  if (!section) return;
+  try {{
+    const s = new Set(JSON.parse(localStorage.getItem('sb_collapsed') || '[]'));
+    if (el.classList.contains('collapsed')) s.add(section);
+    else s.delete(section);
+    localStorage.setItem('sb_collapsed', JSON.stringify([...s]));
+  }} catch (e) {{}}
 }}
+
+// On page load, restore collapse state from localStorage
+(function() {{
+  try {{
+    const collapsed = new Set(JSON.parse(localStorage.getItem('sb_collapsed') || '[]'));
+    const map = {{ 'National': 'sg-national', 'Universities': 'sg-universities',
+                  'International': 'sg-international', 'Reference': 'sg-reference' }};
+    for (const section of collapsed) {{
+      const el = document.getElementById(map[section]);
+      if (el) el.classList.add('collapsed');
+    }}
+  }} catch (e) {{}}
+}})();
 
 function showUni(key, skipHash) {{
   // Close mobile sidebar if open
@@ -1302,16 +1322,21 @@ function updateH1bPanel() {{
     }});
   }} else {{
     optCtx.getContext('2d').clearRect(0, 0, optCtx.width, optCtx.height);
-    if (!optYears.length) {{
-      const octx = optCtx.getContext('2d');
-      octx.fillStyle = '#94a3b8';
-      octx.font = '13px sans-serif';
-      octx.textAlign = 'center';
-      octx.fillText('OPT data only available for SEVP Top 100 schools.', optCtx.width/2, 90);
-      octx.font = '11px sans-serif';
-      octx.fillText('Source: ICE/SEVP SEVIS By the Numbers reports (CY2017-2024).', optCtx.width/2, 112);
-      octx.fillText('Per-school OPT data is not publicly available for other institutions.', optCtx.width/2, 128);
+  }}
+  // Show empty-state HTML overlay if no OPT data (canvas text doesn't render reliably)
+  let optEmpty = document.getElementById('opt-empty-state');
+  if (!optYears.length) {{
+    if (!optEmpty) {{
+      optEmpty = document.createElement('div');
+      optEmpty.id = 'opt-empty-state';
+      optEmpty.style.cssText = 'padding:20px 12px;text-align:center;color:var(--text-muted);font-size:0.78rem;line-height:1.6;background:rgba(148,163,184,0.04);border-radius:6px;margin-top:8px;';
+      optCtx.parentElement.appendChild(optEmpty);
     }}
+    optEmpty.innerHTML = '<div style="font-weight:600;color:var(--text);margin-bottom:6px;">No per-school OPT data available</div>OPT data is only published for the SEVP Top 100 schools by the <a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank" style="color:var(--accent);text-decoration:none;">ICE/SEVP SEVIS By the Numbers</a> reports (CY2017-2024). This university is not in that ranking.';
+    optCtx.style.display = 'none';
+  }} else if (optEmpty) {{
+    optEmpty.remove();
+    optCtx.style.display = '';
   }}
 
   // H-1B chart
@@ -1685,8 +1710,8 @@ function updateFundingChart() {{
 function updateOldToggle() {{
   // Show the pre-2010 toggle only if the current view has pre-2010 year blocks
   const hasPre2010 = document.querySelectorAll('#content .pre-2010').length > 0;
-  document.getElementById('old-toggle').style.display = hasPre2010 ? '' : 'none';
-  document.getElementById('old-toggle-sep').style.display = hasPre2010 ? '' : 'none';
+  const oldToggle = document.getElementById('old-toggle');
+  if (oldToggle) oldToggle.style.display = hasPre2010 ? '' : 'none';
 }}
 
 function showNational() {{
@@ -1702,8 +1727,8 @@ function resetView() {{
   document.querySelectorAll('.nav-item').forEach(a => a.classList.remove('active'));
   document.getElementById('content').innerHTML = '<p class="placeholder-msg">\u2190 Select a university from the sidebar to view its name lists.</p>';
   document.getElementById('info-section').style.display = '';
-  document.getElementById('old-toggle').style.display = 'none';
-  document.getElementById('old-toggle-sep').style.display = 'none';
+  const oldT = document.getElementById('old-toggle');
+  if (oldT) oldT.style.display = 'none';
   document.getElementById('funding-chart-container').classList.remove('visible');
   document.getElementById('enrollment-container').classList.remove('visible');
   document.title = '{"Non-STEM " if is_nonstem else ""}Thesis & Dissertation Lists — High NRA Universities';
@@ -2251,7 +2276,7 @@ def load_all(stem_filter='stem'):
     return [(e[0], e[1], e[2], e[3]) for e in data_by_key.values()]
 
 
-def write_data_files(all_data, data_dir):
+def write_data_files(all_data, data_dir, is_nonstem=False):
     """Write per-university JSON files and a search index."""
     import json
     os.makedirs(data_dir, exist_ok=True)
@@ -2269,17 +2294,56 @@ def write_data_files(all_data, data_dir):
             # Add to search index: just name + dept, enough for matching
             search_entries.append([uni_key, r['name'], r['dept'], r['year']])
 
-        uni_json = json.dumps({
-            'key': uni_key, 'name': uni_name, 'nra': nra,
-            'records': compact,
-        }, ensure_ascii=False, separators=(',', ':'))
+        # MERGE-NOT-OVERWRITE: preserve enrichment fields from prior runs.
+        # generate is responsible for `key`, `name`, `nra`, `records`.
+        # enrich adds h1b, opt, lca, perm, enrollment, funding, etc.
+        # Without this merge, generate would silently destroy all enrichment.
+        json_path = os.path.join(data_dir, f'{uni_key}.json')
+        merged = {'key': uni_key, 'name': uni_name, 'nra': nra, 'records': compact}
+        if os.path.exists(json_path):
+            try:
+                with open(json_path) as f:
+                    existing = json.load(f)
+                # Preserve any field added by enrich
+                for k, v in existing.items():
+                    if k not in ('key', 'name', 'nra', 'records'):
+                        merged[k] = v
+            except (json.JSONDecodeError, IOError):
+                pass
 
-        with open(os.path.join(data_dir, f'{uni_key}.json'), 'w') as f:
-            f.write(uni_json)
+        with open(json_path, 'w') as f:
+            json.dump(merged, f, ensure_ascii=False, separators=(',', ':'))
 
     # Write search index
     with open(os.path.join(data_dir, '_search.json'), 'w') as f:
         json.dump(search_entries, f, ensure_ascii=False, separators=(',', ':'))
+
+    # Write universities_index.json (top-level data/) — shared by both sidebars (SPA + sidebar.js).
+    # This is the SINGLE SOURCE OF TRUTH for the university list.
+    if not is_nonstem:
+        site_data_dir = os.path.dirname(data_dir)  # site/data
+        idx_unis = []
+        for uni_key, uni_name, nra, records in all_data:
+            # Check if this uni has OPT data (read enriched JSON)
+            jp = os.path.join(data_dir, f'{uni_key}.json')
+            has_opt = False
+            try:
+                if os.path.exists(jp):
+                    with open(jp) as f:
+                        d = json.load(f)
+                    has_opt = bool(d.get('opt'))
+            except (json.JSONDecodeError, IOError):
+                pass
+            idx_unis.append({
+                'key': uni_key,
+                'name': uni_name,
+                'nra': nra,
+                'has_opt': has_opt,
+            })
+        idx = {'universities': idx_unis, 'count': len(idx_unis)}
+        with open(os.path.join(site_data_dir, 'universities_index.json'), 'w') as f:
+            json.dump(idx, f, separators=(',', ':'))
+        print(f"  universities_index.json: {len(idx_unis)} universities")
 
     total_size = sum(os.path.getsize(os.path.join(data_dir, fn)) for fn in os.listdir(data_dir))
     print(f"  Data files: {data_dir}/ ({len(all_data)} universities, {total_size/1024/1024:.1f} MB total)")
@@ -2295,7 +2359,7 @@ def main():
         total = sum(len(u[3]) for u in data)
         print(f"  {total:,} records across {len(data)} schools")
 
-        write_data_files(data, data_subdir)
+        write_data_files(data, data_subdir, is_nonstem=(stem_filter == "non-stem"))
         html = build_html(data, mode=stem_filter)
         with open(html_file, 'w') as f:
             f.write(html)

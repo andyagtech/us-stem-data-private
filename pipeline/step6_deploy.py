@@ -123,6 +123,30 @@ def step6_deploy(state: PipelineState) -> PipelineState:
 
     # Step 2: Upload JSON data files (pre-compressed with gzip)
     print("  Pre-compressing and uploading JSON data...")
+
+    # Top-level data/*.json (e.g., universities_index.json)
+    top_data_dir = site_dir / "data"
+    if top_data_dir.is_dir():
+        for f in sorted(top_data_dir.glob("*.json")):
+            key = f"data/{f.name}"
+            try:
+                gz_path = _gzip_file(f)
+                result = subprocess.run(
+                    ["aws", "s3", "cp", str(gz_path), f"{S3_URI}{key}",
+                     "--profile", AWS_PROFILE,
+                     "--cache-control", CACHE_RULES.get(".json", "public, max-age=3600"),
+                     "--content-type", "application/json",
+                     "--content-encoding", "gzip"],
+                    capture_output=True, text=True,
+                )
+                gz_path.unlink()
+                if result.returncode == 0:
+                    uploaded += 1
+                else:
+                    errors.append(f"Upload failed: {key}")
+            except Exception as e:
+                errors.append(f"Compress/upload failed: {key}: {e}")
+
     for mode in ["stem", "nonstem"]:
         data_dir = site_dir / "data" / mode
         if not data_dir.is_dir():

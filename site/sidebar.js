@@ -6,6 +6,23 @@
   const uniMatch = currentPath.match(/\/universities\/([a-z0-9_]+)\.html/);
   const currentUniKey = uniMatch ? uniMatch[1] : null;
 
+  // Pages where sidebar should be a floating drawer (closed by default,
+  // doesn't take horizontal space). Used for pages whose own layout
+  // already pins a workspace-specific left panel.
+  const DRAWER_PAGES = new Set([]);
+  const isDrawerMode = DRAWER_PAGES.has(currentPage);
+
+  // Persist collapse state across navigations
+  function getCollapsedSections() {
+    try {
+      return new Set(JSON.parse(localStorage.getItem('sb_collapsed') || '[]'));
+    } catch { return new Set(); }
+  }
+  function setCollapsedSections(set) {
+    try { localStorage.setItem('sb_collapsed', JSON.stringify([...set])); } catch {}
+  }
+  let collapsedSections = getCollapsedSections();
+
   const sections = [
     { title: 'National', items: [
       { href: '/stem.html', label: 'National Charts' },
@@ -25,6 +42,7 @@
     { title: 'Reference', items: [
       { href: '/query.html', label: 'Data Query (SQL)' },
       { href: '/data_sources.html', label: 'Data Sources & Methodology' },
+      { href: '/implementation.html', label: 'Implementation' },
       { href: '/data_catalog.json', label: 'Data Catalog (JSON)' },
       { href: '/llms.txt', label: 'WebMCP Integration' },
     ]},
@@ -39,8 +57,9 @@
         const active = currentPage === itemPath ? ' active' : '';
         return `<a href="${p.href}" class="sb-item${active}">${p.label}</a>`;
       }).join('');
-      return `<div class="sb-group">
-        <div class="sb-section" onclick="this.parentElement.classList.toggle('collapsed')"><span class="sb-chev">\u25BC</span> ${s.title}</div>
+      const collapsed = collapsedSections.has(s.title) ? ' collapsed' : '';
+      return `<div class="sb-group${collapsed}" data-section="${s.title}">
+        <div class="sb-section" onclick="window._sbToggle(this.parentElement)"><span class="sb-chev">\u25BC</span> ${s.title}</div>
         <div class="sb-content">${items}</div>
       </div>`;
     });
@@ -52,14 +71,28 @@
       const dot = u.has_opt ? '<span class="opt-dot"></span>' : '';
       return `<a href="/stem.html#${u.key}" class="sb-item sb-uni${active}" data-key="${u.key}"><span>${u.name}</span><span class="sb-uni-meta"><span class="sb-uni-nra">${u.nra}%</span>${dot}</span></a>`;
     }).join('');
-    const uniGroup = `<div class="sb-group">
-        <div class="sb-section" onclick="this.parentElement.classList.toggle('collapsed')"><span class="sb-chev">\u25BC</span> Universities (${universities.length})</div>
+    const uniCollapsed = collapsedSections.has('Universities') ? ' collapsed' : '';
+    const uniGroup = `<div class="sb-group${uniCollapsed}" data-section="Universities">
+        <div class="sb-section" onclick="window._sbToggle(this.parentElement)"><span class="sb-chev">\u25BC</span> Universities (${universities.length})</div>
         <div class="sb-content">${uniItems}</div>
       </div>`;
 
     // National (0), Universities (1), International (2 → was 1), Reference (3 → was 2)
     return [groupHtml[0], uniGroup, groupHtml[1], groupHtml[2]].join('');
   }
+
+  // Global toggle handler that persists state
+  window._sbToggle = function(groupEl) {
+    const section = groupEl.dataset.section;
+    if (!section) return;
+    groupEl.classList.toggle('collapsed');
+    if (groupEl.classList.contains('collapsed')) {
+      collapsedSections.add(section);
+    } else {
+      collapsedSections.delete(section);
+    }
+    setCollapsedSections(collapsedSections);
+  };
 
   function rerender() {
     const body = document.querySelector('#shared-sidebar .sb-body');
@@ -110,6 +143,12 @@
       .sb-mobile-btn { display: block !important; }
     }
     .sb-mobile-btn { display: none; position: fixed; top: 8px; left: 8px; z-index: 99; background: #1e293b; border: 1px solid #334155; color: #94a3b8; font-size: 1.2rem; padding: 6px 10px; border-radius: 6px; cursor: pointer; }
+    /* Drawer mode: closed by default, opens on hamburger click. Doesn't take horizontal space. */
+    body.sb-drawer #shared-sidebar { left: -260px; width: 260px; box-shadow: 4px 0 24px rgba(0,0,0,0.4); }
+    body.sb-drawer #shared-sidebar.open { left: 0; }
+    body.sb-drawer.has-sidebar .page { margin-left: 0; }
+    body.sb-drawer.has-sidebar .site-footer { margin-left: 0; }
+    body.sb-drawer .sb-mobile-btn { display: block !important; }
   `;
 
   // Inject styles
@@ -123,6 +162,7 @@
   nav.innerHTML = html;
   document.body.prepend(nav);
   document.body.classList.add('has-sidebar');
+  if (isDrawerMode) document.body.classList.add('sb-drawer');
 
   // Mobile toggle
   const btn = document.createElement('button');

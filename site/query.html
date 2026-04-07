@@ -18,27 +18,18 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
 
-  /* -- Project Nav -- */
-  .project-nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 300;
-    height: 32px; background: #0b0d14; border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; padding: 0 16px; gap: 6px;
-    font-size: 0.7rem;
-  }
-  .project-nav a {
-    color: var(--muted); text-decoration: none; padding: 3px 8px;
-    border-radius: 4px; transition: all 0.15s; white-space: nowrap;
-  }
-  .project-nav a:hover { color: var(--text); background: rgba(56,189,248,0.08); }
-  .project-nav a.active { color: var(--accent); background: rgba(56,189,248,0.1); }
-  .project-nav .nav-sep { color: var(--border); margin: 0 2px; }
-  .project-nav .nav-home { font-weight: 700; color: var(--accent); }
-
   /* -- Header -- */
   .header {
     background: var(--surface); border-bottom: 1px solid var(--border);
     padding: 12px 24px; display: flex; align-items: center; gap: 16px;
-    margin-top: 32px; position: relative;
+    position: relative;
+  }
+  /* Shift workspace right of the shared sidebar (220px), but not in drawer mode. */
+  body.has-sidebar:not(.sb-drawer) .header,
+  body.has-sidebar:not(.sb-drawer) .main { margin-left: 220px; }
+  @media (max-width: 900px) {
+    body.has-sidebar .header,
+    body.has-sidebar .main { margin-left: 0; }
   }
   .header h1 { font-size: 0.95rem; font-weight: 700; }
   .header h1 span { color: var(--accent); }
@@ -208,17 +199,6 @@
 </style>
 </head>
 <body>
-
-<nav class="project-nav">
-  <a href="index.html" class="nav-home">PhD Demographics</a>
-  <span class="nav-sep">|</span>
-  <a href="stem.html">STEM</a>
-  <a href="non_stem.html">Non-STEM</a>
-  <a href="pipeline.html">Pipeline</a>
-  <a href="immigration.html">Immigration</a>
-  <a href="data_sources.html">Sources</a>
-  <a href="query.html" class="active">Query</a>
-</nav>
 
 <div class="header">
   <h1><span>Data</span> Query</h1>
@@ -780,6 +760,6 @@ window.addEventListener('chat-fill-sql', (e) => {
 });
 </script>
 <script src="cached-answers.js"></script>
-<script src="chat-widget.js"></script>
+<script src="/sidebar.js"></script>
 </body>
 </html>
