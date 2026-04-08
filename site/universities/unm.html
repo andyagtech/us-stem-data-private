@@ -403,10 +403,7 @@
   <div id="info-section">
     <!-- National stats hero cards -->
     <div class="nat-hero">
-      <div class="nat-stat red"><div class="num">269,323</div><div class="lbl">OPT Work Authorizations (2024)</div></div>
-      <div class="nat-stat blue"><div class="num">49,012</div><div class="lbl">STEM PhDs Awarded (2024)</div></div>
-      <div class="nat-stat pink"><div class="num">15,814</div><div class="lbl">NRA STEM PhDs (32.3%)</div></div>
-      <div class="nat-stat orange"><div class="num">$40.8B</div><div class="lbl">University R&amp;D Spending (2024)</div></div>
+      <div class="nat-stat red"><div class="num">269,323</div><div class="lbl">OPT Work Authorizations (2024)</div></div><div class="nat-stat blue"><div class="num">49,012</div><div class="lbl">STEM PhDs Awarded (2024)</div></div><div class="nat-stat pink"><div class="num">15,814</div><div class="lbl">NRA STEM PhDs (32.3%)</div></div><div class="nat-stat orange"><div class="num">$40.8B</div><div class="lbl">University R&amp;D Spending (2024)</div></div>
     </div>
 
     <!-- Charts -->
@@ -458,7 +455,7 @@
         <h3>NRA Enrollment by STEM Field</h3>
         <p class="nat-desc">In Computer Science and Engineering, the majority of graduate students are non-resident aliens.</p>
         <canvas id="nat-field-chart"></canvas>
-        <p class="source">Source: <a href="https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-in-science-and-engineering" target="_blank">NSF Graduate Student Survey</a></p>
+        <p class="source">Source: <a href="https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-in-science-and-engineering" target="_blank">NSF Graduate Student Survey (STEM only — non-STEM equivalent not yet plotted)</a></p>
       </div>
     </div>
 
@@ -6153,6 +6150,7 @@ const FUNDING = {
     }
   }
 };
+const IS_NONSTEM = false;
 let fundingVisible = false;
 let enrollmentVisible = false;
 let enrollmentFieldChart = null;
@@ -7086,11 +7084,23 @@ function updateEnrollmentPanel() {
     if (completionsTrendChart) completionsTrendChart.destroy();
     const ctx2 = document.getElementById('completions-trend-chart').getContext('2d');
 
-    // Prefer STEM-only data if available
+    // Prefer STEM-only data if available, OR show non-STEM (total - STEM) on non-STEM page
     const hasStem = trend.phd_stem_total && trend.phd_stem_total.some(v => v > 0);
-    const totals = hasStem ? trend.phd_stem_total : trend.phd_total;
-    const nras = hasStem ? trend.phd_stem_nra : trend.phd_nra;
-    const chartLabel = hasStem ? 'STEM PhD Completions (IPEDS)' : 'PhD Completions — All Fields (IPEDS)';
+    let totals, nras, chartLabel;
+    if (IS_NONSTEM && hasStem) {
+      // Non-STEM = total minus STEM, computed per year
+      totals = trend.phd_total.map((t, i) => Math.max(0, (t || 0) - (trend.phd_stem_total[i] || 0)));
+      nras = trend.phd_nra.map((n, i) => Math.max(0, (n || 0) - (trend.phd_stem_nra[i] || 0)));
+      chartLabel = 'Non-STEM PhD Completions (IPEDS)';
+    } else if (hasStem) {
+      totals = trend.phd_stem_total;
+      nras = trend.phd_stem_nra;
+      chartLabel = 'STEM PhD Completions (IPEDS)';
+    } else {
+      totals = trend.phd_total;
+      nras = trend.phd_nra;
+      chartLabel = 'PhD Completions — All Fields (IPEDS)';
+    }
 
     // Update panel title
     document.querySelector('#enrollment-container .funding-panels > div:last-child > div:first-child').innerHTML =

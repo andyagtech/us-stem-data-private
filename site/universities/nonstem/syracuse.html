@@ -461,17 +461,14 @@
   <div id="info-section">
     <!-- National stats hero cards -->
     <div class="nat-hero">
-      <div class="nat-stat red"><div class="num">269,323</div><div class="lbl">OPT Work Authorizations (2024)</div></div>
-      <div class="nat-stat blue"><div class="num">49,012</div><div class="lbl">STEM PhDs Awarded (2024)</div></div>
-      <div class="nat-stat pink"><div class="num">15,814</div><div class="lbl">NRA STEM PhDs (32.3%)</div></div>
-      <div class="nat-stat orange"><div class="num">$40.8B</div><div class="lbl">University R&amp;D Spending (2024)</div></div>
+      <div class="nat-stat red"><div class="num">269,323</div><div class="lbl">OPT Work Authorizations (2024)</div></div><div class="nat-stat blue"><div class="num">8,238</div><div class="lbl">Non-STEM PhDs Awarded across these 101 universities (2024)</div></div><div class="nat-stat pink"><div class="num">1,922</div><div class="lbl">NRA Non-STEM PhDs (23.3%)</div></div><div class="nat-stat orange"><div class="num">115,569</div><div class="lbl">Total non-STEM thesis records on this site</div></div>
     </div>
 
     <!-- Charts -->
     <div class="nat-charts">
       <div class="nat-chart-box" id="nat-phd">
-        <h3>STEM PhD Completions by Citizenship</h3>
-        <p class="nat-desc">NRA share grew from 32% to 34% while total PhDs rose 50% — American graduate production barely moved</p>
+        <h3>Non-STEM PhD Completions by Citizenship</h3>
+        <p class="nat-desc">Non-STEM PhDs (Education, Humanities, Social Sciences) saw NRA share rise from ~17% to ~23% over the same period.</p>
         <canvas id="nat-phd-chart"></canvas>
         <p class="source">Source: <a href="https://nces.ed.gov/ipeds/" target="_blank">IPEDS Completions Survey</a></p>
       </div>
@@ -482,7 +479,7 @@
         <p class="source">Source: <a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank">ICE/SEVP SEVIS</a></p>
         <p class="source" style="margin-top:4px;font-size:0.7rem;"><strong>OPT</strong> (Optional Practical Training): 12-month post-graduation work authorization for F-1 visa holders. <strong>STEM OPT</strong>: additional 24-month extension for STEM graduates (expanded from 17 months in 2016). <strong>CPT</strong> (Curricular Practical Training): work authorization during enrollment, must be part of established curriculum.</p>
       </div>
-      <div class="nat-chart-box" id="nat-funding">
+      <div class="nat-chart-box" id="nat-funding" style="display:none;">
         <h3>R&amp;D Funding vs American STEM PhDs</h3>
         <p class="nat-desc">University R&amp;D spending nearly doubled since 2010. American PhD production grew only 11%.</p>
         <canvas id="nat-funding-chart"></canvas>
@@ -512,11 +509,11 @@
         <div id="cum-results" style="font-size:0.82rem;line-height:1.8;"></div>
         <p class="source">Source: US State Department visa issuances at consulates abroad</p>
       </div>
-      <div class="nat-chart-box" id="nat-fields">
+      <div class="nat-chart-box" id="nat-fields" style="display:none;">
         <h3>NRA Enrollment by STEM Field</h3>
         <p class="nat-desc">In Computer Science and Engineering, the majority of graduate students are non-resident aliens.</p>
         <canvas id="nat-field-chart"></canvas>
-        <p class="source">Source: <a href="https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-in-science-and-engineering" target="_blank">NSF Graduate Student Survey</a></p>
+        <p class="source">Source: <a href="https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-in-science-and-engineering" target="_blank">NSF Graduate Student Survey (STEM only — non-STEM equivalent not yet plotted)</a></p>
       </div>
     </div>
 
@@ -6211,6 +6208,7 @@ const FUNDING = {
     }
   }
 };
+const IS_NONSTEM = true;
 let fundingVisible = false;
 let enrollmentVisible = false;
 let enrollmentFieldChart = null;
@@ -7144,11 +7142,23 @@ function updateEnrollmentPanel() {
     if (completionsTrendChart) completionsTrendChart.destroy();
     const ctx2 = document.getElementById('completions-trend-chart').getContext('2d');
 
-    // Prefer STEM-only data if available
+    // Prefer STEM-only data if available, OR show non-STEM (total - STEM) on non-STEM page
     const hasStem = trend.phd_stem_total && trend.phd_stem_total.some(v => v > 0);
-    const totals = hasStem ? trend.phd_stem_total : trend.phd_total;
-    const nras = hasStem ? trend.phd_stem_nra : trend.phd_nra;
-    const chartLabel = hasStem ? 'STEM PhD Completions (IPEDS)' : 'PhD Completions — All Fields (IPEDS)';
+    let totals, nras, chartLabel;
+    if (IS_NONSTEM && hasStem) {
+      // Non-STEM = total minus STEM, computed per year
+      totals = trend.phd_total.map((t, i) => Math.max(0, (t || 0) - (trend.phd_stem_total[i] || 0)));
+      nras = trend.phd_nra.map((n, i) => Math.max(0, (n || 0) - (trend.phd_stem_nra[i] || 0)));
+      chartLabel = 'Non-STEM PhD Completions (IPEDS)';
+    } else if (hasStem) {
+      totals = trend.phd_stem_total;
+      nras = trend.phd_stem_nra;
+      chartLabel = 'STEM PhD Completions (IPEDS)';
+    } else {
+      totals = trend.phd_total;
+      nras = trend.phd_nra;
+      chartLabel = 'PhD Completions — All Fields (IPEDS)';
+    }
 
     // Update panel title
     document.querySelector('#enrollment-container .funding-panels > div:last-child > div:first-child').innerHTML =
