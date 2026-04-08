@@ -89,6 +89,31 @@
       <h3>Top Countries of Origin (HESA 2023/24) <a href="#top-countries-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#top-countries-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
       <canvas id="top-countries-chart"></canvas>
     </div>
+
+    <div class="chart-box wide" id="ho-totals-section">
+      <h3>UK Sponsored-Study Visa Grants — National Total, 2018-2025</h3>
+      <p class="desc">Home Office data: visas granted for sponsored study (Tier 4 / Student Route). Sharp rebound after COVID, peak in 2022, decline since.</p>
+      <canvas id="ho-totals-chart"></canvas>
+      <p class="source">Source: <a href="https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables" target="_blank">UK Home Office Immigration System Statistics</a> (year ending September 2025)</p>
+    </div>
+
+    <div class="chart-box wide" id="ho-countries-section">
+      <h3>UK Sponsored-Study Visas Granted by Country (yearly, 2018-2025)</h3>
+      <p class="desc">Top 10 countries by total over the period. China dominated early, India became #1 in 2022-23, Nigeria saw the steepest decline after the 2024 dependant ban.</p>
+      <canvas id="ho-countries-chart"></canvas>
+    </div>
+
+    <div class="chart-box wide" id="ho-level-section">
+      <h3>UK Sponsored-Study Visas by Course Level</h3>
+      <p class="desc">Masters dominates the UK student-visa pipeline — UK 1-year masters programmes are the primary front door.</p>
+      <canvas id="ho-level-chart"></canvas>
+    </div>
+
+    <div class="chart-box wide" id="ho-region-section">
+      <h3>UK Sponsored-Study Visas by World Region</h3>
+      <p class="desc">South Asia (mainly India + Pakistan) has overtaken East Asia (mainly China) as the largest source region.</p>
+      <canvas id="ho-region-chart"></canvas>
+    </div>
   </div>
 
   <div class="table-wrap">
@@ -172,6 +197,90 @@ new Chart(document.getElementById('top-countries-chart'), {
     tooltip: { callbacks: { label: ctx => ctx.parsed.x.toLocaleString() + ' students' } } },
     scales: { x: { ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } } }
 });
+
+// === New panels powered by uk_dashboard.json (extracted from Home Office xlsx) ===
+const DUK = {"source":"UK Home Office \u2014 Immigration System Statistics, sponsored study visa grants","url":"https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables","as_of":"year ending September 2025","grants":{"years":[2018,2019,2020,2021,2022,2023,2024,2025],"national_total":[215151,253946,198539,356053,467534,439219,378452,359823],"top_countries":[{"country":"China","yearly":[96948,114807,79316,116042,100837,105277,100365,83607]},{"country":"India","yearly":[18027,33895,43876,79949,138157,118611,88610,84576]},{"country":"Nigeria","yearly":[5153,6349,8950,24096,58021,41455,18730,24949]},{"country":"Pakistan","yearly":[3831,4349,5680,14085,27630,30727,35049,28018]},{"country":"United States","yearly":[14026,13765,7532,14060,13986,14049,14843,14623]},{"country":"Bangladesh","yearly":[1304,1716,2967,8789,15017,9184,6311,9166]},{"country":"Nepal","yearly":[263,579,931,2743,4628,8451,12195,17265]},{"country":"Malaysia","yearly":[7025,6862,3697,6166,6690,6009,5310,4552]},{"country":"Saudi Arabia","yearly":[4358,5197,3259,4446,5072,5700,4851,4341]},{"country":"Hong Kong","yearly":[5281,5633,4756,5246,5105,3858,2269,3001]},{"country":"Kuwait","yearly":[3462,3680,2822,3783,4129,4486,4673,4585]},{"country":"Thailand","yearly":[4180,4529,1435,3544,4013,3718,3398,2960]}],"by_level":{"Bachelors":[63478,72148,53982,97988,109647,105105,105555,103284],"Below Bachelors":[21114,22891,10902,17720,23475,22522,20384,15928],"Doctoral":[8903,9097,6265,10295,9866,10582,10057,8194],"Masters":[95599,120840,126124,225485,314911,291539,234462,225138],"Pre-sessional English":[26057,28970,1266,3295,4750,6150,6476,4479],"Unknown":[0,0,0,1270,4885,3321,1518,2800]},"by_region":{"Asia East":[111780,130197,89340,129859,115123,118396,111634,94963],"Asia South":[24128,41265,54197,108135,191307,172758,145866,142769],"Africa Sub-Saharan":[11093,12718,13643,31779,68180,52777,28078,34697],"Asia South East":[18808,19345,9489,17006,19755,19306,18566,16559],"America North":[17374,17227,9559,17577,17767,17747,18461,18226],"Middle East":[15750,16523,11237,15393,17744,19461,16877,14589],"EU 14":[20,18,54,14763,14301,14171,15082,14884],"Europe Other":[5577,5603,4377,8373,8242,9185,9108,9483]}}};
+(function() {
+  if (!DUK || !DUK.grants) return;
+  const PALETTE = ['#38bdf8','#fb923c','#4ade80','#a78bfa','#f87171','#fbbf24','#22d3ee','#e879f9','#34d399','#fb7185','#60a5fa','#f472b6'];
+  const g = DUK.grants;
+
+  // National total
+  new Chart(document.getElementById('ho-totals-chart'), {
+    type: 'bar',
+    data: {
+      labels: g.years,
+      datasets: [{ label: 'Visas Granted', data: g.national_total, backgroundColor: '#38bdf8cc', borderRadius: 4 }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.parsed.y.toLocaleString() + ' grants' } } },
+      scales: { y: { beginAtZero: true, ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } }
+    }
+  });
+
+  // Top countries lines
+  new Chart(document.getElementById('ho-countries-chart'), {
+    type: 'line',
+    data: {
+      labels: g.years,
+      datasets: g.top_countries.map((c, i) => ({
+        label: c.country,
+        data: c.yearly,
+        borderColor: PALETTE[i % PALETTE.length],
+        fill: false, tension: 0.3, pointRadius: 2, borderWidth: 2,
+      }))
+    },
+    options: {
+      responsive: true,
+      interaction: { mode: 'index', intersect: false },
+      plugins: { legend: { position: 'bottom', labels: { color: '#cbd5e1', font: { size: 10 } } } },
+      scales: { y: { beginAtZero: true, ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } }
+    }
+  });
+
+  // By level (stacked area)
+  const levels = Object.keys(g.by_level);
+  new Chart(document.getElementById('ho-level-chart'), {
+    type: 'line',
+    data: {
+      labels: g.years,
+      datasets: levels.map((l, i) => ({
+        label: l,
+        data: g.by_level[l],
+        borderColor: PALETTE[i % PALETTE.length],
+        backgroundColor: PALETTE[i % PALETTE.length] + 'aa',
+        fill: true, tension: 0.3, pointRadius: 2,
+      }))
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: 'bottom', labels: { color: '#cbd5e1', font: { size: 10 } } } },
+      scales: { y: { stacked: true, beginAtZero: true, ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } }
+    }
+  });
+
+  // By region (lines)
+  const regions = Object.keys(g.by_region);
+  new Chart(document.getElementById('ho-region-chart'), {
+    type: 'line',
+    data: {
+      labels: g.years,
+      datasets: regions.map((r, i) => ({
+        label: r,
+        data: g.by_region[r],
+        borderColor: PALETTE[i % PALETTE.length],
+        fill: false, tension: 0.3, pointRadius: 2, borderWidth: 2,
+      }))
+    },
+    options: {
+      responsive: true,
+      interaction: { mode: 'index', intersect: false },
+      plugins: { legend: { position: 'bottom', labels: { color: '#cbd5e1', font: { size: 10 } } } },
+      scales: { y: { beginAtZero: true, ticks: { callback: v => (v/1000).toFixed(0) + 'K' } } }
+    }
+  });
+})();
 </script>
 <script src="/sidebar.js"></script>
 </body>
