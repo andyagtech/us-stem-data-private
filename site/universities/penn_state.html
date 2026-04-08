@@ -501,7 +501,7 @@ of Polyureas And Their Lithium Ionomers</li>
   <div id="funding-chart-container" class="funding-chart-wrap" style="position:relative;">
     <a class="share-anchor" onclick="shareAnchor((currentKey||'')+'--funding',event)" title="Copy link to funding panel" style="position:absolute;top:12px;right:12px;">🔗</a>
     <h3 id="funding-chart-title">R&amp;D Expenditures</h3>
-    <div class="funding-source">Sources: <a href="https://ncses.nsf.gov/surveys/higher-education-research-development/2024" target="_blank">NSF HERD Survey</a> (R&amp;D, FY 2010–2024) · <a href="https://nces.ed.gov/ipeds/" target="_blank">IPEDS Finance Survey</a> (Revenue, FY 2022-23)</div>
+    <div class="funding-source">Sources: <a href="https://ncses.nsf.gov/surveys/higher-education-research-development/2024" target="_blank">NSF HERD Survey</a> (R&amp;D) · <a href="https://nces.ed.gov/ipeds/" target="_blank">IPEDS Finance Survey</a> (Revenue) · <a href="https://shef.sheeo.org/" target="_blank">SHEEO SHEF</a> (State Appropriations) · <a href="https://www.usaspending.gov/" target="_blank">USAspending.gov</a> (Federal Awards)</div>
     <div class="funding-panels">
       <div>
         <div style="font-weight:600;font-size:0.85rem;margin-bottom:6px;">R&amp;D Expenditures (<a href="https://ncses.nsf.gov/surveys/higher-education-research-development/2024" target="_blank" style="color:var(--accent);text-decoration:none;">NSF HERD</a>)</div>
@@ -512,6 +512,14 @@ of Polyureas And Their Lithium Ionomers</li>
         <canvas id="finance-chart" style="max-height:220px;"></canvas>
         <div id="finance-details" style="margin-top:8px;font-size:0.78rem;color:var(--text-muted);line-height:1.6;"></div>
       </div>
+    </div>
+    <div id="state-funding-row" style="margin-top:14px;display:none;border-top:1px solid var(--surface2);padding-top:10px;">
+      <div style="font-weight:600;font-size:0.85rem;margin-bottom:6px;">State Higher-Ed Appropriations Context (<a href="https://shef.sheeo.org/" target="_blank" style="color:var(--accent);text-decoration:none;">SHEEO SHEF</a>)</div>
+      <div id="state-funding-content" style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;"></div>
+    </div>
+    <div id="usaspending-row" style="margin-top:10px;display:none;font-size:0.78rem;color:var(--text-muted);">
+      <strong style="color:var(--text);">Federal Awards (USAspending.gov):</strong>
+      <span id="usaspending-content"></span>
     </div>
   </div>
 
@@ -535,6 +543,12 @@ of Polyureas And Their Lithium Ionomers</li>
       <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:8px;">How graduate students self-identify on IPEDS. Nonresident Alien is a citizenship status, not a race — students on temporary visas are reported separately and never asked their race. The remainder ("Other / Unknown") includes American Indian/Alaska Native, Native Hawaiian/Pacific Islander, Two-or-More Races, and students who declined to report.</div>
       <canvas id="enrollment-race-chart" style="max-height:90px;"></canvas>
       <div id="enrollment-race-legend" style="display:flex;flex-wrap:wrap;gap:14px;font-size:0.72rem;margin-top:8px;color:var(--text-muted);"></div>
+    </div>
+    <div id="faculty-race-row" style="margin-top:18px;display:none;">
+      <div style="font-weight:600;font-size:0.85rem;margin-bottom:6px;">Self-Reported Race / Citizenship of Instructional Faculty (<a href="https://nces.ed.gov/ipeds/" target="_blank" style="color:var(--accent);text-decoration:none;">IPEDS Human Resources</a>)</div>
+      <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:8px;">How tenured and tenure-track faculty self-identify on IPEDS. Same caveat applies — Nonresident Alien is a citizenship status, not a race.</div>
+      <canvas id="faculty-race-chart" style="max-height:90px;"></canvas>
+      <div id="faculty-race-legend" style="display:flex;flex-wrap:wrap;gap:14px;font-size:0.72rem;margin-top:8px;color:var(--text-muted);"></div>
     </div>
   </div>
 
@@ -6111,6 +6125,7 @@ let enrollmentVisible = false;
 let enrollmentFieldChart = null;
 let completionsTrendChart = null;
 let enrollmentRaceChart = null;
+let facultyRaceChart = null;
 let fundingChart = null;
 let financeChart = null;
 
@@ -6898,12 +6913,45 @@ function updateH1bPanel() {
 
   // PERM green card data
   if (perm && perm.total > 0) {
+    const denied = perm.denied || 0;
+    const certPct = perm.total > 0 ? Math.round(100 * (perm.certified || 0) / perm.total) : 0;
     html += `<div style="font-size:0.78rem;padding:6px 0;border-top:1px solid var(--surface2);">`;
     html += `<strong>Green Card Sponsorship</strong> (<a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" target="_blank" style="color:var(--accent);text-decoration:none;">DOL PERM</a>): `;
-    html += `${perm.certified} certified, ${perm.total} total applications`;
+    html += `<span style="color:#4ade80;">${perm.certified} certified</span>`;
+    if (denied > 0) html += ` &middot; <span style="color:#f87171;">${denied} denied</span>`;
+    html += ` &middot; ${perm.total} total (${certPct}% approval)`;
     if (perm.top_titles?.length) {
       html += `<br>Top roles: ${perm.top_titles.map(t => t[0]).join(', ')}`;
     }
+    html += '</div>';
+  }
+
+  // LCA SOC code distribution
+  if (lca && lca.top_soc && lca.top_soc.length > 0) {
+    html += `<div style="font-size:0.78rem;padding:6px 0;border-top:1px solid var(--surface2);">`;
+    html += `<strong>Top Occupation Categories</strong> (<a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" target="_blank" style="color:var(--accent);text-decoration:none;">DOL LCA SOC</a>): `;
+    const socList = lca.top_soc.slice(0, 5).map(s => `${s[0]} <span style="color:var(--text-muted);">(${s[1].toLocaleString()})</span>`).join(', ');
+    html += socList;
+    html += '</div>';
+  }
+
+  // LCA yearly trend
+  if (lca && lca.yearly && Object.keys(lca.yearly).length > 1) {
+    const years = Object.keys(lca.yearly).sort();
+    const vals = years.map(y => lca.yearly[y]);
+    const peak = Math.max(...vals);
+    const peakYear = years[vals.indexOf(peak)];
+    const latest = vals[vals.length - 1];
+    const latestYear = years[years.length - 1];
+    html += `<div style="font-size:0.78rem;padding:6px 0;border-top:1px solid var(--surface2);">`;
+    html += `<strong>LCA Filings Over Time:</strong> peaked at <span style="color:var(--accent);">${peak.toLocaleString()}</span> in ${peakYear}, currently <span style="color:var(--accent);">${latest.toLocaleString()}</span> (${latestYear})`;
+    html += `<div style="display:flex;gap:2px;align-items:flex-end;height:40px;margin-top:6px;">`;
+    for (let i = 0; i < years.length; i++) {
+      const h = peak > 0 ? Math.max(2, (vals[i] / peak) * 38) : 2;
+      html += `<div title="${years[i]}: ${vals[i].toLocaleString()}" style="flex:1;background:rgba(56,189,248,0.6);height:${h}px;min-width:6px;"></div>`;
+    }
+    html += `</div>`;
+    html += `<div style="display:flex;justify-content:space-between;font-size:0.65rem;color:var(--text-muted);margin-top:2px;"><span>${years[0]}</span><span>${years[years.length-1]}</span></div>`;
     html += '</div>';
   }
 
@@ -6958,7 +7006,10 @@ function updateEnrollmentPanel() {
   }
   if (aid.grant_total > 0) {
     const pctAided = aid.grad_students > 0 ? ((aid.receiving_grants / aid.grad_students) * 100).toFixed(0) : '?';
-    row2.push(`<div><span style="font-size:1rem;font-weight:600;color:var(--text);">$${(aid.grant_total/1e6).toFixed(1)}M</span><br><span style="color:var(--text-muted);">Grad Grants (${pctAided}% receive aid)</span></div>`);
+    const fedShare = aid.fed_grant_total && aid.grant_total > 0 ? Math.round(100 * aid.fed_grant_total / aid.grant_total) : 0;
+    const fedNote = aid.fed_grant_total > 0 ? `<br>Federal share: $${(aid.fed_grant_total/1e6).toFixed(1)}M (${fedShare}%)` : '';
+    const avgNote = aid.grant_avg ? `<br>Avg: $${aid.grant_avg.toLocaleString()}` : '';
+    row2.push(`<div><span style="font-size:1rem;font-weight:600;color:var(--text);">$${(aid.grant_total/1e6).toFixed(1)}M</span><br><span style="color:var(--text-muted);">Grad Grants (${pctAided}% receive aid)${fedNote}${avgNote}</span></div>`);
   }
   if (fac.total > 0) {
     row2.push(`<div><span style="font-size:1rem;font-weight:600;color:var(--text);">${fac.total.toLocaleString()}</span><br><span style="color:var(--text-muted);">Faculty (${fac.nra_pct}% NRA)</span></div>`);
@@ -7012,15 +7063,21 @@ function updateEnrollmentPanel() {
     document.querySelector('#enrollment-container .funding-panels > div:last-child > div:first-child').innerHTML =
       chartLabel + ' <a href="https://nces.ed.gov/ipeds/" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:400;font-size:0.8rem;">source</a>';
 
-    const domestic = totals.map((t, i) => t - (nras[i] || 0));
+    const unknowns = trend.phd_unknown || totals.map(_ => 0);
+    const domestic = totals.map((t, i) => Math.max(0, t - (nras[i] || 0) - (unknowns[i] || 0)));
+    const hasUnknowns = unknowns.some(v => v > 0);
+    const datasets = [
+      { label: 'Temporary Visa (NRA)', data: nras, borderColor: '#f87171', backgroundColor: 'rgba(248,113,113,0.3)', fill: true, tension: 0.3, order: 1 },
+      { label: 'US Citizens + Perm Residents*', data: domestic, borderColor: '#38bdf8', backgroundColor: 'rgba(56,189,248,0.3)', fill: true, tension: 0.3, order: 2 },
+    ];
+    if (hasUnknowns) {
+      datasets.push({ label: 'Citizenship Unreported', data: unknowns, borderColor: '#94a3b8', backgroundColor: 'rgba(148,163,184,0.3)', fill: true, tension: 0.3, order: 3 });
+    }
     completionsTrendChart = new Chart(ctx2, {
       type: 'line',
       data: {
         labels: trend.years,
-        datasets: [
-          { label: 'Temporary Visa (NRA)', data: nras, borderColor: '#f87171', backgroundColor: 'rgba(248,113,113,0.3)', fill: true, tension: 0.3, order: 1 },
-          { label: 'US Citizens + Perm Residents*', data: domestic, borderColor: '#38bdf8', backgroundColor: 'rgba(56,189,248,0.3)', fill: true, tension: 0.3, order: 2 },
-        ]
+        datasets: datasets,
       },
       options: {
         responsive: true,
@@ -7104,6 +7161,54 @@ function updateEnrollmentPanel() {
     ).join('');
   } else {
     ipedsRow.style.display = 'none';
+  }
+
+  // Faculty IPEDS race breakdown — same shape as enrollment_ipeds, plotted in faculty-race-row
+  const facRow = document.getElementById('faculty-race-row');
+  const facLegend = document.getElementById('faculty-race-legend');
+  const facCanvas = document.getElementById('faculty-race-chart');
+  if (facultyRaceChart) { facultyRaceChart.destroy(); facultyRaceChart = null; }
+  if (fac && fac.total > 0) {
+    facRow.style.display = '';
+    const facCats = [
+      { key: 'nra', label: 'Nonresident Alien', color: '#f87171' },
+      { key: 'white', label: 'White', color: '#e2e8f0' },
+      { key: 'asian', label: 'Asian', color: '#38bdf8' },
+      { key: 'hispanic', label: 'Hispanic / Latino', color: '#facc15' },
+      { key: 'black', label: 'Black / African American', color: '#a78bfa' },
+    ];
+    const facKnown = facCats.reduce((s, c) => s + (fac[c.key] || 0), 0);
+    const facOther = Math.max(0, fac.total - facKnown);
+    facCats.push({ key: 'other', label: 'Other / Unknown', color: '#64748b' });
+    fac.other = facOther;
+    const facTotal = fac.total;
+    const facData = facCats.map(c => fac[c.key] || 0);
+    const facPcts = facData.map(v => (v / facTotal) * 100);
+    facultyRaceChart = new Chart(facCanvas.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: [''],
+        datasets: facCats.map((c, i) => ({
+          label: c.label, data: [facPcts[i]], backgroundColor: c.color, borderWidth: 0, stack: 's', rawCount: facData[i],
+        })),
+      },
+      options: {
+        indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(item) { const c = item.dataset.rawCount; return `${item.dataset.label}: ${c.toLocaleString()} (${item.parsed.x.toFixed(1)}%)`; } } }
+        },
+        scales: {
+          x: { stacked: true, max: 100, ticks: { color: '#94a3b8', callback: v => v + '%' }, grid: { color: 'rgba(148,163,184,0.08)' } },
+          y: { stacked: true, display: false },
+        },
+      },
+    });
+    facLegend.innerHTML = facCats.map((c, i) =>
+      `<span style="display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:11px;height:11px;background:${c.color};border-radius:2px;"></span>${c.label} <span style="color:#94a3b8;">${facData[i].toLocaleString()} (${facPcts[i].toFixed(1)}%)</span></span>`
+    ).join('');
+  } else {
+    facRow.style.display = 'none';
   }
 
   // Add footnote about green card holders
@@ -7273,6 +7378,48 @@ function updateFundingChart() {
   document.getElementById('finance-details').innerHTML =
     `In FY${latestYr}: <strong style="color:#f87171;">${fmtDollars(taxpayer)}</strong> of ${fmtDollars(latest.total)} total revenue (${taxpayerPct}%) came from <strong style="color:var(--text);">taxpayer funding</strong> (federal + state).`
     + `<br><span style="font-size:0.72rem;color:var(--text-muted);">"Other" includes gifts &amp; donations, investment income, hospital revenue, auxiliary enterprises (housing, dining), and private grants. Hover bars for details.</span>`;
+
+  // SHEEO state appropriations context (state-level, not per-uni)
+  try {
+    const uni = UNI_CACHE[currentKey];
+    const sf = uni && uni.state_funding;
+    const sfRow = document.getElementById('state-funding-row');
+    const sfContent = document.getElementById('state-funding-content');
+    if (sf && sf.yearly && Object.keys(sf.yearly).length > 0) {
+      const sfYears = Object.keys(sf.yearly).sort();
+      const latestSF = sf.yearly[sfYears[sfYears.length - 1]];
+      const oldestSF = sf.yearly[sfYears[0]];
+      const totalLatest = latestSF.total_state_support || 0;
+      const perFTE = latestSF.ed_approp_per_fte || 0;
+      const studentShare = latestSF.student_share != null ? Math.round(latestSF.student_share * 100) : null;
+      const growthPct = oldestSF.total_state_support > 0
+        ? Math.round(100 * (totalLatest - oldestSF.total_state_support) / oldestSF.total_state_support)
+        : null;
+      let sfHtml = `In ${sfYears[sfYears.length-1]}, <strong style="color:var(--text);">${sf.state_name}</strong> spent <strong style="color:#facc15;">${fmtDollars(totalLatest)}</strong> total on public higher education `;
+      sfHtml += `(<strong>$${Math.round(perFTE).toLocaleString()}</strong> per full-time-equivalent student). `;
+      if (studentShare != null) sfHtml += `Students cover <strong>${studentShare}%</strong> of public-college costs via tuition. `;
+      if (growthPct != null) sfHtml += `Total state support has changed <strong style="color:${growthPct >= 0 ? '#4ade80' : '#f87171'};">${growthPct >= 0 ? '+' : ''}${growthPct}%</strong> since ${sfYears[0]}.`;
+      sfHtml += `<br><span style="font-size:0.7rem;color:var(--text-muted);">${(uni.name || '').includes('U ') || (uni.name || '').includes('State') ? 'Applies to this public institution' : 'Context only — this is a state aggregate; private institutions do not receive state appropriations.'}</span>`;
+      sfContent.innerHTML = sfHtml;
+      sfRow.style.display = '';
+    } else {
+      sfRow.style.display = 'none';
+    }
+
+    // USAspending federal awards context
+    const usa = uni && uni.usaspending;
+    const usaRow = document.getElementById('usaspending-row');
+    const usaContent = document.getElementById('usaspending-content');
+    if (usa && usa.total_grants > 0) {
+      let usaHtml = `<strong style="color:var(--text);">${fmtDollars(usa.total_grants)}</strong> in federal grants and contracts in the most recent reporting period`;
+      if (usa.rank) usaHtml += ` (rank #${usa.rank} nationally)`;
+      usaHtml += `. <span style="font-size:0.7rem;color:var(--text-muted);">Source: USAspending.gov per-recipient totals across all federal agencies, including NIH, NSF, DoD, DoE, NASA, USDA.</span>`;
+      usaContent.innerHTML = usaHtml;
+      usaRow.style.display = 'block';
+    } else {
+      usaRow.style.display = 'none';
+    }
+  } catch(e) { console.warn('State/USAspending context error:', e); }
   } catch(e) { console.warn('Funding chart error:', e); }
 }
 

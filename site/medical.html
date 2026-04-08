@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Medical school enrollment, DACA matriculants, and the immigration pathway through US MD programs.">
+<meta property="og:title" content="Medical Immigration Pipeline — PhD Demographics">
+<meta property="og:description" content="AAMC enrollment data, DACA medical students, and the foreign-born physician workforce.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og-image.png">
+<meta property="og:url" content="https://phd-demographics.andy-barr.com/medical.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<title>Medical Immigration Pipeline — PhD Demographics</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --surface2: #334155; --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8; --red: #f87171; --green: #4ade80; --orange: #fb923c; --purple: #a78bfa; --yellow: #facc15; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); }
+  .page { max-width: 1200px; margin: 0 auto; padding: 24px 32px; }
+  h1 { font-size: 1.4rem; margin-bottom: 4px; }
+  h2 { font-size: 1.1rem; margin: 24px 0 12px; color: var(--accent); }
+  .subtitle { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px; }
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .chart-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; }
+  .chart-box h3 { font-size: 0.9rem; margin-bottom: 2px; }
+  .chart-box .desc { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; }
+  .chart-box .source { font-size: 0.7rem; color: var(--text-muted); margin-top: 6px; }
+  .chart-box .source a { color: var(--accent); text-decoration: none; }
+  .chart-box canvas { max-height: 320px; }
+  .chart-box.wide { grid-column: 1 / -1; }
+  .info-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; margin-bottom: 14px; font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+  .info-box strong { color: var(--text); }
+  .stats { display: flex; gap: 24px; flex-wrap: wrap; margin: 12px 0 20px; }
+  .stat { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 14px 18px; min-width: 160px; }
+  .stat .num { font-size: 1.6rem; font-weight: 700; color: var(--accent); }
+  .stat .lbl { font-size: 0.75rem; color: var(--text-muted); }
+  @media (max-width: 700px) { .charts { grid-template-columns: 1fr; } .page { padding: 16px; } .stats { gap: 10px; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>Medical Immigration Pipeline</h1>
+  <div class="subtitle">US MD-granting medical schools: enrollment growth, DACA students, and the limited domestic pipeline. Source: AAMC FACTS.</div>
+
+  <div class="info-box">
+    <strong>The medical school bottleneck.</strong> US MD programs admit ~23,000 new students per year — barely 40% of the ~55,000 who apply. While total enrollment has grown ~52% since 1980 (from 65,969 to 100,723), graduate output is still capped at ~21,000 per year. Combined with the residency-slot bottleneck, this creates one of the most constrained physician pipelines in the developed world. International medical graduates (IMGs) fill the gap — about 25% of practicing US physicians earned their MDs abroad.
+  </div>
+
+  <div class="stats" id="hero-stats"></div>
+
+  <div class="charts">
+    <div class="chart-box wide" id="history-section">
+      <h3>US Medical School Enrollment, 1980-2025</h3>
+      <p class="desc">Total medical school enrollment has grown 52% since 1980. Applications spiked during COVID and have since declined.</p>
+      <canvas id="history-chart"></canvas>
+      <p class="source">Source: <a href="https://www.aamc.org/data-reports/students-residents/data/applicants-and-matriculants-data" target="_blank">AAMC FACTS Chart 4</a></p>
+    </div>
+
+    <div class="chart-box" id="recent-section">
+      <h3>Last 10 Years: Applicants vs Matriculants vs Graduates</h3>
+      <p class="desc">Despite growing applications, matriculation and graduation rates are essentially flat — the bottleneck is in seat capacity, not interest.</p>
+      <canvas id="recent-chart"></canvas>
+      <p class="source">Source: <a href="https://www.aamc.org/data-reports/students-residents/data/facts-applicants-and-matriculants-data" target="_blank">AAMC FACTS Table 1</a></p>
+    </div>
+
+    <div class="chart-box" id="daca-section">
+      <h3>DACA Medical Students, 2018-2025</h3>
+      <p class="desc">Students with DACA status applying to and enrolling in US medical schools. Numbers have always been small (~150 applicants/year peak) and have fallen sharply since policy uncertainty.</p>
+      <canvas id="daca-chart"></canvas>
+      <p class="source">Source: <a href="https://www.aamc.org/data-reports/students-residents/data/facts-applicants-and-matriculants-data" target="_blank">AAMC FACTS Table A-25</a></p>
+    </div>
+
+    <div class="chart-box wide" id="origins-section">
+      <h3>Asian-Origin Male Matriculants, 2025-2026 (by self-reported ethnic origin)</h3>
+      <p class="desc">AAMC tracks self-reported origin within the broad "Asian" category. Indian, Chinese, and Korean students dominate — Indian alone is over 1,000 male matriculants in a single year.</p>
+      <canvas id="origins-chart"></canvas>
+      <p class="source">Source: <a href="https://www.aamc.org/data-reports/students-residents/data/facts-applicants-and-matriculants-data" target="_blank">AAMC FACTS Table A-12</a> · Note: This is "men only" because that's the column AAMC publishes by ethnic origin; the women side has the same shape.</p>
+    </div>
+  </div>
+
+  <h2>Why this matters for the broader immigration story</h2>
+  <div class="info-box">
+    <p style="margin-bottom: 8px;"><strong>Three structural facts about US physician supply:</strong></p>
+    <ol style="margin-left: 22px;">
+      <li><strong>Seat scarcity:</strong> ~23,000 MD seats per year, ~6,400 DO seats. Combined US-trained output of ~30,000/year against a population of 340M.</li>
+      <li><strong>Residency cap (Match):</strong> Even US graduates compete for residency slots. About 40,000 NRMP positions annually — nearly half are filled by international medical graduates (IMGs) and US graduates of foreign schools.</li>
+      <li><strong>J-1 / H-1B physicians:</strong> Foreign-born physicians on J-1 visas serve a significant share of underserved-area care under Conrad 30 waivers. EVSP J-1 sponsorship data shows ~12,000 active foreign physicians on J-1 in any given year.</li>
+    </ol>
+    <p style="margin-top: 10px;">The medical immigration pathway is therefore very different from the STEM PhD pathway: tightly capped at the front (admissions), tightly capped in the middle (residency), and heavily reliant on foreign-born physicians (especially Indian and Pakistani) at the back end of the labor market.</p>
+  </div>
+
+  <h2>Source documents (PDF only — not yet parsed into the dashboard)</h2>
+  <div class="info-box" style="font-size:0.78rem;">
+    The following AAMC + ECFMG + AMA datasets are downloaded and stored under <code style="color:var(--accent);">data/medical/</code> but are PDF-only and not yet machine-parsed. They cover IMG Match outcomes, EVSP J-1 physician sponsorship by country/state/specialty, FAIMER international medical school growth, and NRMP residency match results.
+    <ul style="margin-top:8px;margin-left:22px;">
+      <li><a href="https://www.ama-assn.org/system/files/imgs-by-country.pdf" target="_blank" style="color:var(--accent);">IMG by country (AMA)</a></li>
+      <li><a href="https://www.ecfmg.org/forms/EVSP-Sponsorship-2015-2025.pdf" target="_blank" style="color:var(--accent);">EVSP J-1 sponsorship 2015-2025 (ECFMG)</a></li>
+      <li><a href="https://www.nrmp.org/match-data/2025/" target="_blank" style="color:var(--accent);">NRMP Match outcomes 2025</a></li>
+      <li><a href="https://www.faimer.org/" target="_blank" style="color:var(--accent);">FAIMER international medical school directory</a></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+const D = {"source":"AAMC FACTS \u2014 applicants, matriculants, enrollment, graduates of US MD-granting medical schools","url":"https://www.aamc.org/data-reports/students-residents/data/facts-applicants-and-matriculants-data","history":{"years":[1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],"applicants":[36083,36717,35719,35187,35917,32885,31313,28118,26702,26909,29241,33296,37402,42806,45360,46586,46965,43016,40995,38442,37088,34860,33623,34791,35735,37371,39108,42315,42231,42268,42741,43919,45266,48014,49480,52549,53042,51680,52777,53369,53030,62443,55189,52577,51946,54699],"matriculants":[16587,16660,16567,16480,16395,16268,16103,15927,15969,15867,15998,16211,16289,16307,16287,16252,16201,16164,16170,16221,16301,16365,16488,16541,16648,17003,17361,17759,18036,18390,18665,19230,19517,20055,20343,20631,21030,21338,21622,21869,22239,22666,22710,22980,23156,23440],"enrollment":[65969,67087,67493,68140,67994,67726,67429,67049,66717,66462,66510,66866,67460,68164,68790,69035,69136,69181,69100,69099,69206,69313,69718,70104,70820,71778,72895,74298,75779,77369,78741,80204,81932,83351,85122,86584,88181,89729,91218,92621,94064,95334,96376,97772,99454,100723]},"ten_year_summary":{"years":["2016-2017","2017-2018","2018-2019","2019-2020","2020-2021","2021-2022","2022-2023","2023-2024","2024-2025","2025-2026"],"applicants":[53042,51680,52777,53368,53030,62443,55189,52577,51946,54699],"matriculants":[21030,21338,21622,21869,22239,22666,22710,22980,23156,23440],"enrollment":[88181,89729,91218,92621,94064,95334,96376,97772,99454,100723],"graduates":[19262,19562,19935,20390,20926,21057,20927,20872,21599,null]},"daca":{"years":[2018,2019,2020,2021,2022,2023,2024,2025],"applicants_daca":[150,134,148,208,159,144,107,73],"applicants_total":[52777,53368,53030,62443,55189,52577,51946,54699],"matriculants_daca":[42,36,46,65,53,52,41,20],"matriculants_total":[21622,21869,22239,22666,22710,22980,23156,23440]},"race_2025":{"asian_origins_men_matriculants_2025":{"Bangladeshi":260,"Cambodian":26,"Chinese":2018,"Filipino":347,"Indian":5007,"Indonesian":24,"Japanese":94,"Korean":1177,"Laotian":8,"Pakistani":738,"Taiwanese":372,"Vietnamese":823}}};
+
+const COMMON_OPTS = {
+  responsive: true, maintainAspectRatio: false,
+  plugins: {
+    legend: { position: 'bottom', labels: { color: '#cbd5e1', font: { size: 11 } } },
+    tooltip: { mode: 'index', intersect: false }
+  },
+  interaction: { mode: 'index', intersect: false },
+  scales: {
+    y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(51,65,85,0.5)' }, beginAtZero: true },
+    x: { ticks: { color: '#94a3b8' }, grid: { display: false } }
+  }
+};
+
+// Hero stats
+(function() {
+  const t = D.history;
+  const lastIdx = t.years.length - 1;
+  const first = t.enrollment[0];
+  const last = t.enrollment[lastIdx];
+  const growth = first ? Math.round(100 * (last - first) / first) : 0;
+  const html = `
+    <div class="stat"><div class="num">${last.toLocaleString()}</div><div class="lbl">Total enrollment ${t.years[lastIdx]}-${t.years[lastIdx]+1}</div></div>
+    <div class="stat"><div class="num">${t.matriculants[lastIdx].toLocaleString()}</div><div class="lbl">New matriculants per year</div></div>
+    <div class="stat"><div class="num">${t.applicants[lastIdx].toLocaleString()}</div><div class="lbl">Annual applicants</div></div>
+    <div class="stat"><div class="num">+${growth}%</div><div class="lbl">Enrollment growth since ${t.years[0]}</div></div>
+  `;
+  document.getElementById('hero-stats').innerHTML = html;
+})();
+
+// History chart
+new Chart(document.getElementById('history-chart'), {
+  type: 'line',
+  data: {
+    labels: D.history.years,
+    datasets: [
+      { label: 'Total Enrollment', data: D.history.enrollment, borderColor: '#38bdf8', backgroundColor: 'rgba(56,189,248,0.12)', fill: true, tension: 0.3, pointRadius: 0 },
+      { label: 'Applicants', data: D.history.applicants, borderColor: '#fb923c', backgroundColor: 'rgba(251,146,60,0.0)', tension: 0.3, pointRadius: 0 },
+      { label: 'Matriculants', data: D.history.matriculants, borderColor: '#4ade80', backgroundColor: 'rgba(74,222,128,0.0)', tension: 0.3, pointRadius: 0 },
+    ]
+  },
+  options: COMMON_OPTS
+});
+
+// Recent 10 years
+new Chart(document.getElementById('recent-chart'), {
+  type: 'bar',
+  data: {
+    labels: D.ten_year_summary.years,
+    datasets: [
+      { label: 'Applicants', data: D.ten_year_summary.applicants, backgroundColor: '#fb923c' },
+      { label: 'Matriculants', data: D.ten_year_summary.matriculants, backgroundColor: '#4ade80' },
+      { label: 'Graduates', data: D.ten_year_summary.graduates, backgroundColor: '#a78bfa' },
+    ]
+  },
+  options: COMMON_OPTS
+});
+
+// DACA chart
+new Chart(document.getElementById('daca-chart'), {
+  type: 'line',
+  data: {
+    labels: D.daca.years,
+    datasets: [
+      { label: 'DACA Applicants', data: D.daca.applicants_daca, borderColor: '#facc15', backgroundColor: 'rgba(250,204,21,0.15)', fill: true, tension: 0.3, pointRadius: 4 },
+      { label: 'DACA Matriculants', data: D.daca.matriculants_daca, borderColor: '#a78bfa', backgroundColor: 'rgba(167,139,250,0.15)', fill: true, tension: 0.3, pointRadius: 4 },
+    ]
+  },
+  options: COMMON_OPTS
+});
+
+// Origins chart
+(function() {
+  const origins = D.race_2025.asian_origins_men_matriculants_2025 || {};
+  const sorted = Object.entries(origins).sort((a,b) => b[1] - a[1]);
+  new Chart(document.getElementById('origins-chart'), {
+    type: 'bar',
+    data: {
+      labels: sorted.map(x => x[0]),
+      datasets: [{ label: 'Male Matriculants 2025-2026', data: sorted.map(x => x[1]), backgroundColor: '#38bdf8cc' }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(51,65,85,0.5)' }, beginAtZero: true },
+        y: { ticks: { color: '#cbd5e1' }, grid: { display: false } }
+      }
+    }
+  });
+})();
+</script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

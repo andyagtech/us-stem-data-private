@@ -53,6 +53,17 @@
         { hash: 'indexed-chart-section', label: 'E. Pipeline Growth' },
         { hash: 'heatmap-chart-section', label: 'F. Country × State' },
       ]},
+      { href: '/medical.html', label: 'Medical Immigration', anchors: [
+        { hash: 'history-section', label: 'Enrollment 1980-2025' },
+        { hash: 'recent-section', label: 'Apps vs Matric vs Grad' },
+        { hash: 'daca-section', label: 'DACA Med Students' },
+        { hash: 'origins-section', label: 'Asian-Origin Matriculants' },
+      ]},
+      { href: '/workforce.html', label: 'STEM Workforce (SDR)', anchors: [
+        { hash: 'by-field-section', label: 'Foreign-Born by Field' },
+        { hash: 'citizenship-section', label: 'Citizenship Composition' },
+        { hash: 'totals-section', label: 'Totals by Field' },
+      ]},
     ]},
     { title: 'International', items: [
       { href: '/india.html', label: 'India (Outbound)' },

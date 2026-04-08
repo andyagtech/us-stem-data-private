@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NSF Survey of Doctorate Recipients: foreign-born share of the US doctoral STEM workforce by field.">
+<meta property="og:title" content="STEM Doctoral Workforce — PhD Demographics">
+<meta property="og:description" content="What share of US PhDs working in STEM fields are foreign-born? NSF SDR 2023 by field.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og-image.png">
+<meta property="og:url" content="https://phd-demographics.andy-barr.com/workforce.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<title>STEM Doctoral Workforce — PhD Demographics</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --surface2: #334155; --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8; --red: #f87171; --green: #4ade80; --orange: #fb923c; --purple: #a78bfa; --yellow: #facc15; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); }
+  .page { max-width: 1200px; margin: 0 auto; padding: 24px 32px; }
+  h1 { font-size: 1.4rem; margin-bottom: 4px; }
+  h2 { font-size: 1.1rem; margin: 24px 0 12px; color: var(--accent); }
+  .subtitle { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px; }
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .chart-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; }
+  .chart-box h3 { font-size: 0.9rem; margin-bottom: 2px; }
+  .chart-box .desc { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px; }
+  .chart-box .source { font-size: 0.7rem; color: var(--text-muted); margin-top: 6px; }
+  .chart-box .source a { color: var(--accent); text-decoration: none; }
+  .chart-box canvas { max-height: 480px; }
+  .chart-box.wide { grid-column: 1 / -1; }
+  .info-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; margin-bottom: 14px; font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+  .info-box strong { color: var(--text); }
+  .stats { display: flex; gap: 24px; flex-wrap: wrap; margin: 12px 0 20px; }
+  .stat { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 14px 18px; min-width: 180px; }
+  .stat .num { font-size: 1.6rem; font-weight: 700; color: var(--accent); }
+  .stat .num.warn { color: var(--red); }
+  .stat .lbl { font-size: 0.75rem; color: var(--text-muted); }
+  @media (max-width: 700px) { .charts { grid-template-columns: 1fr; } .page { padding: 16px; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>The US Doctoral STEM Workforce</h1>
+  <div class="subtitle">Foreign-born share of US-residing employed doctoral scientists and engineers, by field. NSF Survey of Doctorate Recipients (SDR) 2023.</div>
+
+  <div class="info-box">
+    <strong>What this page shows.</strong> The NSF SDR is a longitudinal survey of ~80,000 PhD holders that tracks where they work, what they earn, and — crucially — their citizenship status. Unlike IPEDS (which only counts students at the time they earn their degree, and lumps native-born US citizens, naturalized citizens, and permanent residents together as "domestic"), the SDR separates these groups in the post-graduation workforce. This is the most authoritative federal data on what actually happens to PhDs after they graduate.
+  </div>
+
+  <div class="stats" id="hero-stats"></div>
+
+  <div class="charts">
+    <div class="chart-box wide" id="by-field-section">
+      <h3>Foreign-Born Share of the US Doctoral Workforce, by Field</h3>
+      <p class="desc">Percentage of US-residing employed doctoral scientists and engineers in each field who are foreign-born (naturalized citizen + permanent resident + temporary visa holder).</p>
+      <canvas id="by-field-chart"></canvas>
+      <p class="source">Source: <a href="https://ncses.nsf.gov/pubs/nsf25321/" target="_blank">NSF SDR 2023, Table 9</a> · 38.1% of all US doctoral scientists/engineers are foreign-born; Engineering reaches 59.9%, with Electrical &amp; Computer Engineering at 70.5%.</p>
+    </div>
+
+    <div class="chart-box" id="citizenship-section">
+      <h3>Citizenship Composition (All PhD Holders)</h3>
+      <p class="desc">Of the ~80,000 SDR respondents, only 63.5% are native-born US citizens. The "US Citizen + Perm Resident" bucket that IPEDS uses hides 22% naturalized citizens and 7% green card holders.</p>
+      <canvas id="citizenship-chart"></canvas>
+      <p class="source">Source: <a href="https://ncses.nsf.gov/pubs/nsf25321/" target="_blank">NSF SDR 2023, citizenship findings</a></p>
+    </div>
+
+    <div class="chart-box" id="totals-section">
+      <h3>Total US Doctoral Workforce by Field (Native vs Foreign-Born)</h3>
+      <p class="desc">Absolute counts: how many PhD holders work in each field, split by birth status.</p>
+      <canvas id="totals-chart"></canvas>
+      <p class="source">Source: <a href="https://ncses.nsf.gov/pubs/nsf25321/" target="_blank">NSF SDR 2023, Table 9</a></p>
+    </div>
+  </div>
+
+  <h2>Why this matters</h2>
+  <div class="info-box">
+    <p style="margin-bottom: 8px;"><strong>Three things this data shows that IPEDS does not:</strong></p>
+    <ol style="margin-left: 22px;">
+      <li><strong>Permanent residents are real foreign-born workers.</strong> IPEDS counts green card holders as "domestic" because at admission they hold permanent residency. But in the workforce, they remain foreign-born — and this is a 7% slice of the doctoral workforce that the IPEDS-only narrative erases entirely.</li>
+      <li><strong>Naturalized citizens are also foreign-born.</strong> Another 22% of the doctoral workforce are naturalized citizens — born abroad, came to the US, eventually became US citizens. IPEDS lumps them with native-born Americans, hiding the immigration story behind the workforce.</li>
+      <li><strong>The temporary-visa share understates dependence on foreign talent.</strong> Only 3% of the workforce is on temporary visas right now, but that's because most foreign-born workers transition off temporary status into permanent residency or citizenship over their careers. The "temporary share" is a flow, not a stock.</li>
+    </ol>
+    <p style="margin-top: 10px;"><strong>The bottom line:</strong> 38% of the US doctoral STEM workforce is foreign-born. In Electrical &amp; Computer Engineering, it's 70%. These are stocks, not flows — they're the people doing the work today.</p>
+  </div>
+
+  <h2>Source documents (not yet parsed into the dashboard)</h2>
+  <div class="info-box" style="font-size:0.78rem;">
+    The following NSF datasets are downloaded under <code style="color:var(--accent);">data/nsf_workforce/</code>:
+    <ul style="margin-top:8px;margin-left:22px;">
+      <li><strong>NSB 2026 Science &amp; Engineering Indicators</strong> — full report tables, supplemental materials, STEM labor force tables</li>
+      <li><strong>NSCG 2023</strong> (National Survey of College Graduates) — broader population, includes BS/MS holders</li>
+      <li><strong>SDR 2021 + SDR 2023</strong> — full Excel tables for over 30 detailed cuts (sector, age, race, sex, geography)</li>
+      <li><strong>NSB Foreign-Born STEM</strong> — 20 supplemental tables on the foreign-born share of the broader STEM workforce</li>
+      <li><strong>PSD 2023</strong> — Postsecondary Doctorates Public Use file</li>
+    </ul>
+    <p style="margin-top:8px;">Each can become its own dashboard panel — let me know which ones interest you most and I'll surface them next.</p>
+  </div>
+</div>
+
+<script>
+const D = {"source":"NSF Survey of Doctorate Recipients (SDR) 2023","url":"https://ncses.nsf.gov/surveys/doctorate-recipients","national_topline":{"source":"NSF Survey of Doctorate Recipients (SDR) 2023","description":"Survey of ~80K PhD holders in the US workforce. Unlike IPEDS, this separates US citizens from permanent residents.","total_respondents":80143,"citizenship_breakdown":{"us_citizen_native":{"count":50906,"pct":63.5,"description":"Born in US or territories"},"us_citizen_naturalized":{"count":14332,"pct":17.9,"description":"Foreign-born, became US citizen"},"permanent_resident":{"count":5570,"pct":7.0,"description":"Green card holder \u2014 counted as domestic in IPEDS"},"temporary_visa":{"count":2448,"pct":3.1,"description":"On F-1, J-1, H-1B, etc."},"outside_us":{"count":6887,"pct":8.6,"description":"PhD holder living outside US"}},"key_finding":"28.1% of the US-based domestic PhD workforce (those IPEDS calls US citizen or permanent resident) are actually foreign-born: 22% naturalized citizens + 7% green card holders. Only 63.5% of PhD holders in the US are native-born Americans.","ipeds_comparison":"IPEDS groups native citizens + naturalized citizens + permanent residents into one category called US citizen or permanent resident. The SDR shows this hides a significant foreign-born population."},"by_field":[{"field":"All Fields","total":908700,"native_born":562450,"naturalized":212250,"permanent_resident":94750,"temporary_resident":39250,"foreign_born_pct":38.1,"non_citizen_pct":14.7},{"field":"Science (all)","total":667950,"native_born":453150,"naturalized":133550,"permanent_resident":57500,"temporary_resident":23750,"foreign_born_pct":32.2,"non_citizen_pct":12.2},{"field":"Life Sciences","total":235050,"native_born":160150,"naturalized":48450,"permanent_resident":19100,"temporary_resident":7400,"foreign_born_pct":31.9,"non_citizen_pct":11.3},{"field":"Computer & Information Sciences","total":36350,"native_born":13200,"naturalized":11500,"permanent_resident":8350,"temporary_resident":3350,"foreign_born_pct":63.8,"non_citizen_pct":32.2},{"field":"Computer Science","total":31050,"native_born":10850,"naturalized":10050,"permanent_resident":7350,"temporary_resident":2800,"foreign_born_pct":65.1,"non_citizen_pct":32.7},{"field":"Mathematics & Statistics","total":38500,"native_born":19850,"naturalized":10450,"permanent_resident":5350,"temporary_resident":2900,"foreign_born_pct":48.6,"non_citizen_pct":21.3},{"field":"Chemistry","total":69150,"native_born":43900,"naturalized":15600,"permanent_resident":6450,"temporary_resident":3150,"foreign_born_pct":36.4,"non_citizen_pct":13.9},{"field":"Physics","total":43050,"native_born":23000,"naturalized":12550,"permanent_resident":5350,"temporary_resident":2150,"foreign_born_pct":46.6,"non_citizen_pct":17.4},{"field":"Psychology","total":112100,"native_born":98300,"naturalized":11050,"permanent_resident":2100,"temporary_resident":700,"foreign_born_pct":12.4,"non_citizen_pct":2.5},{"field":"Social Sciences","total":104100,"native_born":73350,"naturalized":19300,"permanent_resident":8250,"temporary_resident":3250,"foreign_born_pct":29.6,"non_citizen_pct":11.0},{"field":"Engineering (all)","total":196750,"native_born":78800,"naturalized":69450,"permanent_resident":34200,"temporary_resident":14250,"foreign_born_pct":59.9,"non_citizen_pct":24.7},{"field":"Aerospace Eng","total":8150,"native_born":3950,"naturalized":2650,"permanent_resident":1050,"temporary_resident":500,"foreign_born_pct":51.5,"non_citizen_pct":19.0},{"field":"Chemical Eng","total":23700,"native_born":10950,"naturalized":7900,"permanent_resident":3650,"temporary_resident":1250,"foreign_born_pct":54.0,"non_citizen_pct":20.5},{"field":"Civil Eng","total":21500,"native_born":7950,"naturalized":7850,"permanent_resident":3950,"temporary_resident":1750,"foreign_born_pct":63.0,"non_citizen_pct":26.5},{"field":"Electrical & Computer Eng","total":54000,"native_born":15950,"naturalized":22200,"permanent_resident":11600,"temporary_resident":4250,"foreign_born_pct":70.5,"non_citizen_pct":29.4},{"field":"Mechanical Eng","total":28800,"native_born":11300,"naturalized":10100,"permanent_resident":4650,"temporary_resident":2700,"foreign_born_pct":60.6,"non_citizen_pct":25.5},{"field":"Biomedical Eng","total":16350,"native_born":9400,"naturalized":3650,"permanent_resident":2350,"temporary_resident":950,"foreign_born_pct":42.5,"non_citizen_pct":20.2},{"field":"Health Sciences","total":44000,"native_born":30500,"naturalized":9300,"permanent_resident":3000,"temporary_resident":1200,"foreign_born_pct":30.7,"non_citizen_pct":9.7}]};
+
+const COMMON_OPTS = {
+  responsive: true, maintainAspectRatio: false,
+  plugins: {
+    legend: { position: 'bottom', labels: { color: '#cbd5e1', font: { size: 11 } } },
+    tooltip: { mode: 'index', intersect: false }
+  },
+  interaction: { mode: 'index', intersect: false },
+  scales: {
+    y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(51,65,85,0.5)' }, beginAtZero: true },
+    x: { ticks: { color: '#94a3b8' }, grid: { display: false } }
+  }
+};
+
+// Hero stats from national topline
+(function() {
+  const t = D.national_topline;
+  if (!t || !t.citizenship_breakdown) return;
+  const cb = t.citizenship_breakdown;
+  const totalForeign = (cb.us_citizen_naturalized?.pct || 0) + (cb.permanent_resident?.pct || 0) + (cb.temporary_visa?.pct || 0);
+  const html = `
+    <div class="stat"><div class="num">${t.total_respondents.toLocaleString()}</div><div class="lbl">PhD holders surveyed (SDR 2023)</div></div>
+    <div class="stat"><div class="num warn">${totalForeign.toFixed(1)}%</div><div class="lbl">Foreign-born</div></div>
+    <div class="stat"><div class="num">${cb.us_citizen_native.pct}%</div><div class="lbl">Native-born US citizens</div></div>
+    <div class="stat"><div class="num warn">70.5%</div><div class="lbl">Foreign-born share in EE/CompE</div></div>
+  `;
+  document.getElementById('hero-stats').innerHTML = html;
+})();
+
+// Sort by-field by foreign-born pct (descending) for the bar chart
+const byField = [...D.by_field].sort((a, b) => b.foreign_born_pct - a.foreign_born_pct);
+const labels = byField.map(f => f.field);
+
+new Chart(document.getElementById('by-field-chart'), {
+  type: 'bar',
+  data: {
+    labels: labels,
+    datasets: [
+      { label: 'Foreign-Born %', data: byField.map(f => f.foreign_born_pct), backgroundColor: '#f87171' },
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => `${c.parsed.x.toFixed(1)}% foreign-born` } } },
+    scales: {
+      x: { ticks: { color: '#94a3b8', callback: v => v + '%' }, grid: { color: 'rgba(51,65,85,0.5)' }, beginAtZero: true, max: 100 },
+      y: { ticks: { color: '#cbd5e1', font: { size: 11 } }, grid: { display: false } }
+    }
+  }
+});
+
+// Citizenship pie/bar
+(function() {
+  const cb = D.national_topline?.citizenship_breakdown || {};
+  const cats = [
+    { key: 'us_citizen_native', label: 'Native-born US citizen', color: '#38bdf8' },
+    { key: 'us_citizen_naturalized', label: 'Naturalized US citizen', color: '#a78bfa' },
+    { key: 'permanent_resident', label: 'Permanent resident (green card)', color: '#facc15' },
+    { key: 'temporary_visa', label: 'Temporary visa holder', color: '#f87171' },
+    { key: 'outside_us', label: 'Living outside US', color: '#64748b' },
+  ];
+  new Chart(document.getElementById('citizenship-chart'), {
+    type: 'doughnut',
+    data: {
+      labels: cats.map(c => c.label),
+      datasets: [{ data: cats.map(c => cb[c.key]?.pct || 0), backgroundColor: cats.map(c => c.color), borderWidth: 0 }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'right', labels: { color: '#cbd5e1', font: { size: 11 } } }, tooltip: { callbacks: { label: c => `${c.label}: ${c.parsed}%` } } }
+    }
+  });
+})();
+
+// Totals stacked bar (native vs naturalized vs permanent vs temporary)
+new Chart(document.getElementById('totals-chart'), {
+  type: 'bar',
+  data: {
+    labels: byField.map(f => f.field),
+    datasets: [
+      { label: 'Native-born', data: byField.map(f => f.native_born), backgroundColor: '#38bdf8', stack: 's' },
+      { label: 'Naturalized US Citizen', data: byField.map(f => f.naturalized), backgroundColor: '#a78bfa', stack: 's' },
+      { label: 'Permanent Resident', data: byField.map(f => f.permanent_resident), backgroundColor: '#facc15', stack: 's' },
+      { label: 'Temporary Visa', data: byField.map(f => f.temporary_resident), backgroundColor: '#f87171', stack: 's' },
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'bottom', labels: { color: '#cbd5e1', font: { size: 10 } } }, tooltip: { mode: 'index' } },
+    scales: {
+      x: { stacked: true, ticks: { color: '#94a3b8' }, grid: { color: 'rgba(51,65,85,0.5)' }, beginAtZero: true },
+      y: { stacked: true, ticks: { color: '#cbd5e1', font: { size: 10 } }, grid: { display: false } }
+    }
+  }
+});
+</script>
+<script src="/sidebar.js"></script>
+</body>
+</html>
