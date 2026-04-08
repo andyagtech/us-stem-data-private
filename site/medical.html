@@ -107,10 +107,18 @@
     </div>
 
     <div class="chart-box wide" id="nrmp-section">
-      <h3>NRMP Match: International Medical Graduates, 2022-2026</h3>
-      <p class="desc">In the 2026 Main Residency Match, 9,682 of 41,126 PGY-1 positions (23.5%) went to International Medical Graduates. The IMG match rate hovers around 60%.</p>
+      <h3>NRMP Match: International Medical Graduates over Time</h3>
+      <p class="desc">International Medical Graduates competing in the US residency Match, broken down by year. The match rate has stayed in a tight 59-62% band even as IMG participants grew 25%.</p>
+      <div class="stats" id="nrmp-endpoint-stats" style="margin: 12px 0 16px;"></div>
       <canvas id="nrmp-chart"></canvas>
       <p class="source">Source: <a href="https://www.nrmp.org/match-data/2025/" target="_blank">NRMP Match2026 Infographic</a> — IMG participants vs IMGs matched</p>
+    </div>
+
+    <div class="chart-box wide" id="nrmp-rate-section">
+      <h3>NRMP IMG Match Rate Trend</h3>
+      <p class="desc">Year-over-year match rate for International Medical Graduates. Stable around 60% — meaning about two in five IMG applicants do NOT secure a US residency slot.</p>
+      <canvas id="nrmp-rate-chart"></canvas>
+      <p class="source">Source: <a href="https://www.nrmp.org/match-data/2025/" target="_blank">NRMP Match2026 Infographic</a></p>
     </div>
   </div>
 
@@ -307,6 +315,33 @@ new Chart(document.getElementById('daca-chart'), {
 (function() {
   if (!D.nrmp_2026) return;
   const h = D.nrmp_2026.img_match_history;
+
+  // Endpoint stat cards: first year vs last year of the available range
+  const firstYear = h.years[0];
+  const lastYear = h.years[h.years.length - 1];
+  const firstParts = h.participants[0];
+  const lastParts = h.participants[h.participants.length - 1];
+  const firstMatched = h.matched[0];
+  const lastMatched = h.matched[h.matched.length - 1];
+  const firstRate = h.match_rates_pct[0];
+  const lastRate = h.match_rates_pct[h.match_rates_pct.length - 1];
+  const partsGrowth = firstParts > 0 ? Math.round(100 * (lastParts - firstParts) / firstParts) : 0;
+  const matchGrowth = firstMatched > 0 ? Math.round(100 * (lastMatched - firstMatched) / firstMatched) : 0;
+  const rateDelta = lastRate - firstRate;
+  const stats = [
+    { num: firstParts.toLocaleString(), lbl: `IMG participants in ${firstYear}` },
+    { num: lastParts.toLocaleString(), lbl: `IMG participants in ${lastYear}`, delta: `${partsGrowth >= 0 ? '+' : ''}${partsGrowth}%` },
+    { num: firstMatched.toLocaleString(), lbl: `IMGs matched in ${firstYear}` },
+    { num: lastMatched.toLocaleString(), lbl: `IMGs matched in ${lastYear}`, delta: `${matchGrowth >= 0 ? '+' : ''}${matchGrowth}%` },
+    { num: `${firstRate}%`, lbl: `Match rate in ${firstYear}` },
+    { num: `${lastRate}%`, lbl: `Match rate in ${lastYear}`, delta: `${rateDelta >= 0 ? '+' : ''}${rateDelta.toFixed(1)} pts` },
+  ];
+  document.getElementById('nrmp-endpoint-stats').innerHTML = stats.map(s => {
+    const deltaSpan = s.delta ? ` <span style="font-size:0.7rem;color:${s.delta.startsWith('-') ? '#f87171' : '#4ade80'};">(${s.delta})</span>` : '';
+    return `<div class="stat"><div class="num">${s.num}${deltaSpan}</div><div class="lbl">${s.lbl}</div></div>`;
+  }).join('');
+
+  // Grouped bar: participants vs matched (existing chart)
   new Chart(document.getElementById('nrmp-chart'), {
     type: 'bar',
     data: {
@@ -322,6 +357,34 @@ new Chart(document.getElementById('daca-chart'), {
       interaction: { mode: 'index', intersect: false },
       scales: {
         y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(51,65,85,0.5)' }, beginAtZero: true },
+        x: { ticks: { color: '#94a3b8' }, grid: { display: false } }
+      }
+    }
+  });
+
+  // Match rate over time line chart
+  new Chart(document.getElementById('nrmp-rate-chart'), {
+    type: 'line',
+    data: {
+      labels: h.years,
+      datasets: [
+        {
+          label: 'IMG Match Rate (%)',
+          data: h.match_rates_pct,
+          borderColor: '#facc15',
+          backgroundColor: 'rgba(250,204,21,0.18)',
+          fill: true, tension: 0.3, pointRadius: 5, pointBackgroundColor: '#facc15',
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => `${ctx.parsed.y.toFixed(1)}% (${h.matched[ctx.dataIndex].toLocaleString()} of ${h.participants[ctx.dataIndex].toLocaleString()})` } }
+      },
+      scales: {
+        y: { ticks: { color: '#94a3b8', callback: v => v + '%' }, grid: { color: 'rgba(51,65,85,0.5)' }, suggestedMin: 50, suggestedMax: 70 },
         x: { ticks: { color: '#94a3b8' }, grid: { display: false } }
       }
     }
