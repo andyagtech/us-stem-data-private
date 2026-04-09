@@ -326,6 +326,15 @@
       <a href="llms.txt" class="nav-item nav-page">WebMCP Integration</a>
     </div>
   </div>
+  <div class="sidebar-group" id="sg-about">
+    <div class="sidebar-section" onclick="toggleSidebarGroup('sg-about')"><span class="chevron">▼</span> About</div>
+    <div class="sidebar-group-content">
+      <a href="about.html" class="nav-item nav-page">About this Project</a>
+      <a href="submit.html" class="nav-item nav-page">Tip Line</a>
+      <a href="https://andy-barr.com" target="_blank" rel="noopener" class="nav-item nav-page">Personal Webpage &#8599;</a>
+      <a href="https://buymeacoffee.com/andybarr" target="_blank" rel="noopener" class="nav-item nav-page">Support this Page &#9749;</a>
+    </div>
+  </div>
 </nav>
 <div class="sidebar-overlay" onclick="toggleSidebar()" role="presentation"></div>
 
@@ -546,6 +555,14 @@
   <div id="content" role="region" aria-label="University data" aria-live="polite">
     <p class="placeholder-msg">← Select a university from the sidebar to view its name lists.</p>
   </div>
+
+  <footer class="site-footer" style="text-align:center;padding:28px 16px 32px;font-size:0.74rem;color:#64748b;border-top:1px solid #334155;margin-top:32px;line-height:1.7;">
+    A project by <a href="https://andy-barr.com" target="_blank" rel="noopener" style="color:#94a3b8;text-decoration:none;font-weight:600;">Andy Barr</a>. Data from US federal agencies (NCES, NSF, DOL, DHS) and university institutional repositories.<br>
+    <a href="about.html" style="color:#38bdf8;text-decoration:none;">About</a> &middot;
+    <a href="data_sources.html" style="color:#38bdf8;text-decoration:none;">Methodology</a> &middot;
+    <a href="submit.html" style="color:#38bdf8;text-decoration:none;">Tip Line</a> &middot;
+    <a href="https://buymeacoffee.com/andybarr" target="_blank" rel="noopener" style="color:#38bdf8;text-decoration:none;">Support this Page &#9749;</a>
+  </footer>
 </main>
 
 <script>
@@ -6588,7 +6605,7 @@ function toggleSidebarGroup(id) {
   // Persist collapse state to localStorage (shared with sidebar.js).
   // Map sidebar-group IDs to the section titles used by sidebar.js.
   const map = { 'sg-national': 'National', 'sg-universities': 'Universities',
-                'sg-international': 'International', 'sg-reference': 'Reference' };
+                'sg-international': 'International', 'sg-reference': 'Reference', 'sg-about': 'About' };
   const section = map[id];
   if (!section) return;
   try {
@@ -6604,7 +6621,7 @@ function toggleSidebarGroup(id) {
   try {
     const collapsed = new Set(JSON.parse(localStorage.getItem('sb_collapsed') || '[]'));
     const map = { 'National': 'sg-national', 'Universities': 'sg-universities',
-                  'International': 'sg-international', 'Reference': 'sg-reference' };
+                  'International': 'sg-international', 'Reference': 'sg-reference', 'About': 'sg-about' };
     for (const section of collapsed) {
       const el = document.getElementById(map[section]);
       if (el) el.classList.add('collapsed');
