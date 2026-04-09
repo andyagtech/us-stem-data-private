@@ -84,8 +84,8 @@
     { title: 'About', items: [
       { href: '/about.html', label: 'About this Project' },
       { href: '/submit.html', label: 'Tip Line' },
-      { href: 'https://andy-barr.com', label: 'Personal Webpage \u2197', external: true },
-      { href: 'https://buymeacoffee.com/andybarr', label: 'Support this Page \u2615', external: true },
+      { href: 'https://andy-barr.com', label: 'Personal Webpage', external: true },
+      { href: 'https://buymeacoffee.com/andybarr', label: 'Support this Page', external: true },
     ]},
   ];
 
@@ -232,7 +232,7 @@
   // Inject footer
   const footer = document.createElement('footer');
   footer.className = 'site-footer';
-  footer.innerHTML = 'A project by <a href="https://andy-barr.com" target="_blank">Andy Barr</a>. Data from US federal agencies (NCES, NSF, DOL, DHS) and university institutional repositories.<br>Last updated: April 2026 \u00B7 <a href="data_sources.html">Methodology</a> \u00B7 <a href="data_catalog.json">API</a>';
+  footer.innerHTML = 'A project by <a href="https://andy-barr.com" target="_blank">Andy Barr</a>. Data from US federal agencies (NCES, NSF, DOL, DHS) and university institutional repositories.<br>Last updated: April 2026 \u00B7 <a href="data_sources.html">Methodology</a> \u00B7 <a href="submit.html">Tip Line</a> \u00B7 <a href="https://x.com/andy_barr_data" target="_blank">Follow on X</a> \u00B7 <a href="data_catalog.json">API</a>';
   document.body.appendChild(footer);
 
   // Remove back-link since sidebar provides navigation

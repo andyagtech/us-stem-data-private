@@ -24,7 +24,7 @@
     { title: 'About this Project', href: '/about.html', desc: 'What this site is and why it exists' },
     { title: 'Tip Line', href: '/submit.html', desc: 'Send links, corrections, suggestions' },
     { title: 'Personal Webpage', href: 'https://andy-barr.com', desc: 'andy-barr.com', external: true },
-    { title: 'Support this Page', href: 'https://buymeacoffee.com/andybarr', desc: 'Buy Me a Coffee \u2615', external: true },
+    { title: 'Support this Page', href: 'https://buymeacoffee.com/andybarr', desc: 'Buy Me a Coffee', external: true },
     { section: '' },
     { title: 'Home', href: '/index.html' },
   ];
@@ -129,7 +129,7 @@
                        (item.href === '/index.html' && (currentPath === '/' || currentPath.endsWith('/')));
       const cls = isActive ? 'site-nav-link active' : 'site-nav-link';
       const target = item.external ? ' target="_blank"' : '';
-      const ext = item.external ? ' &#8599;' : '';
+      const ext = '';
       html += `<a class="${cls}" href="${item.href}"${target}>${item.title}${ext}`;
       if (item.desc) html += `<div class="nav-desc">${item.desc}</div>`;
       html += `</a>`;
@@ -170,6 +170,6 @@
   // Inject site-wide footer
   const footer = document.createElement('footer');
   footer.style.cssText = 'border-top:1px solid #334155;padding:1.5rem 2rem;text-align:center;font-size:0.75rem;color:#64748b;margin-top:3rem;';
-  footer.innerHTML = '<a href="https://andy-barr.com" target="_blank" style="color:#94a3b8;text-decoration:none;font-weight:600;">andy-barr.com</a> &middot; Data from <a href="/data_sources.html" style="color:#38bdf8;text-decoration:none;">IPEDS, NSF, USCIS, DOL, ICE/SEVP</a> &middot; <a href="/implementation.html" style="color:#64748b;text-decoration:none;">Implementation</a>';
+  footer.innerHTML = '<a href="https://andy-barr.com" target="_blank" style="color:#94a3b8;text-decoration:none;font-weight:600;">andy-barr.com</a> &middot; Data from <a href="/data_sources.html" style="color:#38bdf8;text-decoration:none;">IPEDS, NSF, USCIS, DOL, ICE/SEVP</a> &middot; <a href="/submit.html" style="color:#38bdf8;text-decoration:none;">Tip Line</a> &middot; <a href="https://x.com/andy_barr_data" target="_blank" style="color:#38bdf8;text-decoration:none;">Follow on X</a> &middot; <a href="/implementation.html" style="color:#64748b;text-decoration:none;">Implementation</a>';
   document.body.appendChild(footer);
 })();

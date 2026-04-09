@@ -414,8 +414,8 @@ def build_html(all_data, mode='stem'):
     <div class="sidebar-group-content">
       <a href="about.html" class="nav-item nav-page">About this Project</a>
       <a href="submit.html" class="nav-item nav-page">Tip Line</a>
-      <a href="https://andy-barr.com" target="_blank" rel="noopener" class="nav-item nav-page">Personal Webpage \u2197</a>
-      <a href="https://buymeacoffee.com/andybarr" target="_blank" rel="noopener" class="nav-item nav-page">Support this Page \u2615</a>
+      <a href="https://andy-barr.com" target="_blank" rel="noopener" class="nav-item nav-page">Personal Webpage</a>
+      <a href="https://buymeacoffee.com/andybarr" target="_blank" rel="noopener" class="nav-item nav-page">Support this Page</a>
     </div>
   </div>
 </nav>
@@ -652,7 +652,8 @@ def build_html(all_data, mode='stem'):
     <a href="about.html" style="color:#38bdf8;text-decoration:none;">About</a> &middot;
     <a href="data_sources.html" style="color:#38bdf8;text-decoration:none;">Methodology</a> &middot;
     <a href="submit.html" style="color:#38bdf8;text-decoration:none;">Tip Line</a> &middot;
-    <a href="https://buymeacoffee.com/andybarr" target="_blank" rel="noopener" style="color:#38bdf8;text-decoration:none;">Support this Page \u2615</a>
+    <a href="https://x.com/andy_barr_data" target="_blank" rel="noopener" style="color:#38bdf8;text-decoration:none;">Follow on X</a> &middot;
+    <a href="https://buymeacoffee.com/andybarr" target="_blank" rel="noopener" style="color:#38bdf8;text-decoration:none;">Support this Page</a>
   </footer>
 </main>
 
