@@ -148,4 +148,35 @@ def handler(event, context):
         logger.error("SES send failed: %s", e)
         return _resp(500, {"error": "failed to send message"})
 
+    # Auto-confirmation reply to the submitter (best-effort, non-blocking)
+    if email and _valid_email(email):
+        confirm_body = (
+            f"Hi{' ' + name if name else ''},\n"
+            f"\n"
+            f"Thanks for your tip — your message has been received and forwarded\n"
+            f"to Andy Barr. If a reply is needed, you'll hear back at this address.\n"
+            f"\n"
+            f"For reference, here's what you sent:\n"
+            f"\n"
+            f"  Subject: {subject}\n"
+            f"\n"
+            f"  {message}\n"
+            f"\n"
+            f"--\n"
+            f"phd-demographics.andy-barr.com\n"
+            f"This is an automated confirmation. Reply to this email to reach Andy.\n"
+        )
+        try:
+            ses.send_email(
+                Source=SENDER_EMAIL,
+                Destination={"ToAddresses": [email]},
+                ReplyToAddresses=[RECIPIENT_EMAIL],
+                Message={
+                    "Subject": {"Data": "Thanks for your tip — phd-demographics.andy-barr.com"},
+                    "Body": {"Text": {"Data": confirm_body}},
+                },
+            )
+        except ClientError as e:
+            logger.warning("auto-confirmation send failed (non-fatal): %s", e)
+
     return _resp(200, {"ok": True})
