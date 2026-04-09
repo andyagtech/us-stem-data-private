@@ -81,6 +81,12 @@
       { href: '/data_catalog.json', label: 'Data Catalog (JSON)' },
       { href: '/llms.txt', label: 'WebMCP Integration' },
     ]},
+    { title: 'About', items: [
+      { href: '/about.html', label: 'About this Project' },
+      { href: '/submit.html', label: 'Tip Line' },
+      { href: 'https://andy-barr.com', label: 'Personal Webpage \u2197', external: true },
+      { href: 'https://buymeacoffee.com/andybarr', label: 'Support this Page \u2615', external: true },
+    ]},
   ];
 
   let universities = [];
@@ -92,7 +98,8 @@
         const itemPath = p.href.replace(/^\//, '');
         const isCurrentPage = currentPage === itemPath;
         const active = isCurrentPage ? ' active' : '';
-        let html = `<a href="${p.href}" class="sb-item${active}">${p.label}</a>`;
+        const target = p.external ? ' target="_blank" rel="noopener"' : '';
+        let html = `<a href="${p.href}"${target} class="sb-item${active}">${p.label}</a>`;
         // Render in-page anchor sub-items only on the page they belong to
         if (p.anchors && isCurrentPage) {
           const subs = p.anchors.map(a => {
@@ -153,7 +160,6 @@
     <div class="sb-body">${buildGroups()}</div>
     <div class="sb-footer-links">
       <a href="index.html" class="sb-item${currentPage === 'index.html' ? ' active' : ''}">Home</a>
-      <a href="https://andy-barr.com" target="_blank" class="sb-item">About \u2197</a>
     </div>
   `;
 

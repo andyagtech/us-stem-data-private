@@ -20,12 +20,13 @@
     { title: 'Data Sources & Methodology', href: '/data_sources.html', desc: 'Government sources, methods' },
     { title: 'Data Catalog (JSON)', href: '/catalog.json', desc: 'Machine-readable API' },
     { title: 'WebMCP Integration', href: '/webmcp.html', desc: 'AI agent tools & API' },
-    { section: 'Contribute' },
+    { section: 'About' },
+    { title: 'About this Project', href: '/about.html', desc: 'What this site is and why it exists' },
     { title: 'Tip Line', href: '/submit.html', desc: 'Send links, corrections, suggestions' },
-    { title: 'Support this Page', href: 'https://buymeacoffee.com/andybarr', desc: 'Buy Me a Coffee', external: true },
+    { title: 'Personal Webpage', href: 'https://andy-barr.com', desc: 'andy-barr.com', external: true },
+    { title: 'Support this Page', href: 'https://buymeacoffee.com/andybarr', desc: 'Buy Me a Coffee \u2615', external: true },
     { section: '' },
     { title: 'Home', href: '/index.html' },
-    { title: 'About', href: 'https://andy-barr.com', external: true },
   ];
 
   // Don't inject on stem.html/non_stem.html — they have their own sidebar

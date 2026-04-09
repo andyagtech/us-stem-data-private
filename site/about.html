@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="About PhD Demographics — a research project tracking the outputs of American academia.">
+<meta property="og:title" content="About — PhD Demographics">
+<meta property="og:description" content="About the PhD Demographics project: methodology, mission, and how to get involved.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://phd-demographics.andy-barr.com/about.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PhD Demographics">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About — PhD Demographics">
+<meta name="twitter:description" content="About the PhD Demographics project.">
+<meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og-image.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — PhD Demographics</title>
+<style>
+  :root {
+    --bg: #0f172a; --surface: #1e293b; --border: #334155;
+    --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8;
+    --accent2: #f472b6; --accent3: #a78bfa; --accent4: #34d399;
+    --danger: #ef4444; --orange: #fb923c;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+  .container { max-width: 760px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  h1 { font-size: 1.7rem; margin-bottom: 0.4rem; }
+  .subtitle { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.75rem; }
+  h2 { font-size: 1.15rem; margin: 2rem 0 0.6rem; color: var(--accent); }
+  p, li { font-size: 0.92rem; line-height: 1.7; color: var(--text); }
+  p { margin-bottom: 0.85rem; }
+  ul { margin: 0.5rem 0 1rem 1.5rem; }
+  li { margin-bottom: 0.4rem; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .lede { font-size: 1.02rem; line-height: 1.65; color: var(--text); padding: 1.1rem 1.25rem; background: rgba(56,189,248,0.06); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; margin-bottom: 1.75rem; }
+  .lede strong { color: var(--accent); }
+
+  .links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin: 1rem 0 1.5rem; }
+  .link-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 1rem 1.15rem; text-decoration: none; color: var(--text);
+    transition: border-color 0.15s, transform 0.05s;
+    display: block;
+  }
+  .link-card:hover { border-color: var(--accent); text-decoration: none; transform: translateY(-1px); }
+  .link-card .lc-title { font-weight: 600; font-size: 0.95rem; color: var(--text); margin-bottom: 0.2rem; }
+  .link-card .lc-desc { font-size: 0.78rem; color: var(--text-muted); }
+  .link-card.coffee { background: linear-gradient(135deg, rgba(255,221,0,0.08) 0%, var(--surface) 60%); border-color: rgba(255,221,0,0.3); }
+  .link-card.coffee:hover { border-color: #ffdd00; }
+
+  @media (max-width: 600px) {
+    .container { padding: 1rem 0.75rem; }
+    h1 { font-size: 1.3rem; }
+    .links-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<!-- Navigation provided by /sidebar.js -->
+
+<div class="container">
+  <h1>About PhD Demographics</h1>
+  <p class="subtitle">Tracking the outputs of American academia</p>
+
+  <div class="lede">
+    This site exists because <strong>taxpayer-funded universities should graduate Americans</strong>.
+    It tracks who is actually receiving PhDs from US universities, who is funding their research,
+    and what happens to them after graduation — using exclusively official government data
+    and public university repositories.
+  </div>
+
+  <h2>What's in here</h2>
+  <p>
+    We track the full pipeline from international graduate enrollment to permanent residency,
+    one university and one department at a time:
+  </p>
+  <ul>
+    <li><strong>~430,000 thesis and dissertation records</strong> from 101 US universities (2016&ndash;2024), scraped from each school's institutional repository — every name links back to the original record for verification.</li>
+    <li><strong>IPEDS completions data</strong> for the entire history of US doctoral education (1984&ndash;2024), broken out by citizenship, race/ethnicity, and field.</li>
+    <li><strong>Federal immigration data</strong> &mdash; OPT, STEM-OPT, CPT, H-1B, EB green card, and PERM &mdash; from ICE/SEVP, USCIS, and DOL.</li>
+    <li><strong>R&amp;D funding</strong> from NSF HERD and NIH RePORTER, joined to PhD output by university and department.</li>
+    <li><strong>Country-of-origin views</strong> for India, China, Canada, the UK, EU, and Mexico.</li>
+  </ul>
+  <p>
+    Everything is queryable via the <a href="/query.html">Data Query (SQL)</a> page,
+    available as <a href="/data_catalog.json">JSON</a>, and documented in
+    <a href="/data_sources.html">Data Sources &amp; Methodology</a>.
+  </p>
+
+  <h2>Who built it</h2>
+  <p>
+    Made by <a href="https://andy-barr.com" target="_blank" rel="noopener">Andy Barr</a>.
+    The project is independent, self-hosted, and not affiliated with any institution
+    or political organization. Source data is government open data; code is hand-written;
+    AI tools are used as collaborators, not authors.
+  </p>
+
+  <h2>How to help</h2>
+  <p>
+    This is a one-person research project, and there are many gaps to fill. The most
+    useful things you can send:
+  </p>
+  <ul>
+    <li>Links to department <em>Students</em>, <em>Faculty</em>, or <em>Dissertations</em>
+      directories we don't have yet (the <a href="/quality.html">Data Quality</a> page shows
+      where coverage is thin)</li>
+    <li>Corrections &mdash; wrong department, wrong year, missing names</li>
+    <li>Datasets, federal sources, or scrapers we should add</li>
+    <li>Bug reports and ideas for new analyses</li>
+  </ul>
+
+  <div class="links-grid">
+    <a class="link-card" href="/submit.html">
+      <div class="lc-title">Tip Line &rarr;</div>
+      <div class="lc-desc">Send links, corrections, suggestions</div>
+    </a>
+    <a class="link-card" href="https://andy-barr.com" target="_blank" rel="noopener">
+      <div class="lc-title">Personal Webpage &#8599;</div>
+      <div class="lc-desc">andy-barr.com</div>
+    </a>
+    <a class="link-card coffee" href="https://buymeacoffee.com/andybarr" target="_blank" rel="noopener">
+      <div class="lc-title">Support this Page &#9749;</div>
+      <div class="lc-desc">Buy Me a Coffee &mdash; helps keep the lights on</div>
+    </a>
+    <a class="link-card" href="/data_sources.html">
+      <div class="lc-title">Data Sources &amp; Methodology &rarr;</div>
+      <div class="lc-desc">Where the data comes from, how it's cleaned</div>
+    </a>
+  </div>
+
+  <h2>Privacy &amp; data philosophy</h2>
+  <p>
+    This site does not run third-party analytics, ad networks, or fingerprinting scripts.
+    It logs visitor IPs in its own server logs for traffic analysis. The Tip Line is
+    rate-limited and stores nothing &mdash; messages go directly to the owner's inbox.
+    All published data is already publicly available; we just made it searchable.
+  </p>
+</div>
+
+<script src="/sidebar.js"></script>
+</body>
+</html>
