@@ -14,8 +14,8 @@ Parameters:
     Default: "andybarr@protonmail.com"
   SenderEmail:
     Type: String
-    Description: "SES-verified sender (must be verified in SES sandbox)"
-    Default: "andybarr@protonmail.com"
+    Description: "SES-verified sender address (must be on a verified domain)"
+    Default: "tipline@andy-barr.com"
 
 Resources:
   ContactRateLimitTable:

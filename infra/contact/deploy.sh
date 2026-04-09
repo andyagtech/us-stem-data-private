@@ -29,7 +29,7 @@ sam deploy \
     --region us-east-1 \
     --profile personal \
     --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND \
-    --parameter-overrides "Environment=$ENV AllowedOrigin=https://phd-demographics.andy-barr.com" \
+    --parameter-overrides "Environment=$ENV AllowedOrigin=https://phd-demographics.andy-barr.com SenderEmail=tipline@andy-barr.com RecipientEmail=andybarr@protonmail.com" \
     --no-confirm-changeset \
     --no-fail-on-empty-changeset
 
