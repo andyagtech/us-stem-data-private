@@ -1,0 +1,85 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: PhD Demographics Contact Form Lambda
+
+Parameters:
+  Environment:
+    Type: String
+    Default: prod
+  AllowedOrigin:
+    Type: String
+    Default: "https://phd-demographics.andy-barr.com"
+  RecipientEmail:
+    Type: String
+    Default: "andybarr@protonmail.com"
+  SenderEmail:
+    Type: String
+    Description: "SES-verified sender (must be verified in SES sandbox)"
+    Default: "andybarr@protonmail.com"
+
+Resources:
+  ContactRateLimitTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub "phd-contact-ratelimit-${Environment}"
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pk
+          KeyType: HASH
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: true
+
+  ContactFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "phd-contact-${Environment}"
+      Runtime: python3.12
+      Handler: index.handler
+      Timeout: 10
+      MemorySize: 256
+      CodeUri: lambda/
+      Environment:
+        Variables:
+          RATE_LIMIT_TABLE: !Ref ContactRateLimitTable
+          ALLOWED_ORIGIN: !Ref AllowedOrigin
+          RECIPIENT_EMAIL: !Ref RecipientEmail
+          SENDER_EMAIL: !Ref SenderEmail
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ContactRateLimitTable
+        - Statement:
+            - Effect: Allow
+              Action:
+                - ses:SendEmail
+                - ses:SendRawEmail
+              Resource: "*"
+
+  ContactUrl:
+    Type: AWS::Lambda::Url
+    Properties:
+      TargetFunctionArn: !Ref ContactFunction
+      AuthType: NONE
+      Cors:
+        AllowCredentials: false
+        AllowHeaders: [content-type]
+        AllowMethods: [POST]
+        AllowOrigins:
+          - !Ref AllowedOrigin
+
+  ContactUrlPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref ContactFunction
+      Action: lambda:InvokeFunctionUrl
+      Principal: "*"
+      FunctionUrlAuthType: NONE
+
+Outputs:
+  ContactEndpoint:
+    Value: !GetAtt ContactUrl.FunctionUrl
+  RateLimitTable:
+    Value: !Ref ContactRateLimitTable

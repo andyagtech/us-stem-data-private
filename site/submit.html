@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Tip Line — send links, corrections, or suggestions to the PhD Demographics project.">
+<meta property="og:title" content="Tip Line — PhD Demographics">
+<meta property="og:description" content="Send links, corrections, or suggestions to the PhD Demographics project.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://phd-demographics.andy-barr.com/submit.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PhD Demographics">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tip Line — PhD Demographics">
+<meta name="twitter:description" content="Send links, corrections, or suggestions to the PhD Demographics project.">
+<meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og-image.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tip Line — PhD Demographics</title>
+<style>
+  :root {
+    --bg: #0f172a; --surface: #1e293b; --border: #334155;
+    --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8;
+    --accent2: #f472b6; --accent3: #a78bfa; --accent4: #34d399;
+    --danger: #ef4444; --orange: #fb923c;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+  .container { max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  h1 { font-size: 1.6rem; margin-bottom: 0.3rem; }
+  .subtitle { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+  p { font-size: 0.9rem; line-height: 1.65; color: var(--text); margin-bottom: 0.75rem; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.25rem; }
+
+  .intro { background: rgba(56,189,248,0.06); border-left: 3px solid var(--accent); padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin-bottom: 1.5rem; font-size: 0.88rem; }
+  .intro p:last-child { margin-bottom: 0; }
+  .intro ul { margin: 0.5rem 0 0 1.25rem; font-size: 0.85rem; color: var(--text); }
+  .intro li { margin-bottom: 0.25rem; }
+
+  form { display: flex; flex-direction: column; gap: 1rem; }
+  label { display: block; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.35rem; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
+  input[type="text"], input[type="email"], textarea {
+    width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--text);
+    padding: 0.65rem 0.85rem; border-radius: 6px; font-size: 0.9rem;
+    font-family: inherit; transition: border-color 0.15s;
+  }
+  input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+    outline: none; border-color: var(--accent);
+  }
+  textarea { resize: vertical; min-height: 160px; line-height: 1.5; }
+  .field-hint { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+  /* Honeypot — hidden from humans, visible to bots */
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  button {
+    background: var(--accent); color: #0f172a; border: none; padding: 0.75rem 1.5rem;
+    border-radius: 6px; font-size: 0.9rem; font-weight: 600; cursor: pointer;
+    transition: background 0.15s, transform 0.05s;
+    align-self: flex-start;
+  }
+  button:hover { background: #0ea5e9; }
+  button:active { transform: translateY(1px); }
+  button:disabled { background: var(--border); color: var(--text-muted); cursor: not-allowed; }
+
+  .status { margin-top: 1rem; padding: 0.85rem 1rem; border-radius: 6px; font-size: 0.88rem; display: none; }
+  .status.show { display: block; }
+  .status.success { background: rgba(52,211,153,0.12); border: 1px solid var(--accent4); color: var(--accent4); }
+  .status.error { background: rgba(239,68,68,0.12); border: 1px solid var(--danger); color: var(--danger); }
+
+  .privacy { font-size: 0.75rem; color: var(--text-muted); margin-top: 1.25rem; line-height: 1.5; }
+
+  .support { margin-top: 2rem; text-align: center; padding: 1.5rem 1rem; border-top: 1px solid var(--border); }
+  .support p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.85rem; }
+  .support-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: #ffdd00; color: #0f172a; padding: 0.7rem 1.4rem;
+    border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+    text-decoration: none; transition: transform 0.1s, box-shadow 0.15s;
+    box-shadow: 0 2px 8px rgba(255,221,0,0.15);
+  }
+  .support-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,221,0,0.25); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .container { padding: 1rem 0.75rem; }
+    h1 { font-size: 1.25rem; }
+    .card { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+<!-- Navigation provided by /nav.js drawer -->
+
+<div class="container">
+  <h1>Tip Line</h1>
+  <p class="subtitle">Spotted something missing or wrong? Have a useful link? Send it over.</p>
+
+  <div class="intro">
+    <p><strong>What's most useful:</strong></p>
+    <ul>
+      <li>Links to department <em>Students</em>, <em>Faculty</em>, or <em>Dissertations</em> directories we don't have yet (see the <a href="/quality.html">Data Quality</a> page for gaps)</li>
+      <li>Corrections — wrong department, wrong year, missing names</li>
+      <li>Datasets, federal sources, or scrapers we should add</li>
+      <li>Bugs, broken charts, or display issues</li>
+      <li>Ideas for new analyses</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <form id="contact-form" novalidate>
+      <div>
+        <label for="name">Your name <span style="text-transform:none;color:var(--text-muted);font-weight:400;">(optional)</span></label>
+        <input type="text" id="name" name="name" maxlength="200" autocomplete="name">
+      </div>
+
+      <div>
+        <label for="email">Email <span style="text-transform:none;color:var(--text-muted);font-weight:400;">(optional — needed if you want a reply)</span></label>
+        <input type="email" id="email" name="email" maxlength="200" autocomplete="email">
+      </div>
+
+      <div>
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" maxlength="300" placeholder="e.g. Missing students directory for Caltech Physics">
+      </div>
+
+      <div>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" maxlength="5000" required placeholder="Paste links, describe the issue, or share an idea..."></textarea>
+        <div class="field-hint">Up to 5,000 characters. Markdown not supported — plain text is fine.</div>
+      </div>
+
+      <!-- Honeypot field — bots fill it, humans never see it -->
+      <div class="hp" aria-hidden="true">
+        <label for="website">Website</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+
+      <button type="submit" id="submit-btn">Send Message</button>
+      <div id="status" class="status"></div>
+    </form>
+  </div>
+
+  <p class="privacy">
+    Your message goes directly to Andy Barr's inbox. No tracking, no third-party services.
+    Rate-limited to 3 submissions per 10 minutes per IP.
+  </p>
+
+  <div class="support">
+    <p>This site is built and maintained independently. If it's useful to you, consider chipping in.</p>
+    <a class="support-btn" href="https://buymeacoffee.com/andybarr" target="_blank" rel="noopener noreferrer">
+      &#9749; Support this Page
+    </a>
+  </div>
+</div>
+
+<script src="/nav.js"></script>
+<script>
+  const CONTACT_ENDPOINT = "https://lma6b6gvqo7oybujddvnjywezy0cmgai.lambda-url.us-east-1.on.aws/";
+
+  const form = document.getElementById('contact-form');
+  const btn = document.getElementById('submit-btn');
+  const status = document.getElementById('status');
+
+  function showStatus(kind, msg) {
+    status.className = 'status show ' + kind;
+    status.textContent = msg;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.className = 'status';
+    status.textContent = '';
+
+    const data = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      subject: form.subject.value.trim(),
+      message: form.message.value.trim(),
+      website: form.website.value, // honeypot
+    };
+
+    if (!data.message) {
+      showStatus('error', 'Please enter a message.');
+      return;
+    }
+    if (CONTACT_ENDPOINT.startsWith('__')) {
+      showStatus('error', 'Contact endpoint not yet configured. Try again shortly.');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    try {
+      const r = await fetch(CONTACT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const body = await r.json().catch(() => ({}));
+      if (r.ok && body.ok) {
+        showStatus('success', 'Thanks — your message was sent. I\'ll get back to you if you left an email.');
+        form.reset();
+      } else {
+        showStatus('error', body.error || 'Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      showStatus('error', 'Network error. Please try again in a moment.');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+    }
+  });
+</script>
+</body>
+</html>
