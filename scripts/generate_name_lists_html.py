@@ -591,6 +591,11 @@ def build_html(all_data, mode='stem'):
       <strong style="color:var(--text);">Federal Awards (USAspending.gov):</strong>
       <span id="usaspending-content"></span>
     </div>
+    <div id="grants-row" style="margin-top:14px;display:none;border-top:1px solid var(--surface2);padding-top:10px;">
+      <div style="font-weight:600;font-size:0.85rem;margin-bottom:6px;">Federal Grant Obligations (<a href="https://www.nsf.gov/awardsearch/" target="_blank" style="color:var(--accent);text-decoration:none;">NSF Award Search</a> · <a href="https://reporter.nih.gov/" target="_blank" style="color:var(--accent);text-decoration:none;">NIH RePORTER</a>)</div>
+      <canvas id="grants-chart" style="max-height:220px;"></canvas>
+      <div id="grants-details" style="margin-top:8px;font-size:0.78rem;color:var(--text-muted);line-height:1.6;"></div>
+    </div>
   </div>
 
   <div id="enrollment-container" class="funding-chart-wrap" style="position:relative;">
@@ -676,6 +681,7 @@ let completionsTrendChart = null;
 let enrollmentRaceChart = null;
 let facultyRaceChart = null;
 let fundingChart = null;
+let grantsChart = null;
 let financeChart = null;
 
 // Build lookup by key (lightweight — no records yet)
@@ -1979,6 +1985,47 @@ function updateFundingChart() {{
       usaRow.style.display = 'block';
     }} else {{
       usaRow.style.display = 'none';
+    }}
+
+    // NSF and NIH grant obligations by year. Distinct from HERD above:
+    // HERD is self-reported R&D spending, these are what the agencies
+    // actually obligated.
+    const nsfA = uni && uni.nsf_awards;
+    const nihA = uni && uni.nih;
+    const grantsRow = document.getElementById('grants-row');
+    const nsfBy = (nsfA && nsfA.by_year) || {{}};
+    const nihBy = (nihA && nihA.by_year) || {{}};
+    const gyears = Array.from(new Set(Object.keys(nsfBy).concat(Object.keys(nihBy)))).sort();
+    if (gyears.length && typeof Chart !== 'undefined') {{
+      const nsfVals = gyears.map(y => ((nsfBy[y] || {{}}).total_obligated || 0) / 1e6);
+      const nihVals = gyears.map(y => ((nihBy[y] || {{}}).total_dollars || 0) / 1e6);
+      if (grantsChart) grantsChart.destroy();
+      grantsChart = new Chart(document.getElementById('grants-chart').getContext('2d'), {{
+        type: 'bar',
+        data: {{
+          labels: gyears,
+          datasets: [
+            {{ label: 'NSF ($M)', data: nsfVals, backgroundColor: 'rgba(56,189,248,0.75)', borderRadius: 4 }},
+            {{ label: 'NIH ($M)', data: nihVals, backgroundColor: 'rgba(167,139,250,0.75)', borderRadius: 4 }}
+          ]
+        }},
+        options: {{
+          responsive: true,
+          plugins: {{
+            legend: {{ display: true, position: 'bottom' }},
+            tooltip: {{ callbacks: {{ label: ctx => ctx.dataset.label.replace(' ($M)','') + ': $' + ctx.parsed.y.toLocaleString(undefined,{{maximumFractionDigits:1}}) + 'M' }} }}
+          }},
+          scales: {{ y: {{ beginAtZero: true, ticks: {{ callback: v => '$' + v + 'M' }} }} }}
+        }}
+      }});
+      const parts = [];
+      if (nsfA && nsfA.total_awards) parts.push(`${{nsfA.total_awards.toLocaleString()}} NSF awards totalling ${{fmtDollars(nsfA.total_obligated)}}`);
+      if (nihA && nihA.total_grants) parts.push(`${{nihA.total_grants.toLocaleString()}} NIH grants totalling ${{fmtDollars(nihA.total_dollars)}}`);
+      document.getElementById('grants-details').innerHTML = parts.join(' · ') +
+        ' <span style="font-size:0.7rem;">Obligations reported by the funding agency, not institutional expenditure.</span>';
+      grantsRow.style.display = 'block';
+    }} else if (grantsRow) {{
+      grantsRow.style.display = 'none';
     }}
   }} catch(e) {{ console.warn('State/USAspending context error:', e); }}
   }} catch(e) {{ console.warn('Funding chart error:', e); }}
