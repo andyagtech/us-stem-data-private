@@ -861,7 +861,7 @@
     },
     "h1b_system_note": "Missouri S&T files H-1B under 'The Curators of the University of Missouri' (system-wide, includes all UM campuses).",
     "process": {
-      "last_run": "2026-08-18T12:54:03.102501",
+      "last_run": "2026-08-18T13:14:11.615509",
       "records": 1598,
       "phd": 928,
       "ms": 670,
@@ -870,7 +870,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T12:54:41.398008",
+      "last_run": "2026-08-18T13:14:11.729311",
       "records": 24,
       "phd": 1,
       "ms": 23,
@@ -1181,7 +1181,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T12:54:03.139597",
+      "last_run": "2026-08-18T13:14:11.863853",
       "records": 777,
       "phd": 572,
       "ms": 205,
@@ -1190,7 +1190,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T12:54:41.408581",
+      "last_run": "2026-08-18T13:14:11.917957",
       "records": 23,
       "phd": 16,
       "ms": 7,
@@ -3561,9 +3561,9 @@
   },
   "utdallas": {
     "records": {
-      "total": 2324,
+      "total": 2301,
       "phd": 1260,
-      "ms": 1045,
+      "ms": 1022,
       "unlabeled": 19,
       "label_pct": 99.2
     },
@@ -3581,19 +3581,19 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T12:54:03.121741",
-      "records": 2324,
+      "last_run": "2026-08-18T13:14:11.134186",
+      "records": 2301,
       "phd": 1260,
-      "ms": 1045,
+      "ms": 1022,
       "unlabeled": 19,
       "labeling_pct": 99.2,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T12:54:41.402593",
-      "records": 865,
+      "last_run": "2026-08-18T13:14:11.411121",
+      "records": 858,
       "phd": 484,
-      "ms": 377,
+      "ms": 370,
       "unlabeled": 4,
       "labeling_pct": 99.5,
       "filter": "non-stem"
