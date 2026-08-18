@@ -134,20 +134,44 @@ def _extract_demographics(df: pd.DataFrame, year: int) -> pd.DataFrame:
             if raw_col in cols:
                 result[canon] = pd.to_numeric(df[raw_col], errors="coerce").fillna(0).clip(lower=0).astype(int)
 
+    def _add(map_):
+        """Add a map's columns into the result rather than replacing them."""
+        for raw_col, canon in map_.items():
+            if raw_col not in cols:
+                continue
+            vals = pd.to_numeric(df[raw_col], errors="coerce").fillna(0).clip(lower=0).astype(int)
+            result[canon] = result[canon] + vals if canon in result.columns else vals
+
     if year >= 2011:
         # Modern era: race breakdowns use new column names exclusively.
         _apply(MODERN_MAP)
     elif year >= 2008:
-        # Transition era: use modern map for totals, legacy CRACE for races.
-        # Apply modern first so CRACE values overwrite the (likely empty) modern race columns.
+        # Transition era: the two schemes are COMPLEMENTARY, not redundant.
+        # Institutions report under one or the other, and almost none under
+        # both, so the legacy columns must be added to the modern ones rather
+        # than overwriting them. Measured on the raw completions files:
+        #
+        #   year  legacy CRACE11+12 (insts)  modern CWHITT (insts)  overlap
+        #   2008     4,703,270 (5,391)          255,810 (1,083)        25
+        #   2009     4,080,644 (4,205)        1,036,492 (2,411)        75
+        #   2010     2,560,690 (2,449)        2,776,366 (4,387)        61
+        #
+        # Overwriting discarded whichever scheme was applied first, which by
+        # 2010 was the majority of institutions. Because NonresAlien totals
+        # came from the modern CNRALT and survived, the loss fell entirely on
+        # domestic races and inflated the apparent non-resident share in
+        # exactly the years the site highlights.
         _apply(MODERN_MAP)
-        _apply(CRACE_MAP)
+        _add(CRACE_MAP)
         # Pre-2011 race breakdowns don't include Two-or-More or NHPI as
         # separate categories — those will simply be absent for these years.
-        for group in RACE_GROUPS:
-            m_col = f"{group}_Men"
-            w_col = f"{group}_Women"
-            t_col = f"{group}_Total"
+        # Recompute every total from the merged men/women columns. The modern
+        # *_Total columns only cover modern-scheme institutions, so they are
+        # wrong once the legacy rows are folded in.
+        for group in RACE_GROUPS + ["Total"]:
+            m_col = "Total_Men" if group == "Total" else f"{group}_Men"
+            w_col = "Total_Women" if group == "Total" else f"{group}_Women"
+            t_col = "Total" if group == "Total" else f"{group}_Total"
             if m_col in result.columns and w_col in result.columns:
                 result[t_col] = result[m_col] + result[w_col]
         # Total fallback if CTOTALT was missing
