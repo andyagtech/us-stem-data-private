@@ -21,7 +21,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.794229",
+      "last_run": "2026-08-18T12:54:03.186128",
       "records": 119,
       "phd": 31,
       "ms": 74,
@@ -30,7 +30,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.371980",
+      "last_run": "2026-08-18T12:54:41.422269",
       "records": 50,
       "phd": 18,
       "ms": 20,
@@ -61,7 +61,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.409602",
+      "last_run": "2026-08-18T12:54:03.692429",
       "records": 846,
       "phd": 251,
       "ms": 550,
@@ -70,7 +70,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.603261",
+      "last_run": "2026-08-18T12:54:41.659107",
       "records": 426,
       "phd": 169,
       "ms": 249,
@@ -81,11 +81,11 @@
   },
   "bu": {
     "records": {
-      "total": 11627,
+      "total": 11444,
       "phd": 1836,
       "ms": 1852,
-      "unlabeled": 7939,
-      "label_pct": 31.7
+      "unlabeled": 7756,
+      "label_pct": 32.2
     },
     "data_sources": {
       "h1b": true,
@@ -101,21 +101,21 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.197701",
-      "records": 11627,
+      "last_run": "2026-08-18T12:54:03.541560",
+      "records": 11444,
       "phd": 1836,
       "ms": 1852,
-      "unlabeled": 7939,
-      "labeling_pct": 31.7,
+      "unlabeled": 7756,
+      "labeling_pct": 32.2,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.522202",
-      "records": 7386,
+      "last_run": "2026-08-18T12:54:41.577013",
+      "records": 7361,
       "phd": 1247,
       "ms": 1662,
-      "unlabeled": 4477,
-      "labeling_pct": 39.4,
+      "unlabeled": 4452,
+      "labeling_pct": 39.5,
       "filter": "non-stem"
     }
   },
@@ -141,7 +141,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.306493",
+      "last_run": "2026-08-18T12:54:03.647762",
       "records": 2598,
       "phd": 662,
       "ms": 1935,
@@ -150,7 +150,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.578973",
+      "last_run": "2026-08-18T12:54:41.633441",
       "records": 1611,
       "phd": 319,
       "ms": 1190,
@@ -161,8 +161,8 @@
   },
   "caltech": {
     "records": {
-      "total": 2354,
-      "phd": 2354,
+      "total": 2435,
+      "phd": 2435,
       "ms": 0,
       "unlabeled": 0,
       "label_pct": 100.0
@@ -181,16 +181,16 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.841992",
-      "records": 2354,
-      "phd": 2354,
+      "last_run": "2026-08-18T12:54:04.114721",
+      "records": 2435,
+      "phd": 2435,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.754133",
+      "last_run": "2026-08-18T12:54:41.799009",
       "records": 0,
       "phd": 0,
       "ms": 0,
@@ -201,9 +201,9 @@
   },
   "clemson": {
     "records": {
-      "total": 1758,
+      "total": 3360,
       "phd": 1758,
-      "ms": 0,
+      "ms": 1602,
       "unlabeled": 0,
       "label_pct": 100.0
     },
@@ -221,19 +221,19 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.827143",
-      "records": 1758,
+      "last_run": "2026-08-18T12:54:03.219694",
+      "records": 3360,
       "phd": 1758,
-      "ms": 0,
+      "ms": 1602,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.380314",
-      "records": 694,
+      "last_run": "2026-08-18T12:54:41.432539",
+      "records": 1454,
       "phd": 694,
-      "ms": 0,
+      "ms": 760,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "non-stem"
@@ -242,10 +242,10 @@
   "cmu": {
     "records": {
       "total": 3312,
-      "phd": 602,
-      "ms": 20,
-      "unlabeled": 2690,
-      "label_pct": 18.8
+      "phd": 2288,
+      "ms": 278,
+      "unlabeled": 746,
+      "label_pct": 77.5
     },
     "data_sources": {
       "h1b": true,
@@ -261,21 +261,21 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.653124",
+      "last_run": "2026-08-18T12:54:03.934253",
       "records": 3312,
-      "phd": 602,
-      "ms": 20,
-      "unlabeled": 2690,
-      "labeling_pct": 18.8,
+      "phd": 2288,
+      "ms": 278,
+      "unlabeled": 746,
+      "labeling_pct": 77.5,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.684674",
+      "last_run": "2026-08-18T12:54:41.747828",
       "records": 801,
-      "phd": 136,
-      "ms": 44,
-      "unlabeled": 621,
-      "labeling_pct": 22.5,
+      "phd": 295,
+      "ms": 175,
+      "unlabeled": 331,
+      "labeling_pct": 58.7,
       "filter": "non-stem"
     }
   },
@@ -301,7 +301,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.701974",
+      "last_run": "2026-08-18T12:54:03.981428",
       "records": 4150,
       "phd": 3828,
       "ms": 322,
@@ -310,7 +310,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.706217",
+      "last_run": "2026-08-18T12:54:41.766987",
       "records": 3984,
       "phd": 3172,
       "ms": 812,
@@ -341,7 +341,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.689564",
+      "last_run": "2026-08-18T12:54:03.969399",
       "records": 6410,
       "phd": 683,
       "ms": 1996,
@@ -350,7 +350,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.693598",
+      "last_run": "2026-08-18T12:54:41.756136",
       "records": 812,
       "phd": 213,
       "ms": 173,
@@ -381,7 +381,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.298430",
+      "last_run": "2026-08-18T12:54:03.640529",
       "records": 1817,
       "phd": 1474,
       "ms": 343,
@@ -390,20 +390,20 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.574490",
+      "last_run": "2026-08-18T12:54:41.628854",
       "records": 3169,
-      "phd": 2345,
+      "phd": 2354,
       "ms": 814,
-      "unlabeled": 10,
-      "labeling_pct": 99.7,
+      "unlabeled": 1,
+      "labeling_pct": 100.0,
       "filter": "non-stem"
     }
   },
   "dartmouth": {
     "records": {
-      "total": 387,
+      "total": 558,
       "phd": 387,
-      "ms": 0,
+      "ms": 171,
       "unlabeled": 0,
       "label_pct": 100.0
     },
@@ -421,19 +421,19 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.437223",
-      "records": 387,
+      "last_run": "2026-08-18T12:54:03.715304",
+      "records": 558,
       "phd": 387,
-      "ms": 0,
+      "ms": 171,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.616543",
-      "records": 11,
+      "last_run": "2026-08-18T12:54:41.676696",
+      "records": 108,
       "phd": 11,
-      "ms": 0,
+      "ms": 97,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "non-stem"
@@ -441,9 +441,9 @@
   },
   "duke": {
     "records": {
-      "total": 2261,
+      "total": 2934,
       "phd": 2260,
-      "ms": 1,
+      "ms": 674,
       "unlabeled": 0,
       "label_pct": 100.0
     },
@@ -461,19 +461,19 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.135218",
-      "records": 2261,
+      "last_run": "2026-08-18T12:54:03.490768",
+      "records": 2934,
       "phd": 2260,
-      "ms": 1,
+      "ms": 674,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.488383",
-      "records": 976,
+      "last_run": "2026-08-18T12:54:41.542464",
+      "records": 1201,
       "phd": 976,
-      "ms": 0,
+      "ms": 225,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "non-stem"
@@ -501,7 +501,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.919282",
+      "last_run": "2026-08-18T12:54:03.302503",
       "records": 6960,
       "phd": 5346,
       "ms": 1614,
@@ -510,7 +510,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.404032",
+      "last_run": "2026-08-18T12:54:41.455695",
       "records": 472,
       "phd": 301,
       "ms": 171,
@@ -522,10 +522,10 @@
   "gmu": {
     "records": {
       "total": 1864,
-      "phd": 772,
-      "ms": 0,
-      "unlabeled": 1092,
-      "label_pct": 41.4
+      "phd": 1055,
+      "ms": 803,
+      "unlabeled": 6,
+      "label_pct": 99.7
     },
     "data_sources": {
       "h1b": true,
@@ -541,31 +541,31 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.821391",
+      "last_run": "2026-08-18T12:54:04.087692",
       "records": 1864,
-      "phd": 772,
-      "ms": 0,
-      "unlabeled": 1092,
-      "labeling_pct": 41.4,
+      "phd": 1055,
+      "ms": 803,
+      "unlabeled": 6,
+      "labeling_pct": 99.7,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.747271",
+      "last_run": "2026-08-18T12:54:41.792091",
       "records": 1329,
-      "phd": 831,
-      "ms": 0,
-      "unlabeled": 498,
-      "labeling_pct": 62.5,
+      "phd": 983,
+      "ms": 346,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
       "filter": "non-stem"
     }
   },
   "harvard": {
     "records": {
-      "total": 4873,
-      "phd": 4126,
+      "total": 4134,
+      "phd": 4125,
       "ms": 3,
-      "unlabeled": 744,
-      "label_pct": 84.7
+      "unlabeled": 6,
+      "label_pct": 99.9
     },
     "data_sources": {
       "h1b": true,
@@ -581,21 +581,21 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.216848",
-      "records": 4873,
-      "phd": 4126,
+      "last_run": "2026-08-18T12:54:03.558509",
+      "records": 4134,
+      "phd": 4125,
       "ms": 3,
-      "unlabeled": 744,
-      "labeling_pct": 84.7,
+      "unlabeled": 6,
+      "labeling_pct": 99.9,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.531201",
-      "records": 2337,
+      "last_run": "2026-08-18T12:54:41.586410",
+      "records": 2187,
       "phd": 2185,
       "ms": 2,
-      "unlabeled": 150,
-      "labeling_pct": 93.6,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
       "filter": "non-stem"
     }
   },
@@ -621,7 +621,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.821323",
+      "last_run": "2026-08-18T12:54:03.209411",
       "records": 7777,
       "phd": 2381,
       "ms": 5396,
@@ -630,7 +630,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.377935",
+      "last_run": "2026-08-18T12:54:41.427940",
       "records": 1966,
       "phd": 499,
       "ms": 1467,
@@ -661,7 +661,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.782481",
+      "last_run": "2026-08-18T12:54:03.175716",
       "records": 2941,
       "phd": 548,
       "ms": 1921,
@@ -670,7 +670,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.370377",
+      "last_run": "2026-08-18T12:54:41.420230",
       "records": 2180,
       "phd": 1552,
       "ms": 422,
@@ -701,7 +701,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.599012",
+      "last_run": "2026-08-18T12:54:03.880361",
       "records": 231,
       "phd": 231,
       "ms": 0,
@@ -710,7 +710,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.672961",
+      "last_run": "2026-08-18T12:54:41.734737",
       "records": 157,
       "phd": 157,
       "ms": 0,
@@ -741,7 +741,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.896210",
+      "last_run": "2026-08-18T12:54:03.280864",
       "records": 3335,
       "phd": 1905,
       "ms": 1430,
@@ -750,7 +750,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.402569",
+      "last_run": "2026-08-18T12:54:41.453995",
       "records": 1908,
       "phd": 1212,
       "ms": 696,
@@ -761,9 +761,9 @@
   },
   "marquette": {
     "records": {
-      "total": 346,
+      "total": 767,
       "phd": 346,
-      "ms": 0,
+      "ms": 421,
       "unlabeled": 0,
       "label_pct": 100.0
     },
@@ -781,19 +781,19 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.432398",
-      "records": 346,
+      "last_run": "2026-08-18T12:54:03.709063",
+      "records": 767,
       "phd": 346,
-      "ms": 0,
+      "ms": 421,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.615188",
-      "records": 330,
+      "last_run": "2026-08-18T12:54:41.674041",
+      "records": 431,
       "phd": 330,
-      "ms": 0,
+      "ms": 101,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "non-stem"
@@ -801,11 +801,11 @@
   },
   "mines": {
     "records": {
-      "total": 8276,
+      "total": 8250,
       "phd": 2702,
       "ms": 5427,
-      "unlabeled": 147,
-      "label_pct": 98.2
+      "unlabeled": 121,
+      "label_pct": 98.5
     },
     "data_sources": {
       "h1b": true,
@@ -821,16 +821,16 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.292282",
-      "records": 8276,
+      "last_run": "2026-08-18T12:54:03.634937",
+      "records": 8250,
       "phd": 2702,
       "ms": 5427,
-      "unlabeled": 147,
-      "labeling_pct": 98.2,
+      "unlabeled": 121,
+      "labeling_pct": 98.5,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.565508",
+      "last_run": "2026-08-18T12:54:41.619862",
       "records": 25,
       "phd": 2,
       "ms": 13,
@@ -861,7 +861,7 @@
     },
     "h1b_system_note": "Missouri S&T files H-1B under 'The Curators of the University of Missouri' (system-wide, includes all UM campuses).",
     "process": {
-      "last_run": "2026-08-18T11:15:15.594718",
+      "last_run": "2026-08-18T12:54:03.102501",
       "records": 1598,
       "phd": 928,
       "ms": 670,
@@ -870,7 +870,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.348104",
+      "last_run": "2026-08-18T12:54:41.398008",
       "records": 24,
       "phd": 1,
       "ms": 23,
@@ -901,7 +901,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.060470",
+      "last_run": "2026-08-18T12:54:03.423856",
       "records": 14203,
       "phd": 3409,
       "ms": 3374,
@@ -910,7 +910,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.449047",
+      "last_run": "2026-08-18T12:54:41.500417",
       "records": 2657,
       "phd": 556,
       "ms": 556,
@@ -922,8 +922,8 @@
   "msstate": {
     "records": {
       "total": 3419,
-      "phd": 1649,
-      "ms": 1770,
+      "phd": 1645,
+      "ms": 1774,
       "unlabeled": 0,
       "label_pct": 100.0
     },
@@ -941,16 +941,16 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.326158",
+      "last_run": "2026-08-18T12:54:03.665030",
       "records": 3419,
-      "phd": 1649,
-      "ms": 1770,
+      "phd": 1645,
+      "ms": 1774,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.584738",
+      "last_run": "2026-08-18T12:54:41.638142",
       "records": 0,
       "phd": 0,
       "ms": 0,
@@ -962,10 +962,10 @@
   "msu": {
     "records": {
       "total": 4311,
-      "phd": 1229,
-      "ms": 1,
-      "unlabeled": 3081,
-      "label_pct": 28.5
+      "phd": 3238,
+      "ms": 1073,
+      "unlabeled": 0,
+      "label_pct": 100.0
     },
     "data_sources": {
       "h1b": true,
@@ -981,31 +981,31 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.764412",
+      "last_run": "2026-08-18T12:54:04.035583",
       "records": 4311,
-      "phd": 1229,
-      "ms": 1,
-      "unlabeled": 3081,
-      "labeling_pct": 28.5,
+      "phd": 3238,
+      "ms": 1073,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.718002",
+      "last_run": "2026-08-18T12:54:41.777020",
       "records": 2458,
-      "phd": 838,
-      "ms": 0,
-      "unlabeled": 1620,
-      "labeling_pct": 34.1,
+      "phd": 1884,
+      "ms": 574,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
       "filter": "non-stem"
     }
   },
   "mtu": {
     "records": {
       "total": 1757,
-      "phd": 736,
-      "ms": 990,
-      "unlabeled": 31,
-      "label_pct": 98.2
+      "phd": 749,
+      "ms": 999,
+      "unlabeled": 9,
+      "label_pct": 99.5
     },
     "data_sources": {
       "h1b": true,
@@ -1021,16 +1021,16 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.602340",
+      "last_run": "2026-08-18T12:54:03.108698",
       "records": 1757,
-      "phd": 736,
-      "ms": 990,
-      "unlabeled": 31,
-      "labeling_pct": 98.2,
+      "phd": 749,
+      "ms": 999,
+      "unlabeled": 9,
+      "labeling_pct": 99.5,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.349066",
+      "last_run": "2026-08-18T12:54:41.398775",
       "records": 132,
       "phd": 67,
       "ms": 63,
@@ -1061,7 +1061,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.431356",
+      "last_run": "2026-08-18T12:54:03.706691",
       "records": 371,
       "phd": 0,
       "ms": 354,
@@ -1070,7 +1070,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.614218",
+      "last_run": "2026-08-18T12:54:41.672863",
       "records": 382,
       "phd": 1,
       "ms": 352,
@@ -1101,7 +1101,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.596209",
+      "last_run": "2026-08-18T12:54:03.876846",
       "records": 7475,
       "phd": 4778,
       "ms": 2169,
@@ -1110,7 +1110,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.671413",
+      "last_run": "2026-08-18T12:54:41.733167",
       "records": 760,
       "phd": 450,
       "ms": 252,
@@ -1141,7 +1141,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.427049",
+      "last_run": "2026-08-18T12:54:03.701436",
       "records": 1049,
       "phd": 353,
       "ms": 679,
@@ -1150,7 +1150,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.610062",
+      "last_run": "2026-08-18T12:54:41.667443",
       "records": 1138,
       "phd": 718,
       "ms": 325,
@@ -1181,7 +1181,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.641525",
+      "last_run": "2026-08-18T12:54:03.139597",
       "records": 777,
       "phd": 572,
       "ms": 205,
@@ -1190,7 +1190,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.358500",
+      "last_run": "2026-08-18T12:54:41.408581",
       "records": 23,
       "phd": 16,
       "ms": 7,
@@ -1202,8 +1202,8 @@
   "northern_colorado": {
     "records": {
       "total": 163,
-      "phd": 163,
-      "ms": 0,
+      "phd": 162,
+      "ms": 1,
       "unlabeled": 0,
       "label_pct": 100.0
     },
@@ -1221,16 +1221,16 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.423732",
+      "last_run": "2026-08-18T12:54:03.698088",
       "records": 163,
-      "phd": 163,
-      "ms": 0,
+      "phd": 162,
+      "ms": 1,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.606786",
+      "last_run": "2026-08-18T12:54:41.664036",
       "records": 655,
       "phd": 655,
       "ms": 0,
@@ -1241,9 +1241,9 @@
   },
   "northwestern": {
     "records": {
-      "total": 2945,
-      "phd": 2892,
-      "ms": 53,
+      "total": 3081,
+      "phd": 3027,
+      "ms": 54,
       "unlabeled": 0,
       "label_pct": 100.0
     },
@@ -1261,18 +1261,18 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.805904",
-      "records": 2945,
-      "phd": 2892,
-      "ms": 53,
+      "last_run": "2026-08-18T12:54:04.073723",
+      "records": 3081,
+      "phd": 3027,
+      "ms": 54,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.727214",
-      "records": 1363,
-      "phd": 1358,
+      "last_run": "2026-08-18T12:54:41.785120",
+      "records": 1431,
+      "phd": 1426,
       "ms": 5,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -1282,10 +1282,10 @@
   "olemiss": {
     "records": {
       "total": 996,
-      "phd": 26,
-      "ms": 664,
-      "unlabeled": 306,
-      "label_pct": 69.3
+      "phd": 446,
+      "ms": 539,
+      "unlabeled": 11,
+      "label_pct": 98.9
     },
     "data_sources": {
       "h1b": true,
@@ -1301,31 +1301,31 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.383890",
+      "last_run": "2026-08-18T12:54:03.681453",
       "records": 996,
-      "phd": 26,
-      "ms": 664,
-      "unlabeled": 306,
-      "labeling_pct": 69.3,
+      "phd": 446,
+      "ms": 539,
+      "unlabeled": 11,
+      "labeling_pct": 98.9,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.594926",
+      "last_run": "2026-08-18T12:54:41.650468",
       "records": 1100,
-      "phd": 30,
-      "ms": 924,
-      "unlabeled": 146,
-      "labeling_pct": 86.7,
+      "phd": 600,
+      "ms": 483,
+      "unlabeled": 17,
+      "labeling_pct": 98.5,
       "filter": "non-stem"
     }
   },
   "pdx": {
     "records": {
-      "total": 1076,
-      "phd": 87,
+      "total": 1118,
+      "phd": 94,
       "ms": 0,
-      "unlabeled": 989,
-      "label_pct": 8.1
+      "unlabeled": 1024,
+      "label_pct": 8.4
     },
     "data_sources": {
       "h1b": true,
@@ -1341,21 +1341,21 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.441230",
-      "records": 1076,
-      "phd": 87,
+      "last_run": "2026-08-18T12:54:03.719816",
+      "records": 1118,
+      "phd": 94,
       "ms": 0,
-      "unlabeled": 989,
-      "labeling_pct": 8.1,
+      "unlabeled": 1024,
+      "labeling_pct": 8.4,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.620046",
-      "records": 874,
-      "phd": 65,
+      "last_run": "2026-08-18T12:54:41.680010",
+      "records": 914,
+      "phd": 67,
       "ms": 0,
-      "unlabeled": 809,
-      "labeling_pct": 7.4,
+      "unlabeled": 847,
+      "labeling_pct": 7.3,
       "filter": "non-stem"
     }
   },
@@ -1381,7 +1381,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.739643",
+      "last_run": "2026-08-18T12:54:04.011058",
       "records": 10747,
       "phd": 7076,
       "ms": 3568,
@@ -1390,7 +1390,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.706342",
+      "last_run": "2026-08-18T12:54:41.767149",
       "records": 0,
       "phd": 0,
       "ms": 0,
@@ -1421,7 +1421,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.768986",
+      "last_run": "2026-08-18T12:54:03.165519",
       "records": 8058,
       "phd": 7604,
       "ms": 454,
@@ -1430,7 +1430,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.363946",
+      "last_run": "2026-08-18T12:54:41.414131",
       "records": 1847,
       "phd": 1746,
       "ms": 101,
@@ -1461,7 +1461,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.616319",
+      "last_run": "2026-08-18T12:54:03.899230",
       "records": 4911,
       "phd": 1215,
       "ms": 1552,
@@ -1470,7 +1470,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.678325",
+      "last_run": "2026-08-18T12:54:41.742113",
       "records": 1368,
       "phd": 386,
       "ms": 507,
@@ -1501,7 +1501,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.793596",
+      "last_run": "2026-08-18T12:54:03.185156",
       "records": 2931,
       "phd": 2634,
       "ms": 297,
@@ -1510,7 +1510,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.371698",
+      "last_run": "2026-08-18T12:54:41.421768",
       "records": 445,
       "phd": 268,
       "ms": 177,
@@ -1521,11 +1521,11 @@
   },
   "rpi": {
     "records": {
-      "total": 1588,
+      "total": 1580,
       "phd": 1184,
       "ms": 369,
-      "unlabeled": 35,
-      "label_pct": 97.8
+      "unlabeled": 27,
+      "label_pct": 98.3
     },
     "data_sources": {
       "h1b": true,
@@ -1541,16 +1541,16 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.625982",
-      "records": 1588,
+      "last_run": "2026-08-18T12:54:03.128949",
+      "records": 1580,
       "phd": 1184,
       "ms": 369,
-      "unlabeled": 35,
-      "labeling_pct": 97.8,
+      "unlabeled": 27,
+      "labeling_pct": 98.3,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.353619",
+      "last_run": "2026-08-18T12:54:41.403739",
       "records": 1,
       "phd": 0,
       "ms": 1,
@@ -1581,7 +1581,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.608520",
+      "last_run": "2026-08-18T12:54:03.113913",
       "records": 1411,
       "phd": 416,
       "ms": 898,
@@ -1590,7 +1590,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.349951",
+      "last_run": "2026-08-18T12:54:41.399595",
       "records": 174,
       "phd": 37,
       "ms": 134,
@@ -1601,9 +1601,9 @@
   },
   "siu": {
     "records": {
-      "total": 667,
+      "total": 1797,
       "phd": 667,
-      "ms": 0,
+      "ms": 1130,
       "unlabeled": 0,
       "label_pct": 100.0
     },
@@ -1621,19 +1621,19 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.418844",
-      "records": 667,
+      "last_run": "2026-08-18T12:54:03.697320",
+      "records": 1797,
       "phd": 667,
-      "ms": 0,
+      "ms": 1130,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.604775",
-      "records": 550,
+      "last_run": "2026-08-18T12:54:41.662135",
+      "records": 1066,
       "phd": 550,
-      "ms": 0,
+      "ms": 516,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "non-stem"
@@ -1643,9 +1643,9 @@
     "records": {
       "total": 473,
       "phd": 361,
-      "ms": 0,
-      "unlabeled": 112,
-      "label_pct": 76.3
+      "ms": 112,
+      "unlabeled": 0,
+      "label_pct": 100.0
     },
     "data_sources": {
       "h1b": true,
@@ -1661,28 +1661,28 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.430106",
+      "last_run": "2026-08-18T12:54:03.705323",
       "records": 473,
       "phd": 361,
-      "ms": 0,
-      "unlabeled": 112,
-      "labeling_pct": 76.3,
+      "ms": 112,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.613022",
+      "last_run": "2026-08-18T12:54:41.671602",
       "records": 236,
       "phd": 154,
-      "ms": 0,
-      "unlabeled": 82,
-      "labeling_pct": 65.3,
+      "ms": 82,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
       "filter": "non-stem"
     }
   },
   "stanford": {
     "records": {
-      "total": 7861,
-      "phd": 7861,
+      "total": 8310,
+      "phd": 8310,
       "ms": 0,
       "unlabeled": 0,
       "label_pct": 100.0
@@ -1701,18 +1701,18 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.568105",
-      "records": 7861,
-      "phd": 7861,
+      "last_run": "2026-08-18T12:54:03.849097",
+      "records": 8310,
+      "phd": 8310,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.665101",
-      "records": 2136,
-      "phd": 2136,
+      "last_run": "2026-08-18T12:54:41.727175",
+      "records": 2186,
+      "phd": 2186,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -1723,9 +1723,9 @@
     "records": {
       "total": 561,
       "phd": 397,
-      "ms": 0,
-      "unlabeled": 164,
-      "label_pct": 70.8
+      "ms": 139,
+      "unlabeled": 25,
+      "label_pct": 95.5
     },
     "data_sources": {
       "h1b": true,
@@ -1741,21 +1741,21 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.619356",
+      "last_run": "2026-08-18T12:54:03.123481",
       "records": 561,
       "phd": 397,
-      "ms": 0,
-      "unlabeled": 164,
-      "labeling_pct": 70.8,
+      "ms": 139,
+      "unlabeled": 25,
+      "labeling_pct": 95.5,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.353469",
+      "last_run": "2026-08-18T12:54:41.403479",
       "records": 167,
       "phd": 108,
-      "ms": 0,
-      "unlabeled": 59,
-      "labeling_pct": 64.7,
+      "ms": 44,
+      "unlabeled": 15,
+      "labeling_pct": 91.0,
       "filter": "non-stem"
     }
   },
@@ -1781,7 +1781,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.245628",
+      "last_run": "2026-08-18T12:54:03.584047",
       "records": 1088,
       "phd": 226,
       "ms": 0,
@@ -1790,7 +1790,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.552479",
+      "last_run": "2026-08-18T12:54:41.607845",
       "records": 631,
       "phd": 277,
       "ms": 0,
@@ -1821,7 +1821,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.815604",
+      "last_run": "2026-08-18T12:54:04.082208",
       "records": 2775,
       "phd": 1761,
       "ms": 623,
@@ -1830,12 +1830,12 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.732209",
+      "last_run": "2026-08-18T12:54:41.788581",
       "records": 684,
-      "phd": 540,
+      "phd": 541,
       "ms": 79,
-      "unlabeled": 65,
-      "labeling_pct": 90.5,
+      "unlabeled": 64,
+      "labeling_pct": 90.6,
       "filter": "non-stem"
     }
   },
@@ -1861,7 +1861,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.970243",
+      "last_run": "2026-08-18T12:54:03.349325",
       "records": 1784,
       "phd": 410,
       "ms": 1264,
@@ -1870,7 +1870,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.431121",
+      "last_run": "2026-08-18T12:54:41.482110",
       "records": 972,
       "phd": 277,
       "ms": 631,
@@ -1901,7 +1901,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.157114",
+      "last_run": "2026-08-18T12:54:03.511019",
       "records": 7401,
       "phd": 3318,
       "ms": 3845,
@@ -1910,7 +1910,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.500378",
+      "last_run": "2026-08-18T12:54:41.554433",
       "records": 4329,
       "phd": 2511,
       "ms": 1793,
@@ -1941,7 +1941,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.314567",
+      "last_run": "2026-08-18T12:54:03.655103",
       "records": 2523,
       "phd": 1114,
       "ms": 1409,
@@ -1950,7 +1950,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.584593",
+      "last_run": "2026-08-18T12:54:41.637749",
       "records": 1421,
       "phd": 740,
       "ms": 681,
@@ -1981,7 +1981,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.943714",
+      "last_run": "2026-08-18T12:54:03.323431",
       "records": 3083,
       "phd": 1786,
       "ms": 1173,
@@ -1990,7 +1990,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.419426",
+      "last_run": "2026-08-18T12:54:41.469345",
       "records": 1160,
       "phd": 952,
       "ms": 98,
@@ -2001,8 +2001,8 @@
   },
   "ucberkeley": {
     "records": {
-      "total": 5962,
-      "phd": 5962,
+      "total": 5963,
+      "phd": 5963,
       "ms": 0,
       "unlabeled": 0,
       "label_pct": 100.0
@@ -2021,18 +2021,18 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.497311",
-      "records": 5962,
-      "phd": 5962,
+      "last_run": "2026-08-18T12:54:03.776251",
+      "records": 5963,
+      "phd": 5963,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.640817",
-      "records": 2297,
-      "phd": 2297,
+      "last_run": "2026-08-18T12:54:41.702510",
+      "records": 2299,
+      "phd": 2299,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -2041,8 +2041,8 @@
   },
   "ucdavis": {
     "records": {
-      "total": 3080,
-      "phd": 3080,
+      "total": 3147,
+      "phd": 3147,
       "ms": 0,
       "unlabeled": 0,
       "label_pct": 100.0
@@ -2061,18 +2061,18 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.527735",
-      "records": 3080,
-      "phd": 3080,
+      "last_run": "2026-08-18T12:54:03.805995",
+      "records": 3147,
+      "phd": 3147,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.651980",
-      "records": 852,
-      "phd": 852,
+      "last_run": "2026-08-18T12:54:41.713353",
+      "records": 861,
+      "phd": 861,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -2101,7 +2101,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.836712",
+      "last_run": "2026-08-18T12:54:03.228966",
       "records": 2814,
       "phd": 1011,
       "ms": 1154,
@@ -2110,7 +2110,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.386054",
+      "last_run": "2026-08-18T12:54:41.438745",
       "records": 1973,
       "phd": 999,
       "ms": 86,
@@ -2121,8 +2121,8 @@
   },
   "ucirvine": {
     "records": {
-      "total": 4266,
-      "phd": 4266,
+      "total": 4552,
+      "phd": 4552,
       "ms": 0,
       "unlabeled": 0,
       "label_pct": 100.0
@@ -2141,18 +2141,18 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.511329",
-      "records": 4266,
-      "phd": 4266,
+      "last_run": "2026-08-18T12:54:03.788667",
+      "records": 4552,
+      "phd": 4552,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.646060",
-      "records": 1747,
-      "phd": 1747,
+      "last_run": "2026-08-18T12:54:41.707610",
+      "records": 1852,
+      "phd": 1852,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -2161,8 +2161,8 @@
   },
   "ucla": {
     "records": {
-      "total": 6592,
-      "phd": 6592,
+      "total": 7108,
+      "phd": 7108,
       "ms": 0,
       "unlabeled": 0,
       "label_pct": 100.0
@@ -2181,18 +2181,18 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.460284",
-      "records": 6592,
-      "phd": 6592,
+      "last_run": "2026-08-18T12:54:03.739383",
+      "records": 7108,
+      "phd": 7108,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.629337",
-      "records": 3237,
-      "phd": 3237,
+      "last_run": "2026-08-18T12:54:41.689658",
+      "records": 3422,
+      "phd": 3422,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -2201,8 +2201,8 @@
   },
   "ucmerced": {
     "records": {
-      "total": 790,
-      "phd": 790,
+      "total": 828,
+      "phd": 828,
       "ms": 0,
       "unlabeled": 0,
       "label_pct": 100.0
@@ -2221,18 +2221,18 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.546188",
-      "records": 790,
-      "phd": 790,
+      "last_run": "2026-08-18T12:54:03.825857",
+      "records": 828,
+      "phd": 828,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.659242",
-      "records": 274,
-      "phd": 274,
+      "last_run": "2026-08-18T12:54:41.721356",
+      "records": 279,
+      "phd": 279,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -2241,8 +2241,8 @@
   },
   "ucriverside": {
     "records": {
-      "total": 2617,
-      "phd": 2617,
+      "total": 2763,
+      "phd": 2763,
       "ms": 0,
       "unlabeled": 0,
       "label_pct": 100.0
@@ -2261,18 +2261,18 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.519222",
-      "records": 2617,
-      "phd": 2617,
+      "last_run": "2026-08-18T12:54:03.797192",
+      "records": 2763,
+      "phd": 2763,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.649378",
-      "records": 991,
-      "phd": 991,
+      "last_run": "2026-08-18T12:54:41.710751",
+      "records": 1032,
+      "phd": 1032,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -2281,8 +2281,8 @@
   },
   "ucsb": {
     "records": {
-      "total": 2432,
-      "phd": 2432,
+      "total": 2491,
+      "phd": 2491,
       "ms": 0,
       "unlabeled": 0,
       "label_pct": 100.0
@@ -2301,18 +2301,18 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.534764",
-      "records": 2432,
-      "phd": 2432,
+      "last_run": "2026-08-18T12:54:03.813208",
+      "records": 2491,
+      "phd": 2491,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.655396",
-      "records": 1184,
-      "phd": 1184,
+      "last_run": "2026-08-18T12:54:41.716725",
+      "records": 1202,
+      "phd": 1202,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -2321,8 +2321,8 @@
   },
   "ucsc": {
     "records": {
-      "total": 1712,
-      "phd": 1712,
+      "total": 1849,
+      "phd": 1849,
       "ms": 0,
       "unlabeled": 0,
       "label_pct": 100.0
@@ -2341,18 +2341,18 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.539927",
-      "records": 1712,
-      "phd": 1712,
+      "last_run": "2026-08-18T12:54:03.818470",
+      "records": 1849,
+      "phd": 1849,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.657657",
-      "records": 773,
-      "phd": 773,
+      "last_run": "2026-08-18T12:54:41.719492",
+      "records": 814,
+      "phd": 814,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -2361,8 +2361,8 @@
   },
   "ucsd": {
     "records": {
-      "total": 6979,
-      "phd": 6979,
+      "total": 7453,
+      "phd": 7453,
       "ms": 0,
       "unlabeled": 0,
       "label_pct": 100.0
@@ -2381,18 +2381,18 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.479712",
-      "records": 6979,
-      "phd": 6979,
+      "last_run": "2026-08-18T12:54:03.760324",
+      "records": 7453,
+      "phd": 7453,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.634020",
-      "records": 1753,
-      "phd": 1753,
+      "last_run": "2026-08-18T12:54:41.696080",
+      "records": 1843,
+      "phd": 1843,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -2401,8 +2401,8 @@
   },
   "ucsf": {
     "records": {
-      "total": 1410,
-      "phd": 1410,
+      "total": 1475,
+      "phd": 1475,
       "ms": 0,
       "unlabeled": 0,
       "label_pct": 100.0
@@ -2421,18 +2421,18 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.543767",
-      "records": 1410,
-      "phd": 1410,
+      "last_run": "2026-08-18T12:54:03.823329",
+      "records": 1475,
+      "phd": 1475,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.658388",
-      "records": 221,
-      "phd": 221,
+      "last_run": "2026-08-18T12:54:41.720436",
+      "records": 229,
+      "phd": 229,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -2441,11 +2441,11 @@
   },
   "udel": {
     "records": {
-      "total": 2690,
-      "phd": 2446,
-      "ms": 23,
-      "unlabeled": 221,
-      "label_pct": 91.8
+      "total": 3977,
+      "phd": 2667,
+      "ms": 1310,
+      "unlabeled": 0,
+      "label_pct": 100.0
     },
     "data_sources": {
       "h1b": true,
@@ -2461,21 +2461,21 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.266647",
-      "records": 2690,
-      "phd": 2446,
-      "ms": 23,
-      "unlabeled": 221,
-      "labeling_pct": 91.8,
+      "last_run": "2026-08-18T12:54:03.608960",
+      "records": 3977,
+      "phd": 2667,
+      "ms": 1310,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.565168",
-      "records": 37,
-      "phd": 35,
-      "ms": 0,
-      "unlabeled": 2,
-      "labeling_pct": 94.6,
+      "last_run": "2026-08-18T12:54:41.619677",
+      "records": 274,
+      "phd": 37,
+      "ms": 237,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
       "filter": "non-stem"
     }
   },
@@ -2501,7 +2501,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.404844",
+      "last_run": "2026-08-18T12:54:03.689494",
       "records": 607,
       "phd": 346,
       "ms": 244,
@@ -2510,7 +2510,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.602055",
+      "last_run": "2026-08-18T12:54:41.657717",
       "records": 844,
       "phd": 624,
       "ms": 201,
@@ -2521,11 +2521,11 @@
   },
   "uf": {
     "records": {
-      "total": 8186,
-      "phd": 5491,
-      "ms": 2455,
+      "total": 9271,
+      "phd": 6210,
+      "ms": 2821,
       "unlabeled": 240,
-      "label_pct": 97.1
+      "label_pct": 97.4
     },
     "data_sources": {
       "h1b": true,
@@ -2541,31 +2541,31 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.794094",
-      "records": 8186,
-      "phd": 5491,
-      "ms": 2455,
+      "last_run": "2026-08-18T12:54:04.062852",
+      "records": 9271,
+      "phd": 6210,
+      "ms": 2821,
       "unlabeled": 240,
-      "labeling_pct": 97.1,
+      "labeling_pct": 97.4,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.721570",
-      "records": 1247,
-      "phd": 809,
-      "ms": 420,
+      "last_run": "2026-08-18T12:54:41.781013",
+      "records": 1438,
+      "phd": 936,
+      "ms": 484,
       "unlabeled": 18,
-      "labeling_pct": 98.6,
+      "labeling_pct": 98.7,
       "filter": "non-stem"
     }
   },
   "uhouston": {
     "records": {
       "total": 3905,
-      "phd": 762,
-      "ms": 2,
-      "unlabeled": 3141,
-      "label_pct": 19.6
+      "phd": 2702,
+      "ms": 1202,
+      "unlabeled": 1,
+      "label_pct": 100.0
     },
     "data_sources": {
       "h1b": true,
@@ -2581,31 +2581,31 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.964699",
+      "last_run": "2026-08-18T12:54:03.341537",
       "records": 3905,
-      "phd": 762,
-      "ms": 2,
-      "unlabeled": 3141,
-      "labeling_pct": 19.6,
+      "phd": 2702,
+      "ms": 1202,
+      "unlabeled": 1,
+      "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.427956",
+      "last_run": "2026-08-18T12:54:41.479363",
       "records": 1971,
-      "phd": 328,
-      "ms": 1,
-      "unlabeled": 1642,
-      "labeling_pct": 16.7,
+      "phd": 1451,
+      "ms": 520,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
       "filter": "non-stem"
     }
   },
   "uiuc": {
     "records": {
-      "total": 5254,
-      "phd": 224,
-      "ms": 0,
-      "unlabeled": 5030,
-      "label_pct": 4.3
+      "total": 5119,
+      "phd": 3061,
+      "ms": 2055,
+      "unlabeled": 3,
+      "label_pct": 99.9
     },
     "data_sources": {
       "h1b": true,
@@ -2621,21 +2621,21 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.644328",
-      "records": 5254,
-      "phd": 224,
-      "ms": 0,
-      "unlabeled": 5030,
-      "labeling_pct": 4.3,
+      "last_run": "2026-08-18T12:54:03.925118",
+      "records": 5119,
+      "phd": 3061,
+      "ms": 2055,
+      "unlabeled": 3,
+      "labeling_pct": 99.9,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.682185",
-      "records": 1229,
-      "phd": 117,
-      "ms": 0,
-      "unlabeled": 1112,
-      "labeling_pct": 9.5,
+      "last_run": "2026-08-18T12:54:41.745669",
+      "records": 1210,
+      "phd": 876,
+      "ms": 333,
+      "unlabeled": 1,
+      "labeling_pct": 99.9,
       "filter": "non-stem"
     }
   },
@@ -2661,7 +2661,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.095682",
+      "last_run": "2026-08-18T12:54:03.454114",
       "records": 2928,
       "phd": 1474,
       "ms": 1454,
@@ -2670,7 +2670,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.473051",
+      "last_run": "2026-08-18T12:54:41.524578",
       "records": 3156,
       "phd": 1673,
       "ms": 1483,
@@ -2701,7 +2701,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.331354",
+      "last_run": "2026-08-18T12:54:03.668585",
       "records": 1281,
       "phd": 830,
       "ms": 450,
@@ -2710,7 +2710,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.587395",
+      "last_run": "2026-08-18T12:54:41.641135",
       "records": 970,
       "phd": 645,
       "ms": 324,
@@ -2741,7 +2741,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.933180",
+      "last_run": "2026-08-18T12:54:03.313679",
       "records": 2119,
       "phd": 1136,
       "ms": 415,
@@ -2750,7 +2750,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.415664",
+      "last_run": "2026-08-18T12:54:41.465803",
       "records": 2298,
       "phd": 1775,
       "ms": 193,
@@ -2781,7 +2781,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.629472",
+      "last_run": "2026-08-18T12:54:03.910911",
       "records": 4322,
       "phd": 3310,
       "ms": 1012,
@@ -2790,7 +2790,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.678483",
+      "last_run": "2026-08-18T12:54:41.742279",
       "records": 15,
       "phd": 8,
       "ms": 7,
@@ -2821,7 +2821,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.336020",
+      "last_run": "2026-08-18T12:54:03.672616",
       "records": 1427,
       "phd": 795,
       "ms": 607,
@@ -2830,7 +2830,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.590082",
+      "last_run": "2026-08-18T12:54:41.644100",
       "records": 997,
       "phd": 728,
       "ms": 256,
@@ -2861,7 +2861,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.638357",
+      "last_run": "2026-08-18T12:54:03.136823",
       "records": 2627,
       "phd": 16,
       "ms": 2415,
@@ -2870,7 +2870,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.358277",
+      "last_run": "2026-08-18T12:54:41.408231",
       "records": 1509,
       "phd": 17,
       "ms": 1333,
@@ -2901,7 +2901,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.120010",
+      "last_run": "2026-08-18T12:54:03.474878",
       "records": 7496,
       "phd": 4749,
       "ms": 2084,
@@ -2910,7 +2910,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.481698",
+      "last_run": "2026-08-18T12:54:41.534654",
       "records": 3045,
       "phd": 2359,
       "ms": 272,
@@ -2941,7 +2941,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.389531",
+      "last_run": "2026-08-18T12:54:03.684490",
       "records": 943,
       "phd": 290,
       "ms": 528,
@@ -2950,7 +2950,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.597451",
+      "last_run": "2026-08-18T12:54:41.652874",
       "records": 873,
       "phd": 233,
       "ms": 518,
@@ -2981,7 +2981,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.399933",
+      "last_run": "2026-08-18T12:54:03.687725",
       "records": 1017,
       "phd": 65,
       "ms": 948,
@@ -2990,7 +2990,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.599628",
+      "last_run": "2026-08-18T12:54:41.655169",
       "records": 751,
       "phd": 46,
       "ms": 704,
@@ -3001,9 +3001,9 @@
   },
   "unh": {
     "records": {
-      "total": 506,
+      "total": 1211,
       "phd": 506,
-      "ms": 0,
+      "ms": 705,
       "unlabeled": 0,
       "label_pct": 100.0
     },
@@ -3021,19 +3021,19 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.433860",
-      "records": 506,
+      "last_run": "2026-08-18T12:54:03.712688",
+      "records": 1211,
       "phd": 506,
-      "ms": 0,
+      "ms": 705,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.615720",
-      "records": 162,
+      "last_run": "2026-08-18T12:54:41.675690",
+      "records": 475,
       "phd": 162,
-      "ms": 0,
+      "ms": 313,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "non-stem"
@@ -3061,7 +3061,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.925779",
+      "last_run": "2026-08-18T12:54:03.307343",
       "records": 1349,
       "phd": 1349,
       "ms": 0,
@@ -3070,7 +3070,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.407626",
+      "last_run": "2026-08-18T12:54:41.458968",
       "records": 1006,
       "phd": 1006,
       "ms": 0,
@@ -3101,7 +3101,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.250675",
+      "last_run": "2026-08-18T12:54:03.587970",
       "records": 1360,
       "phd": 575,
       "ms": 671,
@@ -3110,7 +3110,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.556635",
+      "last_run": "2026-08-18T12:54:41.611836",
       "records": 1306,
       "phd": 713,
       "ms": 398,
@@ -3122,10 +3122,10 @@
   "unm": {
     "records": {
       "total": 121,
-      "phd": 37,
+      "phd": 65,
       "ms": 29,
-      "unlabeled": 55,
-      "label_pct": 54.5
+      "unlabeled": 27,
+      "label_pct": 77.7
     },
     "data_sources": {
       "h1b": true,
@@ -3141,31 +3141,31 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.435830",
+      "last_run": "2026-08-18T12:54:03.713368",
       "records": 121,
-      "phd": 37,
+      "phd": 65,
       "ms": 29,
-      "unlabeled": 55,
-      "labeling_pct": 54.5,
+      "unlabeled": 27,
+      "labeling_pct": 77.7,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.616374",
+      "last_run": "2026-08-18T12:54:41.676195",
       "records": 93,
-      "phd": 35,
+      "phd": 51,
       "ms": 18,
-      "unlabeled": 40,
-      "labeling_pct": 57.0,
+      "unlabeled": 24,
+      "labeling_pct": 74.2,
       "filter": "non-stem"
     }
   },
   "unt": {
     "records": {
       "total": 1817,
-      "phd": 225,
-      "ms": 0,
-      "unlabeled": 1592,
-      "label_pct": 12.4
+      "phd": 1105,
+      "ms": 712,
+      "unlabeled": 0,
+      "label_pct": 100.0
     },
     "data_sources": {
       "h1b": true,
@@ -3181,31 +3181,31 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.242304",
+      "last_run": "2026-08-18T12:54:03.579118",
       "records": 1817,
-      "phd": 225,
-      "ms": 0,
-      "unlabeled": 1592,
-      "labeling_pct": 12.4,
+      "phd": 1105,
+      "ms": 712,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.550339",
+      "last_run": "2026-08-18T12:54:41.605731",
       "records": 2423,
-      "phd": 407,
-      "ms": 0,
-      "unlabeled": 2016,
-      "labeling_pct": 16.8,
+      "phd": 1742,
+      "ms": 681,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
       "filter": "non-stem"
     }
   },
   "uoregon": {
     "records": {
       "total": 1866,
-      "phd": 322,
-      "ms": 1,
-      "unlabeled": 1543,
-      "label_pct": 17.3
+      "phd": 1224,
+      "ms": 352,
+      "unlabeled": 290,
+      "label_pct": 84.5
     },
     "data_sources": {
       "h1b": true,
@@ -3221,31 +3221,31 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.573110",
+      "last_run": "2026-08-18T12:54:03.854564",
       "records": 1866,
-      "phd": 322,
-      "ms": 1,
-      "unlabeled": 1543,
-      "labeling_pct": 17.3,
+      "phd": 1224,
+      "ms": 352,
+      "unlabeled": 290,
+      "labeling_pct": 84.5,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.668893",
+      "last_run": "2026-08-18T12:54:41.730636",
       "records": 1308,
-      "phd": 339,
-      "ms": 2,
-      "unlabeled": 967,
-      "labeling_pct": 26.1,
+      "phd": 785,
+      "ms": 328,
+      "unlabeled": 195,
+      "labeling_pct": 85.1,
       "filter": "non-stem"
     }
   },
   "upenn": {
     "records": {
-      "total": 5631,
+      "total": 5619,
       "phd": 5053,
       "ms": 222,
-      "unlabeled": 356,
-      "label_pct": 93.7
+      "unlabeled": 344,
+      "label_pct": 93.9
     },
     "data_sources": {
       "h1b": true,
@@ -3261,21 +3261,21 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.234869",
-      "records": 5631,
+      "last_run": "2026-08-18T12:54:03.574126",
+      "records": 5619,
       "phd": 5053,
       "ms": 222,
-      "unlabeled": 356,
-      "labeling_pct": 93.7,
+      "unlabeled": 344,
+      "labeling_pct": 93.9,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.542828",
-      "records": 4139,
+      "last_run": "2026-08-18T12:54:41.598001",
+      "records": 4098,
       "phd": 2411,
       "ms": 818,
-      "unlabeled": 910,
-      "labeling_pct": 78.0,
+      "unlabeled": 869,
+      "labeling_pct": 78.8,
       "filter": "non-stem"
     }
   },
@@ -3301,7 +3301,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.258031",
+      "last_run": "2026-08-18T12:54:03.594871",
       "records": 2392,
       "phd": 1493,
       "ms": 826,
@@ -3310,7 +3310,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.564424",
+      "last_run": "2026-08-18T12:54:41.618593",
       "records": 2393,
       "phd": 1802,
       "ms": 535,
@@ -3341,7 +3341,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.437910",
+      "last_run": "2026-08-18T12:54:03.716394",
       "records": 172,
       "phd": 81,
       "ms": 76,
@@ -3350,7 +3350,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.617227",
+      "last_run": "2026-08-18T12:54:41.677302",
       "records": 197,
       "phd": 131,
       "ms": 58,
@@ -3381,7 +3381,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.079538",
+      "last_run": "2026-08-18T12:54:03.440592",
       "records": 2898,
       "phd": 1565,
       "ms": 1330,
@@ -3390,7 +3390,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.460232",
+      "last_run": "2026-08-18T12:54:41.512628",
       "records": 2102,
       "phd": 1292,
       "ms": 742,
@@ -3401,9 +3401,9 @@
   },
   "usm": {
     "records": {
-      "total": 443,
+      "total": 832,
       "phd": 443,
-      "ms": 0,
+      "ms": 389,
       "unlabeled": 0,
       "label_pct": 100.0
     },
@@ -3421,19 +3421,19 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.428398",
-      "records": 443,
+      "last_run": "2026-08-18T12:54:03.703817",
+      "records": 832,
       "phd": 443,
-      "ms": 0,
+      "ms": 389,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.612228",
-      "records": 763,
+      "last_run": "2026-08-18T12:54:41.670771",
+      "records": 1132,
       "phd": 763,
-      "ms": 0,
+      "ms": 369,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "non-stem"
@@ -3461,7 +3461,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.354761",
+      "last_run": "2026-08-18T12:54:03.678437",
       "records": 1493,
       "phd": 530,
       "ms": 930,
@@ -3470,7 +3470,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.591708",
+      "last_run": "2026-08-18T12:54:41.647398",
       "records": 595,
       "phd": 249,
       "ms": 336,
@@ -3501,7 +3501,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.952789",
+      "last_run": "2026-08-18T12:54:03.330589",
       "records": 2454,
       "phd": 1499,
       "ms": 955,
@@ -3510,7 +3510,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.422258",
+      "last_run": "2026-08-18T12:54:41.473448",
       "records": 831,
       "phd": 520,
       "ms": 309,
@@ -3541,7 +3541,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.012246",
+      "last_run": "2026-08-18T12:54:03.384402",
       "records": 12771,
       "phd": 5888,
       "ms": 5578,
@@ -3550,11 +3550,11 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.441322",
-      "records": 3638,
+      "last_run": "2026-08-18T12:54:41.492232",
+      "records": 3637,
       "phd": 2182,
       "ms": 1281,
-      "unlabeled": 175,
+      "unlabeled": 174,
       "labeling_pct": 95.2,
       "filter": "non-stem"
     }
@@ -3581,7 +3581,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.617303",
+      "last_run": "2026-08-18T12:54:03.121741",
       "records": 2324,
       "phd": 1260,
       "ms": 1045,
@@ -3590,7 +3590,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.352717",
+      "last_run": "2026-08-18T12:54:41.402593",
       "records": 865,
       "phd": 484,
       "ms": 377,
@@ -3621,7 +3621,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.835198",
+      "last_run": "2026-08-18T12:54:04.103466",
       "records": 4626,
       "phd": 2300,
       "ms": 3,
@@ -3630,7 +3630,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.754009",
+      "last_run": "2026-08-18T12:54:41.798908",
       "records": 2336,
       "phd": 1316,
       "ms": 4,
@@ -3643,9 +3643,9 @@
     "records": {
       "total": 1569,
       "phd": 1064,
-      "ms": 0,
-      "unlabeled": 505,
-      "label_pct": 67.8
+      "ms": 490,
+      "unlabeled": 15,
+      "label_pct": 99.0
     },
     "data_sources": {
       "h1b": true,
@@ -3661,30 +3661,30 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.745365",
+      "last_run": "2026-08-18T12:54:04.015710",
       "records": 1569,
       "phd": 1064,
-      "ms": 0,
-      "unlabeled": 505,
-      "labeling_pct": 67.8,
+      "ms": 490,
+      "unlabeled": 15,
+      "labeling_pct": 99.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.707452",
+      "last_run": "2026-08-18T12:54:41.770144",
       "records": 381,
       "phd": 265,
-      "ms": 0,
-      "unlabeled": 116,
-      "labeling_pct": 69.6,
+      "ms": 105,
+      "unlabeled": 11,
+      "labeling_pct": 97.1,
       "filter": "non-stem"
     }
   },
   "uva": {
     "records": {
-      "total": 1047,
-      "phd": 769,
-      "ms": 278,
-      "unlabeled": 0,
+      "total": 2570,
+      "phd": 1912,
+      "ms": 657,
+      "unlabeled": 1,
       "label_pct": 100.0
     },
     "data_sources": {
@@ -3701,19 +3701,19 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.749318",
-      "records": 1047,
-      "phd": 769,
-      "ms": 278,
-      "unlabeled": 0,
+      "last_run": "2026-08-18T12:54:04.023283",
+      "records": 2570,
+      "phd": 1912,
+      "ms": 657,
+      "unlabeled": 1,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.707572",
-      "records": 3,
+      "last_run": "2026-08-18T12:54:41.770251",
+      "records": 4,
       "phd": 0,
-      "ms": 3,
+      "ms": 4,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "non-stem"
@@ -3741,7 +3741,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.670252",
+      "last_run": "2026-08-18T12:54:03.951046",
       "records": 5518,
       "phd": 2971,
       "ms": 2546,
@@ -3750,7 +3750,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.691123",
+      "last_run": "2026-08-18T12:54:41.753806",
       "records": 1971,
       "phd": 1061,
       "ms": 910,
@@ -3781,7 +3781,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.598286",
+      "last_run": "2026-08-18T12:54:03.878994",
       "records": 618,
       "phd": 6,
       "ms": 612,
@@ -3790,7 +3790,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.672188",
+      "last_run": "2026-08-18T12:54:41.734020",
       "records": 250,
       "phd": 3,
       "ms": 247,
@@ -3821,7 +3821,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:15.884681",
+      "last_run": "2026-08-18T12:54:03.268703",
       "records": 13982,
       "phd": 6100,
       "ms": 7870,
@@ -3830,7 +3830,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.396595",
+      "last_run": "2026-08-18T12:54:41.448373",
       "records": 3258,
       "phd": 1758,
       "ms": 1500,
@@ -3861,7 +3861,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.127477",
+      "last_run": "2026-08-18T12:54:03.482235",
       "records": 2231,
       "phd": 526,
       "ms": 3,
@@ -3870,7 +3870,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.485380",
+      "last_run": "2026-08-18T12:54:41.538906",
       "records": 1320,
       "phd": 460,
       "ms": 1,
@@ -3881,9 +3881,9 @@
   },
   "wayne_state": {
     "records": {
-      "total": 1138,
+      "total": 1454,
       "phd": 1138,
-      "ms": 0,
+      "ms": 316,
       "unlabeled": 0,
       "label_pct": 100.0
     },
@@ -3901,19 +3901,19 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.086023",
-      "records": 1138,
+      "last_run": "2026-08-18T12:54:03.445218",
+      "records": 1454,
       "phd": 1138,
-      "ms": 0,
+      "ms": 316,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.464374",
-      "records": 803,
+      "last_run": "2026-08-18T12:54:41.515718",
+      "records": 955,
       "phd": 803,
-      "ms": 0,
+      "ms": 152,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "non-stem"
@@ -3921,11 +3921,11 @@
   },
   "wsu": {
     "records": {
-      "total": 836,
-      "phd": 89,
-      "ms": 0,
-      "unlabeled": 747,
-      "label_pct": 10.6
+      "total": 1632,
+      "phd": 905,
+      "ms": 727,
+      "unlabeled": 0,
+      "label_pct": 100.0
     },
     "data_sources": {
       "h1b": true,
@@ -3941,21 +3941,21 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.601851",
-      "records": 836,
-      "phd": 89,
-      "ms": 0,
-      "unlabeled": 747,
-      "labeling_pct": 10.6,
+      "last_run": "2026-08-18T12:54:03.886237",
+      "records": 1632,
+      "phd": 905,
+      "ms": 727,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.674165",
-      "records": 269,
-      "phd": 43,
-      "ms": 0,
-      "unlabeled": 226,
-      "labeling_pct": 16.0,
+      "last_run": "2026-08-18T12:54:41.736717",
+      "records": 575,
+      "phd": 342,
+      "ms": 233,
+      "unlabeled": 0,
+      "labeling_pct": 100.0,
       "filter": "non-stem"
     }
   },
@@ -3981,7 +3981,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.070195",
+      "last_run": "2026-08-18T12:54:03.432587",
       "records": 2800,
       "phd": 1304,
       "ms": 1331,
@@ -3990,7 +3990,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.453388",
+      "last_run": "2026-08-18T12:54:41.504876",
       "records": 1452,
       "phd": 769,
       "ms": 554,
@@ -4021,7 +4021,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T11:15:16.200869",
+      "last_run": "2026-08-18T12:54:03.547130",
       "records": 919,
       "phd": 919,
       "ms": 0,
@@ -4030,7 +4030,7 @@
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T11:15:56.523796",
+      "last_run": "2026-08-18T12:54:41.579969",
       "records": 524,
       "phd": 524,
       "ms": 0,
