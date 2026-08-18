@@ -16,7 +16,7 @@ SITE_DOMAIN = os.environ.get('SITE_DOMAIN', 'https://phd-demographics.andy-barr.
 ANALYTICS_ENDPOINT = os.environ.get('ANALYTICS_ENDPOINT', 'https://analytics.andy-barr.com/collect')
 
 from generate_name_lists import (
-    CONFIGS, load_records,
+    CONFIGS, load_records, merge_university_records,
 )
 
 # Origin config: key -> (flag_html, label, css_class)
@@ -2546,7 +2546,10 @@ def load_all(stem_filter='stem'):
         records = load_records(cfg)
         key = cfg['key']
         if cfg.get('_merge') and key in data_by_key:
-            data_by_key[key][3].extend(records)
+            merge_university_records(
+                data_by_key[key][3], records,
+                authoritative=bool(cfg.get('degree_label')),
+            )
         else:
             entry = [cfg['key'], cfg['name'], cfg['nra'], records]
             data_by_key[key] = entry
