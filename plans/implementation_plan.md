@@ -82,7 +82,7 @@ The script automates download from the [NCSES Data Portal](https://ncses.nsf.gov
 
 ## Phase 3: Merge & Reconcile
 
-### 3.1 — Script: `scripts/merge_sources.py`
+### 3.1 — Script: `scripts/archive/merge_sources.py`
 1. Load IPEDS filtered output and NSF GSS filtered output.
 2. Fuzzy-match institution names between datasets (university naming varies — e.g., "University of California-Berkeley" vs "UC Berkeley"). Use `fuzzywuzzy` or `rapidfuzz`.
 3. Produce a **unified master list**: `data/master_stem_phd_institutions.csv`
@@ -158,7 +158,7 @@ playwright      # for browser-automated downloads (IPEDS + NCSES)
 | 2 | Download NSF GSS data + codebook | `scripts/download_nsf_gss.py` | `data/nsf_gss/*` |
 | 3 | Filter IPEDS for STEM + Clinical PhDs | `scripts/ipeds_filter.py` | `data/ipeds/ipeds_stem_phd_programs.csv` |
 | 4 | Filter NSF GSS for STEM + Clinical docs | `scripts/nsf_gss_filter.py` | `data/nsf_gss/nsf_gss_stem_phd_programs.csv` |
-| 5 | Merge & reconcile both sources | `scripts/merge_sources.py` | `data/master_stem_phd_institutions.csv` |
+| 5 | Merge & reconcile both sources | `scripts/archive/merge_sources.py` | `data/master_stem_phd_institutions.csv` |
 | 6 | Review & validate master list | Manual review | Corrections applied |
 
 ---

@@ -53,7 +53,7 @@ the aggregate IPEDS data already processed. Two main sources:
 - 36,205 items in sitemap (includes ALL repository items, not just dissertations)
 - Departments organized as sub-communities (13 pages, ~120 departments)
 - Metadata available via SSR HTML meta tags: `citation_author`, `citation_title`, `citation_publication_date`, `citation_keywords`
-- Scraper: `scripts/scrape_uw_dissertations.py`
+- Scraper: `scripts/archive/scrape_uw_dissertations.py`
   - Tested: 20 items scraped successfully, 100% metadata extraction rate
   - Full scrape: ~36K items × 0.5s = ~5 hours
   - Output: `data/uw_dissertations/uw_dissertations_metadata.csv`
@@ -61,7 +61,7 @@ the aggregate IPEDS data already processed. Two main sources:
 
 **To run full scrape:**
 ```bash
-python scripts/scrape_uw_dissertations.py --all --delay 0.5
+python scripts/archive/scrape_uw_dissertations.py --all --delay 0.5
 ```
 
 ### UC Campuses — eScholarship (OAI-PMH)
@@ -70,7 +70,7 @@ python scripts/scrape_uw_dissertations.py --all --delay 0.5
 
 - OAI-PMH endpoint: `https://escholarship.org/oai`
 - Set IDs: `ucb_etd`, `ucd_etd`, `uci_etd`, `ucla_etd`, `ucm_etd`, `ucr_etd`, `ucsb_etd`, `ucsc_etd`, `ucsd_etd`, `ucsf_etd`
-- Scraper: `scripts/scrape_escholarship.py`
+- Scraper: `scripts/archive/scrape_escholarship.py`
 - Output: `data/uc_dissertations/uc_dissertations_metadata.csv`
 - STEM-filtered: `data/uc_dissertations/uc_stem_dissertations.csv` (40,993 records)
 - Breakdown: UCSD (14,944), Berkeley (13,786), UCLA (13,744), Irvine (6,971), UCSF (6,094), Riverside (5,680), Santa Barbara (4,132), Davis (3,933), Santa Cruz (3,298), Merced (1,345)
@@ -83,7 +83,7 @@ python scripts/scrape_uw_dissertations.py --all --delay 0.5
 - Sitemap: `https://purl.stanford.edu/system/sitemap/sitemap.xml.gz` (30,830 PURL items)
 - 74.5% of SDR items are theses/dissertations
 - SearchWorks blocks programmatic access; Cocina JSON API at `{purl}.json` works
-- Scraper: `scripts/scrape_stanford_dissertations.py`
+- Scraper: `scripts/archive/scrape_stanford_dissertations.py`
 - Output: `data/stanford_dissertations/stanford_dissertations_metadata.csv`
 
 ### Portland State — PDXScholar (OAI-PMH)
@@ -101,7 +101,7 @@ python scripts/scrape_uw_dissertations.py --all --delay 0.5
 - Sitemap: `https://scholarsbank.uoregon.edu/sitemap0.xml`
 - SSR HTML meta tags work (same approach as UW)
 - Includes all repository items (not just dissertations) — needs post-filtering
-- Scraper: `scripts/scrape_or_wa_dissertations.py --repo uoregon`
+- Scraper: `scripts/archive/scrape_or_wa_dissertations.py --repo uoregon`
 - Output: `data/or_wa_dissertations/uoregon_dissertations.csv`
 
 ### Washington State University — Research Exchange (Esploro)
@@ -111,7 +111,7 @@ python scripts/scrape_uw_dissertations.py --all --delay 0.5
 - Platform: Ex Libris Esploro (SPA, but serves SSR metadata to Googlebot UA)
 - Sitemap: `https://rex.libraries.wsu.edu/view/google/siteindex.xml` (45,956 total items)
 - Filtered to `/outputs/doctoral/` and `/outputs/graduate/` URLs (9,245)
-- Scraper: `scripts/scrape_or_wa_dissertations.py --repo wsu`
+- Scraper: `scripts/archive/scrape_or_wa_dissertations.py --repo wsu`
 - Output: `data/or_wa_dissertations/wsu_dissertations.csv`
 
 ### Oregon State — ScholarsArchive (Hyrax/Samvera)
