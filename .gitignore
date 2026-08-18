@@ -11,3 +11,6 @@ site/dashboard_data.json
 # Binary assets tracked separately
 *.xlsx
 *.pdf
+
+# SAM build artifacts
+.aws-sam/

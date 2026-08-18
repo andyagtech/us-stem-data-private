@@ -21,12 +21,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.134710",
-      "records": 0,
-      "phd": 0,
-      "ms": 0,
-      "unlabeled": 0,
-      "labeling_pct": 100.0,
+      "last_run": "2026-04-20T14:59:07.104504",
+      "records": 50,
+      "phd": 18,
+      "ms": 20,
+      "unlabeled": 12,
+      "labeling_pct": 76.0,
       "filter": "non-stem"
     }
   },
@@ -52,12 +52,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.476886",
-      "records": 394,
-      "phd": 24,
-      "ms": 0,
-      "unlabeled": 370,
-      "labeling_pct": 6.1,
+      "last_run": "2026-04-20T14:59:07.455424",
+      "records": 426,
+      "phd": 169,
+      "ms": 249,
+      "unlabeled": 8,
+      "labeling_pct": 98.1,
       "filter": "non-stem"
     }
   },
@@ -83,12 +83,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.345690",
-      "records": 7004,
-      "phd": 1199,
-      "ms": 1651,
-      "unlabeled": 4154,
-      "labeling_pct": 40.7,
+      "last_run": "2026-04-20T14:59:07.316931",
+      "records": 7386,
+      "phd": 1247,
+      "ms": 1662,
+      "unlabeled": 4477,
+      "labeling_pct": 39.4,
       "filter": "non-stem"
     }
   },
@@ -114,12 +114,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.437528",
-      "records": 1516,
-      "phd": 301,
-      "ms": 1118,
-      "unlabeled": 97,
-      "labeling_pct": 93.6,
+      "last_run": "2026-04-20T14:59:07.418547",
+      "records": 1611,
+      "phd": 319,
+      "ms": 1190,
+      "unlabeled": 102,
+      "labeling_pct": 93.7,
       "filter": "non-stem"
     }
   },
@@ -145,7 +145,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.651249",
+      "last_run": "2026-04-20T14:59:07.653490",
       "records": 0,
       "phd": 0,
       "ms": 0,
@@ -176,9 +176,9 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.144495",
-      "records": 598,
-      "phd": 598,
+      "last_run": "2026-04-20T14:59:07.115977",
+      "records": 694,
+      "phd": 694,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -207,12 +207,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.583224",
-      "records": 739,
-      "phd": 124,
-      "ms": 10,
-      "unlabeled": 605,
-      "labeling_pct": 18.1,
+      "last_run": "2026-04-20T14:59:07.582720",
+      "records": 801,
+      "phd": 136,
+      "ms": 44,
+      "unlabeled": 621,
+      "labeling_pct": 22.5,
       "filter": "non-stem"
     }
   },
@@ -238,10 +238,10 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.607587",
-      "records": 3545,
-      "phd": 2801,
-      "ms": 744,
+      "last_run": "2026-04-20T14:59:07.611395",
+      "records": 3984,
+      "phd": 3172,
+      "ms": 812,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "non-stem"
@@ -269,12 +269,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.594093",
-      "records": 754,
-      "phd": 210,
-      "ms": 165,
-      "unlabeled": 379,
-      "labeling_pct": 49.7,
+      "last_run": "2026-04-20T14:59:07.594910",
+      "records": 812,
+      "phd": 213,
+      "ms": 173,
+      "unlabeled": 426,
+      "labeling_pct": 47.5,
       "filter": "non-stem"
     }
   },
@@ -300,11 +300,11 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.431212",
-      "records": 2875,
-      "phd": 2145,
-      "ms": 721,
-      "unlabeled": 9,
+      "last_run": "2026-04-20T14:59:07.411347",
+      "records": 3169,
+      "phd": 2345,
+      "ms": 814,
+      "unlabeled": 10,
       "labeling_pct": 99.7,
       "filter": "non-stem"
     }
@@ -331,9 +331,9 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.495301",
-      "records": 8,
-      "phd": 8,
+      "last_run": "2026-04-20T14:59:07.477428",
+      "records": 11,
+      "phd": 11,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -362,7 +362,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.298626",
+      "last_run": "2026-04-20T14:59:07.268996",
       "records": 976,
       "phd": 976,
       "ms": 0,
@@ -393,10 +393,10 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.182363",
-      "records": 405,
-      "phd": 251,
-      "ms": 154,
+      "last_run": "2026-04-20T14:59:07.147440",
+      "records": 472,
+      "phd": 301,
+      "ms": 171,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "non-stem"
@@ -424,12 +424,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.639271",
-      "records": 1087,
-      "phd": 633,
+      "last_run": "2026-04-20T14:59:07.643314",
+      "records": 1329,
+      "phd": 831,
       "ms": 0,
-      "unlabeled": 454,
-      "labeling_pct": 58.2,
+      "unlabeled": 498,
+      "labeling_pct": 62.5,
       "filter": "non-stem"
     }
   },
@@ -455,12 +455,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.361058",
-      "records": 2107,
-      "phd": 1977,
+      "last_run": "2026-04-20T14:59:07.329899",
+      "records": 2337,
+      "phd": 2185,
       "ms": 2,
-      "unlabeled": 128,
-      "labeling_pct": 93.9,
+      "unlabeled": 150,
+      "labeling_pct": 93.6,
       "filter": "non-stem"
     }
   },
@@ -486,10 +486,10 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.141744",
-      "records": 1726,
-      "phd": 429,
-      "ms": 1297,
+      "last_run": "2026-04-20T14:59:07.112627",
+      "records": 1966,
+      "phd": 499,
+      "ms": 1467,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "non-stem"
@@ -517,11 +517,11 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.132626",
-      "records": 1959,
-      "phd": 1396,
-      "ms": 378,
-      "unlabeled": 185,
+      "last_run": "2026-04-20T14:59:07.101981",
+      "records": 2180,
+      "phd": 1552,
+      "ms": 422,
+      "unlabeled": 206,
       "labeling_pct": 90.6,
       "filter": "non-stem"
     }
@@ -548,9 +548,9 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.569104",
-      "records": 146,
-      "phd": 146,
+      "last_run": "2026-04-20T14:59:07.564290",
+      "records": 157,
+      "phd": 157,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -579,10 +579,10 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.179613",
-      "records": 1735,
-      "phd": 1093,
-      "ms": 642,
+      "last_run": "2026-04-20T14:59:07.145390",
+      "records": 1908,
+      "phd": 1212,
+      "ms": 696,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "non-stem"
@@ -610,9 +610,9 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.493604",
-      "records": 299,
-      "phd": 299,
+      "last_run": "2026-04-20T14:59:07.475221",
+      "records": 330,
+      "phd": 330,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -641,7 +641,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.418409",
+      "last_run": "2026-04-20T14:59:07.397753",
       "records": 25,
       "phd": 2,
       "ms": 13,
@@ -672,10 +672,10 @@
     },
     "h1b_system_note": "Missouri S&T files H-1B under 'The Curators of the University of Missouri' (system-wide, includes all UM campuses).",
     "process": {
-      "last_run": "2026-04-04T01:41:20.100588",
-      "records": 22,
-      "phd": 0,
-      "ms": 22,
+      "last_run": "2026-04-20T14:59:07.069688",
+      "records": 24,
+      "phd": 1,
+      "ms": 23,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "non-stem"
@@ -703,12 +703,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.245730",
-      "records": 2376,
-      "phd": 524,
-      "ms": 545,
-      "unlabeled": 1307,
-      "labeling_pct": 45.0,
+      "last_run": "2026-04-20T14:59:07.213886",
+      "records": 2657,
+      "phd": 556,
+      "ms": 556,
+      "unlabeled": 1545,
+      "labeling_pct": 41.9,
       "filter": "non-stem"
     }
   },
@@ -734,7 +734,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.443635",
+      "last_run": "2026-04-20T14:59:07.424947",
       "records": 0,
       "phd": 0,
       "ms": 0,
@@ -765,12 +765,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.618385",
-      "records": 2260,
-      "phd": 654,
+      "last_run": "2026-04-20T14:59:07.623627",
+      "records": 2458,
+      "phd": 838,
       "ms": 0,
-      "unlabeled": 1606,
-      "labeling_pct": 28.9,
+      "unlabeled": 1620,
+      "labeling_pct": 34.1,
       "filter": "non-stem"
     }
   },
@@ -796,12 +796,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.101872",
-      "records": 117,
-      "phd": 60,
-      "ms": 57,
-      "unlabeled": 0,
-      "labeling_pct": 100.0,
+      "last_run": "2026-04-20T14:59:07.070593",
+      "records": 132,
+      "phd": 67,
+      "ms": 63,
+      "unlabeled": 2,
+      "labeling_pct": 98.5,
       "filter": "non-stem"
     }
   },
@@ -827,7 +827,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.492121",
+      "last_run": "2026-04-20T14:59:07.473510",
       "records": 382,
       "phd": 1,
       "ms": 352,
@@ -858,12 +858,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.567587",
-      "records": 685,
-      "phd": 403,
-      "ms": 224,
+      "last_run": "2026-04-20T14:59:07.562393",
+      "records": 760,
+      "phd": 450,
+      "ms": 252,
       "unlabeled": 58,
-      "labeling_pct": 91.5,
+      "labeling_pct": 92.4,
       "filter": "non-stem"
     }
   },
@@ -889,12 +889,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.487289",
-      "records": 1040,
-      "phd": 181,
-      "ms": 0,
-      "unlabeled": 859,
-      "labeling_pct": 17.4,
+      "last_run": "2026-04-20T14:59:07.466585",
+      "records": 1138,
+      "phd": 718,
+      "ms": 325,
+      "unlabeled": 95,
+      "labeling_pct": 91.7,
       "filter": "non-stem"
     }
   },
@@ -920,7 +920,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.116348",
+      "last_run": "2026-04-20T14:59:07.084094",
       "records": 23,
       "phd": 16,
       "ms": 7,
@@ -951,9 +951,9 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.482607",
-      "records": 592,
-      "phd": 592,
+      "last_run": "2026-04-20T14:59:07.461215",
+      "records": 655,
+      "phd": 655,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -982,9 +982,9 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.631727",
-      "records": 1090,
-      "phd": 1085,
+      "last_run": "2026-04-20T14:59:07.634818",
+      "records": 1363,
+      "phd": 1358,
       "ms": 5,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -1013,12 +1013,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.463919",
-      "records": 983,
-      "phd": 27,
-      "ms": 826,
-      "unlabeled": 130,
-      "labeling_pct": 86.8,
+      "last_run": "2026-04-20T14:59:07.441421",
+      "records": 1100,
+      "phd": 30,
+      "ms": 924,
+      "unlabeled": 146,
+      "labeling_pct": 86.7,
       "filter": "non-stem"
     }
   },
@@ -1044,12 +1044,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.499598",
-      "records": 778,
-      "phd": 50,
+      "last_run": "2026-04-20T14:59:07.482582",
+      "records": 874,
+      "phd": 65,
       "ms": 0,
-      "unlabeled": 728,
-      "labeling_pct": 6.4,
+      "unlabeled": 809,
+      "labeling_pct": 7.4,
       "filter": "non-stem"
     }
   },
@@ -1075,7 +1075,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.607783",
+      "last_run": "2026-04-20T14:59:07.611603",
       "records": 0,
       "phd": 0,
       "ms": 0,
@@ -1106,7 +1106,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.125038",
+      "last_run": "2026-04-20T14:59:07.092346",
       "records": 1847,
       "phd": 1746,
       "ms": 101,
@@ -1137,12 +1137,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.576235",
-      "records": 1285,
-      "phd": 349,
-      "ms": 487,
-      "unlabeled": 449,
-      "labeling_pct": 65.1,
+      "last_run": "2026-04-20T14:59:07.572764",
+      "records": 1368,
+      "phd": 386,
+      "ms": 507,
+      "unlabeled": 475,
+      "labeling_pct": 65.3,
       "filter": "non-stem"
     }
   },
@@ -1168,10 +1168,10 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.134473",
-      "records": 374,
-      "phd": 211,
-      "ms": 163,
+      "last_run": "2026-04-20T14:59:07.104109",
+      "records": 445,
+      "phd": 268,
+      "ms": 177,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "non-stem"
@@ -1199,7 +1199,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.108867",
+      "last_run": "2026-04-20T14:59:07.077036",
       "records": 1,
       "phd": 0,
       "ms": 1,
@@ -1230,12 +1230,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.102895",
-      "records": 160,
-      "phd": 34,
-      "ms": 125,
-      "unlabeled": 1,
-      "labeling_pct": 99.4,
+      "last_run": "2026-04-20T14:59:07.071644",
+      "records": 174,
+      "phd": 37,
+      "ms": 134,
+      "unlabeled": 3,
+      "labeling_pct": 98.3,
       "filter": "non-stem"
     }
   },
@@ -1261,9 +1261,9 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.479391",
-      "records": 524,
-      "phd": 524,
+      "last_run": "2026-04-20T14:59:07.458006",
+      "records": 550,
+      "phd": 550,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -1292,12 +1292,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.490315",
-      "records": 0,
-      "phd": 0,
+      "last_run": "2026-04-20T14:59:07.471545",
+      "records": 236,
+      "phd": 154,
       "ms": 0,
-      "unlabeled": 0,
-      "labeling_pct": 100.0,
+      "unlabeled": 82,
+      "labeling_pct": 65.3,
       "filter": "non-stem"
     }
   },
@@ -1323,9 +1323,9 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.560055",
-      "records": 1929,
-      "phd": 1929,
+      "last_run": "2026-04-20T14:59:07.549730",
+      "records": 2136,
+      "phd": 2136,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -1354,7 +1354,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.108701",
+      "last_run": "2026-04-20T14:59:07.076825",
       "records": 167,
       "phd": 108,
       "ms": 0,
@@ -1385,12 +1385,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.402572",
-      "records": 548,
-      "phd": 236,
+      "last_run": "2026-04-20T14:59:07.381160",
+      "records": 631,
+      "phd": 277,
       "ms": 0,
-      "unlabeled": 312,
-      "labeling_pct": 43.1,
+      "unlabeled": 354,
+      "labeling_pct": 43.9,
       "filter": "non-stem"
     }
   },
@@ -1416,12 +1416,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.634797",
-      "records": 636,
-      "phd": 495,
+      "last_run": "2026-04-20T14:59:07.637893",
+      "records": 684,
+      "phd": 540,
       "ms": 79,
-      "unlabeled": 62,
-      "labeling_pct": 90.3,
+      "unlabeled": 65,
+      "labeling_pct": 90.5,
       "filter": "non-stem"
     }
   },
@@ -1447,12 +1447,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.219148",
-      "records": 738,
-      "phd": 219,
-      "ms": 474,
-      "unlabeled": 45,
-      "labeling_pct": 93.9,
+      "last_run": "2026-04-20T14:59:07.188164",
+      "records": 972,
+      "phd": 277,
+      "ms": 631,
+      "unlabeled": 64,
+      "labeling_pct": 93.4,
       "filter": "non-stem"
     }
   },
@@ -1478,12 +1478,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.316524",
-      "records": 3834,
-      "phd": 2206,
-      "ms": 1609,
-      "unlabeled": 19,
-      "labeling_pct": 99.5,
+      "last_run": "2026-04-20T14:59:07.286655",
+      "records": 4329,
+      "phd": 2511,
+      "ms": 1793,
+      "unlabeled": 25,
+      "labeling_pct": 99.4,
       "filter": "non-stem"
     }
   },
@@ -1509,10 +1509,10 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.443421",
-      "records": 1302,
-      "phd": 680,
-      "ms": 622,
+      "last_run": "2026-04-20T14:59:07.424764",
+      "records": 1421,
+      "phd": 740,
+      "ms": 681,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "non-stem"
@@ -1540,12 +1540,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.200814",
-      "records": 309,
-      "phd": 238,
-      "ms": 28,
-      "unlabeled": 43,
-      "labeling_pct": 86.1,
+      "last_run": "2026-04-20T14:59:07.166785",
+      "records": 1160,
+      "phd": 952,
+      "ms": 98,
+      "unlabeled": 110,
+      "labeling_pct": 90.5,
       "filter": "non-stem"
     }
   },
@@ -1571,9 +1571,9 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.528886",
-      "records": 2118,
-      "phd": 2118,
+      "last_run": "2026-04-20T14:59:07.513962",
+      "records": 2297,
+      "phd": 2297,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -1602,9 +1602,9 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.541374",
-      "records": 701,
-      "phd": 701,
+      "last_run": "2026-04-20T14:59:07.530154",
+      "records": 852,
+      "phd": 852,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -1633,12 +1633,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.152162",
-      "records": 1837,
-      "phd": 975,
+      "last_run": "2026-04-20T14:59:07.124029",
+      "records": 1973,
+      "phd": 999,
       "ms": 86,
-      "unlabeled": 776,
-      "labeling_pct": 57.8,
+      "unlabeled": 888,
+      "labeling_pct": 55.0,
       "filter": "non-stem"
     }
   },
@@ -1664,9 +1664,9 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.534803",
-      "records": 1575,
-      "phd": 1575,
+      "last_run": "2026-04-20T14:59:07.521886",
+      "records": 1747,
+      "phd": 1747,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -1695,9 +1695,9 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.513309",
-      "records": 2955,
-      "phd": 2955,
+      "last_run": "2026-04-20T14:59:07.496421",
+      "records": 3237,
+      "phd": 3237,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -1726,9 +1726,9 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.553248",
-      "records": 244,
-      "phd": 244,
+      "last_run": "2026-04-20T14:59:07.541009",
+      "records": 274,
+      "phd": 274,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -1757,9 +1757,9 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.538322",
-      "records": 908,
-      "phd": 908,
+      "last_run": "2026-04-20T14:59:07.526370",
+      "records": 991,
+      "phd": 991,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -1788,9 +1788,9 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.545385",
-      "records": 1056,
-      "phd": 1056,
+      "last_run": "2026-04-20T14:59:07.535165",
+      "records": 1184,
+      "phd": 1184,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -1819,9 +1819,9 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.551206",
-      "records": 695,
-      "phd": 695,
+      "last_run": "2026-04-20T14:59:07.538476",
+      "records": 773,
+      "phd": 773,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -1850,9 +1850,9 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.519761",
-      "records": 1596,
-      "phd": 1596,
+      "last_run": "2026-04-20T14:59:07.503934",
+      "records": 1753,
+      "phd": 1753,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -1881,9 +1881,9 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.552082",
-      "records": 210,
-      "phd": 210,
+      "last_run": "2026-04-20T14:59:07.539760",
+      "records": 221,
+      "phd": 221,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -1912,12 +1912,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.418213",
-      "records": 34,
-      "phd": 34,
+      "last_run": "2026-04-20T14:59:07.397481",
+      "records": 37,
+      "phd": 35,
       "ms": 0,
-      "unlabeled": 0,
-      "labeling_pct": 100.0,
+      "unlabeled": 2,
+      "labeling_pct": 94.6,
       "filter": "non-stem"
     }
   },
@@ -1943,12 +1943,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.474857",
-      "records": 836,
-      "phd": 126,
-      "ms": 0,
-      "unlabeled": 710,
-      "labeling_pct": 15.1,
+      "last_run": "2026-04-20T14:59:07.453349",
+      "records": 844,
+      "phd": 624,
+      "ms": 201,
+      "unlabeled": 19,
+      "labeling_pct": 97.7,
       "filter": "non-stem"
     }
   },
@@ -1974,12 +1974,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.626989",
-      "records": 1201,
-      "phd": 780,
-      "ms": 405,
-      "unlabeled": 16,
-      "labeling_pct": 98.7,
+      "last_run": "2026-04-20T14:59:07.628930",
+      "records": 1247,
+      "phd": 809,
+      "ms": 420,
+      "unlabeled": 18,
+      "labeling_pct": 98.6,
       "filter": "non-stem"
     }
   },
@@ -2005,12 +2005,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.211966",
-      "records": 1678,
-      "phd": 285,
+      "last_run": "2026-04-20T14:59:07.183879",
+      "records": 1971,
+      "phd": 328,
       "ms": 1,
-      "unlabeled": 1392,
-      "labeling_pct": 17.0,
+      "unlabeled": 1642,
+      "labeling_pct": 16.7,
       "filter": "non-stem"
     }
   },
@@ -2036,12 +2036,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.580486",
-      "records": 1079,
+      "last_run": "2026-04-20T14:59:07.578897",
+      "records": 1229,
       "phd": 117,
       "ms": 0,
-      "unlabeled": 962,
-      "labeling_pct": 10.8,
+      "unlabeled": 1112,
+      "labeling_pct": 9.5,
       "filter": "non-stem"
     }
   },
@@ -2067,10 +2067,10 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.277083",
-      "records": 3048,
-      "phd": 1594,
-      "ms": 1454,
+      "last_run": "2026-04-20T14:59:07.245991",
+      "records": 3156,
+      "phd": 1673,
+      "ms": 1483,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "non-stem"
@@ -2098,12 +2098,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.451758",
-      "records": 899,
-      "phd": 199,
-      "ms": 0,
-      "unlabeled": 700,
-      "labeling_pct": 22.1,
+      "last_run": "2026-04-20T14:59:07.429020",
+      "records": 970,
+      "phd": 645,
+      "ms": 324,
+      "unlabeled": 1,
+      "labeling_pct": 99.9,
       "filter": "non-stem"
     }
   },
@@ -2129,12 +2129,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.198835",
-      "records": 2256,
-      "phd": 1744,
+      "last_run": "2026-04-20T14:59:07.161763",
+      "records": 2298,
+      "phd": 1775,
       "ms": 193,
-      "unlabeled": 319,
-      "labeling_pct": 85.9,
+      "unlabeled": 330,
+      "labeling_pct": 85.6,
       "filter": "non-stem"
     }
   },
@@ -2160,7 +2160,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.576482",
+      "last_run": "2026-04-20T14:59:07.573249",
       "records": 15,
       "phd": 8,
       "ms": 7,
@@ -2191,12 +2191,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.456011",
-      "records": 888,
-      "phd": 170,
-      "ms": 0,
-      "unlabeled": 718,
-      "labeling_pct": 19.1,
+      "last_run": "2026-04-20T14:59:07.433485",
+      "records": 997,
+      "phd": 728,
+      "ms": 256,
+      "unlabeled": 13,
+      "labeling_pct": 98.7,
       "filter": "non-stem"
     }
   },
@@ -2222,12 +2222,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.116102",
-      "records": 1474,
-      "phd": 16,
-      "ms": 1300,
-      "unlabeled": 158,
-      "labeling_pct": 89.3,
+      "last_run": "2026-04-20T14:59:07.083676",
+      "records": 1509,
+      "phd": 17,
+      "ms": 1333,
+      "unlabeled": 159,
+      "labeling_pct": 89.5,
       "filter": "non-stem"
     }
   },
@@ -2253,12 +2253,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.288438",
-      "records": 2698,
-      "phd": 2058,
-      "ms": 244,
-      "unlabeled": 396,
-      "labeling_pct": 85.3,
+      "last_run": "2026-04-20T14:59:07.258834",
+      "records": 3045,
+      "phd": 2359,
+      "ms": 272,
+      "unlabeled": 414,
+      "labeling_pct": 86.4,
       "filter": "non-stem"
     }
   },
@@ -2284,12 +2284,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.467461",
-      "records": 785,
-      "phd": 211,
-      "ms": 463,
-      "unlabeled": 111,
-      "labeling_pct": 85.9,
+      "last_run": "2026-04-20T14:59:07.445501",
+      "records": 873,
+      "phd": 233,
+      "ms": 518,
+      "unlabeled": 122,
+      "labeling_pct": 86.0,
       "filter": "non-stem"
     }
   },
@@ -2315,12 +2315,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.470689",
-      "records": 674,
-      "phd": 37,
-      "ms": 637,
-      "unlabeled": 0,
-      "labeling_pct": 100.0,
+      "last_run": "2026-04-20T14:59:07.448939",
+      "records": 751,
+      "phd": 46,
+      "ms": 704,
+      "unlabeled": 1,
+      "labeling_pct": 99.9,
       "filter": "non-stem"
     }
   },
@@ -2346,9 +2346,9 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.494404",
-      "records": 142,
-      "phd": 142,
+      "last_run": "2026-04-20T14:59:07.476339",
+      "records": 162,
+      "phd": 162,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -2377,7 +2377,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.187432",
+      "last_run": "2026-04-20T14:59:07.151819",
       "records": 1006,
       "phd": 1006,
       "ms": 0,
@@ -2408,12 +2408,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.408185",
-      "records": 1219,
-      "phd": 666,
-      "ms": 373,
-      "unlabeled": 180,
-      "labeling_pct": 85.2,
+      "last_run": "2026-04-20T14:59:07.386817",
+      "records": 1306,
+      "phd": 713,
+      "ms": 398,
+      "unlabeled": 195,
+      "labeling_pct": 85.1,
       "filter": "non-stem"
     }
   },
@@ -2439,12 +2439,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.495119",
+      "last_run": "2026-04-20T14:59:07.477172",
       "records": 93,
-      "phd": 23,
-      "ms": 0,
-      "unlabeled": 70,
-      "labeling_pct": 24.7,
+      "phd": 35,
+      "ms": 18,
+      "unlabeled": 40,
+      "labeling_pct": 57.0,
       "filter": "non-stem"
     }
   },
@@ -2470,12 +2470,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.399675",
-      "records": 2225,
-      "phd": 362,
+      "last_run": "2026-04-20T14:59:07.378163",
+      "records": 2423,
+      "phd": 407,
       "ms": 0,
-      "unlabeled": 1863,
-      "labeling_pct": 16.3,
+      "unlabeled": 2016,
+      "labeling_pct": 16.8,
       "filter": "non-stem"
     }
   },
@@ -2501,12 +2501,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.564790",
-      "records": 1143,
-      "phd": 295,
+      "last_run": "2026-04-20T14:59:07.558051",
+      "records": 1308,
+      "phd": 339,
       "ms": 2,
-      "unlabeled": 846,
-      "labeling_pct": 26.0,
+      "unlabeled": 967,
+      "labeling_pct": 26.1,
       "filter": "non-stem"
     }
   },
@@ -2532,12 +2532,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.389197",
-      "records": 3806,
-      "phd": 2141,
-      "ms": 771,
-      "unlabeled": 894,
-      "labeling_pct": 76.5,
+      "last_run": "2026-04-20T14:59:07.367585",
+      "records": 4139,
+      "phd": 2411,
+      "ms": 818,
+      "unlabeled": 910,
+      "labeling_pct": 78.0,
       "filter": "non-stem"
     }
   },
@@ -2563,12 +2563,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.417925",
-      "records": 2182,
-      "phd": 305,
-      "ms": 0,
-      "unlabeled": 1877,
-      "labeling_pct": 14.0,
+      "last_run": "2026-04-20T14:59:07.396997",
+      "records": 2393,
+      "phd": 1802,
+      "ms": 535,
+      "unlabeled": 56,
+      "labeling_pct": 97.7,
       "filter": "non-stem"
     }
   },
@@ -2594,12 +2594,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.496202",
-      "records": 162,
-      "phd": 13,
-      "ms": 0,
-      "unlabeled": 149,
-      "labeling_pct": 8.0,
+      "last_run": "2026-04-20T14:59:07.478600",
+      "records": 197,
+      "phd": 131,
+      "ms": 58,
+      "unlabeled": 8,
+      "labeling_pct": 95.9,
       "filter": "non-stem"
     }
   },
@@ -2625,12 +2625,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.260387",
-      "records": 1973,
-      "phd": 1209,
-      "ms": 698,
-      "unlabeled": 66,
-      "labeling_pct": 96.7,
+      "last_run": "2026-04-20T14:59:07.229166",
+      "records": 2102,
+      "phd": 1292,
+      "ms": 742,
+      "unlabeled": 68,
+      "labeling_pct": 96.8,
       "filter": "non-stem"
     }
   },
@@ -2656,9 +2656,9 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.490192",
-      "records": 698,
-      "phd": 698,
+      "last_run": "2026-04-20T14:59:07.470416",
+      "records": 763,
+      "phd": 763,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -2687,12 +2687,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.459341",
+      "last_run": "2026-04-20T14:59:07.436150",
       "records": 595,
-      "phd": 45,
-      "ms": 0,
-      "unlabeled": 550,
-      "labeling_pct": 7.6,
+      "phd": 249,
+      "ms": 336,
+      "unlabeled": 10,
+      "labeling_pct": 98.3,
       "filter": "non-stem"
     }
   },
@@ -2718,12 +2718,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.204591",
-      "records": 756,
-      "phd": 471,
-      "ms": 283,
+      "last_run": "2026-04-20T14:59:07.170707",
+      "records": 831,
+      "phd": 520,
+      "ms": 309,
       "unlabeled": 2,
-      "labeling_pct": 99.7,
+      "labeling_pct": 99.8,
       "filter": "non-stem"
     }
   },
@@ -2749,12 +2749,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.233292",
-      "records": 3372,
-      "phd": 2053,
-      "ms": 1204,
-      "unlabeled": 115,
-      "labeling_pct": 96.6,
+      "last_run": "2026-04-20T14:59:07.202721",
+      "records": 3638,
+      "phd": 2182,
+      "ms": 1281,
+      "unlabeled": 175,
+      "labeling_pct": 95.2,
       "filter": "non-stem"
     }
   },
@@ -2780,10 +2780,10 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.107639",
-      "records": 822,
+      "last_run": "2026-04-20T14:59:07.075834",
+      "records": 865,
       "phd": 484,
-      "ms": 334,
+      "ms": 377,
       "unlabeled": 4,
       "labeling_pct": 99.5,
       "filter": "non-stem"
@@ -2811,7 +2811,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.651110",
+      "last_run": "2026-04-20T14:59:07.653325",
       "records": 2336,
       "phd": 1316,
       "ms": 4,
@@ -2842,7 +2842,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.609535",
+      "last_run": "2026-04-20T14:59:07.613345",
       "records": 381,
       "phd": 265,
       "ms": 0,
@@ -2873,7 +2873,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.609696",
+      "last_run": "2026-04-20T14:59:07.613560",
       "records": 3,
       "phd": 0,
       "ms": 3,
@@ -2904,10 +2904,10 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.591096",
-      "records": 1804,
-      "phd": 967,
-      "ms": 837,
+      "last_run": "2026-04-20T14:59:07.591140",
+      "records": 1971,
+      "phd": 1061,
+      "ms": 910,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "non-stem"
@@ -2935,10 +2935,10 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.568490",
-      "records": 216,
-      "phd": 0,
-      "ms": 216,
+      "last_run": "2026-04-20T14:59:07.563532",
+      "records": 250,
+      "phd": 3,
+      "ms": 247,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "non-stem"
@@ -2966,10 +2966,10 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.165658",
-      "records": 2998,
-      "phd": 1618,
-      "ms": 1380,
+      "last_run": "2026-04-20T14:59:07.137235",
+      "records": 3258,
+      "phd": 1758,
+      "ms": 1500,
       "unlabeled": 0,
       "labeling_pct": 100.0,
       "filter": "non-stem"
@@ -2997,12 +2997,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.294248",
-      "records": 1194,
-      "phd": 417,
+      "last_run": "2026-04-20T14:59:07.264691",
+      "records": 1320,
+      "phd": 460,
       "ms": 1,
-      "unlabeled": 776,
-      "labeling_pct": 35.0,
+      "unlabeled": 859,
+      "labeling_pct": 34.9,
       "filter": "non-stem"
     }
   },
@@ -3028,9 +3028,9 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.264043",
-      "records": 740,
-      "phd": 740,
+      "last_run": "2026-04-20T14:59:07.232913",
+      "records": 803,
+      "phd": 803,
       "ms": 0,
       "unlabeled": 0,
       "labeling_pct": 100.0,
@@ -3059,12 +3059,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.570540",
-      "records": 245,
-      "phd": 40,
+      "last_run": "2026-04-20T14:59:07.565539",
+      "records": 269,
+      "phd": 43,
       "ms": 0,
-      "unlabeled": 205,
-      "labeling_pct": 16.3,
+      "unlabeled": 226,
+      "labeling_pct": 16.0,
       "filter": "non-stem"
     }
   },
@@ -3090,12 +3090,12 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.251628",
-      "records": 1302,
-      "phd": 680,
-      "ms": 513,
-      "unlabeled": 109,
-      "labeling_pct": 91.6,
+      "last_run": "2026-04-20T14:59:07.220515",
+      "records": 1452,
+      "phd": 769,
+      "ms": 554,
+      "unlabeled": 129,
+      "labeling_pct": 91.1,
       "filter": "non-stem"
     }
   },
@@ -3121,7 +3121,7 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-04-04T01:41:20.351427",
+      "last_run": "2026-04-20T14:59:07.319377",
       "records": 524,
       "phd": 524,
       "ms": 0,
