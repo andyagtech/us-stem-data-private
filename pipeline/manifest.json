@@ -1322,10 +1322,10 @@
   "pdx": {
     "records": {
       "total": 1118,
-      "phd": 94,
-      "ms": 0,
-      "unlabeled": 1024,
-      "label_pct": 8.4
+      "phd": 500,
+      "ms": 600,
+      "unlabeled": 18,
+      "label_pct": 98.4
     },
     "data_sources": {
       "h1b": true,
@@ -1341,21 +1341,21 @@
     },
     "h1b_system_note": "",
     "process": {
-      "last_run": "2026-08-18T15:09:47.632313",
+      "last_run": "2026-08-18T15:20:02.132895",
       "records": 1118,
-      "phd": 94,
-      "ms": 0,
-      "unlabeled": 1024,
-      "labeling_pct": 8.4,
+      "phd": 500,
+      "ms": 600,
+      "unlabeled": 18,
+      "labeling_pct": 98.4,
       "filter": "stem"
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T15:10:27.227179",
+      "last_run": "2026-08-18T15:20:02.284748",
       "records": 914,
-      "phd": 67,
-      "ms": 0,
-      "unlabeled": 847,
-      "labeling_pct": 7.3,
+      "phd": 375,
+      "ms": 526,
+      "unlabeled": 13,
+      "labeling_pct": 98.6,
       "filter": "non-stem"
     }
   },
