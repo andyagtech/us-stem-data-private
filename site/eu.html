@@ -77,8 +77,8 @@
     </div>
 
     <div class="chart-box" id="eu-destinations-chart-section">
-      <h3>EU Destination Countries (2023) <a href="#eu-destinations-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#eu-destinations-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
-      <p class="desc">Germany hosts 24% of the EU's 1.76M international students, followed by France (16%) and Netherlands (10%).</p>
+      <h3>EU Destination Countries (2024) <a href="#eu-destinations-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#eu-destinations-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <p class="desc">Germany hosts 27% of the EU's 1,650,843 international tertiary students, followed by France (17%) and the Netherlands (11%). Eurostat educ_uoe_mobs01, ISCED 5-8, 2024. The Netherlands does not report a combined 5-8 total; its figure is the sum of the levels it does report, which excludes doctoral students.</p>
       <canvas id="eu-destinations-chart"></canvas>
     </div>
 
@@ -151,8 +151,8 @@ new Chart(document.getElementById('top-countries-chart'), {
 new Chart(document.getElementById('eu-destinations-chart'), {
   type: 'bar',
   data: {
-    labels: ['Germany','France','Netherlands','Spain','Italy','Austria','Belgium','Sweden'],
-    datasets: [{ data: [423200,276200,169500,100000,80000,70000,60000,50000], backgroundColor: 'rgba(56,189,248,0.7)', borderRadius: 4 }]
+    labels: ['Germany','France','Netherlands','Italy','Spain','Poland','Austria','Czechia','Portugal','Belgium','Sweden'],
+    datasets: [{ data: [438260,284865,176470,123392,113649,95120,92054,57307,55330,48648,35779], backgroundColor: 'rgba(56,189,248,0.7)', borderRadius: 4 }]
   },
   options: { responsive: true, plugins: { legend: { display: false },
     tooltip: { callbacks: { label: ctx => ctx.parsed.y.toLocaleString() + ' students' } } },
