@@ -24,6 +24,35 @@
   .hero-stats { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
   .hero-stat { text-align: center; }
   .hero-stat .num { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
+  .hero h1 .hl { color: #f0a5ae; }
+  .hero-note { color: var(--text-muted); font-size: 0.78rem; margin: 1.5rem auto 0; max-width: 620px; }
+  .hero-note a { color: var(--accent); }
+  .lede { color: var(--text-muted); max-width: 62ch; line-height: 1.6; margin: 0 0 1.25rem; font-size: 0.92rem; }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; }
+  table.cases { width: 100%; border-collapse: collapse; font-size: 0.88rem; min-width: 640px; }
+  table.cases th { text-align: left; padding: 0.7rem 0.9rem; font-size: 0.7rem;
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted);
+    border-bottom: 1px solid var(--border); font-weight: 600; }
+  table.cases td { padding: 0.62rem 0.9rem; border-bottom: 1px solid rgba(148,163,184,0.12); }
+  table.cases tr:last-child td { border-bottom: 0; }
+  table.cases .num-col { text-align: right; font-variant-numeric: tabular-nums; }
+  table.cases .share { font-weight: 700; color: #f0a5ae; }
+  table.cases .field { color: var(--text-muted); }
+  table.cases tr.hidden-row { display: none; }
+  td.loading { color: var(--text-muted); padding: 1.2rem 0.9rem; }
+  .show-more { margin: 1rem 0 0; }
+  .show-more button { background: transparent; border: 1px solid var(--border);
+    color: var(--text); border-radius: 999px; padding: 0.5rem 1.1rem; font: inherit;
+    font-size: 0.85rem; cursor: pointer; }
+  .show-more button:hover { border-color: var(--accent); }
+  .claims { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 760px) { .claims { grid-template-columns: 1fr; } }
+  .claim { border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.2rem; }
+  .claim h3 { margin: 0 0 0.6rem; font-size: 0.95rem; }
+  .claim p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin: 0 0 0.7rem; }
+  .claim p:last-child { margin-bottom: 0; }
+  .claim-yes { border-left: 3px solid #4ade80; }
+  .claim-no { border-left: 3px solid #fbbf24; }
   .hero-stat .label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
 
   /* Content */
@@ -83,17 +112,70 @@
 <body>
 
 <div class="hero">
-  <h1 id="us-graduate-program-demographics-amp-funding">US Graduate Program Demographics &amp; Funding</h1>
-  <p class="subtitle">Exploring who earns advanced degrees at American universities, how they're funded, and where they come from.</p>
+  <h1 id="finding">49 federally funded doctoral departments where
+    <span class="hl">most degrees go to non-residents</span> &mdash; year after year</h1>
+  <p class="subtitle">Public money funds American graduate education. In these
+    departments, seven of every ten research doctorates or more have gone to
+    students on temporary visas in at least six of the last eight measured years.</p>
   <div class="hero-stats">
-    <div class="hero-stat"><div class="num">107</div><div class="label">Universities</div></div>
-    <div class="hero-stat"><div class="num">471K</div><div class="label">Records</div></div>
-    <div class="hero-stat"><div class="num">44</div><div class="label">STEM Fields</div></div>
-    <div class="hero-stat"><div class="num">8</div><div class="label">Federal Sources</div></div>
+    <div class="hero-stat"><div class="num">49</div><div class="label">Departments &ge;70% non-resident</div></div>
+    <div class="hero-stat"><div class="num">90.6%</div><div class="label">Highest sustained share</div></div>
+    <div class="hero-stat"><div class="num">65%</div><div class="label">CS master's, non-resident</div></div>
+    <div class="hero-stat"><div class="num">60%</div><div class="label">Of master's growth, non-resident</div></div>
   </div>
+  <p class="hero-note">IPEDS Completions, 2015&ndash;2022, research doctorates.
+    Cells with 80+ doctorates. <a href="#cases">See the departments</a> &middot;
+    <a href="/data_sources.html">Method</a></p>
 </div>
 
 <div class="content">
+  <div id="cases" class="section">
+    <h2>The departments</h2>
+    <p class="lede">Each row is one field at one institution. The threshold is
+      deliberately conservative: at least 80 research doctorates awarded across
+      2015&ndash;2022, and non-residents at or above 70% in at least six
+      separate years. A single unusual cohort cannot qualify.</p>
+    <div class="table-wrap">
+      <table class="cases" id="cases-table">
+        <thead><tr>
+          <th scope="col">Institution</th><th scope="col">Field</th>
+          <th scope="col" class="num-col">Doctorates</th>
+          <th scope="col" class="num-col">Non-resident</th>
+          <th scope="col" class="num-col">Years &ge;70%</th>
+        </tr></thead>
+        <tbody id="cases-body"><tr><td colspan="5" class="loading">Loading&hellip;</td></tr></tbody>
+      </table>
+    </div>
+    <p class="show-more"><button type="button" id="show-all">Show all 49</button></p>
+  </div>
+
+  <div id="what-this-shows" class="section">
+    <h2>What this shows, and what it does not</h2>
+    <div class="claims">
+      <div class="claim claim-yes">
+        <h3>What the data supports</h3>
+        <p>These programs are supported by federal research funding, and their
+        doctoral output goes overwhelmingly to students on temporary visas,
+        consistently, for most of a decade. That is a question about the return
+        on public investment, and it stands on its own.</p>
+        <p>It is also concentrated rather than general: the national
+        non-resident share of research doctorates has been roughly flat since
+        2010. What changed is that particular departments became
+        overwhelmingly non-resident while the average held still.</p>
+      </div>
+      <div class="claim claim-no">
+        <h3>What it does not support</h3>
+        <p>This is not evidence that Americans were displaced. Between 2012 and
+        2025, core-STEM research doctorates awarded to domestic students rose
+        <strong>+32%</strong>, while the total rose <strong>+33%</strong>&mdash;they
+        moved together. Master&rsquo;s awards more than doubled. The number of
+        seats was not fixed and domestic participation did not fall.</p>
+        <p>The data also cannot show who applied, who was admitted, or who was
+        funded. Establishing that anyone was prioritised over anyone else would
+        need admissions or funding records, which these files do not contain.</p>
+      </div>
+    </div>
+  </div>
   <div id="graduate-names" class="section">
     <h2>Graduate Names</h2>
     <div class="card-grid">
@@ -168,5 +250,53 @@
 
 <script src="/sidebar.js"></script>
 <script src="/anchors.js" defer></script>
+
+<script>
+(function () {
+  var VISIBLE = 12;
+  fetch('/data/concentration_cases.json', { credentials: 'omit' })
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      var body = document.getElementById('cases-body');
+      if (!body || !d.cases) return;
+      while (body.firstChild) body.removeChild(body.firstChild);
+      d.cases.forEach(function (c, i) {
+        var tr = document.createElement('tr');
+        if (i >= VISIBLE) tr.className = 'hidden-row';
+        [[c.institution, ''], [c.field, 'field'],
+         [Number(c.doctorates).toLocaleString(), 'num-col'],
+         [c.share.toFixed(1) + '%', 'num-col share'],
+         [c.years_at_or_above_mark + ' of ' + c.years_counted, 'num-col']
+        ].forEach(function (cell) {
+          var td = document.createElement('td');
+          if (cell[1]) td.className = cell[1];
+          td.textContent = cell[0];
+          tr.appendChild(td);
+        });
+        body.appendChild(tr);
+      });
+      var btn = document.getElementById('show-all');
+      if (btn) {
+        btn.textContent = 'Show all ' + d.cases.length;
+        btn.addEventListener('click', function () {
+          var hidden = body.querySelectorAll('tr.hidden-row');
+          if (hidden.length) {
+            Array.prototype.forEach.call(hidden, function (r) { r.className = ''; });
+            btn.textContent = 'Show fewer';
+          } else {
+            Array.prototype.forEach.call(body.children, function (r, i) {
+              r.className = i >= VISIBLE ? 'hidden-row' : '';
+            });
+            btn.textContent = 'Show all ' + d.cases.length;
+          }
+        });
+      }
+    })
+    .catch(function () {
+      var body = document.getElementById('cases-body');
+      if (body) body.textContent = '';
+    });
+})();
+</script>
 </body>
 </html>
