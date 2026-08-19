@@ -624,7 +624,7 @@
     return chartJsPromise;
   }
 
-  var CHART_KINDS = { line: 1, bar: 1, hbar: 1, stacked_bar: 1, area: 1, doughnut: 1, scatter: 1 };
+  var CHART_KINDS = { line: 1, bar: 1, hbar: 1, stacked_bar: 1, area: 1, doughnut: 1, scatter: 1, histogram: 1 };
 
   /** Validate + normalise a chart block. Returns null to drop it. */
   function normaliseChart(b) {
@@ -783,6 +783,13 @@
         maintainAspectRatio: false,
         animation: reducedMotion ? false : { duration: 400 },
         indexAxis: c.kind === 'hbar' ? 'y' : 'x',
+        // A histogram's x axis is a continuous quantity cut into bands, not a
+        // set of categories, so its bars sit flush against each other. Chart.js
+        // has no histogram type; this is the difference between reading it as a
+        // distribution and reading it as unrelated categories.
+        datasets: c.kind === 'histogram'
+          ? { bar: { barPercentage: 1, categoryPercentage: 1 } }
+          : undefined,
         interaction: isDoughnut ? { mode: 'nearest' } : { mode: 'index', intersect: false },
         plugins: {
           legend: {
