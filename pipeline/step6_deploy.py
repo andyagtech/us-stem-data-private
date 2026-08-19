@@ -204,6 +204,29 @@ def step6_deploy(state: PipelineState) -> PipelineState:
             if result.returncode == 0:
                 uploaded += 1
 
+    # Step 3b: OpenGraph share cards, which live in a subdirectory.
+    # Every glob above is top-level only, so site/og/**.png would never have
+    # shipped — and since every page's og:image now points into it, a share
+    # would have rendered a 404 rather than the static image it replaced.
+    # Synced in one call rather than a subprocess per file; there are 237.
+    og_dir = site_dir / "og"
+    if og_dir.is_dir():
+        card_count = sum(1 for _ in og_dir.rglob("*.png"))
+        print(f"  Uploading {card_count} OpenGraph cards...")
+        result = subprocess.run(
+            ["aws", "s3", "sync", str(og_dir), f"{S3_URI}og/",
+             "--profile", AWS_PROFILE,
+             "--exclude", "*", "--include", "*.png",
+             "--cache-control", CACHE_RULES.get(".png", "public, max-age=604800"),
+             "--content-type", CONTENT_TYPES.get(".png", "image/png"),
+             "--no-progress"],
+            capture_output=True, text=True,
+        )
+        if result.returncode == 0:
+            uploaded += card_count
+        else:
+            errors.append(f"og cards: {result.stderr.strip()[:200]}")
+
     print(f"  Uploaded {uploaded} files")
 
     # Step 4: CloudFront invalidation
