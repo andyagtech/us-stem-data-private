@@ -114,13 +114,15 @@
 <div class="hero">
   <h1 id="finding">49 federally funded doctoral departments where
     <span class="hl">most degrees go to non-residents</span> &mdash; year after year</h1>
-  <p class="subtitle">Public money funds American graduate education. In these
-    departments, seven of every ten research doctorates or more have gone to
-    students on temporary visas in at least six of the last eight measured years.</p>
+  <p class="subtitle">Federal research funding runs to roughly
+    <strong>$875,000 per STEM research doctorate</strong> awarded. In these
+    departments, seven of every ten of those doctorates or more have gone to
+    students on temporary visas &mdash; in at least six of the last eight
+    measured years.</p>
   <div class="hero-stats">
     <div class="hero-stat"><div class="num">49</div><div class="label">Departments &ge;70% non-resident</div></div>
     <div class="hero-stat"><div class="num">90.6%</div><div class="label">Highest sustained share</div></div>
-    <div class="hero-stat"><div class="num">65%</div><div class="label">CS master's, non-resident</div></div>
+    <div class="hero-stat"><div class="num">$875K</div><div class="label">Median federal $ per STEM doctorate</div></div>
     <div class="hero-stat"><div class="num">60%</div><div class="label">Of master's growth, non-resident</div></div>
   </div>
   <p class="hero-note">IPEDS Completions, 2015&ndash;2022, research doctorates.
@@ -149,6 +151,34 @@
     <p class="show-more"><button type="button" id="show-all">Show all 49</button></p>
   </div>
 
+  <div id="public-cost" class="section">
+    <h2>What the public puts in</h2>
+    <p class="lede">Doctoral and master&rsquo;s education are funded through
+      different mechanisms, and the distinction matters. STEM doctoral students
+      are largely supported &mdash; research assistantships on federal grants,
+      teaching assistantships, fellowships, tuition waived and a stipend paid.
+      Master&rsquo;s students are mostly self-funded through tuition. The figures
+      below are <strong>research doctorates only</strong>, where the federal
+      subsidy is concentrated.</p>
+    <div class="table-wrap">
+      <table class="cases" id="cost-table">
+        <thead><tr>
+          <th scope="col">Institution</th>
+          <th scope="col" class="num-col">Federal obligations</th>
+          <th scope="col" class="num-col">STEM doctorates</th>
+          <th scope="col" class="num-col">Per doctorate</th>
+          <th scope="col" class="num-col">Non-resident</th>
+        </tr></thead>
+        <tbody id="cost-body"><tr><td colspan="5" class="loading">Loading&hellip;</td></tr></tbody>
+      </table>
+    </div>
+    <p class="hero-note" style="margin-top:.9rem;text-align:left;max-width:none">
+      Federal obligations are FY2023 (NSF NCSES Federal Support Survey, Table 17);
+      doctorates are 2015&ndash;2022. This is an intensity ratio, not a cost of
+      production &mdash; federal obligations fund research whose outputs include
+      papers, instruments, facilities and staff, not only degrees.</p>
+  </div>
+
   <div id="what-this-shows" class="section">
     <h2>What this shows, and what it does not</h2>
     <div class="claims">
@@ -173,6 +203,10 @@
         <p>The data also cannot show who applied, who was admitted, or who was
         funded. Establishing that anyone was prioritised over anyone else would
         need admissions or funding records, which these files do not contain.</p>
+        <p>And the per-doctorate figure is an intensity ratio, not a price tag.
+        Federal obligations buy research, not degrees; a campus with a national
+        laboratory ranks high for reasons that have nothing to do with graduate
+        training.</p>
       </div>
     </div>
   </div>
@@ -296,6 +330,33 @@
       var body = document.getElementById('cases-body');
       if (body) body.textContent = '';
     });
+  fetch('/data/taxpayer_cost.json', { credentials: 'omit' })
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      var body = document.getElementById('cost-body');
+      if (!body || !d.institutions) return;
+      while (body.firstChild) body.removeChild(body.firstChild);
+      d.institutions.slice(0, 15).forEach(function (c) {
+        var tr = document.createElement('tr');
+        [[c.institution, ''],
+         ['$' + Math.round(c.federal_obligations / 1e6).toLocaleString() + 'M', 'num-col'],
+         [Number(c.doctorates).toLocaleString(), 'num-col'],
+         ['$' + Math.round(c.federal_per_doctorate / 1000).toLocaleString() + 'K', 'num-col'],
+         [c.share.toFixed(1) + '%', 'num-col share']
+        ].forEach(function (cell) {
+          var td = document.createElement('td');
+          if (cell[1]) td.className = cell[1];
+          td.textContent = cell[0];
+          tr.appendChild(td);
+        });
+        body.appendChild(tr);
+      });
+    })
+    .catch(function () {
+      var b = document.getElementById('cost-body');
+      if (b) b.textContent = '';
+    });
+
 })();
 </script>
 </body>
