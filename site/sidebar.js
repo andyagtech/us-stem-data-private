@@ -47,7 +47,8 @@
       { href: '/immigration.html', label: 'Immigration Pipeline' },
       { href: '/pipeline.html', label: 'Pipeline Analysis', anchors: [
         { hash: 'pipeline-chart-section', label: 'A. Full Pipeline' },
-        { hash: 'f1-diverge-chart-section', label: 'B. China vs India' },
+        { hash: 'f1-diverge-chart-section', label: 'B. China vs India (F-1)' },
+        { hash: 'h1b-diverge-chart-section', label: 'B. China vs India (H-1B)' },
         { hash: 'scatter-chart-section', label: 'C. Stay vs Refusal' },
         { hash: 'eb-chart-section', label: 'D. EB Bottleneck' },
         { hash: 'indexed-chart-section', label: 'E. Pipeline Growth' },
@@ -58,21 +59,73 @@
         { hash: 'recent-section', label: 'Apps vs Matric vs Grad' },
         { hash: 'daca-section', label: 'DACA Med Students' },
         { hash: 'origins-section', label: 'Asian-Origin Matriculants' },
+        { hash: 'evsp-yearly-section', label: 'J-1 Physicians in GME' },
+        { hash: 'evsp-countries-section', label: 'J-1 Countries of Origin' },
+        { hash: 'evsp-states-section', label: 'J-1 Host States' },
+        { hash: 'evsp-specialties-section', label: 'J-1 Specialties' },
+        { hash: 'nrmp-section', label: 'NRMP Match: IMGs' },
+        { hash: 'nrmp-rate-section', label: 'NRMP IMG Match Rate' },
       ]},
       { href: '/workforce.html', label: 'STEM Workforce (SDR)', anchors: [
         { hash: 'by-field-section', label: 'Foreign-Born by Field' },
         { hash: 'citizenship-section', label: 'Citizenship Composition' },
         { hash: 'totals-section', label: 'Totals by Field' },
+        { hash: 'industry-section', label: 'By Major Industry' },
       ]},
+      { href: '/concentration.html', label: 'The Concentration Effect' },
     ]},
     { title: 'International', items: [
-      { href: '/india.html', label: 'India (Outbound)' },
-      { href: '/china.html', label: 'China (Outbound)' },
-      { href: '/canada.html', label: 'Canada' },
-      { href: '/uk.html', label: 'United Kingdom' },
-      { href: '/eu.html', label: 'EU & Germany' },
-      { href: '/mexico.html', label: 'Mexico' },
-      { href: '/vwp.html', label: 'Visa Waiver Program' },
+      { href: '/india.html', label: 'India (Outbound)', anchors: [
+        { hash: 'us-canada-chart-section', label: 'US vs Canada' },
+        { hash: 'destinations-chart-section', label: 'Top Destinations' },
+        { hash: 'field-chart-section', label: 'US Field of Study' },
+        { hash: 'level-chart-section', label: 'US Study Level' },
+        { hash: 'medical-dest-chart-section', label: 'Medical Destinations' },
+        { hash: 'fmge-chart-section', label: 'FMGE Pass Rate' },
+      ]},
+      { href: '/china.html', label: 'China (Outbound)', anchors: [
+        { hash: 'us-chart-section', label: 'Students in the US' },
+        { hash: 'sevis-chart-section', label: 'SEVIS Active Records' },
+        { hash: 'vs-india-chart-section', label: 'China vs India' },
+        { hash: 'dest-trend-chart-section', label: 'US vs UK vs Australia' },
+        { hash: 'canada-chart-section', label: 'Canada Study Permits' },
+        { hash: 'return-chart-section', label: 'Cumulative Return Rate' },
+      ]},
+      { href: '/canada.html', label: 'Canada', anchors: [
+        { hash: 'total-chart-section', label: 'Total International' },
+        { hash: 'countries-chart-section', label: 'Top Source Countries' },
+        { hash: 'flow-chart-section', label: 'New Study Permits' },
+        { hash: 'study-level-section', label: 'Permits by Level' },
+        { hash: 'pgwp-section', label: 'PGWP by Province' },
+        { hash: 'imp-section', label: 'IMP Work Permit Stock' },
+      ]},
+      { href: '/uk.html', label: 'United Kingdom', anchors: [
+        { hash: 'enrollment-chart-section', label: 'Enrollment' },
+        { hash: 'visa-chart-section', label: 'Student Visa Grants' },
+        { hash: 'grad-route-chart-section', label: 'Graduate Route' },
+        { hash: 'ho-level-section', label: 'Visas by Course Level' },
+        { hash: 'ho-region-section', label: 'Visas by World Region' },
+      ]},
+      { href: '/eu.html', label: 'EU & Germany', anchors: [
+        { hash: 'germany-total-chart-section', label: 'Students in Germany' },
+        { hash: 'india-china-chart-section', label: 'India vs China' },
+        { hash: 'eu-destinations-chart-section', label: 'EU Destinations' },
+        { hash: 'eu-in-us-chart-section', label: 'EU Students in the US' },
+      ]},
+      { href: '/mexico.html', label: 'Mexico', anchors: [
+        { hash: 'us-trend-chart-section', label: 'Mexicans in the US' },
+        { hash: 'destinations-chart-section', label: 'All Destinations' },
+        { hash: 'level-chart-section', label: 'Study Level' },
+        { hash: 'states-chart-section', label: 'Top US States' },
+      ]},
+      { href: '/vwp.html', label: 'Visa Waiver Program', anchors: [
+        { hash: 'nat-top20-chart-section', label: 'Top 20 Naturalizations' },
+        { hash: 'vwp-nat-chart-section', label: 'VWP Naturalizations' },
+        { hash: 'overstay-chart-section', label: 'Overstay Rates' },
+        { hash: 'sevis-chart-section', label: 'VWP Students in the US' },
+        { hash: 'lpr-chart-section', label: 'Green Card Grants' },
+        { hash: 'vwp-table-section', label: 'All 41 Countries' },
+      ]},
     ]},
     { title: 'Reference', items: [
       { href: '/query.html', label: 'Data Query (SQL)' },
@@ -252,6 +305,15 @@
       }
     })
     .catch(() => {/* fail silently — sidebar still has other groups */});
+
+  // Keep the in-page anchor sub-items in step with the fragment, so a link
+  // followed or pasted mid-session highlights the right section.
+  window.addEventListener('hashchange', function () {
+    const hash = (location.hash || '').replace(/^#/, '');
+    document.querySelectorAll('#shared-sidebar .sb-sub').forEach(function (a) {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + hash);
+    });
+  });
 
   // Load chat widget
   const chatScript = document.createElement('script');
