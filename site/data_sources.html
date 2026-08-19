@@ -105,6 +105,7 @@
       <li><a href="#dissertations">Dissertation Metadata</a></li>
       <li><a href="#name-classification">Name Classification</a></li>
       <li><a href="#limitations">Limitations &amp; Caveats</a></li>
+      <li><a href="#corrections">Corrections</a></li>
       <li><a href="#linking">Linking to This Data</a></li>
       <li><a href="#links">Links to Original Sources</a></li>
       <li><a href="#analytics">Analytics &amp; Tracking</a></li>
@@ -135,13 +136,13 @@
         <td style="padding:6px;">Thesis/Dissertation Data</td>
         <td style="padding:6px;">University repositories (OAI-PMH)</td>
         <td style="padding:6px;">2016-2026</td>
-        <td style="padding:6px;">101</td>
+        <td style="padding:6px;">105</td>
       </tr>
       <tr style="border-bottom:1px solid var(--border);">
         <td style="padding:6px;">OPT Students Employed</td>
         <td style="padding:6px;"><a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" style="color:var(--accent);">ICE/SEVP SEVIS Reports</a></td>
         <td style="padding:6px;">CY 2017-2024</td>
-        <td style="padding:6px;">59 (Top 100)</td>
+        <td style="padding:6px;">59 of 105 (Top 100 list)</td>
       </tr>
       <tr style="border-bottom:1px solid var(--border);">
         <td style="padding:6px;">H-1B Petition Approvals</td>
@@ -152,8 +153,8 @@
       <tr style="border-bottom:1px solid var(--border);">
         <td style="padding:6px;">H-1B Job Titles &amp; Salaries</td>
         <td style="padding:6px;"><a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" style="color:var(--accent);">DOL LCA Disclosure Data</a></td>
-        <td style="padding:6px;">CY 2014-2025</td>
-        <td style="padding:6px;">101</td>
+        <td style="padding:6px;">CY 2014-2026 (both ends part-years)</td>
+        <td style="padding:6px;">100</td>
       </tr>
       <tr>
         <td style="padding:6px;">Green Card Sponsorship</td>
@@ -162,13 +163,14 @@
         <td style="padding:6px;">71</td>
       </tr>
     </table>
-    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:0.8rem;"><strong>Note on employer entity names:</strong> Universities file H-1B and PERM petitions under their legal entity name, which may differ from their common name and can change over time. Multi-campus university systems (e.g., University of Missouri, SUNY, University of California) often file under a single systemwide entity, making per-campus attribution imprecise. We match employer names to universities using pattern matching with known name variants, but some filings may be attributed to the wrong campus within a system.</p>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:0.8rem;"><strong>Note on employer entity names:</strong> Universities file H-1B and PERM petitions under their legal entity name, which may differ from their common name and can change over time. Multi-campus university systems (e.g., University of Missouri, SUNY, University of California) often file under a single systemwide entity, making per-campus attribution imprecise. We match employer names to universities using pattern matching with known name variants &mdash; 296 patterns, tested on <em>word boundaries</em>, not as bare substrings (see <a href="#corrections" style="color:var(--accent);">Corrections</a>) &mdash; but some filings may be attributed to the wrong campus within a system.</p>
   </div>
 
   <h2 id="federal">1. Federal Datasets</h2>
   <!-- ====================================================== -->
 
-  <p>This site draws on seven major federal data sources, each with different strengths and coverage.</p>
+  <p>This site draws on ten major data sources, each with different strengths and coverage. Nine are
+  federal; the last, SHEEO SHEF, is the state-finance series used for state appropriations.</p>
 
   <div id="ipeds-integrated-postsecondary-education-data" class="card">
     <h3>IPEDS (Integrated Postsecondary Education Data System)</h3>
@@ -293,6 +295,82 @@
     <p>
       <a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" target="_blank" rel="noopener">DOL OFLC data</a> &middot;
       <a href="https://www.usaspending.gov/" target="_blank" rel="noopener">USAspending.gov</a>
+    </p>
+    <p style="font-size:0.82rem;color:var(--text-muted);">
+      USAspending figures exist for only 26 of the 105 universities &mdash; the extract is a
+      top-recipients pull, not a full one &mdash; so absence there is not a low total.
+    </p>
+  </div>
+
+  <div id="nsf-awards-amp-nih-reporter" class="card">
+    <h3>NSF Awards &amp; NIH RePORTER</h3>
+    <div class="meta">
+      <span>Agencies: NSF / NIH</span>
+      <span>Coverage: 2020 &ndash; 2025</span>
+    </div>
+    <p>
+      Grant-level obligations to each university, from the two largest federal science funders.
+      NSF Award Search gives award count and dollars obligated; NIH RePORTER gives grant count,
+      dollars and the awarding department. Both are joined to the 101 universities tracked before
+      the August 2026 additions. Across those 101, 2020&ndash;2024 obligations total
+      <strong>$17.9B</strong> from NSF and <strong>$64.9B</strong> from NIH; 2025 adds $2.10B and
+      $13.72B respectively.
+    </p>
+    <p style="font-size:0.82rem;color:var(--text-muted);">
+      These are obligations recorded against an institution name, so the same multi-campus
+      attribution caveat applies as for H-1B filings. The four universities added in August 2026
+      are not yet joined (NSF covers CU Boulder; NIH carries no dollars for CU Boulder or Montana
+      State).
+    </p>
+    <p>
+      <a href="https://www.nsf.gov/awardsearch/" target="_blank" rel="noopener">NSF Award Search</a> &middot;
+      <a href="https://reporter.nih.gov/" target="_blank" rel="noopener">NIH RePORTER</a>
+    </p>
+  </div>
+
+  <div id="ncses-federal-support-survey" class="card">
+    <h3>NCSES Federal Support Survey (NSF 25-339)</h3>
+    <div class="meta">
+      <span>Agency: NSF / NCSES</span>
+      <span>Coverage: FY 2023</span>
+    </div>
+    <p>
+      Table 17 of the Federal Support Survey reports obligations to each institution from
+      <em>all</em> federal agencies, not only NSF and NIH, split into R&amp;D, R&amp;D plant,
+      facilities and equipment, fellowships/traineeships/training grants, and other general support.
+      101 universities on this site match a row. Their FY2023 obligations total
+      <strong>$22.8B</strong>, of which <strong>$0.89B</strong> is S&amp;E fellowships, traineeships
+      and training grants &mdash; the line item that pays graduate students directly.
+    </p>
+    <p style="font-size:0.82rem;color:var(--text-muted);">
+      One record is a system office rather than a campus: the table has no Baton Rouge row for LSU,
+      only "Louisiana State U., system office." Read LSU's figure as the system's.
+    </p>
+    <p>
+      <a href="https://ncses.nsf.gov/pubs/nsf25339" target="_blank" rel="noopener">NSF 25-339</a>
+    </p>
+  </div>
+
+  <div id="sheeo-shef-state-higher-education-finance" class="card">
+    <h3>SHEEO SHEF (State Higher Education Finance)</h3>
+    <div class="meta">
+      <span>Agency: SHEEO (non-federal)</span>
+      <span>Coverage: FY 2010 &ndash; FY 2025</span>
+    </div>
+    <p>
+      State appropriations, net tuition revenue and FTE enrolment, from the SHEF FY25 report data.
+      Used to show the state-taxpayer side of university funding alongside the federal side.
+    </p>
+    <div class="callout warning" style="margin-top:0.8rem;">
+      <p style="margin:0;">
+        <strong>This is a state figure, not an institutional one.</strong> SHEEO does not publish
+        institution-level appropriations. Each public university is joined to its <em>state's</em>
+        SHEF series as a proxy. Never read it as "this university received $X"; read it as "this
+        state appropriated $X across its public system."
+      </p>
+    </div>
+    <p>
+      <a href="https://shef.sheeo.org/" target="_blank" rel="noopener">SHEEO SHEF</a>
     </p>
   </div>
 
@@ -445,7 +523,7 @@
           requests to each university's OAI endpoint and collect Dublin Core metadata
           (title, creator, date, subject, description, type).
         </td>
-        <td>~100 universities (Arizona, BYU, Cornell, CMU, Columbia, Portland State, etc.)</td>
+        <td>Most of the 105 (Arizona, BYU, Cornell, CMU, Columbia, Portland State, etc.)</td>
       </tr>
       <tr>
         <td><strong>REST API</strong></td>
@@ -473,10 +551,32 @@
     </tbody>
   </table>
 
+  <h3 id="what-the-corpus-contains">What the corpus contains</h3>
+
   <p>
-    In total, the project has collected metadata for approximately <strong>1.4 million</strong> theses
-    and dissertations across <strong>107+ universities</strong>. After filtering to doctoral dissertations
-    in STEM fields, the classified name lists cover about 80 high-NRA institutions.
+    After harvesting, deduplication and field filtering, the processed corpus holds
+    <strong>517,386</strong> thesis and dissertation records across <strong>105 universities</strong>:
+  </p>
+
+  <table>
+    <thead>
+      <tr><th>Split</th><th>Records</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>STEM</td><td>369,319</td><td>Drives the STEM pages and department reports</td></tr>
+      <tr><td>Non-STEM</td><td>148,067</td><td>Processed separately, same pipeline</td></tr>
+      <tr><td>Labelled PhD</td><td>312,248</td><td>Both splits combined</td></tr>
+      <tr><td>Labelled Master's</td><td>145,379</td><td>Both splits combined</td></tr>
+      <tr><td>Degree label inferred</td><td>88.4%</td><td>Ranges from 24.8% to 100% by university</td></tr>
+    </tbody>
+  </table>
+
+  <p style="font-size:0.85rem;color:var(--text-muted);">
+    Every record counted here is a real thesis or dissertation. Where a degree label could not be
+    inferred, the record is still counted in the total and still name-classified &mdash; only the
+    PhD/Master's split is unknown for it. So a PhD count from a university with a low labelling rate
+    must be quoted with that rate attached, and a PhD <em>share</em> must never be computed by
+    dividing labelled PhDs by the total.
   </p>
 
   <h3 id="metadata-fields-collected">Metadata fields collected</h3>
@@ -495,21 +595,144 @@
   <!-- ====================================================== -->
 
   <p>
-    Author names from dissertation metadata are classified by likely national origin using a combination
-    of rule-based and statistical methods. The classification assigns each name to a region/origin category
-    (e.g., Chinese, Indian, Korean, Anglo/European, Hispanic, etc.).
+    Author names from dissertation metadata are classified by likely origin: a surname (and, for
+    ambiguous surnames, a given name) is read against curated surname lists and returns one of
+    chinese, korean, vietnamese, indian, iranian, turkish, arabic, excluded_ambiguous or other,
+    with a confidence. The classifier has no citizenship, visa or nationality input, and no such
+    output.
+  </p>
+
+  <div class="callout warning">
+    <p>
+      <strong>Name-origin classification is not a measure of visa status, and it is not IPEDS NRA.</strong>
+      A Chinese-origin name does not make someone a Chinese citizen, an international student or a
+      visa holder. They may be a naturalised U.S. citizen, a permanent resident, born here, or a
+      citizen of a third country.
+    </p>
+  </div>
+
+  <h3 id="how-much-signal-names-actually-carry">How much signal names actually carry</h3>
+
+  <p>
+    Rather than assert this, we measured it. A calibration study
+    (<code>scripts/name_signal_study.py</code>) asked one question: does the <em>distribution</em> of
+    name features across a cohort predict that cohort's <em>reported</em> NRA share, as the
+    institution itself filed it to IPEDS? Cohorts are university &times; CIP 2-digit family cells
+    (1,153 of them, pooled over 2010&ndash;2025), and models were held out by <em>whole university</em>
+    across 5 folds, so a model is always scored on institutions it never saw.
+  </p>
+
+  <table>
+    <thead>
+      <tr><th>Model</th><th>Out-of-sample R&sup2;</th><th>RMSE</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Field of study alone (CIP-family fixed effects, no names)</td><td>0.639</td><td>0.131</td></tr>
+      <tr><td>Field + all name features</td><td>0.698</td><td>0.120</td></tr>
+      <tr><td>Field + the institution's own published NRA share, no names</td><td>0.713</td><td>0.117</td></tr>
+      <tr><td>Field + institution NRA share + all name features</td><td><strong>0.739</strong></td><td><strong>0.112</strong></td></tr>
+    </tbody>
+  </table>
+
+  <p>The two increments are the whole result:</p>
+  <ul>
+    <li><strong>Names add 0.059 R&sup2; over knowing the field</strong> (0.639 &rarr; 0.698).</li>
+    <li><strong>Names add 0.026 R&sup2; over field plus the institution's own published NRA share</strong>
+        (0.713 &rarr; 0.739) &mdash; that is, over data IPEDS already publishes for free.</li>
+  </ul>
+
+  <p>
+    Two honest points against a purely negative reading. The raw association is strong: the share of
+    a cohort with any non-Anglo-origin name correlates with reported NRA share at
+    <strong>r = 0.729</strong> (95% CI 0.677&ndash;0.772, bootstrapped by resampling whole
+    universities). And it <em>does not vanish</em> under controls: absorbing university, field and
+    year fixed effects leaves a partial <strong>r = 0.382</strong>. So the correct statement is not
+    "there is no correlation." It is that essentially all of the apparent signal is
+    <strong>field composition</strong> &mdash; engineering and computing cohorts have both more
+    non-Anglo names and more visa holders &mdash; and what survives is most parsimoniously explained
+    by finer-grained field composition than the 2-digit CIP controls could absorb.
+  </p>
+
+  <h3 id="where-the-signal-fails">Where the signal fails</h3>
+
+  <p>
+    The error is the disqualifying part. The best model is off by about <strong>11 percentage
+    points RMSE</strong> on a cell's NRA share, on a quantity whose spread is roughly 22 points. A
+    department estimated at 40% is routinely 29% or 51% on the reported measure &mdash; and RMSE is a
+    typical error, not a bound.
   </p>
 
   <p>
-    This approach is necessary because no federal data source provides country-of-origin information
-    for individual PhD recipients at the institution and field level. IPEDS reports only "NRA" without
-    country breakdown. The SED reports country totals nationally but not per institution. Name
-    classification bridges this gap, albeit with inherent limitations (see below).
+    It is also weakest exactly where this project's interest is strongest. By field, correlation with
+    reported NRA share runs:
   </p>
+
+  <table>
+    <thead>
+      <tr><th>Field (CIP 2-digit)</th><th>Cells</th><th>Mean NRA</th><th>r</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Psychology (42)</td><td>80</td><td>9.5%</td><td>0.711</td></tr>
+      <tr><td>Math &amp; Statistics (27)</td><td>84</td><td>47.4%</td><td>0.593</td></tr>
+      <tr><td>Education (13)</td><td>75</td><td>10.4%</td><td>0.583</td></tr>
+      <tr><td>Physical Sciences (40)</td><td>91</td><td>42.8%</td><td>0.524</td></tr>
+      <tr><td>Computer Science (11)</td><td>84</td><td>60.9%</td><td>0.422</td></tr>
+      <tr><td>Engineering (14)</td><td>90</td><td>57.2%</td><td style="color:var(--danger);">0.311</td></tr>
+    </tbody>
+  </table>
+
+  <p>
+    Engineering &mdash; the field this project cares most about &mdash; has the weakest correlation of
+    any large STEM family, because NRA share is high nearly everywhere and the range is compressed.
+    The method looks best in Psychology and Education, fields where almost nobody holds a visa and the
+    correct prediction is trivially "low."
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Why name classification is not on the public pages.</strong> The measurement above is
+      the reason. Name composition predicts NRA share about as well as knowing which department it
+      is; once you know the department, it adds almost nothing; the residual error is too large for
+      any department-level claim; and IPEDS already publishes the target at
+      institution &times; CIP &times; year. The one legitimate use of the study is as a negative
+      control &mdash; it quantifies that name classification, used in aggregate and at its best,
+      reproduces a reported NRA share only to within about 11 points.
+    </p>
+  </div>
 
   <!-- ====================================================== -->
   <h2 id="limitations">5. Limitations &amp; Caveats</h2>
   <!-- ====================================================== -->
+
+  <div id="record-years-are-often-deposit-dates" class="card">
+    <h3>Record years are often deposit dates, not degree dates</h3>
+    <p>
+      This is the most consequential limitation on the page, and it affects anything with a year axis.
+      The OAI harvester takes the <em>first</em> <code>dc:date</code> element in a record. The
+      <code>oai_dc</code> format flattens <code>dc.date.accessioned</code>,
+      <code>dc.date.available</code> and <code>dc.date.issued</code> into repeated
+      <code>dc:date</code> elements, and DSpace emits the accession timestamp first. So for many
+      repositories the stored year is <strong>when the repository ingested the file</strong>, not when
+      the degree was awarded.
+    </p>
+    <p>
+      Measured, not assumed: 407,462 of 1,035,726 in-window rows (39.3%) carry a date with a clock
+      time, which only an ingest timestamp has, and 72 of the 105 universities have more than 90% of
+      their in-window rows timestamped that way. Iowa State and MIT are effectively 100%: an Iowa
+      State record stores 2018-08-22T18:45:17 for a 1934 degree, and an MIT record stores
+      2005-08-18T12:00:00Z for a 1996 degree.
+    </p>
+    <div class="callout warning">
+      <p style="margin:0;">
+        <strong>Do not read a record-year distribution as a graduation-year distribution</strong>, and
+        do not build a trend over time out of these years. Per-university totals and name-origin
+        compositions are unaffected. Counts by year are safe only where the repository publishes a
+        real issued date. Two universities are known-bad in a specific way: Northwestern's years are
+        deposit timestamps from a bulk load, and UVA's post-2025 records carry a deposit-workflow
+        timestamp with no degree date available upstream at all.
+      </p>
+    </div>
+  </div>
 
   <div id="federal-data-limitations" class="card">
     <h3>Federal data limitations</h3>
@@ -529,6 +752,44 @@
           in degree completion and survey response rates.</li>
       <li><strong>H-1B data covers applications, not grants:</strong> LCA disclosure data shows
           Labor Condition Applications filed, not actual visa approvals or arrivals.</li>
+      <li><strong>IPEDS award levels break between 2008 and 2010:</strong> through 2007 doctorates are
+          award level 9 ("Doctor's degree"), from 2010 they are level 17 (research/scholarship),
+          18 (professional practice) and 19 (other). Both schemes appear in the 2008 and 2009 files,
+          institution by institution. Level 9 is the older, <em>broader</em> undifferentiated
+          category, so it is not the same population as 17. A level-17 filter returns nothing before
+          2008 and only part of the field in 2008&ndash;2009 &mdash; 12,347 doctorates in 2008 against
+          57,661 in 2010, a coding artefact and not a boom. <strong>Figures must not be compared
+          across that boundary.</strong></li>
+      <li><strong>IPEDS research doctorates are not the SED universe:</strong> award level 17 is
+          broader than the NSF Survey of Earned Doctorates &mdash; 82,438 in 2023 against roughly
+          57,900 SED research doctorates &mdash; because many institutions file EdD, DBA and PsyD
+          degrees under 17. Do not put an IPEDS count and an SED count in the same sentence without
+          reconciling them.</li>
+      <li><strong>LCA year buckets are calendar years from DECISION_DATE, and 2026 is a part-year:</strong>
+          no DOL LCA layout in these files carries a fiscal-year column, so the parser falls through
+          to the decision date. Calendar 2014 holds one quarter (October to December) and is a
+          file-coverage artefact, not a trough. At the other end, the newest release is FY2026 Q3, so
+          <strong>calendar 2026 covers January to June only</strong> and will read as a collapse if it
+          is presented as an annual figure. Start any LCA series at 2015 and stop it at the last
+          complete calendar year.</li>
+      <li><strong>OPT covers only 59 of the 105 universities:</strong> ICE/SEVP publishes per-campus
+          OPT and STEM-OPT figures only as annual "Top 100 school campuses" PDFs, so a campus outside
+          the top 100 in a given year simply does not appear. Absence of an OPT figure is absence of a
+          <em>publication</em>, not absence of students, and a missing year is not a drop to zero.
+          Coverage also varies within a university, since a campus can be inside the list one year and
+          outside it the next.</li>
+      <li><strong>LSU appears only at system level in the federal support survey:</strong> NSF 25-339
+          Table 17 has no Baton Rouge row for LSU, only "Louisiana State U., system office." LSU's
+          federal obligations figure is therefore the system's, not the campus's.</li>
+      <li><strong>USAspending covers 26 of the 105 universities:</strong> the extract is a
+          top-recipients pull rather than a full one, so universities must not be ranked or compared
+          on that field.</li>
+      <li><strong>State appropriations are a state proxy:</strong> SHEEO does not publish
+          institution-level appropriations, so each public university carries its state's SHEF series.
+          Read those figures as the state's, never as the institution's.</li>
+      <li><strong>Enrolment, faculty, tuition and aid panels are dated snapshots:</strong> enrolment
+          and faculty are IPEDS Fall 2022, tuition is AY2023, financial aid is AY2022-23. They are not
+          current values, and the survey year should always be attached.</li>
     </ul>
   </div>
 
@@ -537,7 +798,18 @@
     <ul>
       <li><strong>Name classification is probabilistic:</strong> Names are assigned to origin categories
           based on statistical patterns, not verified identity. Some names are ambiguous across
-          multiple origins. Accuracy varies by origin group.</li>
+          multiple origins. Accuracy varies by origin group. Used in aggregate and at its best, it
+          reproduces a reported NRA share only to within about 11 percentage points
+          (see <a href="#name-classification" style="color:var(--accent);">section 4</a>).</li>
+      <li><strong>A low degree-labelling rate makes the PhD/Master's split uncertain</strong> &mdash;
+          it does not mean records are missing. Corpus labelling is 88.4%, ranging from 24.8% to 100%
+          across the 105 universities. Unlabelled records are still counted and still classified.</li>
+      <li><strong>Two STEM definitions appear on the same page.</strong> The headline NRA figure uses
+          a narrow 8-family CIP set (11, 14, 15, 26, 27, 30, 40, 42). The completions chart below it
+          uses a broader 16-family set that also includes agriculture, health and social sciences. On
+          the pinned 2015&ndash;2022 window the two differ by a median of 1.9 points, but for some
+          universities by much more &mdash; UNLV reads 32.3% on the narrow set against 15.1% on the
+          broad one. If the headline and the chart disagree, this is why.</li>
       <li><strong>No citizenship information:</strong> A Chinese-origin name does not mean the person
           is a Chinese citizen. They may be a naturalized U.S. citizen, a permanent resident, or a
           citizen of another country (e.g., Singapore, Malaysia).</li>
@@ -548,16 +820,78 @@
           may persist.</li>
       <li><strong>Metadata quality:</strong> Missing dates, departments, or degree types are common in
           older records. Some records have incomplete author names.</li>
-      <li><strong>Selection bias in universities covered:</strong> The 80+ universities shown are
+      <li><strong>Selection bias in universities covered:</strong> The 105 universities shown are
           primarily R1 institutions with high NRA enrollment. They do not represent all PhD-granting
           institutions in the U.S.</li>
     </ul>
   </div>
 
   <!-- ====================================================== -->
+  <h2 id="corrections" style="margin-top:2.5rem;">6. Corrections</h2>
+  <!-- ====================================================== -->
+
+  <p>
+    Two figures published on this site were wrong. Both have been fixed, and both are recorded here
+    rather than quietly replaced, because a reader who saw the old numbers deserves to know which
+    ones moved and why.
+  </p>
+
+  <div id="correction-headline-nra-share" class="card">
+    <h3>Headline NRA share, recomputed for every university (August 2026)</h3>
+    <p>
+      The per-university NRA percentage shown beside each institution had been a stored constant with
+      no recorded basis. Recomputing it directly from IPEDS found <strong>37 of 103 universities out
+      by more than 5 percentage points</strong>, in both directions (21 too low, 16 too high) and by
+      as much as 32. The worst case was Michigan State, published at <strong>16.7%</strong> against an
+      IPEDS figure of <strong>49.0%</strong>. Louisiana Tech (22.5% &rarr; 54.3%), Washington State
+      (18.0% &rarr; 47.2%) and Florida (18.4% &rarr; 45.2%) were next; Caltech moved the other way
+      (64.9% &rarr; 41.2%).
+    </p>
+    <p>
+      The basis is now pinned, stored per university, and stated so it can be checked:
+    </p>
+    <table>
+      <tr><th>Component</th><th>Value</th></tr>
+      <tr><td>Source</td><td>IPEDS Completions</td></tr>
+      <tr><td>Fields</td><td>CIP 2-digit families 11, 14, 15, 26, 27, 30, 40, 42</td></tr>
+      <tr><td>Years</td><td>2015&ndash;2022 inclusive</td></tr>
+      <tr><td>Award level</td><td>17 (research/scholarship doctorate)</td></tr>
+    </table>
+    <p style="margin-top:1rem;">
+      Michigan State's 49.0% is 1,045 non-resident doctorates of 2,132 on that basis. The method was
+      never wrong &mdash; MIT reproduced exactly and Missouri S&amp;T to within 1.1 points &mdash;
+      most of the stored values simply had not come from it. Each of the three components is argued
+      in <code>scripts/compute_nra_shares.py</code>, including why the window ends at 2022 rather
+      than 2024. Two universities (CUNY and Colorado School of Mines) do not resolve to a single
+      IPEDS unit on this basis and keep their previous values.
+    </p>
+  </div>
+
+  <div id="correction-h1b-employer-matching" class="card">
+    <h3>H-1B/LCA employer matching (August 2026)</h3>
+    <p>
+      The employer matcher tested entity-map patterns as bare substrings. The entry
+      <code>MIT</code> therefore matched every employer name containing those three letters &mdash;
+      WIPRO LI<strong>MIT</strong>ED, INFOSYS LI<strong>MIT</strong>ED, TATA CONSULTANCY SERVICES
+      LI<strong>MIT</strong>ED among them &mdash; and credited their filings to MIT.
+    </p>
+    <p>
+      The scale of it was the tell: MIT's LCA total read <strong>565,883</strong> against a corpus
+      median near 1,200, and its top job titles were "Technology Lead - Us", "Developer" and
+      "Consultant - Us". Matching now requires word boundaries, and after a re-parse
+      <strong>MIT's total reads 3,487</strong> &mdash; in line with comparable private research
+      universities.
+    </p>
+    <p>
+      Only MIT was affected. It was the only one of the 296 entity patterns shorter than six
+      characters, and every other university's totals are unchanged, the highest now being Penn at
+      5,935. Any MIT LCA figure still reading near 565,883 &mdash; job titles, wage percentiles or
+      yearly counts &mdash; predates this fix and is not MIT's.
+    </p>
+  </div>
 
   <!-- ====================================================== -->
-  <h2 id="linking" style="margin-top:2.5rem;">6. Linking to This Data</h2>
+  <h2 id="linking" style="margin-top:2.5rem;">7. Linking to This Data</h2>
   <p>Every chart, university, department, year and data panel on this site has
   its own address. The <span style="color:var(--accent);font-weight:700;">#</span>
   control that appears beside a heading copies a link straight to it, and the
@@ -617,7 +951,7 @@
     <a href="llms.txt">llms.txt</a>.</p>
   </div>
 
-  <h2 id="links">7. Links to Original Sources</h2>
+  <h2 id="links">8. Links to Original Sources</h2>
   <!-- ====================================================== -->
 
   <table>
@@ -676,13 +1010,37 @@
         <td>H-1B LCA Disclosure</td>
         <td>DOL / OFLC</td>
         <td><a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" target="_blank" rel="noopener">dol.gov</a></td>
-        <td>FY2026 Q1</td>
+        <td>FY2026 Q3 (through June 2026)</td>
       </tr>
       <tr>
         <td>USAspending</td>
         <td>U.S. Treasury</td>
         <td><a href="https://www.usaspending.gov/" target="_blank" rel="noopener">usaspending.gov</a></td>
         <td>2024</td>
+      </tr>
+      <tr>
+        <td>NSF Award Search</td>
+        <td>NSF</td>
+        <td><a href="https://www.nsf.gov/awardsearch/" target="_blank" rel="noopener">nsf.gov/awardsearch</a></td>
+        <td>2020&ndash;2025</td>
+      </tr>
+      <tr>
+        <td>NIH RePORTER</td>
+        <td>NIH</td>
+        <td><a href="https://reporter.nih.gov/" target="_blank" rel="noopener">reporter.nih.gov</a></td>
+        <td>2020&ndash;2025</td>
+      </tr>
+      <tr>
+        <td>Federal Support Survey, Table 17</td>
+        <td>NSF / NCSES</td>
+        <td><a href="https://ncses.nsf.gov/pubs/nsf25339" target="_blank" rel="noopener">NSF 25-339</a></td>
+        <td>FY 2023</td>
+      </tr>
+      <tr>
+        <td>SHEEO SHEF</td>
+        <td>SHEEO (non-federal)</td>
+        <td><a href="https://shef.sheeo.org/" target="_blank" rel="noopener">shef.sheeo.org</a></td>
+        <td>FY 2025</td>
       </tr>
       <tr>
         <td>American Community Survey</td>
@@ -699,7 +1057,7 @@
     </tbody>
   </table>
 
-  <h2 id="analytics" style="margin-top:2.5rem;">8. Analytics &amp; Tracking</h2>
+  <h2 id="analytics" style="margin-top:2.5rem;">9. Analytics &amp; Tracking</h2>
 
   <div class="source-card">
     <h3 id="site-analytics">Site Analytics</h3>
@@ -741,7 +1099,7 @@
   </div>
 
   <p class="updated">
-    Page last updated: April 1, 2026. Data freshness varies by source; see individual entries above
+    Page last updated: August 18, 2026. Data freshness varies by source; see individual entries above
     for the most recent data year available in each dataset.
   </p>
 </div>

@@ -86,7 +86,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
 </style>
 <!-- og:cards -->
 <meta property="og:title" content="How the Pipeline Is Built">
-<meta property="og:description" content="The six-step functional pipeline that harvests, classifies, enriches and deploys thesis metadata from 101 university repositories.">
+<meta property="og:description" content="The six-step functional pipeline that harvests, classifies, enriches and deploys thesis metadata from 105 university repositories.">
 <meta property="og:url" content="https://phd-demographics.andy-barr.com/implementation.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PhD Demographics">
@@ -98,7 +98,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
 <meta property="og:image:alt" content="A six-step pipeline over 101 repositories — Federal coverage by dataset">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="How the Pipeline Is Built">
-<meta name="twitter:description" content="The six-step functional pipeline that harvests, classifies, enriches and deploys thesis metadata from 101 university repositories.">
+<meta name="twitter:description" content="The six-step functional pipeline that harvests, classifies, enriches and deploys thesis metadata from 105 university repositories.">
 <meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og/implementation.png">
 <meta name="twitter:image:alt" content="A six-step pipeline over 101 repositories — Federal coverage by dataset">
 <!-- /og:cards -->
@@ -111,12 +111,12 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
 <!-- ============================================================ -->
 <div class="content-col">
   <h1 id="implementation">Implementation</h1>
-  <p class="subtitle">A functional data pipeline that transforms thesis metadata from 101 universities into an enriched, deployable research site.</p>
+  <p class="subtitle">A functional data pipeline that transforms thesis metadata from 105 universities into an enriched, deployable research site.</p>
 
   <div class="stat-row">
-    <div class="stat-chip"><div class="val" style="color:var(--accent)">294K</div><div class="lbl">Records</div></div>
-    <div class="stat-chip"><div class="val" style="color:var(--green)">101</div><div class="lbl">Universities</div></div>
-    <div class="stat-chip"><div class="val" style="color:var(--purple)">7</div><div class="lbl">Gov Data Sources</div></div>
+    <div class="stat-chip"><div class="val" style="color:var(--accent)">517K</div><div class="lbl">Records</div></div>
+    <div class="stat-chip"><div class="val" style="color:var(--green)">105</div><div class="lbl">Universities</div></div>
+    <div class="stat-chip"><div class="val" style="color:var(--purple)">10</div><div class="lbl">Data Sources</div></div>
     <div class="stat-chip"><div class="val" style="color:var(--orange)">6</div><div class="lbl">Pipeline Steps</div></div>
   </div>
 
@@ -126,7 +126,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
 
   <p>The federal data is no better. USCIS truncates employer names at 35 characters, so <code>"THE CURATORS OF THE UNIVERSITY OF MISSOURI"</code> becomes <code>"THE CURATORS OF THE UNIV OF MISSOU"</code>. The same university might appear under 5 different legal names across H-1B, LCA, OPT, and PERM filings. DOL publishes LCA data as 3.6 GB of Excel files with inconsistent column names across fiscal years. OPT data comes as PDFs. IPEDS uses numeric UNITID keys. NSF uses different institution names than IPEDS.</p>
 
-  <p>The result is a system held together by <strong>105 university-specific configurations</strong>, <strong>292 employer name mappings</strong>, <strong>8 department extraction strategies</strong>, an <strong>8-step degree inference chain</strong>, and hundreds of ad hoc rules for edge cases that were discovered one university at a time. A bepress repository in Arkansas formats its ETD metadata differently than a DSpace instance in Massachusetts, which formats it differently than a Figshare deployment at Carnegie Mellon.</p>
+  <p>The result is a system held together by <strong>105 university-specific configurations</strong>, <strong>296 employer name mappings</strong>, <strong>8 department extraction strategies</strong>, an <strong>8-step degree inference chain</strong>, and hundreds of ad hoc rules for edge cases that were discovered one university at a time. A bepress repository in Arkansas formats its ETD metadata differently than a DSpace instance in Massachusetts, which formats it differently than a Figshare deployment at Carnegie Mellon.</p>
 
   <p>This is, inherently, a messy problem. The question is how to manage the mess.</p>
 
@@ -153,7 +153,7 @@ state = pipeline(initial_state)  # PipelineState flows through</pre>
     <ul>
       <li><strong>Immutable state</strong> &mdash; frozen dataclasses, no side effects in core logic. You can't accidentally overwrite enriched data by re-running the HTML generator.</li>
       <li><strong>Pure core, effectful shell</strong> &mdash; I/O only at boundaries (HTTP, files, S3). Business logic is testable without network calls.</li>
-      <li><strong>Single source of truth</strong> &mdash; <code>universities.json</code> (101 configs), <code>entity_map.json</code> (292 mappings), <code>manifest.json</code> (tracking). Not three config files that might disagree.</li>
+      <li><strong>Single source of truth</strong> &mdash; <code>universities.json</code> (105 configs), <code>entity_map.json</code> (296 mappings), <code>manifest.json</code> (tracking). Not three config files that might disagree.</li>
       <li><strong>Idempotent steps</strong> &mdash; re-running any step produces the same output. Safe to retry after failures.</li>
       <li><strong>Explicit data ownership</strong> &mdash; only Step 4 (Enrich) writes to <code>site/data/</code>. Step 5 (Generate) reads it but never writes to it. This single rule eliminated an entire class of data corruption bugs.</li>
     </ul>
@@ -206,8 +206,8 @@ state = pipeline(initial_state)  # PipelineState flows through</pre>
     <p>Each university produces <code>data/western_us_dissertations/{key}_etds.csv</code> with 19 columns. SHA-256 checksums and resumption tokens are checkpointed for crash recovery.</p>
 
     <div class="stat-row">
-      <div class="stat-chip"><div class="val" style="color:var(--accent)">101</div><div class="lbl">Repositories</div></div>
-      <div class="stat-chip"><div class="val" style="color:var(--green)">294K</div><div class="lbl">Records</div></div>
+      <div class="stat-chip"><div class="val" style="color:var(--accent)">105</div><div class="lbl">Repositories</div></div>
+      <div class="stat-chip"><div class="val" style="color:var(--green)">1.25M</div><div class="lbl">Harvested Rows</div></div>
       <div class="stat-chip"><div class="val" style="color:var(--purple)">10</div><div class="lbl">Platforms</div></div>
     </div>
     <p class="source-tag">Source: <code>pipeline/step1_harvest.py</code> &rarr; <code>scripts/scrape_oai_etds.py</code>, <code>scripts/enrich_concurrent.py</code></p>
@@ -246,7 +246,7 @@ state = pipeline(initial_state)  # PipelineState flows through</pre>
         <li><strong>8. Late OAI fallback</strong> &mdash; <code>publication:theses</code> &rarr; MS, but only if no <code>publication:dissertations</code> set exists (disambiguating repos that split vs repos that lump everything).</li>
       </ul>
     </div>
-    <p>Current labeling rate: <strong>~82%</strong> across all universities. The oai_etdms switch brought BYU from 6% to 97%, Mississippi State from 7% to 100%, and U Arkansas from 9% to 100%.</p>
+    <p>Current labeling rate: <strong>88.4%</strong> across all universities, ranging from 24.8% to 100%. The oai_etdms switch brought BYU from 6% to 97%, Mississippi State from 7% to 100%, and U Arkansas from 9% to 100%.</p>
 
     <h3 id="extract-department">Extract Department</h3>
     <p><strong>8 university-specific extractors</strong> plus a generic fallback handle the wide variety of ways departments appear in metadata:</p>
@@ -323,7 +323,7 @@ GROUP BY university ORDER BY total DESC;</pre>
     <p><a href="https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub" target="_blank">USCIS</a> publishes approval/denial counts by employer and fiscal year. We parse FY2010&ndash;2026 CSVs (both UTF-16 crosstab and standard formats) and match employer names to university keys.</p>
 
     <h3 id="entity-name-resolution">Entity Name Resolution</h3>
-    <p><strong>292 employer name mappings</strong> in <code>entity_map.json</code> handle the many ways universities appear in federal filings:</p>
+    <p><strong>296 employer name mappings</strong> in <code>entity_map.json</code> handle the many ways universities appear in federal filings:</p>
     <div class="info-card">
       <ul>
         <li><strong>USCIS truncation</strong> &mdash; Pre-2020 files truncate at ~35 characters: <code>"THE CURATORS OF THE UNIV OF MISSOU"</code>, <code>"UNIVERSITY OF ILLINOIS AT URBANA-"</code></li>
@@ -335,20 +335,21 @@ GROUP BY university ORDER BY total DESC;</pre>
     </div>
 
     <h3 id="lca-disclosure-data">LCA Disclosure Data</h3>
-    <p><a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" target="_blank">DOL</a> Labor Condition Applications (FY2015&ndash;2025): 32 Excel files totaling 3.6 GB. Extracts job titles (normalized to remove Excel artifacts like <code>="Assistant Professor"</code>), SOC occupation codes, wage statistics with percentile breakdowns, and yearly certification counts.</p>
+    <p><a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" target="_blank">DOL</a> Labor Condition Applications (FY2013&ndash;FY2026 Q3): 32 Excel files totaling 3.6 GB. Extracts job titles (normalized to remove Excel artifacts like <code>="Assistant Professor"</code>), SOC occupation codes, wage statistics with percentile breakdowns, and yearly certification counts.</p>
+    <p><strong>Employer matching is on word boundaries.</strong> It used to be a bare substring test, which credited every employer containing the letters <code>MIT</code> &mdash; INFOSYS LIMITED, WIPRO LIMITED, TATA CONSULTANCY SERVICES LIMITED &mdash; to MIT, inflating its total to 565,883 against a corpus median near 1,200. It now reads 3,487. See <a href="/data_sources.html#corrections">Corrections</a>.</p>
     <p><strong>DuckDB acceleration:</strong> XLSX files are converted to CSV once (cached in <code>lca/csv_cache/</code>), then queried via DuckDB SQL for fast employer-name joins. Falls back to openpyxl row-by-row parsing (~25 min) if DuckDB is unavailable.</p>
 
     <h3 id="opt-stem-opt">OPT / STEM OPT</h3>
     <p><a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank">ICE/SEVP SEVIS</a> data (CY 2017&ndash;2024): OPT, STEM OPT 24-month extension, and CPT work authorization counts by university. Pre-parsed from PDF tables published by DHS. National trends show 11x OPT growth from 2007 to 2024.</p>
 
     <h3 id="perm-green-card">PERM (Green Card)</h3>
-    <p><a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" target="_blank">DOL PERM</a> permanent labor certification data: employer-sponsored green card applications and approval rates. 72 universities with data.</p>
+    <p><a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" target="_blank">DOL PERM</a> permanent labor certification data: employer-sponsored green card applications and approval rates. 71 universities with data.</p>
 
     <div class="stat-row">
-      <div class="stat-chip"><div class="val" style="color:var(--purple)">98</div><div class="lbl">H-1B Unis</div></div>
-      <div class="stat-chip"><div class="val" style="color:var(--orange)">78</div><div class="lbl">LCA Unis</div></div>
+      <div class="stat-chip"><div class="val" style="color:var(--purple)">101</div><div class="lbl">H-1B Unis</div></div>
+      <div class="stat-chip"><div class="val" style="color:var(--orange)">100</div><div class="lbl">LCA Unis</div></div>
       <div class="stat-chip"><div class="val" style="color:var(--teal)">59</div><div class="lbl">OPT Unis</div></div>
-      <div class="stat-chip"><div class="val" style="color:var(--pink)">72</div><div class="lbl">PERM Unis</div></div>
+      <div class="stat-chip"><div class="val" style="color:var(--pink)">71</div><div class="lbl">PERM Unis</div></div>
     </div>
     <p class="source-tag">Source: <code>pipeline/step3_parse_federal.py</code></p>
   </div>
@@ -461,7 +462,7 @@ GROUP BY university ORDER BY total DESC;</pre>
 
   <!-- ── LIVING WITH MESS ── -->
   <h2 id="living-with-complexity">Living with Complexity</h2>
-  <p>The pipeline currently has 105 university configs, 292 entity name mappings, 16 department extraction strategies, and an 8-step degree inference chain with dozens of regex patterns. This is not elegant, and it's not meant to be. It's a direct reflection of the problem: 101 universities, each running different software, following different metadata standards, with different ideas about what fields to populate and how to format them.</p>
+  <p>The pipeline currently has 105 university configs, 296 entity name mappings, 16 department extraction strategies, and an 8-step degree inference chain with dozens of regex patterns. This is not elegant, and it's not meant to be. It's a direct reflection of the problem: 105 universities, each running different software, following different metadata standards, with different ideas about what fields to populate and how to format them.</p>
 
   <p>Every one of those ad hoc rules exists because someone discovered a specific university doing something unexpected. MIT puts degree types in the description field. Penn State puts them in the relation field. Columbia uses OAI set names with <code>degree_level:doctoral</code>. BYU returns <code>"MS"</code> as a degree name, while Binghamton returns <code>"Master of Arts (MA)"</code>. USCIS truncates Stanford's legal name to <code>"THE LELAND STANFORD JR UNIVERSITY"</code> in some years but not others.</p>
 
@@ -496,8 +497,8 @@ python -m pipeline status</pre>
   __main__.py              # CLI entry point
   runner.py                # compose_pipeline()
   state.py                 # Frozen dataclasses
-  universities.json        # 101 university configs
-  entity_map.json          # 292 employer name mappings
+  universities.json        # 105 university configs
+  entity_map.json          # 296 employer name mappings
   system_h1b_map.json      # Multi-campus H-1B fallback
   manifest.json            # Per-university tracking
   degree_classifier.pkl    # sklearn model

@@ -13,6 +13,19 @@ from name_classifier import classify  # noqa: F401
 
 # Deployment configuration — override via environment variables
 SITE_DOMAIN = os.environ.get('SITE_DOMAIN', 'https://phd-demographics.andy-barr.com')
+
+# This file is symlinked into the main checkout, so __file__ can resolve either
+# side of the link. Look for the og/ helper package next to both before giving up.
+for _cand in (os.path.dirname(os.path.abspath(__file__)),
+              os.path.dirname(os.path.realpath(__file__))):
+    if os.path.isfile(os.path.join(_cand, 'og', 'tags.py')):
+        sys.path.insert(0, _cand)
+        break
+else:
+    raise ImportError(
+        "scripts/og/tags.py not found next to generate_name_lists_html.py; "
+        "run this from the checkout that contains scripts/og/")
+from og import tags as og_tags
 ANALYTICS_ENDPOINT = os.environ.get('ANALYTICS_ENDPOINT', 'https://analytics.andy-barr.com/collect')
 
 from generate_name_lists import (
@@ -81,24 +94,18 @@ def build_html(all_data, mode='stem'):
         with open(funding_path) as f:
             funding_json = f.read().strip()
 
+    # OpenGraph / Twitter block pointing at this page's own data-driven share
+    # card (og/stem.png or og/non_stem.png). Built by scripts/og/tags.py so the
+    # strings match scripts/build_og_cards.py exactly.
+    og_block = og_tags.generated_page_block('non_stem' if is_nonstem else 'stem')
+
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Tracking the outputs of American Academia. Taxpayer-funded institutions should graduate Americans. Thesis and dissertation data from 101 US research universities, enriched with government data.">
-<meta property="og:title" content="{"Non-STEM " if is_nonstem else ""}Thesis &amp; Dissertation Lists — PhD Demographics">
-<meta property="og:description" content="Tracking the outputs of American Academia. Taxpayer-funded institutions should graduate Americans.">
-<meta property="og:image" content="{SITE_DOMAIN}/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:url" content="{SITE_DOMAIN}/{"non_stem" if is_nonstem else "stem"}.html">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="PhD Demographics">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{"Non-STEM " if is_nonstem else ""}Thesis &amp; Dissertation Lists — PhD Demographics">
-<meta name="twitter:description" content="Tracking the outputs of American Academia. Taxpayer-funded institutions should graduate Americans.">
-<meta name="twitter:image" content="{SITE_DOMAIN}/og-image.png">
+{og_block}
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">

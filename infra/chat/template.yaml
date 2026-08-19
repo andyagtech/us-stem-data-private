@@ -15,6 +15,15 @@ Parameters:
   ChatModel:
     Type: String
     Default: gpt-4o
+  ChatLogsTable:
+    Type: String
+    Default: "phd-chat-logs"
+    Description: >-
+      Existing DynamoDB table (pk=day, sk=timestamp#ip, TTL on `ttl`) that
+      chat-admin.html reads. It is NOT created by this stack — it predates it —
+      so it is referenced by name. Until this parameter was wired into the
+      function environment, _log_chat() short-circuited and every chat
+      interaction was silently discarded.
 
 Resources:
   RateLimitTable:
@@ -38,8 +47,11 @@ Resources:
       FunctionName: !Sub "phd-chat-${Environment}"
       Runtime: python3.12
       Handler: index.handler
-      Timeout: 30
-      MemorySize: 256
+      # Data tools parse a 260k-row gz index and can take up to 4 model rounds.
+      # More memory buys proportionally more CPU, which is what makes the
+      # cold-start parse cheap.
+      Timeout: 45
+      MemorySize: 1024
       CodeUri: lambda/
       Environment:
         Variables:
@@ -47,16 +59,13 @@ Resources:
           ALLOWED_ORIGIN: !Ref AllowedOrigin
           CHAT_PROVIDER: !Ref ChatProvider
           CHAT_MODEL: !Ref ChatModel
+          CHAT_LOGS_TABLE: !Ref ChatLogsTable
           OPENAI_API_KEY_SSM: "/cms-pipeline/openai-api-key"
       Policies:
-        - Statement:
-            - Effect: Allow
-              Action:
-                - bedrock:InvokeModel
-                - bedrock:InvokeModelWithResponseStream
-              Resource: "*"
         - DynamoDBCrudPolicy:
             TableName: !Ref RateLimitTable
+        - DynamoDBWritePolicy:
+            TableName: !Ref ChatLogsTable
         - Statement:
             - Effect: Allow
               Action: ssm:GetParameter
@@ -73,6 +82,9 @@ Resources:
         AllowCredentials: false
         AllowHeaders: [content-type]
         AllowMethods: [POST, OPTIONS]
+        # The widget reads Retry-After off a 429 to run its countdown; a
+        # cross-origin response header is invisible to JS unless it is exposed.
+        ExposeHeaders: [retry-after]
         AllowOrigins:
           - !Ref AllowedOrigin
 
@@ -89,3 +101,5 @@ Outputs:
     Value: !GetAtt ChatUrl.FunctionUrl
   RateLimitTable:
     Value: !Ref RateLimitTable
+  ChatLogsTable:
+    Value: !Ref ChatLogsTable
