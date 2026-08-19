@@ -4041,28 +4041,28 @@
   },
   "montana_state": {
     "process": {
-      "last_run": "2026-08-18T23:30:36.721401",
-      "records": 1248,
-      "phd": 310,
-      "ms": 0,
-      "unlabeled": 938,
-      "labeling_pct": 24.8,
+      "last_run": "2026-08-19T15:56:01.674794",
+      "records": 3074,
+      "phd": 746,
+      "ms": 1,
+      "unlabeled": 2327,
+      "labeling_pct": 24.3,
       "filter": "stem"
     },
     "records": {
-      "total": 1248,
-      "phd": 310,
-      "ms": 0,
-      "unlabeled": 938,
-      "label_pct": 24.8
+      "total": 3074,
+      "phd": 746,
+      "ms": 1,
+      "unlabeled": 2327,
+      "label_pct": 24.3
     },
     "process_nonstem": {
-      "last_run": "2026-08-18T23:31:21.136777",
-      "records": 777,
-      "phd": 152,
-      "ms": 1,
-      "unlabeled": 624,
-      "labeling_pct": 19.7,
+      "last_run": "2026-08-19T15:56:02.192160",
+      "records": 1880,
+      "phd": 340,
+      "ms": 2,
+      "unlabeled": 1538,
+      "labeling_pct": 18.2,
       "filter": "non-stem"
     }
   },
