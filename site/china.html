@@ -49,7 +49,7 @@
 <body>
 <div class="page">
   <a href="stem.html" class="back-link">&larr; Back to STEM Dashboard</a>
-  <h1>China — Outbound Student Mobility</h1>
+  <h1 id="china-outbound-student-mobility">China — Outbound Student Mobility</h1>
   <div class="subtitle">1 million Chinese students abroad (UNESCO 2023). US enrollment peaked in 2019/20 and has declined 29%. An 86.7% cumulative return rate signals a structural shift.</div>
   <div class="sources">Sources: <a href="https://opendoorsdata.org" target="_blank">IIE Open Doors</a> · <a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank">DHS SEVP</a> · <a href="https://open.canada.ca" target="_blank">IRCC</a> · <a href="https://www.hesa.ac.uk" target="_blank">HESA</a> · UNESCO UIS · China MOE</div>
 
@@ -62,70 +62,70 @@
   </div>
 
   <!-- US Enrollment -->
-  <h2>United States — Peak and Decline</h2>
+  <h2 id="united-states-peak-and-decline">United States — Peak and Decline</h2>
   <div class="charts">
     <div class="chart-box wide" id="us-chart-section">
-      <h3>Chinese Students in the US (Open Doors) <a href="#us-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#us-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>Chinese Students in the US (Open Doors)</h3>
       <p class="desc">Rose from 128K (2009/10) to peak of 373K (2019/20), then declined 29% to 266K (2024/25). COVID, Proclamation 10043, and rising domestic alternatives all contributed.</p>
       <canvas id="us-chart"></canvas>
       <p class="source">Source: IIE Open Doors annual reports</p>
     </div>
 
     <div class="chart-box" id="sevis-chart-section">
-      <h3>SEVIS Active Records <a href="#sevis-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#sevis-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>SEVIS Active Records</h3>
       <p class="desc">Point-in-time student records. Peaked at 261K (Jan 2024), now 229K (Mar 2026).</p>
       <canvas id="sevis-chart"></canvas>
     </div>
 
     <div class="chart-box" id="vs-india-chart-section">
-      <h3>China vs India in the US <a href="#vs-india-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#vs-india-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>China vs India in the US</h3>
       <p class="desc">India surpassed China in 2023/24 for the first time since 2009. The crossover is accelerating.</p>
       <canvas id="vs-india-chart"></canvas>
     </div>
   </div>
 
   <!-- Global Destinations -->
-  <h2>Global Diversification</h2>
+  <h2 id="global-diversification">Global Diversification</h2>
   <div class="info-box">
     <strong>Diversifying away from the US:</strong> Chinese students are increasingly choosing the UK, Australia, Japan, Hong Kong, and Singapore. While US enrollment dropped 29%, UK visa grants remain stable at ~100K/year, Japan is recovering to pre-pandemic levels, and Hong Kong attracted ~45K mainland students in 2024. Canada peaked in 2018 and is declining under permit cap policies.
   </div>
 
   <div class="charts">
     <div class="chart-box" id="dest-trend-chart-section">
-      <h3>Destinations: US vs UK vs Australia <a href="#dest-trend-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#dest-trend-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>Destinations: US vs UK vs Australia</h3>
       <p class="desc">US declining, UK stable, Australia recovering post-COVID.</p>
       <canvas id="dest-trend-chart"></canvas>
     </div>
 
     <div class="chart-box" id="asia-dest-chart-section">
-      <h3>East Asian Destinations <a href="#asia-dest-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#asia-dest-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>East Asian Destinations</h3>
       <p class="desc">Japan (124K) and South Korea (84K) are major destinations. Hong Kong hosts ~45K mainland students.</p>
       <canvas id="asia-dest-chart"></canvas>
     </div>
 
     <div class="chart-box" id="canada-chart-section">
-      <h3>Canada Study Permits (New Issued) <a href="#canada-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#canada-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>Canada Study Permits (New Issued)</h3>
       <p class="desc">Peaked at 89K (2018), declined to 52K (2025). China is now #2 behind India in Canada.</p>
       <canvas id="canada-chart"></canvas>
     </div>
 
     <div class="chart-box" id="germany-chart-section">
-      <h3>Germany: India Surpasses China <a href="#germany-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#germany-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>Germany: India Surpasses China</h3>
       <p class="desc">India overtook China in 2022/23 and is accelerating. China has plateaued at ~39K.</p>
       <canvas id="germany-chart"></canvas>
     </div>
   </div>
 
   <!-- Return Rates & Policy -->
-  <h2>Return Rates &amp; Policy Context</h2>
+  <h2 id="return-rates-amp-policy-context">Return Rates &amp; Policy Context</h2>
   <div class="charts">
     <div class="chart-box" id="return-chart-section">
-      <h3>Cumulative Return Rate (1978-2024) <a href="#return-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#return-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>Cumulative Return Rate (1978-2024)</h3>
       <p class="desc">86.7% of Chinese students who completed their studies abroad have returned — 6.44M of 7.43M. 495K returned in 2024 alone (+19% YoY).</p>
       <canvas id="return-chart"></canvas>
     </div>
 
-    <div class="chart-box">
+    <div id="key-policy-factors" class="chart-box">
       <h3>Key Policy Factors</h3>
       <div class="info-box" style="border: none; padding: 0; margin: 0;">
         <p><strong>Proclamation 10043</strong> (May 2020): Blocks F/J visas for Chinese grad students and researchers with ties to military-civil fusion entities. Est. 3-5K blocked/year.</p>
@@ -136,7 +136,7 @@
     </div>
   </div>
 
-  <div class="table-wrap">
+  <div id="chinese-students-by-destination-latest-available" class="table-wrap">
     <h3>Chinese Students by Destination (Latest Available)</h3>
     <table>
       <thead><tr><th>Destination</th><th class="r">Students</th><th class="r">Year</th><th>Trend</th></tr></thead>
@@ -279,5 +279,6 @@ new Chart(document.getElementById('return-chart'), {
 });
 </script>
 <script src="/sidebar.js"></script>
+<script src="/anchors.js" defer></script>
 </body>
 </html>

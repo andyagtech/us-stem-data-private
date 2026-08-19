@@ -50,7 +50,7 @@
 <body>
 
 <div class="header">
-  <h1>IPEDS STEM PhD Completions Dashboard</h1>
+  <h1 id="ipeds-stem-phd-completions-dashboard">IPEDS STEM PhD Completions Dashboard</h1>
   <div class="subtitle">Research Doctorates in STEM &amp; Clinical Fields &bull; 1984&ndash;2024</div>
 </div>
 
@@ -65,15 +65,15 @@
 
 <div class="content">
   <div class="panel active" id="panel-trends">
-    <div class="card">
+    <div id="national-stem-phd-completions-over-time" class="card">
       <h2>National STEM PhD Completions Over Time</h2>
       <div class="chart-container tall"><canvas id="chartNational"></canvas></div>
     </div>
-    <div class="card">
+    <div id="trends-by-stem-discipline" class="card">
       <h2>Trends by STEM Discipline</h2>
       <div class="chart-container tall"><canvas id="chartByDisc"></canvas></div>
     </div>
-    <div class="card">
+    <div id="discipline-share-over-time" class="card">
       <h2>Discipline Share Over Time</h2>
       <div class="chart-container tall"><canvas id="chartDiscShare"></canvas></div>
       <p class="note">Stacked area showing each discipline's share of total STEM PhD completions.</p>
@@ -81,40 +81,40 @@
   </div>
 
   <div class="panel" id="panel-demographics">
-    <div class="card">
+    <div id="race-ethnicity-composition-over-time" class="card">
       <h2>Race/Ethnicity Composition Over Time</h2>
       <div class="chart-container tall"><canvas id="chartRace"></canvas></div>
       <p class="note">Race/ethnicity data available from 1995 onward. Pre-1995 data only has total men/women.</p>
     </div>
-    <div class="card">
+    <div id="race-ethnicity-share-over-time" class="card">
       <h2>Race/Ethnicity Share (%) Over Time</h2>
       <div class="chart-container tall"><canvas id="chartRacePct"></canvas></div>
     </div>
-    <div class="card">
+    <div id="gender-trends" class="card">
       <h2>Gender Trends</h2>
       <div class="chart-container medium"><canvas id="chartGender"></canvas></div>
     </div>
-    <div class="card">
+    <div id="race-ethnicity-by-discipline" class="card">
       <h2 id="raceDiscTitle">Race/Ethnicity by Discipline</h2>
       <div class="chart-container medium"><canvas id="chartRaceDisc"></canvas></div>
     </div>
   </div>
 
   <div class="panel" id="panel-institutions">
-    <div class="card">
+    <div id="top-10-institutions-mdash-phd-trend-over-time" class="card">
       <h2>Top 10 Institutions &mdash; PhD Trend Over Time</h2>
       <div class="chart-container tall"><canvas id="chartInstTrend"></canvas></div>
     </div>
-    <div class="card">
+    <div id="top-25-phd-producing-institutions-all-time" class="card">
       <h2>Top 25 PhD-Producing Institutions (All-Time)</h2>
       <div class="chart-container tall"><canvas id="chartTop25"></canvas></div>
     </div>
-    <div class="card">
+    <div id="top-institutions-by-discipline" class="card">
       <h2>Top Institutions by Discipline</h2>
       <select id="discSelect" onchange="renderDiscInst()"></select>
       <div class="chart-container medium" style="margin-top:1rem;"><canvas id="chartDiscInst"></canvas></div>
     </div>
-    <div class="card">
+    <div id="all-institutions" class="card">
       <h2>All Institutions</h2>
       <input type="text" class="search" id="instSearch" placeholder="Search by name or state..." oninput="filterInstitutions()">
       <div style="max-height:500px;overflow-y:auto;">
@@ -127,7 +127,7 @@
   </div>
 
   <div class="panel" id="panel-states">
-    <div class="card">
+    <div id="stem-phd-completions-by-state-over-time" class="card">
       <h2>STEM PhD Completions by State Over Time</h2>
       <p class="note" style="color:var(--text-muted);font-size:0.85rem;margin:4px 0 12px;">Top 15 states by all-time STEM PhD output. Click a state in the legend to toggle. Use the year range below to focus on a specific period.</p>
       <div style="display:flex;gap:12px;align-items:center;margin-bottom:10px;flex-wrap:wrap;font-size:0.85rem;">
@@ -550,5 +550,6 @@ filterInstitutions();
 })();
 </script>
 <script src="/sidebar.js"></script>
+<script src="/anchors.js" defer></script>
 </body>
 </html>

@@ -46,7 +46,7 @@
 <body>
 <div class="page">
   <a href="stem.html" class="back-link">&larr; Back to STEM Dashboard</a>
-  <h1>EU &amp; Germany — International Student Pipeline</h1>
+  <h1 id="eu-amp-germany-international-student-pipeline">EU &amp; Germany — International Student Pipeline</h1>
   <div class="subtitle">1.76 million international students across the EU. Germany hosts 24% — with India now surpassing China.</div>
   <div class="sources">Sources: <a href="https://www.wissenschaft-weltoffen.de/en/" target="_blank">DAAD Wissenschaft weltoffen</a> · <a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Learning_mobility_statistics" target="_blank">Eurostat</a> · <a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank">DHS SEVP</a></div>
 
@@ -59,37 +59,37 @@
 
   <div class="charts">
     <div class="chart-box wide" id="germany-total-chart-section">
-      <h3>International Students in Germany <a href="#germany-total-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#germany-total-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>International Students in Germany</h3>
       <p class="desc">Total foreign students (Bildungsauslaender + Bildungsinlaender) grew from 301K (2013/14) to 469K (2023/24). 43% study Engineering.</p>
       <canvas id="germany-total-chart"></canvas>
       <p class="source">Source: Destatis via DAAD Wissenschaft weltoffen</p>
     </div>
 
     <div class="chart-box" id="india-china-chart-section">
-      <h3>India vs China in Germany <a href="#india-china-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#india-china-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>India vs China in Germany</h3>
       <p class="desc">India surpassed China in 2022/23 and is accelerating. India grew +262% since 2016 while China peaked and declined.</p>
       <canvas id="india-china-chart"></canvas>
     </div>
 
     <div class="chart-box" id="top-countries-chart-section">
-      <h3>Top Countries in Germany (2023/24) <a href="#top-countries-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#top-countries-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>Top Countries in Germany (2023/24)</h3>
       <canvas id="top-countries-chart"></canvas>
     </div>
 
     <div class="chart-box" id="eu-destinations-chart-section">
-      <h3>EU Destination Countries (2024) <a href="#eu-destinations-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#eu-destinations-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>EU Destination Countries (2024)</h3>
       <p class="desc">Germany hosts 27% of the EU's 1,650,843 international tertiary students, followed by France (17%) and the Netherlands (11%). Eurostat educ_uoe_mobs01, ISCED 5-8, 2024. The Netherlands does not report a combined 5-8 total; its figure is the sum of the levels it does report, which excludes doctoral students.</p>
       <canvas id="eu-destinations-chart"></canvas>
     </div>
 
     <div class="chart-box" id="eu-in-us-chart-section">
-      <h3>EU Students in the US (SEVIS Mar 2026) <a href="#eu-in-us-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#eu-in-us-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>EU Students in the US (SEVIS Mar 2026)</h3>
       <p class="desc">European students studying in the US. UK leads with 12,856 active SEVIS records.</p>
       <canvas id="eu-in-us-chart"></canvas>
     </div>
   </div>
 
-  <div class="table-wrap">
+  <div id="eu-student-origins-eurostat-2023" class="table-wrap">
     <h3>EU Student Origins (Eurostat 2023)</h3>
     <table>
       <thead><tr><th>Region</th><th class="r">Share</th><th>Notes</th></tr></thead>
@@ -171,5 +171,6 @@ new Chart(document.getElementById('eu-in-us-chart'), {
 });
 </script>
 <script src="/sidebar.js"></script>
+<script src="/anchors.js" defer></script>
 </body>
 </html>

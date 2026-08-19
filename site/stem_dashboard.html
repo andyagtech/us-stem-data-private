@@ -97,7 +97,7 @@
 <body>
 
 <div class="header">
-  <h1>STEM PhD Name Classification Dashboard</h1>
+  <h1 id="stem-phd-name-classification-dashboard">STEM PhD Name Classification Dashboard</h1>
   <div class="subtitle">Name-based ethnicity classification across 66 university dissertation repositories</div>
   <div class="stats" id="header-stats"></div>
 </div>
@@ -307,6 +307,8 @@ function renderUniTable() {
 }
 
 function showUniDetail(key) {
+  // Keep the address bar pointing at what is on screen, so it can be copied.
+  try { history.replaceState(null, '', '#' + key); } catch (e) {}
   document.getElementById('detail-uni-select').value = key;
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
@@ -774,7 +776,30 @@ function exportCSV(type) {
   a.download = filename;
   a.click();
 }
+
+// ---- Deep link: #<uni_key> opens that university's detail tab ---------------
+function detailFromHash() {
+  const raw = decodeURIComponent((location.hash || '').replace(/^#/, '')).split('?')[0];
+  if (!raw) return false;
+  const key = raw.split('--')[0].toLowerCase();
+  const hit = (typeof DATA !== 'undefined' && DATA.universities)
+    ? DATA.universities.find(u => u.k === key || String(u.k).replace(/_/g, '-') === key)
+    : null;
+  if (!hit) return false;
+  showUniDetail(hit.k);
+  return true;
+}
+window.ANCHOR_HOOKS = (window.ANCHOR_HOOKS || []).concat(detailFromHash);
+window.addEventListener('hashchange', detailFromHash);
+(function waitForData() {
+  if (!(location.hash || '').replace(/^#/, '')) return;
+  let tries = 0;
+  const iv = setInterval(function () {
+    if (detailFromHash() || ++tries > 40) clearInterval(iv);
+  }, 250);
+})();
 </script>
 <script src="/sidebar.js"></script>
+<script src="/anchors.js" defer></script>
 </body>
 </html>

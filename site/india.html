@@ -49,7 +49,7 @@
 <body>
 <div class="page">
   <a href="stem.html" class="back-link">&larr; Back to STEM Dashboard</a>
-  <h1>India — Outbound Student Mobility</h1>
+  <h1 id="india-outbound-student-mobility">India — Outbound Student Mobility</h1>
   <div class="subtitle">1.3 million Indian students abroad — the largest student diaspora on Earth. Two distinct pipelines: STEM (US/Canada/UK) and Medical (Central Asia/Caucasus).</div>
   <div class="sources">Sources: <a href="https://opendoorsdata.org" target="_blank">IIE Open Doors</a> · <a href="https://open.canada.ca/data/en/dataset/90115b00-f9b8-49e8-afa3-b4cff8facaee" target="_blank">IRCC</a> · <a href="https://www.hesa.ac.uk" target="_blank">HESA</a> · <a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank">DHS SEVP</a> · India MEA · NMC</div>
 
@@ -62,60 +62,60 @@
   </div>
 
   <!-- STEM / Higher Ed Pipeline -->
-  <h2>STEM &amp; Higher Education Pipeline</h2>
+  <h2 id="stem-amp-higher-education-pipeline">STEM &amp; Higher Education Pipeline</h2>
   <div class="charts">
     <div class="chart-box wide" id="us-canada-chart-section">
-      <h3>Indian Students in US vs Canada <a href="#us-canada-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#us-canada-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>Indian Students in US vs Canada</h3>
       <p class="desc">Canada surpassed the US as the top destination in 2022. Both are now declining — Canada under permit caps, US under policy uncertainty.</p>
       <canvas id="us-canada-chart"></canvas>
       <p class="source">Source: IIE Open Doors (US), IRCC year-end stock (Canada)</p>
     </div>
 
     <div class="chart-box" id="destinations-chart-section">
-      <h3>Top Destinations (Latest Available) <a href="#destinations-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#destinations-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>Top Destinations (Latest Available)</h3>
       <canvas id="destinations-chart"></canvas>
     </div>
 
     <div class="chart-box" id="field-chart-section">
-      <h3>US Field of Study (2023/24) <a href="#field-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#field-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>US Field of Study (2023/24)</h3>
       <p class="desc">91% of Indian students in the US are in STEM. Math/CS alone is 43%.</p>
       <canvas id="field-chart"></canvas>
     </div>
 
     <div class="chart-box" id="level-chart-section">
-      <h3>US Study Level (SEVIS Mar 2026) <a href="#level-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#level-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>US Study Level (SEVIS Mar 2026)</h3>
       <p class="desc">Master's students dominate — 277K of 350K active records. Doctorate is only 29K.</p>
       <canvas id="level-chart"></canvas>
     </div>
 
     <div class="chart-box" id="growth-chart-section">
-      <h3>Growth by Destination (2015 = 100) <a href="#growth-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#growth-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>Growth by Destination (2015 = 100)</h3>
       <p class="desc">Canada grew 8x from 2015 to 2023 before declining. UK doubled. Germany tripled.</p>
       <canvas id="growth-chart"></canvas>
     </div>
   </div>
 
   <!-- Medical Pipeline -->
-  <h2>Medical Education Pipeline</h2>
+  <h2 id="medical-education-pipeline">Medical Education Pipeline</h2>
   <div class="info-box">
     <strong>The Medical Bottleneck:</strong> India has 2.3 million NEET applicants competing for ~112,000 domestic medical seats annually. This drives ~25,000 students per year to study MBBS abroad, primarily in Central Asia, the Caucasus, Russia, and the Philippines. On return, they must pass the FMGE exam — which has a pass rate of just 16.7% (2024).
   </div>
 
   <div class="charts">
     <div class="chart-box" id="medical-dest-chart-section">
-      <h3>Medical Students by Destination <a href="#medical-dest-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#medical-dest-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>Medical Students by Destination</h3>
       <p class="desc">Georgia and Kyrgyzstan are the largest destinations. China collapsed post-COVID. Ukraine lost ~18K students in 2022.</p>
       <canvas id="medical-dest-chart"></canvas>
     </div>
 
     <div class="chart-box" id="fmge-chart-section">
-      <h3>FMGE Pass Rate by Country (2024) <a href="#fmge-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#fmge-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>FMGE Pass Rate by Country (2024)</h3>
       <p class="desc">Georgia has the highest pass rate at 36%. Kyrgyzstan and Ukraine are under 15%. Overall: 61,616 candidates, 10,269 passed.</p>
       <canvas id="fmge-chart"></canvas>
     </div>
   </div>
 
-  <div class="table-wrap">
+  <div id="fmge-2024-foreign-medical-graduate-examination" class="table-wrap">
     <h3>FMGE 2024 — Foreign Medical Graduate Examination</h3>
     <table>
       <thead><tr><th>Metric</th><th class="r">Value</th></tr></thead>
@@ -242,5 +242,6 @@ new Chart(document.getElementById('fmge-chart'), {
 });
 </script>
 <script src="/sidebar.js"></script>
+<script src="/anchors.js" defer></script>
 </body>
 </html>

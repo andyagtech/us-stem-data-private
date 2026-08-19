@@ -64,7 +64,7 @@
 <body>
 <div class="page">
   <a href="stem.html" class="back-link">&larr; Back to STEM Dashboard</a>
-  <h1>Canada — International Student Pipeline</h1>
+  <h1 id="canada-international-student-pipeline">Canada — International Student Pipeline</h1>
   <div class="subtitle">Study permit holders, top source countries, and post-graduation work permits</div>
   <div class="sources">Source: <a href="https://open.canada.ca/data/en/dataset/90115b00-f9b8-49e8-afa3-b4cff8facaee" target="_blank">Immigration, Refugees and Citizenship Canada (IRCC)</a> Open Data — Study Permit Holders Monthly Updates</div>
 
@@ -77,32 +77,32 @@
 
   <div class="charts">
     <div class="chart-box wide" id="total-chart-section">
-      <h3>Total International Students in Canada <a href="#total-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#total-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>Total International Students in Canada</h3>
       <p class="desc">Study permit holders with valid permits on December 31st. Growth from 122K (2000) to 1.04M peak (2023), declining in 2024 due to new permit caps.</p>
       <canvas id="total-chart"></canvas>
       <p class="source">Source: IRCC Open Data — year-end stock by country of citizenship, 2000-2024</p>
     </div>
 
     <div class="chart-box" id="countries-chart-section">
-      <h3>Top Source Countries <a href="#countries-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#countries-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>Top Source Countries</h3>
       <p class="desc">India's dominance grew from 40K (2015) to 426K (2023), then declined. China peaked at 142K in 2018.</p>
       <canvas id="countries-chart"></canvas>
     </div>
 
     <div class="chart-box" id="emerging-chart-section">
-      <h3>Emerging Source Countries <a href="#emerging-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#emerging-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>Emerging Source Countries</h3>
       <p class="desc">Nigeria, Philippines, and Nepal saw explosive growth. Nepal grew 1,809% since 2019.</p>
       <canvas id="emerging-chart"></canvas>
     </div>
 
     <div class="chart-box" id="flow-chart-section">
-      <h3>New Study Permits Issued <a href="#flow-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#flow-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>New Study Permits Issued</h3>
       <p class="desc">Annual flow of new permits. Peaked at 700K in 2023, dropping sharply in 2024-2025 under new caps.</p>
       <canvas id="flow-chart"></canvas>
     </div>
 
     <div class="chart-box" id="share-chart-section">
-      <h3>India vs China Share <a href="#share-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#share-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>India vs China Share</h3>
       <p class="desc">India's share grew from 14% (2015) to 41% (2023). China declined from 33% to 10%.</p>
       <canvas id="share-chart"></canvas>
     </div>
@@ -129,7 +129,7 @@
     </div>
   </div>
 
-  <div class="table-wrap">
+  <div id="top-20-countries-international-students-in" class="table-wrap">
     <h3>Top 20 Countries — International Students in Canada (Dec 31 Stock)</h3>
     <table id="country-table">
       <thead>
@@ -384,5 +384,6 @@ const DCN = {"source":"Statistics Canada / IRCC Open Data \u2014 study permit ho
 })();
 </script>
 <script src="/sidebar.js"></script>
+<script src="/anchors.js" defer></script>
 </body>
 </html>

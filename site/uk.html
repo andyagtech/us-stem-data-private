@@ -48,7 +48,7 @@
 <body>
 <div class="page">
   <a href="stem.html" class="back-link">&larr; Back to STEM Dashboard</a>
-  <h1>United Kingdom — International Student Pipeline</h1>
+  <h1 id="united-kingdom-international-student-pipeline">United Kingdom — International Student Pipeline</h1>
   <div class="subtitle">HESA enrollment, student visa grants, and Graduate Route post-study work visas</div>
   <div class="sources">Sources: <a href="https://www.hesa.ac.uk/data-and-analysis/students/where-from" target="_blank">HESA</a> (enrollment) · <a href="https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables" target="_blank">Home Office</a> (visas)</div>
 
@@ -61,32 +61,32 @@
 
   <div class="charts">
     <div class="chart-box wide" id="enrollment-chart-section">
-      <h3>International Student Enrollment in UK <a href="#enrollment-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#enrollment-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>International Student Enrollment in UK</h3>
       <p class="desc">Non-UK domicile students enrolled in UK higher education. Grew 67% from 438K (2015/16) to 732K (2023/24).</p>
       <canvas id="enrollment-chart"></canvas>
       <p class="source">Source: HESA Student Statistics (academic years ending in year shown)</p>
     </div>
 
     <div class="chart-box" id="visa-chart-section">
-      <h3>Student Visa Grants <a href="#visa-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#visa-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>Student Visa Grants</h3>
       <p class="desc">Sponsored study visas issued. Peaked at 467K in 2022 before tightening.</p>
       <canvas id="visa-chart"></canvas>
     </div>
 
     <div class="chart-box" id="country-visa-chart-section">
-      <h3>India vs China Visa Grants <a href="#country-visa-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#country-visa-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>India vs China Visa Grants</h3>
       <p class="desc">India surged from 18K (2018) to 138K (2022) then fell back. China stable at ~100K.</p>
       <canvas id="country-visa-chart"></canvas>
     </div>
 
     <div class="chart-box" id="grad-route-chart-section">
-      <h3>Graduate Route Visas <a href="#grad-route-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#grad-route-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>Graduate Route Visas</h3>
       <p class="desc">Post-study work visa launched July 2021. India accounts for ~46% of grants.</p>
       <canvas id="grad-route-chart"></canvas>
     </div>
 
     <div class="chart-box" id="top-countries-chart-section">
-      <h3>Top Countries of Origin (HESA 2023/24) <a href="#top-countries-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#top-countries-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>Top Countries of Origin (HESA 2023/24)</h3>
       <canvas id="top-countries-chart"></canvas>
     </div>
 
@@ -116,7 +116,7 @@
     </div>
   </div>
 
-  <div class="table-wrap">
+  <div id="key-comparisons-uk-vs-us-vs-canada" class="table-wrap">
     <h3>Key Comparisons — UK vs US vs Canada</h3>
     <table>
       <thead><tr><th>Metric</th><th class="r">US</th><th class="r">UK</th><th class="r">Canada</th></tr></thead>
@@ -283,5 +283,6 @@ const DUK = {"source":"UK Home Office \u2014 Immigration System Statistics, spon
 })();
 </script>
 <script src="/sidebar.js"></script>
+<script src="/anchors.js" defer></script>
 </body>
 </html>

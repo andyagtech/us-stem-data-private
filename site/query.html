@@ -194,7 +194,7 @@
 <body>
 
 <div class="header">
-  <h1><span>Data</span> Query</h1>
+  <h1 id="data-query"><span>Data</span> Query</h1>
   <span class="running-indicator" id="runningIndicator"></span>
   <span class="powered">
     291K STEM + 136K Non-STEM records &middot;
@@ -425,6 +425,9 @@ async function loadParquetBuffer(arrayBuffer, tableName) {
   activeTable = tableName;
   renderTableList();
   updateExampleQueries();
+
+  // If the link named this table, switch to it the moment it is available.
+  if (!hashTableApplied) setTimeout(activateTableFromHash, 0);
 
   // Auto-run a preview query for the first table loaded
   if (Object.keys(tables).length === 1) {
@@ -751,8 +754,28 @@ window.addEventListener('chat-fill-sql', (e) => {
     runQuery();
   }
 });
+
+// ---- Deep link: query.html#<table_name> opens that table -------------------
+// setActiveTable() has always written the table name into the hash; this makes
+// the round trip work, so a shared link lands on the same table.
+let hashTableApplied = false;
+function activateTableFromHash() {
+  const want = decodeURIComponent((location.hash || '').replace(/^#/, '')).split('?')[0];
+  if (!want || !tables[want]) return false;
+  if (hashTableApplied && activeTable === want) return true;
+  hashTableApplied = true;
+  setActiveTable(want);
+  renderTableList();
+  queryEditor.value = `SELECT *\nFROM ${want}\nLIMIT 100`;
+  runQuery();
+  return true;
+}
+window.ANCHOR_HOOKS = (window.ANCHOR_HOOKS || []).concat(activateTableFromHash);
+window.addEventListener('hashchange', activateTableFromHash);
+
 </script>
 <script src="cached-answers.js"></script>
 <script src="/sidebar.js"></script>
+<script src="/anchors.js" defer></script>
 </body>
 </html>

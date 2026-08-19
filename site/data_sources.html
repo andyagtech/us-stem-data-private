@@ -88,25 +88,26 @@
 <!-- Navigation provided by /nav.js drawer -->
 
 <div class="container">
-  <h1>Data Sources &amp; Methodology</h1>
+  <h1 id="data-sources-amp-methodology">Data Sources &amp; Methodology</h1>
   <p class="subtitle">Where our data comes from, how it was collected, and what it can and cannot tell you</p>
 
   <div class="toc">
-    <h3>Contents</h3>
+    <h3 id="contents">Contents</h3>
     <ol>
       <li><a href="#federal">Federal Datasets</a></li>
       <li><a href="#citizenship">Understanding Citizenship Categories</a></li>
       <li><a href="#dissertations">Dissertation Metadata</a></li>
       <li><a href="#name-classification">Name Classification</a></li>
       <li><a href="#limitations">Limitations &amp; Caveats</a></li>
-      <li><a href="#analytics">Analytics &amp; Tracking</a></li>
+      <li><a href="#linking">Linking to This Data</a></li>
       <li><a href="#links">Links to Original Sources</a></li>
+      <li><a href="#analytics">Analytics &amp; Tracking</a></li>
     </ol>
   </div>
 
   <!-- ====================================================== -->
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin-bottom:2rem;">
-    <h2 style="margin-top:0;color:var(--accent);">Immigration via Education Pipeline</h2>
+    <h2 id="immigration-via-education-pipeline" style="margin-top:0;color:var(--accent);">Immigration via Education Pipeline</h2>
     <p style="margin-bottom:1rem;">This site tracks the full pathway from international graduate enrollment to permanent residency, using exclusively official US government data:</p>
     <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;font-size:0.95rem;margin-bottom:1rem;">
       <span style="background:var(--bg);padding:6px 12px;border-radius:6px;border:1px solid var(--border);">PhD/MS Production<br><small style="color:var(--text-muted);">University repositories</small></span>
@@ -163,7 +164,7 @@
 
   <p>This site draws on seven major federal data sources, each with different strengths and coverage.</p>
 
-  <div class="card">
+  <div id="ipeds-integrated-postsecondary-education-data" class="card">
     <h3>IPEDS (Integrated Postsecondary Education Data System)</h3>
     <div class="meta">
       <span>Agency: NCES / U.S. Dept. of Education</span>
@@ -187,7 +188,7 @@
     </p>
   </div>
 
-  <div class="card">
+  <div id="nsf-survey-of-earned-doctorates-sed" class="card">
     <h3>NSF Survey of Earned Doctorates (SED)</h3>
     <div class="meta">
       <span>Agency: NSF / NCSES</span>
@@ -205,7 +206,7 @@
     </p>
   </div>
 
-  <div class="card">
+  <div id="nsf-graduate-student-survey-gss" class="card">
     <h3>NSF Graduate Student Survey (GSS)</h3>
     <div class="meta">
       <span>Agency: NSF / NCSES</span>
@@ -221,7 +222,7 @@
     </p>
   </div>
 
-  <div class="card">
+  <div id="nsf-workforce-surveys-sdr-amp-nscg" class="card">
     <h3>NSF Workforce Surveys (SDR &amp; NSCG)</h3>
     <div class="meta">
       <span>Agency: NSF / NCSES</span>
@@ -240,7 +241,7 @@
     </p>
   </div>
 
-  <div class="card">
+  <div id="nsf-higher-education-r-amp-d-survey-herd" class="card">
     <h3>NSF Higher Education R&amp;D Survey (HERD)</h3>
     <div class="meta">
       <span>Agency: NSF / NCSES</span>
@@ -255,7 +256,7 @@
     </p>
   </div>
 
-  <div class="card">
+  <div id="ice-sevis-data-sevp" class="card">
     <h3>ICE SEVIS Data (SEVP)</h3>
     <div class="meta">
       <span>Agency: DHS / ICE / SEVP</span>
@@ -271,7 +272,7 @@
     </p>
   </div>
 
-  <div class="card">
+  <div id="dol-h-1b-disclosure-amp-usaspending" class="card">
     <h3>DOL H-1B Disclosure &amp; USAspending</h3>
     <div class="meta">
       <span>Agencies: DOL / Treasury</span>
@@ -311,7 +312,7 @@
     </p>
   </div>
 
-  <h3>How each survey defines groups</h3>
+  <h3 id="how-each-survey-defines-groups">How each survey defines groups</h3>
 
   <table>
     <thead>
@@ -392,7 +393,7 @@
     </p>
   </div>
 
-  <h3>Key terms</h3>
+  <h3 id="key-terms">Key terms</h3>
   <ul>
     <li><strong>NRA (Non-Resident Alien):</strong> IPEDS term for a person who is not a U.S. citizen
         and holds a temporary visa (F-1, J-1, H-1B, etc.). Does NOT include permanent residents.</li>
@@ -419,7 +420,7 @@
     only publicly available metadata from institutional repositories.
   </p>
 
-  <h3>Collection methods</h3>
+  <h3 id="collection-methods">Collection methods</h3>
 
   <table>
     <thead>
@@ -472,7 +473,7 @@
     in STEM fields, the classified name lists cover about 80 high-NRA institutions.
   </p>
 
-  <h3>Metadata fields collected</h3>
+  <h3 id="metadata-fields-collected">Metadata fields collected</h3>
   <ul>
     <li><strong>Author name</strong> (creator) &mdash; the primary field used for name classification</li>
     <li><strong>Title</strong> &mdash; used to verify STEM field classification</li>
@@ -504,7 +505,7 @@
   <h2 id="limitations">5. Limitations &amp; Caveats</h2>
   <!-- ====================================================== -->
 
-  <div class="card">
+  <div id="federal-data-limitations" class="card">
     <h3>Federal data limitations</h3>
     <ul>
       <li><strong>IPEDS citizen/green-card conflation:</strong> The largest limitation. IPEDS cannot
@@ -525,7 +526,7 @@
     </ul>
   </div>
 
-  <div class="card">
+  <div id="dissertation-amp-name-classification-limitations" class="card">
     <h3>Dissertation &amp; name classification limitations</h3>
     <ul>
       <li><strong>Name classification is probabilistic:</strong> Names are assigned to origin categories
@@ -548,7 +549,69 @@
   </div>
 
   <!-- ====================================================== -->
-  <h2 id="links">6. Links to Original Sources</h2>
+
+  <!-- ====================================================== -->
+  <h2 id="linking" style="margin-top:2.5rem;">6. Linking to This Data</h2>
+  <p>Every chart, university, department, year and data panel on this site has
+  its own address. The <span style="color:var(--accent);font-weight:700;">#</span>
+  control that appears beside a heading copies a link straight to it, and the
+  scheme is simple enough to type by hand.</p>
+
+  <div id="link-scheme" class="card">
+    <h3>The scheme</h3>
+    <p>A link is a page, then a fragment naming the thing you want. Levels are
+    separated by a double hyphen, narrowing from left to right:</p>
+    <table>
+      <tr><th>Fragment</th><th>What it addresses</th></tr>
+      <tr><td><code>stem.html#missouri_st</code></td><td>a university</td></tr>
+      <tr><td><code>stem.html#missouri_st--chemistry</code></td><td>a department within it</td></tr>
+      <tr><td><code>stem.html#missouri_st--chemistry--2024</code></td><td>one year of that department</td></tr>
+      <tr><td><code>stem.html#missouri_st--2024</code></td><td>that year's master's theses</td></tr>
+      <tr><td><code>stem.html#missouri_st--funding</code></td><td>the funding panel, opened</td></tr>
+      <tr><td><code>stem.html#missouri_st--enrollment</code></td><td>the enrollment panel, opened</td></tr>
+      <tr><td><code>stem.html#missouri_st--h1b</code></td><td>the H-1B and OPT panel, opened</td></tr>
+      <tr><td><code>stem.html#nat-visas</code></td><td>a national chart</td></tr>
+      <tr><td><code>china.html#return-chart-section</code></td><td>a named section on any other page</td></tr>
+    </table>
+    <p style="margin-top:1rem;">The university token is the same one used
+    throughout the site: in the sidebar links, in
+    <code>/universities/&lt;key&gt;.html</code>, and in
+    <code>/data/stem/&lt;key&gt;.json</code>. The department token is the
+    department name in lower case with every run of non-alphanumeric characters
+    replaced by a single hyphen — <em>Computer Science</em> becomes
+    <code>computer-science</code>. Section names on the other pages are the
+    heading text under the same rule.</p>
+    <p>Resolution is deliberately forgiving: capitalisation never matters, and
+    neither does the difference between <code>-</code> and <code>_</code> in a
+    university key, so <code>#missouri-st--chemistry</code> and
+    <code>#missouri_st--chemistry</code> reach the same place. Older links keep
+    working.</p>
+  </div>
+
+  <div id="link-panels" class="card">
+    <h3>Carrying panel state</h3>
+    <p>Which data panels are open travels after the anchor, so a link can
+    reproduce a whole view rather than just a scroll position:</p>
+    <p><code>stem.html#missouri_st--chemistry?funding=1&amp;h1b=1&amp;ms=1</code></p>
+    <p>The flags are <code>funding</code>, <code>enrollment</code>,
+    <code>h1b</code> (H-1B and OPT) and <code>ms</code> (show master's theses).
+    Each is <code>=1</code> to open. Naming a panel directly — for example
+    <code>#missouri_st--h1b</code> — opens it without needing the flag.</p>
+  </div>
+
+  <div id="link-other-pages" class="card">
+    <h3>Other pages</h3>
+    <p><code>immigration.html#mit</code> lands on that university's card.
+    <code>department_reports.html#missouri_st--trend-chart</code> selects a
+    university and a tab. <code>query.html#stem_records</code> loads the SQL
+    workspace with that table selected.
+    <code>ipeds_dashboard.html#panel-states</code> opens a dashboard tab.
+    Machine-readable equivalents are listed in
+    <a href="data_catalog.json">data_catalog.json</a> and
+    <a href="llms.txt">llms.txt</a>.</p>
+  </div>
+
+  <h2 id="links">7. Links to Original Sources</h2>
   <!-- ====================================================== -->
 
   <table>
@@ -630,26 +693,26 @@
     </tbody>
   </table>
 
-  <h2 id="analytics" style="margin-top:2.5rem;">6. Analytics &amp; Tracking</h2>
+  <h2 id="analytics" style="margin-top:2.5rem;">8. Analytics &amp; Tracking</h2>
 
   <div class="source-card">
-    <h3>Site Analytics</h3>
+    <h3 id="site-analytics">Site Analytics</h3>
     <p>This site uses a lightweight, self-hosted analytics system. <strong>No third-party tracking</strong> (no Google Analytics, no Facebook pixel, no ad networks).</p>
 
-    <h4 style="margin-top:1rem;">What we collect</h4>
+    <h4 id="what-we-collect" style="margin-top:1rem;">What we collect</h4>
     <table class="comparison-table" style="margin-top:0.5rem;">
       <thead><tr><th>Data Point</th><th>Purpose</th></tr></thead>
       <tbody>
         <tr><td>Page views</td><td>Understand which universities and pages are most viewed</td></tr>
         <tr><td>Click events</td><td>Track which departments and toggles users interact with</td></tr>
-        <tr><td>Share link clicks</td><td>Measure how often content is shared (🔗 button clicks)</td></tr>
+        <tr><td>Share link clicks</td><td>Measure how often content is shared (# button clicks)</td></tr>
         <tr><td>Country &amp; city</td><td>Geographic distribution of visitors (from CloudFront headers)</td></tr>
         <tr><td>IP address</td><td>Geo-analysis and unique visitor estimation</td></tr>
         <tr><td>Screen size &amp; user agent</td><td>Device type analysis</td></tr>
       </tbody>
     </table>
 
-    <h4 style="margin-top:1rem;">What we don't collect</h4>
+    <h4 id="what-we-don-t-collect" style="margin-top:1rem;">What we don't collect</h4>
     <ul style="margin-top:0.5rem;color:var(--text-muted);font-size:0.85rem;line-height:1.6;">
       <li>No cookies — session ID is in sessionStorage (clears when you close the tab)</li>
       <li>No fingerprinting</li>
@@ -657,16 +720,16 @@
       <li>No data shared with third parties</li>
     </ul>
 
-    <h4 style="margin-top:1rem;">Infrastructure</h4>
+    <h4 id="infrastructure" style="margin-top:1rem;">Infrastructure</h4>
     <p style="font-size:0.85rem;color:var(--text-muted);">
       Events are sent to <code>analytics.andy-barr.com/collect</code> via the Beacon API.
       Data is stored in AWS DynamoDB with a 90-day TTL (auto-deleted after 90 days).
       The analytics dashboard is at <code>analytics.andy-barr.com</code> (password-protected).
     </p>
 
-    <h4 style="margin-top:1rem;">Share tracking</h4>
+    <h4 id="share-tracking" style="margin-top:1rem;">Share tracking</h4>
     <p style="font-size:0.85rem;color:var(--text-muted);">
-      When you click any 🔗 share button, we record which anchor was shared (e.g., "purdue--computer-science--2024")
+      When you click any # copy-link control, we record which anchor was shared (e.g., "purdue--computer-science--2024")
       so we can understand which content is most shared. The URL you copy goes to your clipboard — we don't track where you paste it.
     </p>
   </div>
@@ -677,5 +740,6 @@
   </p>
 </div>
 <script src="/sidebar.js"></script>
+<script src="/anchors.js" defer></script>
 </body>
 </html>

@@ -34,9 +34,17 @@
 
   .sidebar { width: 220px; background: var(--surface); border-right: 1px solid var(--surface2); padding: 16px 0; position: fixed; top: 0; left: 0; bottom: 0; overflow-y: auto; z-index: 20; }
   /* Share anchor buttons */
-  .share-anchor { font-size: 0.6rem; cursor: pointer; text-decoration: none; padding: 2px 4px; border-radius: 3px; opacity: 0.3; transition: opacity 0.15s; }
-  .share-anchor:hover { opacity: 1; }
+  .share-anchor { font-size: 0.72rem; font-weight: 700; line-height: 1; cursor: pointer; text-decoration: none; color: var(--accent); padding: 2px 4px; border-radius: 3px; opacity: 0.32; transition: opacity 0.15s; user-select: none; }
+  .share-anchor:hover, .share-anchor:focus-visible { opacity: 1; }
   .dept-header .share-anchor { margin-left: auto; }
+  .nat-chart-box h3 .share-anchor, .funding-chart-wrap h3 .share-anchor, #content h2 .share-anchor { margin-left: 6px; }
+  /* Anchor targets: leave room under any fixed chrome and flash on arrival */
+  [id] { scroll-margin-top: 16px; }
+  .anchor-alias { display: block; height: 0; overflow: hidden; }
+  .nat-chart-box:target, .funding-chart-wrap:target, .dept-section:target, .year-block:target,
+  .anchor-flash { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+  .anchor-flash { animation: anchorFade 2.4s ease-out forwards; }
+  @keyframes anchorFade { 0%, 55% { outline-color: var(--accent); } 100% { outline-color: transparent; } }
   /* Accessibility: focus indicators */
   a:focus-visible, button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .nav-item:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
@@ -299,9 +307,9 @@
     </div>
   </div>
   <div class="sidebar-group" id="sg-universities">
-    <div class="sidebar-section" onclick="toggleSidebarGroup('sg-universities')"><span class="chevron">▼</span> Universities (101)</div>
+    <div class="sidebar-section" onclick="toggleSidebarGroup('sg-universities')"><span class="chevron">▼</span> Universities (105)</div>
     <div class="sidebar-group-content">
-      <a href="javascript:void(0)" class="nav-item" data-key="missouri_st" onclick="showUni('missouri_st');"><span>Missouri S&T</span><span><span class="nav-nra">73.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="siu" onclick="showUni('siu');"><span>Southern Illinois</span><span><span class="nav-nra">71.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="njit" onclick="showUni('njit');"><span>NJIT</span><span><span class="nav-nra">70.1%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="utarlington" onclick="showUni('utarlington');"><span>UT Arlington</span><span><span class="nav-nra">65.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="smu" onclick="showUni('smu');"><span>SMU</span><span><span class="nav-nra">65.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="caltech" onclick="showUni('caltech');"><span>Caltech</span><span><span class="nav-nra">64.9%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uhouston" onclick="showUni('uhouston');"><span>U Houston</span><span><span class="nav-nra">64.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="mtu" onclick="showUni('mtu');"><span>Michigan Tech</span><span><span class="nav-nra">62.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="purdue" onclick="showUni('purdue');"><span>Purdue</span><span><span class="nav-nra">60.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="sdsu" onclick="showUni('sdsu');"><span>SD State</span><span><span class="nav-nra">59.6%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="utdallas" onclick="showUni('utdallas');"><span>UT Dallas</span><span><span class="nav-nra">59.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="kstate" onclick="showUni('kstate');"><span>Kansas State</span><span><span class="nav-nra">58.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ttu" onclick="showUni('ttu');"><span>Texas Tech</span><span><span class="nav-nra">57.4%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="rit" onclick="showUni('rit');"><span>RIT</span><span><span class="nav-nra">57.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="binghamton" onclick="showUni('binghamton');"><span>Binghamton</span><span><span class="nav-nra">56.9%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="cmu" onclick="showUni('cmu');"><span>Carnegie Mellon</span><span><span class="nav-nra">56.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="iowa_state" onclick="showUni('iowa_state');"><span>Iowa State</span><span><span class="nav-nra">55.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="clemson" onclick="showUni('clemson');"><span>Clemson</span><span><span class="nav-nra">55.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uarkansas" onclick="showUni('uarkansas');"><span>U Arkansas</span><span><span class="nav-nra">54.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ubuffalo" onclick="showUni('ubuffalo');"><span>U Buffalo</span><span><span class="nav-nra">54.1%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucf" onclick="showUni('ucf');"><span>UCF</span><span><span class="nav-nra">53.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="vt" onclick="showUni('vt');"><span>Virginia Tech</span><span><span class="nav-nra">53.6%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="und" onclick="showUni('und');"><span>U North Dakota</span><span><span class="nav-nra">53.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="msstate" onclick="showUni('msstate');"><span>Mississippi State</span><span><span class="nav-nra">53.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="gatech" onclick="showUni('gatech');"><span>Georgia Tech</span><span><span class="nav-nra">52.4%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="rice" onclick="showUni('rice');"><span>Rice</span><span><span class="nav-nra">52.4%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="lsu" onclick="showUni('lsu');"><span>LSU</span><span><span class="nav-nra">52.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="umissouri" onclick="showUni('umissouri');"><span>U Missouri</span><span><span class="nav-nra">50.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="stony_brook" onclick="showUni('stony_brook');"><span>Stony Brook</span><span><span class="nav-nra">49.6%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="umass" onclick="showUni('umass');"><span>UMass Amherst</span><span><span class="nav-nra">49.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="unl" onclick="showUni('unl');"><span>U Nebraska-Lincoln</span><span><span class="nav-nra">49.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="usd" onclick="showUni('usd');"><span>U South Dakota</span><span><span class="nav-nra">48.9%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="rpi" onclick="showUni('rpi');"><span>RPI</span><span><span class="nav-nra">48.7%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="marquette" onclick="showUni('marquette');"><span>Marquette</span><span><span class="nav-nra">48.6%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="umemphis" onclick="showUni('umemphis');"><span>U Memphis</span><span><span class="nav-nra">47.9%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="syracuse" onclick="showUni('syracuse');"><span>Syracuse</span><span><span class="nav-nra">47.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ulouisville" onclick="showUni('ulouisville');"><span>U Louisville</span><span><span class="nav-nra">47.4%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="usc_columbia" onclick="showUni('usc_columbia');"><span>U South Carolina</span><span><span class="nav-nra">47.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="unh" onclick="showUni('unh');"><span>U New Hampshire</span><span><span class="nav-nra">46.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="utaustin" onclick="showUni('utaustin');"><span>UT Austin</span><span><span class="nav-nra">46.4%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="udel" onclick="showUni('udel');"><span>U Delaware</span><span><span class="nav-nra">46.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="udenver" onclick="showUni('udenver');"><span>U Denver</span><span><span class="nav-nra">45.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="unt" onclick="showUni('unt');"><span>U North Texas</span><span><span class="nav-nra">45.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="mit" onclick="showUni('mit');"><span>MIT</span><span><span class="nav-nra">43.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="wvu" onclick="showUni('wvu');"><span>West Virginia U</span><span><span class="nav-nra">42.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="usf" onclick="showUni('usf');"><span>U South Florida</span><span><span class="nav-nra">41.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="pdx" onclick="showUni('pdx');"><span>Portland State</span><span><span class="nav-nra">41.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="wayne_state" onclick="showUni('wayne_state');"><span>Wayne State</span><span><span class="nav-nra">40.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="mines" onclick="showUni('mines');"><span>CO School of Mines</span><span><span class="nav-nra">39.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ukansas" onclick="showUni('ukansas');"><span>U Kansas</span><span><span class="nav-nra">39.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="olemiss" onclick="showUni('olemiss');"><span>Ole Miss</span><span><span class="nav-nra">39.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="umn" onclick="showUni('umn');"><span>U Minnesota</span><span><span class="nav-nra">38.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="unm" onclick="showUni('unm');"><span>U New Mexico</span><span><span class="nav-nra">38.7%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="unlv" onclick="showUni('unlv');"><span>UNLV</span><span><span class="nav-nra">38.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="cuny" onclick="showUni('cuny');"><span>CUNY Grad Center</span><span><span class="nav-nra">38.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uiuc" onclick="showUni('uiuc');"><span>UIUC</span><span><span class="nav-nra">37.9%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ncstate" onclick="showUni('ncstate');"><span>NC State</span><span><span class="nav-nra">37.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="washu" onclick="showUni('washu');"><span>Wash U St Louis</span><span><span class="nav-nra">37.7%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="duke" onclick="showUni('duke');"><span>Duke</span><span><span class="nav-nra">37.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucla" onclick="showUni('ucla');"><span>UCLA</span><span><span class="nav-nra">37.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucsd" onclick="showUni('ucsd');"><span>UC San Diego</span><span><span class="nav-nra">36.6%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uarizona" onclick="showUni('uarizona');"><span>U Arizona</span><span><span class="nav-nra">36.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="stanford" onclick="showUni('stanford');"><span>Stanford</span><span><span class="nav-nra">35.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucirvine" onclick="showUni('ucirvine');"><span>UC Irvine</span><span><span class="nav-nra">35.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="dartmouth" onclick="showUni('dartmouth');"><span>Dartmouth</span><span><span class="nav-nra">34.9%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="umd" onclick="showUni('umd');"><span>U Maryland</span><span><span class="nav-nra">34.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="niu" onclick="showUni('niu');"><span>Northern Illinois</span><span><span class="nav-nra">34.4%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="bu" onclick="showUni('bu');"><span>Boston U</span><span><span class="nav-nra">34.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucriverside" onclick="showUni('ucriverside');"><span>UC Riverside</span><span><span class="nav-nra">34.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="yale" onclick="showUni('yale');"><span>Yale</span><span><span class="nav-nra">33.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="harvard" onclick="showUni('harvard');"><span>Harvard</span><span><span class="nav-nra">33.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="penn_state" onclick="showUni('penn_state');"><span>Penn State</span><span><span class="nav-nra">32.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="cornell" onclick="showUni('cornell');"><span>Cornell</span><span><span class="nav-nra">32.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucsb" onclick="showUni('ucsb');"><span>UC Santa Barbara</span><span><span class="nav-nra">32.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="upenn" onclick="showUni('upenn');"><span>U Penn</span><span><span class="nav-nra">31.6%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="byu" onclick="showUni('byu');"><span>BYU</span><span><span class="nav-nra">30.9%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucdavis" onclick="showUni('ucdavis');"><span>UC Davis</span><span><span class="nav-nra">30.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucmerced" onclick="showUni('ucmerced');"><span>UC Merced</span><span><span class="nav-nra">30.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="boise_state" onclick="showUni('boise_state');"><span>Boise State</span><span><span class="nav-nra">29.7%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucberkeley" onclick="showUni('ucberkeley');"><span>UC Berkeley</span><span><span class="nav-nra">29.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucsc" onclick="showUni('ucsc');"><span>UC Santa Cruz</span><span><span class="nav-nra">28.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucsf" onclick="showUni('ucsf');"><span>UCSF</span><span><span class="nav-nra">25.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="nau" onclick="showUni('nau');"><span>Northern Arizona</span><span><span class="nav-nra">22.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="la_tech" onclick="showUni('la_tech');"><span>Louisiana Tech</span><span><span class="nav-nra">22.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="northwestern" onclick="showUni('northwestern');"><span>Northwestern</span><span><span class="nav-nra">20.4%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="umt" onclick="showUni('umt');"><span>U Montana</span><span><span class="nav-nra">19.9%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uwmadison" onclick="showUni('uwmadison');"><span>UW Madison</span><span><span class="nav-nra">19.7%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="columbia" onclick="showUni('columbia');"><span>Columbia</span><span><span class="nav-nra">19.7%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uf" onclick="showUni('uf');"><span>U Florida</span><span><span class="nav-nra">18.4%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="wsu" onclick="showUni('wsu');"><span>Washington State</span><span><span class="nav-nra">18.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="gmu" onclick="showUni('gmu');"><span>George Mason</span><span><span class="nav-nra">17.7%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="utah_state" onclick="showUni('utah_state');"><span>Utah State</span><span><span class="nav-nra">17.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="utk" onclick="showUni('utk');"><span>U Tennessee</span><span><span class="nav-nra">17.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="msu" onclick="showUni('msu');"><span>Michigan State</span><span><span class="nav-nra">16.7%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uw_seattle" onclick="showUni('uw_seattle');"><span>UW Seattle</span><span><span class="nav-nra">16.6%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uutah" onclick="showUni('uutah');"><span>U Utah</span><span><span class="nav-nra">15.9%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="usm" onclick="showUni('usm');"><span>U Southern Miss</span><span><span class="nav-nra">15.4%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uva" onclick="showUni('uva');"><span>U Virginia</span><span><span class="nav-nra">14.1%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="northern_colorado" onclick="showUni('northern_colorado');"><span>U Northern Colorado</span><span><span class="nav-nra">11.9%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uoregon" onclick="showUni('uoregon');"><span>U Oregon</span><span><span class="nav-nra">11.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="temple" onclick="showUni('temple');"><span>Temple</span><span><span class="nav-nra">10.6%</span><span class="opt-dot"></span></span></a>
+      <a href="javascript:void(0)" class="nav-item" data-key="missouri_st" onclick="showUni('missouri_st');"><span>Missouri S&T</span><span><span class="nav-nra">73.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="siu" onclick="showUni('siu');"><span>Southern Illinois</span><span><span class="nav-nra">71.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="njit" onclick="showUni('njit');"><span>NJIT</span><span><span class="nav-nra">70.1%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="utarlington" onclick="showUni('utarlington');"><span>UT Arlington</span><span><span class="nav-nra">65.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="smu" onclick="showUni('smu');"><span>SMU</span><span><span class="nav-nra">65.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="caltech" onclick="showUni('caltech');"><span>Caltech</span><span><span class="nav-nra">64.9%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uhouston" onclick="showUni('uhouston');"><span>U Houston</span><span><span class="nav-nra">64.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="mtu" onclick="showUni('mtu');"><span>Michigan Tech</span><span><span class="nav-nra">62.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="purdue" onclick="showUni('purdue');"><span>Purdue</span><span><span class="nav-nra">60.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="sdsu" onclick="showUni('sdsu');"><span>SD State</span><span><span class="nav-nra">59.6%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="utdallas" onclick="showUni('utdallas');"><span>UT Dallas</span><span><span class="nav-nra">59.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="kstate" onclick="showUni('kstate');"><span>Kansas State</span><span><span class="nav-nra">58.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ttu" onclick="showUni('ttu');"><span>Texas Tech</span><span><span class="nav-nra">57.4%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="rit" onclick="showUni('rit');"><span>RIT</span><span><span class="nav-nra">57.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="binghamton" onclick="showUni('binghamton');"><span>Binghamton</span><span><span class="nav-nra">56.9%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="cmu" onclick="showUni('cmu');"><span>Carnegie Mellon</span><span><span class="nav-nra">56.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="iowa_state" onclick="showUni('iowa_state');"><span>Iowa State</span><span><span class="nav-nra">55.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="clemson" onclick="showUni('clemson');"><span>Clemson</span><span><span class="nav-nra">55.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uarkansas" onclick="showUni('uarkansas');"><span>U Arkansas</span><span><span class="nav-nra">54.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ubuffalo" onclick="showUni('ubuffalo');"><span>U Buffalo</span><span><span class="nav-nra">54.1%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucf" onclick="showUni('ucf');"><span>UCF</span><span><span class="nav-nra">53.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="vt" onclick="showUni('vt');"><span>Virginia Tech</span><span><span class="nav-nra">53.6%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="und" onclick="showUni('und');"><span>U North Dakota</span><span><span class="nav-nra">53.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="msstate" onclick="showUni('msstate');"><span>Mississippi State</span><span><span class="nav-nra">53.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="gatech" onclick="showUni('gatech');"><span>Georgia Tech</span><span><span class="nav-nra">52.4%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="rice" onclick="showUni('rice');"><span>Rice</span><span><span class="nav-nra">52.4%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="lsu" onclick="showUni('lsu');"><span>LSU</span><span><span class="nav-nra">52.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="umissouri" onclick="showUni('umissouri');"><span>U Missouri</span><span><span class="nav-nra">50.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uconn" onclick="showUni('uconn');"><span>UConn</span><span><span class="nav-nra">49.7%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="stony_brook" onclick="showUni('stony_brook');"><span>Stony Brook</span><span><span class="nav-nra">49.6%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="umass" onclick="showUni('umass');"><span>UMass Amherst</span><span><span class="nav-nra">49.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="unl" onclick="showUni('unl');"><span>U Nebraska-Lincoln</span><span><span class="nav-nra">49.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="usd" onclick="showUni('usd');"><span>U South Dakota</span><span><span class="nav-nra">48.9%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="rpi" onclick="showUni('rpi');"><span>RPI</span><span><span class="nav-nra">48.7%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="marquette" onclick="showUni('marquette');"><span>Marquette</span><span><span class="nav-nra">48.6%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="umemphis" onclick="showUni('umemphis');"><span>U Memphis</span><span><span class="nav-nra">47.9%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="syracuse" onclick="showUni('syracuse');"><span>Syracuse</span><span><span class="nav-nra">47.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ulouisville" onclick="showUni('ulouisville');"><span>U Louisville</span><span><span class="nav-nra">47.4%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="usc_columbia" onclick="showUni('usc_columbia');"><span>U South Carolina</span><span><span class="nav-nra">47.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="unh" onclick="showUni('unh');"><span>U New Hampshire</span><span><span class="nav-nra">46.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="utaustin" onclick="showUni('utaustin');"><span>UT Austin</span><span><span class="nav-nra">46.4%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="udel" onclick="showUni('udel');"><span>U Delaware</span><span><span class="nav-nra">46.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="udenver" onclick="showUni('udenver');"><span>U Denver</span><span><span class="nav-nra">45.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="unt" onclick="showUni('unt');"><span>U North Texas</span><span><span class="nav-nra">45.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="mit" onclick="showUni('mit');"><span>MIT</span><span><span class="nav-nra">43.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uky" onclick="showUni('uky');"><span>U Kentucky</span><span><span class="nav-nra">43.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="wvu" onclick="showUni('wvu');"><span>West Virginia U</span><span><span class="nav-nra">42.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="usf" onclick="showUni('usf');"><span>U South Florida</span><span><span class="nav-nra">41.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="pdx" onclick="showUni('pdx');"><span>Portland State</span><span><span class="nav-nra">41.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="wayne_state" onclick="showUni('wayne_state');"><span>Wayne State</span><span><span class="nav-nra">40.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="mines" onclick="showUni('mines');"><span>CO School of Mines</span><span><span class="nav-nra">39.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ukansas" onclick="showUni('ukansas');"><span>U Kansas</span><span><span class="nav-nra">39.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="olemiss" onclick="showUni('olemiss');"><span>Ole Miss</span><span><span class="nav-nra">39.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="umn" onclick="showUni('umn');"><span>U Minnesota</span><span><span class="nav-nra">38.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="unm" onclick="showUni('unm');"><span>U New Mexico</span><span><span class="nav-nra">38.7%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="unlv" onclick="showUni('unlv');"><span>UNLV</span><span><span class="nav-nra">38.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="cuny" onclick="showUni('cuny');"><span>CUNY Grad Center</span><span><span class="nav-nra">38.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uiuc" onclick="showUni('uiuc');"><span>UIUC</span><span><span class="nav-nra">37.9%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ncstate" onclick="showUni('ncstate');"><span>NC State</span><span><span class="nav-nra">37.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="washu" onclick="showUni('washu');"><span>Wash U St Louis</span><span><span class="nav-nra">37.7%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="duke" onclick="showUni('duke');"><span>Duke</span><span><span class="nav-nra">37.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucla" onclick="showUni('ucla');"><span>UCLA</span><span><span class="nav-nra">37.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucsd" onclick="showUni('ucsd');"><span>UC San Diego</span><span><span class="nav-nra">36.6%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uarizona" onclick="showUni('uarizona');"><span>U Arizona</span><span><span class="nav-nra">36.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="stanford" onclick="showUni('stanford');"><span>Stanford</span><span><span class="nav-nra">35.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucirvine" onclick="showUni('ucirvine');"><span>UC Irvine</span><span><span class="nav-nra">35.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="dartmouth" onclick="showUni('dartmouth');"><span>Dartmouth</span><span><span class="nav-nra">34.9%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="umd" onclick="showUni('umd');"><span>U Maryland</span><span><span class="nav-nra">34.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="niu" onclick="showUni('niu');"><span>Northern Illinois</span><span><span class="nav-nra">34.4%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="bu" onclick="showUni('bu');"><span>Boston U</span><span><span class="nav-nra">34.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucriverside" onclick="showUni('ucriverside');"><span>UC Riverside</span><span><span class="nav-nra">34.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="yale" onclick="showUni('yale');"><span>Yale</span><span><span class="nav-nra">33.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="harvard" onclick="showUni('harvard');"><span>Harvard</span><span><span class="nav-nra">33.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="penn_state" onclick="showUni('penn_state');"><span>Penn State</span><span><span class="nav-nra">32.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="cornell" onclick="showUni('cornell');"><span>Cornell</span><span><span class="nav-nra">32.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucsb" onclick="showUni('ucsb');"><span>UC Santa Barbara</span><span><span class="nav-nra">32.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="upenn" onclick="showUni('upenn');"><span>U Penn</span><span><span class="nav-nra">31.6%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="byu" onclick="showUni('byu');"><span>BYU</span><span><span class="nav-nra">30.9%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucdavis" onclick="showUni('ucdavis');"><span>UC Davis</span><span><span class="nav-nra">30.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucmerced" onclick="showUni('ucmerced');"><span>UC Merced</span><span><span class="nav-nra">30.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="boise_state" onclick="showUni('boise_state');"><span>Boise State</span><span><span class="nav-nra">29.7%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucberkeley" onclick="showUni('ucberkeley');"><span>UC Berkeley</span><span><span class="nav-nra">29.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucsc" onclick="showUni('ucsc');"><span>UC Santa Cruz</span><span><span class="nav-nra">28.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="ucsf" onclick="showUni('ucsf');"><span>UCSF</span><span><span class="nav-nra">25.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="nau" onclick="showUni('nau');"><span>Northern Arizona</span><span><span class="nav-nra">22.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="cu_boulder" onclick="showUni('cu_boulder');"><span>CU Boulder</span><span><span class="nav-nra">22.6%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="la_tech" onclick="showUni('la_tech');"><span>Louisiana Tech</span><span><span class="nav-nra">22.5%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="northwestern" onclick="showUni('northwestern');"><span>Northwestern</span><span><span class="nav-nra">20.4%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="umt" onclick="showUni('umt');"><span>U Montana</span><span><span class="nav-nra">19.9%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uwmadison" onclick="showUni('uwmadison');"><span>UW Madison</span><span><span class="nav-nra">19.7%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="columbia" onclick="showUni('columbia');"><span>Columbia</span><span><span class="nav-nra">19.7%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uf" onclick="showUni('uf');"><span>U Florida</span><span><span class="nav-nra">18.4%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="wsu" onclick="showUni('wsu');"><span>Washington State</span><span><span class="nav-nra">18.0%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="gmu" onclick="showUni('gmu');"><span>George Mason</span><span><span class="nav-nra">17.7%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="utah_state" onclick="showUni('utah_state');"><span>Utah State</span><span><span class="nav-nra">17.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="utk" onclick="showUni('utk');"><span>U Tennessee</span><span><span class="nav-nra">17.2%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="msu" onclick="showUni('msu');"><span>Michigan State</span><span><span class="nav-nra">16.7%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uw_seattle" onclick="showUni('uw_seattle');"><span>UW Seattle</span><span><span class="nav-nra">16.6%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uutah" onclick="showUni('uutah');"><span>U Utah</span><span><span class="nav-nra">15.9%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="usm" onclick="showUni('usm');"><span>U Southern Miss</span><span><span class="nav-nra">15.4%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="montana_state" onclick="showUni('montana_state');"><span>Montana State U</span><span><span class="nav-nra">15.3%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uva" onclick="showUni('uva');"><span>U Virginia</span><span><span class="nav-nra">14.1%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="northern_colorado" onclick="showUni('northern_colorado');"><span>U Northern Colorado</span><span><span class="nav-nra">11.9%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="uoregon" onclick="showUni('uoregon');"><span>U Oregon</span><span><span class="nav-nra">11.8%</span><span class="opt-dot"></span></span></a><a href="javascript:void(0)" class="nav-item" data-key="temple" onclick="showUni('temple');"><span>Temple</span><span><span class="nav-nra">10.6%</span><span class="opt-dot"></span></span></a>
     </div>
   </div>
   <div class="sidebar-group" id="sg-international">
@@ -346,7 +354,7 @@
   </header>
   <h1>Non-STEM Thesis &amp; Dissertation Lists — High NRA Universities</h1>
   <p class="subtitle" style="font-size:0.78rem;color:var(--text-muted);margin-top:-2px;">NRA = Non-Resident Alien. Universities ranked by NRA share of STEM doctoral completions (IPEDS).</p>
-  <p class="subtitle">Non-STEM fields (Education, Humanities, Social Sciences, etc.). Every name links to the university's institutional repository for direct verification. 126,943 total records across 101 schools.</p>
+  <p class="subtitle">Non-STEM fields (Education, Humanities, Social Sciences, etc.). Every name links to the university's institutional repository for direct verification. 148,185 total records across 105 schools.</p>
   <div style="background:rgba(251,191,36,0.12);border:1px solid rgba(251,191,36,0.3);border-radius:8px;padding:8px 14px;margin:10px 0 4px;font-size:0.82rem;color:#fbbf24;">Data scraping still in progress. Record counts may change as new data is collected.</div>
 
   <div id="info-section">
@@ -358,39 +366,39 @@
     <!-- Charts -->
     <div class="nat-charts">
       <div class="nat-chart-box" id="nat-phd">
-        <h3>Non-STEM PhD Completions by Citizenship</h3>
+        <h3>Non-STEM PhD Completions by Citizenship<a class="share-anchor" href="#nat-phd" onclick="shareAnchor('nat-phd',event);return false;" title="Copy link to this chart" aria-label="Copy link to this chart">#</a></h3>
         <p class="nat-desc">Non-STEM PhDs (Education, Humanities, Social Sciences) saw NRA share rise from ~17% to ~23% over the same period.</p>
         <canvas id="nat-phd-chart"></canvas>
         <p class="source">Source: <a href="https://nces.ed.gov/ipeds/" target="_blank">IPEDS Completions Survey</a></p>
       </div>
       <div class="nat-chart-box" id="nat-opt">
-        <h3>OPT Work Authorization Pipeline</h3>
+        <h3>OPT Work Authorization Pipeline<a class="share-anchor" href="#nat-opt" onclick="shareAnchor('nat-opt',event);return false;" title="Copy link to this chart" aria-label="Copy link to this chart">#</a></h3>
         <p class="nat-desc">OPT authorizations grew 11x since 2007. The 2016 STEM OPT 24-month rule dramatically expanded foreign work authorization.</p>
         <canvas id="nat-opt-chart"></canvas>
         <p class="source">Source: <a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank">ICE/SEVP SEVIS</a></p>
         <p class="source" style="margin-top:4px;font-size:0.7rem;"><strong>OPT</strong> (Optional Practical Training): 12-month post-graduation work authorization for F-1 visa holders. <strong>STEM OPT</strong>: additional 24-month extension for STEM graduates (expanded from 17 months in 2016). <strong>CPT</strong> (Curricular Practical Training): work authorization during enrollment, must be part of established curriculum.</p>
       </div>
       <div class="nat-chart-box" id="nat-funding" style="display:none;">
-        <h3>R&amp;D Funding vs American STEM PhDs</h3>
+        <h3>R&amp;D Funding vs American STEM PhDs<a class="share-anchor" href="#nat-funding" onclick="shareAnchor('nat-funding',event);return false;" title="Copy link to this chart" aria-label="Copy link to this chart">#</a></h3>
         <p class="nat-desc">University R&amp;D spending nearly doubled since 2010. American PhD production grew only 11%.</p>
         <canvas id="nat-funding-chart"></canvas>
         <p class="source">Source: <a href="https://ncses.nsf.gov/surveys/higher-education-research-development" target="_blank">NSF HERD Survey</a>, <a href="https://nces.ed.gov/ipeds/" target="_blank">IPEDS</a></p>
         <p class="source" style="margin-top:4px;font-size:0.7rem;"><strong>American STEM PhDs</strong> = Total STEM doctorate completions minus Non-Resident Alien (NRA) completions, from IPEDS. Includes US citizens and permanent residents of all races/ethnicities. <strong>R&amp;D Spending</strong> = total university R&amp;D expenditures from the NSF Higher Education Research &amp; Development (HERD) Survey.</p>
       </div>
       <div class="nat-chart-box" id="nat-total-pipeline">
-        <h3>Total Foreign Work Authorizations</h3>
+        <h3>Total Foreign Work Authorizations<a class="share-anchor" href="#nat-total-pipeline" onclick="shareAnchor('nat-total-pipeline',event);return false;" title="Copy link to this chart" aria-label="Copy link to this chart">#</a></h3>
         <p class="nat-desc">Combined OPT + H-1B work authorizations issued per year. Foreign nationals working in the US via university pipeline.</p>
         <canvas id="nat-total-pipeline-chart"></canvas>
         <p class="source">Source: ICE/SEVP SEVIS, <a href="https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub" target="_blank">USCIS H-1B Employer Data Hub</a></p>
       </div>
       <div class="nat-chart-box" id="nat-visas">
-        <h3>US Visa Issuances by Type</h3>
+        <h3>US Visa Issuances by Type<a class="share-anchor" href="#nat-visas" onclick="shareAnchor('nat-visas',event);return false;" title="Copy link to this chart" aria-label="Copy link to this chart">#</a></h3>
         <p class="nat-desc">F-1 (student), H-1B (specialty worker), J-1 (exchange visitor), and O-1 (extraordinary ability) visa stamps issued annually at US consulates.</p>
         <canvas id="nat-visa-chart"></canvas>
         <p class="source">Source: <a href="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-statistics.html" target="_blank">US State Department Visa Statistics</a></p>
       </div>
       <div class="nat-chart-box" id="nat-visa-calc">
-        <h3>Cumulative Visa Calculator</h3>
+        <h3>Cumulative Visa Calculator<a class="share-anchor" href="#nat-visa-calc" onclick="shareAnchor('nat-visa-calc',event);return false;" title="Copy link to this chart" aria-label="Copy link to this chart">#</a></h3>
         <p class="nat-desc">Total visa issuances between two years. Select a range to see cumulative counts.</p>
         <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap;">
           <select id="cum-start" style="background:var(--surface2);border:1px solid var(--surface2);color:var(--text);padding:4px 8px;border-radius:4px;font-size:0.82rem;"></select>
@@ -401,7 +409,7 @@
         <p class="source">Source: US State Department visa issuances at consulates abroad</p>
       </div>
       <div class="nat-chart-box" id="nat-fields" style="display:none;">
-        <h3>NRA Enrollment by STEM Field</h3>
+        <h3>NRA Enrollment by STEM Field<a class="share-anchor" href="#nat-fields" onclick="shareAnchor('nat-fields',event);return false;" title="Copy link to this chart" aria-label="Copy link to this chart">#</a></h3>
         <p class="nat-desc">In Computer Science and Engineering, the majority of graduate students are non-resident aliens.</p>
         <canvas id="nat-field-chart"></canvas>
         <p class="source">Source: <a href="https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-in-science-and-engineering" target="_blank">NSF Graduate Student Survey (STEM only — non-STEM equivalent not yet plotted)</a></p>
@@ -478,7 +486,7 @@
   </div>
 
   <div id="funding-chart-container" class="funding-chart-wrap" style="position:relative;">
-    <a class="share-anchor" onclick="shareAnchor((currentKey||'')+'--funding',event)" title="Copy link to funding panel" style="position:absolute;top:12px;right:12px;">🔗</a>
+    <a class="share-anchor" href="#funding" onclick="shareAnchor(panelAnchorId('funding'),event);return false;" title="Copy link to funding panel" aria-label="Copy link to funding panel" style="position:absolute;top:12px;right:12px;">#</a>
     <h3 id="funding-chart-title">R&amp;D Expenditures</h3>
     <div class="funding-source">Sources: <a href="https://ncses.nsf.gov/surveys/higher-education-research-development/2024" target="_blank">NSF HERD Survey</a> (R&amp;D) · <a href="https://nces.ed.gov/ipeds/" target="_blank">IPEDS Finance Survey</a> (Revenue) · <a href="https://shef.sheeo.org/" target="_blank">SHEEO SHEF</a> (State Appropriations) · <a href="https://www.usaspending.gov/" target="_blank">USAspending.gov</a> (Federal Awards)</div>
     <div class="funding-panels">
@@ -500,10 +508,15 @@
       <strong style="color:var(--text);">Federal Awards (USAspending.gov):</strong>
       <span id="usaspending-content"></span>
     </div>
+    <div id="grants-row" style="margin-top:14px;display:none;border-top:1px solid var(--surface2);padding-top:10px;">
+      <div style="font-weight:600;font-size:0.85rem;margin-bottom:6px;">Federal Grant Obligations (<a href="https://www.nsf.gov/awardsearch/" target="_blank" style="color:var(--accent);text-decoration:none;">NSF Award Search</a> · <a href="https://reporter.nih.gov/" target="_blank" style="color:var(--accent);text-decoration:none;">NIH RePORTER</a>)</div>
+      <canvas id="grants-chart" style="max-height:220px;"></canvas>
+      <div id="grants-details" style="margin-top:8px;font-size:0.78rem;color:var(--text-muted);line-height:1.6;"></div>
+    </div>
   </div>
 
   <div id="enrollment-container" class="funding-chart-wrap" style="position:relative;">
-    <a class="share-anchor" onclick="shareAnchor((currentKey||'')+'--enrollment',event)" title="Copy link to enrollment panel" style="position:absolute;top:12px;right:12px;">🔗</a>
+    <a class="share-anchor" href="#enrollment" onclick="shareAnchor(panelAnchorId('enrollment'),event);return false;" title="Copy link to enrollment panel" aria-label="Copy link to enrollment panel" style="position:absolute;top:12px;right:12px;">#</a>
     <h3 id="enrollment-title">Graduate Enrollment Demographics</h3>
     <div class="funding-source">Sources: <a href="https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-in-science-and-engineering" target="_blank">NSF GSS</a> (Enrollment, 2024) · <a href="https://nces.ed.gov/ipeds/" target="_blank">IPEDS Completions</a> (PhD Trend, 2010–2024)</div>
     <div id="enrollment-stats" style="margin-bottom:14px;"></div>
@@ -532,7 +545,7 @@
   </div>
 
   <div id="h1b-container" class="funding-chart-wrap" style="position:relative;">
-    <a class="share-anchor" onclick="shareAnchor((currentKey||'')+'--h1b',event)" title="Copy link to H-1B panel" style="position:absolute;top:12px;right:12px;">🔗</a>
+    <a class="share-anchor" href="#h1b" onclick="shareAnchor(panelAnchorId('h1b'),event);return false;" title="Copy link to H-1B panel" aria-label="Copy link to H-1B panel" style="position:absolute;top:12px;right:12px;">#</a>
     <h3 id="h1b-title">Immigration via Education Pipeline</h3>
     <div class="funding-source">Sources: <a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank">ICE/SEVP</a> (OPT, CY 2017-2024) · <a href="https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub" target="_blank">USCIS</a> (H-1B, FY 2010-2026) · <a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" target="_blank">DOL</a> (LCA + PERM)</div>
     <div id="h1b-pipeline-summary" style="font-size:0.85rem;padding:8px 12px;margin-bottom:8px;background:var(--surface);border-radius:6px;display:none;"></div>
@@ -567,7 +580,7 @@
 </main>
 
 <script>
-const DATA = [{"key":"missouri_st","name":"Missouri S&T","nra":73.2,"count":24},{"key":"siu","name":"Southern Illinois","nra":71.3,"count":550},{"key":"njit","name":"NJIT","nra":70.1,"count":23},{"key":"utarlington","name":"UT Arlington","nra":65.5,"count":831},{"key":"smu","name":"SMU","nra":65.3,"count":236},{"key":"caltech","name":"Caltech","nra":64.9,"count":0},{"key":"uhouston","name":"U Houston","nra":64.5,"count":1971},{"key":"mtu","name":"Michigan Tech","nra":62.0,"count":132},{"key":"purdue","name":"Purdue","nra":60.3,"count":1847},{"key":"sdsu","name":"SD State","nra":59.6,"count":174},{"key":"utdallas","name":"UT Dallas","nra":59.3,"count":865},{"key":"kstate","name":"Kansas State","nra":58.3,"count":2180},{"key":"ttu","name":"Texas Tech","nra":57.4,"count":972},{"key":"rit","name":"RIT","nra":57.3,"count":445},{"key":"binghamton","name":"Binghamton","nra":56.9,"count":50},{"key":"cmu","name":"Carnegie Mellon","nra":56.8,"count":801},{"key":"iowa_state","name":"Iowa State","nra":55.5,"count":1966},{"key":"clemson","name":"Clemson","nra":55.2,"count":694},{"key":"uarkansas","name":"U Arkansas","nra":54.3,"count":1421},{"key":"ubuffalo","name":"U Buffalo","nra":54.1,"count":1160},{"key":"ucf","name":"UCF","nra":53.8,"count":1973},{"key":"vt","name":"Virginia Tech","nra":53.6,"count":3258},{"key":"und","name":"U North Dakota","nra":53.5,"count":751},{"key":"msstate","name":"Mississippi State","nra":53.0,"count":0},{"key":"gatech","name":"Georgia Tech","nra":52.4,"count":472},{"key":"rice","name":"Rice","nra":52.4,"count":1368},{"key":"lsu","name":"LSU","nra":52.3,"count":1908},{"key":"umissouri","name":"U Missouri","nra":50.2,"count":1509},{"key":"stony_brook","name":"Stony Brook","nra":49.6,"count":167},{"key":"umass","name":"UMass Amherst","nra":49.3,"count":2298},{"key":"unl","name":"U Nebraska-Lincoln","nra":49.2,"count":1006},{"key":"usd","name":"U South Dakota","nra":48.9,"count":197},{"key":"rpi","name":"RPI","nra":48.7,"count":1},{"key":"marquette","name":"Marquette","nra":48.6,"count":330},{"key":"umemphis","name":"U Memphis","nra":47.9,"count":997},{"key":"syracuse","name":"Syracuse","nra":47.5,"count":631},{"key":"ulouisville","name":"U Louisville","nra":47.4,"count":970},{"key":"usc_columbia","name":"U South Carolina","nra":47.0,"count":2393},{"key":"unh","name":"U New Hampshire","nra":46.8,"count":162},{"key":"utaustin","name":"UT Austin","nra":46.4,"count":3638},{"key":"udel","name":"U Delaware","nra":46.3,"count":37},{"key":"udenver","name":"U Denver","nra":45.2,"count":844},{"key":"unt","name":"U North Texas","nra":45.0,"count":2423},{"key":"mit","name":"MIT","nra":43.8,"count":2657},{"key":"wvu","name":"West Virginia U","nra":42.8,"count":1452},{"key":"usf","name":"U South Florida","nra":41.5,"count":2102},{"key":"pdx","name":"Portland State","nra":41.2,"count":874},{"key":"wayne_state","name":"Wayne State","nra":40.2,"count":803},{"key":"mines","name":"CO School of Mines","nra":39.8,"count":25},{"key":"ukansas","name":"U Kansas","nra":39.2,"count":3156},{"key":"olemiss","name":"Ole Miss","nra":39.2,"count":1100},{"key":"umn","name":"U Minnesota","nra":38.8,"count":3045},{"key":"unm","name":"U New Mexico","nra":38.7,"count":93},{"key":"unlv","name":"UNLV","nra":38.5,"count":1306},{"key":"cuny","name":"CUNY Grad Center","nra":38.5,"count":3169},{"key":"uiuc","name":"UIUC","nra":37.9,"count":1229},{"key":"ncstate","name":"NC State","nra":37.8,"count":760},{"key":"washu","name":"Wash U St Louis","nra":37.7,"count":1320},{"key":"duke","name":"Duke","nra":37.3,"count":976},{"key":"ucla","name":"UCLA","nra":37.3,"count":3237},{"key":"ucsd","name":"UC San Diego","nra":36.6,"count":1753},{"key":"uarizona","name":"U Arizona","nra":36.3,"count":4329},{"key":"stanford","name":"Stanford","nra":35.5,"count":2136},{"key":"ucirvine","name":"UC Irvine","nra":35.0,"count":1747},{"key":"dartmouth","name":"Dartmouth","nra":34.9,"count":11},{"key":"umd","name":"U Maryland","nra":34.8,"count":15},{"key":"niu","name":"Northern Illinois","nra":34.4,"count":1138},{"key":"bu","name":"Boston U","nra":34.2,"count":7386},{"key":"ucriverside","name":"UC Riverside","nra":34.0,"count":991},{"key":"yale","name":"Yale","nra":33.2,"count":524},{"key":"harvard","name":"Harvard","nra":33.0,"count":2337},{"key":"penn_state","name":"Penn State","nra":32.5,"count":0},{"key":"cornell","name":"Cornell","nra":32.2,"count":812},{"key":"ucsb","name":"UC Santa Barbara","nra":32.0,"count":1184},{"key":"upenn","name":"U Penn","nra":31.6,"count":4139},{"key":"byu","name":"BYU","nra":30.9,"count":1611},{"key":"ucdavis","name":"UC Davis","nra":30.0,"count":852},{"key":"ucmerced","name":"UC Merced","nra":30.0,"count":274},{"key":"boise_state","name":"Boise State","nra":29.7,"count":426},{"key":"ucberkeley","name":"UC Berkeley","nra":29.3,"count":2297},{"key":"ucsc","name":"UC Santa Cruz","nra":28.0,"count":773},{"key":"ucsf","name":"UCSF","nra":25.0,"count":221},{"key":"nau","name":"Northern Arizona","nra":22.8,"count":382},{"key":"la_tech","name":"Louisiana Tech","nra":22.5,"count":157},{"key":"northwestern","name":"Northwestern","nra":20.4,"count":1363},{"key":"umt","name":"U Montana","nra":19.9,"count":873},{"key":"uwmadison","name":"UW Madison","nra":19.7,"count":250},{"key":"columbia","name":"Columbia","nra":19.7,"count":3984},{"key":"uf","name":"U Florida","nra":18.4,"count":1247},{"key":"wsu","name":"Washington State","nra":18.0,"count":269},{"key":"gmu","name":"George Mason","nra":17.7,"count":1329},{"key":"utah_state","name":"Utah State","nra":17.3,"count":595},{"key":"utk","name":"U Tennessee","nra":17.2,"count":2336},{"key":"msu","name":"Michigan State","nra":16.7,"count":2458},{"key":"uw_seattle","name":"UW Seattle","nra":16.6,"count":1971},{"key":"uutah","name":"U Utah","nra":15.9,"count":381},{"key":"usm","name":"U Southern Miss","nra":15.4,"count":763},{"key":"uva","name":"U Virginia","nra":14.1,"count":3},{"key":"northern_colorado","name":"U Northern Colorado","nra":11.9,"count":655},{"key":"uoregon","name":"U Oregon","nra":11.8,"count":1308},{"key":"temple","name":"Temple","nra":10.6,"count":684}];
+const DATA = [{"key":"missouri_st","name":"Missouri S&T","nra":73.2,"count":24},{"key":"siu","name":"Southern Illinois","nra":71.3,"count":1066},{"key":"njit","name":"NJIT","nra":70.1,"count":23},{"key":"utarlington","name":"UT Arlington","nra":65.5,"count":831},{"key":"smu","name":"SMU","nra":65.3,"count":257},{"key":"caltech","name":"Caltech","nra":64.9,"count":0},{"key":"uhouston","name":"U Houston","nra":64.5,"count":1971},{"key":"mtu","name":"Michigan Tech","nra":62.0,"count":132},{"key":"purdue","name":"Purdue","nra":60.3,"count":1847},{"key":"sdsu","name":"SD State","nra":59.6,"count":174},{"key":"utdallas","name":"UT Dallas","nra":59.3,"count":858},{"key":"kstate","name":"Kansas State","nra":58.3,"count":2180},{"key":"ttu","name":"Texas Tech","nra":57.4,"count":2914},{"key":"rit","name":"RIT","nra":57.3,"count":445},{"key":"binghamton","name":"Binghamton","nra":56.9,"count":50},{"key":"cmu","name":"Carnegie Mellon","nra":56.8,"count":801},{"key":"iowa_state","name":"Iowa State","nra":55.5,"count":2082},{"key":"clemson","name":"Clemson","nra":55.2,"count":1454},{"key":"uarkansas","name":"U Arkansas","nra":54.3,"count":1421},{"key":"ubuffalo","name":"U Buffalo","nra":54.1,"count":1160},{"key":"ucf","name":"UCF","nra":53.8,"count":1973},{"key":"vt","name":"Virginia Tech","nra":53.6,"count":3258},{"key":"und","name":"U North Dakota","nra":53.5,"count":755},{"key":"msstate","name":"Mississippi State","nra":53.0,"count":0},{"key":"gatech","name":"Georgia Tech","nra":52.4,"count":472},{"key":"rice","name":"Rice","nra":52.4,"count":1368},{"key":"lsu","name":"LSU","nra":52.3,"count":1908},{"key":"umissouri","name":"U Missouri","nra":50.2,"count":1509},{"key":"uconn","name":"UConn","nra":49.7,"count":530},{"key":"stony_brook","name":"Stony Brook","nra":49.6,"count":167},{"key":"umass","name":"UMass Amherst","nra":49.3,"count":8162},{"key":"unl","name":"U Nebraska-Lincoln","nra":49.2,"count":1006},{"key":"usd","name":"U South Dakota","nra":48.9,"count":197},{"key":"rpi","name":"RPI","nra":48.7,"count":1},{"key":"marquette","name":"Marquette","nra":48.6,"count":431},{"key":"umemphis","name":"U Memphis","nra":47.9,"count":997},{"key":"syracuse","name":"Syracuse","nra":47.5,"count":631},{"key":"ulouisville","name":"U Louisville","nra":47.4,"count":970},{"key":"usc_columbia","name":"U South Carolina","nra":47.0,"count":2393},{"key":"unh","name":"U New Hampshire","nra":46.8,"count":475},{"key":"utaustin","name":"UT Austin","nra":46.4,"count":3637},{"key":"udel","name":"U Delaware","nra":46.3,"count":274},{"key":"udenver","name":"U Denver","nra":45.2,"count":844},{"key":"unt","name":"U North Texas","nra":45.0,"count":2423},{"key":"mit","name":"MIT","nra":43.8,"count":2657},{"key":"uky","name":"U Kentucky","nra":43.5,"count":1418},{"key":"wvu","name":"West Virginia U","nra":42.8,"count":1452},{"key":"usf","name":"U South Florida","nra":41.5,"count":2102},{"key":"pdx","name":"Portland State","nra":41.2,"count":914},{"key":"wayne_state","name":"Wayne State","nra":40.2,"count":955},{"key":"mines","name":"CO School of Mines","nra":39.8,"count":25},{"key":"ukansas","name":"U Kansas","nra":39.2,"count":4970},{"key":"olemiss","name":"Ole Miss","nra":39.2,"count":1145},{"key":"umn","name":"U Minnesota","nra":38.8,"count":3045},{"key":"unm","name":"U New Mexico","nra":38.7,"count":1386},{"key":"unlv","name":"UNLV","nra":38.5,"count":1306},{"key":"cuny","name":"CUNY Grad Center","nra":38.5,"count":3169},{"key":"uiuc","name":"UIUC","nra":37.9,"count":1210},{"key":"ncstate","name":"NC State","nra":37.8,"count":760},{"key":"washu","name":"Wash U St Louis","nra":37.7,"count":1320},{"key":"duke","name":"Duke","nra":37.3,"count":1201},{"key":"ucla","name":"UCLA","nra":37.3,"count":3422},{"key":"ucsd","name":"UC San Diego","nra":36.6,"count":1843},{"key":"uarizona","name":"U Arizona","nra":36.3,"count":4329},{"key":"stanford","name":"Stanford","nra":35.5,"count":2186},{"key":"ucirvine","name":"UC Irvine","nra":35.0,"count":1852},{"key":"dartmouth","name":"Dartmouth","nra":34.9,"count":116},{"key":"umd","name":"U Maryland","nra":34.8,"count":15},{"key":"niu","name":"Northern Illinois","nra":34.4,"count":1138},{"key":"bu","name":"Boston U","nra":34.2,"count":7361},{"key":"ucriverside","name":"UC Riverside","nra":34.0,"count":1032},{"key":"yale","name":"Yale","nra":33.2,"count":668},{"key":"harvard","name":"Harvard","nra":33.0,"count":2187},{"key":"penn_state","name":"Penn State","nra":32.5,"count":0},{"key":"cornell","name":"Cornell","nra":32.2,"count":812},{"key":"ucsb","name":"UC Santa Barbara","nra":32.0,"count":1202},{"key":"upenn","name":"U Penn","nra":31.6,"count":4098},{"key":"byu","name":"BYU","nra":30.9,"count":1611},{"key":"ucdavis","name":"UC Davis","nra":30.0,"count":861},{"key":"ucmerced","name":"UC Merced","nra":30.0,"count":279},{"key":"boise_state","name":"Boise State","nra":29.7,"count":426},{"key":"ucberkeley","name":"UC Berkeley","nra":29.3,"count":2299},{"key":"ucsc","name":"UC Santa Cruz","nra":28.0,"count":814},{"key":"ucsf","name":"UCSF","nra":25.0,"count":229},{"key":"nau","name":"Northern Arizona","nra":22.8,"count":382},{"key":"cu_boulder","name":"CU Boulder","nra":22.6,"count":638},{"key":"la_tech","name":"Louisiana Tech","nra":22.5,"count":157},{"key":"northwestern","name":"Northwestern","nra":20.4,"count":1165},{"key":"umt","name":"U Montana","nra":19.9,"count":873},{"key":"uwmadison","name":"UW Madison","nra":19.7,"count":250},{"key":"columbia","name":"Columbia","nra":19.7,"count":3984},{"key":"uf","name":"U Florida","nra":18.4,"count":1438},{"key":"wsu","name":"Washington State","nra":18.0,"count":1130},{"key":"gmu","name":"George Mason","nra":17.7,"count":3858},{"key":"utah_state","name":"Utah State","nra":17.3,"count":595},{"key":"utk","name":"U Tennessee","nra":17.2,"count":2338},{"key":"msu","name":"Michigan State","nra":16.7,"count":2458},{"key":"uw_seattle","name":"UW Seattle","nra":16.6,"count":1971},{"key":"uutah","name":"U Utah","nra":15.9,"count":381},{"key":"usm","name":"U Southern Miss","nra":15.4,"count":1132},{"key":"montana_state","name":"Montana State U","nra":15.3,"count":895},{"key":"uva","name":"U Virginia","nra":14.1,"count":7},{"key":"northern_colorado","name":"U Northern Colorado","nra":11.9,"count":655},{"key":"uoregon","name":"U Oregon","nra":11.8,"count":1308},{"key":"temple","name":"Temple","nra":10.6,"count":684}];
 const DATA_DIR = 'data/nonstem';
 const ORIGINS = {"chinese": ["🇨🇳", "Chinese"], "indian": ["🇮🇳", "Indian"], "iranian": ["🇮🇷", "Iranian"], "korean": ["🇰🇷", "Korean"], "vietnamese": ["🇻🇳", "Vietnamese"], "turkish": ["🇹🇷", "Turkish"], "arabic": ["<img src=\"arabic_language_flag.svg\" class=\"arabic-flag-img\" alt=\"Arabic\">", "Arabic"]};
 const ORIGIN_KEYS = Object.keys(ORIGINS);
@@ -575,6 +588,7 @@ let flagsVisible = false;
 let msVisible = false;
 let oldVisible = false;
 let currentKey = null;
+let currentAnchor = null;  // deepest addressed thing: 'mit--chemistry--2024'
 let searchTimer = null;
 const FUNDING = {
   "upenn": {
@@ -6115,6 +6129,7 @@ let completionsTrendChart = null;
 let enrollmentRaceChart = null;
 let facultyRaceChart = null;
 let fundingChart = null;
+let grantsChart = null;
 let financeChart = null;
 
 // Build lookup by key (lightweight — no records yet)
@@ -6472,12 +6487,19 @@ function renderUni(uni) {
 
   const repoBase = getRepoBase(uni);
   const repoLink = repoBase ? ` &middot; <a href="${repoBase}" target="_blank" style="color:var(--accent);text-decoration:none;font-size:0.8rem;">Institutional Repository</a>` : '';
-  const uniSlug = slug(uni.key || uni.name);
-  let html = `<h2 id="${uniSlug}">${esc(uni.name)} <span class="uni-nra">IPEDS NRA: ${uni.nra}%</span></h2>`;
+  // The university key is the canonical anchor segment — the same token used
+  // in the sidebar links, /universities/<key>.html and data/stem/<key>.json.
+  const uniSlug = uni.key || slug(uni.name);
+  // Ids used to be slug(key), so 'missouri_st' rendered as 'missouri-st'. Any
+  // link or tool still holding the old form gets a zero-height alias element
+  // at the same position, so getElementById() on it keeps working.
+  const uniLegacy = slug(uniSlug);
+  const alias = (id) => uniLegacy === uniSlug ? '' : `<span class="anchor-alias" id="${id}"></span>`;
+  let html = alias(uniLegacy) + `<h2 id="${uniSlug}">${esc(uni.name)} <span class="uni-nra">IPEDS NRA: ${uni.nra}%</span><a class="share-anchor" href="#${uniSlug}" onclick="shareAnchor('${uniSlug}',event);return false;" title="Copy link to ${esc(uni.name)}" aria-label="Copy link to ${esc(uni.name)}">#</a></h2>`;
   html += `<div class="uni-stats">${allTotal.toLocaleString()} records across ${depts.length} departments &middot; ${statsParts.join(' &middot; ')}`;
   if (originParts.length > 0) html += `<span class="uni-origin-stats"> &middot; ${originParts.join(' &middot; ')}</span>`;
   html += `${repoLink}</div>`;
-  html += `<div style="margin:8px 0 12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;"><button onclick="expandAllDepts()" style="background:var(--surface);border:1px solid var(--surface2);color:var(--text-muted);font-size:0.72rem;padding:3px 10px;border-radius:5px;cursor:pointer;">Expand All Departments</button><button onclick="collapseAllDepts()" style="background:var(--surface);border:1px solid var(--surface2);color:var(--text-muted);font-size:0.72rem;padding:3px 10px;border-radius:5px;cursor:pointer;">Collapse All</button><button id="share-btn" onclick="shareLink()" style="background:none;border:none;font-size:0.75rem;cursor:pointer;margin-left:auto;opacity:0.4;transition:opacity 0.15s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.4'" title="Copy link to clipboard">🔗</button></div>`;
+  html += `<div style="margin:8px 0 12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;"><button onclick="expandAllDepts()" style="background:var(--surface);border:1px solid var(--surface2);color:var(--text-muted);font-size:0.72rem;padding:3px 10px;border-radius:5px;cursor:pointer;">Expand All Departments</button><button onclick="collapseAllDepts()" style="background:var(--surface);border:1px solid var(--surface2);color:var(--text-muted);font-size:0.72rem;padding:3px 10px;border-radius:5px;cursor:pointer;">Collapse All</button><button id="share-btn" onclick="shareLink()" style="background:none;border:none;color:var(--accent);font-size:0.72rem;font-weight:700;cursor:pointer;margin-left:auto;opacity:0.4;transition:opacity 0.15s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.4'" title="Copy link to this view (university plus any open panels)">Copy link</button></div>`;
 
   let deptIdx = 0;
   depts.forEach(d => {
@@ -6515,7 +6537,7 @@ function renderUni(uni) {
       if (phdRecs.length === 0 && msRecs.length > 0) {
         // Only MS records — render a compact year entry that's only visible when MS toggle is on
         const msRows = buildNameRows(msRecs);
-        yearHtml += `<div class="year-block ms-group" id="${uniSlug}--${yr}"><div class="year-header" onclick="this.parentElement.classList.toggle('yr-collapsed')"><span class="year-toggle">▼</span><span style="color:var(--accent);font-weight:700">${yr}</span>&nbsp;&nbsp;${msRecs.length} master's ${msRecs.length !== 1 ? 'theses' : 'thesis'}</div><div class="year-names">${msRows}</div></div>`;
+        yearHtml += `<div class="year-block ms-group" id="${uniSlug}--${yr}">${alias(uniLegacy + '--' + yr)}<div class="year-header" onclick="this.parentElement.classList.toggle('yr-collapsed')"><span class="year-toggle">▼</span><span style="color:var(--accent);font-weight:700">${yr}</span>&nbsp;&nbsp;${msRecs.length} master's ${msRecs.length !== 1 ? 'theses' : 'thesis'}<a class="share-anchor" href="#${uniSlug}--${yr}" onclick="shareAnchor('${uniSlug}--${yr}',event);return false;" title="Copy link to ${yr} master's theses" aria-label="Copy link to ${yr} master's theses">#</a></div><div class="year-names">${msRows}</div></div>`;
         return;
       }
 
@@ -6555,7 +6577,7 @@ function renderUni(uni) {
 
       const oldClass = parseInt(yr) < 2010 ? ' pre-2010' : '';
       const yrId = uniSlug + '--' + slug(d.dept) + '--' + yr;
-      yearHtml += `<div class="year-block${oldClass}" id="${yrId}"><div class="year-header" onclick="this.parentElement.classList.toggle('yr-collapsed')"><span class="year-toggle">▼</span><span class="year-label">${yr}</span><span class="year-count">${headerLabel}</span><a class="share-anchor" onclick="shareAnchor('${yrId}',event)" title="Copy link to ${yr}">🔗</a><span class="year-pct ${pctClass}">${yrBadge.join(' ')} &mdash; ${yrClassified}/${phdRecs.length} classified (${yrPct.toFixed(0)}%)</span></div><div class="year-names">${namesHtml}</div></div>`;
+      yearHtml += `<div class="year-block${oldClass}" id="${yrId}">${alias(uniLegacy + '--' + slug(d.dept) + '--' + yr)}<div class="year-header" onclick="this.parentElement.classList.toggle('yr-collapsed')"><span class="year-toggle">▼</span><span class="year-label">${yr}</span><span class="year-count">${headerLabel}</span><a class="share-anchor" href="#${yrId}" onclick="shareAnchor('${yrId}',event);return false;" title="Copy link to ${yr}" aria-label="Copy link to ${yr}">#</a><span class="year-pct ${pctClass}">${yrBadge.join(' ')} &mdash; ${yrClassified}/${phdRecs.length} classified (${yrPct.toFixed(0)}%)</span></div><div class="year-names">${namesHtml}</div></div>`;
     });
 
     // Dept header flags
@@ -6588,7 +6610,7 @@ function renderUni(uni) {
 
     const deptSlug = uniSlug + '--' + slug(d.dept);
     const yearControls = Object.keys(byYear).length > 2 ? `<div style="display:flex;gap:6px;margin-bottom:6px;"><button onclick="expandAllYears(this)" style="background:none;border:1px solid var(--surface2);color:var(--text-muted);font-size:0.68rem;padding:2px 8px;border-radius:4px;cursor:pointer;">Expand All Years</button><button onclick="collapseAllYears(this)" style="background:none;border:1px solid var(--surface2);color:var(--text-muted);font-size:0.68rem;padding:2px 8px;border-radius:4px;cursor:pointer;">Collapse Years</button></div>` : '';
-    html += `<div class="dept-section${finalCollapsed}${generalClass}" id="${deptSlug}" data-dept="${esc(d.dept)}"><div class="dept-header" onclick="this.parentElement.classList.toggle('collapsed')"><span class="dept-toggle">▼</span><span class="dept-name">${esc(d.dept)}</span>${deptLinkHtml}<span class="dept-stats">${d.stats.total} records</span><span class="dept-flags">${deptBadge.join('  ')}</span><span class="dept-pct ${pctClass}">${d.stats.classifiedPct.toFixed(0)}% classified</span><a class="share-anchor" onclick="shareAnchor('${deptSlug}',event)" title="Copy link to ${esc(d.dept)}">🔗</a></div><div class="dept-body">${yearControls}${yearHtml}</div></div>`;
+    html += `<div class="dept-section${finalCollapsed}${generalClass}" id="${deptSlug}" data-dept="${esc(d.dept)}">${alias(uniLegacy + '--' + slug(d.dept))}<div class="dept-header" onclick="this.parentElement.classList.toggle('collapsed')"><span class="dept-toggle">▼</span><span class="dept-name">${esc(d.dept)}</span>${deptLinkHtml}<span class="dept-stats">${d.stats.total} records</span><span class="dept-flags">${deptBadge.join('  ')}</span><span class="dept-pct ${pctClass}">${d.stats.classifiedPct.toFixed(0)}% classified</span><a class="share-anchor" href="#${deptSlug}" onclick="shareAnchor('${deptSlug}',event);return false;" title="Copy link to ${esc(d.dept)}" aria-label="Copy link to ${esc(d.dept)}">#</a></div><div class="dept-body">${yearControls}${yearHtml}</div></div>`;
     deptIdx++;
   });
 
@@ -6634,7 +6656,9 @@ function showUni(key, skipHash) {
   // Close mobile sidebar if open
   document.getElementById('sidebar').classList.remove('open');
   currentKey = key;
-  if (!skipHash) updateUrlState();
+  // Picking a university from the sidebar addresses the university itself;
+  // a deep link sets currentAnchor first and passes skipHash.
+  if (!skipHash) { currentAnchor = key; updateUrlState(); }
   // Update page title for browser tab + bookmarks
   const uniName = UNI_MAP[key] ? UNI_MAP[key].name : key;
   document.title = uniName + ' — PhD Demographics';
@@ -6657,6 +6681,7 @@ function showUni(key, skipHash) {
     updateFundingChart();
     updateEnrollmentPanel();
     updateH1bPanel();
+    consumePendingAnchor();
     return;
   }
 
@@ -6674,6 +6699,7 @@ function showUni(key, skipHash) {
         updateFundingChart();
         updateEnrollmentPanel();
         updateH1bPanel();
+        consumePendingAnchor();
       }
     })
     .catch(e => {
@@ -7419,6 +7445,47 @@ function updateFundingChart() {
     } else {
       usaRow.style.display = 'none';
     }
+
+    // NSF and NIH grant obligations by year. Distinct from HERD above:
+    // HERD is self-reported R&D spending, these are what the agencies
+    // actually obligated.
+    const nsfA = uni && uni.nsf_awards;
+    const nihA = uni && uni.nih;
+    const grantsRow = document.getElementById('grants-row');
+    const nsfBy = (nsfA && nsfA.by_year) || {};
+    const nihBy = (nihA && nihA.by_year) || {};
+    const gyears = Array.from(new Set(Object.keys(nsfBy).concat(Object.keys(nihBy)))).sort();
+    if (gyears.length && typeof Chart !== 'undefined') {
+      const nsfVals = gyears.map(y => ((nsfBy[y] || {}).total_obligated || 0) / 1e6);
+      const nihVals = gyears.map(y => ((nihBy[y] || {}).total_dollars || 0) / 1e6);
+      if (grantsChart) grantsChart.destroy();
+      grantsChart = new Chart(document.getElementById('grants-chart').getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: gyears,
+          datasets: [
+            { label: 'NSF ($M)', data: nsfVals, backgroundColor: 'rgba(56,189,248,0.75)', borderRadius: 4 },
+            { label: 'NIH ($M)', data: nihVals, backgroundColor: 'rgba(167,139,250,0.75)', borderRadius: 4 }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: true, position: 'bottom' },
+            tooltip: { callbacks: { label: ctx => ctx.dataset.label.replace(' ($M)','') + ': $' + ctx.parsed.y.toLocaleString(undefined,{maximumFractionDigits:1}) + 'M' } }
+          },
+          scales: { y: { beginAtZero: true, ticks: { callback: v => '$' + v + 'M' } } }
+        }
+      });
+      const parts = [];
+      if (nsfA && nsfA.total_awards) parts.push(`${nsfA.total_awards.toLocaleString()} NSF awards totalling ${fmtDollars(nsfA.total_obligated)}`);
+      if (nihA && nihA.total_grants) parts.push(`${nihA.total_grants.toLocaleString()} NIH grants totalling ${fmtDollars(nihA.total_dollars)}`);
+      document.getElementById('grants-details').innerHTML = parts.join(' · ') +
+        ' <span style="font-size:0.7rem;">Obligations reported by the funding agency, not institutional expenditure.</span>';
+      grantsRow.style.display = 'block';
+    } else if (grantsRow) {
+      grantsRow.style.display = 'none';
+    }
   } catch(e) { console.warn('State/USAspending context error:', e); }
   } catch(e) { console.warn('Funding chart error:', e); }
 }
@@ -7545,10 +7612,90 @@ function doSearch(query) {
   content.innerHTML = html;
 }
 
-// URL state management — encode toggles in hash params
+// ===== Anchors: one addressing scheme for every part of this page =====
+//
+//   #<uni_key>                          a university            (#missouri_st)
+//   #<uni_key>--<field>                 a department in it      (#missouri_st--chemistry)
+//   #<uni_key>--<field>--<year>         one year of it          (#missouri_st--chemistry--2024)
+//   #<uni_key>--<year>                  its master's block      (#missouri_st--2024)
+//   #<uni_key>--funding                 the funding panel       (opens the panel)
+//   #<uni_key>--enrollment              the enrollment panel
+//   #<uni_key>--h1b                     the H-1B / OPT panel
+//   #nat-phd, #nat-opt, ...             a national chart
+//
+// <uni_key> is the key used everywhere else on the site: the sidebar links,
+// /universities/<key>.html, and data/stem/<key>.json. <field> is the
+// department name lower-cased with every run of non-alphanumerics turned into
+// a single hyphen. Resolution is forgiving — case, and '-' versus '_' in the
+// university key, never matter, so older hyphenated links still land.
+//
+// Panel toggles ride along after the anchor: #<anchor>?funding=1&enrollment=1&h1b=1&ms=1
+
+const PANEL_ANCHORS = {
+  funding:    { el: 'funding-chart-container',  isOn: () => fundingVisible,    turnOn: () => toggleFunding() },
+  enrollment: { el: 'enrollment-container',     isOn: () => enrollmentVisible, turnOn: () => toggleEnrollment() },
+  h1b:        { el: 'h1b-container',            isOn: () => h1bVisible,        turnOn: () => toggleH1b() },
+};
+
+// Legacy ids used slug(key), so 'missouri_st' appeared as 'missouri-st'.
+const UNI_BY_SLUG = {};
+DATA.forEach(u => { UNI_BY_SLUG[slug(u.key)] = u.key; });
+
+function panelAnchorId(panel) {
+  return (currentKey ? currentKey + '--' : '') + panel;
+}
+
+// Which university does this first path segment mean? Exact key, then the
+// hyphenated legacy form, then a loose name match (kept from the original
+// implementation so hand-typed links like #missouri-st keep working).
+function resolveUniKey(seg) {
+  if (!seg) return null;
+  const s = seg.toLowerCase();
+  if (UNI_MAP[s]) return s;
+  if (UNI_BY_SLUG[s]) return UNI_BY_SLUG[s];
+  const underscored = s.replace(/-/g, '_');
+  if (UNI_MAP[underscored]) return underscored;
+  const bare = s.replace(/[^a-z0-9]/g, '');
+  for (const u of DATA) {
+    if (u.name.toLowerCase().replace(/[^a-z0-9]/g, '').includes(bare)) return u.key;
+  }
+  return null;
+}
+
+// Split '#missouri-st--chemistry--2024?h1b=1' into its parts.
+function parseUrlState() {
+  const raw = decodeURIComponent((location.hash || '').replace(/^#/, ''));
+  if (!raw) return null;
+  const [anchorPart, paramStr] = raw.split('?');
+  const params = {};
+  if (paramStr) {
+    paramStr.split('&').forEach(p => {
+      const [k, v] = p.split('=');
+      params[k] = v;
+    });
+  }
+  const segs = anchorPart.split('--').filter(Boolean);
+  const key = resolveUniKey(segs[0]);
+  return {
+    raw: anchorPart,
+    key: (segs[0] || '').toLowerCase(),
+    uniKey: key,
+    segs: segs,
+    panel: segs.length === 2 && PANEL_ANCHORS[segs[1]] ? segs[1] : null,
+    params: params,
+  };
+}
+
+// The canonical id for a parsed anchor, rebuilt from the resolved key so a
+// legacy hyphenated link maps onto the element that is actually rendered.
+function canonicalAnchorId(state) {
+  if (!state || !state.uniKey) return state ? state.raw : '';
+  return [state.uniKey].concat(state.segs.slice(1)).join('--');
+}
+
 function updateUrlState() {
   if (!currentKey) return;
-  let hash = currentKey;
+  let hash = currentAnchor && currentAnchor.split('--')[0] === currentKey ? currentAnchor : currentKey;
   const params = [];
   if (enrollmentVisible) params.push('enrollment=1');
   if (fundingVisible) params.push('funding=1');
@@ -7558,57 +7705,124 @@ function updateUrlState() {
   history.replaceState(null, '', '#' + hash);
 }
 
-function parseUrlState() {
-  const raw = location.hash.replace('#', '');
-  if (!raw) return null;
-  const [keyPart, paramStr] = raw.split('?');
-  const key = keyPart.toLowerCase();
-  const params = {};
-  if (paramStr) {
-    paramStr.split('&').forEach(p => {
-      const [k, v] = p.split('=');
-      params[k] = v;
-    });
+// Open whatever is hiding the target — a collapsed department, a collapsed
+// year — then scroll to it and mark it briefly.
+let _anchorFlashed = null;
+function focusAnchor(id) {
+  if (!id) return false;
+  let el = document.getElementById(id);
+  if (!el) {
+    const want = id.toLowerCase().replace(/_/g, '-');
+    const all = document.querySelectorAll('[id]');
+    for (let i = 0; i < all.length; i++) {
+      if (all[i].id.toLowerCase().replace(/_/g, '-') === want) { el = all[i]; break; }
+    }
   }
-  return { key, params };
+  if (!el) return false;
+  let node = el;
+  while (node && node !== document.body) {
+    if (node.classList) {
+      node.classList.remove('collapsed');
+      node.classList.remove('yr-collapsed');
+    }
+    node = node.parentElement;
+  }
+  if (_anchorFlashed) _anchorFlashed.classList.remove('anchor-flash');
+  el.scrollIntoView({ behavior: 'auto', block: 'start' });
+  el.classList.add('anchor-flash');
+  _anchorFlashed = el;
+  setTimeout(() => el.classList.remove('anchor-flash'), 2600);
+  return true;
+}
+
+// A deep link asks for an element that does not exist yet: #content is
+// rendered after the university's JSON arrives, and the per-university pages
+// render a second time from their inlined copy. So the request stays live for
+// a few seconds and is re-applied after every render in that window.
+let _pendingAnchor = null;
+let _pendingUntil = 0;
+
+function requestAnchor(id) {
+  _pendingAnchor = id;
+  _pendingUntil = Date.now() + 4000;
+}
+
+// Called after every renderUni().
+function consumePendingAnchor() {
+  if (!_pendingAnchor) return;
+  const id = _pendingAnchor;
+  if (!focusAnchor(id)) setTimeout(() => focusAnchor(id), 250);
+  if (Date.now() > _pendingUntil) {
+    _pendingAnchor = null;
+  } else {
+    setTimeout(() => { if (_pendingAnchor === id) _pendingAnchor = null; },
+               Math.max(0, _pendingUntil - Date.now()));
+  }
 }
 
 function applyUrlState(state) {
   if (!state) return;
-  // Find matching university
-  let uniKey = null;
-  if (UNI_MAP[state.key]) { uniKey = state.key; }
-  else {
-    for (const u of DATA) {
-      if (u.name.toLowerCase().replace(/[^a-z0-9]/g, '').includes(state.key.replace(/[^a-z0-9]/g, ''))) {
-        uniKey = u.key; break;
-      }
-    }
-  }
-  if (!uniKey) return;
 
-  // Apply toggle states from URL BEFORE showing uni
-  // (so they're active when the data loads and panels render)
+  // A national chart or any other element already in the static page.
+  if (!state.uniKey) {
+    if (document.getElementById(state.raw)) {
+      if (currentKey) { /* leave the university view alone */ }
+      focusAnchor(state.raw);
+    }
+    return;
+  }
+
+  // Panel toggles carried in the link, applied before the panels render.
   if (state.params.enrollment === '1' && !enrollmentVisible) toggleEnrollment();
   if (state.params.funding === '1' && !fundingVisible) toggleFunding();
   if (state.params.h1b === '1' && !h1bVisible) toggleH1b();
   if (state.params.ms === '1' && !msVisible) toggleMs();
 
-  showUni(uniKey, true);
+  // A panel anchor opens the panel it names.
+  if (state.panel) {
+    const p = PANEL_ANCHORS[state.panel];
+    if (!p.isOn()) p.turnOn();
+  }
+  // #<uni_key>--<year> addresses a master's block, which is hidden unless the
+  // master's toggle is on.
+  if (state.segs.length === 2 && /^[0-9]{4}$/.test(state.segs[1]) && !msVisible) toggleMs();
+
+  const target = state.panel ? PANEL_ANCHORS[state.panel].el : canonicalAnchorId(state);
+  currentAnchor = canonicalAnchorId(state);
+
+  if (currentKey === state.uniKey && document.querySelector('#content h2')) {
+    // Same university already on screen — just move to the target.
+    focusAnchor(target);
+    return;
+  }
+  // On /universities/<key>.html the data is inlined; use it rather than
+  // triggering a second fetch of the same file.
+  if (window._preloadedUniKey === state.uniKey && window._preloadedUniData
+      && typeof UNI_CACHE !== 'undefined' && !UNI_CACHE[state.uniKey]) {
+    UNI_CACHE[state.uniKey] = window._preloadedUniData;
+  }
+  if (state.panel) {
+    // Panels live outside #content and are already in the DOM.
+    showUni(state.uniKey, true);
+    setTimeout(() => focusAnchor(target), 120);
+  } else {
+    requestAnchor(target);
+    showUni(state.uniKey, true);
+  }
 }
 
-// Share anchor — copy a specific anchor link
+// Share anchor — copy a link to one specific thing on the page
 function shareAnchor(id, event) {
   if (event) event.stopPropagation();
+  if (event && event.preventDefault) event.preventDefault();
   const base = location.origin + location.pathname;
   const url = base + '#' + id;
-  // Track in analytics
   if (typeof send === 'function') send({type:'share',target:id,uni:currentKey||'',url:url});
   navigator.clipboard.writeText(url).then(() => {
-    const el = event && event.target;
+    const el = event && event.currentTarget;
     if (el) {
       const orig = el.textContent;
-      el.textContent = '✓';
+      el.textContent = '\u2713';
       el.style.opacity = '1';
       el.style.color = '#4ade80';
       setTimeout(() => { el.textContent = orig; el.style.color = ''; el.style.opacity = ''; }, 1500);
@@ -7618,7 +7832,7 @@ function shareAnchor(id, event) {
   });
 }
 
-// Share button — copy current URL to clipboard
+// Share button — copy the current view (university plus any open panels)
 function shareLink() {
   updateUrlState();
   const url = location.href;
@@ -7626,7 +7840,7 @@ function shareLink() {
   navigator.clipboard.writeText(url).then(() => {
     const btn = document.getElementById('share-btn');
     const orig = btn.textContent;
-    btn.textContent = '✓ Copied!';
+    btn.textContent = '\u2713 Copied';
     btn.style.color = '#4ade80';
     setTimeout(() => { btn.textContent = orig; btn.style.color = ''; }, 2000);
   }).catch(() => {
@@ -7634,17 +7848,22 @@ function shareLink() {
   });
 }
 
-// On page load: restore state from URL
+// On page load: restore state from URL. Runs again shortly afterwards because
+// the per-university pages inline their data and render after this point.
 (function() {
   const state = parseUrlState();
   if (state) applyUrlState(state);
+  window.addEventListener('load', function() {
+    const s = parseUrlState();
+    if (s && s.uniKey && s.segs.length > 1) {
+      setTimeout(() => focusAnchor(s.panel ? PANEL_ANCHORS[s.panel].el : canonicalAnchorId(s)), 150);
+    } else if (s && !s.uniKey) {
+      focusAnchor(s.raw);
+    }
+  });
 })();
 
-// Search index (3+ MB containing every university) is now lazy-loaded
-// only when the user actually focuses or types in the search box.
-// See the 'focus' handler attached to #search-input below.
-
-// Handle back/forward navigation
+// Handle back/forward navigation and links pasted into an already-open tab
 window.addEventListener('hashchange', function() {
   const state = parseUrlState();
   if (state) applyUrlState(state);
@@ -7662,6 +7881,7 @@ function populateDeptFilter() {
     uni.records.forEach(r => ALL_DEPTS.add(r[0]));
   });
   const sel = document.getElementById('dept-filter');
+  if (!sel) return;
   const current = sel.value;
   // Clear existing options except first
   while (sel.options.length > 1) sel.remove(1);
@@ -7825,7 +8045,7 @@ const _origShowUni = showUni;
       const shareEl = document.querySelector('.dept-header .share-anchor');
       if (shareEl) {
         clearInterval(waitForShare);
-        tooltip.innerHTML = '<div class="coach-arrow right"></div><div class="coach-step">Step 3 of 4</div><div class="coach-text">Click the 🔗 icon on any department, year, or panel to copy a shareable link.</div><button class="coach-dismiss" onclick="window._coachNext()">Next</button>';
+        tooltip.innerHTML = '<div class="coach-arrow right"></div><div class="coach-step">Step 3 of 4</div><div class="coach-text">Click the # icon on any university, department, year, or panel to copy a link straight to it.</div><button class="coach-dismiss" onclick="window._coachNext()">Next</button>';
         positionAt(shareEl, 'left');
       }
     }, 200);

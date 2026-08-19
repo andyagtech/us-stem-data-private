@@ -54,12 +54,12 @@
 </head>
 <body>
 <div class="page">
-  <h1>Data Quality Dashboard</h1>
+  <h1 id="data-quality-dashboard">Data Quality Dashboard</h1>
   <div class="subtitle">Per-university scorecard for the 101 universities tracked on this site. Generated from <code>scripts/qa_report.py</code>.</div>
 
   <div class="stats" id="hero-stats"></div>
 
-  <h2>Records by University, colored by Degree Labeling Quality</h2>
+  <h2 id="records-by-university-colored-by-degree">Records by University, colored by Degree Labeling Quality</h2>
   <div class="panel">
     <div class="panel-desc">Each bar is one university. Width = total records collected from the university's repository (PhD theses + master's theses). Color shows what fraction of those records have a degree level (PhD or MS) parsed out vs left blank — green ≥ 80% labeled, yellow 50–80%, orange 25–50%, red &lt; 25%. Universities with very few records (&lt; 100) are flagged with a red border. Hover for details.</div>
     <div class="legend">
@@ -72,7 +72,7 @@
     <div style="height: 1900px;"><canvas id="records-chart"></canvas></div>
   </div>
 
-  <h2>Quality Heatmap — All Dimensions</h2>
+  <h2 id="quality-heatmap-all-dimensions">Quality Heatmap — All Dimensions</h2>
   <div class="panel">
     <div class="panel-desc">Each cell is colored by quality. Green = good, yellow = ok, orange = concerning, red = problem, gray = N/A. Click a column header to sort.</div>
     <div class="toolbar">
@@ -91,13 +91,13 @@
     </div>
   </div>
 
-  <h2>Top Issues</h2>
+  <h2 id="top-issues">Top Issues</h2>
   <div class="panel">
     <div class="panel-desc">Frequency of distinct quality issues across all 101 universities.</div>
     <div style="height: 360px;"><canvas id="issues-chart"></canvas></div>
   </div>
 
-  <h2>Department Link Coverage by University</h2>
+  <h2 id="department-link-coverage-by-university">Department Link Coverage by University</h2>
   <div class="panel">
     <div class="panel-desc">For each university, every department in our records is checked against four link types: <strong>Department</strong> homepage, <strong>Faculty</strong> directory, <strong>Students</strong> directory, and <strong>Repository search</strong>. Each bar shows how many departments fall into each coverage tier &mdash; green = all 4 fields populated, light green = 3, yellow = 2, orange = 1, red = no link entries at all. Sorted by total department count.</div>
     <div class="legend">
@@ -110,14 +110,14 @@
     <div style="height: 1900px;"><canvas id="link-coverage-chart"></canvas></div>
   </div>
 
-  <h2>Per Link-Type Coverage</h2>
+  <h2 id="per-link-type-coverage">Per Link-Type Coverage</h2>
   <div class="panel">
     <div class="panel-desc">Sitewide totals for each of the 4 link types across all dept-occurrences (101 universities x ~54 average departments). Repository search URLs are auto-generated from the OAI-PMH base URL so they're near-complete; the other three are research-driven and reflect curation effort.</div>
     <div class="stats" id="link-type-stats"></div>
     <div style="height: 360px;"><canvas id="link-types-chart"></canvas></div>
   </div>
 
-  <h2>Per-University Link Counts</h2>
+  <h2 id="per-university-link-counts">Per-University Link Counts</h2>
   <div class="panel">
     <div class="panel-desc">How many departments at each university have each link type. Cells colored by % coverage relative to that university's total department count.</div>
     <div style="overflow-x: auto;">
@@ -430,5 +430,6 @@ buildHeatmap('all');
 })();
 
 </script>
+<script src="/anchors.js" defer></script>
 </body>
 </html>

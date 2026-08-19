@@ -33,55 +33,55 @@
 </head>
 <body>
 <div class="page">
-  <h1>Immigration Pipeline Analysis</h1>
+  <h1 id="immigration-pipeline-analysis">Immigration Pipeline Analysis</h1>
   <div class="subtitle">Cross-dataset analysis: F-1 student visa → enrollment → PhD → OPT → H-1B → EB green card. How foreign nationals move through the US academic-to-employment pipeline.</div>
 
   <!-- A: Full Pipeline by Country -->
-  <h2>A. Full Pipeline by Country</h2>
+  <h2 id="full-pipeline-by-country">A. Full Pipeline by Country</h2>
   <div class="info-box">
     <strong>The funnel narrows dramatically.</strong> India has 350K students but only 2,649 earn PhDs. China earns 6,756 PhDs (more than India) but gets far fewer H-1B visas (32K vs 151K). EB green cards are the ultimate bottleneck — the entire pipeline produces more graduates than permanent residency slots can absorb.
   </div>
   <div class="charts">
     <div class="chart-box wide" id="pipeline-chart-section">
-      <h3>Student → PhD → Work → Green Card Pipeline (Top 10 Countries) <a href="#pipeline-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#pipeline-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>Student → PhD → Work → Green Card Pipeline (Top 10 Countries)</h3>
       <canvas id="pipeline-chart" style="max-height:400px;"></canvas>
       <p class="source">Sources: SEVP SEVIS (enrollment), State Dept (F-1/H-1B visas), NSF SED (PhDs), State Dept (EB green cards)</p>
     </div>
   </div>
 
   <!-- B: China vs India -->
-  <h2>B. China vs India — The Great Divergence</h2>
+  <h2 id="china-vs-india-the-great-divergence">B. China vs India — The Great Divergence</h2>
   <div class="charts">
     <div class="chart-box" id="f1-diverge-chart-section">
-      <h3>F-1 Student Visa Issuances <a href="#f1-diverge-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#f1-diverge-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>F-1 Student Visa Issuances</h3>
       <p class="desc">China peaked at 274K (FY2015) and collapsed to 83K. India surged past China in FY2024.</p>
       <canvas id="f1-diverge-chart"></canvas>
     </div>
     <div class="chart-box" id="h1b-diverge-chart-section">
-      <h3>H-1B Work Visa Issuances <a href="#h1b-diverge-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#h1b-diverge-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>H-1B Work Visa Issuances</h3>
       <p class="desc">India dominates H-1B at 151K vs China's 32K. India grew 157% since 2010; China grew 182% but from a much smaller base.</p>
       <canvas id="h1b-diverge-chart"></canvas>
     </div>
   </div>
 
   <!-- C: Stay Rate vs Refusal Rate -->
-  <h2>C. Stay Rate vs Visa Refusal Rate</h2>
+  <h2 id="stay-rate-vs-visa-refusal-rate">C. Stay Rate vs Visa Refusal Rate</h2>
   <div class="info-box">
     <strong>Countries with harder visa access tend to have higher stay rates.</strong> Iran has a 62% B-visa refusal rate and 91% of its PhD graduates intend to stay in the US. Saudi Arabia is the outlier: low refusal (20%) but only 14% stay rate. Bubble size = PhD count.
   </div>
   <div class="charts">
     <div class="chart-box wide" id="scatter-chart-section">
-      <h3>B-Visa Refusal Rate vs PhD Stay Intention (by Country) <a href="#scatter-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#scatter-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>B-Visa Refusal Rate vs PhD Stay Intention (by Country)</h3>
       <canvas id="scatter-chart" style="max-height:400px;"></canvas>
       <p class="source">Sources: State Dept B-visa refusal rates (FY2025), NSF SED Table 2-8 (% intending to stay, 2018-2024)</p>
     </div>
   </div>
 
   <!-- D: EB Bottleneck -->
-  <h2>D. EB Green Card Bottleneck</h2>
+  <h2 id="eb-green-card-bottleneck">D. EB Green Card Bottleneck</h2>
   <div class="charts">
     <div class="chart-box wide" id="eb-chart-section">
-      <h3>PhD Production vs EB Green Cards Issued (Top 15 Countries) <a href="#eb-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#eb-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>PhD Production vs EB Green Cards Issued (Top 15 Countries)</h3>
       <p class="desc">China gets 19.7K EB visas but many are EB-5 investor visas (9.5K), not employment-based. India's EB wait times exceed 10 years.</p>
       <canvas id="eb-chart" style="max-height:350px;"></canvas>
       <p class="source">Sources: NSF SED (PhDs, 2024), State Dept Table V (EB visas, FY2024)</p>
@@ -89,23 +89,23 @@
   </div>
 
   <!-- G: National Pipeline Indexed -->
-  <h2>E. National Pipeline Growth (Indexed to 2010)</h2>
+  <h2 id="national-pipeline-growth-indexed-to-2010">E. National Pipeline Growth (Indexed to 2010)</h2>
   <div class="info-box">
     <strong>STEM-OPT has grown 10x since 2010</strong> while F-1 student visas are essentially flat. OPT — not H-1B — is now the primary post-graduation work authorization pathway. The gap between OPT growth and H-1B growth shows increasing reliance on temporary training programs over formal work visas.
   </div>
   <div class="charts">
     <div class="chart-box wide" id="indexed-chart-section">
-      <h3>Work Authorization Growth (2010 = 100) <a href="#indexed-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#indexed-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>Work Authorization Growth (2010 = 100)</h3>
       <canvas id="indexed-chart" style="max-height:350px;"></canvas>
       <p class="source">Sources: ICE/SEVP (OPT/CPT), USCIS (H-1B petitions), State Dept (F-1/J-1/O-1 issuances)</p>
     </div>
   </div>
 
   <!-- E: STEM Heat Map -->
-  <h2>F. STEM Students by Country × US State</h2>
+  <h2 id="stem-students-by-country-us-state">F. STEM Students by Country × US State</h2>
   <div class="charts">
     <div class="chart-box wide" id="heatmap-chart-section">
-      <h3>Top 10 Countries × Top 10 States (SEVIS STEM, Mar 2026) <a href="#heatmap-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#heatmap-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>Top 10 Countries × Top 10 States (SEVIS STEM, Mar 2026)</h3>
       <p class="desc">India-Texas (51K) and India-California (33K) are the densest cells. Chinese students are more evenly distributed.</p>
       <canvas id="heatmap-chart" style="max-height:400px;"></canvas>
       <p class="source">Source: SEVP SEVIS STEM-designated program data, March 2026</p>
@@ -285,5 +285,6 @@ new Chart(document.getElementById('heatmap-chart'), {
 });
 </script>
 <script src="/sidebar.js"></script>
+<script src="/anchors.js" defer></script>
 </body>
 </html>

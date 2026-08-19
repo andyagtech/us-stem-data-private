@@ -50,10 +50,10 @@
 </head>
 <body>
 <div class="container">
-  <h1>WebMCP Integration</h1>
+  <h1 id="webmcp-integration">WebMCP Integration</h1>
   <p class="subtitle">How AI agents can interact with PhD Demographics data</p>
 
-  <h2>What is WebMCP?</h2>
+  <h2 id="what-is-webmcp">What is WebMCP?</h2>
   <p>
     <a href="https://developer.chrome.com/blog/webmcp-epp" target="_blank">WebMCP</a> (Web Model Context Protocol) is a
     browser API that lets websites expose structured tools to AI agents. Instead of agents
@@ -66,7 +66,7 @@
     list universities, fetch records, and navigate the interface.
   </p>
 
-  <h2>Available Tools</h2>
+  <h2 id="available-tools">Available Tools</h2>
   <p>The following tools are registered via <code>navigator.modelContext.registerTool()</code> on the name list pages:</p>
 
   <table>
@@ -100,17 +100,17 @@
     </tbody>
   </table>
 
-  <h2>Example Usage</h2>
+  <h2 id="example-usage">Example Usage</h2>
   <p>An AI agent with WebMCP access would interact like this:</p>
 
-  <div class="card">
+  <div id="list-available-universities" class="card">
     <h3>1. List available universities</h3>
 <pre>// Agent calls:
 const result = await navigator.modelContext.callTool('list_universities', {});
 // Returns: [{key: "purdue", name: "Purdue", nra: 60.3, records: 8058}, ...]</pre>
   </div>
 
-  <div class="card">
+  <div id="fetch-a-university-s-data" class="card">
     <h3>2. Fetch a university's data</h3>
 <pre>// Agent calls:
 const data = await navigator.modelContext.callTool('get_university_data', {
@@ -119,7 +119,7 @@ const data = await navigator.modelContext.callTool('get_university_data', {
 // Returns full JSON with records, enrollment, funding, completions trend</pre>
   </div>
 
-  <div class="card">
+  <div id="navigate-the-page" class="card">
     <h3>3. Navigate the page</h3>
 <pre>// Agent calls:
 await navigator.modelContext.callTool('navigate_to_university', {
@@ -129,7 +129,7 @@ await navigator.modelContext.callTool('navigate_to_university', {
 // Page navigates to Stanford, Computer Science department expanded</pre>
   </div>
 
-  <h2>Non-WebMCP Access</h2>
+  <h2 id="non-webmcp-access">Non-WebMCP Access</h2>
   <p>
     For agents and tools that don't support WebMCP, the same data is available via standard HTTP:
   </p>
@@ -145,7 +145,7 @@ await navigator.modelContext.callTool('navigate_to_university', {
     </tbody>
   </table>
 
-  <h2>Record Format</h2>
+  <h2 id="record-format">Record Format</h2>
   <p>Each university JSON contains a <code>records</code> array. Each record is a compact array:</p>
 <pre>[department, year, author_name, origin_class, confidence, title, url, degree_type]
  0: string   1: int  2: string    3: string    4: string  5: string 6: string 7: string
@@ -153,7 +153,7 @@ await navigator.modelContext.callTool('navigate_to_university', {
 Example:
 ["Computer Science", 2024, "Smith, John", "other", "", "Machine Learning for...", "https://...", "phd"]</pre>
 
-  <h2>Versioning</h2>
+  <h2 id="versioning">Versioning</h2>
   <p>
     All data is versioned. The current version is <strong>1.0.0</strong> (last updated April 2026).
     Version info is available in:
@@ -164,7 +164,7 @@ Example:
     <li><code>/llms.txt</code> — version block at the bottom</li>
   </ul>
 
-  <h2>Browser Compatibility</h2>
+  <h2 id="browser-compatibility">Browser Compatibility</h2>
   <p>
     WebMCP is currently supported in Chrome (behind flags) and is a
     <a href="https://github.com/user/user/user" target="_blank">W3C draft specification</a>. The tools
@@ -173,5 +173,6 @@ Example:
   </p>
 </div>
 <script src="/sidebar.js"></script>
+<script src="/anchors.js" defer></script>
 </body>
 </html>

@@ -54,7 +54,7 @@
 <body>
 <div class="page">
   <a href="stem.html" class="back-link">&larr; Back to STEM Dashboard</a>
-  <h1>Visa Waiver Program (VWP) — Immigration Data</h1>
+  <h1 id="visa-waiver-program-vwp-immigration-data">Visa Waiver Program (VWP) — Immigration Data</h1>
   <div class="subtitle">41 countries whose citizens can enter the US without a visa via ESTA. Primarily European + Japan, South Korea, Taiwan, Australia, NZ, Singapore, Chile, Israel.</div>
   <div class="sources">Sources: <a href="https://ohss.dhs.gov/topics/immigration/yearbook/2023" target="_blank">DHS Yearbook 2023</a> · <a href="https://www.dhs.gov/publication/entryexit-overstay-report" target="_blank">DHS Overstay Reports</a> · <a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank">SEVP SEVIS</a></div>
 
@@ -66,64 +66,64 @@
     <div class="stat"><div class="num purple">235,000</div><div class="lbl">VWP SEVIS Students</div></div>
   </div>
 
-  <h2>Naturalizations</h2>
+  <h2 id="naturalizations">Naturalizations</h2>
   <div class="charts">
     <div class="chart-box wide" id="nat-top20-chart-section">
-      <h3>US Naturalizations — Top 20 Countries (FY2023) <a href="#nat-top20-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#nat-top20-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>US Naturalizations — Top 20 Countries (FY2023)</h3>
       <p class="desc">Mexico leads at 111K. VWP countries (highlighted) are a small share — 7.7% of 878K total. South Korea and UK are the top VWP naturalizers.</p>
       <canvas id="nat-top20-chart"></canvas>
       <p class="source">Source: DHS OHSS Yearbook Table 21</p>
     </div>
 
     <div class="chart-box" id="vwp-nat-chart-section">
-      <h3>VWP Country Naturalizations (FY2023) <a href="#vwp-nat-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#vwp-nat-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>VWP Country Naturalizations (FY2023)</h3>
       <p class="desc">South Korea (12.3K) and UK (11K) dominate. Poland, Taiwan, and France round out the top 5.</p>
       <canvas id="vwp-nat-chart"></canvas>
     </div>
 
     <div class="chart-box" id="vwp-nat-trend-chart-section">
-      <h3>VWP Total Naturalizations by Year <a href="#vwp-nat-trend-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#vwp-nat-trend-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>VWP Total Naturalizations by Year</h3>
       <p class="desc">Relatively stable at 65-80K/year, dipped during COVID.</p>
       <canvas id="vwp-nat-trend-chart"></canvas>
     </div>
   </div>
 
-  <h2>Overstay Rates</h2>
+  <h2 id="overstay-rates">Overstay Rates</h2>
   <div class="info-box">
     <strong>VWP compliance is excellent:</strong> The average VWP overstay rate is 0.43% vs 2.22% for non-VWP countries. Japan has the lowest rate at 0.10%. Only Chile (2.32%) exceeds 2% — a potential concern given Chile's liberal naturalization policies. Portugal (1.88%) and Spain (1.63%) are the next highest among VWP countries.
   </div>
 
   <div class="charts">
     <div class="chart-box" id="overstay-chart-section">
-      <h3>VWP Overstay Rates — Countries Above 1% <a href="#overstay-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#overstay-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>VWP Overstay Rates — Countries Above 1%</h3>
       <p class="desc">Chile stands out at 2.32%. Most VWP countries are well under 1%.</p>
       <canvas id="overstay-chart"></canvas>
     </div>
 
     <div class="chart-box" id="overstay-compare-chart-section">
-      <h3>VWP vs Non-VWP Overstay Comparison <a href="#overstay-compare-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#overstay-compare-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>VWP vs Non-VWP Overstay Comparison</h3>
       <p class="desc">VWP travelers overstay at 1/5th the rate of visa holders. The program's compliance record justifies its existence.</p>
       <canvas id="overstay-compare-chart"></canvas>
     </div>
   </div>
 
-  <h2>Students (SEVIS)</h2>
+  <h2 id="students-sevis">Students (SEVIS)</h2>
   <div class="charts">
     <div class="chart-box" id="sevis-chart-section">
-      <h3>VWP Country Students in the US <a href="#sevis-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#sevis-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>VWP Country Students in the US</h3>
       <p class="desc">South Korea (61K), Taiwan (29K), and Japan (26K) dominate. Most European VWP countries send relatively few students.</p>
       <canvas id="sevis-chart"></canvas>
     </div>
 
     <div class="chart-box" id="lpr-chart-section">
-      <h3>Green Card (LPR) Grants — VWP Countries (FY2023) <a href="#lpr-chart-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#lpr-chart-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+      <h3>Green Card (LPR) Grants — VWP Countries (FY2023)</h3>
       <p class="desc">South Korea (15.8K) and UK (9.7K) lead in green card grants as well.</p>
       <canvas id="lpr-chart"></canvas>
     </div>
   </div>
 
   <div class="table-wrap" id="vwp-table-section">
-    <h3>All 41 VWP Countries — Immigration Summary <a href="#vwp-table-section" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'#vwp-table-section');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h3>
+    <h3>All 41 VWP Countries — Immigration Summary</h3>
     <table id="vwp-table">
       <thead>
         <tr>
@@ -272,5 +272,6 @@ function renderVwpTable() {
 renderVwpTable();
 </script>
 <script src="/sidebar.js"></script>
+<script src="/anchors.js" defer></script>
 </body>
 </html>

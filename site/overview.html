@@ -81,7 +81,7 @@
 <!-- Navigation provided by /nav.js drawer -->
 
 <div class="container">
-  <h1>National Graduate Education Overview</h1>
+  <h1 id="national-graduate-education-overview">National Graduate Education Overview</h1>
   <p class="subtitle">Aggregate data from NSF Survey of Earned Doctorates, NSF Graduate Student Survey, and IPEDS</p>
 
   <!-- ===== 1. HERO STATS ===== -->
@@ -113,7 +113,7 @@
   </div>
 
   <!-- ===== 2. TREND CHART ===== -->
-  <div class="section">
+  <div id="doctorate-trends-1979-2024" class="section">
     <h2>Doctorate Trends, 1979-2024</h2>
     <p class="desc">Total doctorates awarded by citizenship status (NSF SED Table 1-6)</p>
     <div class="chart-box">
@@ -124,7 +124,7 @@
 
   <!-- ===== 3. FIELD BREAKDOWN ===== -->
   <div class="two-col">
-    <div class="section">
+    <div id="foreign-share-by-stem-field" class="section">
       <h2>Foreign Share by STEM Field</h2>
       <p class="desc">% Non-Resident Alien enrollment (NSF GSS)</p>
       <div class="chart-box">
@@ -134,7 +134,7 @@
     </div>
 
     <!-- ===== 5. FUNDING SOURCES ===== -->
-    <div class="section">
+    <div id="phd-funding-sources" class="section">
       <h2>PhD Funding Sources</h2>
       <p class="desc">Primary financial support, all fields (NSF SED Table 4-1)</p>
       <div class="chart-box">
@@ -145,7 +145,7 @@
   </div>
 
   <!-- ===== 4. COUNTRY BREAKDOWN ===== -->
-  <div class="section">
+  <div id="top-source-countries-for-temp-visa-doctorates" class="section">
     <h2>Top Source Countries for Temp Visa Doctorates</h2>
     <p class="desc">Total doctorates 2018-2024 and % intending to stay in U.S. (NSF SED Table 2-8)</p>
     <div class="chart-box">
@@ -155,7 +155,7 @@
   </div>
 
   <!-- ===== 5. OPT / WORK AUTHORIZATION PIPELINE ===== -->
-  <div class="section">
+  <div id="work-authorization-pipeline-opt-stem-opt-and-cpt" class="section">
     <h2>Work Authorization Pipeline: OPT, STEM OPT, and CPT</h2>
     <p class="desc">Annual authorizations with employment start dates. OPT grew 11x from 2007 to 2024. The 2016 STEM OPT 24-month extension rule dramatically expanded STEM work authorization. Source: <a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" style="color:var(--accent);">ICE/SEVP SEVIS By the Numbers</a></p>
     <div class="chart-box">
@@ -171,7 +171,7 @@
   </div>
 
   <!-- ===== 6. UNIVERSITY TABLE ===== -->
-  <div class="section">
+  <div id="top-50-universities-by-nra-graduate-enrollment" class="section">
     <h2>Top 50 Universities by NRA Graduate Enrollment</h2>
     <p class="desc">IPEDS Fall 2022 graduate enrollment. Click column headers to sort.</p>
     <div class="table-wrap">
@@ -604,5 +604,6 @@ renderTable('');
 document.querySelector('#uniTable thead th[data-col="nra"] .arrow').textContent = ' \u25BC';
 </script>
 <script src="/sidebar.js"></script>
+<script src="/anchors.js" defer></script>
 </body>
 </html>

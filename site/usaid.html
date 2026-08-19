@@ -40,7 +40,7 @@
 </head>
 <body>
 <div class="page">
-  <h1>US Government Scholarships &amp; Foreign Student Funding</h1>
+  <h1 id="us-government-scholarships-amp-foreign-student">US Government Scholarships &amp; Foreign Student Funding</h1>
   <div class="subtitle">Only ~2% of 1.18M international students in the US receive US government funding. The vast majority are self-funded or family-funded.</div>
 
   <div class="hero">
@@ -51,21 +51,21 @@
   </div>
 
   <div class="charts">
-    <div class="chart-box">
+    <div id="international-student-funding-sources" class="chart-box">
       <h3>International Student Funding Sources</h3>
       <p class="desc">Open Doors data on primary funding source for international students in the US.</p>
       <canvas id="funding-chart"></canvas>
     </div>
-    <div class="chart-box">
+    <div id="major-us-government-programs" class="chart-box">
       <h3>Major US Government Programs</h3>
       <p class="desc">Annual participants/grants by program. Fulbright dwarfs all others.</p>
       <canvas id="programs-chart"></canvas>
     </div>
   </div>
 
-  <h2>Programs Overview</h2>
+  <h2 id="programs-overview">Programs Overview</h2>
 
-  <div class="table-wrap">
+  <div id="us-government-scholarship-amp-exchange-programs" class="table-wrap">
     <h3>US Government Scholarship &amp; Exchange Programs</h3>
     <table>
       <thead><tr><th>Program</th><th>Agency</th><th class="r">Annual Scale</th><th>Description</th></tr></thead>
@@ -89,9 +89,9 @@
     </ul>
   </div>
 
-  <h2>USAID Country-Specific Programs</h2>
+  <h2 id="usaid-country-specific-programs">USAID Country-Specific Programs</h2>
   <div class="charts">
-    <div class="chart-box wide">
+    <div id="major-usaid-education-investments" class="chart-box wide">
       <h3>Major USAID Education Investments</h3>
       <canvas id="usaid-chart"></canvas>
     </div>
@@ -133,5 +133,6 @@ new Chart(document.getElementById('usaid-chart'), {
 });
 </script>
 <script src="/sidebar.js"></script>
+<script src="/anchors.js" defer></script>
 </body>
 </html>

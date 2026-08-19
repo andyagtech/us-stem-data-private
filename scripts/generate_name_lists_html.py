@@ -117,9 +117,17 @@ def build_html(all_data, mode='stem'):
 
   .sidebar {{ width: 220px; background: var(--surface); border-right: 1px solid var(--surface2); padding: 16px 0; position: fixed; top: 0; left: 0; bottom: 0; overflow-y: auto; z-index: 20; }}
   /* Share anchor buttons */
-  .share-anchor {{ font-size: 0.6rem; cursor: pointer; text-decoration: none; padding: 2px 4px; border-radius: 3px; opacity: 0.3; transition: opacity 0.15s; }}
-  .share-anchor:hover {{ opacity: 1; }}
+  .share-anchor {{ font-size: 0.72rem; font-weight: 700; line-height: 1; cursor: pointer; text-decoration: none; color: var(--accent); padding: 2px 4px; border-radius: 3px; opacity: 0.32; transition: opacity 0.15s; user-select: none; }}
+  .share-anchor:hover, .share-anchor:focus-visible {{ opacity: 1; }}
   .dept-header .share-anchor {{ margin-left: auto; }}
+  .nat-chart-box h3 .share-anchor, .funding-chart-wrap h3 .share-anchor, #content h2 .share-anchor {{ margin-left: 6px; }}
+  /* Anchor targets: leave room under any fixed chrome and flash on arrival */
+  [id] {{ scroll-margin-top: 16px; }}
+  .anchor-alias {{ display: block; height: 0; overflow: hidden; }}
+  .nat-chart-box:target, .funding-chart-wrap:target, .dept-section:target, .year-block:target,
+  .anchor-flash {{ outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }}
+  .anchor-flash {{ animation: anchorFade 2.4s ease-out forwards; }}
+  @keyframes anchorFade {{ 0%, 55% {{ outline-color: var(--accent); }} 100% {{ outline-color: transparent; }} }}
   /* Accessibility: focus indicators */
   a:focus-visible, button:focus-visible, select:focus-visible {{ outline: 2px solid var(--accent); outline-offset: 2px; }}
   .nav-item:focus-visible {{ outline: 2px solid var(--accent); outline-offset: -2px; }}
@@ -449,39 +457,39 @@ def build_html(all_data, mode='stem'):
     <!-- Charts -->
     <div class="nat-charts">
       <div class="nat-chart-box" id="nat-phd">
-        <h3>{"Non-STEM" if is_nonstem else "STEM"} PhD Completions by Citizenship</h3>
+        <h3>{"Non-STEM" if is_nonstem else "STEM"} PhD Completions by Citizenship<a class="share-anchor" href="#nat-phd" onclick="shareAnchor('nat-phd',event);return false;" title="Copy link to this chart" aria-label="Copy link to this chart">#</a></h3>
         <p class="nat-desc">{"Non-STEM PhDs (Education, Humanities, Social Sciences) saw NRA share rise from ~17% to ~23% over the same period." if is_nonstem else "NRA share grew from 32% to 34% while total PhDs rose 50% — American graduate production barely moved"}</p>
         <canvas id="nat-phd-chart"></canvas>
         <p class="source">Source: <a href="https://nces.ed.gov/ipeds/" target="_blank">IPEDS Completions Survey</a></p>
       </div>
       <div class="nat-chart-box" id="nat-opt">
-        <h3>OPT Work Authorization Pipeline</h3>
+        <h3>OPT Work Authorization Pipeline<a class="share-anchor" href="#nat-opt" onclick="shareAnchor('nat-opt',event);return false;" title="Copy link to this chart" aria-label="Copy link to this chart">#</a></h3>
         <p class="nat-desc">OPT authorizations grew 11x since 2007. The 2016 STEM OPT 24-month rule dramatically expanded foreign work authorization.</p>
         <canvas id="nat-opt-chart"></canvas>
         <p class="source">Source: <a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank">ICE/SEVP SEVIS</a></p>
         <p class="source" style="margin-top:4px;font-size:0.7rem;"><strong>OPT</strong> (Optional Practical Training): 12-month post-graduation work authorization for F-1 visa holders. <strong>STEM OPT</strong>: additional 24-month extension for STEM graduates (expanded from 17 months in 2016). <strong>CPT</strong> (Curricular Practical Training): work authorization during enrollment, must be part of established curriculum.</p>
       </div>
       <div class="nat-chart-box" id="nat-funding"{' style="display:none;"' if is_nonstem else ''}>
-        <h3>R&amp;D Funding vs American STEM PhDs</h3>
+        <h3>R&amp;D Funding vs American STEM PhDs<a class="share-anchor" href="#nat-funding" onclick="shareAnchor('nat-funding',event);return false;" title="Copy link to this chart" aria-label="Copy link to this chart">#</a></h3>
         <p class="nat-desc">University R&amp;D spending nearly doubled since 2010. American PhD production grew only 11%.</p>
         <canvas id="nat-funding-chart"></canvas>
         <p class="source">Source: <a href="https://ncses.nsf.gov/surveys/higher-education-research-development" target="_blank">NSF HERD Survey</a>, <a href="https://nces.ed.gov/ipeds/" target="_blank">IPEDS</a></p>
         <p class="source" style="margin-top:4px;font-size:0.7rem;"><strong>American STEM PhDs</strong> = Total STEM doctorate completions minus Non-Resident Alien (NRA) completions, from IPEDS. Includes US citizens and permanent residents of all races/ethnicities. <strong>R&amp;D Spending</strong> = total university R&amp;D expenditures from the NSF Higher Education Research &amp; Development (HERD) Survey.</p>
       </div>
       <div class="nat-chart-box" id="nat-total-pipeline">
-        <h3>Total Foreign Work Authorizations</h3>
+        <h3>Total Foreign Work Authorizations<a class="share-anchor" href="#nat-total-pipeline" onclick="shareAnchor('nat-total-pipeline',event);return false;" title="Copy link to this chart" aria-label="Copy link to this chart">#</a></h3>
         <p class="nat-desc">Combined OPT + H-1B work authorizations issued per year. Foreign nationals working in the US via university pipeline.</p>
         <canvas id="nat-total-pipeline-chart"></canvas>
         <p class="source">Source: ICE/SEVP SEVIS, <a href="https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub" target="_blank">USCIS H-1B Employer Data Hub</a></p>
       </div>
       <div class="nat-chart-box" id="nat-visas">
-        <h3>US Visa Issuances by Type</h3>
+        <h3>US Visa Issuances by Type<a class="share-anchor" href="#nat-visas" onclick="shareAnchor('nat-visas',event);return false;" title="Copy link to this chart" aria-label="Copy link to this chart">#</a></h3>
         <p class="nat-desc">F-1 (student), H-1B (specialty worker), J-1 (exchange visitor), and O-1 (extraordinary ability) visa stamps issued annually at US consulates.</p>
         <canvas id="nat-visa-chart"></canvas>
         <p class="source">Source: <a href="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-statistics.html" target="_blank">US State Department Visa Statistics</a></p>
       </div>
       <div class="nat-chart-box" id="nat-visa-calc">
-        <h3>Cumulative Visa Calculator</h3>
+        <h3>Cumulative Visa Calculator<a class="share-anchor" href="#nat-visa-calc" onclick="shareAnchor('nat-visa-calc',event);return false;" title="Copy link to this chart" aria-label="Copy link to this chart">#</a></h3>
         <p class="nat-desc">Total visa issuances between two years. Select a range to see cumulative counts.</p>
         <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap;">
           <select id="cum-start" style="background:var(--surface2);border:1px solid var(--surface2);color:var(--text);padding:4px 8px;border-radius:4px;font-size:0.82rem;"></select>
@@ -492,7 +500,7 @@ def build_html(all_data, mode='stem'):
         <p class="source">Source: US State Department visa issuances at consulates abroad</p>
       </div>
       <div class="nat-chart-box" id="nat-fields"{' style="display:none;"' if is_nonstem else ''}>
-        <h3>NRA Enrollment by STEM Field</h3>
+        <h3>NRA Enrollment by STEM Field<a class="share-anchor" href="#nat-fields" onclick="shareAnchor('nat-fields',event);return false;" title="Copy link to this chart" aria-label="Copy link to this chart">#</a></h3>
         <p class="nat-desc">In Computer Science and Engineering, the majority of graduate students are non-resident aliens.</p>
         <canvas id="nat-field-chart"></canvas>
         <p class="source">Source: <a href="https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-in-science-and-engineering" target="_blank">NSF Graduate Student Survey (STEM only — non-STEM equivalent not yet plotted)</a></p>
@@ -569,7 +577,7 @@ def build_html(all_data, mode='stem'):
   </div>
 
   <div id="funding-chart-container" class="funding-chart-wrap" style="position:relative;">
-    <a class="share-anchor" onclick="shareAnchor((currentKey||'')+'--funding',event)" title="Copy link to funding panel" style="position:absolute;top:12px;right:12px;">\U0001F517</a>
+    <a class="share-anchor" href="#funding" onclick="shareAnchor(panelAnchorId('funding'),event);return false;" title="Copy link to funding panel" aria-label="Copy link to funding panel" style="position:absolute;top:12px;right:12px;">#</a>
     <h3 id="funding-chart-title">R&amp;D Expenditures</h3>
     <div class="funding-source">Sources: <a href="https://ncses.nsf.gov/surveys/higher-education-research-development/2024" target="_blank">NSF HERD Survey</a> (R&amp;D) · <a href="https://nces.ed.gov/ipeds/" target="_blank">IPEDS Finance Survey</a> (Revenue) · <a href="https://shef.sheeo.org/" target="_blank">SHEEO SHEF</a> (State Appropriations) · <a href="https://www.usaspending.gov/" target="_blank">USAspending.gov</a> (Federal Awards)</div>
     <div class="funding-panels">
@@ -599,7 +607,7 @@ def build_html(all_data, mode='stem'):
   </div>
 
   <div id="enrollment-container" class="funding-chart-wrap" style="position:relative;">
-    <a class="share-anchor" onclick="shareAnchor((currentKey||'')+'--enrollment',event)" title="Copy link to enrollment panel" style="position:absolute;top:12px;right:12px;">\U0001F517</a>
+    <a class="share-anchor" href="#enrollment" onclick="shareAnchor(panelAnchorId('enrollment'),event);return false;" title="Copy link to enrollment panel" aria-label="Copy link to enrollment panel" style="position:absolute;top:12px;right:12px;">#</a>
     <h3 id="enrollment-title">Graduate Enrollment Demographics</h3>
     <div class="funding-source">Sources: <a href="https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-in-science-and-engineering" target="_blank">NSF GSS</a> (Enrollment, 2024) · <a href="https://nces.ed.gov/ipeds/" target="_blank">IPEDS Completions</a> (PhD Trend, 2010–2024)</div>
     <div id="enrollment-stats" style="margin-bottom:14px;"></div>
@@ -628,7 +636,7 @@ def build_html(all_data, mode='stem'):
   </div>
 
   <div id="h1b-container" class="funding-chart-wrap" style="position:relative;">
-    <a class="share-anchor" onclick="shareAnchor((currentKey||'')+'--h1b',event)" title="Copy link to H-1B panel" style="position:absolute;top:12px;right:12px;">\U0001F517</a>
+    <a class="share-anchor" href="#h1b" onclick="shareAnchor(panelAnchorId('h1b'),event);return false;" title="Copy link to H-1B panel" aria-label="Copy link to H-1B panel" style="position:absolute;top:12px;right:12px;">#</a>
     <h3 id="h1b-title">Immigration via Education Pipeline</h3>
     <div class="funding-source">Sources: <a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank">ICE/SEVP</a> (OPT, CY 2017-2024) · <a href="https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub" target="_blank">USCIS</a> (H-1B, FY 2010-2026) · <a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" target="_blank">DOL</a> (LCA + PERM)</div>
     <div id="h1b-pipeline-summary" style="font-size:0.85rem;padding:8px 12px;margin-bottom:8px;background:var(--surface);border-radius:6px;display:none;"></div>
@@ -671,6 +679,7 @@ let flagsVisible = false;
 let msVisible = false;
 let oldVisible = false;
 let currentKey = null;
+let currentAnchor = null;  // deepest addressed thing: 'mit--chemistry--2024'
 let searchTimer = null;
 const FUNDING = {funding_json};
 const IS_NONSTEM = {str(is_nonstem).lower()};
@@ -1039,12 +1048,19 @@ function renderUni(uni) {{
 
   const repoBase = getRepoBase(uni);
   const repoLink = repoBase ? ` &middot; <a href="${{repoBase}}" target="_blank" style="color:var(--accent);text-decoration:none;font-size:0.8rem;">Institutional Repository</a>` : '';
-  const uniSlug = slug(uni.key || uni.name);
-  let html = `<h2 id="${{uniSlug}}">${{esc(uni.name)}} <span class="uni-nra">IPEDS NRA: ${{uni.nra}}%</span></h2>`;
+  // The university key is the canonical anchor segment — the same token used
+  // in the sidebar links, /universities/<key>.html and data/stem/<key>.json.
+  const uniSlug = uni.key || slug(uni.name);
+  // Ids used to be slug(key), so 'missouri_st' rendered as 'missouri-st'. Any
+  // link or tool still holding the old form gets a zero-height alias element
+  // at the same position, so getElementById() on it keeps working.
+  const uniLegacy = slug(uniSlug);
+  const alias = (id) => uniLegacy === uniSlug ? '' : `<span class="anchor-alias" id="${{id}}"></span>`;
+  let html = alias(uniLegacy) + `<h2 id="${{uniSlug}}">${{esc(uni.name)}} <span class="uni-nra">IPEDS NRA: ${{uni.nra}}%</span><a class="share-anchor" href="#${{uniSlug}}" onclick="shareAnchor('${{uniSlug}}',event);return false;" title="Copy link to ${{esc(uni.name)}}" aria-label="Copy link to ${{esc(uni.name)}}">#</a></h2>`;
   html += `<div class="uni-stats">${{allTotal.toLocaleString()}} records across ${{depts.length}} departments &middot; ${{statsParts.join(' &middot; ')}}`;
   if (originParts.length > 0) html += `<span class="uni-origin-stats"> &middot; ${{originParts.join(' &middot; ')}}</span>`;
   html += `${{repoLink}}</div>`;
-  html += `<div style="margin:8px 0 12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;"><button onclick="expandAllDepts()" style="background:var(--surface);border:1px solid var(--surface2);color:var(--text-muted);font-size:0.72rem;padding:3px 10px;border-radius:5px;cursor:pointer;">Expand All Departments</button><button onclick="collapseAllDepts()" style="background:var(--surface);border:1px solid var(--surface2);color:var(--text-muted);font-size:0.72rem;padding:3px 10px;border-radius:5px;cursor:pointer;">Collapse All</button><button id="share-btn" onclick="shareLink()" style="background:none;border:none;font-size:0.75rem;cursor:pointer;margin-left:auto;opacity:0.4;transition:opacity 0.15s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.4'" title="Copy link to clipboard">\U0001F517</button></div>`;
+  html += `<div style="margin:8px 0 12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;"><button onclick="expandAllDepts()" style="background:var(--surface);border:1px solid var(--surface2);color:var(--text-muted);font-size:0.72rem;padding:3px 10px;border-radius:5px;cursor:pointer;">Expand All Departments</button><button onclick="collapseAllDepts()" style="background:var(--surface);border:1px solid var(--surface2);color:var(--text-muted);font-size:0.72rem;padding:3px 10px;border-radius:5px;cursor:pointer;">Collapse All</button><button id="share-btn" onclick="shareLink()" style="background:none;border:none;color:var(--accent);font-size:0.72rem;font-weight:700;cursor:pointer;margin-left:auto;opacity:0.4;transition:opacity 0.15s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.4'" title="Copy link to this view (university plus any open panels)">Copy link</button></div>`;
 
   let deptIdx = 0;
   depts.forEach(d => {{
@@ -1082,7 +1098,7 @@ function renderUni(uni) {{
       if (phdRecs.length === 0 && msRecs.length > 0) {{
         // Only MS records — render a compact year entry that's only visible when MS toggle is on
         const msRows = buildNameRows(msRecs);
-        yearHtml += `<div class="year-block ms-group" id="${{uniSlug}}--${{yr}}"><div class="year-header" onclick="this.parentElement.classList.toggle('yr-collapsed')"><span class="year-toggle">\u25bc</span><span style="color:var(--accent);font-weight:700">${{yr}}</span>&nbsp;&nbsp;${{msRecs.length}} master's ${{msRecs.length !== 1 ? 'theses' : 'thesis'}}</div><div class="year-names">${{msRows}}</div></div>`;
+        yearHtml += `<div class="year-block ms-group" id="${{uniSlug}}--${{yr}}">${{alias(uniLegacy + '--' + yr)}}<div class="year-header" onclick="this.parentElement.classList.toggle('yr-collapsed')"><span class="year-toggle">\u25bc</span><span style="color:var(--accent);font-weight:700">${{yr}}</span>&nbsp;&nbsp;${{msRecs.length}} master's ${{msRecs.length !== 1 ? 'theses' : 'thesis'}}<a class="share-anchor" href="#${{uniSlug}}--${{yr}}" onclick="shareAnchor('${{uniSlug}}--${{yr}}',event);return false;" title="Copy link to ${{yr}} master's theses" aria-label="Copy link to ${{yr}} master's theses">#</a></div><div class="year-names">${{msRows}}</div></div>`;
         return;
       }}
 
@@ -1122,7 +1138,7 @@ function renderUni(uni) {{
 
       const oldClass = parseInt(yr) < 2010 ? ' pre-2010' : '';
       const yrId = uniSlug + '--' + slug(d.dept) + '--' + yr;
-      yearHtml += `<div class="year-block${{oldClass}}" id="${{yrId}}"><div class="year-header" onclick="this.parentElement.classList.toggle('yr-collapsed')"><span class="year-toggle">\u25bc</span><span class="year-label">${{yr}}</span><span class="year-count">${{headerLabel}}</span><a class="share-anchor" onclick="shareAnchor('${{yrId}}',event)" title="Copy link to ${{yr}}">\U0001F517</a><span class="year-pct ${{pctClass}}">${{yrBadge.join(' ')}} &mdash; ${{yrClassified}}/${{phdRecs.length}} classified (${{yrPct.toFixed(0)}}%)</span></div><div class="year-names">${{namesHtml}}</div></div>`;
+      yearHtml += `<div class="year-block${{oldClass}}" id="${{yrId}}">${{alias(uniLegacy + '--' + slug(d.dept) + '--' + yr)}}<div class="year-header" onclick="this.parentElement.classList.toggle('yr-collapsed')"><span class="year-toggle">\u25bc</span><span class="year-label">${{yr}}</span><span class="year-count">${{headerLabel}}</span><a class="share-anchor" href="#${{yrId}}" onclick="shareAnchor('${{yrId}}',event);return false;" title="Copy link to ${{yr}}" aria-label="Copy link to ${{yr}}">#</a><span class="year-pct ${{pctClass}}">${{yrBadge.join(' ')}} &mdash; ${{yrClassified}}/${{phdRecs.length}} classified (${{yrPct.toFixed(0)}}%)</span></div><div class="year-names">${{namesHtml}}</div></div>`;
     }});
 
     // Dept header flags
@@ -1155,7 +1171,7 @@ function renderUni(uni) {{
 
     const deptSlug = uniSlug + '--' + slug(d.dept);
     const yearControls = Object.keys(byYear).length > 2 ? `<div style="display:flex;gap:6px;margin-bottom:6px;"><button onclick="expandAllYears(this)" style="background:none;border:1px solid var(--surface2);color:var(--text-muted);font-size:0.68rem;padding:2px 8px;border-radius:4px;cursor:pointer;">Expand All Years</button><button onclick="collapseAllYears(this)" style="background:none;border:1px solid var(--surface2);color:var(--text-muted);font-size:0.68rem;padding:2px 8px;border-radius:4px;cursor:pointer;">Collapse Years</button></div>` : '';
-    html += `<div class="dept-section${{finalCollapsed}}${{generalClass}}" id="${{deptSlug}}" data-dept="${{esc(d.dept)}}"><div class="dept-header" onclick="this.parentElement.classList.toggle('collapsed')"><span class="dept-toggle">\u25bc</span><span class="dept-name">${{esc(d.dept)}}</span>${{deptLinkHtml}}<span class="dept-stats">${{d.stats.total}} records</span><span class="dept-flags">${{deptBadge.join('  ')}}</span><span class="dept-pct ${{pctClass}}">${{d.stats.classifiedPct.toFixed(0)}}% classified</span><a class="share-anchor" onclick="shareAnchor('${{deptSlug}}',event)" title="Copy link to ${{esc(d.dept)}}">\U0001F517</a></div><div class="dept-body">${{yearControls}}${{yearHtml}}</div></div>`;
+    html += `<div class="dept-section${{finalCollapsed}}${{generalClass}}" id="${{deptSlug}}" data-dept="${{esc(d.dept)}}">${{alias(uniLegacy + '--' + slug(d.dept))}}<div class="dept-header" onclick="this.parentElement.classList.toggle('collapsed')"><span class="dept-toggle">\u25bc</span><span class="dept-name">${{esc(d.dept)}}</span>${{deptLinkHtml}}<span class="dept-stats">${{d.stats.total}} records</span><span class="dept-flags">${{deptBadge.join('  ')}}</span><span class="dept-pct ${{pctClass}}">${{d.stats.classifiedPct.toFixed(0)}}% classified</span><a class="share-anchor" href="#${{deptSlug}}" onclick="shareAnchor('${{deptSlug}}',event);return false;" title="Copy link to ${{esc(d.dept)}}" aria-label="Copy link to ${{esc(d.dept)}}">#</a></div><div class="dept-body">${{yearControls}}${{yearHtml}}</div></div>`;
     deptIdx++;
   }});
 
@@ -1201,7 +1217,9 @@ function showUni(key, skipHash) {{
   // Close mobile sidebar if open
   document.getElementById('sidebar').classList.remove('open');
   currentKey = key;
-  if (!skipHash) updateUrlState();
+  // Picking a university from the sidebar addresses the university itself;
+  // a deep link sets currentAnchor first and passes skipHash.
+  if (!skipHash) {{ currentAnchor = key; updateUrlState(); }}
   // Update page title for browser tab + bookmarks
   const uniName = UNI_MAP[key] ? UNI_MAP[key].name : key;
   document.title = uniName + ' — PhD Demographics';
@@ -1224,6 +1242,7 @@ function showUni(key, skipHash) {{
     updateFundingChart();
     updateEnrollmentPanel();
     updateH1bPanel();
+    consumePendingAnchor();
     return;
   }}
 
@@ -1241,6 +1260,7 @@ function showUni(key, skipHash) {{
         updateFundingChart();
         updateEnrollmentPanel();
         updateH1bPanel();
+        consumePendingAnchor();
       }}
     }})
     .catch(e => {{
@@ -2153,10 +2173,90 @@ function doSearch(query) {{
   content.innerHTML = html;
 }}
 
-// URL state management — encode toggles in hash params
+// ===== Anchors: one addressing scheme for every part of this page =====
+//
+//   #<uni_key>                          a university            (#missouri_st)
+//   #<uni_key>--<field>                 a department in it      (#missouri_st--chemistry)
+//   #<uni_key>--<field>--<year>         one year of it          (#missouri_st--chemistry--2024)
+//   #<uni_key>--<year>                  its master's block      (#missouri_st--2024)
+//   #<uni_key>--funding                 the funding panel       (opens the panel)
+//   #<uni_key>--enrollment              the enrollment panel
+//   #<uni_key>--h1b                     the H-1B / OPT panel
+//   #nat-phd, #nat-opt, ...             a national chart
+//
+// <uni_key> is the key used everywhere else on the site: the sidebar links,
+// /universities/<key>.html, and data/stem/<key>.json. <field> is the
+// department name lower-cased with every run of non-alphanumerics turned into
+// a single hyphen. Resolution is forgiving — case, and '-' versus '_' in the
+// university key, never matter, so older hyphenated links still land.
+//
+// Panel toggles ride along after the anchor: #<anchor>?funding=1&enrollment=1&h1b=1&ms=1
+
+const PANEL_ANCHORS = {{
+  funding:    {{ el: 'funding-chart-container',  isOn: () => fundingVisible,    turnOn: () => toggleFunding() }},
+  enrollment: {{ el: 'enrollment-container',     isOn: () => enrollmentVisible, turnOn: () => toggleEnrollment() }},
+  h1b:        {{ el: 'h1b-container',            isOn: () => h1bVisible,        turnOn: () => toggleH1b() }},
+}};
+
+// Legacy ids used slug(key), so 'missouri_st' appeared as 'missouri-st'.
+const UNI_BY_SLUG = {{}};
+DATA.forEach(u => {{ UNI_BY_SLUG[slug(u.key)] = u.key; }});
+
+function panelAnchorId(panel) {{
+  return (currentKey ? currentKey + '--' : '') + panel;
+}}
+
+// Which university does this first path segment mean? Exact key, then the
+// hyphenated legacy form, then a loose name match (kept from the original
+// implementation so hand-typed links like #missouri-st keep working).
+function resolveUniKey(seg) {{
+  if (!seg) return null;
+  const s = seg.toLowerCase();
+  if (UNI_MAP[s]) return s;
+  if (UNI_BY_SLUG[s]) return UNI_BY_SLUG[s];
+  const underscored = s.replace(/-/g, '_');
+  if (UNI_MAP[underscored]) return underscored;
+  const bare = s.replace(/[^a-z0-9]/g, '');
+  for (const u of DATA) {{
+    if (u.name.toLowerCase().replace(/[^a-z0-9]/g, '').includes(bare)) return u.key;
+  }}
+  return null;
+}}
+
+// Split '#missouri-st--chemistry--2024?h1b=1' into its parts.
+function parseUrlState() {{
+  const raw = decodeURIComponent((location.hash || '').replace(/^#/, ''));
+  if (!raw) return null;
+  const [anchorPart, paramStr] = raw.split('?');
+  const params = {{}};
+  if (paramStr) {{
+    paramStr.split('&').forEach(p => {{
+      const [k, v] = p.split('=');
+      params[k] = v;
+    }});
+  }}
+  const segs = anchorPart.split('--').filter(Boolean);
+  const key = resolveUniKey(segs[0]);
+  return {{
+    raw: anchorPart,
+    key: (segs[0] || '').toLowerCase(),
+    uniKey: key,
+    segs: segs,
+    panel: segs.length === 2 && PANEL_ANCHORS[segs[1]] ? segs[1] : null,
+    params: params,
+  }};
+}}
+
+// The canonical id for a parsed anchor, rebuilt from the resolved key so a
+// legacy hyphenated link maps onto the element that is actually rendered.
+function canonicalAnchorId(state) {{
+  if (!state || !state.uniKey) return state ? state.raw : '';
+  return [state.uniKey].concat(state.segs.slice(1)).join('--');
+}}
+
 function updateUrlState() {{
   if (!currentKey) return;
-  let hash = currentKey;
+  let hash = currentAnchor && currentAnchor.split('--')[0] === currentKey ? currentAnchor : currentKey;
   const params = [];
   if (enrollmentVisible) params.push('enrollment=1');
   if (fundingVisible) params.push('funding=1');
@@ -2166,54 +2266,121 @@ function updateUrlState() {{
   history.replaceState(null, '', '#' + hash);
 }}
 
-function parseUrlState() {{
-  const raw = location.hash.replace('#', '');
-  if (!raw) return null;
-  const [keyPart, paramStr] = raw.split('?');
-  const key = keyPart.toLowerCase();
-  const params = {{}};
-  if (paramStr) {{
-    paramStr.split('&').forEach(p => {{
-      const [k, v] = p.split('=');
-      params[k] = v;
-    }});
+// Open whatever is hiding the target — a collapsed department, a collapsed
+// year — then scroll to it and mark it briefly.
+let _anchorFlashed = null;
+function focusAnchor(id) {{
+  if (!id) return false;
+  let el = document.getElementById(id);
+  if (!el) {{
+    const want = id.toLowerCase().replace(/_/g, '-');
+    const all = document.querySelectorAll('[id]');
+    for (let i = 0; i < all.length; i++) {{
+      if (all[i].id.toLowerCase().replace(/_/g, '-') === want) {{ el = all[i]; break; }}
+    }}
   }}
-  return {{ key, params }};
+  if (!el) return false;
+  let node = el;
+  while (node && node !== document.body) {{
+    if (node.classList) {{
+      node.classList.remove('collapsed');
+      node.classList.remove('yr-collapsed');
+    }}
+    node = node.parentElement;
+  }}
+  if (_anchorFlashed) _anchorFlashed.classList.remove('anchor-flash');
+  el.scrollIntoView({{ behavior: 'auto', block: 'start' }});
+  el.classList.add('anchor-flash');
+  _anchorFlashed = el;
+  setTimeout(() => el.classList.remove('anchor-flash'), 2600);
+  return true;
+}}
+
+// A deep link asks for an element that does not exist yet: #content is
+// rendered after the university's JSON arrives, and the per-university pages
+// render a second time from their inlined copy. So the request stays live for
+// a few seconds and is re-applied after every render in that window.
+let _pendingAnchor = null;
+let _pendingUntil = 0;
+
+function requestAnchor(id) {{
+  _pendingAnchor = id;
+  _pendingUntil = Date.now() + 4000;
+}}
+
+// Called after every renderUni().
+function consumePendingAnchor() {{
+  if (!_pendingAnchor) return;
+  const id = _pendingAnchor;
+  if (!focusAnchor(id)) setTimeout(() => focusAnchor(id), 250);
+  if (Date.now() > _pendingUntil) {{
+    _pendingAnchor = null;
+  }} else {{
+    setTimeout(() => {{ if (_pendingAnchor === id) _pendingAnchor = null; }},
+               Math.max(0, _pendingUntil - Date.now()));
+  }}
 }}
 
 function applyUrlState(state) {{
   if (!state) return;
-  // Find matching university
-  let uniKey = null;
-  if (UNI_MAP[state.key]) {{ uniKey = state.key; }}
-  else {{
-    for (const u of DATA) {{
-      if (u.name.toLowerCase().replace(/[^a-z0-9]/g, '').includes(state.key.replace(/[^a-z0-9]/g, ''))) {{
-        uniKey = u.key; break;
-      }}
-    }}
-  }}
-  if (!uniKey) return;
 
-  // Apply toggle states from URL BEFORE showing uni
-  // (so they're active when the data loads and panels render)
+  // A national chart or any other element already in the static page.
+  if (!state.uniKey) {{
+    if (document.getElementById(state.raw)) {{
+      if (currentKey) {{ /* leave the university view alone */ }}
+      focusAnchor(state.raw);
+    }}
+    return;
+  }}
+
+  // Panel toggles carried in the link, applied before the panels render.
   if (state.params.enrollment === '1' && !enrollmentVisible) toggleEnrollment();
   if (state.params.funding === '1' && !fundingVisible) toggleFunding();
   if (state.params.h1b === '1' && !h1bVisible) toggleH1b();
   if (state.params.ms === '1' && !msVisible) toggleMs();
 
-  showUni(uniKey, true);
+  // A panel anchor opens the panel it names.
+  if (state.panel) {{
+    const p = PANEL_ANCHORS[state.panel];
+    if (!p.isOn()) p.turnOn();
+  }}
+  // #<uni_key>--<year> addresses a master's block, which is hidden unless the
+  // master's toggle is on.
+  if (state.segs.length === 2 && /^[0-9]{{4}}$/.test(state.segs[1]) && !msVisible) toggleMs();
+
+  const target = state.panel ? PANEL_ANCHORS[state.panel].el : canonicalAnchorId(state);
+  currentAnchor = canonicalAnchorId(state);
+
+  if (currentKey === state.uniKey && document.querySelector('#content h2')) {{
+    // Same university already on screen — just move to the target.
+    focusAnchor(target);
+    return;
+  }}
+  // On /universities/<key>.html the data is inlined; use it rather than
+  // triggering a second fetch of the same file.
+  if (window._preloadedUniKey === state.uniKey && window._preloadedUniData
+      && typeof UNI_CACHE !== 'undefined' && !UNI_CACHE[state.uniKey]) {{
+    UNI_CACHE[state.uniKey] = window._preloadedUniData;
+  }}
+  if (state.panel) {{
+    // Panels live outside #content and are already in the DOM.
+    showUni(state.uniKey, true);
+    setTimeout(() => focusAnchor(target), 120);
+  }} else {{
+    requestAnchor(target);
+    showUni(state.uniKey, true);
+  }}
 }}
 
-// Share anchor — copy a specific anchor link
+// Share anchor — copy a link to one specific thing on the page
 function shareAnchor(id, event) {{
   if (event) event.stopPropagation();
+  if (event && event.preventDefault) event.preventDefault();
   const base = location.origin + location.pathname;
   const url = base + '#' + id;
-  // Track in analytics
   if (typeof send === 'function') send({{type:'share',target:id,uni:currentKey||'',url:url}});
   navigator.clipboard.writeText(url).then(() => {{
-    const el = event && event.target;
+    const el = event && event.currentTarget;
     if (el) {{
       const orig = el.textContent;
       el.textContent = '\u2713';
@@ -2226,7 +2393,7 @@ function shareAnchor(id, event) {{
   }});
 }}
 
-// Share button — copy current URL to clipboard
+// Share button — copy the current view (university plus any open panels)
 function shareLink() {{
   updateUrlState();
   const url = location.href;
@@ -2234,7 +2401,7 @@ function shareLink() {{
   navigator.clipboard.writeText(url).then(() => {{
     const btn = document.getElementById('share-btn');
     const orig = btn.textContent;
-    btn.textContent = '\u2713 Copied!';
+    btn.textContent = '\u2713 Copied';
     btn.style.color = '#4ade80';
     setTimeout(() => {{ btn.textContent = orig; btn.style.color = ''; }}, 2000);
   }}).catch(() => {{
@@ -2242,17 +2409,22 @@ function shareLink() {{
   }});
 }}
 
-// On page load: restore state from URL
+// On page load: restore state from URL. Runs again shortly afterwards because
+// the per-university pages inline their data and render after this point.
 (function() {{
   const state = parseUrlState();
   if (state) applyUrlState(state);
+  window.addEventListener('load', function() {{
+    const s = parseUrlState();
+    if (s && s.uniKey && s.segs.length > 1) {{
+      setTimeout(() => focusAnchor(s.panel ? PANEL_ANCHORS[s.panel].el : canonicalAnchorId(s)), 150);
+    }} else if (s && !s.uniKey) {{
+      focusAnchor(s.raw);
+    }}
+  }});
 }})();
 
-// Search index (3+ MB containing every university) is now lazy-loaded
-// only when the user actually focuses or types in the search box.
-// See the 'focus' handler attached to #search-input below.
-
-// Handle back/forward navigation
+// Handle back/forward navigation and links pasted into an already-open tab
 window.addEventListener('hashchange', function() {{
   const state = parseUrlState();
   if (state) applyUrlState(state);
@@ -2270,6 +2442,7 @@ function populateDeptFilter() {{
     uni.records.forEach(r => ALL_DEPTS.add(r[0]));
   }});
   const sel = document.getElementById('dept-filter');
+  if (!sel) return;
   const current = sel.value;
   // Clear existing options except first
   while (sel.options.length > 1) sel.remove(1);
@@ -2433,7 +2606,7 @@ const _origShowUni = showUni;
       const shareEl = document.querySelector('.dept-header .share-anchor');
       if (shareEl) {{
         clearInterval(waitForShare);
-        tooltip.innerHTML = '<div class="coach-arrow right"></div><div class="coach-step">Step 3 of 4</div><div class="coach-text">Click the \U0001F517 icon on any department, year, or panel to copy a shareable link.</div><button class="coach-dismiss" onclick="window._coachNext()">Next</button>';
+        tooltip.innerHTML = '<div class="coach-arrow right"></div><div class="coach-step">Step 3 of 4</div><div class="coach-text">Click the # icon on any university, department, year, or panel to copy a link straight to it.</div><button class="coach-dismiss" onclick="window._coachNext()">Next</button>';
         positionAt(shareEl, 'left');
       }}
     }}, 200);

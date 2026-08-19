@@ -71,7 +71,7 @@
 <body>
 
 <div class="page-header">
-  <h1>Immigration via Education Pipeline</h1>
+  <h1 id="immigration-via-education-pipeline">Immigration via Education Pipeline</h1>
   <div class="subtitle">H-1B, OPT, LCA, and PERM data for 101 US research universities</div>
   <div class="sources">Sources:
     <a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers/sevis-by-the-numbers-data" target="_blank">ICE/SEVP</a> (OPT, CY 2017-2024) ·
@@ -203,7 +203,8 @@ function render() {
     card.id = key;
 
     // Header with share button
-    let html = `<h2><a href="/stem.html#${key}?h1b=1" target="_blank">${name}</a> <a href="#${key}" class="share-btn" onclick="navigator.clipboard.writeText(location.origin+'/immigration.html#${key}');this.textContent='Copied!';setTimeout(()=>this.textContent='🔗',1500);return false;" title="Copy link">🔗</a></h2>`;
+    // The copy control is rendered by anchors.js from the card's id.
+    let html = `<h2><a href="/stem.html#${key}?h1b=1" target="_blank">${name}</a></h2>`;
 
     // System note
     if (d.h1b_system_note) {
@@ -319,14 +320,26 @@ function render() {
 
   document.getElementById('stats-bar').textContent = `Showing ${shown} of ${UNIVERSITIES.length} universities`;
 
-  // Scroll to hash anchor after render
-  if (location.hash) {
-    const target = document.getElementById(location.hash.slice(1));
+  // Cards are rendered here, so give the new headings their copy-link
+  // controls, and land the incoming fragment now that its target exists.
+  if (window.Anchors) window.Anchors.refresh(document.getElementById('grid'));
+  // Only chase the fragment on the first render — not every time the reader
+  // types in the search box.
+  if (location.hash && !render._anchored) {
+    render._anchored = true;
+    const target = document.getElementById(decodeURIComponent(location.hash.slice(1)).split('?')[0]);
     if (target) {
       setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
     }
   }
 }
+
+// A link pasted into an already-open tab should still land.
+window.addEventListener('hashchange', () => {
+  const id = decodeURIComponent((location.hash || '').replace(/^#/, '')).split('?')[0];
+  const el = id && document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
 
 let debounce;
 document.getElementById('search').addEventListener('input', () => {
@@ -338,5 +351,6 @@ document.getElementById('sort-by').addEventListener('change', render);
 loadAll();
 </script>
 <script src="/sidebar.js"></script>
+<script src="/anchors.js" defer></script>
 </body>
 </html>

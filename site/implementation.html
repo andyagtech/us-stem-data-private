@@ -97,7 +97,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
 <!-- LEFT: Content -->
 <!-- ============================================================ -->
 <div class="content-col">
-  <h1>Implementation</h1>
+  <h1 id="implementation">Implementation</h1>
   <p class="subtitle">A functional data pipeline that transforms thesis metadata from 101 universities into an enriched, deployable research site.</p>
 
   <div class="stat-row">
@@ -108,7 +108,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
   </div>
 
   <!-- ── THE PROBLEM ── -->
-  <h2>The Messy Reality</h2>
+  <h2 id="the-messy-reality">The Messy Reality</h2>
   <p>There is no standardized way to get thesis and dissertation data from American universities. Every institution is different. Some run DSpace, others run bepress Digital Commons, others run Hyrax, EPrints, Figshare, or custom platforms. Some expose rich degree metadata; others give you nothing but a title and a name. Some truncate descriptions at 500 characters. Some put the department in the subject field, others in the contributor field, others in an OAI set name, and some don't record it at all.</p>
 
   <p>The federal data is no better. USCIS truncates employer names at 35 characters, so <code>"THE CURATORS OF THE UNIVERSITY OF MISSOURI"</code> becomes <code>"THE CURATORS OF THE UNIV OF MISSOU"</code>. The same university might appear under 5 different legal names across H-1B, LCA, OPT, and PERM filings. DOL publishes LCA data as 3.6 GB of Excel files with inconsistent column names across fiscal years. OPT data comes as PDFs. IPEDS uses numeric UNITID keys. NSF uses different institution names than IPEDS.</p>
@@ -118,7 +118,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
   <p>This is, inherently, a messy problem. The question is how to manage the mess.</p>
 
   <!-- ── ARCHITECTURE ── -->
-  <h2>Functional Architecture</h2>
+  <h2 id="functional-architecture">Functional Architecture</h2>
   <p>The answer is a <strong>functional pipeline with immutable state</strong>. Rather than a tangle of scripts that read and write files in unpredictable order &mdash; which is how this project started, and which led to data corruption bugs where one script would silently overwrite another's output &mdash; the pipeline composes discrete steps that each take state in and produce state out.</p>
 
   <p>The pipeline follows <strong>railway-oriented programming</strong>: each step receives an immutable <code>PipelineState</code> and returns a new one with outcomes appended. If any step fails, subsequent steps are automatically skipped. No step can silently corrupt another's output because the data flow is explicit and unidirectional.</p>
@@ -153,10 +153,10 @@ state = pipeline(initial_state)  # PipelineState flows through</pre>
     <h2><span class="step-num" style="background:rgba(56,189,248,0.15);color:var(--accent)">1</span> Harvest</h2>
     <p>Fetch thesis and dissertation metadata from university OAI-PMH repositories. Each university exposes structured metadata via the <a href="https://www.openarchives.org/pmh/" target="_blank">Open Archives Initiative Protocol</a>, but every repository is different.</p>
 
-    <h3>Build Harvest Plan</h3>
+    <h3 id="build-harvest-plan">Build Harvest Plan</h3>
     <p>A pure function examines the manifest to determine which universities need re-harvesting. If a CSV already exists and the checksum matches, the university is skipped. The plan considers last-run timestamps and record counts to decide what's stale.</p>
 
-    <h3>Repository Platforms</h3>
+    <h3 id="repository-platforms">Repository Platforms</h3>
     <p>The scraper handles <strong>10 different repository platforms</strong>, each with its own quirks:</p>
     <div class="info-card">
       <ul>
@@ -168,7 +168,7 @@ state = pipeline(initial_state)  # PipelineState flows through</pre>
       </ul>
     </div>
 
-    <h3>Metadata Prefixes</h3>
+    <h3 id="metadata-prefixes">Metadata Prefixes</h3>
     <p>The same university can expose different levels of detail depending on the prefix requested:</p>
     <div class="info-card">
       <ul>
@@ -177,7 +177,7 @@ state = pipeline(initial_state)  # PipelineState flows through</pre>
       </ul>
     </div>
 
-    <h3>REST API Enrichment</h3>
+    <h3 id="rest-api-enrichment">REST API Enrichment</h3>
     <p><strong>10 universities</strong> get supplementary metadata via DSpace REST API calls using concurrent fetching (15 threads). This extracts fields not available through OAI-PMH:</p>
     <div class="info-card">
       <ul>
@@ -189,7 +189,7 @@ state = pipeline(initial_state)  # PipelineState flows through</pre>
       <p style="margin:0.4rem 0 0;font-size:0.78rem;color:#64748b;">Checkpoints every 500 records. Resolves OAI handle URIs to DSpace UUIDs via <code>/pid/find</code>.</p>
     </div>
 
-    <h3>Write CSV + Checkpoint</h3>
+    <h3 id="write-csv-checkpoint">Write CSV + Checkpoint</h3>
     <p>Each university produces <code>data/western_us_dissertations/{key}_etds.csv</code> with 19 columns. SHA-256 checksums and resumption tokens are checkpointed for crash recovery.</p>
 
     <div class="stat-row">
@@ -207,7 +207,7 @@ state = pipeline(initial_state)  # PipelineState flows through</pre>
     <h2><span class="step-num" style="background:rgba(74,222,128,0.15);color:var(--green)">2</span> Process</h2>
     <p>Transform raw CSVs into structured, labeled records. This is the most logic-dense step &mdash; 105 university configurations, 16 different department extraction strategies, and an 8-step degree inference chain determine PhD vs Master's and normalize department names for every record.</p>
 
-    <h3>Per-University Configuration</h3>
+    <h3 id="per-university-configuration">Per-University Configuration</h3>
     <p><strong>105 config entries</strong> handle the diversity across institutions. Some universities need multiple configs (PhD and Master's from separate collections, merged at output):</p>
     <div class="info-card">
       <ul>
@@ -219,7 +219,7 @@ state = pipeline(initial_state)  # PipelineState flows through</pre>
       </ul>
     </div>
 
-    <h3>Infer Degree Type</h3>
+    <h3 id="infer-degree-type">Infer Degree Type</h3>
     <p>An 8-step inference chain determines PhD vs Master's. Each step is tried in priority order; the first match wins:</p>
     <div class="info-card">
       <ul>
@@ -235,7 +235,7 @@ state = pipeline(initial_state)  # PipelineState flows through</pre>
     </div>
     <p>Current labeling rate: <strong>~82%</strong> across all universities. The oai_etdms switch brought BYU from 6% to 97%, Mississippi State from 7% to 100%, and U Arkansas from 9% to 100%.</p>
 
-    <h3>Extract Department</h3>
+    <h3 id="extract-department">Extract Department</h3>
     <p><strong>8 university-specific extractors</strong> plus a generic fallback handle the wide variety of ways departments appear in metadata:</p>
     <div class="info-card">
       <ul>
@@ -248,7 +248,7 @@ state = pipeline(initial_state)  # PipelineState flows through</pre>
       <p style="margin:0.4rem 0 0;font-size:0.78rem;color:#64748b;">Fallback chain: enriched fields &rarr; primary dept_source &rarr; title &rarr; OAI set names &rarr; description &rarr; "General"</p>
     </div>
 
-    <h3>STEM / Non-STEM Split</h3>
+    <h3 id="stem-non-stem-split">STEM / Non-STEM Split</h3>
     <p>Once a department name is extracted, it's classified as STEM or non-STEM against a taxonomy of <strong>65 non-STEM departments</strong> (Education, English, History, Political Science, Business, etc.). The entire pipeline then runs twice &mdash; once for each track:</p>
     <div class="info-card">
       <div class="card-title">Parallel Processing Tracks</div>
@@ -259,10 +259,10 @@ state = pipeline(initial_state)  # PipelineState flows through</pre>
       </ul>
     </div>
 
-    <h3>Deduplicate</h3>
+    <h3 id="deduplicate">Deduplicate</h3>
     <p>Records are deduplicated by <code>(name, year, dept, title[:50])</code>. Typically removes 1&ndash;2% where universities have overlapping OAI sets or dual-indexed collections.</p>
 
-    <h3>AI-Assisted Classification (Optional)</h3>
+    <h3 id="ai-assisted-classification-optional">AI-Assisted Classification (Optional)</h3>
     <p>For the ~56K records that remain unlabeled after the 8-step inference chain, two supplementary classifiers are available:</p>
     <div class="info-card">
       <ul>
@@ -271,7 +271,7 @@ state = pipeline(initial_state)  # PipelineState flows through</pre>
       </ul>
     </div>
 
-    <h3>Output Formats</h3>
+    <h3 id="output-formats">Output Formats</h3>
     <p>Step 2 produces three output formats for different consumers:</p>
     <div class="info-card">
       <div class="card-title">Intermediate: Per-University JSON</div>
@@ -306,10 +306,10 @@ GROUP BY university ORDER BY total DESC;</pre>
     <h2><span class="step-num" style="background:rgba(167,139,250,0.15);color:var(--purple)">3</span> Parse Federal</h2>
     <p>Parse official US government data sources into per-university aggregates. These datasets track the immigration-via-education pipeline from graduation through work authorization to permanent residency.</p>
 
-    <h3>H-1B Employer Data Hub</h3>
+    <h3 id="h-1b-employer-data-hub">H-1B Employer Data Hub</h3>
     <p><a href="https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub" target="_blank">USCIS</a> publishes approval/denial counts by employer and fiscal year. We parse FY2010&ndash;2026 CSVs (both UTF-16 crosstab and standard formats) and match employer names to university keys.</p>
 
-    <h3>Entity Name Resolution</h3>
+    <h3 id="entity-name-resolution">Entity Name Resolution</h3>
     <p><strong>292 employer name mappings</strong> in <code>entity_map.json</code> handle the many ways universities appear in federal filings:</p>
     <div class="info-card">
       <ul>
@@ -321,14 +321,14 @@ GROUP BY university ORDER BY total DESC;</pre>
       </ul>
     </div>
 
-    <h3>LCA Disclosure Data</h3>
+    <h3 id="lca-disclosure-data">LCA Disclosure Data</h3>
     <p><a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" target="_blank">DOL</a> Labor Condition Applications (FY2015&ndash;2025): 32 Excel files totaling 3.6 GB. Extracts job titles (normalized to remove Excel artifacts like <code>="Assistant Professor"</code>), SOC occupation codes, wage statistics with percentile breakdowns, and yearly certification counts.</p>
     <p><strong>DuckDB acceleration:</strong> XLSX files are converted to CSV once (cached in <code>lca/csv_cache/</code>), then queried via DuckDB SQL for fast employer-name joins. Falls back to openpyxl row-by-row parsing (~25 min) if DuckDB is unavailable.</p>
 
-    <h3>OPT / STEM OPT</h3>
+    <h3 id="opt-stem-opt">OPT / STEM OPT</h3>
     <p><a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank">ICE/SEVP SEVIS</a> data (CY 2017&ndash;2024): OPT, STEM OPT 24-month extension, and CPT work authorization counts by university. Pre-parsed from PDF tables published by DHS. National trends show 11x OPT growth from 2007 to 2024.</p>
 
-    <h3>PERM (Green Card)</h3>
+    <h3 id="perm-green-card">PERM (Green Card)</h3>
     <p><a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" target="_blank">DOL PERM</a> permanent labor certification data: employer-sponsored green card applications and approval rates. 72 universities with data.</p>
 
     <div class="stat-row">
@@ -347,13 +347,13 @@ GROUP BY university ORDER BY total DESC;</pre>
     <h2><span class="step-num" style="background:rgba(251,146,60,0.15);color:var(--orange)">4</span> Enrich</h2>
     <p>Merge all data sources into final per-university JSON files. <strong>This is the only step that writes to <code>site/data/</code></strong> &mdash; a critical design rule that prevents the overwrite bugs that plagued earlier versions.</p>
 
-    <h3>Merge Federal Data</h3>
+    <h3 id="merge-federal-data">Merge Federal Data</h3>
     <p>Each university's processed records are combined with H-1B, OPT, LCA, and PERM data from Step 3. This is the only step that writes to <code>site/data/</code> &mdash; a critical invariant that prevents the overwrite bugs found in earlier versions of the pipeline.</p>
 
-    <h3>System H-1B Mapping</h3>
+    <h3 id="system-h-1b-mapping">System H-1B Mapping</h3>
     <p>Multi-campus universities often file H-1B petitions under the parent system's legal name. <code>system_h1b_map.json</code> maps campuses to their parent system (e.g., Missouri S&amp;T &rarr; UM System), so campus-level views show the system's aggregate data with a disclaimer explaining the attribution.</p>
 
-    <h3>Add IPEDS / HERD / GSS</h3>
+    <h3 id="add-ipeds-herd-gss">Add IPEDS / HERD / GSS</h3>
     <p>Three additional federal data sources are merged per university, matched by IPEDS UNITID:</p>
     <div class="info-card">
       <ul>
@@ -363,10 +363,10 @@ GROUP BY university ORDER BY total DESC;</pre>
       </ul>
     </div>
 
-    <h3>Attach Department Links</h3>
+    <h3 id="attach-department-links">Attach Department Links</h3>
     <p>Department-level links to faculty directories, PhD student listings, and repository search pages from <code>data/dept_links.json</code>. These let users jump from a thesis record directly to the department that produced it.</p>
 
-    <h3>Write Site JSONs</h3>
+    <h3 id="write-site-jsons">Write Site JSONs</h3>
     <p>Final enriched JSONs are written to <code>site/data/stem/{key}.json</code> and <code>site/data/nonstem/{key}.json</code> &mdash; 202 files total. These are both the pipeline's definitive output and the files served directly to the browser.</p>
     <div class="info-card">
       <div class="card-title">Final JSON Schema (per university)</div>
@@ -398,16 +398,16 @@ GROUP BY university ORDER BY total DESC;</pre>
     <h2><span class="step-num" style="background:rgba(244,114,182,0.15);color:var(--pink)">5</span> Generate</h2>
     <p>Build the HTML pages from enriched JSON files. This step has <strong>read-only access</strong> to <code>site/data/</code> &mdash; it never modifies the per-university JSONs.</p>
 
-    <h3>Nationwide Statistics</h3>
+    <h3 id="nationwide-statistics">Nationwide Statistics</h3>
     <p>The landing page displays 4 interactive Chart.js visualizations: STEM PhD completions by citizenship (IPEDS), OPT growth pipeline (SEVIS), R&amp;D funding vs American PhDs (HERD + IPEDS), and NRA enrollment by STEM field (GSS).</p>
 
-    <h3>University Index</h3>
+    <h3 id="university-index">University Index</h3>
     <p>A lightweight index (key, name, NRA%, record count) is embedded in the HTML. Individual university data is lazy-loaded on demand via fetch to minimize initial page weight.</p>
 
-    <h3>Client-Side Rendering</h3>
+    <h3 id="client-side-rendering">Client-Side Rendering</h3>
     <p>Each university's records are rendered client-side: departments, year blocks, name rows with direct thesis links, degree badges, origin classification flags, and expandable H-1B/OPT/LCA/PERM panels with Chart.js visualizations.</p>
 
-    <h3>Deep Linking</h3>
+    <h3 id="deep-linking">Deep Linking</h3>
     <p>Every university, department, year, and data panel has a shareable URL fragment. Coach marks teach first-time visitors how to copy deep links with a single click.</p>
 
     <p class="source-tag">Source: <code>pipeline/step5_generate.py</code> &rarr; <code>scripts/generate_name_lists_html.py</code></p>
@@ -420,10 +420,10 @@ GROUP BY university ORDER BY total DESC;</pre>
     <h2><span class="step-num" style="background:rgba(45,212,191,0.15);color:var(--teal)">6</span> Deploy</h2>
     <p>Upload the site to AWS with optimized caching and compression for fast global delivery.</p>
 
-    <h3>Pre-Compress JSON</h3>
+    <h3 id="pre-compress-json">Pre-Compress JSON</h3>
     <p>All JSON files are gzipped at compression level 9 before upload. Uploaded with <code>Content-Encoding: gzip</code> header so browsers decompress transparently.</p>
 
-    <h3>Upload to S3</h3>
+    <h3 id="upload-to-s3">Upload to S3</h3>
     <p>Files are uploaded with tiered cache headers:</p>
     <div class="info-card">
       <ul>
@@ -433,7 +433,7 @@ GROUP BY university ORDER BY total DESC;</pre>
       </ul>
     </div>
 
-    <h3>Invalidate CloudFront</h3>
+    <h3 id="invalidate-cloudfront">Invalidate CloudFront</h3>
     <p>A full invalidation (<code>/*</code>) is issued after upload to ensure edge caches serve fresh content immediately. CloudFront provides HTTP/2, TLS termination, and sub-100ms latency worldwide.</p>
 
     <div class="stat-row">
@@ -447,7 +447,7 @@ GROUP BY university ORDER BY total DESC;</pre>
   <hr>
 
   <!-- ── LIVING WITH MESS ── -->
-  <h2>Living with Complexity</h2>
+  <h2 id="living-with-complexity">Living with Complexity</h2>
   <p>The pipeline currently has 105 university configs, 292 entity name mappings, 16 department extraction strategies, and an 8-step degree inference chain with dozens of regex patterns. This is not elegant, and it's not meant to be. It's a direct reflection of the problem: 101 universities, each running different software, following different metadata standards, with different ideas about what fields to populate and how to format them.</p>
 
   <p>Every one of those ad hoc rules exists because someone discovered a specific university doing something unexpected. MIT puts degree types in the description field. Penn State puts them in the relation field. Columbia uses OAI set names with <code>degree_level:doctoral</code>. BYU returns <code>"MS"</code> as a degree name, while Binghamton returns <code>"Master of Arts (MA)"</code>. USCIS truncates Stanford's legal name to <code>"THE LELAND STANFORD JR UNIVERSITY"</code> in some years but not others.</p>
@@ -459,7 +459,7 @@ GROUP BY university ORDER BY total DESC;</pre>
   <hr>
 
   <!-- ── CLI ── -->
-  <h2>CLI Usage</h2>
+  <h2 id="cli-usage">CLI Usage</h2>
   <pre># Run full pipeline
 python -m pipeline run
 
@@ -477,7 +477,7 @@ python -m pipeline status</pre>
 
   <hr>
 
-  <h2>Project Structure</h2>
+  <h2 id="project-structure">Project Structure</h2>
   <pre>pipeline/
   __init__.py              # Step registry
   __main__.py              # CLI entry point
@@ -815,5 +815,6 @@ python -m pipeline status</pre>
 })();
 </script>
 <script src="/sidebar.js"></script>
+<script src="/anchors.js" defer></script>
 </body>
 </html>

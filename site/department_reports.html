@@ -107,7 +107,7 @@
 </head>
 <body>
 <div class="container">
-  <h1>Department-Level Name Classification</h1>
+  <h1 id="department-level-name-classification">Department-Level Name Classification</h1>
   <p class="subtitle">Dissertation authors at high NRA% universities, classified by name origin using surname analysis. NRA% from IPEDS 2015-2024.</p>
 
   <!-- Overview comparison -->
@@ -138,7 +138,7 @@
 
     <!-- Department table -->
     <div class="tab-content active" id="tab-dept-table">
-      <div class="card">
+      <div id="departments-sorted-by-chinese" class="card">
         <h3 id="table-title">Departments sorted by Chinese %</h3>
         <div class="table-wrap">
           <table id="dept-table">
@@ -168,7 +168,7 @@
 
     <!-- Trend chart -->
     <div class="tab-content" id="tab-trend-chart">
-      <div class="card">
+      <div id="select-departments-to-compare" class="card">
         <h3>Select departments to compare:</h3>
         <div id="dept-checkboxes" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;"></div>
         <div class="chart-container-tall"><canvas id="trend-chart"></canvas></div>
@@ -198,8 +198,10 @@ async function init() {
   renderSelector();
   setupTabs();
   setupSort();
-  // Auto-select Missouri S&T
-  selectUni('missouri_st');
+  // A link may name the university (and optionally the tab); otherwise fall
+  // back to the default view.
+  if (!selectFromHash()) selectUni('missouri_st');
+  window.addEventListener('hashchange', selectFromHash);
 }
 
 function renderOverview() {
@@ -249,6 +251,9 @@ function renderSelector() {
 function selectUni(key) {
   currentUni = DATA.find(u => u.key === key);
   if (!currentUni) return;
+  // Keep the address bar pointing at the university on screen, so it can be
+  // copied straight out of the browser.
+  try { history.replaceState(null, '', '#' + key); } catch (e) {}
 
   // Update button states
   document.querySelectorAll('.uni-btn').forEach(b => {
@@ -452,6 +457,26 @@ function setupSort() {
 }
 
 init();
+
+// ---- Deep link: #<uni_key>, #<uni_key>--<tab> -------------------------------
+// e.g. #mit, #missouri_st--trend-chart
+function selectFromHash() {
+  const raw = decodeURIComponent((location.hash || '').replace(/^#/, '')).split('?')[0];
+  if (!raw) return false;
+  const segs = raw.split('--');
+  const key = segs[0].toLowerCase();
+  const uni = DATA.find(u => u.key === key || u.key.replace(/_/g, '-') === key);
+  if (!uni) return false;
+  selectUni(uni.key);
+  if (segs[1]) {
+    const tab = document.querySelector('.tab[data-tab="' + segs[1] + '"]');
+    if (tab) tab.click();
+  }
+  document.getElementById('uni-detail').scrollIntoView({ behavior: 'auto', block: 'start' });
+  return true;
+}
+window.ANCHOR_HOOKS = (window.ANCHOR_HOOKS || []).concat(selectFromHash);
 </script>
+<script src="/anchors.js" defer></script>
 </body>
 </html>
