@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live — Who the Expansion Was Built For</title>
+<meta name="description" content="A live, voice-driven dashboard of US graduate degree awards by field, level and residency status.">
+<meta property="og:title" content="Live data dashboard — US graduate degrees">
+<meta property="og:description" content="Talk to it. The charts move as you speak.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og/concentration.png">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/style.css">
+<style>
+  :root{
+    --live-bg:#0d0f0e; --live-panel:#151817; --live-edge:#242a28;
+    --live-ink:#eef1ef; --live-dim:#93a09a; --live-faint:#5c6864;
+    --dom:#2AA3C4; --nra:#DE5C6B; --accent:#B58A2C;
+    --live-grid:#1e2422;
+  }
+  .live-wrap{background:var(--live-bg);color:var(--live-ink);min-height:100vh;
+    font-family:'Public Sans',system-ui,sans-serif;padding:0 0 3rem;}
+  .live-head{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.5rem;
+    border-bottom:1px solid var(--live-edge);position:sticky;top:0;z-index:20;
+    background:rgba(13,15,14,.94);backdrop-filter:blur(8px);flex-wrap:wrap;}
+  .live-title{font-family:Newsreader,Georgia,serif;font-size:1.25rem;margin:0;
+    letter-spacing:-.01em;}
+  .live-title span{color:var(--live-dim);font-size:.85rem;font-family:inherit;
+    display:block;font-weight:400;margin-top:.15rem;}
+  .mic-btn{margin-left:auto;display:inline-flex;align-items:center;gap:.6rem;
+    background:var(--nra);color:#fff;border:0;border-radius:999px;
+    padding:.62rem 1.15rem;font-size:.92rem;font-weight:600;cursor:pointer;
+    font-family:inherit;transition:transform .12s ease,background .2s ease;}
+  .mic-btn:hover{transform:translateY(-1px);}
+  .mic-btn[data-state="live"]{background:var(--dom);}
+  .mic-btn[data-state="connecting"]{background:var(--live-faint);cursor:wait;}
+  .mic-btn:disabled{opacity:.55;cursor:not-allowed;transform:none;}
+  .mic-dot{width:9px;height:9px;border-radius:50%;background:#fff;flex:0 0 auto;}
+  .mic-btn[data-state="live"] .mic-dot{animation:pulse 1.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.35;transform:scale(.75);}}
+  @media (prefers-reduced-motion:reduce){.mic-btn[data-state="live"] .mic-dot{animation:none;}}
+
+  .live-main{max-width:1180px;margin:0 auto;padding:1.5rem;
+    display:grid;grid-template-columns:1fr 300px;gap:1.25rem;align-items:start;}
+  @media(max-width:900px){.live-main{grid-template-columns:1fr;}}
+
+  .board{background:var(--live-panel);border:1px solid var(--live-edge);
+    border-radius:14px;padding:1.25rem 1.35rem 1rem;min-height:420px;
+    display:flex;flex-direction:column;}
+  .board-head{display:flex;align-items:baseline;gap:.75rem;margin-bottom:.2rem;
+    flex-wrap:wrap;}
+  .board-title{font-family:Newsreader,Georgia,serif;font-size:1.35rem;margin:0;}
+  .board-sub{color:var(--live-dim);font-size:.85rem;margin:.15rem 0 1rem;}
+  .chart-holder{flex:1;min-height:300px;position:relative;}
+  svg.chart{width:100%;height:340px;display:block;overflow:visible;}
+  .chart text{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+    fill:var(--live-faint);}
+  .chart .axis line,.chart .axis path{stroke:var(--live-grid);}
+  .chart .gridline{stroke:var(--live-grid);stroke-width:1;}
+  .chart .series{fill:none;stroke-width:2.4;stroke-linejoin:round;
+    stroke-linecap:round;}
+  .chart .dot{stroke:var(--live-panel);stroke-width:2;}
+  .chart .bar{rx:3;}
+  .chart .lbl{fill:var(--live-ink);font-size:12px;}
+
+  .legend{display:flex;gap:1.1rem;flex-wrap:wrap;margin-top:.6rem;
+    font-size:.82rem;color:var(--live-dim);}
+  .legend i{width:11px;height:11px;border-radius:3px;display:inline-block;
+    margin-right:.4rem;vertical-align:-1px;}
+
+  .side{display:flex;flex-direction:column;gap:1rem;}
+  .kpi{background:var(--live-panel);border:1px solid var(--live-edge);
+    border-radius:14px;padding:1.1rem 1.15rem;}
+  .kpi-label{color:var(--live-dim);font-size:.75rem;text-transform:uppercase;
+    letter-spacing:.08em;margin:0 0 .3rem;}
+  .kpi-value{font-family:Newsreader,Georgia,serif;font-size:2.4rem;line-height:1;
+    margin:0;font-variant-numeric:tabular-nums;}
+  .kpi-cap{color:var(--live-dim);font-size:.82rem;margin:.5rem 0 0;line-height:1.45;}
+
+  .transcript{background:var(--live-panel);border:1px solid var(--live-edge);
+    border-radius:14px;padding:1rem 1.1rem;max-height:290px;overflow-y:auto;}
+  .transcript h3{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;
+    color:var(--live-dim);margin:0 0 .6rem;font-weight:600;}
+  .t-line{font-size:.88rem;line-height:1.5;margin:0 0 .55rem;color:var(--live-dim);}
+  .t-line.you{color:var(--live-ink);}
+  .t-line b{color:var(--live-faint);font-weight:600;font-size:.75rem;
+    text-transform:uppercase;letter-spacing:.05em;display:block;}
+
+  .prompts{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.9rem;}
+  .prompt-chip{background:transparent;border:1px solid var(--live-edge);
+    color:var(--live-dim);border-radius:999px;padding:.42rem .85rem;
+    font-size:.82rem;cursor:pointer;font-family:inherit;transition:all .15s;}
+  .prompt-chip:hover{border-color:var(--dom);color:var(--live-ink);}
+
+  .notice{background:#1d1a12;border:1px solid #3d3520;border-radius:10px;
+    padding:.8rem 1rem;font-size:.85rem;color:#d8c48a;margin-top:1rem;
+    border-color:#3d3520;}
+  .notice a{color:#e6d49c;}
+  .foot{max-width:1180px;margin:0 auto;padding:0 1.5rem;color:var(--live-faint);
+    font-size:.8rem;line-height:1.6;}
+</style>
+</head>
+<body>
+<div class="live-wrap">
+  <header class="live-head">
+    <h1 class="live-title">Who the expansion was built for
+      <span>US graduate degrees by field, level and residency status</span></h1>
+    <button class="mic-btn" id="mic" data-state="idle" type="button">
+      <span class="mic-dot"></span><span id="mic-label">Start talking</span>
+    </button>
+  </header>
+
+  <main class="live-main">
+    <section class="board" aria-live="polite">
+      <div class="board-head">
+        <h2 class="board-title" id="board-title">Core STEM master's degrees</h2>
+      </div>
+      <p class="board-sub" id="board-sub">Domestic and non-resident recipients, all core-STEM fields</p>
+      <div class="chart-holder" id="chart-holder"></div>
+      <div class="legend" id="legend"></div>
+      <div class="prompts" id="prompts"></div>
+    </section>
+
+    <aside class="side">
+      <div class="kpi">
+        <p class="kpi-label" id="kpi-label">Non-resident share, latest</p>
+        <p class="kpi-value" id="kpi-value">—</p>
+        <p class="kpi-cap" id="kpi-cap">Press start and ask about a field.</p>
+      </div>
+      <div class="transcript" id="transcript">
+        <h3>Conversation</h3>
+        <div id="t-body"></div>
+      </div>
+    </aside>
+  </main>
+
+  <p class="foot">Degrees conferred, from IPEDS Completions. Non-resident is a
+  visa status recorded at graduation — not ethnicity and not country of origin.
+  Domestic is derived as total minus non-resident. Counts are degrees, not
+  enrolment or applications, and nothing here shows who applied, was admitted,
+  or was funded.</p>
+</div>
+<script src="/live.js" defer></script>
+</body>
+</html>

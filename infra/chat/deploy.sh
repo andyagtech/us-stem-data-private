@@ -42,14 +42,22 @@ python3 "$REPO/scripts/build_chat_facts.py"
 echo "Syncing handler source into lambda/ ..."
 # Extension modules are listed explicitly rather than globbed so that a
 # stray file in cloud/chat/ never ships to the Lambda by accident.
-for f in handler.py prompt.py tools.py blocks.py data_store.py \
+for f in handler.py prompt.py tools.py blocks.py data_store.py realtime.py \
          tools_joins.py tools_demographics.py tools_search.py tools_provenance.py; do
     cp "$SRC/$f" "$SCRIPT_DIR/lambda/$f"
 done
 rm -rf "$SCRIPT_DIR/lambda/chat_data"
 mkdir -p "$SCRIPT_DIR/lambda/chat_data"
-cp "$SRC/chat_data/"*.csv "$SRC/chat_data/"*.csv.gz "$SRC/chat_data/"*.json \
-   "$SCRIPT_DIR/lambda/chat_data/"
+# Copy every artifact, not a hand-listed set of extensions. The previous
+# glob was *.csv *.csv.gz *.json, which silently dropped search_index.bin
+# (tools_search) and sheeo_state_compact.json.gz (tools_demographics) — the
+# deploy still succeeded and both tool families failed at runtime.
+cp "$SRC/chat_data/"* "$SCRIPT_DIR/lambda/chat_data/"
+# Knowledge base: stable prose the assistant should know but that no data
+# tool returns. Loaded by prompt.load_kb().
+rm -rf "$SCRIPT_DIR/lambda/knowledge"
+mkdir -p "$SCRIPT_DIR/lambda/knowledge"
+cp "$SRC/knowledge/"*.md "$SCRIPT_DIR/lambda/knowledge/"
 
 echo "Bundle contents:"
 du -sh "$SCRIPT_DIR/lambda/chat_data"
@@ -57,7 +65,8 @@ ls -la "$SCRIPT_DIR/lambda/chat_data"
 
 # Fail fast if an artifact the data tools need is missing.
 for required in nra_index.csv.gz cip_titles.csv hd_names.csv \
-                universities_compact.json national_series.json site_map.json; do
+                universities_compact.json national_series.json site_map.json \
+                search_index.bin sheeo_state_compact.json.gz; do
     if [[ ! -s "$SCRIPT_DIR/lambda/chat_data/$required" ]]; then
         echo "ERROR: chat_data/$required is missing or empty."
         exit 1

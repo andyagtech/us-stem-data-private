@@ -73,6 +73,7 @@
         { hash: 'industry-section', label: 'By Major Industry' },
       ]},
       { href: '/concentration.html', label: 'The Concentration Effect' },
+      { href: '/live.html', label: 'Live Dashboard' },
     ]},
     { title: 'International', items: [
       { href: '/india.html', label: 'India (Outbound)', anchors: [
