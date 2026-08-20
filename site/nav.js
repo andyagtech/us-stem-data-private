@@ -10,7 +10,7 @@
 (function() {
   const PAGES = [
     { section: 'Graduate Names' },
-    { title: 'STEM Graduate Names', href: '/stem.html', desc: '107 universities, 334K records' },
+    { title: 'STEM Graduate Names', href: '/stem.html', desc: '105 universities, 334K records' },
     { title: 'Non-STEM Graduate Names', href: '/non_stem.html', desc: '136K records' },
     { title: 'Approximate Classifications', href: '/stem_dashboard.html', desc: 'Surname-based estimates' },
     { section: 'National Overview' },

@@ -147,7 +147,11 @@ def step6_deploy(state: PipelineState) -> PipelineState:
             except Exception as e:
                 errors.append(f"Compress/upload failed: {key}: {e}")
 
-    for mode in ["stem", "nonstem"]:
+    # "chat" belongs here: chat-widget.js fetches /data/chat/site_map.json at
+    # runtime to validate the nav paths the assistant emits. It was omitted, so
+    # that fetch had always 403'd and the widget silently ran without a site
+    # map -- degrading rather than failing, which is why nobody noticed.
+    for mode in ["stem", "nonstem", "chat"]:
         data_dir = site_dir / "data" / mode
         if not data_dir.is_dir():
             continue

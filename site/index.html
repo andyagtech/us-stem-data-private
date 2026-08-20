@@ -69,6 +69,33 @@
     letter-spacing: 0.07em; min-width: 5.5rem; }
   .contact-value { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
   ul.contact-list a { color: var(--accent); }
+  tr.case-row { cursor: pointer; }
+  tr.case-row:hover td { background: rgba(148,163,184,0.06); }
+  tr.case-row:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+  tr.case-row .inst::after { content: " \203A"; color: var(--text-muted);
+    display: inline-block; transition: transform .15s; }
+  tr.case-row.open .inst::after { transform: rotate(90deg); }
+  tr.detail-row td { background: rgba(15,23,42,0.6); padding: 1rem 1.1rem; }
+  .detail-h { color: var(--text-muted); font-size: 0.78rem; margin: 0 0 .6rem;
+    text-transform: uppercase; letter-spacing: .06em; }
+  table.detail-years { border-collapse: collapse; font-size: 0.82rem;
+    margin-bottom: .85rem; min-width: 340px; }
+  table.detail-years th { text-align: left; padding: .25rem .8rem .25rem 0;
+    color: var(--text-muted); font-weight: 600; font-size: .72rem;
+    text-transform: uppercase; letter-spacing: .05em; }
+  table.detail-years td { padding: .22rem .8rem .22rem 0;
+    font-variant-numeric: tabular-nums; }
+  table.detail-years tr.over td { color: #f0a5ae; font-weight: 600; }
+  .detail-links { font-size: .84rem; margin: 0 0 .5rem; }
+  .detail-links a { color: var(--accent); }
+  .detail-note { font-size: .75rem; color: var(--text-muted); margin: 0;
+    line-height: 1.5; max-width: 68ch; }
+  ul.verify-list { list-style: none; padding: 0; margin: 0 0 .9rem;
+    display: grid; gap: .35rem; }
+  ul.verify-list li { font-size: .82rem; line-height: 1.5; color: var(--text-muted);
+    padding-left: .2rem; max-width: 72ch; }
+  ul.verify-list li.ok { color: #86efac; }
+  ul.verify-list li.warn { color: #fbbf24; }
   .method-section { border-top: 1px solid var(--border); padding-top: 1.6rem; }
   .method-section h2 { font-size: 0.95rem; color: var(--text-muted); }
   ul.limits { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.7rem; }
@@ -220,14 +247,14 @@
       <a class="card card-featured" href="stem.html">
                 <div class="card-body">
           <div class="card-title">STEM Graduate Names</div>
-          <div class="card-desc">Thesis &amp; dissertation records from 107 universities with high Non-Resident Alien cohorts. Includes enrollment demographics, R&amp;D funding, and PhD completion trends.</div>
-          <div class="card-meta">334,788 STEM records &middot; 2016&ndash;2024</div>
+          <div class="card-desc">Thesis &amp; dissertation records from 105 universities with high Non-Resident Alien cohorts. Includes enrollment demographics, R&amp;D funding, and PhD completion trends.</div>
+          <div class="card-meta">371,145 STEM records &middot; 2016&ndash;2026</div>
         </div>
       </a>
       <a class="card" href="non_stem.html">
         <div class="card-title">Non-STEM Graduate Names</div>
         <div class="card-desc">Education, Humanities, Social Sciences, and other non-STEM dissertations at the same universities.</div>
-        <div class="card-meta">136,383 records</div>
+        <div class="card-meta">149,170 records</div>
       </a>
       <a class="card" href="stem_dashboard.html">
         <div class="card-title">Approximate Classifications</div>
@@ -252,8 +279,8 @@
       </a>
       <a class="card" href="concentration.html">
         <div class="card-title">The Concentration Effect</div>
-        <div class="card-desc">An 11-slide walkthrough of where non-resident alien doctorates cluster: national share, field families, and the departments that stay above 75% year after year.</div>
-        <div class="card-meta">Slide deck &middot; 2010&ndash;2025 &middot; IPEDS</div>
+        <div class="card-desc">A slide walkthrough of where non-resident alien doctorates cluster: national share, field families, and the departments that stay above 75% year after year.</div>
+        <div class="card-meta">Slide deck &middot; 1995&ndash;2025 &middot; IPEDS</div>
       </a>
     </div>
   </div>
@@ -330,7 +357,7 @@
 <div class="footer">
   A project by <a href="https://andy-barr.com" target="_blank" rel="noopener noreferrer">Andy Barr</a>.
   Data from US federal agencies (NCES, NSF, DOL, DHS) and university institutional repositories.
-  <br>Last updated: April 2026 &middot; <a href="data_sources.html">Methodology</a> &middot; <a href="catalog.json">API</a>
+  <br>Last updated: August 2026 &middot; <a href="data_sources.html">Methodology</a> &middot; <a href="catalog.json">API</a>
 </div>
 </main>
 
@@ -338,6 +365,154 @@
 <script src="/anchors.js" defer></script>
 
 <script>
+
+function buildDetail(c) {
+  var wrap = document.createElement('div');
+  wrap.className = 'detail';
+
+  var years = Object.keys(c.by_year || {}).sort();
+  if (years.length) {
+    var h = document.createElement('p');
+    h.className = 'detail-h';
+    h.textContent = 'Year by year — doctorates awarded, and how many went to '
+      + 'non-residents';
+    wrap.appendChild(h);
+
+    var tbl = document.createElement('table');
+    tbl.className = 'detail-years';
+    var head = document.createElement('tr');
+    ['Year', 'Doctorates', 'Non-resident', 'Share'].forEach(function (t) {
+      var th = document.createElement('th');
+      th.scope = 'col';
+      th.textContent = t;
+      head.appendChild(th);
+    });
+    tbl.appendChild(head);
+    years.forEach(function (y) {
+      var v = c.by_year[y];
+      var pct = v.total ? (100 * v.nra / v.total) : 0;
+      var row = document.createElement('tr');
+      if (pct >= 70) row.className = 'over';
+      [y, String(v.total), String(v.nra), pct.toFixed(0) + '%'].forEach(function (t, j) {
+        var td = document.createElement('td');
+        if (j) td.className = 'num-col';
+        td.textContent = t;
+        row.appendChild(td);
+      });
+      tbl.appendChild(row);
+    });
+    wrap.appendChild(tbl);
+  }
+
+  // The programme breakdown is the sanity check that matters: the table row
+  // says "Engineering", and this says which engineering programmes, with the
+  // 4-digit CIP a reader needs to find the same rows in the federal file.
+  if (c.programmes && c.programmes.length) {
+    var ph = document.createElement('p');
+    ph.className = 'detail-h';
+    ph.textContent = 'Programmes inside this department, 2015\u20132022';
+    wrap.appendChild(ph);
+    var ptbl = document.createElement('table');
+    ptbl.className = 'detail-years';
+    var phead = document.createElement('tr');
+    ['CIP', 'Programme', 'Doctorates', 'Non-resident', 'Share'].forEach(function (t) {
+      var th = document.createElement('th');
+      th.scope = 'col';
+      th.textContent = t;
+      phead.appendChild(th);
+    });
+    ptbl.appendChild(phead);
+    c.programmes.forEach(function (pr) {
+      var row = document.createElement('tr');
+      if (pr.share >= 70) row.className = 'over';
+      [[pr.cip, ''], [pr.title || '\u2014', ''],
+       [String(pr.total), 'num-col'], [String(pr.nra), 'num-col'],
+       [pr.share.toFixed(1) + '%', 'num-col']].forEach(function (cell) {
+        var td = document.createElement('td');
+        if (cell[1]) td.className = cell[1];
+        td.textContent = cell[0];
+        row.appendChild(td);
+      });
+      ptbl.appendChild(row);
+    });
+    wrap.appendChild(ptbl);
+  }
+
+  // Reporting history: is this figure an artifact of a reporting change?
+  // Duke sat near 2% from 2000-2013 then jumped 33 points in 2014 with the
+  // cohort unchanged. A reader checking a case deserves to see whether this
+  // institution reports consistently before trusting the window.
+  if (c.reporting) {
+    var r = c.reporting;
+    var vh = document.createElement('p');
+    vh.className = 'detail-h';
+    vh.textContent = 'Reporting history — does this institution report consistently?';
+    wrap.appendChild(vh);
+
+    var ul = document.createElement('ul');
+    ul.className = 'verify-list';
+    function li(ok, text) {
+      var el = document.createElement('li');
+      el.className = ok ? 'ok' : 'warn';
+      el.textContent = (ok ? '\u2713 ' : '\u26a0 ') + text;
+      ul.appendChild(el);
+    }
+    li(r.years_reported >= r.years_in_span - 2,
+       'Reported ' + r.years_reported + ' of ' + r.years_in_span
+       + ' years since ' + r.first_year + '. Gaps would make a window unreliable.');
+    li(r.zero_nra_years <= 2,
+       r.zero_nra_years + ' year(s) reported zero non-residents. Many zeros can '
+       + 'mean the breakdown was never filed rather than genuinely absent.');
+    li((r.steps_inside_window || []).length === 0,
+       (r.steps_inside_window || []).length + ' abrupt 30-point shift(s) inside '
+       + 'the 2015\u20132022 window. A jump with a steady cohort signals a '
+       + 'reporting change, not a change in students.');
+    li((r.median_cohort_in_window || 0) >= 10,
+       'Median cohort of ' + (r.median_cohort_in_window || 0) + ' doctorates a '
+       + 'year in the window. Small programmes swing on arithmetic alone.');
+    wrap.appendChild(ul);
+  }
+
+  var links = document.createElement('p');
+  links.className = 'detail-links';
+  var made = 0;
+
+  if (c.unitid) {
+    var nav = document.createElement('a');
+    nav.href = 'https://nces.ed.gov/collegenavigator/?id=' + encodeURIComponent(c.unitid);
+    nav.target = '_blank';
+    nav.rel = 'noopener noreferrer';
+    nav.textContent = 'Check this institution in IPEDS College Navigator';
+    links.appendChild(nav);
+    made++;
+  }
+  if (c.cip2) {
+    if (made) links.appendChild(document.createTextNode(' \u00b7 '));
+    var q = document.createElement('a');
+    q.href = '/query.html';
+    q.textContent = 'Query the underlying records';
+    links.appendChild(q);
+    made++;
+  }
+  if (made) links.appendChild(document.createTextNode(' \u00b7 '));
+  var meth = document.createElement('a');
+  meth.href = '#method';
+  meth.textContent = 'How this was measured';
+  links.appendChild(meth);
+  wrap.appendChild(links);
+
+  var note = document.createElement('p');
+  note.className = 'detail-note';
+  note.textContent = 'To reproduce this row: open the IPEDS Completions file '
+    + 'C{year}_A.csv for each year 2015–2022, filter UNITID = '
+    + (c.unitid || '?') + ', AWLEVEL = 17, CIPCODE starting ' + (c.cip2 || '?')
+    + ', then sum CTOTALT for doctorates and CNRALT for non-residents. '
+    + 'A year counts toward the threshold only if the programme awarded at '
+    + 'least 8 doctorates that year.';
+  wrap.appendChild(note);
+  return wrap;
+}
+
 (function () {
   var VISIBLE = 12;
   fetch('/data/concentration_cases.json', { credentials: 'omit' })
@@ -348,8 +523,13 @@
       while (body.firstChild) body.removeChild(body.firstChild);
       d.cases.forEach(function (c, i) {
         var tr = document.createElement('tr');
-        if (i >= VISIBLE) tr.className = 'hidden-row';
-        [[c.institution, ''], [c.field, 'field'],
+        tr.className = (i >= VISIBLE ? 'hidden-row ' : '') + 'case-row';
+        tr.tabIndex = 0;
+        tr.setAttribute('role', 'button');
+        tr.setAttribute('aria-expanded', 'false');
+        tr.setAttribute('aria-label', 'Show the year-by-year record for '
+          + c.institution + ', ' + c.field);
+        [[c.institution, 'inst'], [c.field, 'field'],
          [Number(c.doctorates).toLocaleString(), 'num-col'],
          [c.share.toFixed(1) + '%', 'num-col share'],
          [c.years_at_or_above_mark + ' of ' + c.years_counted, 'num-col']
@@ -360,6 +540,28 @@
           tr.appendChild(td);
         });
         body.appendChild(tr);
+
+        // Detail row: the year-by-year record, plus the links a reader needs
+        // to check this against the source rather than take our word for it.
+        var det = document.createElement('tr');
+        det.className = 'detail-row' + (i >= VISIBLE ? ' hidden-row' : '');
+        det.style.display = 'none';
+        var dtd = document.createElement('td');
+        dtd.colSpan = 5;
+        dtd.appendChild(buildDetail(c));
+        det.appendChild(dtd);
+        body.appendChild(det);
+
+        function toggle() {
+          var open = det.style.display !== 'none';
+          det.style.display = open ? 'none' : '';
+          tr.setAttribute('aria-expanded', String(!open));
+          tr.classList.toggle('open', !open);
+        }
+        tr.addEventListener('click', toggle);
+        tr.addEventListener('keydown', function (ev) {
+          if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggle(); }
+        });
       });
       body.setAttribute('aria-busy', 'false');
       var btn = document.getElementById('show-all');
