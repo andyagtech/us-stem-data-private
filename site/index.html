@@ -45,6 +45,36 @@
     color: var(--text); border-radius: 999px; padding: 0.5rem 1.1rem; font: inherit;
     font-size: 0.85rem; cursor: pointer; }
   .show-more button:hover { border-color: var(--accent); }
+  .skip-link { position: absolute; left: -9999px; top: 0; z-index: 100;
+    background: var(--accent); color: #0b1220; padding: 0.7rem 1.1rem;
+    border-radius: 0 0 8px 0; font-weight: 600; }
+  .skip-link:focus { left: 0; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0;
+    margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+    border: 0; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--accent);
+    outline-offset: 2px; border-radius: 3px; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+  .nojs { border: 1px solid var(--border); border-left: 3px solid var(--accent);
+    border-radius: 8px; padding: 0.85rem 1rem; color: var(--text-muted);
+    font-size: 0.85rem; line-height: 1.55; margin: 0.9rem 0 0; }
+  .contact-section { border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  ul.contact-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.55rem; }
+  ul.contact-list li { display: flex; gap: 0.9rem; align-items: baseline;
+    font-size: 0.9rem; flex-wrap: wrap; }
+  .contact-label { color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase;
+    letter-spacing: 0.07em; min-width: 5.5rem; }
+  .contact-value { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  ul.contact-list a { color: var(--accent); }
+  .method-section { border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  .method-section h2 { font-size: 0.95rem; color: var(--text-muted); }
+  ul.limits { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.7rem; }
+  ul.limits li { color: var(--text-muted); font-size: 0.84rem; line-height: 1.55;
+    padding-left: 0.9rem; border-left: 2px solid var(--border); }
+  ul.limits strong { color: var(--text); }
   .claims { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   @media (max-width: 760px) { .claims { grid-template-columns: 1fr; } }
   .claim { border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.2rem; }
@@ -108,60 +138,67 @@
 <meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og/index.png">
 <meta name="twitter:image:alt" content="Who earns America’s advanced degrees — NRA share of US research doctorates">
 <!-- /og:cards -->
+  <link rel="preload" as="fetch" type="application/json" crossorigin="anonymous" href="/data/concentration_cases.json">
+  <link rel="preload" as="fetch" type="application/json" crossorigin="anonymous" href="/data/taxpayer_cost.json">
 </head>
 <body>
 
+<a class="skip-link" href="#cases">Skip to the data</a>
+<main id="main">
 <div class="hero">
-  <h1 id="finding">49 federally funded doctoral departments where
-    <span class="hl">most degrees go to non-residents</span> &mdash; year after year</h1>
-  <p class="subtitle">Federal research funding runs to roughly
-    <strong>$875,000 per STEM research doctorate</strong> awarded. In these
-    departments, seven of every ten of those doctorates or more have gone to
-    students on temporary visas &mdash; in at least six of the last eight
-    measured years.</p>
+  <h1 id="finding">Taxpayers spend <span class="hl">$875,000 per STEM doctorate</span>.
+    In 49 departments, most of them go to foreign students.</h1>
+  <p class="subtitle">Seven in ten or more, in at least six of the last eight
+    measured years. Not once, and not by accident.</p>
   <div class="hero-stats">
     <div class="hero-stat"><div class="num">49</div><div class="label">Departments &ge;70% non-resident</div></div>
     <div class="hero-stat"><div class="num">90.6%</div><div class="label">Highest sustained share</div></div>
     <div class="hero-stat"><div class="num">$875K</div><div class="label">Median federal $ per STEM doctorate</div></div>
     <div class="hero-stat"><div class="num">60%</div><div class="label">Of master's growth, non-resident</div></div>
   </div>
-  <p class="hero-note">IPEDS Completions, 2015&ndash;2022, research doctorates.
-    Cells with 80+ doctorates. <a href="#cases">See the departments</a> &middot;
-    <a href="/data_sources.html">Method</a></p>
+  <p class="hero-note"><a href="#cases">The 49 departments</a> &middot;
+    <a href="#public-cost">What the public puts in</a> &middot;
+    <a href="#method">Method and limits</a> &middot;
+    <a href="#contact">Contact</a></p>
 </div>
 
 <div class="content">
   <div id="cases" class="section">
     <h2>The departments</h2>
-    <p class="lede">Each row is one field at one institution. The threshold is
-      deliberately conservative: at least 80 research doctorates awarded across
-      2015&ndash;2022, and non-residents at or above 70% in at least six
-      separate years. A single unusual cohort cannot qualify.</p>
+    <p class="lede">One field, one institution, 2015&ndash;2022. Conservative by
+      design &mdash; 80+ doctorates awarded, and 70%+ non-resident in at least six
+      separate years. One unusual cohort cannot qualify.</p>
     <div class="table-wrap">
       <table class="cases" id="cases-table">
+        <caption class="sr-only">Doctoral departments where non-resident students received at least 70 percent of research doctorates in six or more years between 2015 and 2022.</caption>
         <thead><tr>
           <th scope="col">Institution</th><th scope="col">Field</th>
           <th scope="col" class="num-col">Doctorates</th>
           <th scope="col" class="num-col">Non-resident</th>
           <th scope="col" class="num-col">Years &ge;70%</th>
         </tr></thead>
-        <tbody id="cases-body"><tr><td colspan="5" class="loading">Loading&hellip;</td></tr></tbody>
+        <tbody id="cases-body" aria-live="polite" aria-busy="true"><tr><td colspan="5" class="loading">Loading the 49 departments&hellip;</td></tr></tbody>
       </table>
     </div>
+  <noscript>
+    <p class="nojs">This table is drawn with JavaScript. With it disabled, the
+      same figures are in the
+      <a href="/data/concentration_cases.json">departments JSON</a>,
+      the <a href="/data/taxpayer_cost.json">funding JSON</a>, and the
+      <a href="/data/exports/stem_records.parquet">bulk Parquet export</a>.</p>
+  </noscript>
     <p class="show-more"><button type="button" id="show-all">Show all 49</button></p>
   </div>
 
   <div id="public-cost" class="section">
     <h2>What the public puts in</h2>
-    <p class="lede">Doctoral and master&rsquo;s education are funded through
-      different mechanisms, and the distinction matters. STEM doctoral students
-      are largely supported &mdash; research assistantships on federal grants,
-      teaching assistantships, fellowships, tuition waived and a stipend paid.
-      Master&rsquo;s students are mostly self-funded through tuition. The figures
-      below are <strong>research doctorates only</strong>, where the federal
-      subsidy is concentrated.</p>
+    <p class="lede">STEM doctoral students are paid for &mdash; federal research
+      assistantships, teaching assistantships, fellowships, tuition waived,
+      stipend paid. This is what that costs per doctorate, and who receives
+      them.</p>
     <div class="table-wrap">
       <table class="cases" id="cost-table">
+        <caption class="sr-only">Federal research obligations per STEM research doctorate by institution, with the non-resident share of those doctorates.</caption>
         <thead><tr>
           <th scope="col">Institution</th>
           <th scope="col" class="num-col">Federal obligations</th>
@@ -169,47 +206,14 @@
           <th scope="col" class="num-col">Per doctorate</th>
           <th scope="col" class="num-col">Non-resident</th>
         </tr></thead>
-        <tbody id="cost-body"><tr><td colspan="5" class="loading">Loading&hellip;</td></tr></tbody>
+        <tbody id="cost-body" aria-live="polite" aria-busy="true"><tr><td colspan="5" class="loading">Loading&hellip;</td></tr></tbody>
       </table>
     </div>
     <p class="hero-note" style="margin-top:.9rem;text-align:left;max-width:none">
-      Federal obligations are FY2023 (NSF NCSES Federal Support Survey, Table 17);
-      doctorates are 2015&ndash;2022. This is an intensity ratio, not a cost of
-      production &mdash; federal obligations fund research whose outputs include
-      papers, instruments, facilities and staff, not only degrees.</p>
+      Federal obligations FY2023 (NSF NCSES); doctorates 2015&ndash;2022.
+      <a href="#method">Method and limits</a>.</p>
   </div>
 
-  <div id="what-this-shows" class="section">
-    <h2>What this shows, and what it does not</h2>
-    <div class="claims">
-      <div class="claim claim-yes">
-        <h3>What the data supports</h3>
-        <p>These programs are supported by federal research funding, and their
-        doctoral output goes overwhelmingly to students on temporary visas,
-        consistently, for most of a decade. That is a question about the return
-        on public investment, and it stands on its own.</p>
-        <p>It is also concentrated rather than general: the national
-        non-resident share of research doctorates has been roughly flat since
-        2010. What changed is that particular departments became
-        overwhelmingly non-resident while the average held still.</p>
-      </div>
-      <div class="claim claim-no">
-        <h3>What it does not support</h3>
-        <p>This is not evidence that Americans were displaced. Between 2012 and
-        2025, core-STEM research doctorates awarded to domestic students rose
-        <strong>+32%</strong>, while the total rose <strong>+33%</strong>&mdash;they
-        moved together. Master&rsquo;s awards more than doubled. The number of
-        seats was not fixed and domestic participation did not fall.</p>
-        <p>The data also cannot show who applied, who was admitted, or who was
-        funded. Establishing that anyone was prioritised over anyone else would
-        need admissions or funding records, which these files do not contain.</p>
-        <p>And the per-doctorate figure is an intensity ratio, not a price tag.
-        Federal obligations buy research, not degrees; a campus with a national
-        laboratory ranks high for reasons that have nothing to do with graduate
-        training.</p>
-      </div>
-    </div>
-  </div>
   <div id="graduate-names" class="section">
     <h2>Graduate Names</h2>
     <div class="card-grid">
@@ -274,15 +278,63 @@
       </a>
     </div>
   </div>
+
+
+  <div id="contact" class="section contact-section">
+    <h2>Get in touch</h2>
+    <p class="lede">Corrections, questions, and data requests are all welcome.
+      If you think something here is wrong, say so &mdash; the sources are public
+      and the working is published.</p>
+    <ul class="contact-list">
+      <li><span class="contact-label">Email</span>
+        <a href="mailto:andybarr@protonmail.com">andybarr@protonmail.com</a></li>
+      <li><span class="contact-label">Signal</span>
+        <span class="contact-value">andybarr.25</span></li>
+      <li><span class="contact-label">Tip line</span>
+        <a href="/submit.html">Send something anonymously</a></li>
+      <li><span class="contact-label">Support</span>
+        <a href="https://buymeacoffee.com/andybarr" rel="noopener noreferrer"
+           target="_blank">Buy me a coffee</a></li>
+    </ul>
+  </div>
+
+  <div id="method" class="section method-section">
+    <h2>Method and limits</h2>
+    <p class="lede">Everything here comes from federal files anyone can
+      download &mdash; IPEDS Completions for degrees, the NSF NCSES Federal
+      Support Survey for funding. The <a href="/data_sources.html">methodology
+      page</a> carries the full chain, and the
+      <a href="/data/exports/stem_records.parquet">bulk exports</a> let you
+      recompute any of it yourself.</p>
+    <ul class="limits">
+      <li><strong>Doctorates, not master&rsquo;s.</strong> Cost figures cover
+        research doctorates, where federal support concentrates. Master&rsquo;s
+        students mostly pay tuition; mixing the two would overstate the federal
+        subsidy.</li>
+      <li><strong>An intensity ratio, not a price tag.</strong> Federal
+        obligations buy research &mdash; papers, instruments, facilities, staff
+        &mdash; not degrees. A campus with a national laboratory ranks high for
+        reasons unrelated to graduate training.</li>
+      <li><strong>Composition, not displacement.</strong> Domestic STEM
+        doctorates rose about a third between 2012 and 2025, roughly in step
+        with the total. The seats were not fixed. What changed is who the
+        growth was built for &mdash; and who pays for it.</li>
+      <li><strong>Non-resident is a visa status</strong> at graduation, not
+        ethnicity or country of origin. These files cannot be split by
+        nationality, and they do not record who applied, was admitted, or was
+        funded.</li>
+    </ul>
+  </div>
 </div>
 
 <div class="footer">
-  A project by <a href="https://andy-barr.com" target="_blank">Andy Barr</a>.
+  A project by <a href="https://andy-barr.com" target="_blank" rel="noopener noreferrer">Andy Barr</a>.
   Data from US federal agencies (NCES, NSF, DOL, DHS) and university institutional repositories.
   <br>Last updated: April 2026 &middot; <a href="data_sources.html">Methodology</a> &middot; <a href="catalog.json">API</a>
 </div>
+</main>
 
-<script src="/sidebar.js"></script>
+<script src="/sidebar.js" defer></script>
 <script src="/anchors.js" defer></script>
 
 <script>
@@ -309,6 +361,7 @@
         });
         body.appendChild(tr);
       });
+      body.setAttribute('aria-busy', 'false');
       var btn = document.getElementById('show-all');
       if (btn) {
         btn.textContent = 'Show all ' + d.cases.length;
@@ -328,7 +381,13 @@
     })
     .catch(function () {
       var body = document.getElementById('cases-body');
-      if (body) body.textContent = '';
+      if (!body) return;
+      body.setAttribute('aria-busy', 'false');
+      while (body.firstChild) body.removeChild(body.firstChild);
+      var tr = document.createElement('tr'), td = document.createElement('td');
+      td.colSpan = 5; td.className = 'loading';
+      td.textContent = 'Could not load the departments. The same figures are in /data/concentration_cases.json';
+      tr.appendChild(td); body.appendChild(tr);
     });
   fetch('/data/taxpayer_cost.json', { credentials: 'omit' })
     .then(function (r) { return r.json(); })
@@ -351,10 +410,17 @@
         });
         body.appendChild(tr);
       });
+      body.setAttribute('aria-busy', 'false');
     })
     .catch(function () {
       var b = document.getElementById('cost-body');
-      if (b) b.textContent = '';
+      if (!b) return;
+      b.setAttribute('aria-busy', 'false');
+      while (b.firstChild) b.removeChild(b.firstChild);
+      var tr = document.createElement('tr'), td = document.createElement('td');
+      td.colSpan = 5; td.className = 'loading';
+      td.textContent = 'Could not load the funding table. The same figures are in /data/taxpayer_cost.json';
+      tr.appendChild(td); b.appendChild(tr);
     });
 
 })();
