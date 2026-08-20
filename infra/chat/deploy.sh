@@ -26,6 +26,8 @@ fi
 # reads and is version controlled with it. This directory is a build output:
 # index.py is a shim, everything else here is copied.
 # ---------------------------------------------------------------------------
+STACK_NAME="${STACK_NAME:-phd-demographics-chat}"
+ALLOWED_ORIGIN="${ALLOWED_ORIGIN:-https://phd-demographics.andy-barr.com}"
 REPO="${PHD_REPO:-$HOME/usds_china}"
 SRC="$REPO/cloud/chat"
 
@@ -42,7 +44,7 @@ python3 "$REPO/scripts/build_chat_facts.py"
 echo "Syncing handler source into lambda/ ..."
 # Extension modules are listed explicitly rather than globbed so that a
 # stray file in cloud/chat/ never ships to the Lambda by accident.
-for f in handler.py prompt.py tools.py blocks.py data_store.py realtime.py \
+for f in handler.py prompt.py tools.py blocks.py data_store.py realtime.py cache.py \
          tools_joins.py tools_demographics.py tools_search.py tools_provenance.py; do
     cp "$SRC/$f" "$SCRIPT_DIR/lambda/$f"
 done
@@ -83,18 +85,33 @@ sam build \
 # Deploy
 echo ""
 echo "Deploying to AWS..."
+# Arguments are explicit rather than read from samconfig.toml. The config
+# file was not being picked up, so sam deploy ran with no --stack-name and
+# failed -- and because this script had no `set -e`, it exited 0 anyway and
+# reported success. Its `confirm_changeset = true` would also hang any
+# non-interactive run.
 sam deploy \
     --template-file .aws-sam/build/template.yaml \
-    --config-file samconfig.toml \
+    --stack-name "$STACK_NAME" \
+    --region us-east-1 \
     --profile personal \
-    --parameter-overrides "Environment=$ENV" \
-    --no-fail-on-empty-changeset
+    --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND \
+    --resolve-s3 \
+    --s3-prefix "$STACK_NAME" \
+    --no-confirm-changeset \
+    --no-fail-on-empty-changeset \
+    --parameter-overrides "Environment=$ENV AllowedOrigin=$ALLOWED_ORIGIN"
+SAM_STATUS=$?
+if [[ $SAM_STATUS -ne 0 ]]; then
+    echo "ERROR: sam deploy failed (exit $SAM_STATUS). Nothing was updated."
+    exit $SAM_STATUS
+fi
 
 # Get the function URL
 echo ""
 echo "=== Deployment Complete ==="
 CHAT_URL=$(aws cloudformation describe-stacks \
-    --stack-name "phd-demographics-chat" \
+    --stack-name "$STACK_NAME" \
     --profile personal \
     --region us-east-1 \
     --query 'Stacks[0].Outputs[?OutputKey==`ChatEndpoint`].OutputValue' \

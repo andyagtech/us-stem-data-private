@@ -33,7 +33,12 @@ MAX_FRAGMENT = 128
 MAX_QUERY = 256
 MAX_BODY_BYTES = 128 * 1024
 
-CHART_TYPES = {"line", "bar", "hbar", "stacked_bar", "area", "doughnut", "scatter"}
+# "histogram" is a bar chart over ordered bins rather than categories: the
+# x axis is a continuous quantity cut into bands, so the bars are adjacent
+# and the order carries meaning. Kept distinct from "bar" so the renderer
+# can close the gap between bars and the model cannot reorder the bands.
+CHART_TYPES = {"line", "bar", "hbar", "stacked_bar", "area", "doughnut",
+               "scatter", "histogram"}
 ROLES = {"nra", "domestic", "total", "alt1", "alt2", "alt3", "neutral"}
 FORMATS = {"int", "float1", "pct", "pct1", "usd", "usd_k", "usd_m", "compact", "text"}
 ALIGNS = {"left", "right", "center"}

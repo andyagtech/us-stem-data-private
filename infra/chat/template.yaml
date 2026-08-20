@@ -41,6 +41,32 @@ Resources:
         AttributeName: ttl
         Enabled: true
 
+  ChatCacheTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub "phd-chat-cache-${Environment}"
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: cache_key
+          AttributeType: S
+        - AttributeName: bucket
+          AttributeType: S
+      KeySchema:
+        - AttributeName: cache_key
+          KeyType: HASH
+      GlobalSecondaryIndexes:
+        # cache.py queries this to gather semantic candidates within one
+        # data version and page context, rather than scanning the table.
+        - IndexName: bucket-index
+          KeySchema:
+            - AttributeName: bucket
+              KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: true
+
   ChatFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -59,6 +85,7 @@ Resources:
           ALLOWED_ORIGIN: !Ref AllowedOrigin
           CHAT_PROVIDER: !Ref ChatProvider
           CHAT_MODEL: !Ref ChatModel
+          CHAT_CACHE_TABLE: !Ref ChatCacheTable
           CHAT_LOGS_TABLE: !Ref ChatLogsTable
           OPENAI_API_KEY_SSM: "/cms-pipeline/openai-api-key"
       Policies:
@@ -66,6 +93,10 @@ Resources:
             TableName: !Ref RateLimitTable
         - DynamoDBWritePolicy:
             TableName: !Ref ChatLogsTable
+        # Crud rather than Write: the cache is read on every turn and written
+        # on a miss, and the semantic path Querys the bucket-index GSI.
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ChatCacheTable
         - Statement:
             - Effect: Allow
               Action: ssm:GetParameter
@@ -76,12 +107,19 @@ Resources:
   ChatUrl:
     Type: AWS::Lambda::Url
     Properties:
-      TargetFunctionArn: !Ref ChatFunction
+      # !Ref on a serverless function returns its NAME; AWS::Lambda::Url
+      # requires an ARN, and CloudFormation's early property validation
+      # rejects the changeset outright. This is why the template had
+      # never deployed.
+      TargetFunctionArn: !GetAtt ChatFunction.Arn
       AuthType: NONE
       Cors:
         AllowCredentials: false
         AllowHeaders: [content-type]
-        AllowMethods: [POST, OPTIONS]
+        # OPTIONS is not valid here -- Lambda Function URLs answer preflight
+        # themselves, and listing it fails CloudFormation early property
+        # validation. Valid: GET PUT HEAD POST PATCH DELETE *
+        AllowMethods: [POST]
         # The widget reads Retry-After off a 429 to run its countdown; a
         # cross-origin response header is invisible to JS unless it is exposed.
         ExposeHeaders: [retry-after]

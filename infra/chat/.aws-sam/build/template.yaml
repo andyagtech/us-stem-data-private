@@ -14,6 +14,14 @@ Parameters:
   ChatModel:
     Type: String
     Default: gpt-4o
+  ChatLogsTable:
+    Type: String
+    Default: phd-chat-logs
+    Description: "Existing DynamoDB table (pk=day, sk=timestamp#ip, TTL on `ttl`)\
+      \ that chat-admin.html reads. It is NOT created by this stack \u2014 it predates\
+      \ it \u2014 so it is referenced by name. Until this parameter was wired into\
+      \ the function environment, _log_chat() short-circuited and every chat interaction\
+      \ was silently discarded."
 Resources:
   RateLimitTable:
     Type: AWS::DynamoDB::Table
@@ -30,6 +38,30 @@ Resources:
       TimeToLiveSpecification:
         AttributeName: ttl
         Enabled: true
+  ChatCacheTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName:
+        Fn::Sub: phd-chat-cache-${Environment}
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+      - AttributeName: cache_key
+        AttributeType: S
+      - AttributeName: bucket
+        AttributeType: S
+      KeySchema:
+      - AttributeName: cache_key
+        KeyType: HASH
+      GlobalSecondaryIndexes:
+      - IndexName: bucket-index
+        KeySchema:
+        - AttributeName: bucket
+          KeyType: HASH
+        Projection:
+          ProjectionType: ALL
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: true
   ChatFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -37,8 +69,8 @@ Resources:
         Fn::Sub: phd-chat-${Environment}
       Runtime: python3.12
       Handler: index.handler
-      Timeout: 30
-      MemorySize: 256
+      Timeout: 45
+      MemorySize: 1024
       CodeUri: ChatFunction
       Environment:
         Variables:
@@ -50,17 +82,21 @@ Resources:
             Ref: ChatProvider
           CHAT_MODEL:
             Ref: ChatModel
+          CHAT_CACHE_TABLE:
+            Ref: ChatCacheTable
+          CHAT_LOGS_TABLE:
+            Ref: ChatLogsTable
           OPENAI_API_KEY_SSM: /cms-pipeline/openai-api-key
       Policies:
-      - Statement:
-        - Effect: Allow
-          Action:
-          - bedrock:InvokeModel
-          - bedrock:InvokeModelWithResponseStream
-          Resource: '*'
       - DynamoDBCrudPolicy:
           TableName:
             Ref: RateLimitTable
+      - DynamoDBWritePolicy:
+          TableName:
+            Ref: ChatLogsTable
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: ChatCacheTable
       - Statement:
         - Effect: Allow
           Action: ssm:GetParameter
@@ -73,7 +109,9 @@ Resources:
     Type: AWS::Lambda::Url
     Properties:
       TargetFunctionArn:
-        Ref: ChatFunction
+        Fn::GetAtt:
+        - ChatFunction
+        - Arn
       AuthType: NONE
       Cors:
         AllowCredentials: false
@@ -81,7 +119,8 @@ Resources:
         - content-type
         AllowMethods:
         - POST
-        - OPTIONS
+        ExposeHeaders:
+        - retry-after
         AllowOrigins:
         - Ref: AllowedOrigin
   ChatUrlPermission:
@@ -101,3 +140,6 @@ Outputs:
   RateLimitTable:
     Value:
       Ref: RateLimitTable
+  ChatLogsTable:
+    Value:
+      Ref: ChatLogsTable

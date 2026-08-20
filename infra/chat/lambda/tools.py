@@ -124,6 +124,35 @@ DATA_TOOL_SCHEMAS = [
     ),
 ]
 
+DATA_TOOL_SCHEMAS.append(
+    _fn(
+        "nra_distribution",
+        "Bin the non-resident share ACROSS DEPARTMENTS for a year, returning how "
+        "many institution-CIP cells fall in each 10-point band. Use this for "
+        "questions about the distribution or spread rather than a level or a "
+        "trend \u2014 'how many departments are majority non-resident', 'how has the "
+        "spread changed', 'show the distribution'. Render the result with "
+        "show_chart(chart='histogram'). The concentration story lives here: the "
+        "mode stays in the lowest band while the upper tail grows.",
+        {
+            "years": {"type": "array", "items": {"type": "integer"},
+                      "description": "One or two years to compare, e.g. [2010, 2025]. "
+                                     "Two years returns two datasets on shared bins."},
+            "cip": {"type": "array", "items": {"type": "string"},
+                    "description": "Optional CIP prefixes to restrict the field, e.g. ['14'] "
+                                   "for Engineering. Omit for all fields."},
+            "min_total": {"type": "integer",
+                          "description": "Minimum doctorates for a department to be counted. "
+                                         "Defaults to 20. Below about 10 the result is "
+                                         "dominated by cells of one to three people."},
+            "bins": {"type": "integer", "description": "Number of equal bands, 4-20. Default 10."},
+            "weight": {"type": "string", "enum": ["departments", "doctorates"],
+                       "description": "Count departments (default) or the doctorates inside them."},
+        },
+        required=["years"],
+    )
+)
+
 DATA_TOOL_NAMES = {t["function"]["name"] for t in DATA_TOOL_SCHEMAS}
 
 
@@ -436,13 +465,89 @@ def _t_get_national_series(args):
     return out
 
 
+def _t_nra_distribution(args):
+    """Distribution of department-level NRA share, binned."""
+    years = [int(y) for y in (args.get("years") or [])][:2]
+    if not years:
+        return {"error": "nra_distribution requires at least one year"}
+    years = [_clamp(y, ds.INDEX_MIN_YEAR, ds.INDEX_MAX_YEAR, ds.INDEX_MAX_YEAR) for y in years]
+    nbins = _clamp(args.get("bins", 10), 4, 20, 10)
+    min_total = _clamp(args.get("min_total", 20), 1, 100000, 20)
+    weight = args.get("weight") or "departments"
+    prefixes = tuple(str(c) for c in (args.get("cip") or []))
+
+    index = ds.load_index()
+    out, edges = {}, [round(i * 100.0 / nbins, 1) for i in range(nbins + 1)]
+    for year in years:
+        counts = [0] * nbins
+        cells = 0
+        # index rows are tuples: (year, unitid, cipcode, basis, total, nra)
+        for yr, _unitid, cipcode, _basis, total, nra in index:
+            if yr != year or total < min_total:
+                continue
+            if prefixes and not cipcode.startswith(prefixes):
+                continue
+            b = min(nbins - 1, int((nra / total) * nbins))
+            counts[b] += total if weight == "doctorates" else 1
+            cells += 1
+        out[str(year)] = {"counts": counts, "cells": cells}
+
+    labels = [f"{int(edges[i])}-{int(edges[i + 1])}%" for i in range(nbins)]
+    tail = {y: sum(v["counts"][int(nbins * 0.6):]) for y, v in out.items()}
+    return {
+        "_untrusted": False,
+        "bins": labels,
+        "by_year": out,
+        "weight": weight,
+        "min_total": min_total,
+        "cip": list(prefixes) or "all fields",
+        "majority_or_more_tail": tail,
+        "scope": ("Counts institution-CIP departments of research doctorates "
+                  "(IPEDS award level 17). A department is one CIP code at one "
+                  "institution in one year."),
+    }
+
+
 DATA_TOOLS = {
     "nra_lookup": _t_nra_lookup,
+    "nra_distribution": _t_nra_distribution,
     "cip_search": _t_cip_search,
     "list_universities": _t_list_universities,
     "get_university_facts": _t_get_university_facts,
     "get_national_series": _t_get_national_series,
 }
+
+
+# ---------------------------------------------------------------------------
+# EXTENSION MODULES
+# ---------------------------------------------------------------------------
+# Four modules add data tools alongside the core ones. Each exports SCHEMAS
+# and IMPL and owns its own file, so they can be developed independently and
+# a broken one degrades to "that tool is absent" rather than taking the
+# assistant down with it.
+_EXTENSIONS = ("tools_joins", "tools_demographics", "tools_search", "tools_provenance")
+
+for _mod_name in _EXTENSIONS:
+    try:
+        try:
+            _mod = __import__(f"chat.{_mod_name}", fromlist=["SCHEMAS", "IMPL"])
+        except Exception:
+            _mod = __import__(_mod_name)
+    except Exception as _e:  # noqa: BLE001 - a missing extension must not break chat
+        import logging as _logging
+        _logging.getLogger(__name__).warning(
+            "chat extension %s unavailable: %s", _mod_name, _e)
+        continue
+    _schemas = list(getattr(_mod, "SCHEMAS", []) or [])
+    _impl = dict(getattr(_mod, "IMPL", {}) or {})
+    _clash = set(_impl) & set(DATA_TOOLS)
+    if _clash:
+        raise RuntimeError(f"{_mod_name} redefines existing tools: {sorted(_clash)}")
+    DATA_TOOL_SCHEMAS.extend(_schemas)
+    DATA_TOOLS.update(_impl)
+
+DATA_TOOL_NAMES = {t["function"]["name"] for t in DATA_TOOL_SCHEMAS}
+TOOLS = DATA_TOOL_SCHEMAS + RENDER_TOOL_SCHEMAS
 
 
 def run_data_tool(name, args):
