@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Distributions — where the concentration actually sits</title>
+<meta name="description" content="The distribution of US STEM doctoral departments by non-resident share: nationally over time, by programme, and inside individual universities.">
+<meta property="og:title" content="Distributions — US STEM doctorates by non-resident share">
+<meta property="og:description" content="A flat national average hiding a moving distribution, drawn three ways.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og/concentration.png">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.75rem; margin: 0 0 .6rem; line-height: 1.25; max-width: 22ch; }
+  .page-head p { color: var(--text-muted); max-width: 70ch; line-height: 1.65;
+    font-size: .95rem; margin: 0 0 .5rem; }
+  .chart-section { margin-top: 2.6rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  .chart-section h2 { font-size: 1.15rem; margin: 0 0 .4rem; }
+  .chart-section .lede { color: var(--text-muted); max-width: 72ch; line-height: 1.6;
+    font-size: .9rem; margin: 0 0 1.2rem; }
+  .hist { display: grid; gap: 3px; }
+  .hist-row { display: grid; grid-template-columns: 4.6rem 1fr 3.4rem;
+    align-items: center; gap: .6rem; font-size: .82rem; }
+  .hist-label { color: var(--text-muted); text-align: right;
+    font-variant-numeric: tabular-nums; }
+  .hist-track { background: rgba(148,163,184,0.08); border-radius: 3px;
+    height: 1.15rem; position: relative; overflow: hidden; }
+  .hist-bar { height: 100%; border-radius: 3px; transition: width .5s cubic-bezier(.2,.7,.3,1); }
+  .hist-n { color: var(--text-muted); font-variant-numeric: tabular-nums; font-size: .78rem; }
+  .legend { display: flex; gap: 1.2rem; flex-wrap: wrap; margin: 0 0 1rem;
+    font-size: .8rem; color: var(--text-muted); }
+  .legend i { width: 11px; height: 11px; border-radius: 3px; display: inline-block;
+    margin-right: .35rem; vertical-align: -1px; }
+  .prog-row { display: grid; grid-template-columns: 1fr 3.2rem 4.4rem 3.6rem;
+    gap: .6rem; align-items: center; padding: .3rem 0;
+    border-bottom: 1px solid rgba(148,163,184,0.08); font-size: .84rem; }
+  .prog-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .prog-bar-wrap { grid-column: 1 / -1; height: 4px; background: rgba(148,163,184,0.08);
+    border-radius: 2px; overflow: hidden; margin-top: -.15rem; }
+  .prog-bar { height: 100%; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; color: var(--text-muted);
+    font-size: .78rem; }
+  .share-v { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
+  select { background: #0f172a; color: var(--text); border: 1px solid var(--border);
+    border-radius: 8px; padding: .45rem .7rem; font: inherit; font-size: .86rem; }
+  .controls { display: flex; gap: .7rem; align-items: center; flex-wrap: wrap;
+    margin-bottom: 1rem; }
+  .stat-row { display: flex; gap: 1.6rem; flex-wrap: wrap; margin: 0 0 1.1rem;
+    font-size: .84rem; color: var(--text-muted); }
+  .stat-row b { color: var(--text); font-variant-numeric: tabular-nums; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55;
+    max-width: 74ch; margin: 1rem 0 0; }
+  .loading { color: var(--text-muted); font-size: .86rem; padding: 1rem 0; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#national">Skip to the charts</a>
+<main id="main">
+<div class="wrap">
+  <div class="page-head">
+    <h1>A flat average, a moving distribution</h1>
+    <p>The national non-resident share of US STEM research doctorates has barely
+    moved in fifteen years. That single number is why the change is easy to miss:
+    it describes almost no actual department. These three views take the average
+    apart.</p>
+    <p class="note">IPEDS Completions, research doctorates (award level 17),
+    core-STEM CIP families. A department is one 4-digit programme at one
+    institution — Electrical Engineering at Purdue, not "Engineering" at Purdue.
+    <a href="/#method">Method and limits</a></p>
+  </div>
+
+  <section class="chart-section" id="national">
+    <h2>1 · The whole distribution, then and now</h2>
+    <p class="lede">Every qualifying department in the country, bucketed by its
+    non-resident share. If the story were "nothing changed", these two shapes
+    would sit on top of each other.</p>
+    <div class="legend" id="hist-legend"></div>
+    <div class="hist" id="hist"><p class="loading">Loading…</p></div>
+    <div class="stat-row" id="hist-stats"></div>
+    <p class="note">Departments with 20+ research doctorates that year. The
+    lowest bin includes institutions that filed a total but left the residency
+    breakdown blank, so read it as an upper bound rather than a count of
+    genuinely domestic programmes.</p>
+  </section>
+
+  <section class="chart-section" id="programmes">
+    <h2>2 · Which programmes, not which universities</h2>
+    <p class="lede">Pooled across every institution in the country. The range is
+    the finding: from petroleum engineering at the top to applied behaviour
+    analysis at the bottom, this is a property of fields rather than of
+    particular schools.</p>
+    <div class="controls">
+      <label for="prog-sort">Show</label>
+      <select id="prog-sort">
+        <option value="top">Highest non-resident share</option>
+        <option value="bottom">Lowest non-resident share</option>
+        <option value="size">Largest programmes by doctorates</option>
+      </select>
+    </div>
+    <div id="programmes-list"><p class="loading">Loading…</p></div>
+    <p class="note">Programmes with 300+ research doctorates nationally,
+    2015–2022. Note information security near the bottom while general computer
+    science sits near the top — the most plausible reading is that
+    clearance-adjacent work is effectively closed to non-citizens, but IPEDS
+    records the degree, not why anyone was admitted.</p>
+  </section>
+
+  <section class="chart-section" id="universities">
+    <h2>3 · Inside one university</h2>
+    <p class="lede">A single share per university misleads. Pick one and the
+    spread appears: most institutions run from near zero to near total,
+    department by department.</p>
+    <div class="controls">
+      <label for="uni-pick">University</label>
+      <select id="uni-pick"><option>Loading…</option></select>
+    </div>
+    <div class="stat-row" id="uni-stats"></div>
+    <div id="uni-list"><p class="loading">Loading…</p></div>
+    <p class="note">Programmes with 15+ research doctorates over 2015–2022 at
+    that institution. Programmes below the floor are omitted, so the count here
+    is smaller than the institution's full programme list.</p>
+  </section>
+</div>
+</main>
+<script src="/distributions.js" defer></script>
+</body>
+</html>

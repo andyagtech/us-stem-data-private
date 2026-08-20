@@ -207,6 +207,13 @@
       the SED collects individual-level data including source country for temporary visa holders, postgraduation
       plans, and financial support. The SED is the source for our national doctorate trend charts, stay-rate
       analysis, and country-of-origin rankings (China, India, etc.).
+      <strong>Table 4-1 &mdash; primary source of financial support, by
+      citizenship &mdash; is the basis for the funding analysis on this
+      site.</strong> It is the only federal collection that crosses how a
+      doctorate was paid for with the recipient&rsquo;s citizenship status.
+      Because the SED is a census administered by institutions and completed
+      before graduation, its coverage is effectively complete rather than a
+      sample.
     </p>
     <p>
       <a href="https://ncses.nsf.gov/surveys/earned-doctorates/" target="_blank" rel="noopener">NSF SED homepage</a> &middot;
@@ -215,6 +222,61 @@
   </div>
 
   <div id="nsf-graduate-student-survey-gss" class="card">
+        <h3 id="derived-datasets">Derived datasets published on this site</h3>
+    <p>
+      Every chart here is built from the federal collections above by a script in
+      the repository, and each writes a JSON file anyone can download and check:
+    </p>
+    <ul>
+      <li><code>/data/concentration_cases.json</code> &mdash; the 49 sustained
+        majority-non-resident departments, with year-by-year detail, the 4-digit
+        programme breakdown and a reporting-consistency check
+        (<code>scripts/build_concentration_cases.py</code>).</li>
+      <li><code>/data/distribution.json</code> &mdash; national department
+        histogram, 2010/2015/2020/2025
+        (<code>scripts/build_distribution.py</code>).</li>
+      <li><code>/data/programme_shares.json</code> &mdash; national share by
+        programme, 108 programmes with 300+ doctorates
+        (<code>scripts/build_programme_shares.py</code>).</li>
+      <li><code>/data/university_distribution.json</code> &mdash; per-university
+        department spread, 103 institutions
+        (<code>scripts/build_university_distribution.py</code>).</li>
+      <li><code>/data/support_by_citizenship.json</code> &mdash; SED Table 4-1
+        across 19 fields
+        (<code>scripts/build_support_by_citizenship.py</code>).</li>
+      <li><code>/data/long_series.json</code> &mdash; core-STEM doctorates
+        1995&ndash;2025 (<code>scripts/build_long_series.py</code>).</li>
+      <li><code>/data/taxpayer_cost.json</code> &mdash; federal obligations per
+        STEM doctorate (<code>scripts/build_taxpayer_cost.py</code>).</li>
+    </ul>
+
+    <h3 id="award-level-transition">The 2008&ndash;09 award-level transition</h3>
+    <p>
+      IPEDS split award level 9 (&ldquo;doctor&rsquo;s degree&rdquo;) into 17
+      (research/scholarship) and 18 (professional practice) in 2010, but
+      institutions migrated one at a time across 2008 and 2009. In those years
+      each institution reports <em>one</em> coding or the other &mdash; verified:
+      495 institutions on level 9 and 122 on level 17 in 2008; 350 and 242 in
+      2009; <strong>zero report both</strong>. A complete figure therefore
+      requires <strong>summing both bases</strong>. Using one alone drops whoever
+      had already migrated, understating 2008 and 2009 by roughly a fifth and
+      putting a false trough exactly where the reporting changed. Every series
+      here that crosses the transition uses
+      <code>pipeline.models.bases_for()</code>.
+    </p>
+
+    <h3 id="funding-limit">What the funding data cannot be made to say</h3>
+    <p>
+      The SED records citizenship and how a doctorate was funded, but not whether
+      a given assistantship came from a federal grant or from institutional
+      money. The GSS records the federal share of assistantships but not
+      citizenship. <strong>The two cannot be multiplied.</strong> Combining them
+      to produce a count of federally funded international students would assume
+      the federal share is identical for both groups, which nothing measures.
+      This site does not make that calculation, and any figure of that kind found
+      elsewhere was invented.
+    </p>
+
     <h3>NSF Graduate Student Survey (GSS)</h3>
     <div class="meta">
       <span>Agency: NSF / NCSES</span>

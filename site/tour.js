@@ -122,10 +122,51 @@
            "finite whatever the total enrolment does."
     },
     {
+      page: '/distributions.html',
+      anchor: 'national',
+      selector: '#hist',
+      say: "Here is why a flat national average is misleading. Every doctoral " +
+           "department in the country, sorted by how many of its degrees go to " +
+           "non-residents. The middle barely moved. The top end nearly tripled."
+    },
+    {
+      page: '/distributions.html',
+      anchor: 'programmes',
+      say: "And it tracks the field, not the school. Petroleum engineering runs " +
+           "above eighty percent. Electrical engineering is seventy-one across " +
+           "nearly eighteen thousand doctorates. Clinical psychology is under " +
+           "four."
+    },
+    {
+      page: '/distributions.html',
+      anchor: 'programmes',
+      say: "Look at information security though — under three percent, while " +
+           "general computer science is above sixty. The likeliest reason is " +
+           "that clearance work is effectively closed to non-citizens. Where " +
+           "citizenship is required, the composition changes completely."
+    },
+    {
+      page: '/distributions.html',
+      anchor: 'universities',
+      say: "And no single number describes a university. Purdue has twenty of " +
+           "twenty-seven departments majority non-resident. MIT runs from " +
+           "sixteen percent in biology to seventy-three in computer science. " +
+           "The average describes neither."
+    },
+    {
+      page: '/',
+      anchor: 'public-cost',
+      say: "Now the part about who pays. Three in four international science " +
+           "and engineering doctorates are funded by an assistantship. Barely " +
+           "half of American ones are — and Americans are four and a half times " +
+           "more likely to be paying their own way. That is a federal census, " +
+           "and the gap shows up in every single field."
+    },
+    {
       page: '/',
       anchor: 'method',
       say: "Everything here comes from federal files anyone can download: IPEDS " +
-           "Completions for degrees, the NSF federal support survey for funding. " +
+           "Completions for degrees, the NSF surveys for funding and support. " +
            "The limits are written down too — what this data shows, and what it " +
            "cannot. Ask me anything about any of it."
     }

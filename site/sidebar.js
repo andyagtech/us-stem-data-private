@@ -73,6 +73,11 @@
         { hash: 'industry-section', label: 'By Major Industry' },
       ]},
       { href: '/concentration.html', label: 'The Concentration Effect' },
+      { href: '/distributions.html', label: 'Distributions', anchors: [
+        { hash: 'national', label: 'National, then and now' },
+        { hash: 'programmes', label: 'By programme' },
+        { hash: 'universities', label: 'Inside one university' },
+      ]},
       { href: '/live.html', label: 'Live Dashboard' },
     ]},
     { title: 'International', items: [
