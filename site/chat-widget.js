@@ -32,7 +32,7 @@
   'use strict';
 
   var WIDGET_VERSION = '2.0.0';
-  var CHAT_ENDPOINT = 'https://7e4ll4vmqi2f5vuamynrhb3n5u0atduv.lambda-url.us-east-1.on.aws/';
+  var CHAT_ENDPOINT = 'https://lamsi2swef2o2ark2ylnupz5wy0vedcw.lambda-url.us-east-1.on.aws/';
   if (CHAT_ENDPOINT.indexOf('PLACEHOLDER') !== -1) return;
 
   // The widget is pulled in directly by 107 pages and appended by sidebar.js on
@@ -956,7 +956,15 @@
     '@media (max-width:500px){#chat-panel{right:8px;left:8px;width:auto;bottom:72px;}',
     '#chat-panel .cb-stat-item{flex:1 1 100%;}}',
 
-    '.cb-target-ring{outline:2px solid #38bdf8 !important;outline-offset:2px;box-shadow:0 0 0 4px rgba(56,189,248,0.18) !important;transition:outline-color .3s,box-shadow .3s;}'
+    '.cb-target-ring{outline:2px solid #38bdf8 !important;outline-offset:2px;box-shadow:0 0 0 4px rgba(56,189,248,0.18) !important;transition:outline-color .3s,box-shadow .3s;}',
+    '#chat-panel .cb-tour-badge{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#7d9aa8;margin-bottom:6px;font-weight:700;}',
+    '#chat-panel .cb-tour-text{margin:0 0 10px;line-height:1.55;}',
+    '#chat-panel .cb-tour-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px;}',
+    '#chat-panel .cb-tour-next,#chat-panel .cb-tour-end{font:inherit;font-size:12px;border-radius:999px;padding:6px 13px;cursor:pointer;border:1px solid transparent;}',
+    '#chat-panel .cb-tour-next{background:#38bdf8;color:#04222c;font-weight:700;}',
+    '#chat-panel .cb-tour-next:disabled{opacity:.45;cursor:default;}',
+    '#chat-panel .cb-tour-end{background:transparent;color:#7d9aa8;border-color:currentColor;}',
+    '#chat-panel .cb-tour-next:focus-visible,#chat-panel .cb-tour-end:focus-visible{outline:3px solid #38bdf8;outline-offset:2px;}'
   ].join('\n');
 
   /* ===================================================================== */
@@ -1026,20 +1034,31 @@
   var isOpen = false;
   var isLoading = false;
   var convo = [];              // prose only: [{role, content}]
+  // Charts and tables render here and never go back to the server, so their
+  // values would be lost by the next turn. The server returns a compact record
+  // of what its tools established; we carry it so a follow-up about an earlier
+  // figure can be answered from the record rather than from memory.
+  var facts = null;            // {version, facts:[{q, v:[[name,value],...]}]}
   var sendSeq = 0;
   var pinged = false;
   var liveCharts = [];         // Chart instances, destroyed on clear
   var chartObserver = null;
   var lastUserMessage = '';
   var rateTimer = null;
+  var tourOffered = false;
 
   function saveHistory() {
+    try { sessionStorage.setItem(HISTORY_KEY + ':facts', JSON.stringify(facts)); } catch (e) { /* quota */ }
     try { sessionStorage.setItem(HISTORY_KEY, JSON.stringify(convo.slice(-MAX_TURNS * 2))); }
     catch (e) { /* quota / private mode — inert */ }
   }
 
   function restoreHistory() {
     var raw = null;
+    try {
+      var rawFacts = sessionStorage.getItem(HISTORY_KEY + ':facts');
+      if (rawFacts) facts = JSON.parse(rawFacts);
+    } catch (e) { facts = null; }
     try { raw = sessionStorage.getItem(HISTORY_KEY); } catch (e) { return; }
     if (!raw) { greet(); return; }
     var saved;
@@ -1607,6 +1626,7 @@
         v: 2,
         message: message,
         conversationHistory: convo.slice(-MAX_TURNS * 2),
+        facts: facts,
         page: pageContext(),
         client: { widget: WIDGET_VERSION }
       })
@@ -1705,6 +1725,12 @@
 
     convo.push({ role: 'user', content: userMsg });
     convo.push({ role: 'assistant', content: reply });
+    // Keep the server's record of what its tools established. It is opaque to
+    // us -- we store and return it, the server validates it on the way back in.
+    if (data && data.meta && data.meta.facts &&
+        Array.isArray(data.meta.facts.facts)) {
+      facts = data.meta.facts;
+    }
     if (convo.length > MAX_TURNS * 2) convo = convo.slice(-MAX_TURNS * 2);
     saveHistory();
     scrollToEnd();
@@ -1735,6 +1761,135 @@
   }
 
   /* ===================================================================== */
+  /* Guided tour                                                           */
+  /*                                                                       */
+  /* Stops span pages, so a stop elsewhere is a real navigation and every   */
+  /* variable dies. Position lives in sessionStorage and the tour resumes   */
+  /* on the far side. tour.js holds the stops; this drives them through the */
+  /* same nav and ring helpers the assistant already uses, so there is no   */
+  /* second navigation system to keep in step.                             */
+  /* ===================================================================== */
+
+  function maybeOfferTour() {
+    if (!tourOn() || tourOffered) return;
+    tourOffered = true;
+    if (window.PhdTour.state()) return;     // mid-tour; tourResume handles it
+    if (convo.length) return;               // they are already talking to us
+    var m = newMessage('assistant');
+    var p_ = document.createElement('p');
+    p_.className = 'cb-tour-text';
+    p_.textContent = 'I can walk you through this in ' + window.PhdTour.length
+      + ' stops \u2014 the cost, the departments, and the part most people get '
+      + 'wrong. Or just ask me something.';
+    m.content.appendChild(p_);
+    var row = document.createElement('div');
+    row.className = 'cb-tour-actions';
+    var go = document.createElement('button');
+    go.type = 'button';
+    go.className = 'cb-tour-next';
+    go.textContent = 'Take the tour';
+    go.addEventListener('click', function () { go.disabled = true; tourStart(); });
+    row.appendChild(go);
+    m.content.appendChild(row);
+    scrollToEnd();
+  }
+
+  function tourOn() { return typeof window.PhdTour !== 'undefined'; }
+
+  function ringSelector(sel) {
+    if (!sel) return;
+    var node;
+    try { node = document.querySelector(sel); } catch (e) { return; }
+    if (!node) return;
+    node.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' });
+    ringTarget(node);
+  }
+
+  function tourSay(stop, index, total) {
+    var m = newMessage('assistant');
+    var badge = document.createElement('div');
+    badge.className = 'cb-tour-badge';
+    badge.textContent = 'Tour \u00b7 ' + (index + 1) + ' of ' + total;
+    m.content.appendChild(badge);
+
+    var body = document.createElement('p');
+    body.className = 'cb-tour-text';
+    body.textContent = stop.say;
+    m.content.appendChild(body);
+
+    var row = document.createElement('div');
+    row.className = 'cb-tour-actions';
+    var next = document.createElement('button');
+    next.type = 'button';
+    next.className = 'cb-tour-next';
+    next.textContent = (index + 1 >= total) ? 'Finish' : 'Next';
+    next.addEventListener('click', function () { next.disabled = true; tourNext(); });
+    row.appendChild(next);
+    var end = document.createElement('button');
+    end.type = 'button';
+    end.className = 'cb-tour-end';
+    end.textContent = 'End tour';
+    end.addEventListener('click', function () {
+      window.PhdTour.clear();
+      var e = newMessage('assistant');
+      e.content.textContent = 'Tour ended. Ask me anything.';
+      scrollToEnd();
+    });
+    row.appendChild(end);
+    m.content.appendChild(row);
+
+    convo.push({ role: 'assistant', content: stop.say });
+    saveHistory();
+    scrollToEnd();
+  }
+
+  function showStop(stop, index) {
+    if (!stop) return;
+    tourSay(stop, index, window.PhdTour.length);
+    if (stop.anchor) {
+      setTimeout(function () {
+        scrollToFragment(stop.anchor, true);
+        if (stop.selector) setTimeout(function () { ringSelector(stop.selector); }, 420);
+      }, 260);
+    } else if (stop.selector) {
+      setTimeout(function () { ringSelector(stop.selector); }, 260);
+    }
+  }
+
+  function tourNext() {
+    if (!tourOn()) return;
+    var stop = window.PhdTour.advance();
+    if (!stop) {
+      var m = newMessage('assistant');
+      m.content.textContent = 'That is the tour. Ask me anything about what you '
+        + 'just saw \u2014 I still have the figures from it.';
+      scrollToEnd();
+      return;
+    }
+    var st = window.PhdTour.state() || { i: 0 };
+    if (window.PhdTour.samePage(stop)) showStop(stop, st.i);
+    else location.href = stop.page + (stop.anchor ? '#' + stop.anchor : '');
+  }
+
+  function tourStart() {
+    if (!tourOn()) return;
+    window.PhdTour.start();
+    var stop = window.PhdTour.get(0);
+    if (window.PhdTour.samePage(stop)) showStop(stop, 0);
+    else location.href = stop.page + (stop.anchor ? '#' + stop.anchor : '');
+  }
+
+  function tourResume() {
+    if (!tourOn()) return;
+    var st = window.PhdTour.state();
+    if (!st || typeof st.i !== 'number') return;
+    var stop = window.PhdTour.get(st.i);
+    if (!stop || !window.PhdTour.samePage(stop)) return;
+    setOpen(true);
+    setTimeout(function () { showStop(stop, st.i); }, 550);
+  }
+
+  /* ===================================================================== */
   /* Wiring                                                                 */
   /* ===================================================================== */
 
@@ -1747,6 +1902,7 @@
       warmUp();
       input.focus();
       scrollToEnd();
+      maybeOfferTour();
     }
   }
 
@@ -1816,4 +1972,9 @@
 
   if (document.body) mount();
   else document.addEventListener('DOMContentLoaded', mount);
+
+  // A tour stop on another page is a real navigation; pick it up on arrival.
+  window.addEventListener('load', function () {
+    setTimeout(function () { try { tourResume(); } catch (e) { /* inert */ } }, 300);
+  });
 })();

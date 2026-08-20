@@ -44,10 +44,42 @@ python3 "$REPO/scripts/build_chat_facts.py"
 echo "Syncing handler source into lambda/ ..."
 # Extension modules are listed explicitly rather than globbed so that a
 # stray file in cloud/chat/ never ships to the Lambda by accident.
-for f in handler.py prompt.py tools.py blocks.py data_store.py realtime.py cache.py \
+for f in handler.py prompt.py tools.py blocks.py data_store.py realtime.py cache.py facts.py \
          tools_joins.py tools_demographics.py tools_search.py tools_provenance.py; do
     cp "$SRC/$f" "$SCRIPT_DIR/lambda/$f"
 done
+# The module list above is hand-maintained and has silently omitted a new
+# module twice, each time producing a Runtime.ImportModuleError in production
+# rather than a failed deploy. Check that every local module the handler
+# imports is actually packaged.
+echo "Verifying the package satisfies handler.py's imports..."
+MISSING=$(python3 - "$SRC" "$SCRIPT_DIR/lambda" <<'PYEOF'
+import ast, os, sys
+src_dir, pkg_dir = sys.argv[1], sys.argv[2]
+tree = ast.parse(open(os.path.join(src_dir, "handler.py")).read())
+wanted = set()
+for node in ast.walk(tree):
+    if isinstance(node, ast.Import):
+        for a in node.names:
+            wanted.add(a.name.split(".")[0])
+    elif isinstance(node, ast.ImportFrom):
+        if node.level:                      # from . import x
+            for a in node.names:
+                wanted.add(a.name.split(".")[0])
+local = {n[:-3] for n in os.listdir(src_dir) if n.endswith(".py")}
+need = wanted & local
+missing = [m for m in sorted(need)
+           if not os.path.exists(os.path.join(pkg_dir, m + ".py"))]
+print(" ".join(missing))
+PYEOF
+)
+if [[ -n "$MISSING" ]]; then
+    echo "ERROR: handler.py imports these, but they are not in the package: $MISSING"
+    echo "Add them to the module list above."
+    exit 1
+fi
+echo "  all handler imports are packaged"
+
 rm -rf "$SCRIPT_DIR/lambda/chat_data"
 mkdir -p "$SCRIPT_DIR/lambda/chat_data"
 # Copy every artifact, not a hand-listed set of extensions. The previous

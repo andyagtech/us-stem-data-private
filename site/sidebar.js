@@ -316,6 +316,12 @@
     });
   });
 
+  // Load the tour definition before the widget, so the widget finds
+  // window.PhdTour when it mounts and can offer to run it.
+  const tourScript = document.createElement('script');
+  tourScript.src = '/tour.js';
+  document.body.appendChild(tourScript);
+
   // Load chat widget
   const chatScript = document.createElement('script');
   chatScript.src = '/chat-widget.js';

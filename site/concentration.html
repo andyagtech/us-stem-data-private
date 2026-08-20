@@ -245,6 +245,18 @@ const natTicks=[0,10,20,30,40];
 const S = [];
 
 S.push(`
+<div class="eyebrow"><span>What the public pays</span><span class="tag">FY2023 federal obligations</span></div>
+<h1>Roughly <span class="acc">$875,000</span> of federal money per STEM research doctorate.</h1>
+<p class="lede">American graduate education runs on public research funding. STEM doctoral students are largely paid for out of it — assistantships on federal grants, tuition waived, a stipend. The question this deck asks is not how much is spent. It is <strong>who the spending produces</strong>.</p>
+<div class="stats" style="margin-top:8px">
+  <div class="stat"><div class="n">$875<span style="font-size:.5em">K</span></div><div class="l">Median federal obligations per STEM research doctorate</div></div>
+  <div class="stat"><div class="n acc">49</div><div class="l">Departments at or above 70% non-resident in six of eight years</div></div>
+  <div class="stat"><div class="n acc">90.6<span style="font-size:.5em">%</span></div><div class="l">Highest sustained share of any department</div></div>
+</div>
+<p class="note" style="margin-top:auto">Federal obligations from the NSF NCSES Federal Support Survey (FY2023); doctorates from IPEDS Completions 2015–2022. This is an intensity ratio, not a cost of production — federal obligations buy research, not degrees.</p>
+`);
+
+S.push(`
 <div class="eyebrow"><span>US Research Doctorates · IPEDS Completions</span><span class="tag">1996 – 2025</span></div>
 <h1>The national average hides where the change actually happened.</h1>
 <p class="lede">The share of American research doctorates awarded to non-resident students has been essentially <strong>flat for fifteen years</strong>. What changed is concentration — the number of individual departments where non-residents are the overwhelming majority, and how long they stay that way.</p>
@@ -402,7 +414,7 @@ S.push(`
 `);
 
 /* ---------- render & navigate ---------- */
-const SLUGS = ['overview','national-flat','concentration','by-field']
+const SLUGS = ['public-cost','overview','national-flat','concentration','by-field']
   .concat(featured.filter(n=>D.cases.some(c=>c.institution===n))
                   .map(n=>'case-'+n.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')))
   .concat(['persistence','method']);
