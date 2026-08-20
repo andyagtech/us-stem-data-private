@@ -148,3 +148,58 @@ fact that CloudFront absorbs it rather than the origin.
 
 **Worth knowing:** AWS does not automatically forgive denial-of-wallet bills.
 People have had them waived by asking support. It is a favour, not a policy.
+
+
+---
+
+## Applied — 2026-08-19
+
+All three steps executed and verified. No outage: the bucket stayed public
+until after the distribution finished deploying on the new origin, so there was
+never a window where CloudFront pointed at an endpoint it could not read.
+
+### Result
+
+```
+direct S3 (REST endpoint)     403   was 200
+direct S3 (website endpoint)  403   was 200
+site via CloudFront           200   0.19s
+large Parquet export          200   (through CloudFront only)
+10 rapid requests             10/10 200   rate limit does not touch readers
+```
+
+### What is now in place
+
+| Control | Value |
+|---|---|
+| Origin | `phd-demographics-andy-barr.s3.us-east-1.amazonaws.com` (REST) |
+| Origin Access Control | `E32WHB7UUF2ZJS`, sigv4, always sign |
+| Bucket policy | `s3:GetObject` to `cloudfront.amazonaws.com` only, conditioned on this distribution's ARN |
+| Public ACL blocks | `BlockPublicAcls` and `IgnorePublicAcls` on |
+| WAF WebACL | `phd-demographics-protection` — per-IP, 2000 req / 5 min, Block |
+| Budget | `phd-demographics-monthly`, $150, alerts at 60% actual and 100% forecast, **no action** |
+
+`BlockPublicPolicy` and `RestrictPublicBuckets` are deliberately left off: S3's
+classifier reads the OAC policy as "public" because its principal is a service,
+and switching them on would reject the very policy that locks the bucket down.
+The ACL blocks are the meaningful ones here.
+
+### Rollback
+
+Restore the origin from `backup/dist-config-20260819T235425Z.json` (website
+endpoint, `CustomOriginConfig`, no `OriginAccessControlId`), reapply
+`backup/bucket-policy-20260819T235425Z.json`, and set all four public-access
+blocks back to false. To drop only the rate limit, clear `WebACLId` on the
+distribution — one update, no bucket change.
+
+### Residual risk
+
+A genuinely distributed flood through CloudFront, thousands of addresses each
+staying under 2000 requests per five minutes, is still possible and is not
+addressed here. Shield Advanced covers that at $3,000/month, which is not
+proportionate. What makes it survivable instead: everything is cached at the
+edge, the origin is no longer reachable directly, and CloudFront absorbs the
+requests rather than S3 billing for them.
+
+Re-verify any time with `python3 scripts/test_site.py` (40 checks, exercises the
+CloudFront path end to end) plus the two 403 checks above.
