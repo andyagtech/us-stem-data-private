@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The master's expansion — volume, visas and tuition</title>
+<meta name="description" content="How US core-STEM master's programmes grew, who filled the new places, the visas that carried them, and what the expansion is worth in tuition.">
+<meta property="og:title" content="The master's expansion — volume, visas and tuition">
+<meta property="og:description" content="Federal data on the growth of US core-STEM master's programmes and what it is worth in tuition.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og/concentration.png">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.75rem; margin: 0 0 .6rem; line-height: 1.25; max-width: 24ch; }
+  .page-head p { color: var(--text-muted); max-width: 70ch; line-height: 1.65;
+    font-size: .95rem; margin: 0 0 .5rem; }
+  .chart-section { margin-top: 2.6rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  .chart-section h2 { font-size: 1.15rem; margin: 0 0 .4rem; }
+  .chart-section .lede { color: var(--text-muted); max-width: 72ch; line-height: 1.6;
+    font-size: .9rem; margin: 0 0 1.2rem; }
+  svg.line-chart { width: 100%; height: 300px; display: block; overflow: visible; }
+  svg.line-chart text { font-size: 11px; fill: var(--text-muted);
+    font-variant-numeric: tabular-nums; }
+  svg.line-chart .grid { stroke: rgba(148,163,184,0.12); stroke-width: 1; }
+  svg.line-chart .ser { fill: none; stroke-width: 2.4; stroke-linejoin: round; }
+  svg.line-chart .dot { stroke: #0f172a; stroke-width: 2; }
+  .legend { display: flex; gap: 1.2rem; flex-wrap: wrap; margin: 0 0 1rem;
+    font-size: .8rem; color: var(--text-muted); }
+  .legend i { width: 11px; height: 11px; border-radius: 3px; display: inline-block;
+    margin-right: .35rem; vertical-align: -1px; }
+  .stat-row { display: flex; gap: 1.6rem; flex-wrap: wrap; margin: 0 0 1.1rem;
+    font-size: .84rem; color: var(--text-muted); }
+  .stat-row b { color: var(--text); font-variant-numeric: tabular-nums; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55;
+    max-width: 78ch; margin: .8rem 0 0; }
+  .loading { color: var(--text-muted); font-size: .86rem; padding: 1rem 0; }
+  .chart-tip { position: absolute; top: 0; transform: translateX(-50%);
+    background: var(--surface, #111827); border: 1px solid var(--border);
+    border-radius: 6px; padding: .45rem .6rem; font-size: .76rem; line-height: 1.5;
+    pointer-events: none; transition: opacity .12s; white-space: nowrap; z-index: 5; }
+  .chart-tip span { display: block; color: var(--text-muted); }
+  .chart-tip b { color: var(--text); font-variant-numeric: tabular-nums; }
+  .chart-tip i { width: 9px; height: 9px; border-radius: 2px; display: inline-block;
+    margin-right: .35rem; vertical-align: -1px; }
+  .caveat { border-left: 2px solid var(--border); padding: .1rem 0 .1rem 1rem;
+    margin: 1.1rem 0 0; }
+  .caveat h3 { font-size: .86rem; margin: 0 0 .35rem; }
+  .caveat p { color: var(--text-muted); font-size: .8rem; line-height: 1.6;
+    max-width: 76ch; margin: 0 0 .5rem; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#volume">Skip to the charts</a>
+<main id="main">
+<div class="wrap">
+
+  <div class="page-head">
+    <h1>The master&rsquo;s expansion</h1>
+    <p>The doctorate is the small, slow stream. The master&rsquo;s is where
+    American graduate education actually grew &mdash; and it grew in a
+    particular direction. This page follows that expansion through three
+    federal collections in turn: how many places were added and who filled
+    them, the visas that carried them, and what the whole thing is worth in
+    tuition.</p>
+    <p>Every figure is from IPEDS, the State Department or NSF. Where a number
+    is an estimate rather than a measurement, it is labelled and its
+    assumptions are printed alongside it.</p>
+  </div>
+
+  <section class="chart-section" id="volume">
+    <h2>1 &middot; The expansion in absolute numbers</h2>
+    <p class="lede">Core-STEM master&rsquo;s degrees conferred each year, split
+    by residency. Both lines rise. One rises far faster, and from a much
+    smaller base.</p>
+    <div id="vol-chart"><p class="loading">Loading&hellip;</p></div>
+    <div class="legend" id="vol-legend"></div>
+    <div class="stat-row" id="vol-stats"></div>
+    <p class="note">IPEDS Completions, award level 7, CIP families 11, 14, 15,
+    26, 27, 30, 40 and 42. The series starts in 2008 because the residency
+    columns it depends on do not exist in earlier files. The dip in 2022 and
+    the jump after it are a real cohort effect rather than a reporting change:
+    those students enrolled in autumn 2020 under the pandemic travel
+    restrictions, the count of reporting institutions moves smoothly across it,
+    and the swing sits almost entirely in the non-resident line.</p>
+  </section>
+
+  <section class="chart-section" id="share">
+    <h2>2 &middot; The same expansion as a proportion</h2>
+    <p class="lede">The non-resident share of core-STEM master&rsquo;s degrees,
+    with the doctorate share drawn beside it for scale. The doctorate line is
+    close to flat across the whole window. The master&rsquo;s line is not.</p>
+    <div id="share-chart"><p class="loading">Loading&hellip;</p></div>
+    <div class="legend" id="share-legend"></div>
+    <div class="stat-row" id="share-stats"></div>
+    <p class="note">Same source and basis as above; the doctorate series is
+    award level 17, with level 9 added across the 2008&ndash;09 transition when
+    institutions were migrating between the two codings. Note that the axis on
+    this chart does not start at zero, because the interesting movement is
+    within a band; read it for shape, and read chart 1 for magnitude.</p>
+  </section>
+
+  <section class="chart-section" id="visas">
+    <h2>3 &middot; The visas that carried it</h2>
+    <p class="lede">F-1 student visas issued by US consulates, by fiscal year.
+    This is issuance, not enrolment &mdash; it counts the document, at every
+    level of study from language schools upward. What it shows well is the
+    shape of the pipeline and where it turns.</p>
+    <div id="visa-chart"><p class="loading">Loading&hellip;</p></div>
+    <div class="legend" id="visa-legend"></div>
+    <div class="stat-row" id="visa-stats"></div>
+    <p class="note">US Department of State, Nonimmigrant Visa Issuances by
+    Visa Class and Nationality, fiscal years 1997&ndash;2024. The 2020 collapse
+    is consular closure during the pandemic, not a change in demand. India
+    overtakes China in 2022 and has stayed ahead since, and its 2023 issuance
+    is almost exactly three times its 2019 level. That is the clearest single
+    feature in the series, and it lines up with the master&rsquo;s jump in
+    chart 1.</p>
+    <div class="caveat">
+      <h3>What this chart cannot do</h3>
+      <p>Visa issuance cannot be matched to a degree programme. A person may
+      receive a visa and not enrol, enrol at a level other than the one
+      intended, or renew across several years and appear more than once. The
+      correspondence with chart 1 is a correspondence in shape and timing, not
+      a link between named records.</p>
+    </div>
+  </section>
+
+  <section class="chart-section" id="arc">
+    <h2>4 &middot; What tuition actually did, over twenty years</h2>
+    <p class="lede">All four published rates, in constant 2024 dollars. This
+    chart exists because the shorter window in the next one is misleading on
+    its own: read 2014 onward and it looks as though tuition simply fell. It
+    did not. It climbed steeply, peaked, and has been falling against inflation
+    since &mdash; and the master&rsquo;s expansion begins almost exactly at the
+    turn.</p>
+    <div id="arc-chart"><p class="loading">Loading&hellip;</p></div>
+    <div class="legend" id="arc-legend"></div>
+    <div class="stat-row" id="arc-stats"></div>
+    <p class="note">IPEDS Institutional Characteristics, academic-year files
+    2004&ndash;05 through 2023&ndash;24, median across reporting institutions.
+    In-state undergraduate tuition and fees rose <strong>36% in real
+    terms</strong> between 2004 and its 2012 peak, then gave back nearly all of
+    it. Graduate out-of-state peaked later, in 2017, and is now back to
+    within a percent of its 2004 level.</p>
+    <div class="caveat">
+      <h3>Why this is the honest way to read it</h3>
+      <p>Each line is a median across the institutions reporting that
+      particular rate, so the undergraduate panel includes institutions with no
+      graduate programme. It is not weighted by enrolment: it describes the
+      typical sticker price at a typical institution, not what the typical
+      student pays. Published rates also ignore aid, and undergraduate
+      discounting is heavy &mdash; which is exactly why the tuition estimate
+      later on this page is confined to master&rsquo;s study, where almost
+      nobody holds a waiver.</p>
+      <p>The turn matters for the argument. Once the published price stops
+      rising, an institution that wants more tuition income has to enrol more
+      people rather than charge more &mdash; and the growth in chart 1 is
+      almost entirely non-resident.</p>
+    </div>
+  </section>
+
+  <section class="chart-section" id="rate">
+    <h2>5 &middot; What a place costs</h2>
+    <p class="lede">Median published out-of-state graduate tuition and required
+    fees across all reporting institutions &mdash; the rate a non-resident
+    student is charged. Shown both as billed at the time and in constant 2024
+    dollars, because the two tell opposite stories.</p>
+    <div id="rate-chart"><p class="loading">Loading&hellip;</p></div>
+    <div class="legend" id="rate-legend"></div>
+    <div class="stat-row" id="rate-stats"></div>
+    <p class="note">IPEDS Institutional Characteristics, academic-year files
+    2014&ndash;15 through 2023&ndash;24 (TUITION7 + FEE7). The sticker price
+    rose in nominal terms and <em>fell</em> against inflation. Whatever drove
+    the revenue growth in chart 6, it was not price.</p>
+  </section>
+
+  <section class="chart-section" id="billed">
+    <h2>6 &middot; What the expansion is worth</h2>
+    <p class="lede">One year of published out-of-state graduate tuition and
+    fees, multiplied by the number of non-resident core-STEM master&rsquo;s
+    degrees each institution conferred that year. Since the price per place
+    fell in real terms, all of this growth is volume.</p>
+    <div id="billed-chart"><p class="loading">Loading&hellip;</p></div>
+    <div class="legend" id="billed-legend"></div>
+    <div class="stat-row" id="billed-stats"></div>
+    <p class="note">A master&rsquo;s normally runs eighteen months to two
+    years, so the figure for a whole graduating cohort is roughly one and a
+    half to two times the annual figure shown &mdash; on the order of
+    <strong>five to seven billion dollars</strong> at the 2023 level.</p>
+    <div class="caveat">
+      <h3>This is an estimate, and here is exactly what it is</h3>
+      <p><strong>It is a sticker price, not receipts.</strong> It multiplies a
+      published rate by a degree count. It is not net of discounts, waivers or
+      institutional aid, and no institution collects the full published rate
+      from every student.</p>
+      <p><strong>Why sticker is defensible here and would not be for
+      undergraduates:</strong> NSF&rsquo;s 2024 graduate-student survey puts
+      master&rsquo;s assistantship rates at 7.0% for research assistantships
+      and 6.9% for teaching assistantships, so roughly 86% of master&rsquo;s
+      students hold neither &mdash; and it is assistantships that carry the
+      tuition waivers. Master&rsquo;s study is overwhelmingly paid for by the
+      student.</p>
+      <p><strong>It is not federal money.</strong> Only 5.0% of full-time
+      master&rsquo;s students have federal support as their primary source,
+      against 24.7% of doctoral students. This is a tuition story, not a
+      research-funding story, and the two should not be run together.</p>
+    </div>
+  </section>
+
+  <section class="chart-section" id="index">
+    <h2>7 &middot; Against everything else the sector charges</h2>
+    <p class="lede">The estimate from chart 6 set against total net tuition
+    revenue at every US institution, for every student at every level, from the
+    audited finance files. Both indexed to their first year, because a figure
+    in the billions and a figure in the hundreds of billions cannot honestly
+    share an axis.</p>
+    <div id="index-chart"><p class="loading">Loading&hellip;</p></div>
+    <div class="legend" id="index-legend"></div>
+    <div class="stat-row" id="index-stats"></div>
+    <p class="note">IPEDS Finance, F1B01 (public, GASB) plus F2D01 (private
+    not-for-profit, FASB), net of discounts and allowances, in constant 2024
+    dollars; for-profit institutions are excluded. In real terms the sector&rsquo;s
+    total net tuition revenue <em>fell</em> about 9% across this window, from
+    roughly $192B to $174B, while the estimated amount billed to non-resident
+    core-STEM master&rsquo;s students roughly doubled. The reporting-institution
+    count declines about 1% a year through consolidation, smoothly, so the fall
+    is not an artefact of coverage.</p>
+    <div class="caveat">
+      <h3>Read the comparison carefully</h3>
+      <p>The two series are not the same kind of number and are not
+      subtractable: one is an estimate of gross billings for one segment, the
+      other an audited net total for everybody. The comparison is about
+      <em>direction</em> &mdash; one segment growing sharply against a sector
+      total shrinking in real terms &mdash; and that is all it supports.</p>
+    </div>
+  </section>
+
+</div>
+</main>
+<script src="/expansion.js" defer></script>
+</body>
+</html>

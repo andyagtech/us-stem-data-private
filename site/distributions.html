@@ -18,6 +18,12 @@
   .chart-section h2 { font-size: 1.15rem; margin: 0 0 .4rem; }
   .chart-section .lede { color: var(--text-muted); max-width: 72ch; line-height: 1.6;
     font-size: .9rem; margin: 0 0 1.2rem; }
+  svg.line-chart { width: 100%; height: 300px; display: block; overflow: visible; }
+  svg.line-chart text { font-size: 11px; fill: var(--text-muted);
+    font-variant-numeric: tabular-nums; }
+  svg.line-chart .grid { stroke: rgba(148,163,184,0.12); stroke-width: 1; }
+  svg.line-chart .ser { fill: none; stroke-width: 2.4; stroke-linejoin: round; }
+  svg.line-chart .dot { stroke: #0f172a; stroke-width: 2; }
   .hist { display: grid; gap: 3px; }
   .hist-row { display: grid; grid-template-columns: 4.6rem 1fr 3.4rem;
     align-items: center; gap: .6rem; font-size: .82rem; }
@@ -68,6 +74,43 @@
     institution — Electrical Engineering at Purdue, not "Engineering" at Purdue.
     <a href="/#method">Method and limits</a></p>
   </div>
+
+  <section class="chart-section" id="counts">
+    <h2>0 · The raw numbers</h2>
+    <p class="lede">Proportions hide scale, so here are the counts first: how
+    many core-STEM research doctorates the United States awarded each year, and
+    to whom. Both lines rise. One rises faster.</p>
+    <div id="counts-chart"><p class="loading">Loading…</p></div>
+    <div class="legend" id="counts-legend"></div>
+    <div class="stat-row" id="counts-stats"></div>
+    <p class="note">IPEDS Completions, award level 17, core-STEM CIP families,
+    1995&ndash;2025. Domestic is total minus non-resident. Across 2008 and 2009
+    institutions were migrating between award-level codings, so both are summed
+    for those years — using one alone understates them by about a fifth and puts
+    a false trough in the middle of the series. IPEDS published no 1999
+    completions file, so 1999 is absent upstream; the line breaks there and a
+    dashed stub bridges the gap rather than drawing through a year we do not
+    have.</p>
+  </section>
+
+  <section class="chart-section" id="masters-counts">
+    <h2>0b &middot; The same picture at master&rsquo;s level</h2>
+    <p class="lede">The doctorate is the smaller, slower stream. The master&rsquo;s
+    is where the expansion actually happened &mdash; and where the raw counts
+    move hardest.</p>
+    <div id="masters-chart"><p class="loading">Loading&hellip;</p></div>
+    <div class="legend" id="masters-legend"></div>
+    <div class="stat-row" id="masters-stats"></div>
+    <p class="note">IPEDS Completions, award level 7, same eight core-STEM CIP
+    families, 2008&ndash;2025. The series begins at 2008 because the
+    <code>CTOTALT</code>/<code>CNRALT</code> residency columns do not exist in
+    earlier files. Note the dip in 2022 and the jump after it: those graduates
+    enrolled in autumn 2020, under the pandemic travel restrictions. It is a
+    real cohort effect, not a reporting artefact &mdash; the number of reporting
+    institutions moves smoothly across it (6,042 in 2022, 5,960 in 2023), and
+    the swing is confined to the non-resident line while the domestic line keeps
+    climbing.</p>
+  </section>
 
   <section class="chart-section" id="national">
     <h2>1 · The whole distribution, then and now</h2>

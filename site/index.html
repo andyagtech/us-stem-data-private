@@ -110,6 +110,25 @@
   .prov-check a { color: var(--accent); }
   .sub-source { display: block; margin-top: .6rem; font-size: .82rem;
     color: var(--text-muted); }
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.2rem 0 0; }
+  @media (max-width: 620px) { .compare { grid-template-columns: 1fr; } }
+  .compare-item { border: 1px solid var(--border); border-radius: 12px;
+    padding: 1.2rem 1.3rem; border-left: 3px solid #f0a5ae; }
+  .compare-low { border-left-color: #4ade80; }
+  .compare-num { font-size: 2.6rem; font-weight: 800; line-height: 1;
+    font-variant-numeric: tabular-nums; color: #f0a5ae; }
+  .compare-low .compare-num { color: #4ade80; }
+  .compare-num span { font-size: 1.3rem; }
+  .compare-lab { margin-top: .5rem; font-size: .95rem; font-weight: 600; }
+  .compare-sub { margin-top: .2rem; color: var(--text-muted); font-size: .8rem; }
+  table.cases tr.over td { background: rgba(240,165,174,0.06); }
+  .split-bar { display: flex; height: 2.6rem; border-radius: 8px; overflow: hidden;
+    margin: 1.1rem 0 .4rem; border: 1px solid var(--border); }
+  .split-nra, .split-dom { display: flex; align-items: center; justify-content: center;
+    font-size: .82rem; font-weight: 700; }
+  .split-nra { background: #f0a5ae; color: #2a0d12; }
+  .split-dom { background: rgba(148,163,184,0.18); color: var(--text); }
+  .split-cap { color: var(--text-muted); font-size: .78rem; margin: 0; }
   .method-section { border-top: 1px solid var(--border); padding-top: 1.6rem; }
   .method-section h2 { font-size: 0.95rem; color: var(--text-muted); }
   ul.limits { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.7rem; }
@@ -187,26 +206,110 @@
 <a class="skip-link" href="#cases">Skip to the data</a>
 <main id="main">
 <div class="hero">
-  <h1 id="finding">Every STEM doctorate carries
-    <span class="hl">$875,000 in federal research funding</span>. In 49
-    departments, most of those doctorates go to students on temporary visas.</h1>
-  <p class="subtitle">Seven in ten or more, in at least six of the last eight
-    measured years. Not once, and not by accident.<br>
-    <span class="sub-source">Federal data. IPEDS Completions, US Department of
-    Education — mandatory reporting, not a survey or an estimate.</span></p>
+  <h1 id="finding">An American doing a STEM PhD is
+    <span class="hl">four times more likely to be paying for it themselves</span>.</h1>
+  <p class="subtitle">Three in four international science and engineering
+    doctorates come with a funded position. Barely half of American ones do.
+    The gap runs through every field, and it is the public that funds the
+    difference.<br>
+    <span class="sub-source">Federal data. NSF Survey of Earned Doctorates and
+    IPEDS Completions — mandatory collections, not surveys of opinion.</span></p>
   <div class="hero-stats">
-    <div class="hero-stat"><div class="num">49</div><div class="label">Departments &ge;70% non-resident</div></div>
-    <div class="hero-stat"><div class="num">90.6%</div><div class="label">Highest sustained share</div></div>
-    <div class="hero-stat"><div class="num">$875K</div><div class="label">Median federal $ per STEM doctorate</div></div>
-    <div class="hero-stat"><div class="num">60%</div><div class="label">Of master's growth, non-resident</div></div>
+    <div class="hero-stat"><div class="num">76%</div><div class="label">Of international STEM doctorates are funded</div></div>
+    <div class="hero-stat"><div class="num">53%</div><div class="label">Of American ones are</div></div>
+    <div class="hero-stat"><div class="num">$875K</div><div class="label">Federal research funding per STEM doctorate</div></div>
+    <div class="hero-stat"><div class="num">60%</div><div class="label">Of new master's seats went to non-residents</div></div>
   </div>
-  <p class="hero-note"><a href="#cases">The 49 departments</a> &middot;
+  <p class="hero-note"><a href="#who-pays">Who gets funded</a> &middot;
+    <a href="#clearance">The clearance test</a> &middot;
+    <a href="#opportunity">The seats</a> &middot;
+    <a href="#cases">The 49 departments</a> &middot;
     <a href="#public-cost">What the public puts in</a> &middot;
-    <a href="#method">Method and limits</a> &middot;
-    <a href="#contact">Contact</a></p>
+    <a href="#method">Method and limits</a></p>
 </div>
 
 <div class="content">
+  <div id="who-pays" class="section">
+    <h2>Who gets paid to be here</h2>
+    <p class="lede">A doctorate is not something you buy. In science and
+    engineering it is a job: an assistantship, tuition waived, a stipend, and
+    the work funded largely out of federal research grants. The question is who
+    gets that deal.</p>
+
+    <div class="table-wrap">
+      <table class="cases">
+        <caption class="sr-only">Primary source of financial support for
+          science and engineering research doctorate recipients, by citizenship
+          status, 2024.</caption>
+        <thead><tr>
+          <th scope="col">Primary source of support</th>
+          <th scope="col" class="num-col">US citizen or permanent resident</th>
+          <th scope="col" class="num-col">Temporary visa</th>
+        </tr></thead>
+        <tbody>
+          <tr><td>Research assistantship</td><td class="num-col">35.4%</td>
+              <td class="num-col share">53.6%</td></tr>
+          <tr><td>Teaching assistantship</td><td class="num-col">17.7%</td>
+              <td class="num-col share">22.4%</td></tr>
+          <tr class="over"><td><strong>Funded position, either kind</strong></td>
+              <td class="num-col"><strong>53.1%</strong></td>
+              <td class="num-col share"><strong>76.0%</strong></td></tr>
+          <tr><td>Fellowship or scholarship</td><td class="num-col">27.6%</td>
+              <td class="num-col">17.4%</td></tr>
+          <tr class="over"><td><strong>Paying their own way</strong></td>
+              <td class="num-col share"><strong>16.0%</strong></td>
+              <td class="num-col"><strong>3.5%</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="lede" style="margin-top:1rem">An American in a STEM doctoral
+    programme is <strong>more than four times as likely</strong> to be funding
+    it out of their own pocket. And this is not one odd discipline: the gap
+    appears in <strong>every one of the nineteen fields</strong> the survey
+    covers, from social sciences to engineering. Not one runs the other way.</p>
+
+    <p class="hero-note" style="text-align:left;max-width:none">
+      NSF Survey of Earned Doctorates, Table 4-1 (2024) — a census of research
+      doctorate recipients, administered by institutions and completed before
+      graduation, not a sample.
+      <a href="/distributions.html">See the distributions</a> &middot;
+      <a href="#method">Method and limits</a></p>
+  </div>
+
+  <div id="clearance" class="section">
+    <h2>What happens when citizenship is required</h2>
+    <p class="lede">Computer science doctorates go to non-residents about
+    <strong>63%</strong> of the time. Information-security doctorates — the
+    field closest to classified work, where a clearance is normally a condition
+    of the job — go to non-residents <strong>2.5%</strong> of the time.</p>
+
+    <div class="compare">
+      <div class="compare-item">
+        <div class="compare-num">63.1<span>%</span></div>
+        <div class="compare-lab">Computer Science</div>
+        <div class="compare-sub">8,624 doctorates · 119 institutions</div>
+      </div>
+      <div class="compare-item compare-low">
+        <div class="compare-num">2.5<span>%</span></div>
+        <div class="compare-lab">Computer &amp; Information Systems Security</div>
+        <div class="compare-sub">511 doctorates · 8 institutions</div>
+      </div>
+    </div>
+
+    <p class="lede" style="margin-top:1rem">Same discipline. Same universities,
+    largely. The difference is that one of them requires citizenship and the
+    other does not — and where it is required, Americans fill the programmes.
+    That is worth sitting with: the composition of these fields is not a fact
+    of nature or a shortage of American talent. It responds to what is asked
+    for.</p>
+
+    <p class="hero-note" style="text-align:left;max-width:none">
+      This is a reading, not a finding. IPEDS records which degrees were
+      awarded, not why anyone was admitted, and the security programmes are
+      small. But the contrast is large and it is in the federal data.</p>
+  </div>
+
   <div id="cases" class="section">
     <h2>The departments</h2>
     <p class="lede">One field, one institution, 2015&ndash;2022. Conservative by
@@ -253,6 +356,43 @@
       <a href="/data/exports/stem_records.parquet">bulk Parquet export</a>.</p>
   </noscript>
     <p class="show-more"><button type="button" id="show-all">Show all 49</button></p>
+  </div>
+
+  <div id="opportunity" class="section">
+    <h2>Who the expansion was built for</h2>
+    <p class="lede">Between 2012 and 2025, American universities added about
+    <strong>159,000</strong> core-STEM master&rsquo;s places. Nearly
+    <strong>96,000 of them — three in every five —</strong> went to students on
+    temporary visas. The system did not stand still and quietly change hands.
+    It doubled, and the majority of what it built was not for Americans.</p>
+
+    <div class="split-bar" aria-hidden="true">
+      <div class="split-nra" style="width:60.3%"><span>60.3% non-resident</span></div>
+      <div class="split-dom" style="width:39.7%"><span>39.7% domestic</span></div>
+    </div>
+    <p class="split-cap">159,213 core-STEM master&rsquo;s places added,
+      2012&ndash;2025 · IPEDS Completions</p>
+
+    <p class="hero-note" style="text-align:left;max-width:none">
+      <strong>This does not depend on where you start counting.</strong> 2012 is
+      one baseline; the result survives every other one. Measured to 2025 from
+      any starting year between 2008 and 2018 &mdash; eleven different windows
+      &mdash; non-residents took the <em>majority</em> of the new core-STEM
+      master&rsquo;s places every single time, between 50.2% and 60.8% of them.
+      There is no baseline in that range that turns the majority around.</p>
+
+    <p class="lede" style="margin-top:1rem">A funded place is a real thing with
+    a real limit. Teaching assistantships are set by how many sections a
+    department runs; research assistantships by what its grants will carry. When
+    a department grows its intake and fills most of the new places with
+    international students, that is a choice about who gets trained on the
+    public&rsquo;s money.</p>
+
+    <p class="hero-note" style="text-align:left;max-width:none">
+      <strong>The scope of this finding.</strong> Domestic core-STEM
+      master&rsquo;s places rose 68% across the same window. What is measured
+      here is who the growth was built for, and who pays for it.
+      <a href="#method">Method and limits</a></p>
   </div>
 
   <div id="public-cost" class="section">
@@ -381,10 +521,11 @@
         obligations buy research &mdash; papers, instruments, facilities, staff
         &mdash; not degrees. A campus with a national laboratory ranks high for
         reasons unrelated to graduate training.</li>
-      <li><strong>Composition, not displacement.</strong> Domestic STEM
-        doctorates rose about a third between 2012 and 2025, roughly in step
-        with the total. The seats were not fixed. What changed is who the
-        growth was built for &mdash; and who pays for it.</li>
+      <li><strong>Awards and funding, not admissions.</strong> IPEDS records
+        which degrees were awarded and to whom; it does not record who applied
+        or who was admitted. Domestic STEM doctorates rose about a third
+        between 2012 and 2025. What this measures is who the growth was built
+        for &mdash; and who pays for it.</li>
       <li><strong>Non-resident is a visa status</strong> at graduation, not
         ethnicity or country of origin. These files cannot be split by
         nationality, and they do not record who applied, was admitted, or was

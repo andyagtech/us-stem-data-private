@@ -73,6 +73,17 @@
         { hash: 'industry-section', label: 'By Major Industry' },
       ]},
       { href: '/concentration.html', label: 'The Concentration Effect' },
+      { href: '/rankings.html', label: 'Where The Share Is Highest', anchors: [
+        { hash: 'institutions', label: 'Institutions' },
+        { hash: 'programmes', label: 'Programmes' },
+        { hash: 'contrast', label: 'Two programmes, one university' },
+      ]},
+      { href: '/expansion.html', label: "The Master's Expansion", anchors: [
+        { hash: 'volume', label: 'In absolute numbers' },
+        { hash: 'share', label: 'As a proportion' },
+        { hash: 'visas', label: 'The visas' },
+        { hash: 'billed', label: 'What it is worth' },
+      ]},
       { href: '/distributions.html', label: 'Distributions', anchors: [
         { hash: 'national', label: 'National, then and now' },
         { hash: 'programmes', label: 'By programme' },

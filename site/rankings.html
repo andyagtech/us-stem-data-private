@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where the share is highest</title>
+<meta name="description" content="US institutions and programmes ranked by non-resident share of core-STEM degrees, at both master's and doctoral level, from IPEDS Completions.">
+<meta property="og:title" content="Where the non-resident share is highest">
+<meta property="og:description" content="Institutions and programmes ranked at both master's and doctoral level, with cohort floors stated.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og/concentration.png">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.75rem; margin: 0 0 .6rem; line-height: 1.25; max-width: 24ch; }
+  .page-head p { color: var(--text-muted); max-width: 70ch; line-height: 1.65;
+    font-size: .95rem; margin: 0 0 .5rem; }
+  .chart-section { margin-top: 2.6rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  .chart-section h2 { font-size: 1.15rem; margin: 0 0 .4rem; }
+  .chart-section .lede { color: var(--text-muted); max-width: 72ch; line-height: 1.6;
+    font-size: .9rem; margin: 0 0 1rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55;
+    max-width: 78ch; margin: .8rem 0 0; }
+  .floor { color: var(--text-muted); font-size: .78rem; margin: 0 0 1rem;
+    font-variant-numeric: tabular-nums; }
+  #level-pick { display: flex; gap: .5rem; margin: 1.2rem 0 1.6rem; flex-wrap: wrap; }
+  #level-pick button { font: inherit; font-size: .85rem; padding: .45rem 1rem;
+    border-radius: 999px; border: 1px solid var(--border); cursor: pointer;
+    background: transparent; color: var(--text-muted); }
+  #level-pick button.on { background: var(--text); color: var(--bg, #0f172a);
+    border-color: var(--text); }
+  #level-pick button:focus-visible { outline: 2px solid #38bdf8; outline-offset: 2px; }
+  .hero { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap;
+    margin: 0 0 .3rem; }
+  .hero .n { font-size: 2.4rem; font-weight: 600; font-variant-numeric: tabular-nums;
+    line-height: 1; }
+  .hero .lbl { color: var(--text-muted); font-size: .88rem; }
+  .r-row { display: grid; grid-template-columns: 1.8rem minmax(9rem, 20rem) 1fr 3.6rem 8.5rem;
+    align-items: center; gap: .7rem; font-size: .82rem; padding: .2rem 0; }
+  .r-rank { color: var(--text-muted); text-align: right; font-size: .75rem;
+    font-variant-numeric: tabular-nums; }
+  .r-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .r-track { background: rgba(148,163,184,0.08); border-radius: 3px; height: 1.05rem;
+    overflow: hidden; }
+  .r-bar { height: 100%; border-radius: 3px; transition: width .5s cubic-bezier(.2,.7,.3,1); }
+  .r-pct { text-align: right; font-variant-numeric: tabular-nums; }
+  .r-n { color: var(--text-muted); font-size: .76rem; text-align: right;
+    font-variant-numeric: tabular-nums; }
+  @media (max-width: 720px) {
+    .r-row { grid-template-columns: 1.6rem 1fr 3.4rem; }
+    .r-track, .r-n { display: none; }
+  }
+  .contrast { border: 1px solid var(--border); border-radius: 8px; padding: .8rem 1rem;
+    margin: 0 0 .7rem; }
+  .c-head { display: flex; justify-content: space-between; align-items: baseline;
+    gap: 1rem; margin: 0 0 .55rem; flex-wrap: wrap; }
+  .c-name { font-size: .9rem; }
+  .c-gap { color: var(--text-muted); font-size: .76rem; font-variant-numeric: tabular-nums; }
+  .c-side { display: grid; grid-template-columns: 4rem 1fr 8.5rem; gap: .7rem;
+    align-items: baseline; font-size: .81rem; padding: .12rem 0; }
+  .c-share { font-variant-numeric: tabular-nums; text-align: right; font-weight: 600; }
+  .c-share.high { color: #f0a5ae; }
+  .c-share.low { color: #38bdf8; }
+  .c-prog { color: var(--text-muted); overflow: hidden; text-overflow: ellipsis;
+    white-space: nowrap; }
+  .c-n { color: var(--text-muted); font-size: .76rem; text-align: right;
+    font-variant-numeric: tabular-nums; }
+  @media (max-width: 720px) { .c-side { grid-template-columns: 3.6rem 1fr; } .c-n { display: none; } }
+  .caveat { border-left: 2px solid var(--border); padding: .1rem 0 .1rem 1rem; margin: 1.1rem 0 0; }
+  .caveat h3 { font-size: .86rem; margin: 0 0 .35rem; }
+  .caveat p { color: var(--text-muted); font-size: .8rem; line-height: 1.6;
+    max-width: 76ch; margin: 0 0 .5rem; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#institutions">Skip to the rankings</a>
+<main id="main">
+<div class="wrap">
+
+  <div class="page-head">
+    <h1>Where the share is highest</h1>
+    <p>The same question asked at both degree levels: which institutions and
+    which programmes award the largest proportion of their core-STEM degrees to
+    students on temporary visas. Master&rsquo;s is the larger population by
+    roughly six to one and is where the growth happened, so it is shown first.</p>
+    <p>Every table is a ranking on a ratio, which is the easiest kind of number
+    to mislead with &mdash; a programme awarding four degrees, all to
+    non-residents, reads 100% and means nothing. So each table states the
+    cohort floor it applies, how many units cleared it, and the denominator on
+    every row.</p>
+  </div>
+
+  <div id="level-pick" role="group" aria-label="Degree level">
+    <button type="button" data-level="masters" aria-pressed="true">Master&rsquo;s</button>
+    <button type="button" data-level="doctorate" aria-pressed="false">Doctorate</button>
+  </div>
+
+  <div class="hero">
+    <span class="n" id="nat">&mdash;</span>
+    <span class="lbl">national non-resident share &middot; <span id="nat-detail"></span></span>
+  </div>
+
+  <section class="chart-section" id="institutions">
+    <h2>Institutions</h2>
+    <p class="lede">Pooled across the window, so a single unusual year cannot
+    put an institution at the top.</p>
+    <p class="floor" id="inst-floor"></p>
+    <div id="inst-table"><p class="note">Loading&hellip;</p></div>
+    <p class="note">IPEDS Completions, CIP families 11, 14, 15, 26, 27, 30, 40
+    and 42. Award level 7 for master&rsquo;s; level 17 for doctorates, with
+    legacy level 9 added across the 2008&ndash;09 transition. Non-resident alien
+    is the residency category the institution itself reports at graduation, not
+    an inference from names or countries.</p>
+  </section>
+
+  <section class="chart-section" id="programmes">
+    <h2>Programmes</h2>
+    <p class="lede">Four-digit CIP codes pooled nationally &mdash; one field of
+    study across every institution that offers it.</p>
+    <p class="floor" id="prog-floor"></p>
+    <div id="prog-table"><p class="note">Loading&hellip;</p></div>
+  </section>
+
+  <section class="chart-section" id="contrast">
+    <h2>The same university, two programmes</h2>
+    <p class="lede">This is the comparison that is hardest to argue with,
+    because it holds the institution fixed. Same university, same degree level,
+    same admissions office &mdash; and two programmes at opposite ends of the
+    range. Nobody can answer that a university is simply internationally
+    oriented when one of its own programmes is 99% non-resident and another is
+    near zero.</p>
+    <p class="floor" id="contrast-floor"></p>
+    <div id="contrast-list"><p class="note">Loading&hellip;</p></div>
+    <div class="caveat">
+      <h3>A reading, not a finding</h3>
+      <p>The pattern is consistent: the high side is computing, analytics,
+      statistics and engineering; the low side is psychology, counselling and
+      education. One plausible reading is that it tracks what a degree leads
+      to &mdash; the high side is eligible for the STEM extension of Optional
+      Practical Training and feeds the H-1B route, while the low side leads to
+      state-licensed practice in the United States.</p>
+      <p>That is a reading. IPEDS records which degrees were awarded and to
+      whom; it does not record who applied, who was admitted, or why anyone
+      chose a programme. The gap is a measurement. The explanation is not.</p>
+    </div>
+  </section>
+
+  <section class="chart-section" id="biggest">
+    <h2>Largest non-resident cohorts</h2>
+    <p class="lede">Ranked by absolute count rather than share, because share
+    alone favours small programmes. These are the places educating the most
+    non-resident students in core STEM, whatever their proportion.</p>
+    <div id="biggest-table"><p class="note">Loading&hellip;</p></div>
+    <p class="note">No floor applies here &mdash; ranking by count already
+    excludes small programmes by construction.</p>
+  </section>
+
+</div>
+</main>
+<script src="/rankings.js" defer></script>
+</body>
+</html>
