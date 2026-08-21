@@ -107,6 +107,42 @@ class _DeployLock:
             self.fh = None
 
 
+# CloudFront compresses on the fly for objects between 1 KB and 10 MB and
+# negotiates Content-Encoding correctly against the request. Pre-compressing
+# below that ceiling is not just redundant, it is wrong: a pre-compressed S3
+# object asserts `content-encoding: gzip` even when the client sent
+# `Accept-Encoding: identity`, so naive consumers get binary --
+#
+#     json.load(urllib.request.urlopen('.../data/stem/msu.json'))
+#     -> UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8b
+#
+# Browsers and `requests` cope; `urllib` and bare `curl` do not, and the bulk
+# JSON is published precisely so people can script against it. Above the
+# ceiling CloudFront will not compress at all, so those objects must still be
+# pre-compressed or they ship raw -- 19.7 MB in the case of _search.json,
+# which is fetched only by code that already handles gzip.
+CLOUDFRONT_COMPRESS_MAX = 9 * 1024 * 1024
+
+
+def _upload_json(src: Path, key: str, s3_uri: str) -> tuple[bool, str]:
+    """Upload one JSON, pre-compressing only if CloudFront cannot."""
+    cache = CACHE_RULES.get(".json", "public, max-age=3600")
+    base = ["aws", "s3", "cp", "--profile", AWS_PROFILE,
+            "--cache-control", cache, "--content-type", "application/json"]
+    if src.stat().st_size > CLOUDFRONT_COMPRESS_MAX:
+        gz_path = _gzip_file(src)
+        try:
+            cmd = base[:3] + [str(gz_path), f"{s3_uri}{key}"] + base[3:] + \
+                  ["--content-encoding", "gzip"]
+            result = subprocess.run(cmd, capture_output=True, text=True)
+        finally:
+            gz_path.unlink(missing_ok=True)
+    else:
+        cmd = base[:3] + [str(src), f"{s3_uri}{key}"] + base[3:]
+        result = subprocess.run(cmd, capture_output=True, text=True)
+    return result.returncode == 0, (result.stderr or "").strip()[:120]
+
+
 def step6_deploy(state: PipelineState) -> PipelineState:
     """Deploy site to S3 with pre-compression and cache headers."""
     if state.should_halt():
@@ -205,22 +241,13 @@ def _deploy_locked(state: PipelineState, base_dir: Path,
         for f in sorted(top_data_dir.glob("*.json")):
             key = f"data/{f.name}"
             try:
-                gz_path = _gzip_file(f)
-                result = subprocess.run(
-                    ["aws", "s3", "cp", str(gz_path), f"{S3_URI}{key}",
-                     "--profile", AWS_PROFILE,
-                     "--cache-control", CACHE_RULES.get(".json", "public, max-age=3600"),
-                     "--content-type", "application/json",
-                     "--content-encoding", "gzip"],
-                    capture_output=True, text=True,
-                )
-                gz_path.unlink()
-                if result.returncode == 0:
+                ok, why = _upload_json(f, key, S3_URI)
+                if ok:
                     uploaded += 1
                 else:
-                    errors.append(f"Upload failed: {key}")
+                    errors.append(f"Upload failed: {key} {why}")
             except Exception as e:
-                errors.append(f"Compress/upload failed: {key}: {e}")
+                errors.append(f"Upload failed: {key}: {e}")
 
     # "chat" belongs here: chat-widget.js fetches /data/chat/site_map.json at
     # runtime to validate the nav paths the assistant emits. It was omitted, so
@@ -233,20 +260,11 @@ def _deploy_locked(state: PipelineState, base_dir: Path,
         for f in sorted(data_dir.glob("*.json")):
             key = f"data/{mode}/{f.name}"
             try:
-                gz_path = _gzip_file(f)
-                result = subprocess.run(
-                    ["aws", "s3", "cp", str(gz_path), f"{S3_URI}{key}",
-                     "--profile", AWS_PROFILE,
-                     "--cache-control", CACHE_RULES.get(".json", "public, max-age=3600"),
-                     "--content-type", "application/json",
-                     "--content-encoding", "gzip"],
-                    capture_output=True, text=True,
-                )
-                gz_path.unlink()  # Clean up temp gzip file
-                if result.returncode == 0:
+                ok, why = _upload_json(f, key, S3_URI)
+                if ok:
                     uploaded += 1
                 else:
-                    errors.append(f"Upload failed: {key}")
+                    errors.append(f"Upload failed: {key} {why}")
             except Exception as e:
                 errors.append(f"Compress/upload failed: {key}: {e}")
 
