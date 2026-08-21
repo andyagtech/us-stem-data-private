@@ -46,13 +46,44 @@ echo "Syncing handler source into lambda/ ..."
 # stray file in cloud/chat/ never ships to the Lambda by accident.
 for f in handler.py prompt.py tools.py blocks.py data_store.py realtime.py cache.py facts.py \
          knowledge_figures.py \
-         tools_joins.py tools_demographics.py tools_search.py tools_provenance.py; do
+         tools_joins.py tools_demographics.py tools_search.py tools_provenance.py \
+         tools_levels.py; do
     cp "$SRC/$f" "$SCRIPT_DIR/lambda/$f"
 done
 # The module list above is hand-maintained and has silently omitted a new
 # module twice, each time producing a Runtime.ImportModuleError in production
 # rather than a failed deploy. Check that every local module the handler
 # imports is actually packaged.
+# tools.py loads its extension modules by name and its loader swallows
+# ImportError so a broken module degrades to "that tool is absent". That is the
+# right behaviour at runtime and the wrong behaviour at deploy time: an omitted
+# extension ships silently, and the model then answers from whatever tool IS
+# present -- which is how a master's question gets a doctorate figure. Check the
+# declared extension list against the package.
+echo "Verifying every tools.py extension is packaged..."
+EXT_MISSING=$(python3 - "$SRC" "$SCRIPT_DIR/lambda" <<'PYEOF'
+import ast, os, sys
+src_dir, pkg_dir = sys.argv[1], sys.argv[2]
+tree = ast.parse(open(os.path.join(src_dir, "tools.py")).read())
+names = []
+for node in ast.walk(tree):
+    if isinstance(node, ast.Assign):
+        for t in node.targets:
+            if isinstance(t, ast.Name) and t.id == "_EXTENSIONS":
+                if isinstance(node.value, (ast.Tuple, ast.List)):
+                    names = [e.value for e in node.value.elts
+                             if isinstance(e, ast.Constant)]
+print(" ".join(n for n in names
+                if not os.path.exists(os.path.join(pkg_dir, n + ".py"))))
+PYEOF
+)
+if [ -n "$EXT_MISSING" ]; then
+    echo "ERROR: tools.py declares these extensions but they are not packaged: $EXT_MISSING"
+    echo "       Add them to the copy list above. They would ship as missing tools."
+    exit 1
+fi
+echo "  all tools.py extensions are packaged"
+
 echo "Verifying the package satisfies handler.py's imports..."
 MISSING=$(python3 - "$SRC" "$SCRIPT_DIR/lambda" <<'PYEOF'
 import ast, os, sys
