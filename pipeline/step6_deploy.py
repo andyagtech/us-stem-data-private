@@ -8,6 +8,8 @@ Input:  site/ directory (HTML + JSON + assets)
 Output: S3 bucket updated with compressed files, CloudFront cache invalidated
 """
 from __future__ import annotations
+import errno
+import fcntl
 import gzip
 import os
 import subprocess
@@ -52,6 +54,59 @@ def _gzip_file(src: Path) -> Path:
     return gz_path
 
 
+class _DeployLock:
+    """Refuse to run a second deploy while one is already in flight.
+
+    Nothing previously stopped two `pipeline run --step deploy` invocations
+    from overlapping. Both would `aws s3 sync` into the same bucket and both
+    would invalidate CloudFront, so a half-written file could be served, or a
+    stale file could survive the invalidation that was meant to clear it. This
+    happened as a near miss: one deploy was launched, silently no-opped on a
+    bad subcommand, and a second was started on top of it.
+
+    flock is released by the kernel when the process dies, so a killed deploy
+    does not strand the lock the way a lockfile-plus-PID scheme would.
+    """
+
+    def __init__(self, path: Path):
+        self.path = path
+        self.fh = None
+
+    def acquire(self):
+        # O_RDWR|O_CREAT, never "w": opening with "w" truncates the file
+        # BEFORE flock is attempted, so a refused deploy would erase the
+        # holder's pid and destroy the only diagnostic the lock carries.
+        # Truncate only after the lock is actually ours.
+        fd = os.open(self.path, os.O_RDWR | os.O_CREAT, 0o644)
+        self.fh = os.fdopen(fd, "r+")
+        try:
+            fcntl.flock(self.fh.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except OSError as exc:
+            if exc.errno not in (errno.EAGAIN, errno.EACCES):
+                raise
+            try:
+                holder = self.fh.read().strip() or "an unknown pid"
+            except OSError:
+                holder = "an unknown pid"
+            self.fh.close()
+            self.fh = None
+            raise RuntimeError(
+                f"another deploy (pid {holder}) holds {self.path.name}. Wait for "
+                f"it to finish rather than running two syncs into the same bucket."
+            ) from exc
+        self.fh.seek(0)
+        self.fh.truncate()
+        self.fh.write(str(os.getpid()))
+        self.fh.flush()
+        return self
+
+    def release(self):
+        if self.fh:
+            fcntl.flock(self.fh.fileno(), fcntl.LOCK_UN)
+            self.fh.close()
+            self.fh = None
+
+
 def step6_deploy(state: PipelineState) -> PipelineState:
     """Deploy site to S3 with pre-compression and cache headers."""
     if state.should_halt():
@@ -59,6 +114,26 @@ def step6_deploy(state: PipelineState) -> PipelineState:
 
     base_dir = state.config.base_dir
     site_dir = base_dir / "site"
+
+    lock = _DeployLock(base_dir / ".deploy.lock")
+    try:
+        lock.acquire()
+    except RuntimeError as exc:
+        print(f"\n[Step 6: DEPLOY] refused: {exc}")
+        return state.with_outcome(StepOutcome(
+            step_name="deploy", university_key="", success=False,
+            message=str(exc), data={}, errors=(str(exc),), warnings=(),
+            timestamp=datetime.utcnow().isoformat(),
+        ))
+
+    try:
+        return _deploy_locked(state, base_dir, site_dir)
+    finally:
+        lock.release()
+
+
+def _deploy_locked(state: PipelineState, base_dir: Path,
+                   site_dir: Path) -> PipelineState:
     print("\n[Step 6: DEPLOY] Deploying to S3 with compression...")
 
     uploaded = 0
