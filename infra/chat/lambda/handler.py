@@ -416,11 +416,18 @@ def handler(event, context=None):
     widget = ds.clean_text(((body.get("client") or {}) if isinstance(body.get("client"), dict)
                             else {}).get("widget", ""), 20)
 
+    # `fresh: true` skips the cache LOOKUP for this turn (the answer is still
+    # stored). scripts/curated_answers.py needs it: the export reads answers
+    # back through this endpoint, and without a bypass it receives its own
+    # previously cached answers and reports that nothing changed -- which is
+    # exactly what happened before this existed.
+    want_fresh = body.get("fresh") is True
+
     # Cache lookup before any model call. Only first turns with no history
     # qualify; see cache.py for why a follow-up must never be served from here.
     history = _clean_history(body.get("conversationHistory"))
     try:
-        cached, how = _cache.lookup(message, page, history)
+        cached, how = (None, None) if want_fresh else _cache.lookup(message, page, history)
     except Exception:                                           # noqa: BLE001
         cached, how = None, None      # the cache may never fail a request
     if cached:
