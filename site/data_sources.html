@@ -90,7 +90,7 @@
 <meta name="twitter:image:alt" content="What “domestic” actually means in the data — Who “domestic” PhDs really are">
 <!-- /og:cards -->
 </head>
-<body>
+<body data-page="data_sources">
 <!-- Navigation provided by /nav.js drawer -->
 
 <div class="container">
@@ -100,15 +100,15 @@
   <div class="toc">
     <h3 id="contents">Contents</h3>
     <ol>
-      <li><a href="#federal">Federal Datasets</a></li>
-      <li><a href="#citizenship">Understanding Citizenship Categories</a></li>
-      <li><a href="#dissertations">Dissertation Metadata</a></li>
-      <li><a href="#name-classification">Name Classification</a></li>
-      <li><a href="#limitations">Limitations &amp; Caveats</a></li>
-      <li><a href="#corrections">Corrections</a></li>
-      <li><a href="#linking">Linking to This Data</a></li>
-      <li><a href="#links">Links to Original Sources</a></li>
-      <li><a href="#analytics">Analytics &amp; Tracking</a></li>
+      <li><a href="#federal" data-track="anchor.federal">Federal Datasets</a></li>
+      <li><a href="#citizenship" data-track="anchor.citizenship">Understanding Citizenship Categories</a></li>
+      <li><a href="#dissertations" data-track="anchor.dissertations">Dissertation Metadata</a></li>
+      <li><a href="#name-classification" data-track="anchor.name-classification">Name Classification</a></li>
+      <li><a href="#limitations" data-track="anchor.limitations">Limitations &amp; Caveats</a></li>
+      <li><a href="#corrections" data-track="anchor.corrections">Corrections</a></li>
+      <li><a href="#linking" data-track="anchor.linking">Linking to This Data</a></li>
+      <li><a href="#links" data-track="anchor.links">Links to Original Sources</a></li>
+      <li><a href="#analytics" data-track="anchor.analytics">Analytics &amp; Tracking</a></li>
     </ol>
   </div>
 
@@ -140,30 +140,30 @@
       </tr>
       <tr style="border-bottom:1px solid var(--border);">
         <td style="padding:6px;">OPT Students Employed</td>
-        <td style="padding:6px;"><a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" style="color:var(--accent);">ICE/SEVP SEVIS Reports</a></td>
+        <td style="padding:6px;"><a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" style="color:var(--accent);" data-track="out.studyinthestates-dhs-gov">ICE/SEVP SEVIS Reports</a></td>
         <td style="padding:6px;">CY 2017-2024</td>
         <td style="padding:6px;">59 of 105 (Top 100 list)</td>
       </tr>
       <tr style="border-bottom:1px solid var(--border);">
         <td style="padding:6px;">H-1B Petition Approvals</td>
-        <td style="padding:6px;"><a href="https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub" style="color:var(--accent);">USCIS H-1B Employer Data Hub</a></td>
+        <td style="padding:6px;"><a href="https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub" style="color:var(--accent);" data-track="out.uscis-gov">USCIS H-1B Employer Data Hub</a></td>
         <td style="padding:6px;">FY 2010-2026</td>
         <td style="padding:6px;">101</td>
       </tr>
       <tr style="border-bottom:1px solid var(--border);">
         <td style="padding:6px;">H-1B Job Titles &amp; Salaries</td>
-        <td style="padding:6px;"><a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" style="color:var(--accent);">DOL LCA Disclosure Data</a></td>
+        <td style="padding:6px;"><a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" style="color:var(--accent);" data-track="out.dol-gov">DOL LCA Disclosure Data</a></td>
         <td style="padding:6px;">CY 2014-2026 (both ends part-years)</td>
         <td style="padding:6px;">100</td>
       </tr>
       <tr>
         <td style="padding:6px;">Green Card Sponsorship</td>
-        <td style="padding:6px;"><a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" style="color:var(--accent);">DOL PERM Disclosure Data</a></td>
+        <td style="padding:6px;"><a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" style="color:var(--accent);" data-track="out.dol-gov-2">DOL PERM Disclosure Data</a></td>
         <td style="padding:6px;">FY 2024</td>
         <td style="padding:6px;">71</td>
       </tr>
     </table>
-    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:0.8rem;"><strong>Note on employer entity names:</strong> Universities file H-1B and PERM petitions under their legal entity name, which may differ from their common name and can change over time. Multi-campus university systems (e.g., University of Missouri, SUNY, University of California) often file under a single systemwide entity, making per-campus attribution imprecise. We match employer names to universities using pattern matching with known name variants &mdash; 296 patterns, tested on <em>word boundaries</em>, not as bare substrings (see <a href="#corrections" style="color:var(--accent);">Corrections</a>) &mdash; but some filings may be attributed to the wrong campus within a system.</p>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:0.8rem;"><strong>Note on employer entity names:</strong> Universities file H-1B and PERM petitions under their legal entity name, which may differ from their common name and can change over time. Multi-campus university systems (e.g., University of Missouri, SUNY, University of California) often file under a single systemwide entity, making per-campus attribution imprecise. We match employer names to universities using pattern matching with known name variants &mdash; 296 patterns, tested on <em>word boundaries</em>, not as bare substrings (see <a href="#corrections" style="color:var(--accent);" data-track="anchor.corrections-2">Corrections</a>) &mdash; but some filings may be attributed to the wrong campus within a system.</p>
   </div>
 
   <h2 id="federal">1. Federal Datasets</h2>
@@ -192,7 +192,7 @@
       <li><strong>Human Resources (S):</strong> Faculty and staff demographics, including NRA counts by academic rank.</li>
     </ul>
     <p>
-      <a href="https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx" target="_blank" rel="noopener">IPEDS Data Center</a>
+      <a href="https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx" target="_blank" rel="noopener" data-track="out.nces-ed-gov">IPEDS Data Center</a>
     </p>
   </div>
 
@@ -216,8 +216,8 @@
       sample.
     </p>
     <p>
-      <a href="https://ncses.nsf.gov/surveys/earned-doctorates/" target="_blank" rel="noopener">NSF SED homepage</a> &middot;
-      <a href="https://ncses.nsf.gov/pubs/nsf25300/" target="_blank" rel="noopener">2024 tables</a>
+      <a href="https://ncses.nsf.gov/surveys/earned-doctorates/" target="_blank" rel="noopener" data-track="out.ncses-nsf-gov">NSF SED homepage</a> &middot;
+      <a href="https://ncses.nsf.gov/pubs/nsf25300/" target="_blank" rel="noopener" data-track="out.ncses-nsf-gov-2">2024 tables</a>
     </p>
   </div>
 
@@ -288,7 +288,7 @@
       separation at each institution &mdash; more granular than IPEDS enrollment for S&amp;E fields.
     </p>
     <p>
-      <a href="https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-in-science-and-engineering/" target="_blank" rel="noopener">NSF GSS homepage</a>
+      <a href="https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-in-science-and-engineering/" target="_blank" rel="noopener" data-track="out.ncses-nsf-gov-3">NSF GSS homepage</a>
     </p>
   </div>
 
@@ -306,8 +306,8 @@
       specific birth country (via the BTHST_TOGA variable), enabling China-specific analysis.
     </p>
     <p>
-      <a href="https://ncses.nsf.gov/explore-data/microdata/doctorate-recipients" target="_blank" rel="noopener">SDR microdata</a> &middot;
-      <a href="https://ncses.nsf.gov/explore-data/microdata/national-survey-college-graduates" target="_blank" rel="noopener">NSCG microdata</a>
+      <a href="https://ncses.nsf.gov/explore-data/microdata/doctorate-recipients" target="_blank" rel="noopener" data-track="out.ncses-nsf-gov-4">SDR microdata</a> &middot;
+      <a href="https://ncses.nsf.gov/explore-data/microdata/national-survey-college-graduates" target="_blank" rel="noopener" data-track="out.ncses-nsf-gov-5">NSCG microdata</a>
     </p>
   </div>
 
@@ -322,7 +322,7 @@
       Used to show how much research funding flows to universities with the highest NRA concentrations.
     </p>
     <p>
-      <a href="https://ncses.nsf.gov/surveys/higher-education-research-development/" target="_blank" rel="noopener">NSF HERD homepage</a>
+      <a href="https://ncses.nsf.gov/surveys/higher-education-research-development/" target="_blank" rel="noopener" data-track="out.ncses-nsf-gov-6">NSF HERD homepage</a>
     </p>
   </div>
 
@@ -338,7 +338,7 @@
       STEM-specific breakdowns at the state level. As of March 2026, China has 229,463 active student records.
     </p>
     <p>
-      <a href="https://studyinthestates.dhs.gov/sevis-data-mapping-tool" target="_blank" rel="noopener">SEVIS Data Mapping Tool</a>
+      <a href="https://studyinthestates.dhs.gov/sevis-data-mapping-tool" target="_blank" rel="noopener" data-track="out.studyinthestates-dhs-gov-2">SEVIS Data Mapping Tool</a>
     </p>
   </div>
 
@@ -355,8 +355,8 @@
       federal awards to each university.
     </p>
     <p>
-      <a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" target="_blank" rel="noopener">DOL OFLC data</a> &middot;
-      <a href="https://www.usaspending.gov/" target="_blank" rel="noopener">USAspending.gov</a>
+      <a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" target="_blank" rel="noopener" data-track="out.dol-gov-3">DOL OFLC data</a> &middot;
+      <a href="https://www.usaspending.gov/" target="_blank" rel="noopener" data-track="out.usaspending-gov">USAspending.gov</a>
     </p>
     <p style="font-size:0.82rem;color:var(--text-muted);">
       USAspending figures exist for only 26 of the 105 universities &mdash; the extract is a
@@ -385,8 +385,8 @@
       State).
     </p>
     <p>
-      <a href="https://www.nsf.gov/awardsearch/" target="_blank" rel="noopener">NSF Award Search</a> &middot;
-      <a href="https://reporter.nih.gov/" target="_blank" rel="noopener">NIH RePORTER</a>
+      <a href="https://www.nsf.gov/awardsearch/" target="_blank" rel="noopener" data-track="out.nsf-gov">NSF Award Search</a> &middot;
+      <a href="https://reporter.nih.gov/" target="_blank" rel="noopener" data-track="out.reporter-nih-gov">NIH RePORTER</a>
     </p>
   </div>
 
@@ -409,7 +409,7 @@
       only "Louisiana State U., system office." Read LSU's figure as the system's.
     </p>
     <p>
-      <a href="https://ncses.nsf.gov/pubs/nsf25339" target="_blank" rel="noopener">NSF 25-339</a>
+      <a href="https://ncses.nsf.gov/pubs/nsf25339" target="_blank" rel="noopener" data-track="out.ncses-nsf-gov-7">NSF 25-339</a>
     </p>
   </div>
 
@@ -432,7 +432,7 @@
       </p>
     </div>
     <p>
-      <a href="https://shef.sheeo.org/" target="_blank" rel="noopener">SHEEO SHEF</a>
+      <a href="https://shef.sheeo.org/" target="_blank" rel="noopener" data-track="out.shef-sheeo-org">SHEEO SHEF</a>
     </p>
   </div>
 
@@ -862,7 +862,7 @@
           based on statistical patterns, not verified identity. Some names are ambiguous across
           multiple origins. Accuracy varies by origin group. Used in aggregate and at its best, it
           reproduces a reported NRA share only to within about 11 percentage points
-          (see <a href="#name-classification" style="color:var(--accent);">section 4</a>).</li>
+          (see <a href="#name-classification" style="color:var(--accent);" data-track="anchor.name-classification-2">section 4</a>).</li>
       <li><strong>A low degree-labelling rate makes the PhD/Master's split uncertain</strong> &mdash;
           it does not mean records are missing. Corpus labelling is 88.4%, ranging from 24.8% to 100%
           across the 105 universities. Unlabelled records are still counted and still classified.</li>
@@ -1009,8 +1009,8 @@
     workspace with that table selected.
     <code>ipeds_dashboard.html#panel-states</code> opens a dashboard tab.
     Machine-readable equivalents are listed in
-    <a href="catalog.json">catalog.json</a> and
-    <a href="llms.txt">llms.txt</a>.</p>
+    <a href="catalog.json" data-track="a.catalog-json">catalog.json</a> and
+    <a href="llms.txt" data-track="a.llms-txt">llms.txt</a>.</p>
   </div>
 
   <h2 id="links">8. Links to Original Sources</h2>
@@ -1029,91 +1029,91 @@
       <tr>
         <td>IPEDS Data Center</td>
         <td>NCES / Dept. of Education</td>
-        <td><a href="https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx" target="_blank" rel="noopener">nces.ed.gov</a></td>
+        <td><a href="https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx" target="_blank" rel="noopener" data-track="out.nces-ed-gov-2">nces.ed.gov</a></td>
         <td>2024 academic year</td>
       </tr>
       <tr>
         <td>Survey of Earned Doctorates</td>
         <td>NSF / NCSES</td>
-        <td><a href="https://ncses.nsf.gov/surveys/earned-doctorates/" target="_blank" rel="noopener">ncses.nsf.gov</a></td>
+        <td><a href="https://ncses.nsf.gov/surveys/earned-doctorates/" target="_blank" rel="noopener" data-track="out.ncses-nsf-gov-8">ncses.nsf.gov</a></td>
         <td>2024 survey year</td>
       </tr>
       <tr>
         <td>Graduate Student Survey</td>
         <td>NSF / NCSES</td>
-        <td><a href="https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-in-science-and-engineering/" target="_blank" rel="noopener">ncses.nsf.gov</a></td>
+        <td><a href="https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-in-science-and-engineering/" target="_blank" rel="noopener" data-track="out.ncses-nsf-gov-9">ncses.nsf.gov</a></td>
         <td>2024 survey year</td>
       </tr>
       <tr>
         <td>Survey of Doctorate Recipients</td>
         <td>NSF / NCSES</td>
-        <td><a href="https://ncses.nsf.gov/explore-data/microdata/doctorate-recipients" target="_blank" rel="noopener">ncses.nsf.gov</a></td>
+        <td><a href="https://ncses.nsf.gov/explore-data/microdata/doctorate-recipients" target="_blank" rel="noopener" data-track="out.ncses-nsf-gov-10">ncses.nsf.gov</a></td>
         <td>2023 survey</td>
       </tr>
       <tr>
         <td>National Survey of College Graduates</td>
         <td>NSF / NCSES</td>
-        <td><a href="https://ncses.nsf.gov/explore-data/microdata/national-survey-college-graduates" target="_blank" rel="noopener">ncses.nsf.gov</a></td>
+        <td><a href="https://ncses.nsf.gov/explore-data/microdata/national-survey-college-graduates" target="_blank" rel="noopener" data-track="out.ncses-nsf-gov-11">ncses.nsf.gov</a></td>
         <td>2023 survey</td>
       </tr>
       <tr>
         <td>HERD Survey</td>
         <td>NSF / NCSES</td>
-        <td><a href="https://ncses.nsf.gov/surveys/higher-education-research-development/" target="_blank" rel="noopener">ncses.nsf.gov</a></td>
+        <td><a href="https://ncses.nsf.gov/surveys/higher-education-research-development/" target="_blank" rel="noopener" data-track="out.ncses-nsf-gov-12">ncses.nsf.gov</a></td>
         <td>FY 2024</td>
       </tr>
       <tr>
         <td>SEVIS Data Mapping Tool</td>
         <td>DHS / ICE / SEVP</td>
-        <td><a href="https://studyinthestates.dhs.gov/sevis-data-mapping-tool" target="_blank" rel="noopener">studyinthestates.dhs.gov</a></td>
+        <td><a href="https://studyinthestates.dhs.gov/sevis-data-mapping-tool" target="_blank" rel="noopener" data-track="out.studyinthestates-dhs-gov-3">studyinthestates.dhs.gov</a></td>
         <td>March 2026</td>
       </tr>
       <tr>
         <td>H-1B LCA Disclosure</td>
         <td>DOL / OFLC</td>
-        <td><a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" target="_blank" rel="noopener">dol.gov</a></td>
+        <td><a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" target="_blank" rel="noopener" data-track="out.dol-gov-4">dol.gov</a></td>
         <td>FY2026 Q3 (through June 2026)</td>
       </tr>
       <tr>
         <td>USAspending</td>
         <td>U.S. Treasury</td>
-        <td><a href="https://www.usaspending.gov/" target="_blank" rel="noopener">usaspending.gov</a></td>
+        <td><a href="https://www.usaspending.gov/" target="_blank" rel="noopener" data-track="out.usaspending-gov-2">usaspending.gov</a></td>
         <td>2024</td>
       </tr>
       <tr>
         <td>NSF Award Search</td>
         <td>NSF</td>
-        <td><a href="https://www.nsf.gov/awardsearch/" target="_blank" rel="noopener">nsf.gov/awardsearch</a></td>
+        <td><a href="https://www.nsf.gov/awardsearch/" target="_blank" rel="noopener" data-track="out.nsf-gov-2">nsf.gov/awardsearch</a></td>
         <td>2020&ndash;2025</td>
       </tr>
       <tr>
         <td>NIH RePORTER</td>
         <td>NIH</td>
-        <td><a href="https://reporter.nih.gov/" target="_blank" rel="noopener">reporter.nih.gov</a></td>
+        <td><a href="https://reporter.nih.gov/" target="_blank" rel="noopener" data-track="out.reporter-nih-gov-2">reporter.nih.gov</a></td>
         <td>2020&ndash;2025</td>
       </tr>
       <tr>
         <td>Federal Support Survey, Table 17</td>
         <td>NSF / NCSES</td>
-        <td><a href="https://ncses.nsf.gov/pubs/nsf25339" target="_blank" rel="noopener">NSF 25-339</a></td>
+        <td><a href="https://ncses.nsf.gov/pubs/nsf25339" target="_blank" rel="noopener" data-track="out.ncses-nsf-gov-13">NSF 25-339</a></td>
         <td>FY 2023</td>
       </tr>
       <tr>
         <td>SHEEO SHEF</td>
         <td>SHEEO (non-federal)</td>
-        <td><a href="https://shef.sheeo.org/" target="_blank" rel="noopener">shef.sheeo.org</a></td>
+        <td><a href="https://shef.sheeo.org/" target="_blank" rel="noopener" data-track="out.shef-sheeo-org-2">shef.sheeo.org</a></td>
         <td>FY 2025</td>
       </tr>
       <tr>
         <td>American Community Survey</td>
         <td>U.S. Census Bureau</td>
-        <td><a href="https://data.census.gov/" target="_blank" rel="noopener">data.census.gov</a></td>
+        <td><a href="https://data.census.gov/" target="_blank" rel="noopener" data-track="out.data-census-gov">data.census.gov</a></td>
         <td>2022 ACS</td>
       </tr>
       <tr>
         <td>S&amp;E Indicators (NSB)</td>
         <td>NSF / NSB</td>
-        <td><a href="https://ncses.nsf.gov/indicators" target="_blank" rel="noopener">ncses.nsf.gov/indicators</a></td>
+        <td><a href="https://ncses.nsf.gov/indicators" target="_blank" rel="noopener" data-track="out.ncses-nsf-gov-14">ncses.nsf.gov/indicators</a></td>
         <td>2024 and 2026 editions</td>
       </tr>
     </tbody>
@@ -1167,5 +1167,6 @@
 </div>
 <script src="/sidebar.js"></script>
 <script src="/anchors.js" defer></script>
+<script src="/analytics-beacon.js" defer></script>
 </body>
 </html>

@@ -71,8 +71,8 @@
     max-width: 76ch; margin: 0 0 .5rem; }
 </style>
 </head>
-<body>
-<a class="skip-link" href="#institutions">Skip to the rankings</a>
+<body data-page="rankings">
+<a class="skip-link" href="#institutions" data-track="anchor.institutions">Skip to the rankings</a>
 <main id="main">
 <div class="wrap">
 
@@ -90,8 +90,8 @@
   </div>
 
   <div id="level-pick" role="group" aria-label="Degree level">
-    <button type="button" data-level="masters" aria-pressed="true">Master&rsquo;s</button>
-    <button type="button" data-level="doctorate" aria-pressed="false">Doctorate</button>
+    <button type="button" data-level="masters" aria-pressed="true" data-track="btn.master-s">Master&rsquo;s</button>
+    <button type="button" data-level="doctorate" aria-pressed="false" data-track="btn.doctorate">Doctorate</button>
   </div>
 
   <div class="hero">
@@ -157,5 +157,6 @@
 </div>
 </main>
 <script src="/rankings.js" defer></script>
+<script src="/analytics-beacon.js" defer></script>
 </body>
 </html>

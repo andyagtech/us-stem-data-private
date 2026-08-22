@@ -99,12 +99,12 @@
     font-size:.8rem;line-height:1.6;}
 </style>
 </head>
-<body>
+<body data-page="live">
 <div class="live-wrap">
   <header class="live-head">
     <h1 class="live-title">Who the expansion was built for
       <span>US graduate degrees by field, level and residency status</span></h1>
-    <button class="mic-btn" id="mic" data-state="idle" type="button">
+    <button class="mic-btn" id="mic" data-state="idle" type="button" data-track="btn.mic">
       <span class="mic-dot"></span><span id="mic-label">Start talking</span>
     </button>
   </header>
@@ -140,5 +140,6 @@
   or was funded.</p>
 </div>
 <script src="/live.js" defer></script>
+<script src="/analytics-beacon.js" defer></script>
 </body>
 </html>

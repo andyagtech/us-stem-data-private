@@ -59,8 +59,8 @@
   .loading { color: var(--text-muted); font-size: .86rem; padding: 1rem 0; }
 </style>
 </head>
-<body>
-<a class="skip-link" href="#national">Skip to the charts</a>
+<body data-page="distributions">
+<a class="skip-link" href="#national" data-track="anchor.national">Skip to the charts</a>
 <main id="main">
 <div class="wrap">
   <div class="page-head">
@@ -72,7 +72,7 @@
     <p class="note">IPEDS Completions, research doctorates (award level 17),
     core-STEM CIP families. A department is one 4-digit programme at one
     institution — Electrical Engineering at Purdue, not "Engineering" at Purdue.
-    <a href="/#method">Method and limits</a></p>
+    <a href="/#method" data-track="nav.method">Method and limits</a></p>
   </div>
 
   <section class="chart-section" id="counts">
@@ -155,7 +155,7 @@
     department by department.</p>
     <div class="controls">
       <label for="uni-pick">University</label>
-      <select id="uni-pick"><option>Loading…</option></select>
+      <select id="uni-pick" data-track="select.uni-pick"><option>Loading…</option></select>
     </div>
     <div class="stat-row" id="uni-stats"></div>
     <div id="uni-list"><p class="loading">Loading…</p></div>
@@ -166,5 +166,6 @@
 </div>
 </main>
 <script src="/distributions.js" defer></script>
+<script src="/analytics-beacon.js" defer></script>
 </body>
 </html>

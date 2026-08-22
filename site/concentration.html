@@ -151,7 +151,7 @@ td.acc{color:var(--nra); font-weight:500;}
 <meta name="twitter:image:alt" content="The national average hides where the change happened — Majority-non-resident departments">
 <!-- /og:cards -->
 </head>
-<body>
+<body data-page="concentration">
 
 <div class="deck" id="deck"></div>
 
@@ -159,7 +159,7 @@ td.acc{color:var(--nra); font-weight:500;}
   <div class="count" id="count">01 / 11</div>
   <div class="rail" id="rail"></div>
   <div class="hint">← → or ↑ ↓ to navigate</div>
-  <a class="home" href="/index.html" title="Back to PhD Demographics">← <span>PhD Demographics</span></a>
+  <a class="home" href="/index.html" title="Back to PhD Demographics" data-track="nav.index">← <span>PhD Demographics</span></a>
 </div>
 
 <script>
@@ -462,5 +462,6 @@ addEventListener('hashchange', ()=>{ const i=indexOfHash(); if(i!==cur) go(i,fal
 go(indexOfHash(), false);
 </script>
 <script src="/anchors.js" defer></script>
+<script src="/analytics-beacon.js" defer></script>
 </body>
 </html>

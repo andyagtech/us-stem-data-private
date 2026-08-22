@@ -209,15 +209,15 @@
 <meta name="twitter:image:alt" content="Run SQL on 427K dissertation records — Queryable Parquet tables">
 <!-- /og:cards -->
 </head>
-<body>
+<body data-page="query">
 
 <div class="header">
   <h1 id="data-query"><span>Data</span> Query</h1>
   <span class="running-indicator" id="runningIndicator"></span>
   <span class="powered">
     371K STEM + 149K Non-STEM records &middot;
-    Powered by <a href="https://github.com/hyparam/squirreling" target="_blank">Squirreling</a>
-    + <a href="https://github.com/hyparam/hyparquet" target="_blank">hyparquet</a>
+    Powered by <a href="https://github.com/hyparam/squirreling" target="_blank" data-track="out.github-com">Squirreling</a>
+    + <a href="https://github.com/hyparam/hyparquet" target="_blank" data-track="out.github-com-2">hyparquet</a>
   </span>
 </div>
 
@@ -255,7 +255,7 @@
     <div class="query-area">
       <textarea class="query-editor" id="queryEditor" placeholder="SELECT * FROM table_name LIMIT 100" spellcheck="false"></textarea>
       <div class="query-bar">
-        <button class="run-btn" id="runBtn">&#9654; Run <kbd>&#8984;&#9166;</kbd></button>
+        <button class="run-btn" id="runBtn" data-track="btn.runBtn">&#9654; Run <kbd>&#8984;&#9166;</kbd></button>
         <span class="query-status" id="queryStatus"></span>
         <div class="example-queries" id="exampleQueries"></div>
       </div>
@@ -672,7 +672,7 @@ function updateExampleQueries() {
   }
 
   exampleQueries.innerHTML = examples.map(e =>
-    `<button class="example-btn" title="${escapeHtml(e.sql)}">${e.label}</button>`
+    `<button class="example-btn" title="${escapeHtml(e.sql)}" data-track="btn.e-label">${e.label}</button>`
   ).join('');
 
   exampleQueries.querySelectorAll('.example-btn').forEach((btn, i) => {
@@ -795,5 +795,6 @@ window.addEventListener('hashchange', activateTableFromHash);
 <script src="cached-answers.js"></script>
 <script src="/sidebar.js"></script>
 <script src="/anchors.js" defer></script>
+<script src="/analytics-beacon.js" defer></script>
 </body>
 </html>

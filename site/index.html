@@ -201,9 +201,9 @@
   <link rel="preload" as="fetch" type="application/json" crossorigin="anonymous" href="/data/concentration_cases.json">
   <link rel="preload" as="fetch" type="application/json" crossorigin="anonymous" href="/data/taxpayer_cost.json">
 </head>
-<body>
+<body data-page="index">
 
-<a class="skip-link" href="#cases">Skip to the data</a>
+<a class="skip-link" href="#cases" data-track="anchor.cases">Skip to the data</a>
 <main id="main">
 <div class="hero">
   <h1 id="finding">An American doing a STEM PhD is
@@ -220,14 +220,14 @@
     <div class="hero-stat"><div class="num">$875K</div><div class="label">Federal research funding per STEM doctorate</div></div>
     <div class="hero-stat"><div class="num">60%</div><div class="label">Of new master's seats went to non-residents</div></div>
   </div>
-  <p class="hero-note"><a href="#who-pays">Who gets funded</a> &middot;
-    <a href="#clearance">The clearance test</a> &middot;
-    <a href="#opportunity">The seats</a> &middot;
-    <a href="#cases">The 49 departments</a> &middot;
-    <a href="#public-cost">What the public puts in</a> &middot;
-    <a href="/expansion.html">The master&rsquo;s expansion</a> &middot;
-    <a href="/rankings.html">Where the share is highest</a> &middot;
-    <a href="#method">Method and limits</a></p>
+  <p class="hero-note"><a href="#who-pays" data-track="anchor.who-pays">Who gets funded</a> &middot;
+    <a href="#clearance" data-track="anchor.clearance">The clearance test</a> &middot;
+    <a href="#opportunity" data-track="anchor.opportunity">The seats</a> &middot;
+    <a href="#cases" data-track="anchor.cases-2">The 49 departments</a> &middot;
+    <a href="#public-cost" data-track="anchor.public-cost">What the public puts in</a> &middot;
+    <a href="/expansion.html" data-track="nav.expansion">The master&rsquo;s expansion</a> &middot;
+    <a href="/rankings.html" data-track="nav.rankings">Where the share is highest</a> &middot;
+    <a href="#method" data-track="anchor.method">Method and limits</a></p>
 </div>
 
 <div class="content">
@@ -275,8 +275,8 @@
       NSF Survey of Earned Doctorates, Table 4-1 (2024) — a census of research
       doctorate recipients, administered by institutions and completed before
       graduation, not a sample.
-      <a href="/distributions.html">See the distributions</a> &middot;
-      <a href="#method">Method and limits</a></p>
+      <a href="/distributions.html" data-track="nav.distributions">See the distributions</a> &middot;
+      <a href="#method" data-track="anchor.method-2">Method and limits</a></p>
   </div>
 
   <div id="clearance" class="section">
@@ -309,7 +309,7 @@
     <p class="hero-note" style="text-align:left;max-width:none">
       The security programmes are small &mdash; 511 doctorates against 8,624.
       What IPEDS records is which degrees were awarded, not why anyone was
-      admitted. <a href="#method">How far this can be pushed</a>.</p>
+      admitted. <a href="#method" data-track="anchor.method-3">How far this can be pushed</a>.</p>
   </div>
 
   <div id="same-campus" class="section">
@@ -347,8 +347,8 @@
     <p class="hero-note" style="text-align:left;max-width:none">
       The pattern is consistent: the high side is computing, analytics,
       statistics and engineering; the low side is psychology, counselling and
-      education. <a href="/rankings.html">See all of them, at both levels</a>
-      &middot; <a href="#method">What this does and does not show</a></p>
+      education. <a href="/rankings.html" data-track="nav.rankings-2">See all of them, at both levels</a>
+      &middot; <a href="#method" data-track="anchor.method-4">What this does and does not show</a></p>
   </div>
 
   <div id="cases" class="section">
@@ -373,8 +373,8 @@
       <p class="prov-check">The files are public. Every row below shows the
       exact steps to rebuild it: which file, which columns, which filters.
       <a href="https://nces.ed.gov/ipeds/use-the-data" target="_blank"
-         rel="noopener noreferrer">Download IPEDS data yourself</a> &middot;
-      <a href="#method">Method and limits</a></p>
+         rel="noopener noreferrer" data-track="out.nces-ed-gov">Download IPEDS data yourself</a> &middot;
+      <a href="#method" data-track="anchor.method-5">Method and limits</a></p>
     </div>
 
     <div class="table-wrap">
@@ -392,11 +392,11 @@
   <noscript>
     <p class="nojs">This table is drawn with JavaScript. With it disabled, the
       same figures are in the
-      <a href="/data/concentration_cases.json">departments JSON</a>,
-      the <a href="/data/taxpayer_cost.json">funding JSON</a>, and the
-      <a href="/data/exports/stem_records.parquet">bulk Parquet export</a>.</p>
+      <a href="/data/concentration_cases.json" data-track="nav.data-concentration-cases-json">departments JSON</a>,
+      the <a href="/data/taxpayer_cost.json" data-track="nav.data-taxpayer-cost-json">funding JSON</a>, and the
+      <a href="/data/exports/stem_records.parquet" data-track="nav.data-exports-stem-records-parquet">bulk Parquet export</a>.</p>
   </noscript>
-    <p class="show-more"><button type="button" id="show-all">Show all 49</button></p>
+    <p class="show-more"><button type="button" id="show-all" data-track="btn.show-all">Show all 49</button></p>
   </div>
 
   <div id="opportunity" class="section">
@@ -433,7 +433,7 @@
       <strong>The scope of this finding.</strong> Domestic core-STEM
       master&rsquo;s places rose 68% across the same window. What is measured
       here is who the growth was built for, and who pays for it.
-      <a href="#method">Method and limits</a></p>
+      <a href="#method" data-track="anchor.method-6">Method and limits</a></p>
   </div>
 
   <div id="public-cost" class="section">
@@ -465,7 +465,7 @@
     <p class="hero-note" style="margin-top:.9rem;text-align:left;max-width:none">
       Both columns are federal records: obligations from the NSF National Center
       for Science and Engineering Statistics (FY2023), doctorates from IPEDS
-      Completions (2015&ndash;2022). <a href="#method">Method and limits</a>.</p>
+      Completions (2015&ndash;2022). <a href="#method" data-track="anchor.method-7">Method and limits</a>.</p>
   </div>
 
   <div id="graduate-names" class="section">
@@ -541,14 +541,14 @@
       and the working is published.</p>
     <ul class="contact-list">
       <li><span class="contact-label">Email</span>
-        <a href="mailto:andybarr@protonmail.com">andybarr@protonmail.com</a></li>
+        <a href="mailto:andybarr@protonmail.com" data-track="out.email">andybarr@protonmail.com</a></li>
       <li><span class="contact-label">Signal</span>
         <span class="contact-value">andybarr.25</span></li>
       <li><span class="contact-label">Tip line</span>
-        <a href="/submit.html">Send something anonymously</a></li>
+        <a href="/submit.html" data-track="nav.submit">Send something anonymously</a></li>
       <li><span class="contact-label">Support</span>
         <a href="https://buymeacoffee.com/andybarr" rel="noopener noreferrer"
-           target="_blank">Buy me a coffee</a></li>
+           target="_blank" data-track="out.buymeacoffee-com">Buy me a coffee</a></li>
     </ul>
   </div>
 
@@ -556,9 +556,9 @@
     <h2>Method and limits</h2>
     <p class="lede">Everything here comes from federal files anyone can
       download &mdash; IPEDS Completions for degrees, the NSF NCSES Federal
-      Support Survey for funding. The <a href="/data_sources.html">methodology
+      Support Survey for funding. The <a href="/data_sources.html" data-track="nav.data-sources">methodology
       page</a> carries the full chain, and the
-      <a href="/data/exports/stem_records.parquet">bulk exports</a> let you
+      <a href="/data/exports/stem_records.parquet" data-track="nav.data-exports-stem-records-parquet-2">bulk exports</a> let you
       recompute any of it yourself.</p>
     <ul class="limits">
       <li><strong>Doctorates, not master&rsquo;s.</strong> Cost figures cover
@@ -608,9 +608,9 @@
 </div>
 
 <div class="footer">
-  A project by <a href="https://andy-barr.com" target="_blank" rel="noopener noreferrer">Andy Barr</a>.
+  A project by <a href="https://andy-barr.com" target="_blank" rel="noopener noreferrer" data-track="out.andy-barr-com">Andy Barr</a>.
   Data from US federal agencies (NCES, NSF, DOL, DHS) and university institutional repositories.
-  <br>Last updated: August 2026 &middot; <a href="data_sources.html">Methodology</a> &middot; <a href="catalog.json">API</a>
+  <br>Last updated: August 2026 &middot; <a href="data_sources.html" data-track="a.methodology">Methodology</a> &middot; <a href="catalog.json" data-track="a.api">API</a>
 </div>
 </main>
 
@@ -917,5 +917,6 @@ function buildDetail(c) {
 
 })();
 </script>
+<script src="/analytics-beacon.js" defer></script>
 </body>
 </html>
