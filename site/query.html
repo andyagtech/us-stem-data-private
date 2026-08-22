@@ -215,7 +215,7 @@
   <h1 id="data-query"><span>Data</span> Query</h1>
   <span class="running-indicator" id="runningIndicator"></span>
   <span class="powered">
-    291K STEM + 136K Non-STEM records &middot;
+    371K STEM + 149K Non-STEM records &middot;
     Powered by <a href="https://github.com/hyparam/squirreling" target="_blank">Squirreling</a>
     + <a href="https://github.com/hyparam/hyparquet" target="_blank">hyparquet</a>
   </span>
@@ -274,9 +274,9 @@
 // ============================================================
 // IMPORTS
 // ============================================================
-import { parquetMetadataAsync, parquetRead, parquetSchema } from 'https://esm.sh/hyparquet@1';
-import { compressors } from 'https://esm.sh/hyparquet-compressors@1';
-import { executeSql, collect } from 'https://esm.sh/squirreling@0';
+import { parquetMetadataAsync, parquetRead, parquetSchema } from 'https://esm.sh/hyparquet@1.29.1';
+import { compressors } from 'https://esm.sh/hyparquet-compressors@1.1.1';
+import { executeSql, collect } from 'https://esm.sh/squirreling@0.16.1';
 
 // ============================================================
 // STATE
@@ -298,8 +298,8 @@ const exampleQueries = document.getElementById('exampleQueries');
 // KNOWN EXPORTS — served from reports/exports/
 // ============================================================
 const KNOWN_EXPORTS = [
-  { file: 'stem_records.parquet',     label: 'STEM Records (291K)' },
-  { file: 'nonstem_records.parquet',  label: 'Non-STEM Records (136K)' },
+  { file: 'stem_records.parquet',     label: 'STEM Records (371K)' },
+  { file: 'nonstem_records.parquet',  label: 'Non-STEM Records (149K)' },
 ];
 const CANDIDATE_BASES = ['data/exports/', '/data/exports/'];
 let EXPORTS_BASE = null;

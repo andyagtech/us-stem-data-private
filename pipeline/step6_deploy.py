@@ -345,9 +345,14 @@ def _deploy_locked(state: PipelineState, base_dir: Path,
 
     data = {"uploaded": uploaded, "cloudfront": cf_ok, "errors": len(errors)}
     if errors:
+        # success=False, not True. This branch previously reported success, so
+        # on 2026-08-21 a deploy printed "1 succeeded, 0 failed" while EVERY
+        # JSON upload failed on a malformed aws argv and nothing shipped. A
+        # deploy that could not upload is not a successful deploy, and a
+        # pipeline that cannot fail is not evidence when it passes.
         outcome = StepOutcome(
-            step_name="deploy", university_key="", success=True,
-            message=f"Deployed {uploaded} files ({len(errors)} errors)",
+            step_name="deploy", university_key="", success=False,
+            message=f"Deployed {uploaded} files but {len(errors)} upload(s) FAILED",
             data=data, errors=tuple(errors[:5]), warnings=(),
             timestamp=datetime.utcnow().isoformat(),
         )
