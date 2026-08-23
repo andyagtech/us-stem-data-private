@@ -111,7 +111,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
 <!-- ============================================================ -->
 <div class="content-col">
   <h1 id="implementation">Implementation</h1>
-  <p class="subtitle">A functional data pipeline that transforms thesis metadata from 105 universities into an enriched, deployable research site.</p>
+  <p class="subtitle">A functional data pipeline that transforms thesis metadata from 106 universities into an enriched, deployable research site.</p>
 
   <div class="stat-row">
     <div class="stat-chip"><div class="val" style="color:var(--accent)">517K</div><div class="lbl">Records</div></div>
@@ -462,7 +462,7 @@ GROUP BY university ORDER BY total DESC;</pre>
 
   <!-- ── LIVING WITH MESS ── -->
   <h2 id="living-with-complexity">Living with Complexity</h2>
-  <p>The pipeline currently has 105 university configs, 296 entity name mappings, 16 department extraction strategies, and an 8-step degree inference chain with dozens of regex patterns. This is not elegant, and it's not meant to be. It's a direct reflection of the problem: 105 universities, each running different software, following different metadata standards, with different ideas about what fields to populate and how to format them.</p>
+  <p>The pipeline currently has 105 university configs, 296 entity name mappings, 16 department extraction strategies, and an 8-step degree inference chain with dozens of regex patterns. This is not elegant, and it's not meant to be. It's a direct reflection of the problem: 106 universities, each running different software, following different metadata standards, with different ideas about what fields to populate and how to format them.</p>
 
   <p>Every one of those ad hoc rules exists because someone discovered a specific university doing something unexpected. MIT puts degree types in the description field. Penn State puts them in the relation field. Columbia uses OAI set names with <code>degree_level:doctoral</code>. BYU returns <code>"MS"</code> as a degree name, while Binghamton returns <code>"Master of Arts (MA)"</code>. USCIS truncates Stanford's legal name to <code>"THE LELAND STANFORD JR UNIVERSITY"</code> in some years but not others.</p>
 
