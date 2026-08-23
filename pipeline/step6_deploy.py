@@ -13,8 +13,10 @@ import fcntl
 import gzip
 import json
 import os
+import re
 import subprocess
 import tempfile
+import time
 from datetime import datetime
 from pathlib import Path
 
@@ -46,6 +48,7 @@ CACHE_RULES = {
     ".html": "public, max-age=300, stale-while-revalidate=86400",  # 5 min + stale ok for 24h
     ".json": "public, max-age=3600",  # 1 hour
     ".js": "public, max-age=300, stale-while-revalidate=86400",  # 5 min + stale ok for 24h
+    ".css": "public, max-age=300, stale-while-revalidate=86400",  # same as .js
     ".ico": "public, max-age=604800",
     ".png": "public, max-age=604800",
     ".jpeg": "public, max-age=604800",
@@ -55,6 +58,7 @@ CONTENT_TYPES = {
     ".html": "text/html; charset=utf-8",
     ".json": "application/json",
     ".js": "application/javascript",
+    ".css": "text/css; charset=utf-8",
     ".ico": "image/x-icon",
     ".png": "image/png",
     ".jpeg": "image/jpeg",
@@ -169,6 +173,9 @@ def _count_objects(prefix: str) -> int:
     return len([l for l in r.stdout.splitlines() if l.strip()]) if r.returncode == 0 else -1
 
 
+_BUILD_ID_RE = re.compile(r"^\d{8}T\d{6}Z$")
+
+
 def _publish_build(build_id: str, expected: int) -> tuple[bool, str]:
     """Point CloudFront at this build. One call, all or nothing.
 
@@ -177,6 +184,15 @@ def _publish_build(build_id: str, expected: int) -> tuple[bool, str]:
     which is the exact failure this whole scheme exists to prevent, so it
     refuses rather than guesses.
     """
+    # Refuse anything that is not a real build id. A unit test called this
+    # with build_id="b" and mocked only the object count, so the AWS calls ran
+    # for real and repointed the production origin at /v/b -- every page on
+    # the live site returned AccessDenied until it was put back by hand. A
+    # test should not be able to reach production, and neither should a typo.
+    if not _BUILD_ID_RE.match(build_id or ""):
+        return False, (f"{build_id!r} is not a build id "
+                       "(expected YYYYmmddTHHMMSSZ); refusing to move the origin")
+
     prefix = f"{BUILD_PREFIX}/{build_id}/"
     found = _count_objects(prefix)
     if found < 0:
@@ -385,7 +401,12 @@ def _deploy_locked(state: PipelineState, base_dir: Path,
 
     # Step 3: Upload static assets
     print("  Uploading static assets...")
-    for ext in [".ico", ".png", ".js", ".jpeg"]:
+    # .css was missing from this list, so /style.css was never uploaded and
+    # returned 403 -- taking the design tokens with it. Five pages that style
+    # themselves through var(--bg) and var(--text) rendered as black-on-white
+    # browser defaults while the index, which inlines its own CSS, rendered
+    # dark. Same site, two looks, depending which page you landed on.
+    for ext in [".ico", ".png", ".js", ".jpeg", ".css"]:
         for f in site_dir.glob(f"*{ext}"):
             key = f.name
             cache = CACHE_RULES.get(ext, "public, max-age=604800")
@@ -425,6 +446,50 @@ def _deploy_locked(state: PipelineState, base_dir: Path,
 
     print(f"  Uploaded {uploaded} files")
 
+    # Step 3a: sweep up anything the typed steps above did not cover.
+    #
+    # A versioned build has to be COMPLETE. Before the origin flip, files the
+    # deploy did not know about still worked, because they survived at the
+    # bucket root from whenever they were last put there -- catalog.json and
+    # llms.txt had sat there since March. The moment the origin points at one
+    # build, anything missing from that build is a 404. Ten files were in that
+    # position, including the stylesheet five pages depend on.
+    #
+    # So rather than extend the extension allowlist again, upload whatever is
+    # left. An allowlist is a promise to remember, and this is the second time
+    # it was not kept.
+    print("  Sweeping any remaining site files...")
+    # Ask S3 what actually landed rather than trusting a tally kept by hand
+    # across eight upload steps. If a typed step silently failed, its file
+    # shows up here as missing and gets uploaded, which is the behaviour worth
+    # having.
+    listing = subprocess.run(
+        ["aws", "s3", "ls", build_uri, "--recursive", "--profile", AWS_PROFILE],
+        capture_output=True, text=True)
+    prefix = build_uri.split(f"{S3_BUCKET}/", 1)[1]
+    present = {l.split()[-1][len(prefix):] for l in listing.stdout.splitlines()
+               if l.strip()} if listing.returncode == 0 else set()
+    swept = 0
+    for f in sorted(site_dir.rglob("*")):
+        if not f.is_file() or f.name.startswith("."):
+            continue
+        rel = f.relative_to(site_dir).as_posix()
+        if rel in present:
+            continue
+        ext = f.suffix.lower()
+        r = subprocess.run(
+            ["aws", "s3", "cp", str(f), f"{build_uri}{rel}",
+             "--profile", AWS_PROFILE,
+             "--cache-control", CACHE_RULES.get(ext, "public, max-age=3600"),
+             "--content-type", CONTENT_TYPES.get(ext, "application/octet-stream")],
+            capture_output=True, text=True)
+        if r.returncode == 0:
+            uploaded += 1
+            swept += 1
+        else:
+            errors.append(f"sweep {rel}: {r.stderr.strip()[:100]}")
+    print(f"    swept {swept} file(s) the typed steps missed")
+
     # Step 3b: publish, atomically.
     #
     # Nothing above this point is reachable by a reader. If the upload was
@@ -442,20 +507,35 @@ def _deploy_locked(state: PipelineState, base_dir: Path,
 
     # Step 4: CloudFront invalidation
     print("  Invalidating CloudFront cache...")
-    cf_result = subprocess.run(
-        ["aws", "cloudfront", "create-invalidation",
-         "--distribution-id", CLOUDFRONT_DISTRIBUTION,
-         "--paths", "/*",
-         "--profile", AWS_PROFILE],
-        capture_output=True, text=True,
-    )
-
-    cf_ok = cf_result.returncode == 0
-    if cf_ok:
-        print("  CloudFront: invalidation started")
-    else:
-        print(f"  CloudFront: FAILED")
-        errors.append("CloudFront invalidation failed")
+    # Retried, because this has now failed twice on a transient endpoint
+    # error after a perfectly good upload. It is the last step of a
+    # fifteen-minute job and re-running the whole deploy to retry one API
+    # call is a poor trade.
+    cf_ok, cf_why = False, ""
+    for attempt in range(1, 4):
+        cf_result = subprocess.run(
+            ["aws", "cloudfront", "create-invalidation",
+             "--distribution-id", CLOUDFRONT_DISTRIBUTION,
+             "--paths", "/*",
+             "--profile", AWS_PROFILE],
+            capture_output=True, text=True,
+        )
+        if cf_result.returncode == 0:
+            cf_ok = True
+            print(f"  CloudFront: invalidation started"
+                  + (f" (attempt {attempt})" if attempt > 1 else ""))
+            break
+        cf_why = (cf_result.stderr or "").strip()[:160]
+        print(f"  CloudFront: attempt {attempt} failed: {cf_why}")
+        if attempt < 3:
+            time.sleep(5 * attempt)
+    if not cf_ok:
+        # The build IS published at this point -- only the cache purge failed,
+        # so readers get the new content once the 5-minute HTML TTL lapses.
+        # Still a failure: something did not happen that was meant to.
+        print("  CloudFront: FAILED after 3 attempts; content is published "
+              "but cached copies will linger until TTL")
+        errors.append(f"CloudFront invalidation failed: {cf_why}")
 
     data = {"uploaded": uploaded, "cloudfront": cf_ok, "errors": len(errors)}
     if errors:

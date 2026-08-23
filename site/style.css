@@ -1,0 +1,84 @@
+/* Shared base styling for the analysis pages.
+ *
+ * WHY THIS FILE EXISTS
+ *   filers.html, expansion.html, distributions.html, live.html and
+ *   rankings.html all link /style.css and all style themselves through
+ *   var(--bg), var(--text), var(--border) and so on. The file was never
+ *   there -- it returned 403 -- so every one of those variables resolved to
+ *   nothing and the pages fell back to black-on-white browser defaults while
+ *   the index rendered dark. Same site, two different looks, depending which
+ *   page you landed on.
+ *
+ *   The tokens below are lifted from index.html, which carries its own
+ *   complete inline stylesheet. index.html is deliberately left alone: it is
+ *   generated with its styles inline and does not link this file.
+ */
+
+:root {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --border: #334155;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --accent: #38bdf8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+               'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { line-height: 1.25; text-wrap: balance; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+  font-size: .92em;
+}
+code { color: var(--text-muted); }
+
+/* The skip link is off-screen until focused, so a keyboard user can jump
+   past the header without a visible control cluttering the page. */
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: var(--accent); color: #0b1220;
+  padding: .7rem 1.1rem; border-radius: 0 0 6px 0; font-weight: 600;
+}
+.skip-link:focus { left: 0; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+/* Charts are SVG drawn by each page's own script; these are the shared
+   marks so a gridline looks the same everywhere. */
+svg.line-chart text, svg text { fill: var(--text-muted); font-size: 11px; }
+svg .grid { stroke: rgba(148, 163, 184, .14); stroke-width: 1; }
+
+table { border-collapse: collapse; width: 100%; }
+th, td { border-bottom: 1px solid var(--border); }
+th { color: var(--text-muted); font-weight: 600; }
+
+::selection { background: var(--accent); color: #0b1220; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
