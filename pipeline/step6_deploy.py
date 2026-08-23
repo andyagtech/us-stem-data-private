@@ -11,6 +11,7 @@ from __future__ import annotations
 import errno
 import fcntl
 import gzip
+import json
 import os
 import subprocess
 import tempfile
@@ -22,6 +23,21 @@ from .state import PipelineState, StepOutcome
 
 S3_BUCKET = os.environ.get("S3_BUCKET", "phd-demographics-andy-barr")
 S3_URI = f"s3://{S3_BUCKET}/"
+
+# Deploys are ATOMIC: every build is uploaded to its own prefix under v/, and
+# the site is switched by moving the CloudFront origin path in a single API
+# call. Nothing a reader can reach changes until that call succeeds.
+#
+# The old scheme wrote file-by-file straight into the bucket root over about
+# fifteen minutes. A deploy killed in the middle of that left the live site
+# genuinely mixed -- some pages from the new build, some from the old, with no
+# way to tell and no check that would notice, because verify_deploy samples
+# ten files. One was killed today and did no damage purely because it died
+# before the first upload rather than during it.
+#
+# Rolling back is setting OriginPath to the previous build, which stays in S3.
+BUILD_PREFIX = "v"
+KEEP_BUILDS = 4                # older prefixes are pruned after a good deploy
 CLOUDFRONT_DISTRIBUTION = os.environ.get("CLOUDFRONT_DISTRIBUTION", "E3IYHYCEQPE00Q")
 AWS_PROFILE = os.environ.get("AWS_PROFILE", "personal")
 
@@ -143,6 +159,83 @@ def _upload_json(src: Path, key: str, s3_uri: str) -> tuple[bool, str]:
     return result.returncode == 0, (result.stderr or "").strip()[:120]
 
 
+def _aws(*args: str, **kw) -> subprocess.CompletedProcess:
+    return subprocess.run(["aws", *args, "--profile", AWS_PROFILE],
+                          capture_output=True, text=True, **kw)
+
+
+def _count_objects(prefix: str) -> int:
+    r = _aws("s3", "ls", f"{S3_URI}{prefix}", "--recursive")
+    return len([l for l in r.stdout.splitlines() if l.strip()]) if r.returncode == 0 else -1
+
+
+def _publish_build(build_id: str, expected: int) -> tuple[bool, str]:
+    """Point CloudFront at this build. One call, all or nothing.
+
+    Verifies the upload landed before switching. A short prefix means the
+    upload was interrupted, and switching to it would publish a half site --
+    which is the exact failure this whole scheme exists to prevent, so it
+    refuses rather than guesses.
+    """
+    prefix = f"{BUILD_PREFIX}/{build_id}/"
+    found = _count_objects(prefix)
+    if found < 0:
+        return False, "could not list the uploaded build"
+    # The uploaded count is what the steps above reported; allow the sitemap
+    # and any file S3 lists differently, but not a materially short upload.
+    if found < expected * 0.98:
+        return False, (f"only {found} objects under {prefix}, expected about "
+                       f"{expected}; refusing to publish a partial build")
+
+    cfg = _aws("cloudfront", "get-distribution-config",
+               "--id", CLOUDFRONT_DISTRIBUTION)
+    if cfg.returncode != 0:
+        return False, "could not read the distribution config"
+    doc = json.loads(cfg.stdout)
+    etag, dist = doc["ETag"], doc["DistributionConfig"]
+    previous = dist["Origins"]["Items"][0].get("OriginPath", "")
+    want = f"/{BUILD_PREFIX}/{build_id}"
+    if previous == want:
+        return True, "already current"
+    for origin in dist["Origins"]["Items"]:
+        origin["OriginPath"] = want
+
+    tmp = Path(tempfile.gettempdir()) / f"cfcfg-{build_id}.json"
+    tmp.write_text(json.dumps(dist))
+    try:
+        up = _aws("cloudfront", "update-distribution",
+                  "--id", CLOUDFRONT_DISTRIBUTION,
+                  "--if-match", etag,
+                  "--distribution-config", f"file://{tmp}")
+    finally:
+        tmp.unlink(missing_ok=True)
+    if up.returncode != 0:
+        return False, (up.stderr or "update-distribution failed").strip()[:200]
+    print(f"  published: origin {previous or '/'} -> {want}")
+    print(f"  rollback:  aws cloudfront update-distribution --id "
+          f"{CLOUDFRONT_DISTRIBUTION} with OriginPath {previous or '/'}")
+    return True, ""
+
+
+def _prune_old_builds(current: str) -> None:
+    """Delete all but the newest KEEP_BUILDS prefixes.
+
+    Runs only after a successful publish, and never touches the live one --
+    a rollback target has to still exist.
+    """
+    r = _aws("s3", "ls", f"{S3_URI}{BUILD_PREFIX}/")
+    if r.returncode != 0:
+        return
+    builds = sorted(l.split()[-1].rstrip("/") for l in r.stdout.splitlines()
+                    if l.strip().startswith("PRE"))
+    stale = [b for b in builds[:-KEEP_BUILDS] if b != current]
+    for b in stale:
+        _aws("s3", "rm", f"{S3_URI}{BUILD_PREFIX}/{b}/", "--recursive",
+             "--only-show-errors")
+    if stale:
+        print(f"  pruned {len(stale)} old build(s), kept {KEEP_BUILDS}")
+
+
 def step6_deploy(state: PipelineState) -> PipelineState:
     """Deploy site to S3 with pre-compression and cache headers."""
     if state.should_halt():
@@ -172,6 +265,12 @@ def _deploy_locked(state: PipelineState, base_dir: Path,
                    site_dir: Path) -> PipelineState:
     print("\n[Step 6: DEPLOY] Deploying to S3 with compression...")
 
+    # One prefix per build. Readers keep seeing the current origin until the
+    # flip at the end, so an interrupted deploy is invisible to them.
+    build_id = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
+    build_uri = f"{S3_URI}{BUILD_PREFIX}/{build_id}/"
+    print(f"  build {build_id} -> {build_uri}")
+
     uploaded = 0
     errors = []
 
@@ -182,7 +281,7 @@ def _deploy_locked(state: PipelineState, base_dir: Path,
         cache = CACHE_RULES.get(".html", "public, max-age=300")
         ctype = CONTENT_TYPES.get(".html", "text/html")
         result = subprocess.run(
-            ["aws", "s3", "cp", str(f), f"{S3_URI}{key}",
+            ["aws", "s3", "cp", str(f), f"{build_uri}{key}",
              "--profile", AWS_PROFILE,
              "--cache-control", cache,
              "--content-type", ctype],
@@ -204,7 +303,7 @@ def _deploy_locked(state: PipelineState, base_dir: Path,
                 try:
                     gz_path = _gzip_file(f)
                     result = subprocess.run(
-                        ["aws", "s3", "cp", str(gz_path), f"{S3_URI}{key}",
+                        ["aws", "s3", "cp", str(gz_path), f"{build_uri}{key}",
                          "--profile", AWS_PROFILE,
                          "--cache-control", CACHE_RULES.get(".html", "public, max-age=300"),
                          "--content-type", "text/html; charset=utf-8",
@@ -223,7 +322,7 @@ def _deploy_locked(state: PipelineState, base_dir: Path,
     sitemap_path = site_dir / "sitemap.xml"
     if sitemap_path.exists():
         result = subprocess.run(
-            ["aws", "s3", "cp", str(sitemap_path), f"{S3_URI}sitemap.xml",
+            ["aws", "s3", "cp", str(sitemap_path), f"{build_uri}sitemap.xml",
              "--profile", AWS_PROFILE,
              "--cache-control", "public, max-age=3600",
              "--content-type", "application/xml"],
@@ -241,7 +340,7 @@ def _deploy_locked(state: PipelineState, base_dir: Path,
         for f in sorted(top_data_dir.glob("*.json")):
             key = f"data/{f.name}"
             try:
-                ok, why = _upload_json(f, key, S3_URI)
+                ok, why = _upload_json(f, key, build_uri)
                 if ok:
                     uploaded += 1
                 else:
@@ -260,7 +359,7 @@ def _deploy_locked(state: PipelineState, base_dir: Path,
         for f in sorted(data_dir.glob("*.json")):
             key = f"data/{mode}/{f.name}"
             try:
-                ok, why = _upload_json(f, key, S3_URI)
+                ok, why = _upload_json(f, key, build_uri)
                 if ok:
                     uploaded += 1
                 else:
@@ -275,7 +374,7 @@ def _deploy_locked(state: PipelineState, base_dir: Path,
         for f in sorted(exports_dir.glob("*.parquet")):
             key = f"data/exports/{f.name}"
             result = subprocess.run(
-                ["aws", "s3", "cp", str(f), f"{S3_URI}{key}",
+                ["aws", "s3", "cp", str(f), f"{build_uri}{key}",
                  "--profile", AWS_PROFILE,
                  "--cache-control", "public, max-age=3600",
                  "--content-type", "application/octet-stream"],
@@ -292,7 +391,7 @@ def _deploy_locked(state: PipelineState, base_dir: Path,
             cache = CACHE_RULES.get(ext, "public, max-age=604800")
             ctype = CONTENT_TYPES.get(ext, "application/octet-stream")
             result = subprocess.run(
-                ["aws", "s3", "cp", str(f), f"{S3_URI}{key}",
+                ["aws", "s3", "cp", str(f), f"{build_uri}{key}",
                  "--profile", AWS_PROFILE,
                  "--cache-control", cache,
                  "--content-type", ctype],
@@ -311,7 +410,7 @@ def _deploy_locked(state: PipelineState, base_dir: Path,
         card_count = sum(1 for _ in og_dir.rglob("*.png"))
         print(f"  Uploading {card_count} OpenGraph cards...")
         result = subprocess.run(
-            ["aws", "s3", "sync", str(og_dir), f"{S3_URI}og/",
+            ["aws", "s3", "sync", str(og_dir), f"{build_uri}og/",
              "--profile", AWS_PROFILE,
              "--exclude", "*", "--include", "*.png",
              "--cache-control", CACHE_RULES.get(".png", "public, max-age=604800"),
@@ -325,6 +424,21 @@ def _deploy_locked(state: PipelineState, base_dir: Path,
             errors.append(f"og cards: {result.stderr.strip()[:200]}")
 
     print(f"  Uploaded {uploaded} files")
+
+    # Step 3b: publish, atomically.
+    #
+    # Nothing above this point is reachable by a reader. If the upload was
+    # short, or any of it failed, the flip does not happen and the live site
+    # is exactly what it was.
+    if errors:
+        print(f"  NOT publishing: {len(errors)} upload error(s); "
+              f"the live site is untouched")
+    else:
+        ok, why = _publish_build(build_id, uploaded)
+        if not ok:
+            errors.append(f"publish failed: {why}")
+        else:
+            _prune_old_builds(build_id)
 
     # Step 4: CloudFront invalidation
     print("  Invalidating CloudFront cache...")

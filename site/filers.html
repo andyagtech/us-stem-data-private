@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Who files the visas</title>
+<meta name="description" content="Searchable directory of the law firms and attorneys filing H-1B labor condition applications for US universities, from DOL public disclosure.">
+<meta property="og:title" content="Who files the visas">
+<meta property="og:description" content="177 firms and 262 attorneys behind university H-1B filings, searchable, from DOL public disclosure.">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.75rem; margin: 0 0 .6rem; line-height: 1.25; max-width: 24ch; }
+  .page-head p { color: var(--text-muted); max-width: 72ch; line-height: 1.65;
+    font-size: .95rem; margin: 0 0 .5rem; }
+  .chart-section { margin-top: 2.6rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  .chart-section h2 { font-size: 1.15rem; margin: 0 0 .4rem; }
+  .chart-section .lede { color: var(--text-muted); max-width: 72ch; line-height: 1.6;
+    font-size: .9rem; margin: 0 0 1rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55;
+    max-width: 80ch; margin: .9rem 0 0; }
+  .stat-row { display: flex; flex-wrap: wrap; gap: 1.6rem; margin: 1.2rem 0 0; }
+  .stat-row div { font-variant-numeric: tabular-nums; }
+  .stat-row .v { font-size: 1.35rem; font-weight: 600; display: block; }
+  .stat-row .k { color: var(--text-muted); font-size: .76rem; text-transform: uppercase;
+    letter-spacing: .08em; }
+  #q { font: inherit; font-size: .95rem; width: 100%; max-width: 34rem; padding: .6rem .85rem;
+    border-radius: 8px; border: 1px solid var(--border); background: transparent;
+    color: var(--text); }
+  #q:focus { outline: 2px solid #38bdf8; outline-offset: 2px; }
+  #kind { display: flex; gap: .5rem; margin: 1rem 0 1.2rem; flex-wrap: wrap; }
+  #kind button { font: inherit; font-size: .85rem; padding: .45rem 1rem; border-radius: 999px;
+    border: 1px solid var(--border); cursor: pointer; background: transparent;
+    color: var(--text-muted); }
+  #kind button.on { background: var(--text); color: var(--bg, #0f172a); border-color: var(--text); }
+  .hits { color: var(--text-muted); font-size: .8rem; margin: .4rem 0 1rem;
+    font-variant-numeric: tabular-nums; }
+  .card { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1.05rem;
+    margin: 0 0 .7rem; }
+  .card h3 { margin: 0 0 .25rem; font-size: .98rem; }
+  .card .sub { color: var(--text-muted); font-size: .82rem; margin: 0 0 .55rem; }
+  .card dl { display: grid; grid-template-columns: 8.5rem 1fr; gap: .28rem .9rem;
+    margin: 0; font-size: .84rem; }
+  .card dt { color: var(--text-muted); }
+  .card dd { margin: 0; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+  .card .n { font-variant-numeric: tabular-nums; color: var(--text-muted); font-size: .82rem; }
+  .pill { display: inline-block; border: 1px solid var(--border); border-radius: 999px;
+    padding: .05rem .5rem; font-size: .74rem; color: var(--text-muted); margin-right: .3rem; }
+  svg.map { display: block; width: 100%; height: auto; }
+  .loading { color: var(--text-muted); font-size: .85rem; }
+</style>
+</head>
+<body data-page="filers">
+<a class="skip-link" href="#search" data-track="anchor.search">Skip to the search</a>
+<main id="main">
+<div class="wrap">
+
+  <div class="page-head">
+    <h1>Who files the visas</h1>
+    <p>Every H-1B petition begins with a Labor Condition Application, and every
+    application names whoever prepared it. This is the directory of those filers
+    for the 106 universities on this site &mdash; the firms, the individual
+    attorneys, where they are, and how much of the work each one does.</p>
+    <p>All of it is public disclosure. The Department of Labor publishes these
+    records, including the filer&rsquo;s contact details, so that the programme
+    can be examined.</p>
+  </div>
+
+  <div class="stat-row" id="totals"></div>
+
+  <section class="chart-section" id="search">
+    <h2>1 &middot; Search the directory</h2>
+    <p class="lede">By firm, attorney, university, city or state. Everything the
+    disclosure carries is shown, including contact details.</p>
+    <div id="kind" role="group" aria-label="What to search">
+      <button type="button" data-kind="firms" aria-pressed="true" data-track="btn.firms">Firms</button>
+      <button type="button" data-kind="attorneys" aria-pressed="false" data-track="btn.attorneys">Attorneys</button>
+    </div>
+    <label class="visually-hidden" for="q">Search filers</label>
+    <input id="q" type="search" placeholder="Fragomen, Miami, purdue, NY&hellip;"
+           autocomplete="off" data-track="input.filer-search">
+    <p class="hits" id="hits"></p>
+    <div id="results"><p class="loading">Loading&hellip;</p></div>
+  </section>
+
+  <section class="chart-section" id="map">
+    <h2>2 &middot; Where they are</h2>
+    <p class="lede">Attorneys placed by the address on their filings. Dot area is
+    proportional to filings. The work is not spread near the universities it
+    serves.</p>
+    <div id="map-host"><p class="loading">Loading&hellip;</p></div>
+    <p class="note">Positions are postcode or city centroids, never street
+    positions &mdash; an office suite geocoded to its postcode is the honest
+    resolution, and some filings carry no street at all. Geocoded offline from
+    the GeoNames US postal table (CC&nbsp;BY&nbsp;4.0); state outlines from US
+    Census cartographic boundary files, public domain. Alaska and Hawaii are not
+    drawn because no filer is in either.</p>
+  </section>
+
+  <p class="note" id="coverage"></p>
+
+</div>
+</main>
+<script src="/filers.js" defer></script>
+</body>
+</html>

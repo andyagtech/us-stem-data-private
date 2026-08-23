@@ -286,6 +286,24 @@
 
   /* ------------------------------------------------------------- wiring */
 
+  // SED reuses drawCounts deliberately. It breaks the line across any year gap
+  // and bridges it with a faint dash, so the five-yearly era before 2009 draws
+  // dashed and the annual era after draws solid -- the distinction the data
+  // actually has, without a second chart implementation to keep in step.
+  fetch('/data/sed_series.json', { credentials: 'omit' })
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      var rows = Object.keys(d.series || {}).map(Number)
+        .sort(function (a, b) { return a - b; })
+        .map(function (y) {
+          var v = d.series[String(y)];
+          return { year: y, total: v.all, nra: v.temp, dom: v.us };
+        });
+      drawCounts(rows, { chart: 'sed-chart', legend: 'sed-legend',
+        stats: 'sed-stats' }, { total: 'All research doctorates' });
+    })
+    .catch(function () { fail('sed-chart'); });
+
   fetch('/data/long_series.json', { credentials: 'omit' })
     .then(function (r) { return r.json(); })
     .then(function (d) {
