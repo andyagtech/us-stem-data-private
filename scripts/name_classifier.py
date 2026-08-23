@@ -1,7 +1,39 @@
 """
 Name classifier for dissertation author demographics.
 
-Classifies names as Chinese, Indian, Korean, Vietnamese, or other.
+Classifies a personal name into one of seven detected origins --
+``chinese``, ``indian``, ``korean``, ``vietnamese``, ``iranian``,
+``turkish``, ``arabic`` -- or ``other``, with ``excluded_ambiguous`` for
+names deliberately withheld as too ambiguous to call.
+
+WHAT ``other`` MEANS. It is not "Western" and it is not "domestic". It is
+"none of the seven categories this module looks for". Every European,
+Hispanic, Lusophone, Japanese, African, Thai, Filipino and Indonesian name
+lands there, alongside Anglo-American ones. Garcia, Silva, Muller, Rossi,
+Nowak, Ivanov, Tanaka and Okafor all return ``other``.
+
+Two consequences for anyone reusing this:
+
+  * A count of non-``other`` names is a FLOOR on the international share,
+    not an estimate of it. A Brazilian, Spanish, German or Japanese student
+    is counted on the same side of the ratio as a US-born one.
+  * A trend in that share is only sound if the mix of origins is stable.
+    Growth concentrated in the seven detected origins will show up; growth
+    from Latin America or Europe will not.
+
+It infers origin from a NAME, which is not citizenship, ethnicity or visa
+status. A US-born citizen named Zhang classifies as ``chinese``; a Chinese
+national named Smith classifies as ``other``.
+
+Usage:
+    from name_classifier import classify
+    origin, confidence = classify("Wang, Wei")     # ('chinese', 'high')
+
+    is_chinese(name), is_indian(name)              # booleans
+    is_chinese_high_confidence(name)               # stricter
+    get_surname(name), get_given_name(name)        # parsing helpers
+
+No third-party dependencies; standard library only.
 
 Approach:
   - 148 Chinese surnames (pinyin + Wade-Giles/Cantonese romanizations)
@@ -9,6 +41,8 @@ Approach:
   - Given-name validation using common pinyin/Indian syllables for ambiguous surnames
   - Confidence levels: high / medium
   - Excluded surnames: lee, long, sun (too ambiguous with Western/Korean)
+  - Iranian, Turkish and Arabic detected by surname lists plus suffix and
+    prefix rules (-zadeh, -oglu, al-/el-/abu-)
 
 Estimated accuracy (Chinese):
   - True positive rate: ~90-95%
