@@ -1,16 +1,33 @@
 """
-Step 6: DEPLOY — Pre-compress, sync to S3, and invalidate CloudFront.
+Step 6: DEPLOY — Build a versioned copy of site/ in S3 and switch to it.
 
-Pre-compresses JSON files with gzip before uploading for optimal performance.
-Sets appropriate Cache-Control headers by file type.
+Every deploy writes a complete build to its own prefix, v/{YYYYmmddTHHMMSSZ}/,
+and goes live by moving the CloudFront origin path there in a single API call.
+Readers see the previous build until that call succeeds, so an interrupted or
+failed deploy changes nothing they can reach, and a rollback is one call back
+to the prefix before it.
+
+Because each build lives at a fresh prefix, it has to be COMPLETE -- a file
+missing from it is a 404, not a stale copy that quietly still works. So the
+upload is planned by walking site/ rather than from a list of extensions, and
+reconciled against S3 before the origin moves.
+
+Uploading all ~750 objects every time took the better part of an hour, most of
+it spent spawning one `aws s3 cp` process per file. Instead the new prefix is
+seeded by a server-side copy of the build that is currently live -- no bytes
+leave this machine -- and only files whose content or headers actually changed
+are re-uploaded, in parallel, through one boto3 client. What changed is decided
+by comparing fingerprints against a manifest written for each published build.
 
 Input:  site/ directory (HTML + JSON + assets)
-Output: S3 bucket updated with compressed files, CloudFront cache invalidated
+Output: a new v/ prefix, the CloudFront origin pointed at it, cache invalidated
 """
 from __future__ import annotations
+import concurrent.futures
 import errno
 import fcntl
 import gzip
+import hashlib
 import json
 import os
 import re
@@ -19,6 +36,7 @@ import tempfile
 import time
 from datetime import datetime
 from pathlib import Path
+from typing import NamedTuple
 
 from .state import PipelineState, StepOutcome
 
@@ -39,6 +57,16 @@ S3_URI = f"s3://{S3_BUCKET}/"
 #
 # Rolling back is setting OriginPath to the previous build, which stays in S3.
 BUILD_PREFIX = "v"
+_UPLOAD_WORKERS = 16           # parallel uploads; was one CLI process per file
+_MANIFEST_PREFIX = "manifests"  # key -> fingerprint per build, outside v/
+_MANIFEST_VERSION = 1           # bump to force a full re-upload
+
+# CloudFront gzips responses on the fly, but only below this size. JSON is
+# published precisely so people can script against it, and above the ceiling
+# CloudFront will not compress at all -- so those objects must be
+# pre-compressed or they ship raw, 19.7 MB in the case of _search.json, which
+# is fetched only by code that already handles gzip.
+CLOUDFRONT_COMPRESS_MAX = 9 * 1024 * 1024
 KEEP_BUILDS = 4                # older prefixes are pruned after a good deploy
 CLOUDFRONT_DISTRIBUTION = os.environ.get("CLOUDFRONT_DISTRIBUTION", "E3IYHYCEQPE00Q")
 AWS_PROFILE = os.environ.get("AWS_PROFILE", "personal")
@@ -52,6 +80,10 @@ CACHE_RULES = {
     ".ico": "public, max-age=604800",
     ".png": "public, max-age=604800",
     ".jpeg": "public, max-age=604800",
+    ".svg": "public, max-age=604800",
+    ".xml": "public, max-age=3600",
+    ".txt": "public, max-age=3600",
+    ".parquet": "public, max-age=3600",
 }
 
 CONTENT_TYPES = {
@@ -62,16 +94,238 @@ CONTENT_TYPES = {
     ".ico": "image/x-icon",
     ".png": "image/png",
     ".jpeg": "image/jpeg",
+    # These four were typed by hand in the old per-step uploads, or fell
+    # through the sweep's octet-stream default. sitemap.xml was declared
+    # application/xml by its own upload step; robots.txt, llms.txt and the
+    # one SVG were served as octet-stream, which browsers and crawlers both
+    # dislike. The planner has a single default, so they are named here.
+    ".xml": "application/xml",
+    ".txt": "text/plain; charset=utf-8",
+    ".svg": "image/svg+xml",
+    ".parquet": "application/octet-stream",
 }
 
 
-def _gzip_file(src: Path) -> Path:
-    """Gzip a file, return path to the compressed version."""
-    gz_path = src.with_suffix(src.suffix + ".gz")
-    with open(src, "rb") as f_in:
-        with gzip.open(str(gz_path), "wb", compresslevel=9) as f_out:
-            f_out.write(f_in.read())
+def _gzip_to_temp(src: Path) -> Path:
+    """Gzip a file into the system temp dir, return the compressed path.
+
+    Deliberately NOT next to the source. This used to write site/foo.html.gz
+    beside the original and unlink it afterwards, which is fine until a deploy
+    is killed mid-run -- and one was. The stray .gz then sits in site/, and
+    since the planner below walks the whole tree rather than an extension
+    allowlist, the next deploy would faithfully ship it as its own object.
+    """
+    fd, tmp = tempfile.mkstemp(suffix=".gz", prefix="deploy-")
+    os.close(fd)
+    gz_path = Path(tmp)
+    with open(src, "rb") as f_in, gzip.open(str(gz_path), "wb", compresslevel=9) as f_out:
+        while chunk := f_in.read(1 << 20):
+            f_out.write(chunk)
     return gz_path
+
+
+class _Obj(NamedTuple):
+    """One file's place in a build: where it comes from, how it is served."""
+    src: Path
+    key: str
+    ctype: str
+    cache: str
+    gz: bool
+
+
+def _should_gzip(f: Path, ext: str, rel: str) -> bool:
+    """Whether to pre-compress, matching what CloudFront will not do for us."""
+    if ext == ".html":
+        # The per-university pages are ~1 MB each and there are 200-odd; the
+        # handful of top-level pages are small enough to leave to CloudFront.
+        return rel.startswith("universities/")
+    if ext == ".json":
+        # CloudFront compresses on the fly below its ceiling. Above it, it
+        # does not compress at all, so those must ship pre-compressed or go
+        # out raw -- 19.7 MB in the case of _search.json.
+        return f.stat().st_size > CLOUDFRONT_COMPRESS_MAX
+    return False
+
+
+def _plan_objects(site_dir: Path) -> list[_Obj]:
+    """Every file under site/ that belongs in a build, with its headers.
+
+    One walk replaces eight typed upload steps and the sweep that existed to
+    catch what they forgot. Those steps were an allowlist of extensions and
+    directories, and it was not kept: og/ was missed, then .css, then ten
+    root files. Walking the tree cannot forget a file, which is the property
+    that matters here -- a build is served from its own prefix, so anything
+    absent from it is a 404 rather than a stale file that quietly still works.
+    """
+    objs: list[_Obj] = []
+    for f in sorted(site_dir.rglob("*")):
+        if not f.is_file() or f.name.startswith("."):
+            continue
+        rel = f.relative_to(site_dir).as_posix()
+        # A compressed copy sitting beside its source is debris from a deploy
+        # that was killed mid-gzip, back when the .gz was written next to the
+        # original. It is not part of the site, and shipping it would put a
+        # bare .gz at a public URL.
+        if f.suffix == ".gz" and f.with_suffix("").exists():
+            print(f"  ignoring stray {rel} (leftover from an interrupted deploy)")
+            continue
+        ext = f.suffix.lower()
+        objs.append(_Obj(
+            src=f,
+            key=rel,
+            ctype=CONTENT_TYPES.get(ext, "application/octet-stream"),
+            cache=CACHE_RULES.get(ext, "public, max-age=3600"),
+            gz=_should_gzip(f, ext, rel),
+        ))
+    return objs
+
+
+def _fingerprint(o: _Obj) -> str:
+    """Content hash plus the headers, so a cache-rule change re-uploads too."""
+    h = hashlib.sha256()
+    h.update(f"{_MANIFEST_VERSION}\0{o.ctype}\0{o.cache}\0{int(o.gz)}\0".encode())
+    with open(o.src, "rb") as fh:
+        while chunk := fh.read(1 << 20):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def _s3():
+    """One boto3 client, shared across upload threads (botocore allows this).
+
+    The point of using boto3 at all is that the old path spawned a whole
+    `aws s3 cp` process per object -- ~750 of them, each paying interpreter
+    startup and a fresh TLS handshake before a byte moved. That alone was
+    most of an hour.
+    """
+    import boto3
+    return boto3.Session(profile_name=AWS_PROFILE).client("s3")
+
+
+def _live_build_id() -> str | None:
+    """The build CloudFront is serving right now, or None if it is not on one.
+
+    Seeding from the LIVE build rather than the newest prefix in S3 matters:
+    the newest prefix may be a deploy that was interrupted or refused, and
+    seeding from a half-uploaded build would carry its gaps forward.
+    """
+    cfg = _aws("cloudfront", "get-distribution-config",
+               "--id", CLOUDFRONT_DISTRIBUTION)
+    if cfg.returncode != 0:
+        return None
+    try:
+        items = json.loads(cfg.stdout)["DistributionConfig"]["Origins"]["Items"]
+    except (ValueError, KeyError):
+        return None
+    m = re.match(rf"^/{BUILD_PREFIX}/(\d{{8}}T\d{{6}}Z)$",
+                 items[0].get("OriginPath", "") or "")
+    return m.group(1) if m else None
+
+
+def _load_manifest(client, build_id: str) -> dict[str, str]:
+    """The key -> fingerprint map written after that build was published."""
+    try:
+        body = client.get_object(
+            Bucket=S3_BUCKET,
+            Key=f"{_MANIFEST_PREFIX}/{build_id}.json")["Body"].read()
+        doc = json.loads(body)
+    except Exception:
+        return {}
+    if doc.get("version") != _MANIFEST_VERSION:
+        return {}
+    return doc.get("objects") or {}
+
+
+def _write_manifest(client, build_id: str, fps: dict[str, str]) -> None:
+    """Record what this build contains, for the next deploy to diff against.
+
+    Written only after a successful publish. A manifest for a build that
+    never went live would describe a prefix the next deploy has no reason to
+    seed from, and could be pruned out from under it.
+
+    Kept OUTSIDE the v/ prefix on purpose: the CloudFront origin path points
+    into v/{build}, so nothing here is reachable from the site.
+    """
+    client.put_object(
+        Bucket=S3_BUCKET,
+        Key=f"{_MANIFEST_PREFIX}/{build_id}.json",
+        Body=json.dumps({"version": _MANIFEST_VERSION,
+                         "build_id": build_id,
+                         "objects": fps}).encode(),
+        ContentType="application/json",
+    )
+
+
+def _seed_from(prev: str, build_id: str) -> tuple[bool, str]:
+    """Server-side copy the previous build into this one.
+
+    Nothing leaves this machine: S3 copies object-to-object internally, and
+    MetadataDirective=COPY carries Content-Type, Content-Encoding and
+    Cache-Control across unchanged. What follows only has to overwrite the
+    files that actually differ.
+    """
+    r = _aws("s3", "cp",
+             f"{S3_URI}{BUILD_PREFIX}/{prev}/",
+             f"{S3_URI}{BUILD_PREFIX}/{build_id}/",
+             "--recursive", "--metadata-directive", "COPY",
+             "--only-show-errors")
+    if r.returncode != 0:
+        return False, (r.stderr or "copy failed").strip()[:200]
+    return True, ""
+
+
+def _list_keys(client, prefix: str) -> set[str]:
+    """Every key under a prefix, relative to it. Paginated -- there are 750+."""
+    found: set[str] = set()
+    token = None
+    while True:
+        kw = {"Bucket": S3_BUCKET, "Prefix": prefix, "MaxKeys": 1000}
+        if token:
+            kw["ContinuationToken"] = token
+        page = client.list_objects_v2(**kw)
+        for item in page.get("Contents", []):
+            found.add(item["Key"][len(prefix):])
+        if not page.get("IsTruncated"):
+            return found
+        token = page.get("NextContinuationToken")
+
+
+def _put(client, o: _Obj, prefix: str) -> str | None:
+    """Upload one object. Returns an error string, or None on success."""
+    extra = {"ContentType": o.ctype, "CacheControl": o.cache}
+    tmp = None
+    try:
+        body = o.src
+        if o.gz:
+            tmp = _gzip_to_temp(o.src)
+            body = tmp
+            extra["ContentEncoding"] = "gzip"
+        client.upload_file(str(body), S3_BUCKET, f"{prefix}{o.key}",
+                           ExtraArgs=extra)
+        return None
+    except Exception as e:
+        return f"{o.key}: {str(e)[:120]}"
+    finally:
+        if tmp is not None:
+            tmp.unlink(missing_ok=True)
+
+
+def _put_many(client, objs: list[_Obj], prefix: str) -> list[str]:
+    """Upload in parallel. One connection pool, _UPLOAD_WORKERS threads."""
+    if not objs:
+        return []
+    errs: list[str] = []
+    done = 0
+    with concurrent.futures.ThreadPoolExecutor(_UPLOAD_WORKERS) as pool:
+        futures = {pool.submit(_put, client, o, prefix): o for o in objs}
+        for fut in concurrent.futures.as_completed(futures):
+            err = fut.result()
+            if err:
+                errs.append(err)
+            done += 1
+            if done % 50 == 0 or done == len(objs):
+                print(f"    {done}/{len(objs)} uploaded", flush=True)
+    return errs
 
 
 class _DeployLock:
@@ -248,6 +502,9 @@ def _prune_old_builds(current: str) -> None:
     for b in stale:
         _aws("s3", "rm", f"{S3_URI}{BUILD_PREFIX}/{b}/", "--recursive",
              "--only-show-errors")
+        # Its manifest describes a prefix that no longer exists.
+        _aws("s3", "rm", f"{S3_URI}{_MANIFEST_PREFIX}/{b}.json",
+             "--only-show-errors")
     if stale:
         print(f"  pruned {len(stale)} old build(s), kept {KEEP_BUILDS}")
 
@@ -287,210 +544,69 @@ def _deploy_locked(state: PipelineState, base_dir: Path,
     build_uri = f"{S3_URI}{BUILD_PREFIX}/{build_id}/"
     print(f"  build {build_id} -> {build_uri}")
 
-    uploaded = 0
-    errors = []
+    errors: list[str] = []
+    client = _s3()
+    prefix = f"{BUILD_PREFIX}/{build_id}/"
 
-    # Step 1: Upload HTML files (uncompressed, short cache)
-    print("  Uploading HTML files...")
-    for f in site_dir.glob("*.html"):
-        key = f.name
-        cache = CACHE_RULES.get(".html", "public, max-age=300")
-        ctype = CONTENT_TYPES.get(".html", "text/html")
-        result = subprocess.run(
-            ["aws", "s3", "cp", str(f), f"{build_uri}{key}",
-             "--profile", AWS_PROFILE,
-             "--cache-control", cache,
-             "--content-type", ctype],
-            capture_output=True, text=True,
-        )
-        if result.returncode == 0:
-            uploaded += 1
+    # What this build should contain -- one walk of site/, not an allowlist.
+    plan = _plan_objects(site_dir)
+    print(f"  {len(plan)} objects planned")
 
-    # Step 1b: Upload pre-rendered university pages (gzipped for bandwidth)
-    universities_dir = site_dir / "universities"
-    if universities_dir.is_dir():
-        print("  Pre-compressing and uploading university pages...")
-        for mode_dir in [universities_dir, universities_dir / "nonstem"]:
-            if not mode_dir.is_dir():
-                continue
-            rel_prefix = "universities/" if mode_dir == universities_dir else "universities/nonstem/"
-            for f in sorted(mode_dir.glob("*.html")):
-                key = f"{rel_prefix}{f.name}"
-                try:
-                    gz_path = _gzip_file(f)
-                    result = subprocess.run(
-                        ["aws", "s3", "cp", str(gz_path), f"{build_uri}{key}",
-                         "--profile", AWS_PROFILE,
-                         "--cache-control", CACHE_RULES.get(".html", "public, max-age=300"),
-                         "--content-type", "text/html; charset=utf-8",
-                         "--content-encoding", "gzip"],
-                        capture_output=True, text=True,
-                    )
-                    gz_path.unlink()
-                    if result.returncode == 0:
-                        uploaded += 1
-                    else:
-                        errors.append(f"Upload failed: {key}")
-                except Exception as e:
-                    errors.append(f"Compress/upload failed: {key}: {e}")
-
-    # Step 1c: Upload sitemap.xml
-    sitemap_path = site_dir / "sitemap.xml"
-    if sitemap_path.exists():
-        result = subprocess.run(
-            ["aws", "s3", "cp", str(sitemap_path), f"{build_uri}sitemap.xml",
-             "--profile", AWS_PROFILE,
-             "--cache-control", "public, max-age=3600",
-             "--content-type", "application/xml"],
-            capture_output=True, text=True,
-        )
-        if result.returncode == 0:
-            uploaded += 1
-
-    # Step 2: Upload JSON data files (pre-compressed with gzip)
-    print("  Pre-compressing and uploading JSON data...")
-
-    # Top-level data/*.json (e.g., universities_index.json)
-    top_data_dir = site_dir / "data"
-    if top_data_dir.is_dir():
-        for f in sorted(top_data_dir.glob("*.json")):
-            key = f"data/{f.name}"
-            try:
-                ok, why = _upload_json(f, key, build_uri)
-                if ok:
-                    uploaded += 1
-                else:
-                    errors.append(f"Upload failed: {key} {why}")
-            except Exception as e:
-                errors.append(f"Upload failed: {key}: {e}")
-
-    # "chat" belongs here: chat-widget.js fetches /data/chat/site_map.json at
-    # runtime to validate the nav paths the assistant emits. It was omitted, so
-    # that fetch had always 403'd and the widget silently ran without a site
-    # map -- degrading rather than failing, which is why nobody noticed.
-    for mode in ["stem", "nonstem", "chat"]:
-        data_dir = site_dir / "data" / mode
-        if not data_dir.is_dir():
-            continue
-        for f in sorted(data_dir.glob("*.json")):
-            key = f"data/{mode}/{f.name}"
-            try:
-                ok, why = _upload_json(f, key, build_uri)
-                if ok:
-                    uploaded += 1
-                else:
-                    errors.append(f"Upload failed: {key} {why}")
-            except Exception as e:
-                errors.append(f"Compress/upload failed: {key}: {e}")
-
-    # Step 2b: Upload Parquet data files (for SQL query page)
-    exports_dir = site_dir / "data" / "exports"
-    if exports_dir.is_dir():
-        print("  Uploading Parquet exports...")
-        for f in sorted(exports_dir.glob("*.parquet")):
-            key = f"data/exports/{f.name}"
-            result = subprocess.run(
-                ["aws", "s3", "cp", str(f), f"{build_uri}{key}",
-                 "--profile", AWS_PROFILE,
-                 "--cache-control", "public, max-age=3600",
-                 "--content-type", "application/octet-stream"],
-                capture_output=True, text=True,
-            )
-            if result.returncode == 0:
-                uploaded += 1
-
-    # Step 3: Upload static assets
-    print("  Uploading static assets...")
-    # .css was missing from this list, so /style.css was never uploaded and
-    # returned 403 -- taking the design tokens with it. Five pages that style
-    # themselves through var(--bg) and var(--text) rendered as black-on-white
-    # browser defaults while the index, which inlines its own CSS, rendered
-    # dark. Same site, two looks, depending which page you landed on.
-    for ext in [".ico", ".png", ".js", ".jpeg", ".css"]:
-        for f in site_dir.glob(f"*{ext}"):
-            key = f.name
-            cache = CACHE_RULES.get(ext, "public, max-age=604800")
-            ctype = CONTENT_TYPES.get(ext, "application/octet-stream")
-            result = subprocess.run(
-                ["aws", "s3", "cp", str(f), f"{build_uri}{key}",
-                 "--profile", AWS_PROFILE,
-                 "--cache-control", cache,
-                 "--content-type", ctype],
-                capture_output=True, text=True,
-            )
-            if result.returncode == 0:
-                uploaded += 1
-
-    # Step 3b: OpenGraph share cards, which live in a subdirectory.
-    # Every glob above is top-level only, so site/og/**.png would never have
-    # shipped — and since every page's og:image now points into it, a share
-    # would have rendered a 404 rather than the static image it replaced.
-    # Synced in one call rather than a subprocess per file; there are 237.
-    og_dir = site_dir / "og"
-    if og_dir.is_dir():
-        card_count = sum(1 for _ in og_dir.rglob("*.png"))
-        print(f"  Uploading {card_count} OpenGraph cards...")
-        result = subprocess.run(
-            ["aws", "s3", "sync", str(og_dir), f"{build_uri}og/",
-             "--profile", AWS_PROFILE,
-             "--exclude", "*", "--include", "*.png",
-             "--cache-control", CACHE_RULES.get(".png", "public, max-age=604800"),
-             "--content-type", CONTENT_TYPES.get(".png", "image/png"),
-             "--no-progress"],
-            capture_output=True, text=True,
-        )
-        if result.returncode == 0:
-            uploaded += card_count
+    # Seed from whatever CloudFront is serving right now, then overwrite only
+    # what differs. A full upload is ~430 MB and, one `aws s3 cp` process per
+    # file, took the better part of an hour; the copy below moves the same
+    # bytes inside S3 in well under a minute and never touches the network
+    # here.
+    live = _live_build_id()
+    prev_fps: dict[str, str] = {}
+    if live:
+        print(f"  seeding from live build {live}...", flush=True)
+        ok, why = _seed_from(live, build_id)
+        if ok:
+            prev_fps = _load_manifest(client, live)
+            if not prev_fps:
+                print("    no manifest for it; re-uploading everything")
         else:
-            errors.append(f"og cards: {result.stderr.strip()[:200]}")
+            # Not fatal: fall back to a full upload, which is what every
+            # deploy did before this. Slow beats wrong.
+            print(f"    seed failed ({why}); uploading in full")
+    else:
+        print("  no live build to seed from; uploading in full")
 
-    print(f"  Uploaded {uploaded} files")
+    # Fingerprints cover content AND headers, so a cache-rule change ships too.
+    fps = {o.key: _fingerprint(o) for o in plan}
+    changed = [o for o in plan if fps[o.key] != prev_fps.get(o.key)]
+    print(f"  {len(changed)} changed, {len(plan) - len(changed)} reused")
 
-    # Step 3a: sweep up anything the typed steps above did not cover.
-    #
-    # A versioned build has to be COMPLETE. Before the origin flip, files the
-    # deploy did not know about still worked, because they survived at the
-    # bucket root from whenever they were last put there -- catalog.json and
-    # llms.txt had sat there since March. The moment the origin points at one
-    # build, anything missing from that build is a 404. Ten files were in that
-    # position, including the stylesheet five pages depend on.
-    #
-    # So rather than extend the extension allowlist again, upload whatever is
-    # left. An allowlist is a promise to remember, and this is the second time
-    # it was not kept.
-    print("  Sweeping any remaining site files...")
-    # Ask S3 what actually landed rather than trusting a tally kept by hand
-    # across eight upload steps. If a typed step silently failed, its file
-    # shows up here as missing and gets uploaded, which is the behaviour worth
-    # having.
-    listing = subprocess.run(
-        ["aws", "s3", "ls", build_uri, "--recursive", "--profile", AWS_PROFILE],
-        capture_output=True, text=True)
-    prefix = build_uri.split(f"{S3_BUCKET}/", 1)[1]
-    present = {l.split()[-1][len(prefix):] for l in listing.stdout.splitlines()
-               if l.strip()} if listing.returncode == 0 else set()
-    swept = 0
-    for f in sorted(site_dir.rglob("*")):
-        if not f.is_file() or f.name.startswith("."):
-            continue
-        rel = f.relative_to(site_dir).as_posix()
-        if rel in present:
-            continue
-        ext = f.suffix.lower()
-        r = subprocess.run(
-            ["aws", "s3", "cp", str(f), f"{build_uri}{rel}",
-             "--profile", AWS_PROFILE,
-             "--cache-control", CACHE_RULES.get(ext, "public, max-age=3600"),
-             "--content-type", CONTENT_TYPES.get(ext, "application/octet-stream")],
-            capture_output=True, text=True)
-        if r.returncode == 0:
-            uploaded += 1
-            swept += 1
-        else:
-            errors.append(f"sweep {rel}: {r.stderr.strip()[:100]}")
-    print(f"    swept {swept} file(s) the typed steps missed")
+    if changed:
+        errors.extend(_put_many(client, changed, prefix))
 
-    # Step 3b: publish, atomically.
+    # Anything seeded in that this build no longer has must go, or the build
+    # would serve files that were deleted from the site.
+    landed = _list_keys(client, prefix)
+    stale = sorted(landed - set(fps))
+    if stale:
+        print(f"  removing {len(stale)} file(s) no longer in the site")
+        for batch in (stale[k:k + 1000] for k in range(0, len(stale), 1000)):
+            client.delete_objects(
+                Bucket=S3_BUCKET,
+                Delete={"Objects": [{"Key": f"{prefix}{k}"} for k in batch]})
+        landed -= set(stale)
+
+    # Reconcile against the plan before anything is published. The count check
+    # in _publish_build catches a badly truncated upload; this catches the one
+    # missing file, which is the failure an incremental deploy can actually
+    # produce -- a diff that wrongly decides something is unchanged omits it
+    # silently, and it 404s the moment the origin moves.
+    missing = sorted(set(fps) - landed)
+    if missing:
+        errors.append(f"{len(missing)} planned object(s) missing from the "
+                      f"build, first: {', '.join(missing[:3])}")
+    uploaded = len(fps)
+    print(f"  build holds {len(landed)} objects "
+          f"({len(changed)} uploaded, {len(plan) - len(changed)} copied)")
+
+    # Publish, atomically.
     #
     # Nothing above this point is reachable by a reader. If the upload was
     # short, or any of it failed, the flip does not happen and the live site
@@ -503,6 +619,15 @@ def _deploy_locked(state: PipelineState, base_dir: Path,
         if not ok:
             errors.append(f"publish failed: {why}")
         else:
+            # Only now, once this build is the live one, does its manifest
+            # become the thing the next deploy should diff against.
+            try:
+                _write_manifest(client, build_id, fps)
+            except Exception as e:
+                # The build is live and correct; the next deploy just loses
+                # its shortcut and uploads in full.
+                print(f"  WARNING: could not write manifest ({e}); "
+                      f"the next deploy will be a full upload")
             _prune_old_builds(build_id)
 
     # Step 4: CloudFront invalidation
