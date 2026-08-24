@@ -141,6 +141,20 @@
   .search-results { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; display: none; }
   #content { min-height: 200px; }
   .placeholder-msg { color: var(--text-muted); font-size: 0.95rem; padding: 40px 0; }
+  /* The empty state used to be one muted line sitting under four live-looking
+     toggles, so the page read as broken rather than as waiting for input. */
+  .pick-prompt { border: 1px dashed var(--surface2); border-radius: 10px;
+    padding: 28px 26px; margin: 26px 0 8px; background: var(--surface); }
+  .pick-lead { font-size: 1.05rem; font-weight: 600; margin: 0 0 .4rem; color: var(--text); }
+  .pick-sub { color: var(--text-muted); font-size: .9rem; line-height: 1.6;
+    margin: 0; max-width: 62ch; }
+  /* The toggles control per-university panels and can do nothing before one is
+     chosen. Leaving them fully operable and inert is what made them look broken. */
+  body.no-uni .toggle-bar { opacity: .45; position: relative; }
+  body.no-uni .toggle-bar::after { content: 'Select a university to use these';
+    font-size: .72rem; letter-spacing: .04em; text-transform: uppercase;
+    color: var(--text-muted); width: 100%; text-align: center; padding-top: 6px; }
+  body.no-uni .toggle-wrap { cursor: not-allowed; }
   .degree-badge { font-size: 0.65rem; font-weight: 700; padding: 1px 4px; border-radius: 3px; margin-right: 4px; vertical-align: 1px; }
   .degree-phd { background: rgba(74,222,128,0.15); color: #4ade80; }
   .degree-ms { background: rgba(251,191,36,0.15); color: #fbbf24; }
@@ -297,7 +311,7 @@
 <!-- /og:cards -->
 <link rel="canonical" href="https://phd-demographics.andy-barr.com/universities/uky.html">
 </head>
-<body class="flags-hidden ms-hidden old-hidden">
+<body class="flags-hidden ms-hidden old-hidden ">
 <noscript><h2>U Kentucky — 2,811 records</h2>
 <p>NRA = Non-Resident Alien. 43.5% share of STEM doctoral completions (IPEDS).</p>
 <h3>Mathematics/Statistics (258 records)</h3><ul>
@@ -686,7 +700,12 @@
   </div>
 
   <div id="content" role="region" aria-label="University data" aria-live="polite">
-    <p class="placeholder-msg">← Select a university from the sidebar to view its name lists.</p>
+    <div class="pick-prompt">
+      <p class="pick-lead">Pick a university to begin</p>
+      <p class="pick-sub">Choose any institution from the list on the left.
+      The charts above are national; the name lists, funding, enrolment and
+      H-1B panels are per-university and appear once you select one.</p>
+    </div>
   </div>
 
   <footer class="site-footer" style="text-align:center;padding:28px 16px 32px;font-size:0.74rem;color:#64748b;border-top:1px solid #334155;margin-top:32px;line-height:1.7;">
@@ -6774,6 +6793,9 @@ function toggleSidebarGroup(id) {
 })();
 
 function showUni(key, skipHash) {
+  // A university is being loaded, so the per-university toggles become
+  // meaningful. Until this runs they are inert and are styled as such.
+  document.body.classList.remove('no-uni');
   // Close mobile sidebar if open
   document.getElementById('sidebar').classList.remove('open');
   currentKey = key;
@@ -6835,6 +6857,7 @@ function toggleFlags() {
 }
 
 function toggleMs() {
+  if (document.body.classList.contains('no-uni')) return;
   msVisible = !msVisible;
   const el = document.getElementById('ms-toggle');
   el.classList.toggle('active', msVisible);
@@ -6850,6 +6873,7 @@ function toggleOld() {
 }
 
 function toggleFunding() {
+  if (document.body.classList.contains('no-uni')) return;
   fundingVisible = !fundingVisible;
   const el = document.getElementById('funding-toggle');
   el.classList.toggle('active', fundingVisible);
@@ -6859,6 +6883,7 @@ function toggleFunding() {
 }
 
 function toggleEnrollment() {
+  if (document.body.classList.contains('no-uni')) return;
   enrollmentVisible = !enrollmentVisible;
   const el = document.getElementById('enrollment-toggle');
   el.classList.toggle('active', enrollmentVisible);
@@ -6873,6 +6898,7 @@ document.querySelectorAll('.nav-item[data-key]').forEach(a => {
   if (OPT_UNIS.has(a.dataset.key)) a.classList.add('has-opt');
 });
 function toggleH1b() {
+  if (document.body.classList.contains('no-uni')) return;
   h1bVisible = !h1bVisible;
   const el = document.getElementById('h1b-toggle');
   el.classList.toggle('active', h1bVisible);
