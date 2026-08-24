@@ -434,7 +434,7 @@ def build_html(all_data, mode='stem'):
       <a href="query.html" class="nav-item nav-page">Data Query (SQL)</a>
       <a href="data_sources.html" class="nav-item nav-page">Data Sources &amp; Methodology</a>
       <a href="implementation.html" class="nav-item nav-page">Implementation</a>
-      <a href="data_catalog.json" class="nav-item nav-page">Data Catalog (JSON)</a>
+      <a href="/catalog.json" class="nav-item nav-page">Data Catalog (JSON)</a>
       <a href="llms.txt" class="nav-item nav-page">WebMCP Integration</a>
     </div>
   </div>
