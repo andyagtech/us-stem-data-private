@@ -146,6 +146,16 @@
     Array.prototype.forEach.call(headings, function (h) {
       if (h.closest('.sidebar, #sidebar, .sb-group, nav, footer')) return;
       if (h.querySelector('.anchor-link')) return;
+      // A heading that wraps a block-level child is a title stacked over a
+      // subtitle, not a line of text. Appending an inline control to it puts
+      // the '#' on a line of its own underneath, where it reads as a stray
+      // glyph rather than a control -- which is exactly how live.html looked
+      // once anchors.js reached it. The section stays addressable; it just
+      // does not advertise itself.
+      for (var c = 0; c < h.children.length; c++) {
+        var disp = getComputedStyle(h.children[c]).display;
+        if (disp === 'block' || disp === 'flex' || disp === 'grid') return;
+      }
       var id = anchorTargetFor(h);
       if (!id) return;
       // Retire the older hand-written share buttons in favour of one control.
