@@ -32,7 +32,7 @@
   #kind button { font: inherit; font-size: .85rem; padding: .45rem 1rem; border-radius: 999px;
     border: 1px solid var(--border); cursor: pointer; background: transparent;
     color: var(--text-muted); }
-  #kind button.on { background: var(--text); color: var(--bg, #0f172a); border-color: var(--text); }
+  #kind button.on { background: var(--text); color: var(--bg, var(--bg)); border-color: var(--text); }
   .hits { color: var(--text-muted); font-size: .8rem; margin: .4rem 0 1rem;
     font-variant-numeric: tabular-nums; }
   .card { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1.05rem;
@@ -49,6 +49,8 @@
   svg.map { display: block; width: 100%; height: auto; }
   .loading { color: var(--text-muted); font-size: .85rem; }
 </style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 </head>
 <body data-page="filers">
 <a class="skip-link" href="#search" data-track="anchor.search">Skip to the search</a>

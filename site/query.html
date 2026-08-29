@@ -189,6 +189,21 @@
     font-size: 0.85rem; gap: 8px; padding: 40px;
   }
   .empty-state .hint { font-size: 0.75rem; }
+
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+--bg:#ffffff;--surface:#f6f7f9;--border:#d8dee6;--text:#111827;
+--text-muted:#4b5563;--accent:#1d4ed8;--hl:#b3123c;color-scheme:light;}}
+:root[data-theme="light"]{
+--bg:#ffffff;--surface:#f6f7f9;--border:#d8dee6;--text:#111827;
+--text-muted:#4b5563;--accent:#1d4ed8;--hl:#b3123c;color-scheme:light;}
+.themebtn{position:fixed;right:20px;bottom:84px;z-index:60;display:inline-flex;
+align-items:center;gap:7px;padding:7px 12px;border-radius:999px;
+background:var(--surface);color:var(--text-muted);border:1px solid var(--border);
+cursor:pointer;font:500 12px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',
+Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
+.themebtn:hover,.themebtn:focus-visible{color:var(--text);border-color:var(--accent);}
+.themebtn .ic{font-size:13px;line-height:1;}
+@media print{.themebtn{display:none;}}
 </style>
 <!-- og:cards -->
 <meta property="og:title" content="Query the Dissertation Data with SQL">
@@ -208,6 +223,8 @@
 <meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og/query.png">
 <meta name="twitter:image:alt" content="Run SQL on 427K dissertation records — Queryable Parquet tables">
 <!-- /og:cards -->
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 </head>
 <body data-page="query">
 

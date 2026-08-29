@@ -9,7 +9,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
   :root {
-    --bg: #0f172a; --surface: #1e293b; --surface2: #334155;
+    --bg: var(--bg); --surface: var(--surface); --surface2: var(--border);
     --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8;
     --green: #4ade80; --yellow: #facc15; --orange: #fb923c; --red: #f87171;
     --gray: #64748b;
@@ -38,7 +38,7 @@
   table.heatmap { border-collapse: collapse; width: 100%; font-size: 0.74rem; }
   table.heatmap th { background: var(--bg); color: var(--text-muted); font-weight: 600; padding: 6px 4px; text-align: center; position: sticky; top: 0; border-bottom: 1px solid var(--surface2); }
   table.heatmap th.uni { text-align: left; padding-left: 10px; min-width: 180px; }
-  table.heatmap td { padding: 4px 4px; text-align: center; border-bottom: 1px solid #1e293b; color: #0f172a; font-weight: 600; }
+  table.heatmap td { padding: 4px 4px; text-align: center; border-bottom: 1px solid var(--surface); color: var(--bg); font-weight: 600; }
   table.heatmap td.uni { text-align: left; padding-left: 10px; color: var(--text); font-weight: 500; background: var(--surface); }
   table.heatmap td.uni a { color: var(--accent); text-decoration: none; }
   table.heatmap td.uni a:hover { text-decoration: underline; }
@@ -50,6 +50,21 @@
   .bad { background: #f87171; }
   .none { background: #475569; color: #cbd5e1 !important; }
   .num-cell { font-variant-numeric: tabular-nums; }
+
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+--bg:#ffffff;--surface:#f6f7f9;--border:#d8dee6;--text:#111827;
+--text-muted:#4b5563;--accent:#1d4ed8;--hl:#b3123c;color-scheme:light;}}
+:root[data-theme="light"]{
+--bg:#ffffff;--surface:#f6f7f9;--border:#d8dee6;--text:#111827;
+--text-muted:#4b5563;--accent:#1d4ed8;--hl:#b3123c;color-scheme:light;}
+.themebtn{position:fixed;right:20px;bottom:84px;z-index:60;display:inline-flex;
+align-items:center;gap:7px;padding:7px 12px;border-radius:999px;
+background:var(--surface);color:var(--text-muted);border:1px solid var(--border);
+cursor:pointer;font:500 12px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',
+Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
+.themebtn:hover,.themebtn:focus-visible{color:var(--text);border-color:var(--accent);}
+.themebtn .ic{font-size:13px;line-height:1;}
+@media print{.themebtn{display:none;}}
 </style>
 <!-- og:cards -->
 <meta property="og:title" content="Data Quality Scorecard">
@@ -69,6 +84,8 @@
 <meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og/quality.png">
 <meta name="twitter:image:alt" content="455,524 records, audited school by school — Department link coverage by type">
 <!-- /og:cards -->
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 </head>
 <body>
 <div class="page">

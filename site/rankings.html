@@ -26,7 +26,7 @@
   #level-pick button { font: inherit; font-size: .85rem; padding: .45rem 1rem;
     border-radius: 999px; border: 1px solid var(--border); cursor: pointer;
     background: transparent; color: var(--text-muted); }
-  #level-pick button.on { background: var(--text); color: var(--bg, #0f172a);
+  #level-pick button.on { background: var(--text); color: var(--bg, var(--bg));
     border-color: var(--text); }
   #level-pick button:focus-visible { outline: 2px solid #38bdf8; outline-offset: 2px; }
   .hero { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap;
@@ -58,7 +58,7 @@
   .c-side { display: grid; grid-template-columns: 4rem 1fr 8.5rem; gap: .7rem;
     align-items: baseline; font-size: .81rem; padding: .12rem 0; }
   .c-share { font-variant-numeric: tabular-nums; text-align: right; font-weight: 600; }
-  .c-share.high { color: #f0a5ae; }
+  .c-share.high { color: var(--hl); }
   .c-share.low { color: #38bdf8; }
   .c-prog { color: var(--text-muted); overflow: hidden; text-overflow: ellipsis;
     white-space: nowrap; }
@@ -70,6 +70,8 @@
   .caveat p { color: var(--text-muted); font-size: .8rem; line-height: 1.6;
     max-width: 76ch; margin: 0 0 .5rem; }
 </style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 </head>
 <body data-page="rankings">
 <a class="skip-link" href="#institutions" data-track="anchor.institutions">Skip to the rankings</a>

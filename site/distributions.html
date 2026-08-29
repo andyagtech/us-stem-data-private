@@ -23,7 +23,7 @@
     font-variant-numeric: tabular-nums; }
   svg.line-chart .grid { stroke: rgba(148,163,184,0.12); stroke-width: 1; }
   svg.line-chart .ser { fill: none; stroke-width: 2.4; stroke-linejoin: round; }
-  svg.line-chart .dot { stroke: #0f172a; stroke-width: 2; }
+  svg.line-chart .dot { stroke: var(--bg); stroke-width: 2; }
   .hist { display: grid; gap: 3px; }
   .hist-row { display: grid; grid-template-columns: 4.6rem 1fr 3.4rem;
     align-items: center; gap: .6rem; font-size: .82rem; }
@@ -47,7 +47,7 @@
   .num { text-align: right; font-variant-numeric: tabular-nums; color: var(--text-muted);
     font-size: .78rem; }
   .share-v { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
-  select { background: #0f172a; color: var(--text); border: 1px solid var(--border);
+  select { background: var(--bg); color: var(--text); border: 1px solid var(--border);
     border-radius: 8px; padding: .45rem .7rem; font: inherit; font-size: .86rem; }
   .controls { display: flex; gap: .7rem; align-items: center; flex-wrap: wrap;
     margin-bottom: 1rem; }
@@ -58,6 +58,8 @@
     max-width: 74ch; margin: 1rem 0 0; }
   .loading { color: var(--text-muted); font-size: .86rem; padding: 1rem 0; }
 </style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 </head>
 <body data-page="distributions">
 <a class="skip-link" href="#national" data-track="anchor.national">Skip to the charts</a>

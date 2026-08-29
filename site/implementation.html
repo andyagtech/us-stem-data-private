@@ -9,9 +9,9 @@
 <title>Implementation — PhD Demographics</title>
 <style>
 :root {
-  --bg: #0f172a; --surface: #1e293b; --surface2: #334155;
+  --bg: var(--bg); --surface: var(--surface); --surface2: var(--border);
   --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8;
-  --border: #334155; --green: #4ade80; --red: #f87171;
+  --border: var(--border); --green: #4ade80; --red: #f87171;
   --purple: #a78bfa; --orange: #fb923c; --pink: #f472b6;
   --teal: #2dd4bf; --yellow: #facc15;
 }
@@ -83,6 +83,21 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
   .stat-chip { min-width: 80px; padding: 0.4rem 0.6rem; }
   .stat-chip .val { font-size: 0.95rem; }
 }
+
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+--bg:#ffffff;--surface:#f6f7f9;--border:#d8dee6;--text:#111827;
+--text-muted:#4b5563;--accent:#1d4ed8;--hl:#b3123c;color-scheme:light;}}
+:root[data-theme="light"]{
+--bg:#ffffff;--surface:#f6f7f9;--border:#d8dee6;--text:#111827;
+--text-muted:#4b5563;--accent:#1d4ed8;--hl:#b3123c;color-scheme:light;}
+.themebtn{position:fixed;right:20px;bottom:84px;z-index:60;display:inline-flex;
+align-items:center;gap:7px;padding:7px 12px;border-radius:999px;
+background:var(--surface);color:var(--text-muted);border:1px solid var(--border);
+cursor:pointer;font:500 12px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',
+Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
+.themebtn:hover,.themebtn:focus-visible{color:var(--text);border-color:var(--accent);}
+.themebtn .ic{font-size:13px;line-height:1;}
+@media print{.themebtn{display:none;}}
 </style>
 <!-- og:cards -->
 <meta property="og:title" content="How the Pipeline Is Built">
@@ -102,6 +117,8 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
 <meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og/implementation.png">
 <meta name="twitter:image:alt" content="A six-step pipeline over 101 repositories — Federal coverage by dataset">
 <!-- /og:cards -->
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 </head>
 <body>
 

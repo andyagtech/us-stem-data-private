@@ -18,6 +18,8 @@
     { title: 'IPEDS PhD Dashboard', href: '/ipeds_dashboard.html', desc: 'Completions 1984\u20132024' },
     { section: 'Reference' },
     { title: 'Data Sources & Methodology', href: '/data_sources.html', desc: 'Government sources, methods' },
+    { title: 'What You Can Ask', href: '/ask.html', desc: '56 questions the assistant answers' },
+    { title: 'Dataset Catalogue', href: '/methodology.html', desc: 'Every dataset, with a link to its source' },
     { title: 'Data Catalog (JSON)', href: '/catalog.json', desc: 'Machine-readable API' },
     { title: 'WebMCP Integration', href: '/webmcp.html', desc: 'AI agent tools & API' },
     { section: 'About' },
@@ -43,7 +45,7 @@
     }
     .site-nav-drawer {
       position: fixed; left: -280px; top: 0; bottom: 0; width: 280px;
-      background: #1e293b; border-right: 1px solid #334155;
+      background: var(--surface); border-right: 1px solid var(--border);
       z-index: 1000; transition: left 0.25s ease;
       overflow-y: auto; padding: 0;
       box-shadow: 4px 0 20px rgba(0,0,0,0.3);
@@ -55,13 +57,13 @@
     }
     .site-nav-drawer.open + .site-nav-overlay { display: block; }
     .site-nav-header {
-      padding: 1.25rem 1.25rem 0.75rem; border-bottom: 1px solid #334155;
+      padding: 1.25rem 1.25rem 0.75rem; border-bottom: 1px solid var(--border);
     }
     .site-nav-header h3 {
-      font-size: 0.85rem; font-weight: 700; color: #e2e8f0; margin: 0;
+      font-size: 0.85rem; font-weight: 700; color: var(--text); margin: 0;
     }
     .site-nav-header .site-nav-sub {
-      font-size: 0.68rem; color: #94a3b8; margin-top: 2px;
+      font-size: 0.68rem; color: var(--text-muted); margin-top: 2px;
     }
     .site-nav-section {
       font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em;
@@ -70,28 +72,28 @@
     .site-nav-section:first-of-type { padding-top: 0.5rem; }
     .site-nav-link {
       display: block; padding: 0.45rem 1.25rem; text-decoration: none;
-      color: #94a3b8; font-size: 0.82rem; transition: all 0.15s;
+      color: var(--text-muted); font-size: 0.82rem; transition: all 0.15s;
       border-left: 3px solid transparent;
     }
     .site-nav-link:hover {
-      background: rgba(56,189,248,0.06); color: #e2e8f0;
-      border-left-color: #38bdf8;
+      background: rgba(56,189,248,0.06); color: var(--text);
+      border-left-color: var(--accent);
     }
     .site-nav-link.active {
-      color: #38bdf8; background: rgba(56,189,248,0.08);
-      border-left-color: #38bdf8; font-weight: 600;
+      color: var(--accent); background: rgba(56,189,248,0.08);
+      border-left-color: var(--accent); font-weight: 600;
     }
     .site-nav-link .nav-desc {
       font-size: 0.68rem; color: #64748b; margin-top: 1px;
     }
     .site-nav-btn {
       position: fixed; top: 12px; left: 12px; z-index: 997;
-      background: #1e293b; border: 1px solid #334155; color: #94a3b8;
+      background: var(--surface); border: 1px solid var(--border); color: var(--text-muted);
       width: 36px; height: 36px; border-radius: 8px; cursor: pointer;
       font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
       transition: all 0.15s;
     }
-    .site-nav-btn:hover { background: #334155; color: #e2e8f0; }
+    .site-nav-btn:hover { background: var(--border); color: var(--text); }
     /* Hide button on pages that already have nav */
     .has-own-nav .site-nav-btn { display: none; }
   `;
@@ -123,7 +125,7 @@
   for (const item of PAGES) {
     if ('section' in item) {
       if (item.section) html += `<div class="site-nav-section">${item.section}</div>`;
-      else html += `<div style="border-top:1px solid #334155;margin:0.3rem 1rem;"></div>`;
+      else html += `<div style="border-top:1px solid var(--border);margin:0.3rem 1rem;"></div>`;
     } else {
       const isActive = currentPath.endsWith(item.href) ||
                        (item.href === '/index.html' && (currentPath === '/' || currentPath.endsWith('/')));
@@ -169,7 +171,7 @@
 
   // Inject site-wide footer
   const footer = document.createElement('footer');
-  footer.style.cssText = 'border-top:1px solid #334155;padding:1.5rem 2rem;text-align:center;font-size:0.75rem;color:#64748b;margin-top:3rem;';
-  footer.innerHTML = '<a href="https://andy-barr.com" target="_blank" style="color:#94a3b8;text-decoration:none;font-weight:600;">andy-barr.com</a> &middot; Data from <a href="/data_sources.html" style="color:#38bdf8;text-decoration:none;">IPEDS, NSF, USCIS, DOL, ICE/SEVP</a> &middot; <a href="/submit.html" style="color:#38bdf8;text-decoration:none;">Tip Line</a> &middot; <a href="https://x.com/andy_barr_data" target="_blank" style="color:#38bdf8;text-decoration:none;">Follow on X</a> &middot; <a href="/implementation.html" style="color:#64748b;text-decoration:none;">Implementation</a>';
+  footer.style.cssText = 'border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;font-size:0.75rem;color:#64748b;margin-top:3rem;';
+  footer.innerHTML = '<a href="https://andy-barr.com" target="_blank" style="color:var(--text-muted);text-decoration:none;font-weight:600;">andy-barr.com</a> &middot; Data from <a href="/data_sources.html" style="color:var(--accent);text-decoration:none;">IPEDS, NSF, USCIS, DOL, ICE/SEVP</a> &middot; <a href="/submit.html" style="color:var(--accent);text-decoration:none;">Tip Line</a> &middot; <a href="https://x.com/andy_barr_data" target="_blank" style="color:var(--accent);text-decoration:none;">Follow on X</a> &middot; <a href="/implementation.html" style="color:#64748b;text-decoration:none;">Implementation</a>';
   document.body.appendChild(footer);
 })();

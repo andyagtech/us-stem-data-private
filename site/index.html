@@ -11,20 +11,21 @@
 <title>US Graduate Program Demographics and Funding</title>
 <style>
   :root {
-    --bg: #0f172a; --surface: #1e293b; --border: #334155;
+    --bg: var(--bg); --surface: var(--surface); --border: var(--border);
     --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8;
-  }
+    --hl: #f0a5ae;
+}
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
   /* Hero */
-  .hero { padding: 4rem 1.5rem 3rem; text-align: center; background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%); border-bottom: 1px solid var(--border); }
+  .hero { padding: 4rem 1.5rem 3rem; text-align: center; background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%); border-bottom: 1px solid var(--border); }
   .hero h1 { font-size: 2rem; font-weight: 800; max-width: 600px; margin: 0 auto 0.75rem; line-height: 1.2; }
   .hero .subtitle { color: var(--text-muted); font-size: 1rem; max-width: 500px; margin: 0 auto 1.5rem; line-height: 1.5; }
   .hero-stats { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
   .hero-stat { text-align: center; }
   .hero-stat .num { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
-  .hero h1 .hl { color: #f0a5ae; }
+  .hero h1 .hl { color: var(--hl); }
   .hero-note { color: var(--text-muted); font-size: 0.78rem; margin: 1.5rem auto 0; max-width: 620px; }
   .hero-note a { color: var(--accent); }
   .lede { color: var(--text-muted); max-width: 62ch; line-height: 1.6; margin: 0 0 1.25rem; font-size: 0.92rem; }
@@ -36,7 +37,7 @@
   table.cases td { padding: 0.62rem 0.9rem; border-bottom: 1px solid rgba(148,163,184,0.12); }
   table.cases tr:last-child td { border-bottom: 0; }
   table.cases .num-col { text-align: right; font-variant-numeric: tabular-nums; }
-  table.cases .share { font-weight: 700; color: #f0a5ae; }
+  table.cases .share { font-weight: 700; color: var(--hl); }
   table.cases .field { color: var(--text-muted); }
   table.cases tr.hidden-row { display: none; }
   td.loading { color: var(--text-muted); padding: 1.2rem 0.9rem; }
@@ -46,7 +47,7 @@
     font-size: 0.85rem; cursor: pointer; }
   .show-more button:hover { border-color: var(--accent); }
   .skip-link { position: absolute; left: -9999px; top: 0; z-index: 100;
-    background: var(--accent); color: #0b1220; padding: 0.7rem 1.1rem;
+    background: var(--accent); color: var(--bg); padding: 0.7rem 1.1rem;
     border-radius: 0 0 8px 0; font-weight: 600; }
   .skip-link:focus { left: 0; }
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0;
@@ -85,7 +86,7 @@
     text-transform: uppercase; letter-spacing: .05em; }
   table.detail-years td { padding: .22rem .8rem .22rem 0;
     font-variant-numeric: tabular-nums; }
-  table.detail-years tr.over td { color: #f0a5ae; font-weight: 600; }
+  table.detail-years tr.over td { color: var(--hl); font-weight: 600; }
   .detail-links { font-size: .84rem; margin: 0 0 .5rem; }
   .detail-links a { color: var(--accent); }
   .detail-note { font-size: .75rem; color: var(--text-muted); margin: 0;
@@ -113,10 +114,10 @@
   .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.2rem 0 0; }
   @media (max-width: 620px) { .compare { grid-template-columns: 1fr; } }
   .compare-item { border: 1px solid var(--border); border-radius: 12px;
-    padding: 1.2rem 1.3rem; border-left: 3px solid #f0a5ae; }
+    padding: 1.2rem 1.3rem; border-left: 3px solid var(--hl); }
   .compare-low { border-left-color: #4ade80; }
   .compare-num { font-size: 2.6rem; font-weight: 800; line-height: 1;
-    font-variant-numeric: tabular-nums; color: #f0a5ae; }
+    font-variant-numeric: tabular-nums; color: var(--hl); }
   .compare-low .compare-num { color: #4ade80; }
   .compare-num span { font-size: 1.3rem; }
   .compare-lab { margin-top: .5rem; font-size: .95rem; font-weight: 600; }
@@ -126,7 +127,7 @@
     margin: 1.1rem 0 .4rem; border: 1px solid var(--border); }
   .split-nra, .split-dom { display: flex; align-items: center; justify-content: center;
     font-size: .82rem; font-weight: 700; }
-  .split-nra { background: #f0a5ae; color: #2a0d12; }
+  .split-nra { background: var(--hl); color: #2a0d12; }
   .split-dom { background: rgba(148,163,184,0.18); color: var(--text); }
   .split-cap { color: var(--text-muted); font-size: .78rem; margin: 0; }
   .method-section { border-top: 1px solid var(--border); padding-top: 1.6rem; }
@@ -179,6 +180,21 @@
     .card-featured { flex-direction: column; text-align: center; }
     a.card { padding: 1rem 1.15rem; }
   }
+
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+--bg:#ffffff;--surface:#f6f7f9;--border:#d8dee6;--text:#111827;
+--text-muted:#4b5563;--accent:#1d4ed8;--hl:#b3123c;color-scheme:light;}}
+:root[data-theme="light"]{
+--bg:#ffffff;--surface:#f6f7f9;--border:#d8dee6;--text:#111827;
+--text-muted:#4b5563;--accent:#1d4ed8;--hl:#b3123c;color-scheme:light;}
+.themebtn{position:fixed;right:20px;bottom:84px;z-index:60;display:inline-flex;
+align-items:center;gap:7px;padding:7px 12px;border-radius:999px;
+background:var(--surface);color:var(--text-muted);border:1px solid var(--border);
+cursor:pointer;font:500 12px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',
+Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
+.themebtn:hover,.themebtn:focus-visible{color:var(--text);border-color:var(--accent);}
+.themebtn .ic{font-size:13px;line-height:1;}
+@media print{.themebtn{display:none;}}
 </style>
 <!-- og:cards -->
 <meta property="og:title" content="Who Earns America&#x27;s Advanced Degrees">
@@ -200,6 +216,8 @@
 <!-- /og:cards -->
   <link rel="preload" as="fetch" type="application/json" crossorigin="anonymous" href="/data/concentration_cases.json">
   <link rel="preload" as="fetch" type="application/json" crossorigin="anonymous" href="/data/taxpayer_cost.json">
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 </head>
 <body data-page="index">
 
@@ -521,7 +539,17 @@
         <div class="card-desc">All government data sources, collection methods, citizenship category definitions, analytics, and limitations.</div>
         <div class="card-meta">IPEDS &middot; NSF &middot; DOL &middot; DHS &middot; Census</div>
       </a>
-      <a class="card" href="catalog.json">
+      <a class="card" href="ask.html">
+          <div class="card-title">What You Can Ask</div>
+          <div class="card-desc">56 questions the assistant answers from federal data, grouped by topic. Click one to ask it.</div>
+          <div class="card-meta">Warmed &middot; answers immediately</div>
+        </a>
+        <a class="card" href="methodology.html">
+          <div class="card-title">Dataset Catalogue</div>
+          <div class="card-desc">Every dataset behind this site, what it is, which agency publishes it, and a link to obtain it yourself. Generated from the catalogue, so it cannot fall behind.</div>
+          <div class="card-meta">27 datasets &middot; 23 federal</div>
+        </a>
+        <a class="card" href="catalog.json">
         <div class="card-title">Machine-Readable Data Catalog</div>
         <div class="card-desc">JSON catalog of all datasets with schemas, versioning, and API documentation for AI agents and researchers.</div>
         <div class="card-meta">v1.0.0 &middot; Also see /llms.txt</div>

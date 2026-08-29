@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What you can ask</title>
+<meta name="description" content="56 questions this site's assistant can
+answer from federal data, grouped by topic.">
+<link rel="stylesheet" href="/style.css">
+<script defer src="/chat-widget.js"></script>
+<style>
+.ask-list{list-style:none;padding:0;margin:0 0 1.4rem}
+.ask-list li{margin:0 0 .45rem}
+.ask{font:inherit;text-align:left;background:none;border:0;padding:.35rem .5rem;
+     margin:0 -.5rem;border-radius:6px;cursor:pointer;color:inherit;width:100%}
+.ask:hover,.ask:focus-visible{background:rgba(127,127,127,.14)}
+.ask-blurb{margin:.1rem 0 .7rem;opacity:.72;font-size:.94rem}
+.ask-group{margin:0 0 1.9rem}
+</style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+</head><body>
+<div class="wrap">
+<h1>What you can ask</h1>
+<p class="lede">56 questions the assistant answers from federal data.
+Click one to ask it. Every figure it gives you comes from a tool call made in
+that conversation, not from memory.</p>
+
+<p>These are the questions the assistant is warmed for, so they return
+immediately. Anything else works too &mdash; it just takes a moment longer while
+the model does the work.</p>
+
+    <section class="ask-group">
+      <h2>The central finding</h2>
+      <p class="ask-blurb">What the site argues, and how firmly.</p>
+      <ul class="ask-list">
+      <li><button class="ask" data-q="What is the main finding of this site?">What is the main finding of this site?</button></li>
+      <li><button class="ask" data-q="Is the share of foreign students in US PhD programs rising?">Is the share of foreign students in US PhD programs rising?</button></li>
+      <li><button class="ask" data-q="What is the concentration effect?">What is the concentration effect?</button></li>
+      <li><button class="ask" data-q="How many departments are majority non-resident?">How many departments are majority non-resident?</button></li>
+      <li><button class="ask" data-q="Which departments have the highest non-resident share?">Which departments have the highest non-resident share?</button></li>
+      <li><button class="ask" data-q="How far back does the data go?">How far back does the data go?</button></li>
+      </ul>
+    </section>
+    <section class="ask-group">
+      <h2>The domestic pipeline</h2>
+      <p class="ask-blurb">Whether America trains its own STEM talent, and what a degree pays.</p>
+      <ul class="ask-list">
+      <li><button class="ask" data-q="Is the American STEM pipeline broken?">Is the American STEM pipeline broken?</button></li>
+      <li><button class="ask" data-q="Are Americans still earning STEM degrees?">Are Americans still earning STEM degrees?</button></li>
+      <li><button class="ask" data-q="Why are fewer Americans getting STEM doctorates?">Why are fewer Americans getting STEM doctorates?</button></li>
+      <li><button class="ask" data-q="What does a STEM PhD actually pay?">What does a STEM PhD actually pay?</button></li>
+      <li><button class="ask" data-q="Is a STEM master&#x27;s worth more than a doctorate?">Is a STEM master&#x27;s worth more than a doctorate?</button></li>
+      <li><button class="ask" data-q="In which fields has domestic doctorate output stalled?">In which fields has domestic doctorate output stalled?</button></li>
+      </ul>
+    </section>
+    <section class="ask-group">
+      <h2>Work visas</h2>
+      <p class="ask-blurb">OPT, the H-1B cap and the routes around it.</p>
+      <ul class="ask-list">
+      <li><button class="ask" data-q="What is OPT and how many people are on it?">What is OPT and how many people are on it?</button></li>
+      <li><button class="ask" data-q="Which companies hire the most OPT students?">Which companies hire the most OPT students?</button></li>
+      <li><button class="ask" data-q="Do employers save money by hiring OPT workers?">Do employers save money by hiring OPT workers?</button></li>
+      <li><button class="ask" data-q="What is cap-exempt H-1B?">What is cap-exempt H-1B?</button></li>
+      <li><button class="ask" data-q="Which employers sponsor the most cap-exempt H-1Bs?">Which employers sponsor the most cap-exempt H-1Bs?</button></li>
+      <li><button class="ask" data-q="How do nonprofits sponsor cap-exempt H-1B workers?">How do nonprofits sponsor cap-exempt H-1B workers?</button></li>
+      <li><button class="ask" data-q="Is the H-1B cap actually binding?">Is the H-1B cap actually binding?</button></li>
+      <li><button class="ask" data-q="What is the O-1 visa and is its use growing?">What is the O-1 visa and is its use growing?</button></li>
+      <li><button class="ask" data-q="What is a National Interest Waiver?">What is a National Interest Waiver?</button></li>
+      <li><button class="ask" data-q="Are J-1 research scholars increasing or decreasing?">Are J-1 research scholars increasing or decreasing?</button></li>
+      </ul>
+    </section>
+    <section class="ask-group">
+      <h2>After the degree</h2>
+      <p class="ask-blurb">Green cards, and whether people stay.</p>
+      <ul class="ask-list">
+      <li><button class="ask" data-q="Do foreign STEM PhDs stay in the United States?">Do foreign STEM PhDs stay in the United States?</button></li>
+      <li><button class="ask" data-q="What visa are people on when they apply for a green card?">What visa are people on when they apply for a green card?</button></li>
+      <li><button class="ask" data-q="How long does permanent residence take?">How long does permanent residence take?</button></li>
+      </ul>
+    </section>
+    <section class="ask-group">
+      <h2>Fields and programmes</h2>
+      <p class="ask-blurb">Where the concentration actually sits.</p>
+      <ul class="ask-list">
+      <li><button class="ask" data-q="Which field has the highest non-resident share?">Which field has the highest non-resident share?</button></li>
+      <li><button class="ask" data-q="What share of computer science master&#x27;s degrees go to foreign students?">What share of computer science master&#x27;s degrees go to foreign students?</button></li>
+      <li><button class="ask" data-q="How does engineering compare to biology?">How does engineering compare to biology?</button></li>
+      <li><button class="ask" data-q="What is the difference between master&#x27;s and doctorate programs?">What is the difference between master&#x27;s and doctorate programs?</button></li>
+      <li><button class="ask" data-q="Show me the trend in STEM doctorates over time">Show me the trend in STEM doctorates over time</button></li>
+      </ul>
+    </section>
+    <section class="ask-group">
+      <h2>Institutions</h2>
+      <p class="ask-blurb">Individual universities and how they compare.</p>
+      <ul class="ask-list">
+      <li><button class="ask" data-q="What is the NRA share at MIT?">What is the NRA share at MIT?</button></li>
+      <li><button class="ask" data-q="Which university has the highest non-resident share?">Which university has the highest non-resident share?</button></li>
+      <li><button class="ask" data-q="How does Purdue compare to other universities?">How does Purdue compare to other universities?</button></li>
+      <li><button class="ask" data-q="Show me data for Stony Brook">Show me data for Stony Brook</button></li>
+      </ul>
+    </section>
+    <section class="ask-group">
+      <h2>Public money</h2>
+      <p class="ask-blurb">What federal funding buys, and for whom.</p>
+      <ul class="ask-list">
+      <li><button class="ask" data-q="How much do taxpayers spend per STEM doctorate?">How much do taxpayers spend per STEM doctorate?</button></li>
+      <li><button class="ask" data-q="How much federal funding goes to these programs?">How much federal funding goes to these programs?</button></li>
+      <li><button class="ask" data-q="Which universities get the most federal research funding?">Which universities get the most federal research funding?</button></li>
+      </ul>
+    </section>
+    <section class="ask-group">
+      <h2>Visa mechanics</h2>
+      <p class="ask-blurb">How the categories work.</p>
+      <ul class="ask-list">
+      <li><button class="ask" data-q="How many F-1 student visas are issued each year?">How many F-1 student visas are issued each year?</button></li>
+      <li><button class="ask" data-q="What happened to F-1 visa numbers after 2015?">What happened to F-1 visa numbers after 2015?</button></li>
+      <li><button class="ask" data-q="What is OPT?">What is OPT?</button></li>
+      <li><button class="ask" data-q="How does the student visa to green card pipeline work?">How does the student visa to green card pipeline work?</button></li>
+      <li><button class="ask" data-q="Who files the H-1B paperwork for universities?">Who files the H-1B paperwork for universities?</button></li>
+      </ul>
+    </section>
+    <section class="ask-group">
+      <h2>The hard questions</h2>
+      <p class="ask-blurb">Where the argument is weakest, asked plainly.</p>
+      <ul class="ask-list">
+      <li><button class="ask" data-q="Are American students being displaced?">Are American students being displaced?</button></li>
+      <li><button class="ask" data-q="Did domestic enrollment go down?">Did domestic enrollment go down?</button></li>
+      <li><button class="ask" data-q="Does this prove foreign students are prioritized?">Does this prove foreign students are prioritized?</button></li>
+      <li><button class="ask" data-q="Which university is the worst offender?">Which university is the worst offender?</button></li>
+      <li><button class="ask" data-q="What about Chinese students specifically?">What about Chinese students specifically?</button></li>
+      </ul>
+    </section>
+    <section class="ask-group">
+      <h2>Method and limits</h2>
+      <p class="ask-blurb">Sources, definitions, and what cannot be answered.</p>
+      <ul class="ask-list">
+      <li><button class="ask" data-q="Where does this data come from?">Where does this data come from?</button></li>
+      <li><button class="ask" data-q="What does non-resident alien mean?">What does non-resident alien mean?</button></li>
+      <li><button class="ask" data-q="How is STEM defined here?">How is STEM defined here?</button></li>
+      <li><button class="ask" data-q="Can I download the raw data?">Can I download the raw data?</button></li>
+      <li><button class="ask" data-q="What are the limitations of this data?">What are the limitations of this data?</button></li>
+      <li><button class="ask" data-q="Why should I trust these numbers?">Why should I trust these numbers?</button></li>
+      <li><button class="ask" data-q="What data can this site not answer?">What data can this site not answer?</button></li>
+      <li><button class="ask" data-q="Where does your data come from?">Where does your data come from?</button></li>
+      <li><button class="ask" data-q="Can I download the underlying data?">Can I download the underlying data?</button></li>
+      </ul>
+    </section>
+
+<h2>What it will not do</h2>
+<p>It will not give you a figure it cannot source, and it will say so rather
+than estimate. Three limits come up often: cap-exempt status is not published
+by USCIS, so no employer-level count of it exists; IPEDS counts degrees rather
+than people, so progression figures are ratios between two populations; and no
+federal source records graduate applications or admissions, so whether
+domestic applicants are declining, being declined, or not applying cannot be
+answered from published data.</p>
+
+<p><a href="/methodology.html">Every dataset behind these answers, with a link
+to its source &rarr;</a></p>
+</div>
+<script>
+// The widget exposes window.__phdChat with open() and send(). An earlier
+// version of this page called window.openChatWith and fell back to a ?q=
+// parameter -- neither exists, so every button on the page did nothing.
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('.ask');
+  if (!b) return;
+  var q = b.dataset.q;
+  var chat = window.__phdChat;
+  if (chat && typeof chat.send === 'function') {
+    if (typeof chat.open === 'function') chat.open();
+    chat.send(q);
+    return;
+  }
+  // The widget loads asynchronously; wait briefly rather than losing the click.
+  var tries = 0;
+  var t = setInterval(function () {
+    var c = window.__phdChat;
+    if (c && typeof c.send === 'function') {
+      clearInterval(t);
+      if (typeof c.open === 'function') c.open();
+      c.send(q);
+    } else if (++tries > 40) {
+      clearInterval(t);
+      b.textContent = q + ' — the assistant did not load';
+    }
+  }, 150);
+});
+</script>
+</body></html>

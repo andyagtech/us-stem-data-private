@@ -23,7 +23,7 @@
     font-variant-numeric: tabular-nums; }
   svg.line-chart .grid { stroke: rgba(148,163,184,0.12); stroke-width: 1; }
   svg.line-chart .ser { fill: none; stroke-width: 2.4; stroke-linejoin: round; }
-  svg.line-chart .dot { stroke: #0f172a; stroke-width: 2; }
+  svg.line-chart .dot { stroke: var(--bg); stroke-width: 2; }
   .legend { display: flex; gap: 1.2rem; flex-wrap: wrap; margin: 0 0 1rem;
     font-size: .8rem; color: var(--text-muted); }
   .legend i { width: 11px; height: 11px; border-radius: 3px; display: inline-block;
@@ -48,6 +48,8 @@
   .caveat p { color: var(--text-muted); font-size: .8rem; line-height: 1.6;
     max-width: 76ch; margin: 0 0 .5rem; }
 </style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 </head>
 <body data-page="expansion">
 <a class="skip-link" href="#volume" data-track="anchor.volume">Skip to the charts</a>

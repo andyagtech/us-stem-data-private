@@ -11,7 +11,7 @@
 <title>About — PhD Demographics</title>
 <style>
   :root {
-    --bg: #0f172a; --surface: #1e293b; --border: #334155;
+    --bg: var(--bg); --surface: var(--surface); --border: var(--border);
     --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8;
     --accent2: #f472b6; --accent3: #a78bfa; --accent4: #34d399;
     --danger: #ef4444; --orange: #fb923c;
@@ -51,6 +51,21 @@
     h1 { font-size: 1.3rem; }
     .links-grid { grid-template-columns: 1fr; }
   }
+
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+--bg:#ffffff;--surface:#f6f7f9;--border:#d8dee6;--text:#111827;
+--text-muted:#4b5563;--accent:#1d4ed8;--hl:#b3123c;color-scheme:light;}}
+:root[data-theme="light"]{
+--bg:#ffffff;--surface:#f6f7f9;--border:#d8dee6;--text:#111827;
+--text-muted:#4b5563;--accent:#1d4ed8;--hl:#b3123c;color-scheme:light;}
+.themebtn{position:fixed;right:20px;bottom:84px;z-index:60;display:inline-flex;
+align-items:center;gap:7px;padding:7px 12px;border-radius:999px;
+background:var(--surface);color:var(--text-muted);border:1px solid var(--border);
+cursor:pointer;font:500 12px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',
+Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
+.themebtn:hover,.themebtn:focus-visible{color:var(--text);border-color:var(--accent);}
+.themebtn .ic{font-size:13px;line-height:1;}
+@media print{.themebtn{display:none;}}
 </style>
 <!-- og:cards -->
 <meta property="og:title" content="About PhD Demographics">
@@ -70,6 +85,8 @@
 <meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og/about.png">
 <meta name="twitter:image:alt" content="Who actually gets American PhDs — What the project holds">
 <!-- /og:cards -->
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 </head>
 <body>
 <!-- Navigation provided by /sidebar.js -->
