@@ -18,6 +18,21 @@ Parameters:
   ChatLogsTable:
     Type: String
     Default: "phd-chat-logs"
+  # The global spend ceiling. Per-IP limiting caps one visitor, not the bill;
+  # these cap the day. Parameters rather than constants so they can be tuned
+  # from the console without a code deploy, which is what you want at 2am.
+  DailySoftCap:
+    Type: Number
+    Default: 4000
+    Description: Past this many requests in a UTC day, serve cache only.
+  DailyHardCap:
+    Type: Number
+    Default: 6000
+    Description: Past this, refuse outright.
+  LimiterFailsOpenUntil:
+    Type: Number
+    Default: 20
+    Description: Consecutive rate-limiter errors tolerated before failing closed.
     Description: >-
       Existing DynamoDB table (pk=day, sk=timestamp#ip, TTL on `ttl`) that
       chat-admin.html reads. It is NOT created by this stack — it predates it —
@@ -88,6 +103,9 @@ Resources:
           CHAT_CACHE_TABLE: !Ref ChatCacheTable
           CHAT_LOGS_TABLE: !Ref ChatLogsTable
           OPENAI_API_KEY_SSM: "/cms-pipeline/openai-api-key"
+          DAILY_SOFT_CAP: !Ref DailySoftCap
+          DAILY_HARD_CAP: !Ref DailyHardCap
+          LIMITER_FAILS_OPEN_UNTIL: !Ref LimiterFailsOpenUntil
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref RateLimitTable
