@@ -111,25 +111,25 @@
    "masters_share": 63.3
   },
   {
-   "institution": "Georgia Institute of Technology",
+   "institution": "Georgia Institute of Technology-Main Campus",
    "federal_rd": 1213430000,
    "doctoral_share": 55.1,
    "masters_share": 51.0
   },
   {
-   "institution": "University of Michigan",
+   "institution": "University of Michigan-Ann Arbor",
    "federal_rd": 1165494000,
    "doctoral_share": 41.2,
    "masters_share": 47.5
   },
   {
-   "institution": "University of California, San Diego",
+   "institution": "University of California-San Diego",
    "federal_rd": 1151518000,
    "doctoral_share": 45.5,
    "masters_share": 59.7
   },
   {
-   "institution": "University of Washington",
+   "institution": "University of Washington-Seattle Campus",
    "federal_rd": 1135734000,
    "doctoral_share": 32.9,
    "masters_share": 46.0
@@ -147,7 +147,7 @@
    "masters_share": 72.2
   },
   {
-   "institution": "University of California, San Francisco",
+   "institution": "University of California-San Francisco",
    "federal_rd": 1036633000,
    "doctoral_share": 13.8,
    "masters_share": 16.9
@@ -165,19 +165,19 @@
    "masters_share": 35.3
   },
   {
-   "institution": "University of California, Los Angeles",
+   "institution": "University of California-Los Angeles",
    "federal_rd": 980183000,
    "doctoral_share": 32.8,
    "masters_share": 38.2
   },
   {
-   "institution": "University of Pittsburgh",
+   "institution": "University of Pittsburgh-Pittsburgh Campus",
    "federal_rd": 967978000,
    "doctoral_share": 47.4,
    "masters_share": 33.5
   },
   {
-   "institution": "University of North Carolina at Chapel Hill, The",
+   "institution": "University of North Carolina at Chapel Hill",
    "federal_rd": 949913000,
    "doctoral_share": 25.6,
    "masters_share": 18.4
@@ -189,102 +189,164 @@
    "masters_share": 55.4
   },
   {
-   "institution": "Pennsylvania State University, The",
+   "institution": "Pennsylvania State University-Main Campus",
    "federal_rd": 858666000,
    "doctoral_share": 57.2,
    "masters_share": 41.7
   }
  ],
+ "tuition_rate_source": "ic2023_ay.csv",
+ "masters_floor": 200,
  "highest_masters_share": [
-  {
-   "institution": "State University of New York, College of Optometry",
-   "masters_share": 100.0,
-   "masters_enrolled": 2,
-   "federal_rd": 2613000
-  },
   {
    "institution": "Illinois Institute of Technology",
    "masters_share": 94.1,
    "masters_enrolled": 2120,
-   "federal_rd": 31996000
+   "masters_foreign": 1995,
+   "federal_rd": 31996000,
+   "grad_oos_rate": 33810,
+   "masters_foreign_tuition_billed": 67450950,
+   "tuition_to_federal_rd": 2.11
   },
   {
    "institution": "Clark University",
    "masters_share": 92.3,
    "masters_enrolled": 724,
-   "federal_rd": 3231000
+   "masters_foreign": 668,
+   "federal_rd": 3231000,
+   "grad_oos_rate": 48590,
+   "masters_foreign_tuition_billed": 32458120,
+   "tuition_to_federal_rd": 10.05
   },
   {
    "institution": "University of Arkansas at Little Rock",
    "masters_share": 90.9,
    "masters_enrolled": 265,
-   "federal_rd": 9624000
+   "masters_foreign": 241,
+   "federal_rd": 9624000,
+   "grad_oos_rate": 15100,
+   "masters_foreign_tuition_billed": 3639100,
+   "tuition_to_federal_rd": 0.38
   },
   {
    "institution": "Saint Louis University",
    "masters_share": 88.9,
    "masters_enrolled": 2637,
-   "federal_rd": 43867000
+   "masters_foreign": 2343,
+   "federal_rd": 43867000,
+   "grad_oos_rate": 24494,
+   "masters_foreign_tuition_billed": 57389442,
+   "tuition_to_federal_rd": 1.31
   },
   {
    "institution": "Central Michigan University",
    "masters_share": 88.7,
    "masters_enrolled": 933,
-   "federal_rd": 11541000
+   "masters_foreign": 828,
+   "federal_rd": 11541000,
+   "grad_oos_rate": 16293,
+   "masters_foreign_tuition_billed": 13490604,
+   "tuition_to_federal_rd": 1.17
   },
   {
-   "institution": "Western New England University",
-   "masters_share": 88.4,
-   "masters_enrolled": 129,
-   "federal_rd": 579000
-  },
-  {
-   "institution": "Purdue University",
+   "institution": "Purdue University Northwest",
    "masters_share": 88.3,
    "masters_enrolled": 206,
-   "federal_rd": 4036000
+   "masters_foreign": 182,
+   "federal_rd": 4036000,
+   "grad_oos_rate": 11585,
+   "masters_foreign_tuition_billed": 2108470,
+   "tuition_to_federal_rd": 0.52
   },
   {
-   "institution": "University of North Texas, Denton",
+   "institution": "University of North Texas",
    "masters_share": 87.0,
    "masters_enrolled": 4062,
-   "federal_rd": 43136000
+   "masters_foreign": 3532,
+   "federal_rd": 43136000,
+   "grad_oos_rate": 16622,
+   "masters_foreign_tuition_billed": 58708904,
+   "tuition_to_federal_rd": 1.36
   },
   {
    "institution": "Pace University",
    "masters_share": 86.6,
    "masters_enrolled": 1376,
-   "federal_rd": 2067000
+   "masters_foreign": 1192,
+   "federal_rd": 2067000,
+   "grad_oos_rate": 29363,
+   "masters_foreign_tuition_billed": 35000696,
+   "tuition_to_federal_rd": 16.93
   },
   {
-   "institution": "Auburn University",
+   "institution": "Auburn University at Montgomery",
    "masters_share": 86.5,
    "masters_enrolled": 304,
-   "federal_rd": 446000
+   "masters_foreign": 263,
+   "federal_rd": 446000,
+   "grad_oos_rate": 19018,
+   "masters_foreign_tuition_billed": 5001734,
+   "tuition_to_federal_rd": 11.21
   },
   {
-   "institution": "University of Texas at Arlington, The",
+   "institution": "The University of Texas at Arlington",
    "masters_share": 86.5,
    "masters_enrolled": 2177,
-   "federal_rd": 62500000
+   "masters_foreign": 1883,
+   "federal_rd": 62500000,
+   "grad_oos_rate": 25345,
+   "masters_foreign_tuition_billed": 47724635,
+   "tuition_to_federal_rd": 0.76
   },
   {
    "institution": "University of New Haven",
    "masters_share": 84.5,
    "masters_enrolled": 1624,
-   "federal_rd": 2836000
+   "masters_foreign": 1373,
+   "federal_rd": 2836000,
+   "grad_oos_rate": 19240,
+   "masters_foreign_tuition_billed": 26416520,
+   "tuition_to_federal_rd": 9.31
   },
   {
-   "institution": "Purdue University",
+   "institution": "Purdue University Fort Wayne",
    "masters_share": 83.1,
    "masters_enrolled": 249,
-   "federal_rd": 265000
+   "masters_foreign": 207,
+   "federal_rd": 265000,
+   "grad_oos_rate": 15497,
+   "masters_foreign_tuition_billed": 3207879,
+   "tuition_to_federal_rd": 12.11
   },
   {
-   "institution": "Cornell University",
-   "masters_share": 83.0,
-   "masters_enrolled": 176,
-   "federal_rd": 792078000
+   "institution": "Stevens Institute of Technology",
+   "masters_share": 82.7,
+   "masters_enrolled": 1679,
+   "masters_foreign": 1388,
+   "federal_rd": 59605000,
+   "grad_oos_rate": 42988,
+   "masters_foreign_tuition_billed": 59667344,
+   "tuition_to_federal_rd": 1.0
+  },
+  {
+   "institution": "Western Illinois University",
+   "masters_share": 82.6,
+   "masters_enrolled": 591,
+   "masters_foreign": 488,
+   "federal_rd": 3574000,
+   "grad_oos_rate": 13290,
+   "masters_foreign_tuition_billed": 6485520,
+   "tuition_to_federal_rd": 1.81
+  },
+  {
+   "institution": "Rowan University",
+   "masters_share": 80.8,
+   "masters_enrolled": 876,
+   "masters_foreign": 708,
+   "federal_rd": 21291000,
+   "grad_oos_rate": 17645,
+   "masters_foreign_tuition_billed": 12492660,
+   "tuition_to_federal_rd": 0.59
   }
  ]
 }
