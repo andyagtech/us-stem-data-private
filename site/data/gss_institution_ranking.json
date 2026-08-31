@@ -1,0 +1,637 @@
+{
+ "_comment": "Full-time science, engineering and health graduate enrolment by institution, and the share held by temporary-visa holders, from the GSS Race sheet where 'forgn' is the STUDENT'S CITIZENSHIP. (In the GSS Support sheet the same token means a foreign SOURCE OF FUNDS; that sheet is not used here.) COUNTS ARE ENROLMENTS, not degrees, and the field basis is S&E&H units -- neither is comparable with the IPEDS core-STEM degree rankings elsewhere in this project. Ranked by share only above an enrolment floor, because a small programme produces meaningless percentages; the by_count ranking has no floor since a large count is already evidence of scale. Permanent residents are counted under their race and so appear as domestic here. Single year, 2024.",
+ "source": "NSF NCSES, Survey of Graduate Students and Postdoctorates, 2024",
+ "national": {
+  "doctoral": {
+   "institutions": 408,
+   "total": 274601,
+   "foreign": 122179,
+   "share": 44.5
+  },
+  "master's": {
+   "institutions": 639,
+   "total": 322037,
+   "foreign": 150855,
+   "share": 46.8
+  }
+ },
+ "rankings": {
+  "doctoral": {
+   "floor": 300,
+   "eligible": 186,
+   "by_share": [
+    {
+     "institution": "Stevens Institute of Technology",
+     "total": 457,
+     "foreign": 374,
+     "share": 81.8
+    },
+    {
+     "institution": "New Jersey Institute of Technology",
+     "total": 443,
+     "foreign": 347,
+     "share": 78.3
+    },
+    {
+     "institution": "North Dakota State University",
+     "total": 456,
+     "foreign": 340,
+     "share": 74.6
+    },
+    {
+     "institution": "University of Texas at Arlington, The",
+     "total": 685,
+     "foreign": 484,
+     "share": 70.7
+    },
+    {
+     "institution": "University of Texas at Dallas, The",
+     "total": 1288,
+     "foreign": 883,
+     "share": 68.6
+    },
+    {
+     "institution": "Missouri University of Science and Technology",
+     "total": 461,
+     "foreign": 316,
+     "share": 68.5
+    },
+    {
+     "institution": "University of Houston",
+     "total": 1499,
+     "foreign": 1020,
+     "share": 68.0
+    },
+    {
+     "institution": "Auburn University",
+     "total": 1114,
+     "foreign": 742,
+     "share": 66.6
+    },
+    {
+     "institution": "Iowa State University",
+     "total": 1712,
+     "foreign": 1128,
+     "share": 65.9
+    },
+    {
+     "institution": "Texas Tech University",
+     "total": 1364,
+     "foreign": 877,
+     "share": 64.3
+    },
+    {
+     "institution": "University of Massachusetts Lowell",
+     "total": 409,
+     "foreign": 261,
+     "share": 63.8
+    },
+    {
+     "institution": "Kansas State University",
+     "total": 630,
+     "foreign": 400,
+     "share": 63.5
+    },
+    {
+     "institution": "Oklahoma State University",
+     "total": 701,
+     "foreign": 440,
+     "share": 62.8
+    },
+    {
+     "institution": "University of Illinois at Urbana-Champaign",
+     "total": 4837,
+     "foreign": 3014,
+     "share": 62.3
+    },
+    {
+     "institution": "Rochester Institute of Technology",
+     "total": 437,
+     "foreign": 271,
+     "share": 62.0
+    },
+    {
+     "institution": "Purdue University",
+     "total": 3739,
+     "foreign": 2278,
+     "share": 60.9
+    },
+    {
+     "institution": "Southern Illinois University, Carbondale",
+     "total": 392,
+     "foreign": 238,
+     "share": 60.7
+    },
+    {
+     "institution": "University of Nebraska-Lincoln",
+     "total": 1116,
+     "foreign": 676,
+     "share": 60.6
+    },
+    {
+     "institution": "Louisiana State University",
+     "total": 1262,
+     "foreign": 765,
+     "share": 60.6
+    },
+    {
+     "institution": "New Mexico State University",
+     "total": 369,
+     "foreign": 222,
+     "share": 60.2
+    },
+    {
+     "institution": "University of Toledo, The",
+     "total": 302,
+     "foreign": 180,
+     "share": 59.6
+    },
+    {
+     "institution": "Mississippi State University",
+     "total": 623,
+     "foreign": 367,
+     "share": 58.9
+    },
+    {
+     "institution": "Rensselaer Polytechnic Institute",
+     "total": 626,
+     "foreign": 369,
+     "share": 58.9
+    },
+    {
+     "institution": "Lehigh University",
+     "total": 602,
+     "foreign": 353,
+     "share": 58.6
+    },
+    {
+     "institution": "Southern Methodist University",
+     "total": 335,
+     "foreign": 196,
+     "share": 58.5
+    }
+   ],
+   "by_count": [
+    {
+     "institution": "University of Illinois at Urbana-Champaign",
+     "total": 4837,
+     "foreign": 3014,
+     "share": 62.3
+    },
+    {
+     "institution": "Purdue University",
+     "total": 3739,
+     "foreign": 2278,
+     "share": 60.9
+    },
+    {
+     "institution": "Texas A&M University",
+     "total": 4035,
+     "foreign": 2266,
+     "share": 56.2
+    },
+    {
+     "institution": "Pennsylvania State University, The",
+     "total": 3936,
+     "foreign": 2250,
+     "share": 57.2
+    },
+    {
+     "institution": "University of Michigan",
+     "total": 5033,
+     "foreign": 2076,
+     "share": 41.2
+    },
+    {
+     "institution": "Georgia Institute of Technology",
+     "total": 3618,
+     "foreign": 1995,
+     "share": 55.1
+    },
+    {
+     "institution": "University of Florida",
+     "total": 3145,
+     "foreign": 1677,
+     "share": 53.3
+    },
+    {
+     "institution": "University of Texas at Austin, The",
+     "total": 3469,
+     "foreign": 1677,
+     "share": 48.3
+    },
+    {
+     "institution": "University of Wisconsin-Madison",
+     "total": 4036,
+     "foreign": 1677,
+     "share": 41.6
+    },
+    {
+     "institution": "Ohio State University, The",
+     "total": 3543,
+     "foreign": 1651,
+     "share": 46.6
+    },
+    {
+     "institution": "Cornell University",
+     "total": 3310,
+     "foreign": 1631,
+     "share": 49.3
+    },
+    {
+     "institution": "University of Southern California",
+     "total": 2867,
+     "foreign": 1629,
+     "share": 56.8
+    },
+    {
+     "institution": "University of Maryland, The",
+     "total": 3139,
+     "foreign": 1564,
+     "share": 49.8
+    },
+    {
+     "institution": "Virginia Polytechnic Institute and State University",
+     "total": 2575,
+     "foreign": 1507,
+     "share": 58.5
+    },
+    {
+     "institution": "Stanford University",
+     "total": 4143,
+     "foreign": 1502,
+     "share": 36.3
+    },
+    {
+     "institution": "University of California, San Diego",
+     "total": 3265,
+     "foreign": 1484,
+     "share": 45.5
+    },
+    {
+     "institution": "Massachusetts Institute of Technology",
+     "total": 3618,
+     "foreign": 1448,
+     "share": 40.0
+    },
+    {
+     "institution": "University of Minnesota",
+     "total": 3256,
+     "foreign": 1426,
+     "share": 43.8
+    },
+    {
+     "institution": "University of California, Berkeley",
+     "total": 4062,
+     "foreign": 1392,
+     "share": 34.3
+    },
+    {
+     "institution": "North Carolina State University",
+     "total": 2760,
+     "foreign": 1362,
+     "share": 49.3
+    },
+    {
+     "institution": "University of Washington",
+     "total": 3827,
+     "foreign": 1259,
+     "share": 32.9
+    },
+    {
+     "institution": "Northwestern University",
+     "total": 2947,
+     "foreign": 1224,
+     "share": 41.5
+    },
+    {
+     "institution": "University of California, Los Angeles",
+     "total": 3727,
+     "foreign": 1221,
+     "share": 32.8
+    },
+    {
+     "institution": "New York University",
+     "total": 2188,
+     "foreign": 1210,
+     "share": 55.3
+    },
+    {
+     "institution": "Columbia University in the City of New York",
+     "total": 2612,
+     "foreign": 1203,
+     "share": 46.1
+    }
+   ]
+  },
+  "master's": {
+   "floor": 200,
+   "eligible": 331,
+   "by_share": [
+    {
+     "institution": "Harrisburg University of Science and Technology",
+     "total": 1651,
+     "foreign": 1591,
+     "share": 96.4
+    },
+    {
+     "institution": "Southern Arkansas University",
+     "total": 225,
+     "foreign": 216,
+     "share": 96.0
+    },
+    {
+     "institution": "Gannon University",
+     "total": 299,
+     "foreign": 285,
+     "share": 95.3
+    },
+    {
+     "institution": "Illinois Institute of Technology",
+     "total": 2120,
+     "foreign": 1995,
+     "share": 94.1
+    },
+    {
+     "institution": "University of Central Missouri",
+     "total": 2862,
+     "foreign": 2652,
+     "share": 92.7
+    },
+    {
+     "institution": "Clark University",
+     "total": 724,
+     "foreign": 668,
+     "share": 92.3
+    },
+    {
+     "institution": "University of Bridgeport",
+     "total": 674,
+     "foreign": 617,
+     "share": 91.5
+    },
+    {
+     "institution": "University of Arkansas at Little Rock",
+     "total": 265,
+     "foreign": 241,
+     "share": 90.9
+    },
+    {
+     "institution": "Saint Louis University",
+     "total": 2637,
+     "foreign": 2343,
+     "share": 88.9
+    },
+    {
+     "institution": "Governors State University",
+     "total": 384,
+     "foreign": 341,
+     "share": 88.8
+    },
+    {
+     "institution": "Central Michigan University",
+     "total": 933,
+     "foreign": 828,
+     "share": 88.7
+    },
+    {
+     "institution": "Purdue University",
+     "total": 206,
+     "foreign": 182,
+     "share": 88.3
+    },
+    {
+     "institution": "University of North Texas, Denton",
+     "total": 4062,
+     "foreign": 3532,
+     "share": 87.0
+    },
+    {
+     "institution": "Pace University",
+     "total": 1376,
+     "foreign": 1192,
+     "share": 86.6
+    },
+    {
+     "institution": "University of Texas at Arlington, The",
+     "total": 2177,
+     "foreign": 1883,
+     "share": 86.5
+    },
+    {
+     "institution": "Auburn University",
+     "total": 304,
+     "foreign": 263,
+     "share": 86.5
+    },
+    {
+     "institution": "Northwest Missouri State University",
+     "total": 356,
+     "foreign": 303,
+     "share": 85.1
+    },
+    {
+     "institution": "University of New Haven",
+     "total": 1624,
+     "foreign": 1373,
+     "share": 84.5
+    },
+    {
+     "institution": "Purdue University",
+     "total": 249,
+     "foreign": 207,
+     "share": 83.1
+    },
+    {
+     "institution": "Stevens Institute of Technology",
+     "total": 1679,
+     "foreign": 1388,
+     "share": 82.7
+    },
+    {
+     "institution": "Western Illinois University",
+     "total": 591,
+     "foreign": 488,
+     "share": 82.6
+    },
+    {
+     "institution": "Lewis University",
+     "total": 639,
+     "foreign": 526,
+     "share": 82.3
+    },
+    {
+     "institution": "Southeast Missouri State University",
+     "total": 620,
+     "foreign": 508,
+     "share": 81.9
+    },
+    {
+     "institution": "Rowan University",
+     "total": 876,
+     "foreign": 708,
+     "share": 80.8
+    },
+    {
+     "institution": "University of Missouri, Kansas City",
+     "total": 560,
+     "foreign": 452,
+     "share": 80.7
+    }
+   ],
+   "by_count": [
+    {
+     "institution": "Northeastern University",
+     "total": 9286,
+     "foreign": 7300,
+     "share": 78.6
+    },
+    {
+     "institution": "New York University",
+     "total": 6567,
+     "foreign": 4732,
+     "share": 72.1
+    },
+    {
+     "institution": "Columbia University in the City of New York",
+     "total": 5754,
+     "foreign": 4169,
+     "share": 72.5
+    },
+    {
+     "institution": "University of Southern California",
+     "total": 5722,
+     "foreign": 3778,
+     "share": 66.0
+    },
+    {
+     "institution": "Arizona State University",
+     "total": 6119,
+     "foreign": 3579,
+     "share": 58.5
+    },
+    {
+     "institution": "University of North Texas, Denton",
+     "total": 4062,
+     "foreign": 3532,
+     "share": 87.0
+    },
+    {
+     "institution": "Carnegie Mellon University",
+     "total": 4197,
+     "foreign": 3242,
+     "share": 77.2
+    },
+    {
+     "institution": "University of Central Missouri",
+     "total": 2862,
+     "foreign": 2652,
+     "share": 92.7
+    },
+    {
+     "institution": "University of Illinois at Urbana-Champaign",
+     "total": 4508,
+     "foreign": 2446,
+     "share": 54.3
+    },
+    {
+     "institution": "Saint Louis University",
+     "total": 2637,
+     "foreign": 2343,
+     "share": 88.9
+    },
+    {
+     "institution": "Johns Hopkins University",
+     "total": 3498,
+     "foreign": 2214,
+     "share": 63.3
+    },
+    {
+     "institution": "University of Michigan",
+     "total": 4551,
+     "foreign": 2164,
+     "share": 47.5
+    },
+    {
+     "institution": "State University of New York, The, University at Buffalo",
+     "total": 2840,
+     "foreign": 1997,
+     "share": 70.3
+    },
+    {
+     "institution": "Illinois Institute of Technology",
+     "total": 2120,
+     "foreign": 1995,
+     "share": 94.1
+    },
+    {
+     "institution": "University of Texas at Arlington, The",
+     "total": 2177,
+     "foreign": 1883,
+     "share": 86.5
+    },
+    {
+     "institution": "Georgia Institute of Technology",
+     "total": 3325,
+     "foreign": 1697,
+     "share": 51.0
+    },
+    {
+     "institution": "University of Chicago, The",
+     "total": 2313,
+     "foreign": 1605,
+     "share": 69.4
+    },
+    {
+     "institution": "Harrisburg University of Science and Technology",
+     "total": 1651,
+     "foreign": 1591,
+     "share": 96.4
+    },
+    {
+     "institution": "University of California, San Diego",
+     "total": 2514,
+     "foreign": 1501,
+     "share": 59.7
+    },
+    {
+     "institution": "Cornell University",
+     "total": 2345,
+     "foreign": 1478,
+     "share": 63.0
+    },
+    {
+     "institution": "University of Texas at Dallas, The",
+     "total": 2313,
+     "foreign": 1414,
+     "share": 61.1
+    },
+    {
+     "institution": "University of Washington",
+     "total": 3035,
+     "foreign": 1395,
+     "share": 46.0
+    },
+    {
+     "institution": "Stevens Institute of Technology",
+     "total": 1679,
+     "foreign": 1388,
+     "share": 82.7
+    },
+    {
+     "institution": "University of New Haven",
+     "total": 1624,
+     "foreign": 1373,
+     "share": 84.5
+    },
+    {
+     "institution": "Texas A&M University",
+     "total": 3205,
+     "foreign": 1362,
+     "share": 42.5
+    }
+   ]
+  }
+ },
+ "warnings": []
+}

@@ -1,0 +1,672 @@
+{
+ "_comment": "Nonimmigrant visa issuances by class and nationality, fiscal years 1997-2024, from the State Department detail tables. AN ISSUANCE IS NOT A PERSON AND NOT AN ARRIVAL: one person may be issued several visas over the years, and a visa is permission to travel and seek admission, not admission itself. Nationality is the applicant's, not the consulate's country. Class codes are written with hyphens in the early sheets and without in the later ones, and are normalised here. This is the most current series in the project -- State publishes through the last fiscal year while IPEDS and the SED run one to two years behind.",
+ "source": "US Department of State, Nonimmigrant Visa Detail Tables, FY1997-2024",
+ "source_url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-statistics/nonimmigrant-visa-statistics.html",
+ "classes": {
+  "F1": "F-1 student",
+  "F2": "F-2 student dependent",
+  "J1": "J-1 exchange visitor",
+  "H1B": "H-1B specialty occupation",
+  "H4": "H-4 H-1B dependent",
+  "L1": "L-1 intracompany transferee",
+  "O1": "O-1 extraordinary ability",
+  "TN": "TN professional",
+  "E3": "E-3 Australian specialty",
+  "M1": "M-1 vocational student"
+ },
+ "years": [
+  1997,
+  1998,
+  1999,
+  2000,
+  2001,
+  2002,
+  2003,
+  2004,
+  2005,
+  2006,
+  2007,
+  2008,
+  2009,
+  2010,
+  2011,
+  2012,
+  2013,
+  2014,
+  2015,
+  2016,
+  2017,
+  2018,
+  2019,
+  2020,
+  2021,
+  2022,
+  2023,
+  2024
+ ],
+ "totals": {
+  "1997": {
+   "E3": 0,
+   "F1": 266483,
+   "F2": 22099,
+   "H1B": 80547,
+   "H4": 47206,
+   "J1": 179598,
+   "L1": 36589,
+   "M1": 7075,
+   "O1": 3345,
+   "TN": 171
+  },
+  "1998": {
+   "E3": 0,
+   "F1": 251565,
+   "F2": 21845,
+   "H1B": 91360,
+   "H4": 54595,
+   "J1": 192451,
+   "L1": 38307,
+   "M1": 6515,
+   "O1": 4257,
+   "TN": 295
+  },
+  "1999": {
+   "E3": 0,
+   "F1": 262542,
+   "F2": 22893,
+   "H1B": 116513,
+   "H4": 69194,
+   "J1": 211349,
+   "L1": 41739,
+   "M1": 6240,
+   "O1": 5009,
+   "TN": 484
+  },
+  "2000": {
+   "E3": 0,
+   "F1": 284053,
+   "F2": 24891,
+   "H1B": 133290,
+   "H4": 79518,
+   "J1": 236837,
+   "L1": 54963,
+   "M1": 6107,
+   "O1": 6466,
+   "TN": 906
+  },
+  "2001": {
+   "E3": 0,
+   "F1": 293357,
+   "F2": 26160,
+   "H1B": 161643,
+   "H4": 95967,
+   "J1": 261769,
+   "L1": 59384,
+   "M1": 5373,
+   "O1": 6666,
+   "TN": 787
+  },
+  "2002": {
+   "E3": 0,
+   "F1": 234322,
+   "F2": 22212,
+   "H1B": 118352,
+   "H4": 79725,
+   "J1": 253841,
+   "L1": 57721,
+   "M1": 4116,
+   "O1": 6026,
+   "TN": 699
+  },
+  "2003": {
+   "E3": 0,
+   "F1": 215695,
+   "F2": 19885,
+   "H1B": 107196,
+   "H4": 69289,
+   "J1": 253866,
+   "L1": 57245,
+   "M1": 4157,
+   "O1": 6126,
+   "TN": 423
+  },
+  "2004": {
+   "E3": 0,
+   "F1": 218898,
+   "F2": 18893,
+   "H1B": 138965,
+   "H4": 83128,
+   "J1": 254504,
+   "L1": 62700,
+   "M1": 4817,
+   "O1": 6437,
+   "TN": 908
+  },
+  "2005": {
+   "E3": 4,
+   "F1": 237890,
+   "F2": 18061,
+   "H1B": 124099,
+   "H4": 70266,
+   "J1": 275161,
+   "L1": 65458,
+   "M1": 5822,
+   "O1": 6712,
+   "TN": 1902
+  },
+  "2006": {
+   "E3": 1918,
+   "F1": 273925,
+   "F2": 20750,
+   "H1B": 135435,
+   "H4": 74333,
+   "J1": 309993,
+   "L1": 72616,
+   "M1": 7227,
+   "O1": 6962,
+   "TN": 2972
+  },
+  "2007": {
+   "E3": 2572,
+   "F1": 298393,
+   "F2": 22036,
+   "H1B": 154053,
+   "H4": 86219,
+   "J1": 343946,
+   "L1": 84532,
+   "M1": 9221,
+   "O1": 7653,
+   "TN": 8182
+  },
+  "2008": {
+   "E3": 2961,
+   "F1": 340711,
+   "F2": 23193,
+   "H1B": 129464,
+   "H4": 71019,
+   "J1": 359447,
+   "L1": 84078,
+   "M1": 10475,
+   "O1": 9014,
+   "TN": 9522
+  },
+  "2009": {
+   "E3": 2191,
+   "F1": 331208,
+   "F2": 21817,
+   "H1B": 110367,
+   "H4": 60009,
+   "J1": 313597,
+   "L1": 64696,
+   "M1": 9257,
+   "O1": 9368,
+   "TN": 4124
+  },
+  "2010": {
+   "E3": 2175,
+   "F1": 385210,
+   "F2": 25220,
+   "H1B": 117409,
+   "H4": 66176,
+   "J1": 320805,
+   "L1": 74719,
+   "M1": 9192,
+   "O1": 8589,
+   "TN": 3392
+  },
+  "2011": {
+   "E3": 2546,
+   "F1": 447410,
+   "F2": 27703,
+   "H1B": 129134,
+   "H4": 74205,
+   "J1": 324294,
+   "L1": 70728,
+   "M1": 10049,
+   "O1": 8828,
+   "TN": 4971
+  },
+  "2012": {
+   "E3": 3211,
+   "F1": 486900,
+   "F2": 27561,
+   "H1B": 135530,
+   "H4": 80015,
+   "J1": 313431,
+   "L1": 62430,
+   "M1": 10331,
+   "O1": 10590,
+   "TN": 7638
+  },
+  "2013": {
+   "E3": 3946,
+   "F1": 534320,
+   "F2": 29139,
+   "H1B": 153223,
+   "H4": 96753,
+   "J1": 312522,
+   "L1": 66700,
+   "M1": 11320,
+   "O1": 12359,
+   "TN": 9548
+  },
+  "2014": {
+   "E3": 4492,
+   "F1": 595569,
+   "F2": 31732,
+   "H1B": 161369,
+   "H4": 109147,
+   "J1": 331068,
+   "L1": 71513,
+   "M1": 11706,
+   "O1": 12706,
+   "TN": 11207
+  },
+  "2015": {
+   "E3": 5527,
+   "F1": 644233,
+   "F2": 33632,
+   "H1B": 172748,
+   "H4": 124484,
+   "J1": 332540,
+   "L1": 78537,
+   "M1": 11058,
+   "O1": 13865,
+   "TN": 13093
+  },
+  "2016": {
+   "E3": 5609,
+   "F1": 471728,
+   "F2": 30486,
+   "H1B": 180057,
+   "H4": 131051,
+   "J1": 339712,
+   "L1": 79306,
+   "M1": 10305,
+   "O1": 15918,
+   "TN": 14768
+  },
+  "2017": {
+   "E3": 5657,
+   "F1": 393573,
+   "F2": 27435,
+   "H1B": 179049,
+   "H4": 136393,
+   "J1": 343811,
+   "L1": 78178,
+   "M1": 9587,
+   "O1": 17011,
+   "TN": 16119
+  },
+  "2018": {
+   "E3": 5394,
+   "F1": 362929,
+   "F2": 26650,
+   "H1B": 179660,
+   "H4": 130814,
+   "J1": 342639,
+   "L1": 74388,
+   "M1": 9317,
+   "O1": 16904,
+   "TN": 17950
+  },
+  "2019": {
+   "E3": 5807,
+   "F1": 364204,
+   "F2": 24635,
+   "H1B": 188123,
+   "H4": 125999,
+   "J1": 353279,
+   "L1": 76988,
+   "M1": 9227,
+   "O1": 17751,
+   "TN": 21193
+  },
+  "2020": {
+   "E3": 3144,
+   "F1": 111387,
+   "F2": 9818,
+   "H1B": 124983,
+   "H4": 66323,
+   "J1": 108510,
+   "L1": 35942,
+   "M1": 3928,
+   "O1": 8838,
+   "TN": 13771
+  },
+  "2021": {
+   "E3": 2309,
+   "F1": 357899,
+   "F2": 19823,
+   "H1B": 61569,
+   "H4": 55444,
+   "J1": 129682,
+   "L1": 24868,
+   "M1": 4554,
+   "O1": 7294,
+   "TN": 24903
+  },
+  "2022": {
+   "E3": 9462,
+   "F1": 822262,
+   "F2": 51774,
+   "H1B": 412004,
+   "H4": 274492,
+   "J1": 568972,
+   "L1": 145916,
+   "M1": 10542,
+   "O1": 38204,
+   "TN": 66722
+  },
+  "2023": {
+   "E3": 4434,
+   "F1": 445418,
+   "F2": 26844,
+   "H1B": 265777,
+   "H4": 186748,
+   "J1": 316693,
+   "L1": 76671,
+   "M1": 6052,
+   "O1": 18994,
+   "TN": 32904
+  },
+  "2024": {
+   "E3": 3933,
+   "F1": 400737,
+   "F2": 24055,
+   "H1B": 219659,
+   "H4": 139874,
+   "J1": 322820,
+   "L1": 71799,
+   "M1": 6322,
+   "O1": 19457,
+   "TN": 15672
+  }
+ },
+ "leading_origins": {
+  "F-1 student": [
+   {
+    "country": "India",
+    "issuances": 86067,
+    "share_pct": 21.5,
+    "change_since_first_pct": 717.2
+   },
+   {
+    "country": "China - mainland",
+    "issuances": 82654,
+    "share_pct": 20.6,
+    "change_since_first_pct": 594.0
+   },
+   {
+    "country": "Vietnam",
+    "issuances": 18454,
+    "share_pct": 4.6,
+    "change_since_first_pct": 1500.5
+   },
+   {
+    "country": "Korea, South",
+    "issuances": 14786,
+    "share_pct": 3.7,
+    "change_since_first_pct": -59.1
+   },
+   {
+    "country": "Nepal",
+    "issuances": 13184,
+    "share_pct": 3.3,
+    "change_since_first_pct": 1333.0
+   },
+   {
+    "country": "Japan",
+    "issuances": 8775,
+    "share_pct": 2.2,
+    "change_since_first_pct": -75.0
+   },
+   {
+    "country": "France",
+    "issuances": 7553,
+    "share_pct": 1.9,
+    "change_since_first_pct": 59.3
+   },
+   {
+    "country": "Brazil",
+    "issuances": 7431,
+    "share_pct": 1.9,
+    "change_since_first_pct": -39.6
+   },
+   {
+    "country": "Taiwan",
+    "issuances": 7365,
+    "share_pct": 1.8,
+    "change_since_first_pct": null
+   },
+   {
+    "country": "Italy",
+    "issuances": 6534,
+    "share_pct": 1.6,
+    "change_since_first_pct": 83.6
+   },
+   {
+    "country": "Mexico",
+    "issuances": 6422,
+    "share_pct": 1.6,
+    "change_since_first_pct": -31.4
+   },
+   {
+    "country": "Nigeria",
+    "issuances": 6175,
+    "share_pct": 1.5,
+    "change_since_first_pct": 731.1
+   }
+  ],
+  "H-1B specialty occupation": [
+   {
+    "country": "India",
+    "issuances": 150647,
+    "share_pct": 68.6,
+    "change_since_first_pct": 375.5
+   },
+   {
+    "country": "China - mainland",
+    "issuances": 31735,
+    "share_pct": 14.4,
+    "change_since_first_pct": 889.9
+   },
+   {
+    "country": "Philippines",
+    "issuances": 3562,
+    "share_pct": 1.6,
+    "change_since_first_pct": 34.3
+   },
+   {
+    "country": "Korea, South",
+    "issuances": 2289,
+    "share_pct": 1.0,
+    "change_since_first_pct": 154.3
+   },
+   {
+    "country": "Mexico",
+    "issuances": 1954,
+    "share_pct": 0.9,
+    "change_since_first_pct": -29.8
+   },
+   {
+    "country": "Taiwan",
+    "issuances": 1830,
+    "share_pct": 0.8,
+    "change_since_first_pct": null
+   },
+   {
+    "country": "Brazil",
+    "issuances": 1801,
+    "share_pct": 0.8,
+    "change_since_first_pct": 67.1
+   },
+   {
+    "country": "Pakistan",
+    "issuances": 1664,
+    "share_pct": 0.8,
+    "change_since_first_pct": 45.5
+   },
+   {
+    "country": "Great Britain and Northern Ireland",
+    "issuances": 1462,
+    "share_pct": 0.7,
+    "change_since_first_pct": -78.9
+   },
+   {
+    "country": "France",
+    "issuances": 974,
+    "share_pct": 0.4,
+    "change_since_first_pct": -48.6
+   },
+   {
+    "country": "Colombia",
+    "issuances": 959,
+    "share_pct": 0.4,
+    "change_since_first_pct": 80.6
+   },
+   {
+    "country": "Nigeria",
+    "issuances": 880,
+    "share_pct": 0.4,
+    "change_since_first_pct": 305.5
+   }
+  ],
+  "J-1 exchange visitor": [
+   {
+    "country": "Mexico",
+    "issuances": 17707,
+    "share_pct": 5.5,
+    "change_since_first_pct": 387.4
+   },
+   {
+    "country": "Great Britain and Northern Ireland",
+    "issuances": 15903,
+    "share_pct": 4.9,
+    "change_since_first_pct": -17.6
+   },
+   {
+    "country": "China - mainland",
+    "issuances": 14297,
+    "share_pct": 4.4,
+    "change_since_first_pct": 174.6
+   },
+   {
+    "country": "Germany",
+    "issuances": 14219,
+    "share_pct": 4.4,
+    "change_since_first_pct": -35.9
+   },
+   {
+    "country": "Spain",
+    "issuances": 13257,
+    "share_pct": 4.1,
+    "change_since_first_pct": 159.4
+   },
+   {
+    "country": "Colombia",
+    "issuances": 12658,
+    "share_pct": 3.9,
+    "change_since_first_pct": 851.0
+   },
+   {
+    "country": "India",
+    "issuances": 12080,
+    "share_pct": 3.7,
+    "change_since_first_pct": 320.3
+   },
+   {
+    "country": "Brazil",
+    "issuances": 11862,
+    "share_pct": 3.7,
+    "change_since_first_pct": 102.7
+   },
+   {
+    "country": "France",
+    "issuances": 11781,
+    "share_pct": 3.6,
+    "change_since_first_pct": 18.9
+   },
+   {
+    "country": "Jamaica",
+    "issuances": 10477,
+    "share_pct": 3.2,
+    "change_since_first_pct": 1669.8
+   },
+   {
+    "country": "Peru",
+    "issuances": 10369,
+    "share_pct": 3.2,
+    "change_since_first_pct": 2545.2
+   },
+   {
+    "country": "Thailand",
+    "issuances": 9386,
+    "share_pct": 2.9,
+    "change_since_first_pct": 480.8
+   }
+  ]
+ },
+ "monthly": {
+  "2025-10": {
+   "E3": 180,
+   "F1": 5767,
+   "F2": 881,
+   "H1B": 12260,
+   "H4": 6602,
+   "J1": 12557,
+   "L1": 5324,
+   "M1": 397,
+   "O1": 1506,
+   "TN": 1440
+  },
+  "2025-11": {
+   "E3": 143,
+   "F1": 7708,
+   "F2": 717,
+   "H1B": 14619,
+   "H4": 6488,
+   "J1": 12838,
+   "L1": 5214,
+   "M1": 415,
+   "O1": 1266,
+   "TN": 986
+  },
+  "2025-12": {
+   "E3": 379,
+   "F1": 17734,
+   "F2": 837,
+   "H1B": 17467,
+   "H4": 5693,
+   "J1": 13688,
+   "L1": 6651,
+   "M1": 543,
+   "O1": 1948,
+   "TN": 1296
+  },
+  "2026-01": {
+   "E3": 221,
+   "F1": 8783,
+   "F2": 588,
+   "H1B": 6118,
+   "H4": 2706,
+   "J1": 12408,
+   "L1": 5920,
+   "M1": 579,
+   "O1": 1796,
+   "TN": 1474
+  },
+  "2026-02": {
+   "E3": 272,
+   "F1": 4035,
+   "F2": 794,
+   "H1B": 4593,
+   "H4": 2360,
+   "J1": 18002,
+   "L1": 5292,
+   "M1": 547,
+   "O1": 1455,
+   "TN": 1216
+  }
+ },
+ "warnings": []
+}
