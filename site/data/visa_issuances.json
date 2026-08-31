@@ -668,5 +668,102 @@
    "TN": 1216
   }
  },
+ "overrepresentation_vs_population": {
+  "F-1 student": [
+   {
+    "country": "India",
+    "issuance_share_pct": 21.5,
+    "population_share_pct": 17.82,
+    "ratio": 1.2
+   },
+   {
+    "country": "China - mainland",
+    "issuance_share_pct": 20.6,
+    "population_share_pct": 17.31,
+    "ratio": 1.2
+   },
+   {
+    "country": "Vietnam",
+    "issuance_share_pct": 4.6,
+    "population_share_pct": 1.24,
+    "ratio": 3.7
+   },
+   {
+    "country": "Korea, South",
+    "issuance_share_pct": 3.7,
+    "population_share_pct": 0.64,
+    "ratio": 5.8
+   },
+   {
+    "country": "Nepal",
+    "issuance_share_pct": 3.3,
+    "population_share_pct": 0.36,
+    "ratio": 9.1
+   },
+   {
+    "country": "Japan",
+    "issuance_share_pct": 2.2,
+    "population_share_pct": 1.52,
+    "ratio": 1.4
+   },
+   {
+    "country": "France",
+    "issuance_share_pct": 1.9,
+    "population_share_pct": 0.84,
+    "ratio": 2.3
+   },
+   {
+    "country": "Brazil",
+    "issuance_share_pct": 1.9,
+    "population_share_pct": 2.6,
+    "ratio": 0.7
+   }
+  ],
+  "H-1B specialty occupation": [
+   {
+    "country": "India",
+    "issuance_share_pct": 68.6,
+    "population_share_pct": 17.82,
+    "ratio": 3.8
+   },
+   {
+    "country": "China - mainland",
+    "issuance_share_pct": 14.4,
+    "population_share_pct": 17.31,
+    "ratio": 0.8
+   },
+   {
+    "country": "Philippines",
+    "issuance_share_pct": 1.6,
+    "population_share_pct": 1.42,
+    "ratio": 1.1
+   },
+   {
+    "country": "Korea, South",
+    "issuance_share_pct": 1.0,
+    "population_share_pct": 0.64,
+    "ratio": 1.6
+   },
+   {
+    "country": "Mexico",
+    "issuance_share_pct": 0.9,
+    "population_share_pct": 1.61,
+    "ratio": 0.6
+   },
+   {
+    "country": "Brazil",
+    "issuance_share_pct": 0.8,
+    "population_share_pct": 2.6,
+    "ratio": 0.3
+   },
+   {
+    "country": "Pakistan",
+    "issuance_share_pct": 0.8,
+    "population_share_pct": 3.09,
+    "ratio": 0.3
+   }
+  ]
+ },
+ "population_source": "World Bank, SP.POP.TOTL, 2024",
  "warnings": []
 }

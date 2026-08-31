@@ -1,0 +1,290 @@
+{
+ "_comment": "Temporary-visa share of full-time S&E&H graduate enrolment (GSS 2024) joined to federal research and development expenditures (HERD FY2024 table 14). THE MONEY AND THE ENROLMENT SIT IN THE SAME INSTITUTIONS: by quartile of federal R&D, the doctoral visa share runs 20.5% in the lowest against 43.6% in the highest, and the highest quartile holds 167,396 of the doctoral students against 7,631 in the lowest. Master's runs 32.9% to 50.3%. ONE NUANCE THAT MUST BE KEPT: the very highest master's SHARES are at institutions with almost no federal R&D -- tuition-funded programmes -- so 'highest share' and 'most federal money' name different institutions even though the overall relationship is positive. MATCHING goes through the GSS UNITID to the IPEDS campus name, because HERD campus-qualifies its names and fourteen GSS names cover more than one campus -- matching on the GSS name alone collapsed Ann Arbor, Dearborn and Flint into one record. Names are then matched exactly on a normalised form; nothing is fuzzy-matched. UNMATCHED IS NOT ZERO: an institution may be absent from HERD, which does suggest little R&D, or its name may simply not have been recovered, and these cannot be told apart here. HERD reports R&D EXPENDITURE, not obligations or student support, and is not all federal money an institution receives. Enrolments, not degrees.",
+ "sources": {
+  "enrolment": "NSF NCSES, Survey of Graduate Students and Postdoctorates, 2024",
+  "funding": "NSF NCSES, Higher Education R&D Survey, FY2024 table 14"
+ },
+ "aliases_used": {},
+ "matched": 477,
+ "unmatched_count": 172,
+ "unmatched_examples": [
+  "A.T. Still University",
+  "Adelphi University",
+  "Albizu University-San Juan",
+  "American International College",
+  "American Museum of Natural History",
+  "Angelo State University",
+  "Antioch University",
+  "Arkansas State University",
+  "Arkansas Tech University",
+  "Auburn University",
+  "Bard College",
+  "Barry University",
+  "Bemidji State University",
+  "Benedictine University",
+  "Bethune-Cookman University",
+  "Binghamton University, State University of New York",
+  "Bradley University",
+  "Bridgewater State University",
+  "Brigham Young University",
+  "California Baptist University"
+ ],
+ "herd_duplicate_names": [
+  "Miami U. / U. Miami",
+  "U. of the Pacific / Pacific U."
+ ],
+ "by_federal_rd_quartile": {
+  "doctoral": [
+   {
+    "quartile": 1,
+    "institutions": 85,
+    "federal_rd_median": 3220000,
+    "enrolled": 7631,
+    "foreign": 1568,
+    "share": 20.5
+   },
+   {
+    "quartile": 2,
+    "institutions": 85,
+    "federal_rd_median": 19254000,
+    "enrolled": 15520,
+    "foreign": 6862,
+    "share": 44.2
+   },
+   {
+    "quartile": 3,
+    "institutions": 85,
+    "federal_rd_median": 89978000,
+    "enrolled": 49885,
+    "foreign": 24432,
+    "share": 49.0
+   },
+   {
+    "quartile": 4,
+    "institutions": 86,
+    "federal_rd_median": 453738000,
+    "enrolled": 167396,
+    "foreign": 72976,
+    "share": 43.6
+   }
+  ],
+  "master's": [
+   {
+    "quartile": 1,
+    "institutions": 118,
+    "federal_rd_median": 1389000,
+    "enrolled": 29548,
+    "foreign": 9734,
+    "share": 32.9
+   },
+   {
+    "quartile": 2,
+    "institutions": 118,
+    "federal_rd_median": 6025000,
+    "enrolled": 28323,
+    "foreign": 10142,
+    "share": 35.8
+   },
+   {
+    "quartile": 3,
+    "institutions": 118,
+    "federal_rd_median": 38325000,
+    "enrolled": 67212,
+    "foreign": 34236,
+    "share": 50.9
+   },
+   {
+    "quartile": 4,
+    "institutions": 118,
+    "federal_rd_median": 299986000,
+    "enrolled": 152916,
+    "foreign": 76869,
+    "share": 50.3
+   }
+  ]
+ },
+ "largest_federal_recipients": [
+  {
+   "institution": "Johns Hopkins University",
+   "federal_rd": 3618064000,
+   "doctoral_share": 39.9,
+   "masters_share": 63.3
+  },
+  {
+   "institution": "Georgia Institute of Technology",
+   "federal_rd": 1213430000,
+   "doctoral_share": 55.1,
+   "masters_share": 51.0
+  },
+  {
+   "institution": "University of Michigan",
+   "federal_rd": 1165494000,
+   "doctoral_share": 41.2,
+   "masters_share": 47.5
+  },
+  {
+   "institution": "University of California, San Diego",
+   "federal_rd": 1151518000,
+   "doctoral_share": 45.5,
+   "masters_share": 59.7
+  },
+  {
+   "institution": "University of Washington",
+   "federal_rd": 1135734000,
+   "doctoral_share": 32.9,
+   "masters_share": 46.0
+  },
+  {
+   "institution": "Columbia University in the City of New York",
+   "federal_rd": 1076805000,
+   "doctoral_share": 46.1,
+   "masters_share": 72.5
+  },
+  {
+   "institution": "Duke University",
+   "federal_rd": 1039631000,
+   "doctoral_share": 41.7,
+   "masters_share": 72.2
+  },
+  {
+   "institution": "University of California, San Francisco",
+   "federal_rd": 1036633000,
+   "doctoral_share": 13.8,
+   "masters_share": 16.9
+  },
+  {
+   "institution": "University of Pennsylvania",
+   "federal_rd": 1018602000,
+   "doctoral_share": 33.9,
+   "masters_share": 62.0
+  },
+  {
+   "institution": "Stanford University",
+   "federal_rd": 1012767000,
+   "doctoral_share": 36.3,
+   "masters_share": 35.3
+  },
+  {
+   "institution": "University of California, Los Angeles",
+   "federal_rd": 980183000,
+   "doctoral_share": 32.8,
+   "masters_share": 38.2
+  },
+  {
+   "institution": "University of Pittsburgh",
+   "federal_rd": 967978000,
+   "doctoral_share": 47.4,
+   "masters_share": 33.5
+  },
+  {
+   "institution": "University of North Carolina at Chapel Hill, The",
+   "federal_rd": 949913000,
+   "doctoral_share": 25.6,
+   "masters_share": 18.4
+  },
+  {
+   "institution": "University of Wisconsin-Madison",
+   "federal_rd": 930647000,
+   "doctoral_share": 41.6,
+   "masters_share": 55.4
+  },
+  {
+   "institution": "Pennsylvania State University, The",
+   "federal_rd": 858666000,
+   "doctoral_share": 57.2,
+   "masters_share": 41.7
+  }
+ ],
+ "highest_masters_share": [
+  {
+   "institution": "State University of New York, College of Optometry",
+   "masters_share": 100.0,
+   "masters_enrolled": 2,
+   "federal_rd": 2613000
+  },
+  {
+   "institution": "Illinois Institute of Technology",
+   "masters_share": 94.1,
+   "masters_enrolled": 2120,
+   "federal_rd": 31996000
+  },
+  {
+   "institution": "Clark University",
+   "masters_share": 92.3,
+   "masters_enrolled": 724,
+   "federal_rd": 3231000
+  },
+  {
+   "institution": "University of Arkansas at Little Rock",
+   "masters_share": 90.9,
+   "masters_enrolled": 265,
+   "federal_rd": 9624000
+  },
+  {
+   "institution": "Saint Louis University",
+   "masters_share": 88.9,
+   "masters_enrolled": 2637,
+   "federal_rd": 43867000
+  },
+  {
+   "institution": "Central Michigan University",
+   "masters_share": 88.7,
+   "masters_enrolled": 933,
+   "federal_rd": 11541000
+  },
+  {
+   "institution": "Western New England University",
+   "masters_share": 88.4,
+   "masters_enrolled": 129,
+   "federal_rd": 579000
+  },
+  {
+   "institution": "Purdue University",
+   "masters_share": 88.3,
+   "masters_enrolled": 206,
+   "federal_rd": 4036000
+  },
+  {
+   "institution": "University of North Texas, Denton",
+   "masters_share": 87.0,
+   "masters_enrolled": 4062,
+   "federal_rd": 43136000
+  },
+  {
+   "institution": "Pace University",
+   "masters_share": 86.6,
+   "masters_enrolled": 1376,
+   "federal_rd": 2067000
+  },
+  {
+   "institution": "Auburn University",
+   "masters_share": 86.5,
+   "masters_enrolled": 304,
+   "federal_rd": 446000
+  },
+  {
+   "institution": "University of Texas at Arlington, The",
+   "masters_share": 86.5,
+   "masters_enrolled": 2177,
+   "federal_rd": 62500000
+  },
+  {
+   "institution": "University of New Haven",
+   "masters_share": 84.5,
+   "masters_enrolled": 1624,
+   "federal_rd": 2836000
+  },
+  {
+   "institution": "Purdue University",
+   "masters_share": 83.1,
+   "masters_enrolled": 249,
+   "federal_rd": 265000
+  },
+  {
+   "institution": "Cornell University",
+   "masters_share": 83.0,
+   "masters_enrolled": 176,
+   "federal_rd": 792078000
+  }
+ ]
+}
