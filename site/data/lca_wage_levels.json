@@ -1,0 +1,483 @@
+{
+ "_comment": "_commentPrevailing-wage LEVEL promised on certified H-1B labour condition applications, by employer, pooled over the years listed. Level I is the entry rate for an occupation and Level IV the experienced one; filing at Level I or II is lawful and is also the cheapest legal way to fill a role. THIS IS WHAT WAS PROMISED, not what was paid. Cross-referenced against the DOL enforcement extract, which publishes only its LARGEST cases -- so 'in_enforcement_top' false means NOT IN THAT EXTRACT and is NOT EVIDENCE OF NO FINDINGS. THE CROSSING IS INCONCLUSIVE: six employers match, which cannot support a correlation in either direction. Enforcement is also not random: large employers and staffing firms are investigated more, and both skew low-level, so any association here CANNOT be read causally. Employers are grouped on the filed name with case and whitespace normalised only; nothing is fuzzy-matched. Employers with fewer than 50 filings are excluded because a handful of filings produces meaningless percentages.",
+ "source": "US DOL Office of Foreign Labor Certification, H-1B LCA disclosure data",
+ "source_url": "https://www.dol.gov/agencies/eta/foreign-labor/performance",
+ "years": [
+  2019,
+  2023
+ ],
+ "employers_scanned": 99508,
+ "employers_above_floor": 2973,
+ "filings_floor": 50,
+ "national_by_level": {
+  "Level I": 180331,
+  "Level II": 563090,
+  "Level III": 242975,
+  "Level IV": 163711
+ },
+ "national_low_level_pct": 64.6,
+ "largest_filers": [
+  {
+   "employer": "COGNIZANT TECHNOLOGY SOLUTIONS US CORP",
+   "filings": 43264,
+   "low_level_pct": 50.7,
+   "level_i": 971,
+   "level_ii": 20948,
+   "level_iii": 16560,
+   "level_iv": 4785,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "INFOSYS LIMITED",
+   "filings": 30496,
+   "low_level_pct": 71.2,
+   "level_i": 2,
+   "level_ii": 21704,
+   "level_iii": 6070,
+   "level_iv": 2720,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "TATA CONSULTANCY SERVICES LIMITED",
+   "filings": 21903,
+   "low_level_pct": 86.2,
+   "level_i": 0,
+   "level_ii": 18882,
+   "level_iii": 2891,
+   "level_iv": 130,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "ERNST & YOUNG U.S. LLP",
+   "filings": 21087,
+   "low_level_pct": 60.0,
+   "level_i": 3516,
+   "level_ii": 9142,
+   "level_iii": 6181,
+   "level_iv": 2248,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "GOOGLE LLC",
+   "filings": 18943,
+   "low_level_pct": 61.3,
+   "level_i": 118,
+   "level_ii": 11501,
+   "level_iii": 6088,
+   "level_iv": 1236,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "AMAZON.COM SERVICES LLC",
+   "filings": 15646,
+   "low_level_pct": 70.6,
+   "level_i": 3698,
+   "level_ii": 7352,
+   "level_iii": 3944,
+   "level_iv": 652,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "MICROSOFT CORPORATION",
+   "filings": 15120,
+   "low_level_pct": 56.3,
+   "level_i": 1714,
+   "level_ii": 6799,
+   "level_iii": 5265,
+   "level_iv": 1342,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "CAPGEMINI AMERICA INC",
+   "filings": 11388,
+   "low_level_pct": 56.6,
+   "level_i": 72,
+   "level_ii": 6369,
+   "level_iii": 4325,
+   "level_iv": 622,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "DELOITTE CONSULTING LLP",
+   "filings": 11178,
+   "low_level_pct": 69.1,
+   "level_i": 2986,
+   "level_ii": 4737,
+   "level_iii": 2705,
+   "level_iv": 750,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "ACCENTURE LLP",
+   "filings": 9575,
+   "low_level_pct": 43.9,
+   "level_i": 63,
+   "level_ii": 4145,
+   "level_iii": 3223,
+   "level_iv": 2144,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "WIPRO LIMITED",
+   "filings": 7280,
+   "low_level_pct": 90.0,
+   "level_i": 0,
+   "level_ii": 6554,
+   "level_iii": 708,
+   "level_iv": 18,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "IBM CORPORATION",
+   "filings": 6825,
+   "low_level_pct": 51.6,
+   "level_i": 2,
+   "level_ii": 3521,
+   "level_iii": 2188,
+   "level_iv": 1114,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "AMAZON.COM SERVICES, INC.",
+   "filings": 6477,
+   "low_level_pct": 84.9,
+   "level_i": 1694,
+   "level_ii": 3808,
+   "level_iii": 849,
+   "level_iv": 126,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "APPLE INC.",
+   "filings": 5976,
+   "low_level_pct": 12.3,
+   "level_i": 21,
+   "level_ii": 714,
+   "level_iii": 1909,
+   "level_iv": 3332,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "AMAZON WEB SERVICES, INC.",
+   "filings": 5815,
+   "low_level_pct": 73.5,
+   "level_i": 1766,
+   "level_ii": 2506,
+   "level_iii": 1375,
+   "level_iv": 168,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "WAL-MART ASSOCIATES, INC.",
+   "filings": 5780,
+   "low_level_pct": 43.2,
+   "level_i": 352,
+   "level_ii": 2143,
+   "level_iii": 2852,
+   "level_iv": 433,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "JPMORGAN CHASE & CO.",
+   "filings": 5227,
+   "low_level_pct": 22.1,
+   "level_i": 121,
+   "level_ii": 1034,
+   "level_iii": 1608,
+   "level_iv": 2464,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "INTEL CORPORATION",
+   "filings": 5162,
+   "low_level_pct": 40.9,
+   "level_i": 0,
+   "level_ii": 2110,
+   "level_iii": 2755,
+   "level_iv": 297,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "HCL AMERICA, INC.",
+   "filings": 4615,
+   "low_level_pct": 54.3,
+   "level_i": 335,
+   "level_ii": 2172,
+   "level_iii": 1526,
+   "level_iv": 582,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "META PLATFORMS, INC.",
+   "filings": 4334,
+   "low_level_pct": 10.3,
+   "level_i": 43,
+   "level_ii": 404,
+   "level_iii": 1182,
+   "level_iv": 2705,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "HCL AMERICA INC",
+   "filings": 4305,
+   "low_level_pct": 43.6,
+   "level_i": 172,
+   "level_ii": 1707,
+   "level_iii": 1632,
+   "level_iv": 794,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "LARSEN & TOUBRO INFOTECH LIMITED",
+   "filings": 3940,
+   "low_level_pct": 91.3,
+   "level_i": 21,
+   "level_ii": 3577,
+   "level_iii": 334,
+   "level_iv": 8,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "QUALCOMM TECHNOLOGIES, INC.",
+   "filings": 3834,
+   "low_level_pct": 53.8,
+   "level_i": 30,
+   "level_ii": 2034,
+   "level_iii": 1061,
+   "level_iv": 709,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "MPHASIS CORPORATION",
+   "filings": 3139,
+   "low_level_pct": 97.0,
+   "level_i": 660,
+   "level_ii": 2384,
+   "level_iii": 89,
+   "level_iv": 6,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "TECH MAHINDRA (AMERICAS),INC.",
+   "filings": 2878,
+   "low_level_pct": 100.0,
+   "level_i": 1,
+   "level_ii": 2877,
+   "level_iii": 0,
+   "level_iv": 0,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "L&T TECHNOLOGY SERVICES LIMITED",
+   "filings": 2533,
+   "low_level_pct": 94.1,
+   "level_i": 0,
+   "level_ii": 2383,
+   "level_iii": 143,
+   "level_iv": 7,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "RANDSTAD TECHNOLOGIES, LLC",
+   "filings": 2427,
+   "low_level_pct": 46.8,
+   "level_i": 1,
+   "level_ii": 1134,
+   "level_iii": 1292,
+   "level_iv": 0,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "PRICEWATERHOUSECOOPERS ADVISORY SERVICES LLC",
+   "filings": 2387,
+   "low_level_pct": 62.3,
+   "level_i": 271,
+   "level_ii": 1215,
+   "level_iii": 284,
+   "level_iv": 617,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "COMPUNNEL SOFTWARE GROUP, INC",
+   "filings": 2354,
+   "low_level_pct": 80.6,
+   "level_i": 0,
+   "level_ii": 1898,
+   "level_iii": 425,
+   "level_iv": 31,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "LTIMINDTREE LIMITED",
+   "filings": 2308,
+   "low_level_pct": 92.2,
+   "level_i": 9,
+   "level_ii": 2120,
+   "level_iii": 177,
+   "level_iv": 2,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "DELOITTE & TOUCHE LLP",
+   "filings": 2264,
+   "low_level_pct": 78.4,
+   "level_i": 888,
+   "level_ii": 886,
+   "level_iii": 27,
+   "level_iv": 463,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "CISCO SYSTEMS, INC.",
+   "filings": 2253,
+   "low_level_pct": 34.2,
+   "level_i": 1,
+   "level_ii": 770,
+   "level_iii": 1165,
+   "level_iv": 317,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "CITIBANK, N.A.",
+   "filings": 2235,
+   "low_level_pct": 23.4,
+   "level_i": 56,
+   "level_ii": 468,
+   "level_iii": 258,
+   "level_iv": 1453,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "GOLDMAN SACHS & CO. LLC",
+   "filings": 2170,
+   "low_level_pct": 71.8,
+   "level_i": 834,
+   "level_ii": 725,
+   "level_iii": 429,
+   "level_iv": 182,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "SALESFORCE, INC.",
+   "filings": 2091,
+   "low_level_pct": 33.5,
+   "level_i": 26,
+   "level_ii": 674,
+   "level_iii": 820,
+   "level_iv": 571,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "AMAZON DEVELOPMENT CENTER U.S., INC.",
+   "filings": 2043,
+   "low_level_pct": 85.8,
+   "level_i": 767,
+   "level_ii": 985,
+   "level_iii": 268,
+   "level_iv": 23,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "UBER TECHNOLOGIES, INC.",
+   "filings": 1997,
+   "low_level_pct": 57.3,
+   "level_i": 24,
+   "level_ii": 1121,
+   "level_iii": 472,
+   "level_iv": 380,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "LINKEDIN CORPORATION",
+   "filings": 1904,
+   "low_level_pct": 33.7,
+   "level_i": 7,
+   "level_ii": 635,
+   "level_iii": 834,
+   "level_iv": 428,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "VIRTUSA CORPORATION",
+   "filings": 1880,
+   "low_level_pct": 63.9,
+   "level_i": 278,
+   "level_ii": 924,
+   "level_iii": 650,
+   "level_iv": 28,
+   "in_enforcement_top": false
+  },
+  {
+   "employer": "VMWARE, INC.",
+   "filings": 1798,
+   "low_level_pct": 40.4,
+   "level_i": 37,
+   "level_ii": 690,
+   "level_iii": 621,
+   "level_iv": 450,
+   "in_enforcement_top": false
+  }
+ ],
+ "in_enforcement_extract": [
+  {
+   "employer": "IDEXCEL, INC.",
+   "filings": 277,
+   "low_level_pct": 69.7,
+   "level_i": 25,
+   "level_ii": 168,
+   "level_iii": 82,
+   "level_iv": 2,
+   "in_enforcement_top": true
+  },
+  {
+   "employer": "NEW YORK UNIVERSITY SCHOOL OF MEDICINE",
+   "filings": 116,
+   "low_level_pct": 80.2,
+   "level_i": 62,
+   "level_ii": 31,
+   "level_iii": 18,
+   "level_iv": 5,
+   "in_enforcement_top": true
+  },
+  {
+   "employer": "BYTON NORTH AMERICA CORPORATION",
+   "filings": 91,
+   "low_level_pct": 50.5,
+   "level_i": 12,
+   "level_ii": 34,
+   "level_iii": 25,
+   "level_iv": 20,
+   "in_enforcement_top": true
+  },
+  {
+   "employer": "SMARTSOFT INTERNATIONAL, INC.",
+   "filings": 90,
+   "low_level_pct": 98.9,
+   "level_i": 0,
+   "level_ii": 89,
+   "level_iii": 1,
+   "level_iv": 0,
+   "in_enforcement_top": true
+  },
+  {
+   "employer": "SRIVEN SYSTEMS, INC",
+   "filings": 58,
+   "low_level_pct": 67.2,
+   "level_i": 0,
+   "level_ii": 39,
+   "level_iii": 19,
+   "level_iv": 0,
+   "in_enforcement_top": true
+  },
+  {
+   "employer": "EBS HEALTHCARE, INC.",
+   "filings": 53,
+   "low_level_pct": 98.1,
+   "level_i": 0,
+   "level_ii": 52,
+   "level_iii": 0,
+   "level_iv": 1,
+   "in_enforcement_top": true
+  }
+ ]
+}

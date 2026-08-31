@@ -8,45 +8,46 @@
   "India",
   "Philippines"
  ],
+ "monthly_bulletins_added": 4,
  "latest": {
   "China": {
    "EB-1": {
-    "month": "2023-09",
-    "priority_date": "2022-02-01",
+    "month": "2026-08",
+    "priority_date": "2023-07-01",
     "status": null,
-    "wait_years": 1.6
+    "wait_years": 3.1
    },
    "EB-2": {
-    "month": "2023-09",
-    "priority_date": "2019-07-08",
+    "month": "2026-08",
+    "priority_date": "2021-09-01",
     "status": null,
-    "wait_years": 4.2
+    "wait_years": 4.9
    },
    "EB-3": {
-    "month": "2023-09",
-    "priority_date": "2019-09-01",
+    "month": "2026-08",
+    "priority_date": "2022-01-01",
     "status": null,
-    "wait_years": 4.0
+    "wait_years": 4.6
    }
   },
   "India": {
    "EB-1": {
-    "month": "2023-09",
-    "priority_date": "2012-01-01",
+    "month": "2026-08",
+    "priority_date": "2022-10-15",
     "status": null,
-    "wait_years": 11.7
+    "wait_years": 3.8
    },
    "EB-2": {
-    "month": "2023-09",
-    "priority_date": "2011-01-01",
+    "month": "2026-06",
+    "priority_date": "2013-09-01",
     "status": null,
     "wait_years": 12.7
    },
    "EB-3": {
-    "month": "2023-09",
-    "priority_date": "2009-01-01",
+    "month": "2026-08",
+    "priority_date": "2014-01-01",
     "status": null,
-    "wait_years": 14.7
+    "wait_years": 12.6
    }
   },
   "All chargeability areas": {
@@ -63,10 +64,10 @@
     "wait_years": 1.2
    },
    "EB-3": {
-    "month": "2023-09",
-    "priority_date": "2020-05-01",
+    "month": "2026-08",
+    "priority_date": "2024-09-01",
     "status": null,
-    "wait_years": 3.3
+    "wait_years": 1.9
    }
   },
   "Philippines": {
@@ -2012,6 +2013,26 @@
      "priority_date": "2022-02-01",
      "status": null,
      "wait_years": 1.6
+    },
+    "2026-08": {
+     "priority_date": "2023-07-01",
+     "status": null,
+     "wait_years": 3.1
+    },
+    "2026-07": {
+     "priority_date": "2023-06-01",
+     "status": null,
+     "wait_years": 3.1
+    },
+    "2026-06": {
+     "priority_date": "2023-04-01",
+     "status": null,
+     "wait_years": 3.2
+    },
+    "2026-05": {
+     "priority_date": "2023-04-01",
+     "status": null,
+     "wait_years": 3.1
     }
    },
    "EB-2": {
@@ -3934,6 +3955,26 @@
      "priority_date": "2019-07-08",
      "status": null,
      "wait_years": 4.2
+    },
+    "2026-08": {
+     "priority_date": "2021-09-01",
+     "status": null,
+     "wait_years": 4.9
+    },
+    "2026-07": {
+     "priority_date": "2021-09-01",
+     "status": null,
+     "wait_years": 4.8
+    },
+    "2026-06": {
+     "priority_date": "2021-09-01",
+     "status": null,
+     "wait_years": 4.7
+    },
+    "2026-05": {
+     "priority_date": "2021-09-01",
+     "status": null,
+     "wait_years": 4.7
     }
    },
    "EB-3": {
@@ -5856,6 +5897,26 @@
      "priority_date": "2019-09-01",
      "status": null,
      "wait_years": 4.0
+    },
+    "2026-08": {
+     "priority_date": "2022-01-01",
+     "status": null,
+     "wait_years": 4.6
+    },
+    "2026-07": {
+     "priority_date": "2021-12-22",
+     "status": null,
+     "wait_years": 4.5
+    },
+    "2026-06": {
+     "priority_date": "2021-08-01",
+     "status": null,
+     "wait_years": 4.8
+    },
+    "2026-05": {
+     "priority_date": "2021-06-15",
+     "status": null,
+     "wait_years": 4.9
     }
    }
   },
@@ -7780,6 +7841,26 @@
      "priority_date": "2012-01-01",
      "status": null,
      "wait_years": 11.7
+    },
+    "2026-08": {
+     "priority_date": "2022-10-15",
+     "status": null,
+     "wait_years": 3.8
+    },
+    "2026-07": {
+     "priority_date": "2022-10-15",
+     "status": null,
+     "wait_years": 3.7
+    },
+    "2026-06": {
+     "priority_date": "2022-12-15",
+     "status": null,
+     "wait_years": 3.5
+    },
+    "2026-05": {
+     "priority_date": "2023-04-01",
+     "status": null,
+     "wait_years": 3.1
     }
    },
    "EB-2": {
@@ -9702,6 +9783,26 @@
      "priority_date": "2011-01-01",
      "status": null,
      "wait_years": 12.7
+    },
+    "2026-08": {
+     "priority_date": null,
+     "status": "U",
+     "wait_years": null
+    },
+    "2026-07": {
+     "priority_date": null,
+     "status": "U",
+     "wait_years": null
+    },
+    "2026-06": {
+     "priority_date": "2013-09-01",
+     "status": null,
+     "wait_years": 12.7
+    },
+    "2026-05": {
+     "priority_date": "2014-07-15",
+     "status": null,
+     "wait_years": 11.8
     }
    },
    "EB-3": {
@@ -11624,6 +11725,26 @@
      "priority_date": "2009-01-01",
      "status": null,
      "wait_years": 14.7
+    },
+    "2026-08": {
+     "priority_date": "2014-01-01",
+     "status": null,
+     "wait_years": 12.6
+    },
+    "2026-07": {
+     "priority_date": "2014-01-01",
+     "status": null,
+     "wait_years": 12.5
+    },
+    "2026-06": {
+     "priority_date": "2013-12-15",
+     "status": null,
+     "wait_years": 12.5
+    },
+    "2026-05": {
+     "priority_date": "2013-11-15",
+     "status": null,
+     "wait_years": 12.5
     }
    }
   },
@@ -13548,6 +13669,26 @@
      "priority_date": "2023-08-01",
      "status": null,
      "wait_years": 0.1
+    },
+    "2026-08": {
+     "priority_date": null,
+     "status": "C",
+     "wait_years": null
+    },
+    "2026-07": {
+     "priority_date": null,
+     "status": "C",
+     "wait_years": null
+    },
+    "2026-06": {
+     "priority_date": null,
+     "status": "C",
+     "wait_years": null
+    },
+    "2026-05": {
+     "priority_date": null,
+     "status": "C",
+     "wait_years": null
     }
    },
    "EB-2": {
@@ -15470,6 +15611,26 @@
      "priority_date": "2022-07-01",
      "status": null,
      "wait_years": 1.2
+    },
+    "2026-08": {
+     "priority_date": null,
+     "status": "C",
+     "wait_years": null
+    },
+    "2026-07": {
+     "priority_date": null,
+     "status": "C",
+     "wait_years": null
+    },
+    "2026-06": {
+     "priority_date": null,
+     "status": "C",
+     "wait_years": null
+    },
+    "2026-05": {
+     "priority_date": null,
+     "status": "C",
+     "wait_years": null
     }
    },
    "EB-3": {
@@ -17392,6 +17553,26 @@
      "priority_date": "2020-05-01",
      "status": null,
      "wait_years": 3.3
+    },
+    "2026-08": {
+     "priority_date": "2024-09-01",
+     "status": null,
+     "wait_years": 1.9
+    },
+    "2026-07": {
+     "priority_date": "2024-08-01",
+     "status": null,
+     "wait_years": 1.9
+    },
+    "2026-06": {
+     "priority_date": "2024-06-01",
+     "status": null,
+     "wait_years": 2.0
+    },
+    "2026-05": {
+     "priority_date": "2024-06-01",
+     "status": null,
+     "wait_years": 1.9
     }
    }
   },
