@@ -1,5 +1,5 @@
 {
- "_comment": "Nonimmigrant visa issuances by class and nationality, fiscal years 1997-2024, from the State Department detail tables. AN ISSUANCE IS NOT A PERSON AND NOT AN ARRIVAL: one person may be issued several visas over the years, and a visa is permission to travel and seek admission, not admission itself. Nationality is the applicant's, not the consulate's country. Class codes are written with hyphens in the early sheets and without in the later ones, and are normalised here. This is the most current series in the project -- State publishes through the last fiscal year while IPEDS and the SED run one to two years behind.",
+ "_comment": "Nonimmigrant visa issuances by class and nationality, fiscal years 1997-2024, from the State Department detail tables. AN ISSUANCE IS NOT A PERSON AND NOT AN ARRIVAL: one person may be issued several visas over the years, and a visa is permission to travel and seek admission, not admission itself -- and a visa is RE-STAMPED for travel, so a worker who goes home and returns generates another issuance. That inflates the count for nationalities whose workers travel most, and is the first thing to raise about the H-1B-per-F-1 ratio below. Nationality is the applicant's, not the consulate's country. Class codes are written with hyphens in the early sheets and without in the later ones, and are normalised here. This is the most current series in the project -- State publishes through the last fiscal year while IPEDS and the SED run one to two years behind.",
  "source": "US Department of State, Nonimmigrant Visa Detail Tables, FY1997-2024",
  "source_url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-statistics/nonimmigrant-visa-statistics.html",
  "classes": {
@@ -782,6 +782,68 @@
    }
   ]
  },
+ "h1b_against_student_inflow": [
+  {
+   "country": "Philippines",
+   "h1b": 3562,
+   "f1": 1020,
+   "h1b_per_f1": 3.49
+  },
+  {
+   "country": "India",
+   "h1b": 150647,
+   "f1": 86067,
+   "h1b_per_f1": 1.75
+  },
+  {
+   "country": "China - mainland",
+   "h1b": 31735,
+   "f1": 82654,
+   "h1b_per_f1": 0.38
+  },
+  {
+   "country": "Pakistan",
+   "h1b": 1664,
+   "f1": 4483,
+   "h1b_per_f1": 0.37
+  },
+  {
+   "country": "Great Britain and Northern Ireland",
+   "h1b": 1462,
+   "f1": 4655,
+   "h1b_per_f1": 0.31
+  },
+  {
+   "country": "Mexico",
+   "h1b": 1954,
+   "f1": 6422,
+   "h1b_per_f1": 0.3
+  },
+  {
+   "country": "Taiwan",
+   "h1b": 1830,
+   "f1": 7365,
+   "h1b_per_f1": 0.25
+  },
+  {
+   "country": "Brazil",
+   "h1b": 1801,
+   "f1": 7431,
+   "h1b_per_f1": 0.24
+  },
+  {
+   "country": "Korea, South",
+   "h1b": 2289,
+   "f1": 14786,
+   "h1b_per_f1": 0.15
+  },
+  {
+   "country": "France",
+   "h1b": 974,
+   "f1": 7553,
+   "h1b_per_f1": 0.13
+  }
+ ],
  "population_source": "World Bank, SP.POP.TOTL, 2024",
  "no_population_record": [
   "Taiwan"

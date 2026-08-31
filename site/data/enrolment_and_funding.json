@@ -103,6 +103,134 @@
    }
   ]
  },
+ "federal_rd_by_doctoral_visa_share": [
+  {
+   "doctoral_visa_share": "0-25%",
+   "institutions": 72,
+   "federal_rd": 3694533000,
+   "federal_rd_pct_of_matched": 6.3,
+   "doctoral_students": 12586
+  },
+  {
+   "doctoral_visa_share": "25-50%",
+   "institutions": 162,
+   "federal_rd": 42004062000,
+   "federal_rd_pct_of_matched": 72.1,
+   "doctoral_students": 157612
+  },
+  {
+   "doctoral_visa_share": "50-75%",
+   "institutions": 87,
+   "federal_rd": 12223959000,
+   "federal_rd_pct_of_matched": 21.0,
+   "doctoral_students": 68277
+  },
+  {
+   "doctoral_visa_share": "75-100%",
+   "institutions": 19,
+   "federal_rd": 306199000,
+   "federal_rd_pct_of_matched": 0.5,
+   "doctoral_students": 1920
+  }
+ ],
+ "majority_foreign_doctoral": {
+  "institutions": 106,
+  "federal_rd": 12530158000,
+  "federal_rd_pct_of_matched": 21.5,
+  "doctoral_students": 70197,
+  "leading": [
+   {
+    "institution": "Georgia Institute of Technology-Main Campus",
+    "federal_rd": 1213430000,
+    "doctoral_share": 55.1,
+    "doctoral_total": 3618
+   },
+   {
+    "institution": "Pennsylvania State University-Main Campus",
+    "federal_rd": 858666000,
+    "doctoral_share": 57.2,
+    "doctoral_total": 3936
+   },
+   {
+    "institution": "Washington University in St Louis",
+    "federal_rd": 821852000,
+    "doctoral_share": 50.0,
+    "doctoral_total": 2067
+   },
+   {
+    "institution": "New York University",
+    "federal_rd": 805148000,
+    "doctoral_share": 55.3,
+    "doctoral_total": 2188
+   },
+   {
+    "institution": "University of Southern California",
+    "federal_rd": 739426000,
+    "doctoral_share": 56.8,
+    "doctoral_total": 2867
+   },
+   {
+    "institution": "University of Florida",
+    "federal_rd": 581252000,
+    "doctoral_share": 53.3,
+    "doctoral_total": 3145
+   },
+   {
+    "institution": "University of Illinois Urbana-Champaign",
+    "federal_rd": 511574000,
+    "doctoral_share": 62.3,
+    "doctoral_total": 4837
+   },
+   {
+    "institution": "University of Cincinnati-Main Campus",
+    "federal_rd": 411205000,
+    "doctoral_share": 51.5,
+    "doctoral_total": 1156
+   },
+   {
+    "institution": "Arizona State University Campus Immersion",
+    "federal_rd": 396431000,
+    "doctoral_share": 52.0,
+    "doctoral_total": 2219
+   },
+   {
+    "institution": "Miami University-Oxford",
+    "federal_rd": 322331000,
+    "doctoral_share": 51.3,
+    "doctoral_total": 199
+   },
+   {
+    "institution": "Virginia Polytechnic Institute and State University",
+    "federal_rd": 308282000,
+    "doctoral_share": 58.5,
+    "doctoral_total": 2575
+   },
+   {
+    "institution": "University of Illinois Chicago",
+    "federal_rd": 299986000,
+    "doctoral_share": 52.7,
+    "doctoral_total": 1720
+   },
+   {
+    "institution": "Carnegie Mellon University",
+    "federal_rd": 280169000,
+    "doctoral_share": 55.3,
+    "doctoral_total": 2079
+   },
+   {
+    "institution": "University of Connecticut",
+    "federal_rd": 253110000,
+    "doctoral_share": 50.9,
+    "doctoral_total": 1981
+   },
+   {
+    "institution": "University of Dayton",
+    "federal_rd": 241753000,
+    "doctoral_share": 55.7,
+    "doctoral_total": 115
+   }
+  ]
+ },
  "largest_federal_recipients": [
   {
    "institution": "Johns Hopkins University",
