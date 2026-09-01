@@ -155,14 +155,14 @@
   },
   "2006": {
    "E3": 1918,
-   "F1": 273925,
-   "F2": 20750,
-   "H1B": 135435,
-   "H4": 74333,
-   "J1": 309993,
-   "L1": 72616,
+   "F1": 273870,
+   "F2": 20748,
+   "H1B": 135421,
+   "H4": 74326,
+   "J1": 309951,
+   "L1": 72613,
    "M1": 7227,
-   "O1": 6962,
+   "O1": 6961,
    "TN": 2972
   },
   "2007": {
@@ -175,7 +175,7 @@
    "L1": 84532,
    "M1": 9221,
    "O1": 7653,
-   "TN": 8182
+   "TN": 4091
   },
   "2008": {
    "E3": 2961,
@@ -187,7 +187,7 @@
    "L1": 84078,
    "M1": 10475,
    "O1": 9014,
-   "TN": 9522
+   "TN": 4761
   },
   "2009": {
    "E3": 2191,
@@ -335,27 +335,27 @@
   },
   "2021": {
    "E3": 2309,
-   "F1": 357899,
-   "F2": 19823,
+   "F1": 357839,
+   "F2": 19820,
    "H1B": 61569,
    "H4": 55444,
-   "J1": 129682,
-   "L1": 24868,
+   "J1": 129662,
+   "L1": 24863,
    "M1": 4554,
    "O1": 7294,
    "TN": 24903
   },
   "2022": {
-   "E3": 9462,
-   "F1": 822262,
-   "F2": 51774,
-   "H1B": 412004,
-   "H4": 274492,
-   "J1": 568972,
-   "L1": 145916,
-   "M1": 10542,
-   "O1": 38204,
-   "TN": 66722
+   "E3": 4731,
+   "F1": 411131,
+   "F2": 25887,
+   "H1B": 206002,
+   "H4": 137246,
+   "J1": 284486,
+   "L1": 72958,
+   "M1": 5271,
+   "O1": 19102,
+   "TN": 33361
   },
   "2023": {
    "E3": 4434,
@@ -5696,29 +5696,6 @@
     "2023": 11,
     "2024": 10
    },
-   "Totals for Africa": {
-    "2022": 27456
-   },
-   "Totals for Asia": {
-    "2022": 274880
-   },
-   "Totals for Europe": {
-    "2022": 61250
-   },
-   "Totals for North America": {
-    "2022": 17183
-   },
-   "Totals for Oceania": {
-    "2022": 2477
-   },
-   "Totals for South America": {
-    "2022": 27806
-   },
-   "Totals for Unknown": {
-    "2006": 55,
-    "2021": 60,
-    "2022": 79
-   },
    "Trinidad and Tobago": {
     "1997": 786,
     "1998": 779,
@@ -10686,29 +10663,6 @@
     "2020": 1,
     "2023": 2,
     "2024": 9
-   },
-   "Totals for Africa": {
-    "2022": 3325
-   },
-   "Totals for Asia": {
-    "2022": 15195
-   },
-   "Totals for Europe": {
-    "2022": 2269
-   },
-   "Totals for North America": {
-    "2022": 1098
-   },
-   "Totals for Oceania": {
-    "2022": 72
-   },
-   "Totals for South America": {
-    "2022": 3924
-   },
-   "Totals for Unknown": {
-    "2006": 2,
-    "2021": 3,
-    "2022": 4
    },
    "Trinidad and Tobago": {
     "1997": 25,
@@ -16452,29 +16406,6 @@
     "2023": 81,
     "2024": 38
    },
-   "Totals for Africa": {
-    "2022": 11316
-   },
-   "Totals for Asia": {
-    "2022": 66137
-   },
-   "Totals for Europe": {
-    "2022": 122473
-   },
-   "Totals for North America": {
-    "2022": 33226
-   },
-   "Totals for Oceania": {
-    "2022": 2810
-   },
-   "Totals for South America": {
-    "2022": 48499
-   },
-   "Totals for Unknown": {
-    "2006": 42,
-    "2021": 20,
-    "2022": 25
-   },
    "Trinidad and Tobago": {
     "1997": 112,
     "1998": 134,
@@ -21821,28 +21752,6 @@
     "2009": 2,
     "2024": 1
    },
-   "Totals for Africa": {
-    "2022": 2504
-   },
-   "Totals for Asia": {
-    "2022": 184006
-   },
-   "Totals for Europe": {
-    "2022": 10867
-   },
-   "Totals for North America": {
-    "2022": 3465
-   },
-   "Totals for Oceania": {
-    "2022": 670
-   },
-   "Totals for South America": {
-    "2022": 4487
-   },
-   "Totals for Unknown": {
-    "2006": 14,
-    "2022": 3
-   },
    "Trinidad and Tobago": {
     "1997": 183,
     "1998": 187,
@@ -26623,28 +26532,6 @@
     "2016": 1,
     "2019": 1
    },
-   "Totals for Africa": {
-    "2022": 1617
-   },
-   "Totals for Asia": {
-    "2022": 123920
-   },
-   "Totals for Europe": {
-    "2022": 3724
-   },
-   "Totals for North America": {
-    "2022": 3865
-   },
-   "Totals for Oceania": {
-    "2022": 242
-   },
-   "Totals for South America": {
-    "2022": 3877
-   },
-   "Totals for Unknown": {
-    "2006": 7,
-    "2022": 1
-   },
    "Trinidad and Tobago": {
     "1997": 75,
     "1998": 72,
@@ -31385,29 +31272,6 @@
     "1999": 1,
     "2007": 1
    },
-   "Totals for Africa": {
-    "2022": 1768
-   },
-   "Totals for Asia": {
-    "2022": 32908
-   },
-   "Totals for Europe": {
-    "2022": 22403
-   },
-   "Totals for North America": {
-    "2022": 5557
-   },
-   "Totals for Oceania": {
-    "2022": 987
-   },
-   "Totals for South America": {
-    "2022": 9328
-   },
-   "Totals for Unknown": {
-    "2006": 3,
-    "2021": 5,
-    "2022": 7
-   },
    "Trinidad and Tobago": {
     "1997": 35,
     "1998": 36,
@@ -35552,28 +35416,6 @@
     "2015": 1,
     "2018": 1
    },
-   "Totals for Africa": {
-    "2022": 518
-   },
-   "Totals for Asia": {
-    "2022": 3347
-   },
-   "Totals for Europe": {
-    "2022": 10670
-   },
-   "Totals for North America": {
-    "2022": 1074
-   },
-   "Totals for Oceania": {
-    "2022": 996
-   },
-   "Totals for South America": {
-    "2022": 2495
-   },
-   "Totals for Unknown": {
-    "2006": 1,
-    "2022": 2
-   },
    "Trinidad and Tobago": {
     "1998": 4,
     "1999": 4,
@@ -35940,10 +35782,6 @@
    "France": {
     "1999": 1
    },
-   "Grand Totals": {
-    "2007": 4091,
-    "2008": 4761
-   },
    "India": {
     "2020": 1
    },
@@ -35982,12 +35820,6 @@
    },
    "Pakistan": {
     "2020": 1
-   },
-   "Totals for North America": {
-    "2022": 33360
-   },
-   "Totals for South America": {
-    "2022": 1
    }
   },
   "E-3 Australian specialty": {
@@ -36039,9 +35871,6 @@
    },
    "Poland": {
     "2019": 1
-   },
-   "Totals for Oceania": {
-    "2022": 4731
    }
   },
   "M-1 vocational student": {
@@ -40156,27 +39985,6 @@
    },
    "Tonga": {
     "2001": 1
-   },
-   "Totals for Africa": {
-    "2022": 250
-   },
-   "Totals for Asia": {
-    "2022": 2590
-   },
-   "Totals for Europe": {
-    "2022": 1361
-   },
-   "Totals for North America": {
-    "2022": 424
-   },
-   "Totals for Oceania": {
-    "2022": 95
-   },
-   "Totals for South America": {
-    "2022": 550
-   },
-   "Totals for Unknown": {
-    "2022": 1
    },
    "Trinidad and Tobago": {
     "1997": 28,
