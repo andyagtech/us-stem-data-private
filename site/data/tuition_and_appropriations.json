@@ -1,0 +1,6626 @@
+{
+ "_comment": "Published IN-STATE tuition and required fees at PUBLIC institutions (IPEDS IC*_AY) beside state education appropriations per full-time-equivalent student (SHEEO SHEF), both in constant 2024 dollars -- tuition deflated by CPI-U from the BLS API, appropriations by SHEEO's own HECA index, which is an index and therefore DIVIDES. TUITION HERE IS A PUBLISHED RATE: the sticker before any discount, waiver, scholarship or aid, so it is what a student is quoted and not what the average student pays. Two series moving apart is a substitution PATTERN, NOT A DEMONSTRATED CAUSE -- legislatures set one and boards the other, both responding to enrolment, cost and politics at once. Public institutions only, because in-state tuition is a public-sector concept.",
+ "sources": {
+  "tuition": "NCES IPEDS Institutional Characteristics, academic year rates",
+  "appropriations": "SHEEO State Higher Education Finance, FY2024 report",
+  "deflator": "BLS CPI-U, CUUR0000SA0, annual average"
+ },
+ "source_url": "https://nces.ed.gov/ipeds/use-the-data",
+ "base_year": 2024,
+ "years": [
+  2000,
+  2001,
+  2002,
+  2003,
+  2004,
+  2005,
+  2006,
+  2007,
+  2008,
+  2009,
+  2010,
+  2011,
+  2012,
+  2013,
+  2014,
+  2015,
+  2016,
+  2017,
+  2018,
+  2019,
+  2020,
+  2021,
+  2022,
+  2023
+ ],
+ "institutions": 1740,
+ "featured_institutions": [
+  {
+   "unitid": "236948",
+   "institution": "University of Washington-Seattle Campus",
+   "state": "WA",
+   "first_year": 2000,
+   "last_year": 2023,
+   "first": 7343.09,
+   "last": 13015.9,
+   "change_pct": 77.3,
+   "series": {
+    "2000": 7343.09,
+    "2001": 7292.25,
+    "2002": 8083.73,
+    "2003": 8469.6,
+    "2004": 8777.98,
+    "2005": 9010.73,
+    "2006": 9312.64,
+    "2007": 9659.91,
+    "2008": 9910.28,
+    "2009": 11246.99,
+    "2010": 12517.0,
+    "2011": 14745.99,
+    "2012": 16918.61,
+    "2013": 16693.22,
+    "2014": 16422.77,
+    "2015": 15668.77,
+    "2016": 14054.16,
+    "2017": 14043.83,
+    "2018": 14000.06,
+    "2019": 14067.46,
+    "2020": 14235.4,
+    "2021": 13979.81,
+    "2022": 13121.87,
+    "2023": 13015.9
+   }
+  },
+  {
+   "unitid": "170976",
+   "institution": "University of Michigan-Ann Arbor",
+   "state": "MI",
+   "first_year": 2000,
+   "last_year": 2023,
+   "first": 11864.44,
+   "last": 18849.01,
+   "change_pct": 58.9,
+   "series": {
+    "2000": 11864.44,
+    "2001": 12283.64,
+    "2002": 13051.49,
+    "2003": 13596.03,
+    "2004": 13618.65,
+    "2005": 14797.83,
+    "2006": 15128.96,
+    "2007": 15805.33,
+    "2008": 16080.53,
+    "2009": 17047.41,
+    "2010": 17028.36,
+    "2011": 18738.59,
+    "2012": 18880.58,
+    "2013": 18820.77,
+    "2014": 18996.04,
+    "2015": 19493.65,
+    "2016": 20010.16,
+    "2017": 20169.93,
+    "2018": 20268.67,
+    "2019": 20294.44,
+    "2020": 20541.64,
+    "2021": 19903.51,
+    "2022": 19064.33,
+    "2023": 18849.01
+   }
+  },
+  {
+   "unitid": "110635",
+   "institution": "University of California-Berkeley",
+   "state": "CA",
+   "first_year": 2009,
+   "last_year": 2023,
+   "first": 13156.58,
+   "last": 15287.99,
+   "change_pct": 16.2,
+   "series": {
+    "2009": 13156.58,
+    "2010": 15737.96,
+    "2011": 17897.67,
+    "2012": 17589.45,
+    "2013": 17322.06,
+    "2014": 17188.66,
+    "2015": 17775.76,
+    "2016": 17656.25,
+    "2017": 18133.87,
+    "2018": 17719.0,
+    "2019": 17488.31,
+    "2020": 17346.7,
+    "2021": 16468.76,
+    "2022": 15429.61,
+    "2023": 15287.99
+   }
+  },
+  {
+   "unitid": "228778",
+   "institution": "The University of Texas at Austin",
+   "state": "TX",
+   "first_year": 2000,
+   "last_year": 2023,
+   "first": 6512.42,
+   "last": 12022.44,
+   "change_pct": 84.6,
+   "series": {
+    "2000": 6512.42,
+    "2001": 6670.54,
+    "2002": 6887.56,
+    "2003": 7139.83,
+    "2004": 9523.59,
+    "2005": 11198.36,
+    "2006": 11872.26,
+    "2007": 11603.99,
+    "2008": 12430.83,
+    "2009": 13065.93,
+    "2010": 13545.58,
+    "2011": 13655.45,
+    "2012": 13375.85,
+    "2013": 13193.53,
+    "2014": 13025.32,
+    "2015": 12978.12,
+    "2016": 13190.24,
+    "2017": 13306.7,
+    "2018": 13254.27,
+    "2019": 13280.96,
+    "2020": 13875.42,
+    "2021": 13604.73,
+    "2022": 12538.77,
+    "2023": 12022.44
+   }
+  },
+  {
+   "unitid": "134130",
+   "institution": "University of Florida",
+   "state": "FL",
+   "first_year": 2000,
+   "last_year": 2023,
+   "first": 4109.65,
+   "last": 6569.2,
+   "change_pct": 59.8,
+   "series": {
+    "2000": 4109.65,
+    "2001": 4328.94,
+    "2002": 4500.45,
+    "2003": 4739.43,
+    "2004": 4907.1,
+    "2005": 4969.55,
+    "2006": 4988.53,
+    "2007": 4926.02,
+    "2008": 5504.41,
+    "2009": 6394.06,
+    "2010": 7256.15,
+    "2011": 7888.98,
+    "2012": 8393.04,
+    "2013": 8433.46,
+    "2014": 8365.09,
+    "2015": 8445.17,
+    "2016": 8339.96,
+    "2017": 8166.0,
+    "2018": 7971.3,
+    "2019": 7829.43,
+    "2020": 7734.02,
+    "2021": 7386.98,
+    "2022": 6839.62,
+    "2023": 6569.2
+   }
+  },
+  {
+   "unitid": "145637",
+   "institution": "University of Illinois Urbana-Champaign",
+   "state": "IL",
+   "first_year": 2000,
+   "last_year": 2023,
+   "first": 9097.35,
+   "last": 18592.67,
+   "change_pct": 104.4,
+   "series": {
+    "2000": 9097.35,
+    "2001": 10191.79,
+    "2002": 11689.67,
+    "2003": 11950.87,
+    "2004": 13191.88,
+    "2005": 13867.85,
+    "2006": 15376.36,
+    "2007": 16838.65,
+    "2008": 17638.02,
+    "2009": 18318.03,
+    "2010": 19727.12,
+    "2011": 20333.95,
+    "2012": 21162.26,
+    "2013": 21827.63,
+    "2014": 22206.65,
+    "2015": 22613.1,
+    "2016": 22459.48,
+    "2017": 22130.48,
+    "2018": 21587.85,
+    "2019": 21195.05,
+    "2020": 20862.83,
+    "2021": 20414.04,
+    "2022": 19060.05,
+    "2023": 18592.67
+   }
+  }
+ ],
+ "states": [
+  {
+   "abbr": "AK",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 4913.91,
+     "institutions": 4
+    },
+    "2001": {
+     "median_in_state_undergrad": 5170.29,
+     "institutions": 4
+    },
+    "2002": {
+     "median_in_state_undergrad": 5248.49,
+     "institutions": 4
+    },
+    "2003": {
+     "median_in_state_undergrad": 5608.9,
+     "institutions": 4
+    },
+    "2004": {
+     "median_in_state_undergrad": 5936.67,
+     "institutions": 4
+    },
+    "2005": {
+     "median_in_state_undergrad": 6482.58,
+     "institutions": 4
+    },
+    "2006": {
+     "median_in_state_undergrad": 6843.27,
+     "institutions": 4
+    },
+    "2007": {
+     "median_in_state_undergrad": 7119.73,
+     "institutions": 4
+    },
+    "2008": {
+     "median_in_state_undergrad": 7166.81,
+     "institutions": 4
+    },
+    "2009": {
+     "median_in_state_undergrad": 7557.94,
+     "institutions": 4
+    },
+    "2010": {
+     "median_in_state_undergrad": 7916.46,
+     "institutions": 4
+    },
+    "2011": {
+     "median_in_state_undergrad": 8225.06,
+     "institutions": 4
+    },
+    "2012": {
+     "median_in_state_undergrad": 8560.41,
+     "institutions": 4
+    },
+    "2013": {
+     "median_in_state_undergrad": 8256.4,
+     "institutions": 4
+    },
+    "2014": {
+     "median_in_state_undergrad": 8432.67,
+     "institutions": 4
+    },
+    "2015": {
+     "median_in_state_undergrad": 9121.48,
+     "institutions": 4
+    },
+    "2016": {
+     "median_in_state_undergrad": 9448.3,
+     "institutions": 4
+    },
+    "2017": {
+     "median_in_state_undergrad": 9412.46,
+     "institutions": 4
+    },
+    "2018": {
+     "median_in_state_undergrad": 10221.16,
+     "institutions": 4
+    },
+    "2019": {
+     "median_in_state_undergrad": 10176.06,
+     "institutions": 4
+    },
+    "2020": {
+     "median_in_state_undergrad": 10667.15,
+     "institutions": 4
+    },
+    "2021": {
+     "median_in_state_undergrad": 10097.04,
+     "institutions": 4
+    },
+    "2022": {
+     "median_in_state_undergrad": 8700.39,
+     "institutions": 4
+    },
+    "2023": {
+     "median_in_state_undergrad": 8434.65,
+     "institutions": 4
+    }
+   }
+  },
+  {
+   "abbr": "AL",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 3278.98,
+     "institutions": 38
+    },
+    "2001": {
+     "median_in_state_undergrad": 3825.91,
+     "institutions": 38
+    },
+    "2002": {
+     "median_in_state_undergrad": 3975.6,
+     "institutions": 38
+    },
+    "2003": {
+     "median_in_state_undergrad": 4296.18,
+     "institutions": 38
+    },
+    "2004": {
+     "median_in_state_undergrad": 4533.46,
+     "institutions": 38
+    },
+    "2005": {
+     "median_in_state_undergrad": 4505.36,
+     "institutions": 38
+    },
+    "2006": {
+     "median_in_state_undergrad": 4411.25,
+     "institutions": 38
+    },
+    "2007": {
+     "median_in_state_undergrad": 4311.78,
+     "institutions": 38
+    },
+    "2008": {
+     "median_in_state_undergrad": 4152.35,
+     "institutions": 38
+    },
+    "2009": {
+     "median_in_state_undergrad": 4189.11,
+     "institutions": 38
+    },
+    "2010": {
+     "median_in_state_undergrad": 5033.56,
+     "institutions": 38
+    },
+    "2011": {
+     "median_in_state_undergrad": 5752.52,
+     "institutions": 38
+    },
+    "2012": {
+     "median_in_state_undergrad": 5726.07,
+     "institutions": 38
+    },
+    "2013": {
+     "median_in_state_undergrad": 5736.32,
+     "institutions": 38
+    },
+    "2014": {
+     "median_in_state_undergrad": 5724.25,
+     "institutions": 38
+    },
+    "2015": {
+     "median_in_state_undergrad": 5796.87,
+     "institutions": 38
+    },
+    "2016": {
+     "median_in_state_undergrad": 5803.08,
+     "institutions": 38
+    },
+    "2017": {
+     "median_in_state_undergrad": 5758.81,
+     "institutions": 38
+    },
+    "2018": {
+     "median_in_state_undergrad": 5996.28,
+     "institutions": 38
+    },
+    "2019": {
+     "median_in_state_undergrad": 5981.59,
+     "institutions": 38
+    },
+    "2020": {
+     "median_in_state_undergrad": 6296.54,
+     "institutions": 38
+    },
+    "2021": {
+     "median_in_state_undergrad": 5877.4,
+     "institutions": 38
+    },
+    "2022": {
+     "median_in_state_undergrad": 5483.17,
+     "institutions": 38
+    },
+    "2023": {
+     "median_in_state_undergrad": 5326.6,
+     "institutions": 38
+    }
+   }
+  },
+  {
+   "abbr": "AR",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 2583.11,
+     "institutions": 33
+    },
+    "2001": {
+     "median_in_state_undergrad": 2841.09,
+     "institutions": 34
+    },
+    "2002": {
+     "median_in_state_undergrad": 3190.94,
+     "institutions": 34
+    },
+    "2003": {
+     "median_in_state_undergrad": 3388.35,
+     "institutions": 34
+    },
+    "2004": {
+     "median_in_state_undergrad": 3350.28,
+     "institutions": 34
+    },
+    "2005": {
+     "median_in_state_undergrad": 3497.48,
+     "institutions": 34
+    },
+    "2006": {
+     "median_in_state_undergrad": 3543.78,
+     "institutions": 34
+    },
+    "2007": {
+     "median_in_state_undergrad": 3203.58,
+     "institutions": 34
+    },
+    "2008": {
+     "median_in_state_undergrad": 3627.85,
+     "institutions": 34
+    },
+    "2009": {
+     "median_in_state_undergrad": 3713.9,
+     "institutions": 34
+    },
+    "2010": {
+     "median_in_state_undergrad": 4028.0,
+     "institutions": 34
+    },
+    "2011": {
+     "median_in_state_undergrad": 4058.14,
+     "institutions": 35
+    },
+    "2012": {
+     "median_in_state_undergrad": 4167.14,
+     "institutions": 35
+    },
+    "2013": {
+     "median_in_state_undergrad": 4470.56,
+     "institutions": 35
+    },
+    "2014": {
+     "median_in_state_undergrad": 4385.94,
+     "institutions": 35
+    },
+    "2015": {
+     "median_in_state_undergrad": 4632.21,
+     "institutions": 35
+    },
+    "2016": {
+     "median_in_state_undergrad": 4574.5,
+     "institutions": 35
+    },
+    "2017": {
+     "median_in_state_undergrad": 4709.43,
+     "institutions": 35
+    },
+    "2018": {
+     "median_in_state_undergrad": 4797.02,
+     "institutions": 35
+    },
+    "2019": {
+     "median_in_state_undergrad": 4730.05,
+     "institutions": 35
+    },
+    "2020": {
+     "median_in_state_undergrad": 4799.67,
+     "institutions": 35
+    },
+    "2021": {
+     "median_in_state_undergrad": 4741.74,
+     "institutions": 35
+    },
+    "2022": {
+     "median_in_state_undergrad": 4759.12,
+     "institutions": 35
+    },
+    "2023": {
+     "median_in_state_undergrad": 4719.2,
+     "institutions": 35
+    }
+   }
+  },
+  {
+   "abbr": "AZ",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 1810.73,
+     "institutions": 22
+    },
+    "2001": {
+     "median_in_state_undergrad": 4406.88,
+     "institutions": 22
+    },
+    "2002": {
+     "median_in_state_undergrad": 4507.43,
+     "institutions": 22
+    },
+    "2003": {
+     "median_in_state_undergrad": 6073.47,
+     "institutions": 24
+    },
+    "2004": {
+     "median_in_state_undergrad": 6756.18,
+     "institutions": 24
+    },
+    "2005": {
+     "median_in_state_undergrad": 7066.43,
+     "institutions": 24
+    },
+    "2006": {
+     "median_in_state_undergrad": 7184.03,
+     "institutions": 24
+    },
+    "2007": {
+     "median_in_state_undergrad": 7424.59,
+     "institutions": 24
+    },
+    "2008": {
+     "median_in_state_undergrad": 2526.38,
+     "institutions": 24
+    },
+    "2009": {
+     "median_in_state_undergrad": 2535.4,
+     "institutions": 24
+    },
+    "2010": {
+     "median_in_state_undergrad": 2494.48,
+     "institutions": 24
+    },
+    "2011": {
+     "median_in_state_undergrad": 2585.5,
+     "institutions": 24
+    },
+    "2012": {
+     "median_in_state_undergrad": 2533.08,
+     "institutions": 24
+    },
+    "2013": {
+     "median_in_state_undergrad": 2658.1,
+     "institutions": 25
+    },
+    "2014": {
+     "median_in_state_undergrad": 2711.07,
+     "institutions": 25
+    },
+    "2015": {
+     "median_in_state_undergrad": 2707.86,
+     "institutions": 25
+    },
+    "2016": {
+     "median_in_state_undergrad": 2736.86,
+     "institutions": 25
+    },
+    "2017": {
+     "median_in_state_undergrad": 2679.77,
+     "institutions": 25
+    },
+    "2018": {
+     "median_in_state_undergrad": 2585.89,
+     "institutions": 25
+    },
+    "2019": {
+     "median_in_state_undergrad": 2539.87,
+     "institutions": 25
+    },
+    "2020": {
+     "median_in_state_undergrad": 2559.83,
+     "institutions": 25
+    },
+    "2021": {
+     "median_in_state_undergrad": 2472.74,
+     "institutions": 25
+    },
+    "2022": {
+     "median_in_state_undergrad": 2218.78,
+     "institutions": 25
+    },
+    "2023": {
+     "median_in_state_undergrad": 2427.55,
+     "institutions": 25
+    }
+   }
+  },
+  {
+   "abbr": "CA",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 568.36,
+     "institutions": 93
+    },
+    "2001": {
+     "median_in_state_undergrad": 549.09,
+     "institutions": 92
+    },
+    "2002": {
+     "median_in_state_undergrad": 540.54,
+     "institutions": 94
+    },
+    "2003": {
+     "median_in_state_undergrad": 811.5,
+     "institutions": 101
+    },
+    "2004": {
+     "median_in_state_undergrad": 1213.9,
+     "institutions": 102
+    },
+    "2005": {
+     "median_in_state_undergrad": 1123.53,
+     "institutions": 100
+    },
+    "2006": {
+     "median_in_state_undergrad": 1030.07,
+     "institutions": 103
+    },
+    "2007": {
+     "median_in_state_undergrad": 898.67,
+     "institutions": 103
+    },
+    "2008": {
+     "median_in_state_undergrad": 862.52,
+     "institutions": 103
+    },
+    "2009": {
+     "median_in_state_undergrad": 1055.68,
+     "institutions": 111
+    },
+    "2010": {
+     "median_in_state_undergrad": 1061.67,
+     "institutions": 115
+    },
+    "2011": {
+     "median_in_state_undergrad": 1432.2,
+     "institutions": 138
+    },
+    "2012": {
+     "median_in_state_undergrad": 1802.12,
+     "institutions": 138
+    },
+    "2013": {
+     "median_in_state_undergrad": 1759.94,
+     "institutions": 138
+    },
+    "2014": {
+     "median_in_state_undergrad": 1755.7,
+     "institutions": 138
+    },
+    "2015": {
+     "median_in_state_undergrad": 1754.94,
+     "institutions": 138
+    },
+    "2016": {
+     "median_in_state_undergrad": 1733.08,
+     "institutions": 139
+    },
+    "2017": {
+     "median_in_state_undergrad": 1699.49,
+     "institutions": 141
+    },
+    "2018": {
+     "median_in_state_undergrad": 1667.71,
+     "institutions": 141
+    },
+    "2019": {
+     "median_in_state_undergrad": 1634.97,
+     "institutions": 142
+    },
+    "2020": {
+     "median_in_state_undergrad": 1626.56,
+     "institutions": 144
+    },
+    "2021": {
+     "median_in_state_undergrad": 1548.94,
+     "institutions": 145
+    },
+    "2022": {
+     "median_in_state_undergrad": 1436.31,
+     "institutions": 145
+    },
+    "2023": {
+     "median_in_state_undergrad": 1375.4,
+     "institutions": 145
+    }
+   }
+  },
+  {
+   "abbr": "CO",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 3836.4,
+     "institutions": 30
+    },
+    "2001": {
+     "median_in_state_undergrad": 3790.48,
+     "institutions": 29
+    },
+    "2002": {
+     "median_in_state_undergrad": 3891.03,
+     "institutions": 28
+    },
+    "2003": {
+     "median_in_state_undergrad": 3759.15,
+     "institutions": 28
+    },
+    "2004": {
+     "median_in_state_undergrad": 3905.75,
+     "institutions": 29
+    },
+    "2005": {
+     "median_in_state_undergrad": 4103.82,
+     "institutions": 29
+    },
+    "2006": {
+     "median_in_state_undergrad": 3840.2,
+     "institutions": 29
+    },
+    "2007": {
+     "median_in_state_undergrad": 3854.89,
+     "institutions": 29
+    },
+    "2008": {
+     "median_in_state_undergrad": 3830.36,
+     "institutions": 29
+    },
+    "2009": {
+     "median_in_state_undergrad": 4173.03,
+     "institutions": 29
+    },
+    "2010": {
+     "median_in_state_undergrad": 4478.27,
+     "institutions": 28
+    },
+    "2011": {
+     "median_in_state_undergrad": 4737.3,
+     "institutions": 28
+    },
+    "2012": {
+     "median_in_state_undergrad": 4765.57,
+     "institutions": 29
+    },
+    "2013": {
+     "median_in_state_undergrad": 5197.7,
+     "institutions": 29
+    },
+    "2014": {
+     "median_in_state_undergrad": 5207.48,
+     "institutions": 29
+    },
+    "2015": {
+     "median_in_state_undergrad": 5369.39,
+     "institutions": 29
+    },
+    "2016": {
+     "median_in_state_undergrad": 6155.97,
+     "institutions": 29
+    },
+    "2017": {
+     "median_in_state_undergrad": 6323.18,
+     "institutions": 29
+    },
+    "2018": {
+     "median_in_state_undergrad": 6336.07,
+     "institutions": 29
+    },
+    "2019": {
+     "median_in_state_undergrad": 6223.3,
+     "institutions": 29
+    },
+    "2020": {
+     "median_in_state_undergrad": 5803.24,
+     "institutions": 29
+    },
+    "2021": {
+     "median_in_state_undergrad": 5707.23,
+     "institutions": 29
+    },
+    "2022": {
+     "median_in_state_undergrad": 5616.61,
+     "institutions": 29
+    },
+    "2023": {
+     "median_in_state_undergrad": 5250.42,
+     "institutions": 29
+    }
+   }
+  },
+  {
+   "abbr": "CT",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 7552.58,
+     "institutions": 9
+    },
+    "2001": {
+     "median_in_state_undergrad": 7747.46,
+     "institutions": 9
+    },
+    "2002": {
+     "median_in_state_undergrad": 8317.38,
+     "institutions": 9
+    },
+    "2003": {
+     "median_in_state_undergrad": 9178.81,
+     "institutions": 9
+    },
+    "2004": {
+     "median_in_state_undergrad": 9800.91,
+     "institutions": 9
+    },
+    "2005": {
+     "median_in_state_undergrad": 9900.56,
+     "institutions": 9
+    },
+    "2006": {
+     "median_in_state_undergrad": 10226.01,
+     "institutions": 9
+    },
+    "2007": {
+     "median_in_state_undergrad": 10359.62,
+     "institutions": 10
+    },
+    "2008": {
+     "median_in_state_undergrad": 10624.92,
+     "institutions": 10
+    },
+    "2009": {
+     "median_in_state_undergrad": 11252.1,
+     "institutions": 10
+    },
+    "2010": {
+     "median_in_state_undergrad": 11796.28,
+     "institutions": 10
+    },
+    "2011": {
+     "median_in_state_undergrad": 11716.33,
+     "institutions": 10
+    },
+    "2012": {
+     "median_in_state_undergrad": 11922.13,
+     "institutions": 10
+    },
+    "2013": {
+     "median_in_state_undergrad": 12359.33,
+     "institutions": 10
+    },
+    "2014": {
+     "median_in_state_undergrad": 12400.56,
+     "institutions": 10
+    },
+    "2015": {
+     "median_in_state_undergrad": 12980.76,
+     "institutions": 10
+    },
+    "2016": {
+     "median_in_state_undergrad": 13432.03,
+     "institutions": 10
+    },
+    "2017": {
+     "median_in_state_undergrad": 13973.44,
+     "institutions": 11
+    },
+    "2018": {
+     "median_in_state_undergrad": 14186.19,
+     "institutions": 11
+    },
+    "2019": {
+     "median_in_state_undergrad": 14534.94,
+     "institutions": 11
+    },
+    "2020": {
+     "median_in_state_undergrad": 14912.93,
+     "institutions": 11
+    },
+    "2021": {
+     "median_in_state_undergrad": 14243.75,
+     "institutions": 11
+    },
+    "2022": {
+     "median_in_state_undergrad": 13837.88,
+     "institutions": 11
+    },
+    "2023": {
+     "median_in_state_undergrad": 13684.04,
+     "institutions": 11
+    }
+   }
+  },
+  {
+   "abbr": "DE",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 6321.14,
+     "institutions": 3
+    },
+    "2001": {
+     "median_in_state_undergrad": 6521.76,
+     "institutions": 3
+    },
+    "2002": {
+     "median_in_state_undergrad": 7351.38,
+     "institutions": 3
+    },
+    "2003": {
+     "median_in_state_undergrad": 7323.96,
+     "institutions": 3
+    },
+    "2004": {
+     "median_in_state_undergrad": 8263.19,
+     "institutions": 3
+    },
+    "2005": {
+     "median_in_state_undergrad": 9331.97,
+     "institutions": 3
+    },
+    "2006": {
+     "median_in_state_undergrad": 8940.76,
+     "institutions": 3
+    },
+    "2007": {
+     "median_in_state_undergrad": 9298.32,
+     "institutions": 3
+    },
+    "2008": {
+     "median_in_state_undergrad": 9442.59,
+     "institutions": 3
+    },
+    "2009": {
+     "median_in_state_undergrad": 9476.31,
+     "institutions": 3
+    },
+    "2010": {
+     "median_in_state_undergrad": 9683.02,
+     "institutions": 3
+    },
+    "2011": {
+     "median_in_state_undergrad": 9839.95,
+     "institutions": 3
+    },
+    "2012": {
+     "median_in_state_undergrad": 10023.01,
+     "institutions": 3
+    },
+    "2013": {
+     "median_in_state_undergrad": 9878.31,
+     "institutions": 3
+    },
+    "2014": {
+     "median_in_state_undergrad": 9720.63,
+     "institutions": 3
+    },
+    "2015": {
+     "median_in_state_undergrad": 9968.51,
+     "institutions": 3
+    },
+    "2016": {
+     "median_in_state_undergrad": 9844.32,
+     "institutions": 3
+    },
+    "2017": {
+     "median_in_state_undergrad": 10068.97,
+     "institutions": 3
+    },
+    "2018": {
+     "median_in_state_undergrad": 9828.9,
+     "institutions": 3
+    },
+    "2019": {
+     "median_in_state_undergrad": 10132.5,
+     "institutions": 3
+    },
+    "2020": {
+     "median_in_state_undergrad": 10130.22,
+     "institutions": 3
+    },
+    "2021": {
+     "median_in_state_undergrad": 9675.66,
+     "institutions": 3
+    },
+    "2022": {
+     "median_in_state_undergrad": 8958.71,
+     "institutions": 3
+    },
+    "2023": {
+     "median_in_state_undergrad": 10618.21,
+     "institutions": 3
+    }
+   }
+  },
+  {
+   "abbr": "FL",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 2752.52,
+     "institutions": 60
+    },
+    "2001": {
+     "median_in_state_undergrad": 2829.58,
+     "institutions": 62
+    },
+    "2002": {
+     "median_in_state_undergrad": 2864.88,
+     "institutions": 62
+    },
+    "2003": {
+     "median_in_state_undergrad": 2978.34,
+     "institutions": 62
+    },
+    "2004": {
+     "median_in_state_undergrad": 3043.9,
+     "institutions": 53
+    },
+    "2005": {
+     "median_in_state_undergrad": 3180.26,
+     "institutions": 53
+    },
+    "2006": {
+     "median_in_state_undergrad": 3253.59,
+     "institutions": 49
+    },
+    "2007": {
+     "median_in_state_undergrad": 3119.61,
+     "institutions": 49
+    },
+    "2008": {
+     "median_in_state_undergrad": 3355.39,
+     "institutions": 48
+    },
+    "2009": {
+     "median_in_state_undergrad": 3781.16,
+     "institutions": 45
+    },
+    "2010": {
+     "median_in_state_undergrad": 3964.7,
+     "institutions": 46
+    },
+    "2011": {
+     "median_in_state_undergrad": 4144.61,
+     "institutions": 47
+    },
+    "2012": {
+     "median_in_state_undergrad": 4197.2,
+     "institutions": 44
+    },
+    "2013": {
+     "median_in_state_undergrad": 4201.25,
+     "institutions": 43
+    },
+    "2014": {
+     "median_in_state_undergrad": 4191.82,
+     "institutions": 46
+    },
+    "2015": {
+     "median_in_state_undergrad": 4175.6,
+     "institutions": 45
+    },
+    "2016": {
+     "median_in_state_undergrad": 4107.9,
+     "institutions": 44
+    },
+    "2017": {
+     "median_in_state_undergrad": 4023.49,
+     "institutions": 44
+    },
+    "2018": {
+     "median_in_state_undergrad": 3912.57,
+     "institutions": 44
+    },
+    "2019": {
+     "median_in_state_undergrad": 3842.93,
+     "institutions": 44
+    },
+    "2020": {
+     "median_in_state_undergrad": 3788.22,
+     "institutions": 44
+    },
+    "2021": {
+     "median_in_state_undergrad": 3625.77,
+     "institutions": 44
+    },
+    "2022": {
+     "median_in_state_undergrad": 3368.9,
+     "institutions": 44
+    },
+    "2023": {
+     "median_in_state_undergrad": 3248.05,
+     "institutions": 43
+    }
+   }
+  },
+  {
+   "abbr": "GA",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 2586.75,
+     "institutions": 41
+    },
+    "2001": {
+     "median_in_state_undergrad": 2515.18,
+     "institutions": 41
+    },
+    "2002": {
+     "median_in_state_undergrad": 2636.45,
+     "institutions": 41
+    },
+    "2003": {
+     "median_in_state_undergrad": 2690.22,
+     "institutions": 41
+    },
+    "2004": {
+     "median_in_state_undergrad": 2656.97,
+     "institutions": 41
+    },
+    "2005": {
+     "median_in_state_undergrad": 2794.77,
+     "institutions": 41
+    },
+    "2006": {
+     "median_in_state_undergrad": 2760.34,
+     "institutions": 42
+    },
+    "2007": {
+     "median_in_state_undergrad": 2832.16,
+     "institutions": 41
+    },
+    "2008": {
+     "median_in_state_undergrad": 2770.42,
+     "institutions": 42
+    },
+    "2009": {
+     "median_in_state_undergrad": 3311.81,
+     "institutions": 42
+    },
+    "2010": {
+     "median_in_state_undergrad": 3632.39,
+     "institutions": 42
+    },
+    "2011": {
+     "median_in_state_undergrad": 3987.03,
+     "institutions": 42
+    },
+    "2012": {
+     "median_in_state_undergrad": 3974.49,
+     "institutions": 42
+    },
+    "2013": {
+     "median_in_state_undergrad": 4478.64,
+     "institutions": 47
+    },
+    "2014": {
+     "median_in_state_undergrad": 4627.1,
+     "institutions": 49
+    },
+    "2015": {
+     "median_in_state_undergrad": 4552.8,
+     "institutions": 51
+    },
+    "2016": {
+     "median_in_state_undergrad": 4262.12,
+     "institutions": 51
+    },
+    "2017": {
+     "median_in_state_undergrad": 4228.25,
+     "institutions": 51
+    },
+    "2018": {
+     "median_in_state_undergrad": 4167.41,
+     "institutions": 51
+    },
+    "2019": {
+     "median_in_state_undergrad": 4374.23,
+     "institutions": 51
+    },
+    "2020": {
+     "median_in_state_undergrad": 4320.92,
+     "institutions": 51
+    },
+    "2021": {
+     "median_in_state_undergrad": 4127.03,
+     "institutions": 51
+    },
+    "2022": {
+     "median_in_state_undergrad": 3518.96,
+     "institutions": 51
+    },
+    "2023": {
+     "median_in_state_undergrad": 3454.98,
+     "institutions": 51
+    }
+   }
+  },
+  {
+   "abbr": "HI",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 1948.26,
+     "institutions": 10
+    },
+    "2001": {
+     "median_in_state_undergrad": 1894.36,
+     "institutions": 10
+    },
+    "2002": {
+     "median_in_state_undergrad": 1869.23,
+     "institutions": 10
+    },
+    "2003": {
+     "median_in_state_undergrad": 1917.93,
+     "institutions": 10
+    },
+    "2004": {
+     "median_in_state_undergrad": 1956.19,
+     "institutions": 10
+    },
+    "2005": {
+     "median_in_state_undergrad": 1969.19,
+     "institutions": 10
+    },
+    "2006": {
+     "median_in_state_undergrad": 2169.06,
+     "institutions": 10
+    },
+    "2007": {
+     "median_in_state_undergrad": 2370.72,
+     "institutions": 10
+    },
+    "2008": {
+     "median_in_state_undergrad": 2615.26,
+     "institutions": 10
+    },
+    "2009": {
+     "median_in_state_undergrad": 2908.25,
+     "institutions": 10
+    },
+    "2010": {
+     "median_in_state_undergrad": 3172.05,
+     "institutions": 10
+    },
+    "2011": {
+     "median_in_state_undergrad": 3376.21,
+     "institutions": 10
+    },
+    "2012": {
+     "median_in_state_undergrad": 3438.92,
+     "institutions": 10
+    },
+    "2013": {
+     "median_in_state_undergrad": 3583.18,
+     "institutions": 10
+    },
+    "2014": {
+     "median_in_state_undergrad": 3780.39,
+     "institutions": 10
+    },
+    "2015": {
+     "median_in_state_undergrad": 3922.82,
+     "institutions": 10
+    },
+    "2016": {
+     "median_in_state_undergrad": 4166.72,
+     "institutions": 10
+    },
+    "2017": {
+     "median_in_state_undergrad": 4024.77,
+     "institutions": 10
+    },
+    "2018": {
+     "median_in_state_undergrad": 3957.54,
+     "institutions": 10
+    },
+    "2019": {
+     "median_in_state_undergrad": 4006.13,
+     "institutions": 10
+    },
+    "2020": {
+     "median_in_state_undergrad": 3957.31,
+     "institutions": 10
+    },
+    "2021": {
+     "median_in_state_undergrad": 3779.73,
+     "institutions": 10
+    },
+    "2022": {
+     "median_in_state_undergrad": 3502.88,
+     "institutions": 10
+    },
+    "2023": {
+     "median_in_state_undergrad": 3364.39,
+     "institutions": 10
+    }
+   }
+  },
+  {
+   "abbr": "IA",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 4180.69,
+     "institutions": 18
+    },
+    "2001": {
+     "median_in_state_undergrad": 4435.22,
+     "institutions": 18
+    },
+    "2002": {
+     "median_in_state_undergrad": 4777.7,
+     "institutions": 19
+    },
+    "2003": {
+     "median_in_state_undergrad": 4935.49,
+     "institutions": 19
+    },
+    "2004": {
+     "median_in_state_undergrad": 5131.28,
+     "institutions": 19
+    },
+    "2005": {
+     "median_in_state_undergrad": 5204.06,
+     "institutions": 19
+    },
+    "2006": {
+     "median_in_state_undergrad": 5228.15,
+     "institutions": 19
+    },
+    "2007": {
+     "median_in_state_undergrad": 5219.53,
+     "institutions": 19
+    },
+    "2008": {
+     "median_in_state_undergrad": 5245.08,
+     "institutions": 19
+    },
+    "2009": {
+     "median_in_state_undergrad": 5396.86,
+     "institutions": 19
+    },
+    "2010": {
+     "median_in_state_undergrad": 5629.13,
+     "institutions": 19
+    },
+    "2011": {
+     "median_in_state_undergrad": 5829.22,
+     "institutions": 19
+    },
+    "2012": {
+     "median_in_state_undergrad": 5834.0,
+     "institutions": 19
+    },
+    "2013": {
+     "median_in_state_undergrad": 5911.37,
+     "institutions": 19
+    },
+    "2014": {
+     "median_in_state_undergrad": 6047.57,
+     "institutions": 19
+    },
+    "2015": {
+     "median_in_state_undergrad": 6343.47,
+     "institutions": 19
+    },
+    "2016": {
+     "median_in_state_undergrad": 6550.68,
+     "institutions": 19
+    },
+    "2017": {
+     "median_in_state_undergrad": 6671.27,
+     "institutions": 19
+    },
+    "2018": {
+     "median_in_state_undergrad": 6858.24,
+     "institutions": 19
+    },
+    "2019": {
+     "median_in_state_undergrad": 6957.04,
+     "institutions": 19
+    },
+    "2020": {
+     "median_in_state_undergrad": 7018.92,
+     "institutions": 19
+    },
+    "2021": {
+     "median_in_state_undergrad": 6945.91,
+     "institutions": 19
+    },
+    "2022": {
+     "median_in_state_undergrad": 6641.33,
+     "institutions": 19
+    },
+    "2023": {
+     "median_in_state_undergrad": 6625.83,
+     "institutions": 19
+    }
+   }
+  },
+  {
+   "abbr": "ID",
+   "years": {
+    "2003": {
+     "median_in_state_undergrad": 4517.8,
+     "institutions": 3
+    },
+    "2004": {
+     "median_in_state_undergrad": 4676.27,
+     "institutions": 4
+    },
+    "2005": {
+     "median_in_state_undergrad": 4657.95,
+     "institutions": 5
+    },
+    "2006": {
+     "median_in_state_undergrad": 5365.85,
+     "institutions": 6
+    },
+    "2007": {
+     "median_in_state_undergrad": 5447.98,
+     "institutions": 6
+    },
+    "2008": {
+     "median_in_state_undergrad": 5518.99,
+     "institutions": 6
+    },
+    "2009": {
+     "median_in_state_undergrad": 5638.12,
+     "institutions": 7
+    },
+    "2010": {
+     "median_in_state_undergrad": 5892.39,
+     "institutions": 7
+    },
+    "2011": {
+     "median_in_state_undergrad": 6702.22,
+     "institutions": 8
+    },
+    "2012": {
+     "median_in_state_undergrad": 6712.52,
+     "institutions": 8
+    },
+    "2013": {
+     "median_in_state_undergrad": 6765.08,
+     "institutions": 8
+    },
+    "2014": {
+     "median_in_state_undergrad": 7175.19,
+     "institutions": 8
+    },
+    "2015": {
+     "median_in_state_undergrad": 7420.8,
+     "institutions": 8
+    },
+    "2016": {
+     "median_in_state_undergrad": 7021.2,
+     "institutions": 8
+    },
+    "2017": {
+     "median_in_state_undergrad": 7078.22,
+     "institutions": 8
+    },
+    "2018": {
+     "median_in_state_undergrad": 7179.3,
+     "institutions": 8
+    },
+    "2019": {
+     "median_in_state_undergrad": 7326.37,
+     "institutions": 8
+    },
+    "2020": {
+     "median_in_state_undergrad": 7237.08,
+     "institutions": 8
+    },
+    "2021": {
+     "median_in_state_undergrad": 6912.34,
+     "institutions": 8
+    },
+    "2022": {
+     "median_in_state_undergrad": 6407.65,
+     "institutions": 8
+    },
+    "2023": {
+     "median_in_state_undergrad": 6356.09,
+     "institutions": 8
+    }
+   }
+  },
+  {
+   "abbr": "IL",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 8820.45,
+     "institutions": 59
+    },
+    "2001": {
+     "median_in_state_undergrad": 9007.71,
+     "institutions": 60
+    },
+    "2002": {
+     "median_in_state_undergrad": 9154.35,
+     "institutions": 60
+    },
+    "2003": {
+     "median_in_state_undergrad": 9207.8,
+     "institutions": 60
+    },
+    "2004": {
+     "median_in_state_undergrad": 10027.59,
+     "institutions": 60
+    },
+    "2005": {
+     "median_in_state_undergrad": 9406.66,
+     "institutions": 60
+    },
+    "2006": {
+     "median_in_state_undergrad": 9237.95,
+     "institutions": 60
+    },
+    "2007": {
+     "median_in_state_undergrad": 9254.45,
+     "institutions": 60
+    },
+    "2008": {
+     "median_in_state_undergrad": 10266.51,
+     "institutions": 60
+    },
+    "2009": {
+     "median_in_state_undergrad": 10847.09,
+     "institutions": 60
+    },
+    "2010": {
+     "median_in_state_undergrad": 9851.33,
+     "institutions": 60
+    },
+    "2011": {
+     "median_in_state_undergrad": 10542.11,
+     "institutions": 60
+    },
+    "2012": {
+     "median_in_state_undergrad": 10536.73,
+     "institutions": 60
+    },
+    "2013": {
+     "median_in_state_undergrad": 10846.49,
+     "institutions": 60
+    },
+    "2014": {
+     "median_in_state_undergrad": 10953.6,
+     "institutions": 60
+    },
+    "2015": {
+     "median_in_state_undergrad": 11908.08,
+     "institutions": 60
+    },
+    "2016": {
+     "median_in_state_undergrad": 12042.69,
+     "institutions": 60
+    },
+    "2017": {
+     "median_in_state_undergrad": 12198.45,
+     "institutions": 60
+    },
+    "2018": {
+     "median_in_state_undergrad": 12071.26,
+     "institutions": 60
+    },
+    "2019": {
+     "median_in_state_undergrad": 11823.29,
+     "institutions": 60
+    },
+    "2020": {
+     "median_in_state_undergrad": 12188.26,
+     "institutions": 60
+    },
+    "2021": {
+     "median_in_state_undergrad": 11641.35,
+     "institutions": 60
+    },
+    "2022": {
+     "median_in_state_undergrad": 11228.94,
+     "institutions": 60
+    },
+    "2023": {
+     "median_in_state_undergrad": 10839.55,
+     "institutions": 61
+    }
+   }
+  },
+  {
+   "abbr": "IN",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 5964.1,
+     "institutions": 14
+    },
+    "2001": {
+     "median_in_state_undergrad": 6117.02,
+     "institutions": 14
+    },
+    "2002": {
+     "median_in_state_undergrad": 6545.8,
+     "institutions": 14
+    },
+    "2003": {
+     "median_in_state_undergrad": 7762.1,
+     "institutions": 14
+    },
+    "2004": {
+     "median_in_state_undergrad": 7856.34,
+     "institutions": 14
+    },
+    "2005": {
+     "median_in_state_undergrad": 7943.41,
+     "institutions": 14
+    },
+    "2006": {
+     "median_in_state_undergrad": 8070.96,
+     "institutions": 14
+    },
+    "2007": {
+     "median_in_state_undergrad": 8237.02,
+     "institutions": 14
+    },
+    "2008": {
+     "median_in_state_undergrad": 8328.01,
+     "institutions": 14
+    },
+    "2009": {
+     "median_in_state_undergrad": 8724.76,
+     "institutions": 14
+    },
+    "2010": {
+     "median_in_state_undergrad": 8978.84,
+     "institutions": 14
+    },
+    "2011": {
+     "median_in_state_undergrad": 9005.32,
+     "institutions": 14
+    },
+    "2012": {
+     "median_in_state_undergrad": 9122.63,
+     "institutions": 14
+    },
+    "2013": {
+     "median_in_state_undergrad": 9126.26,
+     "institutions": 14
+    },
+    "2014": {
+     "median_in_state_undergrad": 9183.98,
+     "institutions": 14
+    },
+    "2015": {
+     "median_in_state_undergrad": 9372.93,
+     "institutions": 14
+    },
+    "2016": {
+     "median_in_state_undergrad": 9938.42,
+     "institutions": 15
+    },
+    "2017": {
+     "median_in_state_undergrad": 9711.28,
+     "institutions": 16
+    },
+    "2018": {
+     "median_in_state_undergrad": 9836.39,
+     "institutions": 16
+    },
+    "2019": {
+     "median_in_state_undergrad": 9557.65,
+     "institutions": 16
+    },
+    "2020": {
+     "median_in_state_undergrad": 9965.99,
+     "institutions": 16
+    },
+    "2021": {
+     "median_in_state_undergrad": 9657.13,
+     "institutions": 16
+    },
+    "2022": {
+     "median_in_state_undergrad": 9071.26,
+     "institutions": 16
+    },
+    "2023": {
+     "median_in_state_undergrad": 8973.58,
+     "institutions": 16
+    }
+   }
+  },
+  {
+   "abbr": "KS",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 2677.83,
+     "institutions": 27
+    },
+    "2001": {
+     "median_in_state_undergrad": 2783.52,
+     "institutions": 26
+    },
+    "2002": {
+     "median_in_state_undergrad": 2971.24,
+     "institutions": 28
+    },
+    "2003": {
+     "median_in_state_undergrad": 3247.7,
+     "institutions": 28
+    },
+    "2004": {
+     "median_in_state_undergrad": 3346.13,
+     "institutions": 27
+    },
+    "2005": {
+     "median_in_state_undergrad": 3340.88,
+     "institutions": 27
+    },
+    "2006": {
+     "median_in_state_undergrad": 3510.33,
+     "institutions": 27
+    },
+    "2007": {
+     "median_in_state_undergrad": 3496.32,
+     "institutions": 28
+    },
+    "2008": {
+     "median_in_state_undergrad": 3381.62,
+     "institutions": 28
+    },
+    "2009": {
+     "median_in_state_undergrad": 3696.36,
+     "institutions": 29
+    },
+    "2010": {
+     "median_in_state_undergrad": 3866.88,
+     "institutions": 31
+    },
+    "2011": {
+     "median_in_state_undergrad": 4016.31,
+     "institutions": 31
+    },
+    "2012": {
+     "median_in_state_undergrad": 4115.23,
+     "institutions": 31
+    },
+    "2013": {
+     "median_in_state_undergrad": 4171.62,
+     "institutions": 32
+    },
+    "2014": {
+     "median_in_state_undergrad": 4221.64,
+     "institutions": 32
+    },
+    "2015": {
+     "median_in_state_undergrad": 4490.59,
+     "institutions": 32
+    },
+    "2016": {
+     "median_in_state_undergrad": 4436.61,
+     "institutions": 32
+    },
+    "2017": {
+     "median_in_state_undergrad": 4596.82,
+     "institutions": 32
+    },
+    "2018": {
+     "median_in_state_undergrad": 4700.83,
+     "institutions": 32
+    },
+    "2019": {
+     "median_in_state_undergrad": 4642.93,
+     "institutions": 32
+    },
+    "2020": {
+     "median_in_state_undergrad": 4802.1,
+     "institutions": 32
+    },
+    "2021": {
+     "median_in_state_undergrad": 4740.01,
+     "institutions": 32
+    },
+    "2022": {
+     "median_in_state_undergrad": 4622.99,
+     "institutions": 32
+    },
+    "2023": {
+     "median_in_state_undergrad": 4649.2,
+     "institutions": 32
+    }
+   }
+  },
+  {
+   "abbr": "KY",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 2240.64,
+     "institutions": 24
+    },
+    "2001": {
+     "median_in_state_undergrad": 2586.03,
+     "institutions": 24
+    },
+    "2002": {
+     "median_in_state_undergrad": 3347.88,
+     "institutions": 24
+    },
+    "2003": {
+     "median_in_state_undergrad": 4040.45,
+     "institutions": 24
+    },
+    "2004": {
+     "median_in_state_undergrad": 4583.28,
+     "institutions": 24
+    },
+    "2005": {
+     "median_in_state_undergrad": 3777.76,
+     "institutions": 24
+    },
+    "2006": {
+     "median_in_state_undergrad": 4070.49,
+     "institutions": 24
+    },
+    "2007": {
+     "median_in_state_undergrad": 4175.62,
+     "institutions": 24
+    },
+    "2008": {
+     "median_in_state_undergrad": 4231.03,
+     "institutions": 24
+    },
+    "2009": {
+     "median_in_state_undergrad": 4386.5,
+     "institutions": 24
+    },
+    "2010": {
+     "median_in_state_undergrad": 4524.31,
+     "institutions": 24
+    },
+    "2011": {
+     "median_in_state_undergrad": 4553.21,
+     "institutions": 24
+    },
+    "2012": {
+     "median_in_state_undergrad": 4631.68,
+     "institutions": 24
+    },
+    "2013": {
+     "median_in_state_undergrad": 4694.08,
+     "institutions": 24
+    },
+    "2014": {
+     "median_in_state_undergrad": 4802.01,
+     "institutions": 24
+    },
+    "2015": {
+     "median_in_state_undergrad": 4796.32,
+     "institutions": 24
+    },
+    "2016": {
+     "median_in_state_undergrad": 5144.35,
+     "institutions": 24
+    },
+    "2017": {
+     "median_in_state_undergrad": 5221.32,
+     "institutions": 24
+    },
+    "2018": {
+     "median_in_state_undergrad": 5306.71,
+     "institutions": 24
+    },
+    "2019": {
+     "median_in_state_undergrad": 5359.5,
+     "institutions": 24
+    },
+    "2020": {
+     "median_in_state_undergrad": 5439.63,
+     "institutions": 24
+    },
+    "2021": {
+     "median_in_state_undergrad": 5195.54,
+     "institutions": 24
+    },
+    "2022": {
+     "median_in_state_undergrad": 4887.74,
+     "institutions": 24
+    },
+    "2023": {
+     "median_in_state_undergrad": 4793.33,
+     "institutions": 24
+    }
+   }
+  },
+  {
+   "abbr": "LA",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 3543.12,
+     "institutions": 28
+    },
+    "2001": {
+     "median_in_state_undergrad": 3445.09,
+     "institutions": 28
+    },
+    "2002": {
+     "median_in_state_undergrad": 3780.31,
+     "institutions": 27
+    },
+    "2003": {
+     "median_in_state_undergrad": 3794.95,
+     "institutions": 28
+    },
+    "2004": {
+     "median_in_state_undergrad": 4769.27,
+     "institutions": 29
+    },
+    "2005": {
+     "median_in_state_undergrad": 5073.96,
+     "institutions": 27
+    },
+    "2006": {
+     "median_in_state_undergrad": 4811.14,
+     "institutions": 29
+    },
+    "2007": {
+     "median_in_state_undergrad": 4779.27,
+     "institutions": 29
+    },
+    "2008": {
+     "median_in_state_undergrad": 4681.23,
+     "institutions": 29
+    },
+    "2009": {
+     "median_in_state_undergrad": 4912.88,
+     "institutions": 29
+    },
+    "2010": {
+     "median_in_state_undergrad": 5075.28,
+     "institutions": 29
+    },
+    "2011": {
+     "median_in_state_undergrad": 5693.95,
+     "institutions": 29
+    },
+    "2012": {
+     "median_in_state_undergrad": 6135.95,
+     "institutions": 29
+    },
+    "2013": {
+     "median_in_state_undergrad": 6656.01,
+     "institutions": 30
+    },
+    "2014": {
+     "median_in_state_undergrad": 6818.75,
+     "institutions": 30
+    },
+    "2015": {
+     "median_in_state_undergrad": 7931.0,
+     "institutions": 30
+    },
+    "2016": {
+     "median_in_state_undergrad": 8612.47,
+     "institutions": 30
+    },
+    "2017": {
+     "median_in_state_undergrad": 8432.83,
+     "institutions": 30
+    },
+    "2018": {
+     "median_in_state_undergrad": 8614.03,
+     "institutions": 30
+    },
+    "2019": {
+     "median_in_state_undergrad": 8544.15,
+     "institutions": 30
+    },
+    "2020": {
+     "median_in_state_undergrad": 8373.37,
+     "institutions": 30
+    },
+    "2021": {
+     "median_in_state_undergrad": 8122.67,
+     "institutions": 30
+    },
+    "2022": {
+     "median_in_state_undergrad": 7705.15,
+     "institutions": 30
+    },
+    "2023": {
+     "median_in_state_undergrad": 7400.52,
+     "institutions": 30
+    }
+   }
+  },
+  {
+   "abbr": "MA",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 4273.6,
+     "institutions": 32
+    },
+    "2001": {
+     "median_in_state_undergrad": 4375.88,
+     "institutions": 30
+    },
+    "2002": {
+     "median_in_state_undergrad": 5225.82,
+     "institutions": 32
+    },
+    "2003": {
+     "median_in_state_undergrad": 5556.05,
+     "institutions": 32
+    },
+    "2004": {
+     "median_in_state_undergrad": 5812.13,
+     "institutions": 33
+    },
+    "2005": {
+     "median_in_state_undergrad": 5738.92,
+     "institutions": 32
+    },
+    "2006": {
+     "median_in_state_undergrad": 5564.25,
+     "institutions": 31
+    },
+    "2007": {
+     "median_in_state_undergrad": 5528.16,
+     "institutions": 31
+    },
+    "2008": {
+     "median_in_state_undergrad": 6184.82,
+     "institutions": 30
+    },
+    "2009": {
+     "median_in_state_undergrad": 5989.77,
+     "institutions": 30
+    },
+    "2010": {
+     "median_in_state_undergrad": 6309.57,
+     "institutions": 29
+    },
+    "2011": {
+     "median_in_state_undergrad": 6626.91,
+     "institutions": 29
+    },
+    "2012": {
+     "median_in_state_undergrad": 6959.82,
+     "institutions": 29
+    },
+    "2013": {
+     "median_in_state_undergrad": 6859.34,
+     "institutions": 29
+    },
+    "2014": {
+     "median_in_state_undergrad": 6749.85,
+     "institutions": 29
+    },
+    "2015": {
+     "median_in_state_undergrad": 7194.48,
+     "institutions": 29
+    },
+    "2016": {
+     "median_in_state_undergrad": 7496.95,
+     "institutions": 29
+    },
+    "2017": {
+     "median_in_state_undergrad": 7762.88,
+     "institutions": 29
+    },
+    "2018": {
+     "median_in_state_undergrad": 7632.76,
+     "institutions": 29
+    },
+    "2019": {
+     "median_in_state_undergrad": 7482.19,
+     "institutions": 29
+    },
+    "2020": {
+     "median_in_state_undergrad": 7330.41,
+     "institutions": 29
+    },
+    "2021": {
+     "median_in_state_undergrad": 7001.48,
+     "institutions": 29
+    },
+    "2022": {
+     "median_in_state_undergrad": 6536.28,
+     "institutions": 29
+    },
+    "2023": {
+     "median_in_state_undergrad": 6277.86,
+     "institutions": 29
+    }
+   }
+  },
+  {
+   "abbr": "MD",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 7596.3,
+     "institutions": 29
+    },
+    "2001": {
+     "median_in_state_undergrad": 7396.75,
+     "institutions": 29
+    },
+    "2002": {
+     "median_in_state_undergrad": 7778.58,
+     "institutions": 29
+    },
+    "2003": {
+     "median_in_state_undergrad": 8703.16,
+     "institutions": 29
+    },
+    "2004": {
+     "median_in_state_undergrad": 8665.06,
+     "institutions": 29
+    },
+    "2005": {
+     "median_in_state_undergrad": 8803.53,
+     "institutions": 29
+    },
+    "2006": {
+     "median_in_state_undergrad": 8775.82,
+     "institutions": 29
+    },
+    "2007": {
+     "median_in_state_undergrad": 8532.79,
+     "institutions": 29
+    },
+    "2008": {
+     "median_in_state_undergrad": 8392.12,
+     "institutions": 29
+    },
+    "2009": {
+     "median_in_state_undergrad": 8422.08,
+     "institutions": 29
+    },
+    "2010": {
+     "median_in_state_undergrad": 8631.42,
+     "institutions": 29
+    },
+    "2011": {
+     "median_in_state_undergrad": 8601.59,
+     "institutions": 29
+    },
+    "2012": {
+     "median_in_state_undergrad": 8722.31,
+     "institutions": 29
+    },
+    "2013": {
+     "median_in_state_undergrad": 8712.2,
+     "institutions": 29
+    },
+    "2014": {
+     "median_in_state_undergrad": 8811.64,
+     "institutions": 29
+    },
+    "2015": {
+     "median_in_state_undergrad": 9264.41,
+     "institutions": 29
+    },
+    "2016": {
+     "median_in_state_undergrad": 9405.17,
+     "institutions": 29
+    },
+    "2017": {
+     "median_in_state_undergrad": 9531.48,
+     "institutions": 29
+    },
+    "2018": {
+     "median_in_state_undergrad": 9758.94,
+     "institutions": 29
+    },
+    "2019": {
+     "median_in_state_undergrad": 9889.55,
+     "institutions": 29
+    },
+    "2020": {
+     "median_in_state_undergrad": 9744.79,
+     "institutions": 29
+    },
+    "2021": {
+     "median_in_state_undergrad": 9342.25,
+     "institutions": 29
+    },
+    "2022": {
+     "median_in_state_undergrad": 8907.26,
+     "institutions": 29
+    },
+    "2023": {
+     "median_in_state_undergrad": 8427.44,
+     "institutions": 29
+    }
+   }
+  },
+  {
+   "abbr": "ME",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 6069.76,
+     "institutions": 14
+    },
+    "2001": {
+     "median_in_state_undergrad": 6015.18,
+     "institutions": 14
+    },
+    "2002": {
+     "median_in_state_undergrad": 6391.48,
+     "institutions": 14
+    },
+    "2003": {
+     "median_in_state_undergrad": 6467.27,
+     "institutions": 14
+    },
+    "2004": {
+     "median_in_state_undergrad": 6401.65,
+     "institutions": 14
+    },
+    "2005": {
+     "median_in_state_undergrad": 6601.44,
+     "institutions": 14
+    },
+    "2006": {
+     "median_in_state_undergrad": 6798.93,
+     "institutions": 14
+    },
+    "2007": {
+     "median_in_state_undergrad": 7133.35,
+     "institutions": 14
+    },
+    "2008": {
+     "median_in_state_undergrad": 7123.1,
+     "institutions": 14
+    },
+    "2009": {
+     "median_in_state_undergrad": 7467.29,
+     "institutions": 14
+    },
+    "2010": {
+     "median_in_state_undergrad": 7559.69,
+     "institutions": 14
+    },
+    "2011": {
+     "median_in_state_undergrad": 7579.39,
+     "institutions": 14
+    },
+    "2012": {
+     "median_in_state_undergrad": 7425.72,
+     "institutions": 14
+    },
+    "2013": {
+     "median_in_state_undergrad": 7361.6,
+     "institutions": 14
+    },
+    "2014": {
+     "median_in_state_undergrad": 7360.7,
+     "institutions": 14
+    },
+    "2015": {
+     "median_in_state_undergrad": 7351.97,
+     "institutions": 14
+    },
+    "2016": {
+     "median_in_state_undergrad": 7336.19,
+     "institutions": 14
+    },
+    "2017": {
+     "median_in_state_undergrad": 7400.08,
+     "institutions": 14
+    },
+    "2018": {
+     "median_in_state_undergrad": 7373.55,
+     "institutions": 14
+    },
+    "2019": {
+     "median_in_state_undergrad": 7353.36,
+     "institutions": 14
+    },
+    "2020": {
+     "median_in_state_undergrad": 7434.64,
+     "institutions": 14
+    },
+    "2021": {
+     "median_in_state_undergrad": 7091.77,
+     "institutions": 14
+    },
+    "2022": {
+     "median_in_state_undergrad": 6567.9,
+     "institutions": 14
+    },
+    "2023": {
+     "median_in_state_undergrad": 6433.31,
+     "institutions": 14
+    }
+   }
+  },
+  {
+   "abbr": "MI",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 5106.1,
+     "institutions": 44
+    },
+    "2001": {
+     "median_in_state_undergrad": 5030.36,
+     "institutions": 45
+    },
+    "2002": {
+     "median_in_state_undergrad": 4983.45,
+     "institutions": 45
+    },
+    "2003": {
+     "median_in_state_undergrad": 5301.17,
+     "institutions": 46
+    },
+    "2004": {
+     "median_in_state_undergrad": 5442.65,
+     "institutions": 46
+    },
+    "2005": {
+     "median_in_state_undergrad": 5758.19,
+     "institutions": 46
+    },
+    "2006": {
+     "median_in_state_undergrad": 5756.41,
+     "institutions": 46
+    },
+    "2007": {
+     "median_in_state_undergrad": 6070.54,
+     "institutions": 46
+    },
+    "2008": {
+     "median_in_state_undergrad": 5934.94,
+     "institutions": 46
+    },
+    "2009": {
+     "median_in_state_undergrad": 6192.28,
+     "institutions": 46
+    },
+    "2010": {
+     "median_in_state_undergrad": 6629.65,
+     "institutions": 46
+    },
+    "2011": {
+     "median_in_state_undergrad": 6777.52,
+     "institutions": 47
+    },
+    "2012": {
+     "median_in_state_undergrad": 6913.36,
+     "institutions": 47
+    },
+    "2013": {
+     "median_in_state_undergrad": 7244.46,
+     "institutions": 47
+    },
+    "2014": {
+     "median_in_state_undergrad": 7711.84,
+     "institutions": 47
+    },
+    "2015": {
+     "median_in_state_undergrad": 7976.66,
+     "institutions": 47
+    },
+    "2016": {
+     "median_in_state_undergrad": 8665.41,
+     "institutions": 47
+    },
+    "2017": {
+     "median_in_state_undergrad": 8887.77,
+     "institutions": 47
+    },
+    "2018": {
+     "median_in_state_undergrad": 9119.34,
+     "institutions": 47
+    },
+    "2019": {
+     "median_in_state_undergrad": 9138.63,
+     "institutions": 47
+    },
+    "2020": {
+     "median_in_state_undergrad": 9209.07,
+     "institutions": 47
+    },
+    "2021": {
+     "median_in_state_undergrad": 8828.26,
+     "institutions": 47
+    },
+    "2022": {
+     "median_in_state_undergrad": 8498.88,
+     "institutions": 47
+    },
+    "2023": {
+     "median_in_state_undergrad": 8308.02,
+     "institutions": 47
+    }
+   }
+  },
+  {
+   "abbr": "MN",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 4773.65,
+     "institutions": 38
+    },
+    "2001": {
+     "median_in_state_undergrad": 5126.9,
+     "institutions": 38
+    },
+    "2002": {
+     "median_in_state_undergrad": 5645.18,
+     "institutions": 38
+    },
+    "2003": {
+     "median_in_state_undergrad": 6060.68,
+     "institutions": 38
+    },
+    "2004": {
+     "median_in_state_undergrad": 6632.47,
+     "institutions": 38
+    },
+    "2005": {
+     "median_in_state_undergrad": 6815.07,
+     "institutions": 38
+    },
+    "2006": {
+     "median_in_state_undergrad": 7016.76,
+     "institutions": 38
+    },
+    "2007": {
+     "median_in_state_undergrad": 7157.56,
+     "institutions": 38
+    },
+    "2008": {
+     "median_in_state_undergrad": 7039.32,
+     "institutions": 38
+    },
+    "2009": {
+     "median_in_state_undergrad": 7338.62,
+     "institutions": 39
+    },
+    "2010": {
+     "median_in_state_undergrad": 7372.68,
+     "institutions": 39
+    },
+    "2011": {
+     "median_in_state_undergrad": 7449.69,
+     "institutions": 39
+    },
+    "2012": {
+     "median_in_state_undergrad": 7517.26,
+     "institutions": 39
+    },
+    "2013": {
+     "median_in_state_undergrad": 7435.67,
+     "institutions": 39
+    },
+    "2014": {
+     "median_in_state_undergrad": 7310.35,
+     "institutions": 39
+    },
+    "2015": {
+     "median_in_state_undergrad": 7324.18,
+     "institutions": 39
+    },
+    "2016": {
+     "median_in_state_undergrad": 7167.58,
+     "institutions": 39
+    },
+    "2017": {
+     "median_in_state_undergrad": 7128.13,
+     "institutions": 39
+    },
+    "2018": {
+     "median_in_state_undergrad": 6958.18,
+     "institutions": 39
+    },
+    "2019": {
+     "median_in_state_undergrad": 7033.12,
+     "institutions": 39
+    },
+    "2020": {
+     "median_in_state_undergrad": 7021.34,
+     "institutions": 39
+    },
+    "2021": {
+     "median_in_state_undergrad": 6949.97,
+     "institutions": 40
+    },
+    "2022": {
+     "median_in_state_undergrad": 6695.45,
+     "institutions": 40
+    },
+    "2023": {
+     "median_in_state_undergrad": 6449.26,
+     "institutions": 40
+    }
+   }
+  },
+  {
+   "abbr": "MO",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 4989.51,
+     "institutions": 32
+    },
+    "2001": {
+     "median_in_state_undergrad": 5253.54,
+     "institutions": 31
+    },
+    "2002": {
+     "median_in_state_undergrad": 5799.5,
+     "institutions": 33
+    },
+    "2003": {
+     "median_in_state_undergrad": 6239.68,
+     "institutions": 33
+    },
+    "2004": {
+     "median_in_state_undergrad": 6602.58,
+     "institutions": 31
+    },
+    "2005": {
+     "median_in_state_undergrad": 6289.04,
+     "institutions": 30
+    },
+    "2006": {
+     "median_in_state_undergrad": 6373.36,
+     "institutions": 30
+    },
+    "2007": {
+     "median_in_state_undergrad": 6561.48,
+     "institutions": 30
+    },
+    "2008": {
+     "median_in_state_undergrad": 6640.12,
+     "institutions": 30
+    },
+    "2009": {
+     "median_in_state_undergrad": 6856.1,
+     "institutions": 30
+    },
+    "2010": {
+     "median_in_state_undergrad": 6431.85,
+     "institutions": 28
+    },
+    "2011": {
+     "median_in_state_undergrad": 6812.39,
+     "institutions": 28
+    },
+    "2012": {
+     "median_in_state_undergrad": 7078.68,
+     "institutions": 28
+    },
+    "2013": {
+     "median_in_state_undergrad": 7366.99,
+     "institutions": 28
+    },
+    "2014": {
+     "median_in_state_undergrad": 7315.65,
+     "institutions": 28
+    },
+    "2015": {
+     "median_in_state_undergrad": 7769.53,
+     "institutions": 28
+    },
+    "2016": {
+     "median_in_state_undergrad": 7288.49,
+     "institutions": 28
+    },
+    "2017": {
+     "median_in_state_undergrad": 7409.67,
+     "institutions": 28
+    },
+    "2018": {
+     "median_in_state_undergrad": 7270.49,
+     "institutions": 28
+    },
+    "2019": {
+     "median_in_state_undergrad": 7403.66,
+     "institutions": 28
+    },
+    "2020": {
+     "median_in_state_undergrad": 7563.12,
+     "institutions": 28
+    },
+    "2021": {
+     "median_in_state_undergrad": 8065.94,
+     "institutions": 28
+    },
+    "2022": {
+     "median_in_state_undergrad": 7797.88,
+     "institutions": 28
+    },
+    "2023": {
+     "median_in_state_undergrad": 7690.32,
+     "institutions": 28
+    }
+   }
+  },
+  {
+   "abbr": "MS",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 2047.54,
+     "institutions": 23
+    },
+    "2001": {
+     "median_in_state_undergrad": 2408.9,
+     "institutions": 23
+    },
+    "2002": {
+     "median_in_state_undergrad": 2615.53,
+     "institutions": 23
+    },
+    "2003": {
+     "median_in_state_undergrad": 2557.25,
+     "institutions": 23
+    },
+    "2004": {
+     "median_in_state_undergrad": 2663.62,
+     "institutions": 23
+    },
+    "2005": {
+     "median_in_state_undergrad": 2891.14,
+     "institutions": 23
+    },
+    "2006": {
+     "median_in_state_undergrad": 2807.02,
+     "institutions": 23
+    },
+    "2007": {
+     "median_in_state_undergrad": 2753.49,
+     "institutions": 23
+    },
+    "2008": {
+     "median_in_state_undergrad": 2797.37,
+     "institutions": 23
+    },
+    "2009": {
+     "median_in_state_undergrad": 2807.36,
+     "institutions": 23
+    },
+    "2010": {
+     "median_in_state_undergrad": 3208.01,
+     "institutions": 23
+    },
+    "2011": {
+     "median_in_state_undergrad": 3249.3,
+     "institutions": 23
+    },
+    "2012": {
+     "median_in_state_undergrad": 3347.38,
+     "institutions": 23
+    },
+    "2013": {
+     "median_in_state_undergrad": 3501.04,
+     "institutions": 23
+    },
+    "2014": {
+     "median_in_state_undergrad": 3471.65,
+     "institutions": 23
+    },
+    "2015": {
+     "median_in_state_undergrad": 3613.12,
+     "institutions": 23
+    },
+    "2016": {
+     "median_in_state_undergrad": 3711.88,
+     "institutions": 23
+    },
+    "2017": {
+     "median_in_state_undergrad": 4146.35,
+     "institutions": 23
+    },
+    "2018": {
+     "median_in_state_undergrad": 4347.3,
+     "institutions": 23
+    },
+    "2019": {
+     "median_in_state_undergrad": 4343.55,
+     "institutions": 23
+    },
+    "2020": {
+     "median_in_state_undergrad": 4533.03,
+     "institutions": 23
+    },
+    "2021": {
+     "median_in_state_undergrad": 4341.2,
+     "institutions": 23
+    },
+    "2022": {
+     "median_in_state_undergrad": 4084.91,
+     "institutions": 23
+    },
+    "2023": {
+     "median_in_state_undergrad": 4076.8,
+     "institutions": 23
+    }
+   }
+  },
+  {
+   "abbr": "MT",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 4554.14,
+     "institutions": 17
+    },
+    "2001": {
+     "median_in_state_undergrad": 4631.83,
+     "institutions": 18
+    },
+    "2002": {
+     "median_in_state_undergrad": 4801.24,
+     "institutions": 18
+    },
+    "2003": {
+     "median_in_state_undergrad": 5438.41,
+     "institutions": 18
+    },
+    "2004": {
+     "median_in_state_undergrad": 5220.95,
+     "institutions": 18
+    },
+    "2005": {
+     "median_in_state_undergrad": 5417.68,
+     "institutions": 18
+    },
+    "2006": {
+     "median_in_state_undergrad": 5668.5,
+     "institutions": 18
+    },
+    "2007": {
+     "median_in_state_undergrad": 6093.99,
+     "institutions": 18
+    },
+    "2008": {
+     "median_in_state_undergrad": 5879.59,
+     "institutions": 18
+    },
+    "2009": {
+     "median_in_state_undergrad": 5912.27,
+     "institutions": 18
+    },
+    "2010": {
+     "median_in_state_undergrad": 5906.77,
+     "institutions": 18
+    },
+    "2011": {
+     "median_in_state_undergrad": 6356.36,
+     "institutions": 18
+    },
+    "2012": {
+     "median_in_state_undergrad": 6442.67,
+     "institutions": 18
+    },
+    "2013": {
+     "median_in_state_undergrad": 6075.65,
+     "institutions": 18
+    },
+    "2014": {
+     "median_in_state_undergrad": 6265.53,
+     "institutions": 18
+    },
+    "2015": {
+     "median_in_state_undergrad": 6485.09,
+     "institutions": 18
+    },
+    "2016": {
+     "median_in_state_undergrad": 6510.82,
+     "institutions": 18
+    },
+    "2017": {
+     "median_in_state_undergrad": 6824.19,
+     "institutions": 18
+    },
+    "2018": {
+     "median_in_state_undergrad": 6745.82,
+     "institutions": 18
+    },
+    "2019": {
+     "median_in_state_undergrad": 6837.41,
+     "institutions": 18
+    },
+    "2020": {
+     "median_in_state_undergrad": 6864.39,
+     "institutions": 18
+    },
+    "2021": {
+     "median_in_state_undergrad": 6639.72,
+     "institutions": 18
+    },
+    "2022": {
+     "median_in_state_undergrad": 6339.59,
+     "institutions": 18
+    },
+    "2023": {
+     "median_in_state_undergrad": 6170.79,
+     "institutions": 18
+    }
+   }
+  },
+  {
+   "abbr": "NC",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 1661.35,
+     "institutions": 75
+    },
+    "2001": {
+     "median_in_state_undergrad": 1820.85,
+     "institutions": 75
+    },
+    "2002": {
+     "median_in_state_undergrad": 1974.72,
+     "institutions": 74
+    },
+    "2003": {
+     "median_in_state_undergrad": 2038.98,
+     "institutions": 74
+    },
+    "2004": {
+     "median_in_state_undergrad": 2121.43,
+     "institutions": 74
+    },
+    "2005": {
+     "median_in_state_undergrad": 2131.41,
+     "institutions": 74
+    },
+    "2006": {
+     "median_in_state_undergrad": 2067.14,
+     "institutions": 74
+    },
+    "2007": {
+     "median_in_state_undergrad": 2138.49,
+     "institutions": 74
+    },
+    "2008": {
+     "median_in_state_undergrad": 2066.7,
+     "institutions": 74
+    },
+    "2009": {
+     "median_in_state_undergrad": 2474.72,
+     "institutions": 74
+    },
+    "2010": {
+     "median_in_state_undergrad": 2726.81,
+     "institutions": 74
+    },
+    "2011": {
+     "median_in_state_undergrad": 3097.99,
+     "institutions": 74
+    },
+    "2012": {
+     "median_in_state_undergrad": 3151.32,
+     "institutions": 74
+    },
+    "2013": {
+     "median_in_state_undergrad": 3218.27,
+     "institutions": 74
+    },
+    "2014": {
+     "median_in_state_undergrad": 3185.44,
+     "institutions": 75
+    },
+    "2015": {
+     "median_in_state_undergrad": 3189.6,
+     "institutions": 75
+    },
+    "2016": {
+     "median_in_state_undergrad": 3325.01,
+     "institutions": 75
+    },
+    "2017": {
+     "median_in_state_undergrad": 3277.41,
+     "institutions": 75
+    },
+    "2018": {
+     "median_in_state_undergrad": 3213.01,
+     "institutions": 75
+    },
+    "2019": {
+     "median_in_state_undergrad": 3155.82,
+     "institutions": 75
+    },
+    "2020": {
+     "median_in_state_undergrad": 3123.42,
+     "institutions": 75
+    },
+    "2021": {
+     "median_in_state_undergrad": 3011.05,
+     "institutions": 75
+    },
+    "2022": {
+     "median_in_state_undergrad": 2786.87,
+     "institutions": 75
+    },
+    "2023": {
+     "median_in_state_undergrad": 2668.45,
+     "institutions": 75
+    }
+   }
+  },
+  {
+   "abbr": "ND",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 3843.69,
+     "institutions": 13
+    },
+    "2001": {
+     "median_in_state_undergrad": 4362.6,
+     "institutions": 13
+    },
+    "2002": {
+     "median_in_state_undergrad": 4373.16,
+     "institutions": 14
+    },
+    "2003": {
+     "median_in_state_undergrad": 4996.01,
+     "institutions": 14
+    },
+    "2004": {
+     "median_in_state_undergrad": 5416.9,
+     "institutions": 14
+    },
+    "2005": {
+     "median_in_state_undergrad": 5481.12,
+     "institutions": 14
+    },
+    "2006": {
+     "median_in_state_undergrad": 6065.28,
+     "institutions": 14
+    },
+    "2007": {
+     "median_in_state_undergrad": 6171.15,
+     "institutions": 14
+    },
+    "2008": {
+     "median_in_state_undergrad": 6223.42,
+     "institutions": 14
+    },
+    "2009": {
+     "median_in_state_undergrad": 5886.68,
+     "institutions": 14
+    },
+    "2010": {
+     "median_in_state_undergrad": 6029.77,
+     "institutions": 14
+    },
+    "2011": {
+     "median_in_state_undergrad": 5850.84,
+     "institutions": 14
+    },
+    "2012": {
+     "median_in_state_undergrad": 5732.9,
+     "institutions": 14
+    },
+    "2013": {
+     "median_in_state_undergrad": 5590.89,
+     "institutions": 14
+    },
+    "2014": {
+     "median_in_state_undergrad": 5885.24,
+     "institutions": 14
+    },
+    "2015": {
+     "median_in_state_undergrad": 6487.74,
+     "institutions": 14
+    },
+    "2016": {
+     "median_in_state_undergrad": 6354.64,
+     "institutions": 14
+    },
+    "2017": {
+     "median_in_state_undergrad": 6426.19,
+     "institutions": 14
+    },
+    "2018": {
+     "median_in_state_undergrad": 6518.45,
+     "institutions": 14
+    },
+    "2019": {
+     "median_in_state_undergrad": 6561.34,
+     "institutions": 14
+    },
+    "2020": {
+     "median_in_state_undergrad": 6834.68,
+     "institutions": 14
+    },
+    "2021": {
+     "median_in_state_undergrad": 6730.01,
+     "institutions": 14
+    },
+    "2022": {
+     "median_in_state_undergrad": 6242.59,
+     "institutions": 14
+    },
+    "2023": {
+     "median_in_state_undergrad": 5871.2,
+     "institutions": 14
+    }
+   }
+  },
+  {
+   "abbr": "NE",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 4317.33,
+     "institutions": 16
+    },
+    "2001": {
+     "median_in_state_undergrad": 4434.33,
+     "institutions": 16
+    },
+    "2002": {
+     "median_in_state_undergrad": 4920.68,
+     "institutions": 16
+    },
+    "2003": {
+     "median_in_state_undergrad": 4670.39,
+     "institutions": 16
+    },
+    "2004": {
+     "median_in_state_undergrad": 4868.07,
+     "institutions": 16
+    },
+    "2005": {
+     "median_in_state_undergrad": 4819.38,
+     "institutions": 16
+    },
+    "2006": {
+     "median_in_state_undergrad": 4843.04,
+     "institutions": 16
+    },
+    "2007": {
+     "median_in_state_undergrad": 5028.15,
+     "institutions": 16
+    },
+    "2008": {
+     "median_in_state_undergrad": 4990.84,
+     "institutions": 16
+    },
+    "2009": {
+     "median_in_state_undergrad": 5408.56,
+     "institutions": 16
+    },
+    "2010": {
+     "median_in_state_undergrad": 6265.69,
+     "institutions": 16
+    },
+    "2011": {
+     "median_in_state_undergrad": 6106.05,
+     "institutions": 16
+    },
+    "2012": {
+     "median_in_state_undergrad": 6086.76,
+     "institutions": 16
+    },
+    "2013": {
+     "median_in_state_undergrad": 5998.9,
+     "institutions": 16
+    },
+    "2014": {
+     "median_in_state_undergrad": 6856.51,
+     "institutions": 16
+    },
+    "2015": {
+     "median_in_state_undergrad": 6410.31,
+     "institutions": 16
+    },
+    "2016": {
+     "median_in_state_undergrad": 6535.0,
+     "institutions": 16
+    },
+    "2017": {
+     "median_in_state_undergrad": 6527.94,
+     "institutions": 16
+    },
+    "2018": {
+     "median_in_state_undergrad": 6372.29,
+     "institutions": 16
+    },
+    "2019": {
+     "median_in_state_undergrad": 6433.73,
+     "institutions": 16
+    },
+    "2020": {
+     "median_in_state_undergrad": 6437.74,
+     "institutions": 16
+    },
+    "2021": {
+     "median_in_state_undergrad": 6148.87,
+     "institutions": 16
+    },
+    "2022": {
+     "median_in_state_undergrad": 5757.03,
+     "institutions": 16
+    },
+    "2023": {
+     "median_in_state_undergrad": 5742.52,
+     "institutions": 16
+    }
+   }
+  },
+  {
+   "abbr": "NH",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 7574.44,
+     "institutions": 9
+    },
+    "2001": {
+     "median_in_state_undergrad": 7892.71,
+     "institutions": 9
+    },
+    "2002": {
+     "median_in_state_undergrad": 8062.8,
+     "institutions": 9
+    },
+    "2003": {
+     "median_in_state_undergrad": 8578.71,
+     "institutions": 9
+    },
+    "2004": {
+     "median_in_state_undergrad": 9203.09,
+     "institutions": 9
+    },
+    "2005": {
+     "median_in_state_undergrad": 9829.89,
+     "institutions": 9
+    },
+    "2006": {
+     "median_in_state_undergrad": 8732.26,
+     "institutions": 12
+    },
+    "2007": {
+     "median_in_state_undergrad": 9022.97,
+     "institutions": 12
+    },
+    "2008": {
+     "median_in_state_undergrad": 8945.76,
+     "institutions": 12
+    },
+    "2009": {
+     "median_in_state_undergrad": 9404.66,
+     "institutions": 12
+    },
+    "2010": {
+     "median_in_state_undergrad": 9805.3,
+     "institutions": 12
+    },
+    "2011": {
+     "median_in_state_undergrad": 10174.65,
+     "institutions": 12
+    },
+    "2012": {
+     "median_in_state_undergrad": 9968.36,
+     "institutions": 12
+    },
+    "2013": {
+     "median_in_state_undergrad": 9824.45,
+     "institutions": 12
+    },
+    "2014": {
+     "median_in_state_undergrad": 9413.21,
+     "institutions": 12
+    },
+    "2015": {
+     "median_in_state_undergrad": 9503.3,
+     "institutions": 12
+    },
+    "2016": {
+     "median_in_state_undergrad": 9441.76,
+     "institutions": 12
+    },
+    "2017": {
+     "median_in_state_undergrad": 9608.9,
+     "institutions": 12
+    },
+    "2018": {
+     "median_in_state_undergrad": 9644.64,
+     "institutions": 12
+    },
+    "2019": {
+     "median_in_state_undergrad": 8865.01,
+     "institutions": 12
+    },
+    "2020": {
+     "median_in_state_undergrad": 8726.68,
+     "institutions": 12
+    },
+    "2021": {
+     "median_in_state_undergrad": 8335.1,
+     "institutions": 12
+    },
+    "2022": {
+     "median_in_state_undergrad": 7717.49,
+     "institutions": 12
+    },
+    "2023": {
+     "median_in_state_undergrad": 7412.36,
+     "institutions": 12
+    }
+   }
+  },
+  {
+   "abbr": "NJ",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 8355.93,
+     "institutions": 32
+    },
+    "2001": {
+     "median_in_state_undergrad": 8293.01,
+     "institutions": 33
+    },
+    "2002": {
+     "median_in_state_undergrad": 8303.43,
+     "institutions": 33
+    },
+    "2003": {
+     "median_in_state_undergrad": 8132.05,
+     "institutions": 33
+    },
+    "2004": {
+     "median_in_state_undergrad": 8623.54,
+     "institutions": 33
+    },
+    "2005": {
+     "median_in_state_undergrad": 8919.18,
+     "institutions": 33
+    },
+    "2006": {
+     "median_in_state_undergrad": 8939.2,
+     "institutions": 32
+    },
+    "2007": {
+     "median_in_state_undergrad": 8351.24,
+     "institutions": 33
+    },
+    "2008": {
+     "median_in_state_undergrad": 8818.28,
+     "institutions": 34
+    },
+    "2009": {
+     "median_in_state_undergrad": 9439.75,
+     "institutions": 33
+    },
+    "2010": {
+     "median_in_state_undergrad": 9796.67,
+     "institutions": 33
+    },
+    "2011": {
+     "median_in_state_undergrad": 10082.61,
+     "institutions": 33
+    },
+    "2012": {
+     "median_in_state_undergrad": 10226.58,
+     "institutions": 33
+    },
+    "2013": {
+     "median_in_state_undergrad": 10155.7,
+     "institutions": 33
+    },
+    "2014": {
+     "median_in_state_undergrad": 10088.99,
+     "institutions": 33
+    },
+    "2015": {
+     "median_in_state_undergrad": 10521.72,
+     "institutions": 33
+    },
+    "2016": {
+     "median_in_state_undergrad": 10952.65,
+     "institutions": 33
+    },
+    "2017": {
+     "median_in_state_undergrad": 11248.88,
+     "institutions": 33
+    },
+    "2018": {
+     "median_in_state_undergrad": 10980.68,
+     "institutions": 33
+    },
+    "2019": {
+     "median_in_state_undergrad": 10772.99,
+     "institutions": 33
+    },
+    "2020": {
+     "median_in_state_undergrad": 10653.82,
+     "institutions": 33
+    },
+    "2021": {
+     "median_in_state_undergrad": 10191.97,
+     "institutions": 33
+    },
+    "2022": {
+     "median_in_state_undergrad": 9591.12,
+     "institutions": 33
+    },
+    "2023": {
+     "median_in_state_undergrad": 9323.1,
+     "institutions": 33
+    }
+   }
+  },
+  {
+   "abbr": "NM",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 1748.79,
+     "institutions": 26
+    },
+    "2001": {
+     "median_in_state_undergrad": 1718.12,
+     "institutions": 27
+    },
+    "2002": {
+     "median_in_state_undergrad": 1796.0,
+     "institutions": 27
+    },
+    "2003": {
+     "median_in_state_undergrad": 1841.22,
+     "institutions": 27
+    },
+    "2004": {
+     "median_in_state_undergrad": 1873.17,
+     "institutions": 27
+    },
+    "2005": {
+     "median_in_state_undergrad": 2158.72,
+     "institutions": 27
+    },
+    "2006": {
+     "median_in_state_undergrad": 2128.6,
+     "institutions": 27
+    },
+    "2007": {
+     "median_in_state_undergrad": 2214.89,
+     "institutions": 27
+    },
+    "2008": {
+     "median_in_state_undergrad": 2130.08,
+     "institutions": 27
+    },
+    "2009": {
+     "median_in_state_undergrad": 2210.8,
+     "institutions": 27
+    },
+    "2010": {
+     "median_in_state_undergrad": 2347.75,
+     "institutions": 27
+    },
+    "2011": {
+     "median_in_state_undergrad": 2476.72,
+     "institutions": 27
+    },
+    "2012": {
+     "median_in_state_undergrad": 2333.6,
+     "institutions": 27
+    },
+    "2013": {
+     "median_in_state_undergrad": 2423.8,
+     "institutions": 27
+    },
+    "2014": {
+     "median_in_state_undergrad": 2456.66,
+     "institutions": 27
+    },
+    "2015": {
+     "median_in_state_undergrad": 2689.33,
+     "institutions": 27
+    },
+    "2016": {
+     "median_in_state_undergrad": 2729.01,
+     "institutions": 27
+    },
+    "2017": {
+     "median_in_state_undergrad": 2846.13,
+     "institutions": 27
+    },
+    "2018": {
+     "median_in_state_undergrad": 2690.83,
+     "institutions": 27
+    },
+    "2019": {
+     "median_in_state_undergrad": 2699.38,
+     "institutions": 27
+    },
+    "2020": {
+     "median_in_state_undergrad": 2763.45,
+     "institutions": 27
+    },
+    "2021": {
+     "median_in_state_undergrad": 2639.45,
+     "institutions": 27
+    },
+    "2022": {
+     "median_in_state_undergrad": 2574.64,
+     "institutions": 27
+    },
+    "2023": {
+     "median_in_state_undergrad": 2495.49,
+     "institutions": 27
+    }
+   }
+  },
+  {
+   "abbr": "NV",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 2550.32,
+     "institutions": 6
+    },
+    "2001": {
+     "median_in_state_undergrad": 2661.31,
+     "institutions": 6
+    },
+    "2002": {
+     "median_in_state_undergrad": 2728.87,
+     "institutions": 7
+    },
+    "2003": {
+     "median_in_state_undergrad": 2620.33,
+     "institutions": 7
+    },
+    "2004": {
+     "median_in_state_undergrad": 2640.37,
+     "institutions": 7
+    },
+    "2005": {
+     "median_in_state_undergrad": 2638.97,
+     "institutions": 7
+    },
+    "2006": {
+     "median_in_state_undergrad": 2637.41,
+     "institutions": 7
+    },
+    "2007": {
+     "median_in_state_undergrad": 2680.87,
+     "institutions": 7
+    },
+    "2008": {
+     "median_in_state_undergrad": 2797.37,
+     "institutions": 7
+    },
+    "2009": {
+     "median_in_state_undergrad": 2938.96,
+     "institutions": 7
+    },
+    "2010": {
+     "median_in_state_undergrad": 3226.71,
+     "institutions": 7
+    },
+    "2011": {
+     "median_in_state_undergrad": 3504.51,
+     "institutions": 7
+    },
+    "2012": {
+     "median_in_state_undergrad": 3688.95,
+     "institutions": 7
+    },
+    "2013": {
+     "median_in_state_undergrad": 3635.69,
+     "institutions": 7
+    },
+    "2014": {
+     "median_in_state_undergrad": 3577.66,
+     "institutions": 7
+    },
+    "2015": {
+     "median_in_state_undergrad": 3712.38,
+     "institutions": 7
+    },
+    "2016": {
+     "median_in_state_undergrad": 3803.37,
+     "institutions": 7
+    },
+    "2017": {
+     "median_in_state_undergrad": 4203.93,
+     "institutions": 7
+    },
+    "2018": {
+     "median_in_state_undergrad": 4319.82,
+     "institutions": 7
+    },
+    "2019": {
+     "median_in_state_undergrad": 4426.99,
+     "institutions": 7
+    },
+    "2020": {
+     "median_in_state_undergrad": 4700.29,
+     "institutions": 7
+    },
+    "2021": {
+     "median_in_state_undergrad": 4454.65,
+     "institutions": 7
+    },
+    "2022": {
+     "median_in_state_undergrad": 4253.19,
+     "institutions": 7
+    },
+    "2023": {
+     "median_in_state_undergrad": 4231.22,
+     "institutions": 7
+    }
+   }
+  },
+  {
+   "abbr": "NY",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 6193.63,
+     "institutions": 83
+    },
+    "2001": {
+     "median_in_state_undergrad": 6027.58,
+     "institutions": 80
+    },
+    "2002": {
+     "median_in_state_undergrad": 6109.88,
+     "institutions": 84
+    },
+    "2003": {
+     "median_in_state_undergrad": 7330.78,
+     "institutions": 84
+    },
+    "2004": {
+     "median_in_state_undergrad": 7090.8,
+     "institutions": 81
+    },
+    "2005": {
+     "median_in_state_undergrad": 6890.56,
+     "institutions": 81
+    },
+    "2006": {
+     "median_in_state_undergrad": 6698.57,
+     "institutions": 82
+    },
+    "2007": {
+     "median_in_state_undergrad": 6488.85,
+     "institutions": 81
+    },
+    "2008": {
+     "median_in_state_undergrad": 6307.2,
+     "institutions": 79
+    },
+    "2009": {
+     "median_in_state_undergrad": 7207.02,
+     "institutions": 79
+    },
+    "2010": {
+     "median_in_state_undergrad": 7090.72,
+     "institutions": 79
+    },
+    "2011": {
+     "median_in_state_undergrad": 7626.8,
+     "institutions": 79
+    },
+    "2012": {
+     "median_in_state_undergrad": 7868.39,
+     "institutions": 80
+    },
+    "2013": {
+     "median_in_state_undergrad": 8165.5,
+     "institutions": 80
+    },
+    "2014": {
+     "median_in_state_undergrad": 8470.43,
+     "institutions": 80
+    },
+    "2015": {
+     "median_in_state_undergrad": 8938.83,
+     "institutions": 80
+    },
+    "2016": {
+     "median_in_state_undergrad": 8847.08,
+     "institutions": 80
+    },
+    "2017": {
+     "median_in_state_undergrad": 8919.76,
+     "institutions": 80
+    },
+    "2018": {
+     "median_in_state_undergrad": 8956.94,
+     "institutions": 80
+    },
+    "2019": {
+     "median_in_state_undergrad": 9042.92,
+     "institutions": 80
+    },
+    "2020": {
+     "median_in_state_undergrad": 8932.73,
+     "institutions": 80
+    },
+    "2021": {
+     "median_in_state_undergrad": 8531.9,
+     "institutions": 80
+    },
+    "2022": {
+     "median_in_state_undergrad": 7899.7,
+     "institutions": 80
+    },
+    "2023": {
+     "median_in_state_undergrad": 7628.55,
+     "institutions": 80
+    }
+   }
+  },
+  {
+   "abbr": "OH",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 5503.22,
+     "institutions": 67
+    },
+    "2001": {
+     "median_in_state_undergrad": 5699.89,
+     "institutions": 69
+    },
+    "2002": {
+     "median_in_state_undergrad": 6463.84,
+     "institutions": 76
+    },
+    "2003": {
+     "median_in_state_undergrad": 6764.77,
+     "institutions": 73
+    },
+    "2004": {
+     "median_in_state_undergrad": 7168.01,
+     "institutions": 70
+    },
+    "2005": {
+     "median_in_state_undergrad": 7365.99,
+     "institutions": 69
+    },
+    "2006": {
+     "median_in_state_undergrad": 7410.44,
+     "institutions": 68
+    },
+    "2007": {
+     "median_in_state_undergrad": 7166.64,
+     "institutions": 68
+    },
+    "2008": {
+     "median_in_state_undergrad": 6949.72,
+     "institutions": 66
+    },
+    "2009": {
+     "median_in_state_undergrad": 7220.18,
+     "institutions": 65
+    },
+    "2010": {
+     "median_in_state_undergrad": 7351.1,
+     "institutions": 63
+    },
+    "2011": {
+     "median_in_state_undergrad": 7374.39,
+     "institutions": 63
+    },
+    "2012": {
+     "median_in_state_undergrad": 7476.27,
+     "institutions": 63
+    },
+    "2013": {
+     "median_in_state_undergrad": 7478.76,
+     "institutions": 63
+    },
+    "2014": {
+     "median_in_state_undergrad": 7505.13,
+     "institutions": 63
+    },
+    "2015": {
+     "median_in_state_undergrad": 7496.23,
+     "institutions": 63
+    },
+    "2016": {
+     "median_in_state_undergrad": 7402.84,
+     "institutions": 62
+    },
+    "2017": {
+     "median_in_state_undergrad": 7248.43,
+     "institutions": 61
+    },
+    "2018": {
+     "median_in_state_undergrad": 7287.98,
+     "institutions": 61
+    },
+    "2019": {
+     "median_in_state_undergrad": 7360.72,
+     "institutions": 61
+    },
+    "2020": {
+     "median_in_state_undergrad": 7412.83,
+     "institutions": 61
+    },
+    "2021": {
+     "median_in_state_undergrad": 7314.05,
+     "institutions": 61
+    },
+    "2022": {
+     "median_in_state_undergrad": 7185.84,
+     "institutions": 61
+    },
+    "2023": {
+     "median_in_state_undergrad": 7049.98,
+     "institutions": 61
+    }
+   }
+  },
+  {
+   "abbr": "OK",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 2969.3,
+     "institutions": 33
+    },
+    "2001": {
+     "median_in_state_undergrad": 3347.67,
+     "institutions": 28
+    },
+    "2002": {
+     "median_in_state_undergrad": 3490.86,
+     "institutions": 29
+    },
+    "2003": {
+     "median_in_state_undergrad": 4067.73,
+     "institutions": 30
+    },
+    "2004": {
+     "median_in_state_undergrad": 4224.59,
+     "institutions": 29
+    },
+    "2005": {
+     "median_in_state_undergrad": 4680.43,
+     "institutions": 28
+    },
+    "2006": {
+     "median_in_state_undergrad": 4871.05,
+     "institutions": 28
+    },
+    "2007": {
+     "median_in_state_undergrad": 5083.36,
+     "institutions": 28
+    },
+    "2008": {
+     "median_in_state_undergrad": 5286.6,
+     "institutions": 28
+    },
+    "2009": {
+     "median_in_state_undergrad": 5366.15,
+     "institutions": 28
+    },
+    "2010": {
+     "median_in_state_undergrad": 5422.69,
+     "institutions": 28
+    },
+    "2011": {
+     "median_in_state_undergrad": 5434.57,
+     "institutions": 28
+    },
+    "2012": {
+     "median_in_state_undergrad": 5806.68,
+     "institutions": 28
+    },
+    "2013": {
+     "median_in_state_undergrad": 5918.1,
+     "institutions": 29
+    },
+    "2014": {
+     "median_in_state_undergrad": 6101.89,
+     "institutions": 29
+    },
+    "2015": {
+     "median_in_state_undergrad": 6673.02,
+     "institutions": 29
+    },
+    "2016": {
+     "median_in_state_undergrad": 7042.11,
+     "institutions": 29
+    },
+    "2017": {
+     "median_in_state_undergrad": 7596.52,
+     "institutions": 29
+    },
+    "2018": {
+     "median_in_state_undergrad": 7777.67,
+     "institutions": 29
+    },
+    "2019": {
+     "median_in_state_undergrad": 7914.1,
+     "institutions": 29
+    },
+    "2020": {
+     "median_in_state_undergrad": 7817.65,
+     "institutions": 29
+    },
+    "2021": {
+     "median_in_state_undergrad": 7535.16,
+     "institutions": 29
+    },
+    "2022": {
+     "median_in_state_undergrad": 7074.36,
+     "institutions": 29
+    },
+    "2023": {
+     "median_in_state_undergrad": 6794.66,
+     "institutions": 29
+    }
+   }
+  },
+  {
+   "abbr": "OR",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 3313.59,
+     "institutions": 25
+    },
+    "2001": {
+     "median_in_state_undergrad": 3422.06,
+     "institutions": 25
+    },
+    "2002": {
+     "median_in_state_undergrad": 3667.84,
+     "institutions": 26
+    },
+    "2003": {
+     "median_in_state_undergrad": 4583.44,
+     "institutions": 26
+    },
+    "2004": {
+     "median_in_state_undergrad": 4513.53,
+     "institutions": 26
+    },
+    "2005": {
+     "median_in_state_undergrad": 4682.85,
+     "institutions": 26
+    },
+    "2006": {
+     "median_in_state_undergrad": 4971.41,
+     "institutions": 26
+    },
+    "2007": {
+     "median_in_state_undergrad": 4915.43,
+     "institutions": 26
+    },
+    "2008": {
+     "median_in_state_undergrad": 4705.27,
+     "institutions": 26
+    },
+    "2009": {
+     "median_in_state_undergrad": 5297.43,
+     "institutions": 26
+    },
+    "2010": {
+     "median_in_state_undergrad": 5216.98,
+     "institutions": 26
+    },
+    "2011": {
+     "median_in_state_undergrad": 5536.37,
+     "institutions": 26
+    },
+    "2012": {
+     "median_in_state_undergrad": 5725.39,
+     "institutions": 26
+    },
+    "2013": {
+     "median_in_state_undergrad": 5994.18,
+     "institutions": 26
+    },
+    "2014": {
+     "median_in_state_undergrad": 6086.66,
+     "institutions": 26
+    },
+    "2015": {
+     "median_in_state_undergrad": 6297.81,
+     "institutions": 26
+    },
+    "2016": {
+     "median_in_state_undergrad": 6357.24,
+     "institutions": 26
+    },
+    "2017": {
+     "median_in_state_undergrad": 6473.55,
+     "institutions": 26
+    },
+    "2018": {
+     "median_in_state_undergrad": 6605.9,
+     "institutions": 26
+    },
+    "2019": {
+     "median_in_state_undergrad": 6392.62,
+     "institutions": 26
+    },
+    "2020": {
+     "median_in_state_undergrad": 6761.36,
+     "institutions": 26
+    },
+    "2021": {
+     "median_in_state_undergrad": 6670.98,
+     "institutions": 26
+    },
+    "2022": {
+     "median_in_state_undergrad": 6468.75,
+     "institutions": 26
+    },
+    "2023": {
+     "median_in_state_undergrad": 6433.31,
+     "institutions": 26
+    }
+   }
+  },
+  {
+   "abbr": "PA",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 12070.29,
+     "institutions": 61
+    },
+    "2001": {
+     "median_in_state_undergrad": 12671.55,
+     "institutions": 60
+    },
+    "2002": {
+     "median_in_state_undergrad": 14141.29,
+     "institutions": 63
+    },
+    "2003": {
+     "median_in_state_undergrad": 14579.72,
+     "institutions": 62
+    },
+    "2004": {
+     "median_in_state_undergrad": 14603.4,
+     "institutions": 58
+    },
+    "2005": {
+     "median_in_state_undergrad": 15290.94,
+     "institutions": 58
+    },
+    "2006": {
+     "median_in_state_undergrad": 15700.01,
+     "institutions": 58
+    },
+    "2007": {
+     "median_in_state_undergrad": 15733.47,
+     "institutions": 58
+    },
+    "2008": {
+     "median_in_state_undergrad": 15712.65,
+     "institutions": 58
+    },
+    "2009": {
+     "median_in_state_undergrad": 16452.31,
+     "institutions": 57
+    },
+    "2010": {
+     "median_in_state_undergrad": 17329.02,
+     "institutions": 53
+    },
+    "2011": {
+     "median_in_state_undergrad": 17392.85,
+     "institutions": 52
+    },
+    "2012": {
+     "median_in_state_undergrad": 17611.31,
+     "institutions": 53
+    },
+    "2013": {
+     "median_in_state_undergrad": 17643.89,
+     "institutions": 52
+    },
+    "2014": {
+     "median_in_state_undergrad": 17659.06,
+     "institutions": 52
+    },
+    "2015": {
+     "median_in_state_undergrad": 17685.76,
+     "institutions": 52
+    },
+    "2016": {
+     "median_in_state_undergrad": 17537.32,
+     "institutions": 52
+    },
+    "2017": {
+     "median_in_state_undergrad": 17207.33,
+     "institutions": 52
+    },
+    "2018": {
+     "median_in_state_undergrad": 16819.56,
+     "institutions": 52
+    },
+    "2019": {
+     "median_in_state_undergrad": 16532.49,
+     "institutions": 52
+    },
+    "2020": {
+     "median_in_state_undergrad": 12588.84,
+     "institutions": 32
+    },
+    "2021": {
+     "median_in_state_undergrad": 12114.83,
+     "institutions": 32
+    },
+    "2022": {
+     "median_in_state_undergrad": 14356.67,
+     "institutions": 55
+    },
+    "2023": {
+     "median_in_state_undergrad": 14268.79,
+     "institutions": 55
+    }
+   }
+  },
+  {
+   "abbr": "PR",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 2972.94,
+     "institutions": 16
+    },
+    "2001": {
+     "median_in_state_undergrad": 2957.99,
+     "institutions": 17
+    },
+    "2002": {
+     "median_in_state_undergrad": 2563.22,
+     "institutions": 17
+    },
+    "2003": {
+     "median_in_state_undergrad": 2506.1,
+     "institutions": 17
+    },
+    "2004": {
+     "median_in_state_undergrad": 2441.09,
+     "institutions": 17
+    },
+    "2005": {
+     "median_in_state_undergrad": 2741.77,
+     "institutions": 17
+    },
+    "2006": {
+     "median_in_state_undergrad": 2656.09,
+     "institutions": 17
+    },
+    "2007": {
+     "median_in_state_undergrad": 2832.16,
+     "institutions": 17
+    },
+    "2008": {
+     "median_in_state_undergrad": 2776.98,
+     "institutions": 18
+    },
+    "2009": {
+     "median_in_state_undergrad": 2836.61,
+     "institutions": 18
+    },
+    "2010": {
+     "median_in_state_undergrad": 3359.06,
+     "institutions": 18
+    },
+    "2011": {
+     "median_in_state_undergrad": 3836.41,
+     "institutions": 18
+    },
+    "2012": {
+     "median_in_state_undergrad": 3712.17,
+     "institutions": 18
+    },
+    "2013": {
+     "median_in_state_undergrad": 2646.65,
+     "institutions": 18
+    },
+    "2014": {
+     "median_in_state_undergrad": 2646.14,
+     "institutions": 18
+    },
+    "2015": {
+     "median_in_state_undergrad": 2672.12,
+     "institutions": 18
+    },
+    "2016": {
+     "median_in_state_undergrad": 2642.75,
+     "institutions": 18
+    },
+    "2017": {
+     "median_in_state_undergrad": 2664.41,
+     "institutions": 18
+    },
+    "2018": {
+     "median_in_state_undergrad": 5064.36,
+     "institutions": 18
+    },
+    "2019": {
+     "median_in_state_undergrad": 5114.1,
+     "institutions": 18
+    },
+    "2020": {
+     "median_in_state_undergrad": 5051.78,
+     "institutions": 18
+    },
+    "2021": {
+     "median_in_state_undergrad": 5718.8,
+     "institutions": 18
+    },
+    "2022": {
+     "median_in_state_undergrad": 5706.65,
+     "institutions": 19
+    },
+    "2023": {
+     "median_in_state_undergrad": 5481.03,
+     "institutions": 19
+    }
+   }
+  },
+  {
+   "abbr": "RI",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 6140.8,
+     "institutions": 3
+    },
+    "2001": {
+     "median_in_state_undergrad": 6236.58,
+     "institutions": 3
+    },
+    "2002": {
+     "median_in_state_undergrad": 6558.0,
+     "institutions": 3
+    },
+    "2003": {
+     "median_in_state_undergrad": 6810.8,
+     "institutions": 3
+    },
+    "2004": {
+     "median_in_state_undergrad": 7207.04,
+     "institutions": 3
+    },
+    "2005": {
+     "median_in_state_undergrad": 7510.55,
+     "institutions": 3
+    },
+    "2006": {
+     "median_in_state_undergrad": 7714.63,
+     "institutions": 3
+    },
+    "2007": {
+     "median_in_state_undergrad": 7951.84,
+     "institutions": 3
+    },
+    "2008": {
+     "median_in_state_undergrad": 8408.15,
+     "institutions": 3
+    },
+    "2009": {
+     "median_in_state_undergrad": 9369.57,
+     "institutions": 3
+    },
+    "2010": {
+     "median_in_state_undergrad": 10049.86,
+     "institutions": 3
+    },
+    "2011": {
+     "median_in_state_undergrad": 10135.6,
+     "institutions": 3
+    },
+    "2012": {
+     "median_in_state_undergrad": 10380.97,
+     "institutions": 3
+    },
+    "2013": {
+     "median_in_state_undergrad": 10236.5,
+     "institutions": 3
+    },
+    "2014": {
+     "median_in_state_undergrad": 10073.09,
+     "institutions": 3
+    },
+    "2015": {
+     "median_in_state_undergrad": 10848.63,
+     "institutions": 3
+    },
+    "2016": {
+     "median_in_state_undergrad": 10725.24,
+     "institutions": 3
+    },
+    "2017": {
+     "median_in_state_undergrad": 11230.97,
+     "institutions": 3
+    },
+    "2018": {
+     "median_in_state_undergrad": 11154.32,
+     "institutions": 3
+    },
+    "2019": {
+     "median_in_state_undergrad": 11752.13,
+     "institutions": 3
+    },
+    "2020": {
+     "median_in_state_undergrad": 12435.52,
+     "institutions": 3
+    },
+    "2021": {
+     "median_in_state_undergrad": 12389.19,
+     "institutions": 3
+    },
+    "2022": {
+     "median_in_state_undergrad": 11754.16,
+     "institutions": 3
+    },
+    "2023": {
+     "median_in_state_undergrad": 11310.03,
+     "institutions": 3
+    }
+   }
+  },
+  {
+   "abbr": "SC",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 4007.64,
+     "institutions": 33
+    },
+    "2001": {
+     "median_in_state_undergrad": 4091.6,
+     "institutions": 33
+    },
+    "2002": {
+     "median_in_state_undergrad": 5370.55,
+     "institutions": 33
+    },
+    "2003": {
+     "median_in_state_undergrad": 6232.86,
+     "institutions": 33
+    },
+    "2004": {
+     "median_in_state_undergrad": 6738.75,
+     "institutions": 33
+    },
+    "2005": {
+     "median_in_state_undergrad": 6945.17,
+     "institutions": 33
+    },
+    "2006": {
+     "median_in_state_undergrad": 7238.5,
+     "institutions": 33
+    },
+    "2007": {
+     "median_in_state_undergrad": 7364.83,
+     "institutions": 33
+    },
+    "2008": {
+     "median_in_state_undergrad": 7669.47,
+     "institutions": 33
+    },
+    "2009": {
+     "median_in_state_undergrad": 8082.86,
+     "institutions": 33
+    },
+    "2010": {
+     "median_in_state_undergrad": 8435.78,
+     "institutions": 33
+    },
+    "2011": {
+     "median_in_state_undergrad": 8495.61,
+     "institutions": 33
+    },
+    "2012": {
+     "median_in_state_undergrad": 8585.68,
+     "institutions": 33
+    },
+    "2013": {
+     "median_in_state_undergrad": 8728.36,
+     "institutions": 33
+    },
+    "2014": {
+     "median_in_state_undergrad": 8859.34,
+     "institutions": 33
+    },
+    "2015": {
+     "median_in_state_undergrad": 9102.95,
+     "institutions": 33
+    },
+    "2016": {
+     "median_in_state_undergrad": 8759.51,
+     "institutions": 33
+    },
+    "2017": {
+     "median_in_state_undergrad": 8891.61,
+     "institutions": 33
+    },
+    "2018": {
+     "median_in_state_undergrad": 9441.64,
+     "institutions": 33
+    },
+    "2019": {
+     "median_in_state_undergrad": 9273.6,
+     "institutions": 33
+    },
+    "2020": {
+     "median_in_state_undergrad": 9160.59,
+     "institutions": 33
+    },
+    "2021": {
+     "median_in_state_undergrad": 8749.53,
+     "institutions": 33
+    },
+    "2022": {
+     "median_in_state_undergrad": 8101.22,
+     "institutions": 33
+    },
+    "2023": {
+     "median_in_state_undergrad": 7780.92,
+     "institutions": 33
+    }
+   }
+  },
+  {
+   "abbr": "SD",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 5777.38,
+     "institutions": 12
+    },
+    "2001": {
+     "median_in_state_undergrad": 5811.48,
+     "institutions": 13
+    },
+    "2002": {
+     "median_in_state_undergrad": 6172.65,
+     "institutions": 13
+    },
+    "2003": {
+     "median_in_state_undergrad": 6035.1,
+     "institutions": 13
+    },
+    "2004": {
+     "median_in_state_undergrad": 5878.56,
+     "institutions": 13
+    },
+    "2005": {
+     "median_in_state_undergrad": 6411.91,
+     "institutions": 13
+    },
+    "2006": {
+     "median_in_state_undergrad": 6665.89,
+     "institutions": 13
+    },
+    "2007": {
+     "median_in_state_undergrad": 6753.61,
+     "institutions": 13
+    },
+    "2008": {
+     "median_in_state_undergrad": 6677.27,
+     "institutions": 13
+    },
+    "2009": {
+     "median_in_state_undergrad": 7691.0,
+     "institutions": 13
+    },
+    "2010": {
+     "median_in_state_undergrad": 7532.36,
+     "institutions": 13
+    },
+    "2011": {
+     "median_in_state_undergrad": 7823.43,
+     "institutions": 13
+    },
+    "2012": {
+     "median_in_state_undergrad": 8379.38,
+     "institutions": 13
+    },
+    "2013": {
+     "median_in_state_undergrad": 7746.72,
+     "institutions": 13
+    },
+    "2014": {
+     "median_in_state_undergrad": 7835.07,
+     "institutions": 13
+    },
+    "2015": {
+     "median_in_state_undergrad": 8029.6,
+     "institutions": 13
+    },
+    "2016": {
+     "median_in_state_undergrad": 8481.12,
+     "institutions": 13
+    },
+    "2017": {
+     "median_in_state_undergrad": 9173.15,
+     "institutions": 13
+    },
+    "2018": {
+     "median_in_state_undergrad": 9554.07,
+     "institutions": 13
+    },
+    "2019": {
+     "median_in_state_undergrad": 10127.59,
+     "institutions": 13
+    },
+    "2020": {
+     "median_in_state_undergrad": 10028.41,
+     "institutions": 13
+    },
+    "2021": {
+     "median_in_state_undergrad": 9645.56,
+     "institutions": 13
+    },
+    "2022": {
+     "median_in_state_undergrad": 8931.92,
+     "institutions": 13
+    },
+    "2023": {
+     "median_in_state_undergrad": 8244.19,
+     "institutions": 13
+    }
+   }
+  },
+  {
+   "abbr": "TN",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 2650.51,
+     "institutions": 23
+    },
+    "2001": {
+     "median_in_state_undergrad": 2936.74,
+     "institutions": 23
+    },
+    "2002": {
+     "median_in_state_undergrad": 3084.58,
+     "institutions": 23
+    },
+    "2003": {
+     "median_in_state_undergrad": 3569.92,
+     "institutions": 23
+    },
+    "2004": {
+     "median_in_state_undergrad": 3691.53,
+     "institutions": 23
+    },
+    "2005": {
+     "median_in_state_undergrad": 3875.74,
+     "institutions": 23
+    },
+    "2006": {
+     "median_in_state_undergrad": 4033.14,
+     "institutions": 22
+    },
+    "2007": {
+     "median_in_state_undergrad": 4007.69,
+     "institutions": 23
+    },
+    "2008": {
+     "median_in_state_undergrad": 4079.5,
+     "institutions": 23
+    },
+    "2009": {
+     "median_in_state_undergrad": 4325.09,
+     "institutions": 23
+    },
+    "2010": {
+     "median_in_state_undergrad": 4593.36,
+     "institutions": 23
+    },
+    "2011": {
+     "median_in_state_undergrad": 4756.81,
+     "institutions": 23
+    },
+    "2012": {
+     "median_in_state_undergrad": 4857.11,
+     "institutions": 23
+    },
+    "2013": {
+     "median_in_state_undergrad": 4928.38,
+     "institutions": 23
+    },
+    "2014": {
+     "median_in_state_undergrad": 5105.45,
+     "institutions": 23
+    },
+    "2015": {
+     "median_in_state_undergrad": 5268.15,
+     "institutions": 24
+    },
+    "2016": {
+     "median_in_state_undergrad": 5432.55,
+     "institutions": 24
+    },
+    "2017": {
+     "median_in_state_undergrad": 5445.92,
+     "institutions": 24
+    },
+    "2018": {
+     "median_in_state_undergrad": 5599.65,
+     "institutions": 24
+    },
+    "2019": {
+     "median_in_state_undergrad": 5665.02,
+     "institutions": 24
+    },
+    "2020": {
+     "median_in_state_undergrad": 5535.38,
+     "institutions": 24
+    },
+    "2021": {
+     "median_in_state_undergrad": 5384.24,
+     "institutions": 24
+    },
+    "2022": {
+     "median_in_state_undergrad": 4932.76,
+     "institutions": 24
+    },
+    "2023": {
+     "median_in_state_undergrad": 4975.55,
+     "institutions": 24
+    }
+   }
+  },
+  {
+   "abbr": "TX",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 2803.52,
+     "institutions": 92
+    },
+    "2001": {
+     "median_in_state_undergrad": 2996.07,
+     "institutions": 92
+    },
+    "2002": {
+     "median_in_state_undergrad": 3403.67,
+     "institutions": 93
+    },
+    "2003": {
+     "median_in_state_undergrad": 3542.64,
+     "institutions": 94
+    },
+    "2004": {
+     "median_in_state_undergrad": 3620.12,
+     "institutions": 94
+    },
+    "2005": {
+     "median_in_state_undergrad": 3976.93,
+     "institutions": 94
+    },
+    "2006": {
+     "median_in_state_undergrad": 4042.48,
+     "institutions": 95
+    },
+    "2007": {
+     "median_in_state_undergrad": 3994.07,
+     "institutions": 95
+    },
+    "2008": {
+     "median_in_state_undergrad": 4114.47,
+     "institutions": 95
+    },
+    "2009": {
+     "median_in_state_undergrad": 4211.04,
+     "institutions": 95
+    },
+    "2010": {
+     "median_in_state_undergrad": 4488.34,
+     "institutions": 95
+    },
+    "2011": {
+     "median_in_state_undergrad": 5065.01,
+     "institutions": 95
+    },
+    "2012": {
+     "median_in_state_undergrad": 5348.97,
+     "institutions": 95
+    },
+    "2013": {
+     "median_in_state_undergrad": 5564.63,
+     "institutions": 96
+    },
+    "2014": {
+     "median_in_state_undergrad": 5962.76,
+     "institutions": 97
+    },
+    "2015": {
+     "median_in_state_undergrad": 5836.58,
+     "institutions": 99
+    },
+    "2016": {
+     "median_in_state_undergrad": 6097.15,
+     "institutions": 99
+    },
+    "2017": {
+     "median_in_state_undergrad": 6000.68,
+     "institutions": 99
+    },
+    "2018": {
+     "median_in_state_undergrad": 6035.62,
+     "institutions": 100
+    },
+    "2019": {
+     "median_in_state_undergrad": 5947.23,
+     "institutions": 100
+    },
+    "2020": {
+     "median_in_state_undergrad": 6017.16,
+     "institutions": 100
+    },
+    "2021": {
+     "median_in_state_undergrad": 6627.56,
+     "institutions": 100
+    },
+    "2022": {
+     "median_in_state_undergrad": 6699.21,
+     "institutions": 101
+    },
+    "2023": {
+     "median_in_state_undergrad": 6537.29,
+     "institutions": 101
+    }
+   }
+  },
+  {
+   "abbr": "UT",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 3413.78,
+     "institutions": 8
+    },
+    "2001": {
+     "median_in_state_undergrad": 3609.82,
+     "institutions": 8
+    },
+    "2002": {
+     "median_in_state_undergrad": 3963.39,
+     "institutions": 8
+    },
+    "2003": {
+     "median_in_state_undergrad": 4331.98,
+     "institutions": 8
+    },
+    "2004": {
+     "median_in_state_undergrad": 4702.84,
+     "institutions": 8
+    },
+    "2005": {
+     "median_in_state_undergrad": 4968.75,
+     "institutions": 8
+    },
+    "2006": {
+     "median_in_state_undergrad": 5147.24,
+     "institutions": 9
+    },
+    "2007": {
+     "median_in_state_undergrad": 4732.37,
+     "institutions": 10
+    },
+    "2008": {
+     "median_in_state_undergrad": 5466.53,
+     "institutions": 9
+    },
+    "2009": {
+     "median_in_state_undergrad": 5948.1,
+     "institutions": 8
+    },
+    "2010": {
+     "median_in_state_undergrad": 6185.14,
+     "institutions": 8
+    },
+    "2011": {
+     "median_in_state_undergrad": 6367.52,
+     "institutions": 8
+    },
+    "2012": {
+     "median_in_state_undergrad": 6521.92,
+     "institutions": 8
+    },
+    "2013": {
+     "median_in_state_undergrad": 6783.93,
+     "institutions": 8
+    },
+    "2014": {
+     "median_in_state_undergrad": 6926.08,
+     "institutions": 8
+    },
+    "2015": {
+     "median_in_state_undergrad": 7085.29,
+     "institutions": 8
+    },
+    "2016": {
+     "median_in_state_undergrad": 7223.14,
+     "institutions": 8
+    },
+    "2017": {
+     "median_in_state_undergrad": 7271.46,
+     "institutions": 8
+    },
+    "2018": {
+     "median_in_state_undergrad": 7236.14,
+     "institutions": 8
+    },
+    "2019": {
+     "median_in_state_undergrad": 7242.93,
+     "institutions": 8
+    },
+    "2020": {
+     "median_in_state_undergrad": 7188.6,
+     "institutions": 8
+    },
+    "2021": {
+     "median_in_state_undergrad": 7083.67,
+     "institutions": 8
+    },
+    "2022": {
+     "median_in_state_undergrad": 6785.49,
+     "institutions": 8
+    },
+    "2023": {
+     "median_in_state_undergrad": 6517.22,
+     "institutions": 8
+    }
+   }
+  },
+  {
+   "abbr": "VA",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 2218.78,
+     "institutions": 41
+    },
+    "2001": {
+     "median_in_state_undergrad": 2157.39,
+     "institutions": 41
+    },
+    "2002": {
+     "median_in_state_undergrad": 2477.78,
+     "institutions": 41
+    },
+    "2003": {
+     "median_in_state_undergrad": 3295.44,
+     "institutions": 41
+    },
+    "2004": {
+     "median_in_state_undergrad": 3478.98,
+     "institutions": 41
+    },
+    "2005": {
+     "median_in_state_undergrad": 3532.01,
+     "institutions": 41
+    },
+    "2006": {
+     "median_in_state_undergrad": 3651.93,
+     "institutions": 41
+    },
+    "2007": {
+     "median_in_state_undergrad": 3888.17,
+     "institutions": 41
+    },
+    "2008": {
+     "median_in_state_undergrad": 3926.52,
+     "institutions": 41
+    },
+    "2009": {
+     "median_in_state_undergrad": 4219.82,
+     "institutions": 41
+    },
+    "2010": {
+     "median_in_state_undergrad": 4862.37,
+     "institutions": 41
+    },
+    "2011": {
+     "median_in_state_undergrad": 5217.72,
+     "institutions": 40
+    },
+    "2012": {
+     "median_in_state_undergrad": 5277.24,
+     "institutions": 40
+    },
+    "2013": {
+     "median_in_state_undergrad": 5403.05,
+     "institutions": 40
+    },
+    "2014": {
+     "median_in_state_undergrad": 5815.68,
+     "institutions": 40
+    },
+    "2015": {
+     "median_in_state_undergrad": 6197.9,
+     "institutions": 40
+    },
+    "2016": {
+     "median_in_state_undergrad": 6442.85,
+     "institutions": 40
+    },
+    "2017": {
+     "median_in_state_undergrad": 6471.62,
+     "institutions": 40
+    },
+    "2018": {
+     "median_in_state_undergrad": 6689.6,
+     "institutions": 39
+    },
+    "2019": {
+     "median_in_state_undergrad": 6570.54,
+     "institutions": 39
+    },
+    "2020": {
+     "median_in_state_undergrad": 6490.47,
+     "institutions": 39
+    },
+    "2021": {
+     "median_in_state_undergrad": 6199.23,
+     "institutions": 39
+    },
+    "2022": {
+     "median_in_state_undergrad": 5469.77,
+     "institutions": 39
+    },
+    "2023": {
+     "median_in_state_undergrad": 5411.02,
+     "institutions": 39
+    }
+   }
+  },
+  {
+   "abbr": "VT",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 10620.25,
+     "institutions": 3
+    },
+    "2001": {
+     "median_in_state_undergrad": 10953.43,
+     "institutions": 3
+    },
+    "2002": {
+     "median_in_state_undergrad": 11313.03,
+     "institutions": 3
+    },
+    "2003": {
+     "median_in_state_undergrad": 11667.87,
+     "institutions": 3
+    },
+    "2004": {
+     "median_in_state_undergrad": 12208.8,
+     "institutions": 3
+    },
+    "2005": {
+     "median_in_state_undergrad": 12611.81,
+     "institutions": 3
+    },
+    "2006": {
+     "median_in_state_undergrad": 13014.36,
+     "institutions": 3
+    },
+    "2007": {
+     "median_in_state_undergrad": 13537.48,
+     "institutions": 3
+    },
+    "2008": {
+     "median_in_state_undergrad": 14546.34,
+     "institutions": 3
+    },
+    "2009": {
+     "median_in_state_undergrad": 15621.8,
+     "institutions": 3
+    },
+    "2010": {
+     "median_in_state_undergrad": 15831.47,
+     "institutions": 3
+    },
+    "2011": {
+     "median_in_state_undergrad": 16115.44,
+     "institutions": 3
+    },
+    "2012": {
+     "median_in_state_undergrad": 16428.11,
+     "institutions": 3
+    },
+    "2013": {
+     "median_in_state_undergrad": 16823.84,
+     "institutions": 3
+    },
+    "2014": {
+     "median_in_state_undergrad": 17040.25,
+     "institutions": 3
+    },
+    "2015": {
+     "median_in_state_undergrad": 17853.84,
+     "institutions": 3
+    },
+    "2016": {
+     "median_in_state_undergrad": 18331.97,
+     "institutions": 3
+    },
+    "2017": {
+     "median_in_state_undergrad": 18799.33,
+     "institutions": 3
+    },
+    "2018": {
+     "median_in_state_undergrad": 18873.28,
+     "institutions": 3
+    },
+    "2019": {
+     "median_in_state_undergrad": 18763.16,
+     "institutions": 3
+    },
+    "2020": {
+     "median_in_state_undergrad": 19445.95,
+     "institutions": 3
+    },
+    "2021": {
+     "median_in_state_undergrad": 18617.36,
+     "institutions": 3
+    },
+    "2022": {
+     "median_in_state_undergrad": 16663.34,
+     "institutions": 3
+    },
+    "2023": {
+     "median_in_state_undergrad": 11736.24,
+     "institutions": 3
+    }
+   }
+  },
+  {
+   "abbr": "WA",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 3207.93,
+     "institutions": 41
+    },
+    "2001": {
+     "median_in_state_undergrad": 3367.15,
+     "institutions": 41
+    },
+    "2002": {
+     "median_in_state_undergrad": 3693.13,
+     "institutions": 41
+    },
+    "2003": {
+     "median_in_state_undergrad": 3830.76,
+     "institutions": 40
+    },
+    "2004": {
+     "median_in_state_undergrad": 3974.66,
+     "institutions": 42
+    },
+    "2005": {
+     "median_in_state_undergrad": 4167.26,
+     "institutions": 42
+    },
+    "2006": {
+     "median_in_state_undergrad": 4198.08,
+     "institutions": 42
+    },
+    "2007": {
+     "median_in_state_undergrad": 4200.59,
+     "institutions": 42
+    },
+    "2008": {
+     "median_in_state_undergrad": 4129.04,
+     "institutions": 42
+    },
+    "2009": {
+     "median_in_state_undergrad": 4496.16,
+     "institutions": 42
+    },
+    "2010": {
+     "median_in_state_undergrad": 4788.28,
+     "institutions": 42
+    },
+    "2011": {
+     "median_in_state_undergrad": 5059.43,
+     "institutions": 42
+    },
+    "2012": {
+     "median_in_state_undergrad": 5438.47,
+     "institutions": 42
+    },
+    "2013": {
+     "median_in_state_undergrad": 5609.07,
+     "institutions": 42
+    },
+    "2014": {
+     "median_in_state_undergrad": 5561.26,
+     "institutions": 42
+    },
+    "2015": {
+     "median_in_state_undergrad": 5427.62,
+     "institutions": 42
+    },
+    "2016": {
+     "median_in_state_undergrad": 5381.57,
+     "institutions": 42
+    },
+    "2017": {
+     "median_in_state_undergrad": 5422.88,
+     "institutions": 42
+    },
+    "2018": {
+     "median_in_state_undergrad": 5440.38,
+     "institutions": 42
+    },
+    "2019": {
+     "median_in_state_undergrad": 5398.15,
+     "institutions": 42
+    },
+    "2020": {
+     "median_in_state_undergrad": 5357.21,
+     "institutions": 42
+    },
+    "2021": {
+     "median_in_state_undergrad": 5382.51,
+     "institutions": 42
+    },
+    "2022": {
+     "median_in_state_undergrad": 5214.66,
+     "institutions": 42
+    },
+    "2023": {
+     "median_in_state_undergrad": 5207.18,
+     "institutions": 42
+    }
+   }
+  },
+  {
+   "abbr": "WI",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 5297.37,
+     "institutions": 29
+    },
+    "2001": {
+     "median_in_state_undergrad": 4856.77,
+     "institutions": 30
+    },
+    "2002": {
+     "median_in_state_undergrad": 5510.91,
+     "institutions": 30
+    },
+    "2003": {
+     "median_in_state_undergrad": 5046.3,
+     "institutions": 30
+    },
+    "2004": {
+     "median_in_state_undergrad": 4731.08,
+     "institutions": 30
+    },
+    "2005": {
+     "median_in_state_undergrad": 4614.59,
+     "institutions": 30
+    },
+    "2006": {
+     "median_in_state_undergrad": 4887.39,
+     "institutions": 30
+    },
+    "2007": {
+     "median_in_state_undergrad": 4863.24,
+     "institutions": 30
+    },
+    "2008": {
+     "median_in_state_undergrad": 4909.97,
+     "institutions": 30
+    },
+    "2009": {
+     "median_in_state_undergrad": 5069.34,
+     "institutions": 30
+    },
+    "2010": {
+     "median_in_state_undergrad": 5409.02,
+     "institutions": 30
+    },
+    "2011": {
+     "median_in_state_undergrad": 5378.78,
+     "institutions": 30
+    },
+    "2012": {
+     "median_in_state_undergrad": 5577.15,
+     "institutions": 30
+    },
+    "2013": {
+     "median_in_state_undergrad": 5824.51,
+     "institutions": 30
+    },
+    "2014": {
+     "median_in_state_undergrad": 5905.78,
+     "institutions": 30
+    },
+    "2015": {
+     "median_in_state_undergrad": 6006.65,
+     "institutions": 30
+    },
+    "2016": {
+     "median_in_state_undergrad": 6004.35,
+     "institutions": 30
+    },
+    "2017": {
+     "median_in_state_undergrad": 6103.7,
+     "institutions": 32
+    },
+    "2018": {
+     "median_in_state_undergrad": 5820.76,
+     "institutions": 32
+    },
+    "2019": {
+     "median_in_state_undergrad": 5741.71,
+     "institutions": 32
+    },
+    "2020": {
+     "median_in_state_undergrad": 5846.27,
+     "institutions": 32
+    },
+    "2021": {
+     "median_in_state_undergrad": 5610.57,
+     "institutions": 32
+    },
+    "2022": {
+     "median_in_state_undergrad": 5840.1,
+     "institutions": 32
+    },
+    "2023": {
+     "median_in_state_undergrad": 5686.41,
+     "institutions": 32
+    }
+   }
+  },
+  {
+   "abbr": "WV",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 4178.88,
+     "institutions": 24
+    },
+    "2001": {
+     "median_in_state_undergrad": 4052.63,
+     "institutions": 25
+    },
+    "2002": {
+     "median_in_state_undergrad": 3916.32,
+     "institutions": 26
+    },
+    "2003": {
+     "median_in_state_undergrad": 4125.69,
+     "institutions": 28
+    },
+    "2004": {
+     "median_in_state_undergrad": 4511.88,
+     "institutions": 26
+    },
+    "2005": {
+     "median_in_state_undergrad": 4307.8,
+     "institutions": 28
+    },
+    "2006": {
+     "median_in_state_undergrad": 4509.28,
+     "institutions": 27
+    },
+    "2007": {
+     "median_in_state_undergrad": 4542.5,
+     "institutions": 26
+    },
+    "2008": {
+     "median_in_state_undergrad": 4418.25,
+     "institutions": 26
+    },
+    "2009": {
+     "median_in_state_undergrad": 5228.72,
+     "institutions": 24
+    },
+    "2010": {
+     "median_in_state_undergrad": 5302.57,
+     "institutions": 24
+    },
+    "2011": {
+     "median_in_state_undergrad": 5187.73,
+     "institutions": 24
+    },
+    "2012": {
+     "median_in_state_undergrad": 5178.19,
+     "institutions": 24
+    },
+    "2013": {
+     "median_in_state_undergrad": 5588.2,
+     "institutions": 23
+    },
+    "2014": {
+     "median_in_state_undergrad": 5716.3,
+     "institutions": 24
+    },
+    "2015": {
+     "median_in_state_undergrad": 5796.88,
+     "institutions": 24
+    },
+    "2016": {
+     "median_in_state_undergrad": 6047.49,
+     "institutions": 24
+    },
+    "2017": {
+     "median_in_state_undergrad": 6420.44,
+     "institutions": 23
+    },
+    "2018": {
+     "median_in_state_undergrad": 6719.58,
+     "institutions": 23
+    },
+    "2019": {
+     "median_in_state_undergrad": 6649.07,
+     "institutions": 23
+    },
+    "2020": {
+     "median_in_state_undergrad": 7582.52,
+     "institutions": 23
+    },
+    "2021": {
+     "median_in_state_undergrad": 7531.68,
+     "institutions": 22
+    },
+    "2022": {
+     "median_in_state_undergrad": 6956.45,
+     "institutions": 22
+    },
+    "2023": {
+     "median_in_state_undergrad": 7030.41,
+     "institutions": 22
+    }
+   }
+  },
+  {
+   "abbr": "WY",
+   "years": {
+    "2000": {
+     "median_in_state_undergrad": 2674.19,
+     "institutions": 8
+    },
+    "2001": {
+     "median_in_state_undergrad": 2766.7,
+     "institutions": 8
+    },
+    "2002": {
+     "median_in_state_undergrad": 2859.64,
+     "institutions": 8
+    },
+    "2003": {
+     "median_in_state_undergrad": 2847.07,
+     "institutions": 8
+    },
+    "2004": {
+     "median_in_state_undergrad": 2909.39,
+     "institutions": 8
+    },
+    "2005": {
+     "median_in_state_undergrad": 2987.51,
+     "institutions": 8
+    },
+    "2006": {
+     "median_in_state_undergrad": 2937.72,
+     "institutions": 8
+    },
+    "2007": {
+     "median_in_state_undergrad": 3031.86,
+     "institutions": 8
+    },
+    "2008": {
+     "median_in_state_undergrad": 3024.66,
+     "institutions": 8
+    },
+    "2009": {
+     "median_in_state_undergrad": 3195.57,
+     "institutions": 8
+    },
+    "2010": {
+     "median_in_state_undergrad": 3151.91,
+     "institutions": 8
+    },
+    "2011": {
+     "median_in_state_undergrad": 3214.44,
+     "institutions": 8
+    },
+    "2012": {
+     "median_in_state_undergrad": 3353.53,
+     "institutions": 8
+    },
+    "2013": {
+     "median_in_state_undergrad": 3515.18,
+     "institutions": 8
+    },
+    "2014": {
+     "median_in_state_undergrad": 3618.07,
+     "institutions": 8
+    },
+    "2015": {
+     "median_in_state_undergrad": 3640.26,
+     "institutions": 8
+    },
+    "2016": {
+     "median_in_state_undergrad": 3928.84,
+     "institutions": 8
+    },
+    "2017": {
+     "median_in_state_undergrad": 3931.35,
+     "institutions": 8
+    },
+    "2018": {
+     "median_in_state_undergrad": 4069.97,
+     "institutions": 8
+    },
+    "2019": {
+     "median_in_state_undergrad": 5134.96,
+     "institutions": 8
+    },
+    "2020": {
+     "median_in_state_undergrad": 5223.89,
+     "institutions": 8
+    },
+    "2021": {
+     "median_in_state_undergrad": 5326.93,
+     "institutions": 8
+    },
+    "2022": {
+     "median_in_state_undergrad": 4980.46,
+     "institutions": 8
+    },
+    "2023": {
+     "median_in_state_undergrad": 4783.55,
+     "institutions": 8
+    }
+   }
+  }
+ ],
+ "state_appropriations_per_fte": {
+  "Alabama|2023": 13451.21,
+  "Alaska|2023": 25179.03,
+  "Arizona|2023": 7182.06,
+  "Arkansas|2023": 8743.78,
+  "California|2023": 15601.42,
+  "Colorado|2023": 7367.8,
+  "Connecticut|2023": 23032.26,
+  "Delaware|2023": 7598.83,
+  "Florida|2023": 10091.52,
+  "Georgia|2023": 12811.48,
+  "Hawaii|2023": 24877.61,
+  "Idaho|2023": 11845.53,
+  "Illinois|2023": 22244.64,
+  "Indiana|2023": 6752.18,
+  "Iowa|2023": 6760.53,
+  "Kansas|2023": 9439.83,
+  "Kentucky|2023": 9226.97,
+  "Louisiana|2023": 7232.1,
+  "Maine|2023": 11049.62,
+  "Maryland|2023": 13858.8,
+  "Massachusetts|2023": 16225.65,
+  "Michigan|2023": 9404.96,
+  "Minnesota|2023": 9641.49,
+  "Mississippi|2023": 7745.28,
+  "Missouri|2023": 8412.95,
+  "Montana|2023": 7740.14,
+  "Nebraska|2023": 12875.13,
+  "Nevada|2023": 9953.53,
+  "New Hampshire|2023": 4906.78,
+  "New Jersey|2023": 11309.93,
+  "New Mexico|2023": 21171.69,
+  "New York|2023": 15736.52,
+  "North Carolina|2023": 11837.46,
+  "North Dakota|2023": 9442.94,
+  "Ohio|2023": 6982.86,
+  "Oklahoma|2023": 7811.1,
+  "Oregon|2023": 9839.99,
+  "Pennsylvania|2023": 7381.39,
+  "Rhode Island|2023": 8341.07,
+  "South Carolina|2023": 7551.82,
+  "South Dakota|2023": 9066.42,
+  "Tennessee|2023": 13817.36,
+  "Texas|2023": 10829.29,
+  "Utah|2023": 11253.3,
+  "Vermont|2023": 6280.27,
+  "Virginia|2023": 9301.16,
+  "Washington|2023": 12448.98,
+  "West Virginia|2023": 7298.6,
+  "Wisconsin|2023": 9489.79,
+  "Wyoming|2023": 18185.68,
+  "U.S.|2023": 11586.11,
+  "D.C.|2023": 38828.66,
+  "Alabama|2022": 8758.4,
+  "Alaska|2022": 23959.17,
+  "Arizona|2022": 6909.31,
+  "Arkansas|2022": 9186.08,
+  "California|2022": 16497.17,
+  "Colorado|2022": 7819.44,
+  "Connecticut|2022": 19556.62,
+  "Delaware|2022": 9304.38,
+  "Florida|2022": 9809.62,
+  "Georgia|2022": 13187.11,
+  "Hawaii|2022": 22167.66,
+  "Idaho|2022": 10534.22,
+  "Illinois|2022": 23095.4,
+  "Indiana|2022": 7110.44,
+  "Iowa|2022": 6902.63,
+  "Kansas|2022": 8877.21,
+  "Kentucky|2022": 8576.9,
+  "Louisiana|2022": 7075.84,
+  "Maine|2022": 10125.61,
+  "Maryland|2022": 11987.74,
+  "Massachusetts|2022": 13538.84,
+  "Michigan|2022": 9508.52,
+  "Minnesota|2022": 10005.65,
+  "Mississippi|2022": 6724.02,
+  "Missouri|2022": 10191.69,
+  "Montana|2022": 7614.53,
+  "Nebraska|2022": 12655.89,
+  "Nevada|2022": 9893.87,
+  "New Hampshire|2022": 4936.12,
+  "New Jersey|2022": 10904.27,
+  "New Mexico|2022": 17894.88,
+  "New York|2022": 15064.84,
+  "North Carolina|2022": 11792.44,
+  "North Dakota|2022": 9961.51,
+  "Ohio|2022": 6851.87,
+  "Oklahoma|2022": 7487.26,
+  "Oregon|2022": 10026.31,
+  "Pennsylvania|2022": 6424.56,
+  "Rhode Island|2022": 8401.16,
+  "South Carolina|2022": 7396.24,
+  "South Dakota|2022": 7765.55,
+  "Tennessee|2022": 11319.32,
+  "Texas|2022": 11154.44,
+  "Utah|2022": 10324.84,
+  "Vermont|2022": 7693.7,
+  "Virginia|2022": 8930.01,
+  "Washington|2022": 11576.5,
+  "West Virginia|2022": 7553.65,
+  "Wisconsin|2022": 9886.1,
+  "Wyoming|2022": 17695.41,
+  "U.S.|2022": 11390.1,
+  "D.C.|2022": 42367.57,
+  "Alabama|2021": 7910.57,
+  "Alaska|2021": 24085.4,
+  "Arizona|2021": 7112.38,
+  "Arkansas|2021": 8761.2,
+  "California|2021": 14235.46,
+  "Colorado|2021": 7427.31,
+  "Connecticut|2021": 16552.01,
+  "Delaware|2021": 9235.57,
+  "Florida|2021": 9479.03,
+  "Georgia|2021": 10202.34,
+  "Hawaii|2021": 23421.65,
+  "Idaho|2021": 12069.02,
+  "Illinois|2021": 21612.93,
+  "Indiana|2021": 6839.93,
+  "Iowa|2021": 6920.03,
+  "Kansas|2021": 9376.47,
+  "Kentucky|2021": 8178.17,
+  "Louisiana|2021": 6462.5,
+  "Maine|2021": 9972.11,
+  "Maryland|2021": 12206.21,
+  "Massachusetts|2021": 13461.47,
+  "Michigan|2021": 8484.17,
+  "Minnesota|2021": 12867.93,
+  "Mississippi|2021": 7777.13,
+  "Missouri|2021": 9681.72,
+  "Montana|2021": 9247.4,
+  "Nebraska|2021": 12386.41,
+  "Nevada|2021": 8518.64,
+  "New Hampshire|2021": 6165.74,
+  "New Jersey|2021": 8643.97,
+  "New Mexico|2021": 17369.23,
+  "New York|2021": 14327.73,
+  "North Carolina|2021": 11152.11,
+  "North Dakota|2021": 10296.27,
+  "Ohio|2021": 7603.88,
+  "Oklahoma|2021": 7318.32,
+  "Oregon|2021": 9349.02,
+  "Pennsylvania|2021": 6755.8,
+  "Rhode Island|2021": 8472.29,
+  "South Carolina|2021": 8371.27,
+  "South Dakota|2021": 7923.77,
+  "Tennessee|2021": 11800.74,
+  "Texas|2021": 10770.95,
+  "Utah|2021": 9820.34,
+  "Vermont|2021": 9382.87,
+  "Virginia|2021": 8252.38,
+  "Washington|2021": 12503.04,
+  "West Virginia|2021": 6912.08,
+  "Wisconsin|2021": 9963.68,
+  "Wyoming|2021": 27357.96,
+  "U.S.|2021": 10822.37,
+  "D.C.|2021": 58869.39,
+  "Alabama|2020": 8356.27,
+  "Alaska|2020": 22901.79,
+  "Arizona|2020": 6769.91,
+  "Arkansas|2020": 8486.51,
+  "California|2020": 13080.3,
+  "Colorado|2020": 6378.87,
+  "Connecticut|2020": 13698.24,
+  "Delaware|2020": 8662.18,
+  "Florida|2020": 9253.14,
+  "Georgia|2020": 10858.64,
+  "Hawaii|2020": 22363.91,
+  "Idaho|2020": 10566.21,
+  "Illinois|2020": 19246.71,
+  "Indiana|2020": 7055.8,
+  "Iowa|2020": 6690.98,
+  "Kansas|2020": 8131.45,
+  "Kentucky|2020": 7892.89,
+  "Louisiana|2020": 6524.94,
+  "Maine|2020": 9560.12,
+  "Maryland|2020": 12151.12,
+  "Massachusetts|2020": 12161.45,
+  "Michigan|2020": 7800.35,
+  "Minnesota|2020": 9771.88,
+  "Mississippi|2020": 6528.59,
+  "Missouri|2020": 8526.04,
+  "Montana|2020": 7592.78,
+  "Nebraska|2020": 11918.88,
+  "Nevada|2020": 10505.43,
+  "New Hampshire|2020": 4687.98,
+  "New Jersey|2020": 10681.17,
+  "New Mexico|2020": 19575.58,
+  "New York|2020": 14679.13,
+  "North Carolina|2020": 10915.65,
+  "North Dakota|2020": 10209.1,
+  "Ohio|2020": 6625.53,
+  "Oklahoma|2020": 7757.13,
+  "Oregon|2020": 8388.29,
+  "Pennsylvania|2020": 6425.93,
+  "Rhode Island|2020": 6943.78,
+  "South Carolina|2020": 7349.42,
+  "South Dakota|2020": 8227.93,
+  "Tennessee|2020": 11017.89,
+  "Texas|2020": 10420.53,
+  "Utah|2020": 10153.75,
+  "Vermont|2020": 4683.35,
+  "Virginia|2020": 8388.52,
+  "Washington|2020": 10538.25,
+  "West Virginia|2020": 6725.41,
+  "Wisconsin|2020": 9260.35,
+  "Wyoming|2020": 20535.11,
+  "U.S.|2020": 10310.73,
+  "D.C.|2020": 40440.01,
+  "Alabama|2019": 7436.01,
+  "Alaska|2019": 22637.45,
+  "Arizona|2019": 6632.04,
+  "Arkansas|2019": 8266.37,
+  "California|2019": 13029.15,
+  "Colorado|2019": 5994.31,
+  "Connecticut|2019": 13295.61,
+  "Delaware|2019": 7758.5,
+  "Florida|2019": 9150.09,
+  "Georgia|2019": 10647.22,
+  "Hawaii|2019": 22718.25,
+  "Idaho|2019": 10529.33,
+  "Illinois|2019": 18161.51,
+  "Indiana|2019": 7227.69,
+  "Iowa|2019": 6289.93,
+  "Kansas|2019": 7796.18,
+  "Kentucky|2019": 7769.16,
+  "Louisiana|2019": 6497.36,
+  "Maine|2019": 9381.93,
+  "Maryland|2019": 11073.5,
+  "Massachusetts|2019": 11592.33,
+  "Michigan|2019": 7593.99,
+  "Minnesota|2019": 8697.11,
+  "Mississippi|2019": 6253.55,
+  "Missouri|2019": 7287.37,
+  "Montana|2019": 7046.7,
+  "Nebraska|2019": 11346.42,
+  "Nevada|2019": 10068.12,
+  "New Hampshire|2019": 3906.06,
+  "New Jersey|2019": 9212.71,
+  "New Mexico|2019": 14524.88,
+  "New York|2019": 14486.84,
+  "North Carolina|2019": 11222.81,
+  "North Dakota|2019": 9696.55,
+  "Ohio|2019": 6763.58,
+  "Oklahoma|2019": 7489.27,
+  "Oregon|2019": 7509.57,
+  "Pennsylvania|2019": 5906.95,
+  "Rhode Island|2019": 7245.43,
+  "South Carolina|2019": 6800.22,
+  "South Dakota|2019": 7115.79,
+  "Tennessee|2019": 10371.71,
+  "Texas|2019": 10025.72,
+  "Utah|2019": 9436.41,
+  "Vermont|2019": 3665.88,
+  "Virginia|2019": 7188.0,
+  "Washington|2019": 9489.82,
+  "West Virginia|2019": 5940.27,
+  "Wisconsin|2019": 9145.02,
+  "Wyoming|2019": 20683.34,
+  "U.S.|2019": 9909.75,
+  "D.C.|2019": 31455.91,
+  "Alabama|2018": 7118.85,
+  "Alaska|2018": 21512.87,
+  "Arizona|2018": 6540.28,
+  "Arkansas|2018": 8160.95,
+  "California|2018": 12239.23,
+  "Colorado|2018": 5530.92,
+  "Connecticut|2018": 13070.85,
+  "Delaware|2018": 7653.93,
+  "Florida|2018": 8858.18,
+  "Georgia|2018": 10461.35,
+  "Hawaii|2018": 20587.34,
+  "Idaho|2018": 10389.34,
+  "Illinois|2018": 17647.68,
+  "Indiana|2018": 6965.78,
+  "Iowa|2018": 6237.74,
+  "Kansas|2018": 7355.22,
+  "Kentucky|2018": 7942.79,
+  "Louisiana|2018": 6469.22,
+  "Maine|2018": 9444.84,
+  "Maryland|2018": 10712.16,
+  "Massachusetts|2018": 11297.45,
+  "Michigan|2018": 7472.86,
+  "Minnesota|2018": 8946.15,
+  "Mississippi|2018": 6332.0,
+  "Missouri|2018": 7182.01,
+  "Montana|2018": 6914.37,
+  "Nebraska|2018": 11254.73,
+  "Nevada|2018": 10083.93,
+  "New Hampshire|2018": 3818.74,
+  "New Jersey|2018": 9428.53,
+  "New Mexico|2018": 13350.3,
+  "New York|2018": 14060.16,
+  "North Carolina|2018": 10965.19,
+  "North Dakota|2018": 9569.88,
+  "Ohio|2018": 6922.38,
+  "Oklahoma|2018": 7375.2,
+  "Oregon|2018": 7073.38,
+  "Pennsylvania|2018": 5451.65,
+  "Rhode Island|2018": 7438.07,
+  "South Carolina|2018": 6895.34,
+  "South Dakota|2018": 6923.4,
+  "Tennessee|2018": 9913.45,
+  "Texas|2018": 10097.67,
+  "Utah|2018": 9098.55,
+  "Vermont|2018": 3726.71,
+  "Virginia|2018": 6919.41,
+  "Washington|2018": 9053.16,
+  "West Virginia|2018": 5620.99,
+  "Wisconsin|2018": 8903.22,
+  "Wyoming|2018": 19106.2,
+  "U.S.|2018": 9633.79,
+  "D.C.|2018": 28545.14,
+  "Alabama|2017": 7159.05,
+  "Alaska|2017": 21274.51,
+  "Arizona|2017": 6590.37,
+  "Arkansas|2017": 8256.36,
+  "California|2017": 12000.13,
+  "Colorado|2017": 5518.46,
+  "Connecticut|2017": 13201.23,
+  "Delaware|2017": 7867.71,
+  "Florida|2017": 8156.98,
+  "Georgia|2017": 10042.14,
+  "Hawaii|2017": 19109.89,
+  "Idaho|2017": 10283.43,
+  "Illinois|2017": 18827.19,
+  "Indiana|2017": 7125.14,
+  "Iowa|2017": 6374.03,
+  "Kansas|2017": 7271.63,
+  "Kentucky|2017": 7872.45,
+  "Louisiana|2017": 6067.37,
+  "Maine|2017": 9522.52,
+  "Maryland|2017": 10703.53,
+  "Massachusetts|2017": 10869.54,
+  "Michigan|2017": 7409.56,
+  "Minnesota|2017": 8425.06,
+  "Mississippi|2017": 7174.68,
+  "Missouri|2017": 7077.69,
+  "Montana|2017": 7169.39,
+  "Nebraska|2017": 11530.26,
+  "Nevada|2017": 9538.39,
+  "New Hampshire|2017": 3735.61,
+  "New Jersey|2017": 9647.42,
+  "New Mexico|2017": 12830.16,
+  "New York|2017": 13581.26,
+  "North Carolina|2017": 10959.86,
+  "North Dakota|2017": 11151.46,
+  "Ohio|2017": 6953.44,
+  "Oklahoma|2017": 7659.51,
+  "Oregon|2017": 6854.66,
+  "Pennsylvania|2017": 5415.27,
+  "Rhode Island|2017": 7357.28,
+  "South Carolina|2017": 6927.75,
+  "South Dakota|2017": 7390.37,
+  "Tennessee|2017": 9695.79,
+  "Texas|2017": 9021.21,
+  "Utah|2017": 8993.66,
+  "Vermont|2017": 3641.73,
+  "Virginia|2017": 7211.4,
+  "Washington|2017": 9071.29,
+  "West Virginia|2017": 5782.77,
+  "Wisconsin|2017": 8750.41,
+  "Wyoming|2017": 19584.0,
+  "U.S.|2017": 9461.58,
+  "D.C.|2017": 31353.45,
+  "Alabama|2016": 6857.64,
+  "Alaska|2016": 22057.72,
+  "Arizona|2016": 6659.23,
+  "Arkansas|2016": 8557.81,
+  "California|2016": 11870.88,
+  "Colorado|2016": 5653.88,
+  "Connecticut|2016": 14763.55,
+  "Delaware|2016": 7638.71,
+  "Florida|2016": 7933.9,
+  "Georgia|2016": 9782.88,
+  "Hawaii|2016": 16833.29,
+  "Idaho|2016": 9659.9,
+  "Illinois|2016": 14487.53,
+  "Indiana|2016": 7282.5,
+  "Iowa|2016": 6685.73,
+  "Kansas|2016": 7301.95,
+  "Kentucky|2016": 7747.31,
+  "Louisiana|2016": 6418.52,
+  "Maine|2016": 9068.86,
+  "Maryland|2016": 10331.46,
+  "Massachusetts|2016": 10586.78,
+  "Michigan|2016": 7385.95,
+  "Minnesota|2016": 8396.03,
+  "Mississippi|2016": 7533.78,
+  "Missouri|2016": 7541.87,
+  "Montana|2016": 7240.24,
+  "Nebraska|2016": 11717.12,
+  "Nevada|2016": 9495.31,
+  "New Hampshire|2016": 3780.53,
+  "New Jersey|2016": 10052.37,
+  "New Mexico|2016": 13077.54,
+  "New York|2016": 13169.39,
+  "North Carolina|2016": 10910.54,
+  "North Dakota|2016": 10806.21,
+  "Ohio|2016": 6937.78,
+  "Oklahoma|2016": 8159.74,
+  "Oregon|2016": 6553.82,
+  "Pennsylvania|2016": 5334.83,
+  "Rhode Island|2016": 7120.47,
+  "South Carolina|2016": 6487.51,
+  "South Dakota|2016": 6597.05,
+  "Tennessee|2016": 9094.65,
+  "Texas|2016": 8276.18,
+  "Utah|2016": 8862.08,
+  "Vermont|2016": 3767.63,
+  "Virginia|2016": 6532.61,
+  "Washington|2016": 8626.62,
+  "West Virginia|2016": 5837.24,
+  "Wisconsin|2016": 8626.35,
+  "Wyoming|2016": 21717.94,
+  "U.S.|2016": 9187.52,
+  "D.C.|2016": 24619.72,
+  "Alabama|2015": 6937.66,
+  "Alaska|2015": 23417.99,
+  "Arizona|2015": 7169.37,
+  "Arkansas|2015": 8730.93,
+  "California|2015": 11389.11,
+  "Colorado|2015": 5146.36,
+  "Connecticut|2015": 13515.67,
+  "Delaware|2015": 7567.48,
+  "Florida|2015": 7711.88,
+  "Georgia|2015": 9457.27,
+  "Hawaii|2015": 15847.21,
+  "Idaho|2015": 9232.66,
+  "Illinois|2015": 17313.14,
+  "Indiana|2015": 6935.01,
+  "Iowa|2015": 7686.72,
+  "Kansas|2015": 7602.23,
+  "Kentucky|2015": 7995.72,
+  "Louisiana|2015": 6663.47,
+  "Maine|2015": 8867.54,
+  "Maryland|2015": 10038.07,
+  "Massachusetts|2015": 10457.18,
+  "Michigan|2015": 7182.11,
+  "Minnesota|2015": 7718.35,
+  "Mississippi|2015": 7367.15,
+  "Missouri|2015": 7853.99,
+  "Montana|2015": 7105.72,
+  "Nebraska|2015": 11059.75,
+  "Nevada|2015": 8924.18,
+  "New Hampshire|2015": 5206.16,
+  "New Jersey|2015": 10110.42,
+  "New Mexico|2015": 12801.68,
+  "New York|2015": 12892.37,
+  "North Carolina|2015": 10485.06,
+  "North Dakota|2015": 11208.03,
+  "Ohio|2015": 6620.33,
+  "Oklahoma|2015": 8689.2,
+  "Oregon|2015": 5668.04,
+  "Pennsylvania|2015": 5437.08,
+  "Rhode Island|2015": 6691.46,
+  "South Carolina|2015": 6082.22,
+  "South Dakota|2015": 6649.34,
+  "Tennessee|2015": 8728.21,
+  "Texas|2015": 8582.47,
+  "Utah|2015": 8698.31,
+  "Vermont|2015": 3743.06,
+  "Virginia|2015": 6356.46,
+  "Washington|2015": 7708.84,
+  "West Virginia|2015": 6259.73,
+  "Wisconsin|2015": 9337.19,
+  "Wyoming|2015": 19463.11,
+  "U.S.|2015": 9126.55,
+  "D.C.|2015": 27418.65,
+  "Alabama|2014": 6821.22,
+  "Alaska|2014": 23210.64,
+  "Arizona|2014": 7168.09,
+  "Arkansas|2014": 8685.04,
+  "California|2014": 10386.67,
+  "Colorado|2014": 4452.59,
+  "Connecticut|2014": 15568.62,
+  "Delaware|2014": 7990.79,
+  "Florida|2014": 7215.44,
+  "Georgia|2014": 9102.69,
+  "Hawaii|2014": 14458.09,
+  "Idaho|2014": 8447.94,
+  "Illinois|2014": 16785.84,
+  "Indiana|2014": 7121.41,
+  "Iowa|2014": 7379.14,
+  "Kansas|2014": 7458.08,
+  "Kentucky|2014": 8046.78,
+  "Louisiana|2014": 6612.92,
+  "Maine|2014": 8570.0,
+  "Maryland|2014": 9734.05,
+  "Massachusetts|2014": 9587.2,
+  "Michigan|2014": 6729.22,
+  "Minnesota|2014": 7321.27,
+  "Mississippi|2014": 7099.61,
+  "Missouri|2014": 6960.57,
+  "Montana|2014": 6691.09,
+  "Nebraska|2014": 10405.98,
+  "Nevada|2014": 10287.54,
+  "New Hampshire|2014": 3460.19,
+  "New Jersey|2014": 10116.02,
+  "New Mexico|2014": 11213.72,
+  "New York|2014": 12149.96,
+  "North Carolina|2014": 10275.69,
+  "North Dakota|2014": 11429.49,
+  "Ohio|2014": 5829.24,
+  "Oklahoma|2014": 8244.92,
+  "Oregon|2014": 6215.7,
+  "Pennsylvania|2014": 5329.05,
+  "Rhode Island|2014": 6459.83,
+  "South Carolina|2014": 5753.52,
+  "South Dakota|2014": 6427.03,
+  "Tennessee|2014": 8770.05,
+  "Texas|2014": 8987.19,
+  "Utah|2014": 7745.3,
+  "Vermont|2014": 4208.23,
+  "Virginia|2014": 6272.06,
+  "Washington|2014": 7759.18,
+  "West Virginia|2014": 6314.01,
+  "Wisconsin|2014": 8801.83,
+  "Wyoming|2014": 17798.36,
+  "U.S.|2014": 8774.52,
+  "D.C.|2014": 24593.15,
+  "Alabama|2013": 6799.8,
+  "Alaska|2013": 21825.66,
+  "Arizona|2013": 7030.34,
+  "Arkansas|2013": 8761.87,
+  "California|2013": 9711.28,
+  "Colorado|2013": 4160.13,
+  "Connecticut|2013": 13984.27,
+  "Delaware|2013": 7841.19,
+  "Florida|2013": 6046.4,
+  "Georgia|2013": 8518.5,
+  "Hawaii|2013": 14312.14,
+  "Idaho|2013": 8068.29,
+  "Illinois|2013": 16704.9,
+  "Indiana|2013": 6656.19,
+  "Iowa|2013": 7076.18,
+  "Kansas|2013": 7592.92,
+  "Kentucky|2013": 8125.1,
+  "Louisiana|2013": 6641.26,
+  "Maine|2013": 8364.48,
+  "Maryland|2013": 9079.61,
+  "Massachusetts|2013": 9139.85,
+  "Michigan|2013": 6426.56,
+  "Minnesota|2013": 6580.37,
+  "Mississippi|2013": 7109.09,
+  "Missouri|2013": 6986.7,
+  "Montana|2013": 6083.98,
+  "Nebraska|2013": 9962.07,
+  "Nevada|2013": 9971.02,
+  "New Hampshire|2013": 2530.62,
+  "New Jersey|2013": 9886.08,
+  "New Mexico|2013": 10849.78,
+  "New York|2013": 11808.38,
+  "North Carolina|2013": 10605.29,
+  "North Dakota|2013": 9694.09,
+  "Ohio|2013": 5745.78,
+  "Oklahoma|2013": 8383.55,
+  "Oregon|2013": 5614.85,
+  "Pennsylvania|2013": 5302.15,
+  "Rhode Island|2013": 6357.25,
+  "South Carolina|2013": 5752.55,
+  "South Dakota|2013": 6399.73,
+  "Tennessee|2013": 7857.97,
+  "Texas|2013": 8237.21,
+  "Utah|2013": 7189.65,
+  "Vermont|2013": 4006.69,
+  "Virginia|2013": 6088.3,
+  "Washington|2013": 6921.77,
+  "West Virginia|2013": 6793.66,
+  "Wisconsin|2013": 9053.78,
+  "Wyoming|2013": 19339.68,
+  "U.S.|2013": 8369.93,
+  "D.C.|2013": 28568.15,
+  "Alabama|2012": 7087.79,
+  "Alaska|2012": 20802.1,
+  "Arizona|2012": 6867.96,
+  "Arkansas|2012": 9001.93,
+  "California|2012": 9326.58,
+  "Colorado|2012": 4202.75,
+  "Connecticut|2012": 15670.26,
+  "Delaware|2012": 7941.68,
+  "Florida|2012": 6555.83,
+  "Georgia|2012": 8349.21,
+  "Hawaii|2012": 14393.64,
+  "Idaho|2012": 7445.99,
+  "Illinois|2012": 14734.39,
+  "Indiana|2012": 6595.02,
+  "Iowa|2012": 6535.51,
+  "Kansas|2012": 7292.05,
+  "Kentucky|2012": 8295.41,
+  "Louisiana|2012": 7046.67,
+  "Maine|2012": 8592.97,
+  "Maryland|2012": 9102.25,
+  "Massachusetts|2012": 9001.32,
+  "Michigan|2012": 6102.86,
+  "Minnesota|2012": 6664.63,
+  "Mississippi|2012": 6870.17,
+  "Missouri|2012": 7164.15,
+  "Montana|2012": 6103.59,
+  "Nebraska|2012": 9412.17,
+  "Nevada|2012": 10062.58,
+  "New Hampshire|2012": 2506.25,
+  "New Jersey|2012": 9524.46,
+  "New Mexico|2012": 10970.42,
+  "New York|2012": 11324.12,
+  "North Carolina|2012": 10201.12,
+  "North Dakota|2012": 9793.82,
+  "Ohio|2012": 5825.99,
+  "Oklahoma|2012": 8387.77,
+  "Oregon|2012": 5503.93,
+  "Pennsylvania|2012": 5369.69,
+  "Rhode Island|2012": 7153.76,
+  "South Carolina|2012": 5665.62,
+  "South Dakota|2012": 5937.97,
+  "Tennessee|2012": 7696.64,
+  "Texas|2012": 8500.02,
+  "Utah|2012": 6989.72,
+  "Vermont|2012": 3988.09,
+  "Virginia|2012": 5832.48,
+  "Washington|2012": 6659.12,
+  "West Virginia|2012": 6726.07,
+  "Wisconsin|2012": 8776.19,
+  "Wyoming|2012": 16854.29,
+  "U.S.|2012": 8212.85,
+  "D.C.|2012": 26092.61,
+  "Alabama|2011": 7429.45,
+  "Alaska|2011": 20752.71,
+  "Arizona|2011": 8284.97,
+  "Arkansas|2011": 9225.76,
+  "California|2011": 10525.68,
+  "Colorado|2011": 5036.85,
+  "Connecticut|2011": 17942.3,
+  "Delaware|2011": 7985.18,
+  "Florida|2011": 7766.82,
+  "Georgia|2011": 9433.43,
+  "Hawaii|2011": 14856.65,
+  "Idaho|2011": 8718.92,
+  "Illinois|2011": 13828.95,
+  "Indiana|2011": 6544.99,
+  "Iowa|2011": 6791.67,
+  "Kansas|2011": 7733.38,
+  "Kentucky|2011": 8799.59,
+  "Louisiana|2011": 9602.04,
+  "Maine|2011": 8867.8,
+  "Maryland|2011": 9399.56,
+  "Massachusetts|2011": 9375.83,
+  "Michigan|2011": 6987.89,
+  "Minnesota|2011": 7401.93,
+  "Mississippi|2011": 7553.91,
+  "Missouri|2011": 7638.76,
+  "Montana|2011": 6479.42,
+  "Nebraska|2011": 10212.85,
+  "Nevada|2011": 11148.57,
+  "New Hampshire|2011": 4315.84,
+  "New Jersey|2011": 10405.11,
+  "New Mexico|2011": 11183.65,
+  "New York|2011": 12374.27,
+  "North Carolina|2011": 10437.78,
+  "North Dakota|2011": 8990.53,
+  "Ohio|2011": 6229.81,
+  "Oklahoma|2011": 9160.96,
+  "Oregon|2011": 6145.33,
+  "Pennsylvania|2011": 6605.77,
+  "Rhode Island|2011": 6664.82,
+  "South Carolina|2011": 6198.22,
+  "South Dakota|2011": 6700.93,
+  "Tennessee|2011": 9262.37,
+  "Texas|2011": 9000.76,
+  "Utah|2011": 7423.22,
+  "Vermont|2011": 4201.76,
+  "Virginia|2011": 7267.16,
+  "Washington|2011": 7756.63,
+  "West Virginia|2011": 6718.04,
+  "Wisconsin|2011": 9909.02,
+  "Wyoming|2011": 19392.8,
+  "U.S.|2011": 9004.1,
+  "D.C.|2011": 28425.08,
+  "Alabama|2010": 7686.03,
+  "Alaska|2010": 21191.44,
+  "Arizona|2010": 9346.13,
+  "Arkansas|2010": 9209.09,
+  "California|2010": 10436.04,
+  "Colorado|2010": 6270.78,
+  "Connecticut|2010": 18943.3,
+  "Delaware|2010": 9683.52,
+  "Florida|2010": 7995.41,
+  "Georgia|2010": 9928.66,
+  "Hawaii|2010": 16881.87,
+  "Idaho|2010": 10236.13,
+  "Illinois|2010": 14378.59,
+  "Indiana|2010": 7042.5,
+  "Iowa|2010": 8345.2,
+  "Kansas|2010": 8065.42,
+  "Kentucky|2010": 9583.63,
+  "Louisiana|2010": 9325.37,
+  "Maine|2010": 8955.06,
+  "Maryland|2010": 10199.47,
+  "Massachusetts|2010": 9745.96,
+  "Michigan|2010": 7492.54,
+  "Minnesota|2010": 8628.33,
+  "Mississippi|2010": 8557.72,
+  "Missouri|2010": 8546.19,
+  "Montana|2010": 6899.11,
+  "Nebraska|2010": 10348.77,
+  "Nevada|2010": 11986.65,
+  "New Hampshire|2010": 4636.86,
+  "New Jersey|2010": 11986.72,
+  "New Mexico|2010": 10705.03,
+  "New York|2010": 12295.0,
+  "North Carolina|2010": 10670.38,
+  "North Dakota|2010": 9271.01,
+  "Ohio|2010": 6477.58,
+  "Oklahoma|2010": 10256.51,
+  "Oregon|2010": 6663.41,
+  "Pennsylvania|2010": 6952.27,
+  "Rhode Island|2010": 6584.11,
+  "South Carolina|2010": 6901.77,
+  "South Dakota|2010": 7065.69,
+  "Tennessee|2010": 9963.42,
+  "Texas|2010": 10422.2,
+  "Utah|2010": 8063.16,
+  "Vermont|2010": 4361.67,
+  "Virginia|2010": 7192.4,
+  "Washington|2010": 8669.22,
+  "West Virginia|2010": 6814.72,
+  "Wisconsin|2010": 9790.34,
+  "Wyoming|2010": 16554.05,
+  "U.S.|2010": 9506.76,
+  "Alabama|2009": 8230.0,
+  "Alaska|2009": 22264.4,
+  "Arizona|2009": 10751.89,
+  "Arkansas|2009": 9333.63,
+  "California|2009": 9983.72,
+  "Colorado|2009": 6647.26,
+  "Connecticut|2009": 19386.45,
+  "Delaware|2009": 10256.99,
+  "Florida|2009": 9071.16,
+  "Georgia|2009": 10808.88,
+  "Hawaii|2009": 19499.6,
+  "Idaho|2009": 12414.98,
+  "Illinois|2009": 13488.99,
+  "Indiana|2009": 7994.78,
+  "Iowa|2009": 9432.58,
+  "Kansas|2009": 8769.71,
+  "Kentucky|2009": 10308.36,
+  "Louisiana|2009": 9744.24,
+  "Maine|2009": 9444.07,
+  "Maryland|2009": 10240.03,
+  "Massachusetts|2009": 10758.96,
+  "Michigan|2009": 8320.81,
+  "Minnesota|2009": 9261.86,
+  "Mississippi|2009": 8542.18,
+  "Missouri|2009": 9439.94,
+  "Montana|2009": 7331.88,
+  "Nebraska|2009": 11091.98,
+  "Nevada|2009": 13592.88,
+  "New Hampshire|2009": 5115.16,
+  "New Jersey|2009": 12206.82,
+  "New Mexico|2009": 12075.54,
+  "New York|2009": 13079.39,
+  "North Carolina|2009": 11533.22,
+  "North Dakota|2009": 7900.86,
+  "Ohio|2009": 7816.1,
+  "Oklahoma|2009": 10438.52,
+  "Oregon|2009": 7719.26,
+  "Pennsylvania|2009": 8242.48,
+  "Rhode Island|2009": 8386.23,
+  "South Carolina|2009": 7324.7,
+  "South Dakota|2009": 7384.81,
+  "Tennessee|2009": 11102.79,
+  "Texas|2009": 9632.03,
+  "Utah|2009": 9366.44,
+  "Vermont|2009": 4323.47,
+  "Virginia|2009": 8169.14,
+  "Washington|2009": 9784.7,
+  "West Virginia|2009": 7205.9,
+  "Wisconsin|2009": 10634.37,
+  "Wyoming|2009": 19723.46,
+  "U.S.|2009": 9993.94,
+  "Alabama|2008": 11081.67,
+  "Alaska|2008": 21389.91,
+  "Arizona|2008": 11008.41,
+  "Arkansas|2008": 9597.43,
+  "California|2008": 11638.16,
+  "Colorado|2008": 6142.68,
+  "Connecticut|2008": 20338.3,
+  "Delaware|2008": 10513.48,
+  "Florida|2008": 9279.02,
+  "Georgia|2008": 12048.49,
+  "Hawaii|2008": 19252.77,
+  "Idaho|2008": 12716.22,
+  "Illinois|2008": 13683.71,
+  "Indiana|2008": 7902.8,
+  "Iowa|2008": 9329.85,
+  "Kansas|2008": 9076.44,
+  "Kentucky|2008": 11041.1,
+  "Louisiana|2008": 10419.88,
+  "Maine|2008": 9779.97,
+  "Maryland|2008": 11084.02,
+  "Massachusetts|2008": 12481.4,
+  "Michigan|2008": 8702.19,
+  "Minnesota|2008": 9710.94,
+  "Mississippi|2008": 9538.95,
+  "Missouri|2008": 9650.1,
+  "Montana|2008": 7232.23,
+  "Nebraska|2008": 10655.82,
+  "Nevada|2008": 13979.71,
+  "New Hampshire|2008": 5190.65,
+  "New Jersey|2008": 13020.0,
+  "New Mexico|2008": 14001.67,
+  "New York|2008": 12881.64,
+  "North Carolina|2008": 13103.06,
+  "North Dakota|2008": 8357.9,
+  "Ohio|2008": 7625.3,
+  "Oklahoma|2008": 10489.41,
+  "Oregon|2008": 8248.03,
+  "Pennsylvania|2008": 8517.35,
+  "Rhode Island|2008": 8706.71,
+  "South Carolina|2008": 9262.7,
+  "South Dakota|2008": 7927.98,
+  "Tennessee|2008": 11324.44,
+  "Texas|2008": 10717.5,
+  "Utah|2008": 10429.94,
+  "Vermont|2008": 4655.56,
+  "Virginia|2008": 8499.23,
+  "Washington|2008": 10377.56,
+  "West Virginia|2008": 8596.3,
+  "Wisconsin|2008": 10597.35,
+  "Wyoming|2008": 18914.6,
+  "U.S.|2008": 10714.26,
+  "Alabama|2007": 10004.98,
+  "Alaska|2007": 21047.83,
+  "Arizona|2007": 10415.07,
+  "Arkansas|2007": 9165.42,
+  "California|2007": 11716.3,
+  "Colorado|2007": 5999.61,
+  "Connecticut|2007": 19025.2,
+  "Delaware|2007": 10695.42,
+  "Florida|2007": 9900.41,
+  "Georgia|2007": 12189.81,
+  "Hawaii|2007": 18378.35,
+  "Idaho|2007": 12086.76,
+  "Illinois|2007": 12627.34,
+  "Indiana|2007": 8061.43,
+  "Iowa|2007": 9051.98,
+  "Kansas|2007": 8963.06,
+  "Kentucky|2007": 10610.5,
+  "Louisiana|2007": 10006.22,
+  "Maine|2007": 9497.67,
+  "Maryland|2007": 11211.38,
+  "Massachusetts|2007": 12346.71,
+  "Michigan|2007": 9062.39,
+  "Minnesota|2007": 9020.36,
+  "Mississippi|2007": 8562.95,
+  "Missouri|2007": 9763.29,
+  "Montana|2007": 6475.57,
+  "Nebraska|2007": 11082.12,
+  "Nevada|2007": 14391.75,
+  "New Hampshire|2007": 5078.06,
+  "New Jersey|2007": 12797.48,
+  "New Mexico|2007": 13322.12,
+  "New York|2007": 12785.59,
+  "North Carolina|2007": 12723.27,
+  "North Dakota|2007": 7503.42,
+  "Ohio|2007": 7722.53,
+  "Oklahoma|2007": 10084.01,
+  "Oregon|2007": 7844.08,
+  "Pennsylvania|2007": 8722.47,
+  "Rhode Island|2007": 9628.62,
+  "South Carolina|2007": 9126.3,
+  "South Dakota|2007": 7332.96,
+  "Tennessee|2007": 10765.82,
+  "Texas|2007": 9807.03,
+  "Utah|2007": 9512.3,
+  "Vermont|2007": 4714.15,
+  "Virginia|2007": 8866.4,
+  "Washington|2007": 10200.47,
+  "West Virginia|2007": 6929.44,
+  "Wisconsin|2007": 10478.28,
+  "Wyoming|2007": 19138.16,
+  "U.S.|2007": 10516.74,
+  "Alabama|2006": 8770.59,
+  "Alaska|2006": 19020.96,
+  "Arizona|2006": 9787.23,
+  "Arkansas|2006": 9090.02,
+  "California|2006": 11686.62,
+  "Colorado|2006": 5774.13,
+  "Connecticut|2006": 18062.69,
+  "Delaware|2006": 10293.66,
+  "Florida|2006": 10259.31,
+  "Georgia|2006": 12260.13,
+  "Hawaii|2006": 16957.73,
+  "Idaho|2006": 11713.68,
+  "Illinois|2006": 12194.06,
+  "Indiana|2006": 8332.24,
+  "Iowa|2006": 9066.51,
+  "Kansas|2006": 9037.73,
+  "Kentucky|2006": 10564.41,
+  "Louisiana|2006": 8933.21,
+  "Maine|2006": 9427.21,
+  "Maryland|2006": 10028.9,
+  "Massachusetts|2006": 11949.8,
+  "Michigan|2006": 9326.69,
+  "Minnesota|2006": 9216.84,
+  "Mississippi|2006": 7884.92,
+  "Missouri|2006": 9676.13,
+  "Montana|2006": 6798.7,
+  "Nebraska|2006": 10868.2,
+  "Nevada|2006": 14616.75,
+  "New Hampshire|2006": 5071.16,
+  "New Jersey|2006": 13522.56,
+  "New Mexico|2006": 14383.76,
+  "New York|2006": 12035.81,
+  "North Carolina|2006": 11737.58,
+  "North Dakota|2006": 7644.95,
+  "Ohio|2006": 7954.4,
+  "Oklahoma|2006": 8798.3,
+  "Oregon|2006": 7749.82,
+  "Pennsylvania|2006": 8832.58,
+  "Rhode Island|2006": 10164.07,
+  "South Carolina|2006": 8920.71,
+  "South Dakota|2006": 6943.87,
+  "Tennessee|2006": 10678.41,
+  "Texas|2006": 9793.02,
+  "Utah|2006": 9272.32,
+  "Vermont|2006": 4728.8,
+  "Virginia|2006": 8150.46,
+  "Washington|2006": 10044.06,
+  "West Virginia|2006": 6551.01,
+  "Wisconsin|2006": 10316.38,
+  "Wyoming|2006": 17127.57,
+  "U.S.|2006": 10318.06,
+  "Alabama|2005": 7869.61,
+  "Alaska|2005": 18081.72,
+  "Arizona|2005": 9211.78,
+  "Arkansas|2005": 8115.27,
+  "California|2005": 11067.45,
+  "Colorado|2005": 5452.46,
+  "Connecticut|2005": 18005.62,
+  "Delaware|2005": 10226.82,
+  "Florida|2005": 10096.58,
+  "Georgia|2005": 11618.79,
+  "Hawaii|2005": 15088.46,
+  "Idaho|2005": 11558.18,
+  "Illinois|2005": 12512.49,
+  "Indiana|2005": 8528.24,
+  "Iowa|2005": 8502.84,
+  "Kansas|2005": 10049.09,
+  "Kentucky|2005": 9651.11,
+  "Louisiana|2005": 8374.02,
+  "Maine|2005": 9650.07,
+  "Maryland|2005": 9628.77,
+  "Massachusetts|2005": 11309.51,
+  "Michigan|2005": 9409.15,
+  "Minnesota|2005": 8849.11,
+  "Mississippi|2005": 7913.8,
+  "Missouri|2005": 10045.38,
+  "Montana|2005": 6193.78,
+  "Nebraska|2005": 9474.96,
+  "Nevada|2005": 14204.72,
+  "New Hampshire|2005": 5307.94,
+  "New Jersey|2005": 13673.6,
+  "New Mexico|2005": 13361.36,
+  "New York|2005": 11423.12,
+  "North Carolina|2005": 10868.9,
+  "North Dakota|2005": 7364.14,
+  "Ohio|2005": 7630.89,
+  "Oklahoma|2005": 7850.36,
+  "Oregon|2005": 7418.78,
+  "Pennsylvania|2005": 8879.58,
+  "Rhode Island|2005": 10131.72,
+  "South Carolina|2005": 8581.97,
+  "South Dakota|2005": 7307.5,
+  "Tennessee|2005": 10972.27,
+  "Texas|2005": 8671.1,
+  "Utah|2005": 8658.82,
+  "Vermont|2005": 4840.93,
+  "Virginia|2005": 7945.87,
+  "Washington|2005": 9457.23,
+  "West Virginia|2005": 7017.67,
+  "Wisconsin|2005": 10722.92,
+  "Wyoming|2005": 15870.35,
+  "U.S.|2005": 9907.19,
+  "Alabama|2004": 7803.87,
+  "Alaska|2004": 17392.32,
+  "Arizona|2004": 9197.82,
+  "Arkansas|2004": 8814.85,
+  "California|2004": 11157.32,
+  "Colorado|2004": 5372.92,
+  "Connecticut|2004": 18229.15,
+  "Delaware|2004": 10284.05,
+  "Florida|2004": 9310.69,
+  "Georgia|2004": 11651.41,
+  "Hawaii|2004": 15421.91,
+  "Idaho|2004": 11530.94,
+  "Illinois|2004": 12691.83,
+  "Indiana|2004": 8467.81,
+  "Iowa|2004": 8741.59,
+  "Kansas|2004": 9884.26,
+  "Kentucky|2004": 10695.86,
+  "Louisiana|2004": 8403.16,
+  "Maine|2004": 9819.0,
+  "Maryland|2004": 11399.03,
+  "Massachusetts|2004": 10271.44,
+  "Michigan|2004": 9825.09,
+  "Minnesota|2004": 9259.06,
+  "Mississippi|2004": 8276.63,
+  "Missouri|2004": 9600.5,
+  "Montana|2004": 6260.63,
+  "Nebraska|2004": 9064.87,
+  "Nevada|2004": 14228.94,
+  "New Hampshire|2004": 5405.45,
+  "New Jersey|2004": 12831.78,
+  "New Mexico|2004": 13543.85,
+  "New York|2004": 10666.46,
+  "North Carolina|2004": 11147.96,
+  "North Dakota|2004": 7410.76,
+  "Ohio|2004": 8248.49,
+  "Oklahoma|2004": 8107.71,
+  "Oregon|2004": 7604.93,
+  "Pennsylvania|2004": 8911.28,
+  "Rhode Island|2004": 10116.03,
+  "South Carolina|2004": 8351.31,
+  "South Dakota|2004": 7288.91,
+  "Tennessee|2004": 8854.31,
+  "Texas|2004": 8943.13,
+  "Utah|2004": 8400.0,
+  "Vermont|2004": 5040.76,
+  "Virginia|2004": 7545.49,
+  "Washington|2004": 9167.68,
+  "West Virginia|2004": 6735.0,
+  "Wisconsin|2004": 10923.09,
+  "Wyoming|2004": 15031.85,
+  "U.S.|2004": 9885.96,
+  "Alabama|2003": 8130.27,
+  "Alaska|2003": 18391.03,
+  "Arizona|2003": 9455.08,
+  "Arkansas|2003": 8695.27,
+  "California|2003": 12075.3,
+  "Colorado|2003": 5902.18,
+  "Connecticut|2003": 19593.04,
+  "Delaware|2003": 9590.0,
+  "Florida|2003": 10012.07,
+  "Georgia|2003": 12073.77,
+  "Hawaii|2003": 15093.39,
+  "Idaho|2003": 12392.09,
+  "Illinois|2003": 13412.15,
+  "Indiana|2003": 8694.83,
+  "Iowa|2003": 9772.54,
+  "Kansas|2003": 9906.42,
+  "Kentucky|2003": 10879.34,
+  "Louisiana|2003": 9080.21,
+  "Maine|2003": 10791.53,
+  "Maryland|2003": 12043.39,
+  "Massachusetts|2003": 11938.55,
+  "Michigan|2003": 11242.13,
+  "Minnesota|2003": 9836.77,
+  "Mississippi|2003": 8646.13,
+  "Missouri|2003": 9780.25,
+  "Montana|2003": 6404.21,
+  "Nebraska|2003": 10048.63,
+  "Nevada|2003": 11624.38,
+  "New Hampshire|2003": 5719.75,
+  "New Jersey|2003": 12732.71,
+  "New Mexico|2003": 13720.61,
+  "New York|2003": 11920.94,
+  "North Carolina|2003": 11858.98,
+  "North Dakota|2003": 7995.11,
+  "Ohio|2003": 8619.83,
+  "Oklahoma|2003": 9636.95,
+  "Oregon|2003": 8496.61,
+  "Pennsylvania|2003": 9686.0,
+  "Rhode Island|2003": 11038.52,
+  "South Carolina|2003": 10125.84,
+  "South Dakota|2003": 7283.24,
+  "Tennessee|2003": 9292.12,
+  "Texas|2003": 9137.6,
+  "Utah|2003": 8774.14,
+  "Vermont|2003": 5251.02,
+  "Virginia|2003": 8317.41,
+  "Washington|2003": 9553.61,
+  "West Virginia|2003": 7875.18,
+  "Wisconsin|2003": 11925.49,
+  "Wyoming|2003": 15278.32,
+  "U.S.|2003": 10550.9,
+  "Alabama|2002": 8348.77,
+  "Alaska|2002": 19436.05,
+  "Arizona|2002": 10311.1,
+  "Arkansas|2002": 9586.35,
+  "California|2002": 12698.36,
+  "Colorado|2002": 7752.77,
+  "Connecticut|2002": 21465.29,
+  "Delaware|2002": 12296.37,
+  "Florida|2002": 10541.07,
+  "Georgia|2002": 13362.18,
+  "Hawaii|2002": 14529.98,
+  "Idaho|2002": 14293.95,
+  "Illinois|2002": 14927.69,
+  "Indiana|2002": 8433.35,
+  "Iowa|2002": 10445.25,
+  "Kansas|2002": 11429.11,
+  "Kentucky|2002": 12379.43,
+  "Louisiana|2002": 9206.28,
+  "Maine|2002": 12105.72,
+  "Maryland|2002": 13015.75,
+  "Massachusetts|2002": 13000.14,
+  "Michigan|2002": 12070.07,
+  "Minnesota|2002": 11840.24,
+  "Mississippi|2002": 9176.46,
+  "Missouri|2002": 10089.27,
+  "Montana|2002": 7059.4,
+  "Nebraska|2002": 10185.27,
+  "Nevada|2002": 12492.81,
+  "New Hampshire|2002": 5832.8,
+  "New Jersey|2002": 13609.13,
+  "New Mexico|2002": 12296.74,
+  "New York|2002": 12265.41,
+  "North Carolina|2002": 12515.01,
+  "North Dakota|2002": 8462.39,
+  "Ohio|2002": 8927.35,
+  "Oklahoma|2002": 9607.35,
+  "Oregon|2002": 9132.64,
+  "Pennsylvania|2002": 10816.69,
+  "Rhode Island|2002": 11813.84,
+  "South Carolina|2002": 7825.25,
+  "South Dakota|2002": 8102.92,
+  "Tennessee|2002": 9547.9,
+  "Texas|2002": 10584.09,
+  "Utah|2002": 9526.59,
+  "Vermont|2002": 5331.04,
+  "Virginia|2002": 10493.85,
+  "Washington|2002": 9941.22,
+  "West Virginia|2002": 8446.63,
+  "Wisconsin|2002": 12324.72,
+  "Wyoming|2002": 13918.12,
+  "U.S.|2002": 11308.79,
+  "Alabama|2001": 8862.09,
+  "Alaska|2001": 19590.65,
+  "Arizona|2001": 10182.71,
+  "Arkansas|2001": 9982.57,
+  "California|2001": 12991.51,
+  "Colorado|2001": 8284.4,
+  "Connecticut|2001": 21844.35,
+  "Delaware|2001": 11673.57,
+  "Florida|2001": 11622.96,
+  "Georgia|2001": 15039.85,
+  "Hawaii|2001": 15401.46,
+  "Idaho|2001": 13868.3,
+  "Illinois|2001": 15092.21,
+  "Indiana|2001": 10057.05,
+  "Iowa|2001": 12248.31,
+  "Kansas|2001": 11792.74,
+  "Kentucky|2001": 12816.37,
+  "Louisiana|2001": 8587.95,
+  "Maine|2001": 12420.54,
+  "Maryland|2001": 13115.27,
+  "Massachusetts|2001": 15243.9,
+  "Michigan|2001": 12472.05,
+  "Minnesota|2001": 11744.52,
+  "Mississippi|2001": 10403.45,
+  "Missouri|2001": 12295.47,
+  "Montana|2001": 7059.49,
+  "Nebraska|2001": 9613.62,
+  "Nevada|2001": 12022.18,
+  "New Hampshire|2001": 7077.21,
+  "New Jersey|2001": 14025.64,
+  "New Mexico|2001": 11744.38,
+  "New York|2001": 12476.99,
+  "North Carolina|2001": 13567.28,
+  "North Dakota|2001": 8376.12,
+  "Ohio|2001": 10144.19,
+  "Oklahoma|2001": 10748.51,
+  "Oregon|2001": 10240.73,
+  "Pennsylvania|2001": 11294.69,
+  "Rhode Island|2001": 11847.94,
+  "South Carolina|2001": 9076.15,
+  "South Dakota|2001": 8061.0,
+  "Tennessee|2001": 9407.12,
+  "Texas|2001": 10190.49,
+  "Utah|2001": 9846.68,
+  "Vermont|2001": 5287.98,
+  "Virginia|2001": 10928.92,
+  "Washington|2001": 10406.55,
+  "West Virginia|2001": 8246.06,
+  "Wisconsin|2001": 12724.4,
+  "Wyoming|2001": 13571.5,
+  "U.S.|2001": 11787.44,
+  "Alabama|2000": 9258.76,
+  "Alaska|2000": 19232.62,
+  "Arizona|2000": 10794.57,
+  "Arkansas|2000": 10289.83,
+  "California|2000": 12973.01,
+  "Colorado|2000": 8049.47,
+  "Connecticut|2000": 18421.28,
+  "Delaware|2000": 10954.79,
+  "Florida|2000": 10679.5,
+  "Georgia|2000": 17967.68,
+  "Hawaii|2000": 16419.46,
+  "Idaho|2000": 13364.76,
+  "Illinois|2000": 14814.26,
+  "Indiana|2000": 10316.73,
+  "Iowa|2000": 12461.82,
+  "Kansas|2000": 11651.71,
+  "Kentucky|2000": 12813.9,
+  "Louisiana|2000": 8775.92,
+  "Maine|2000": 12080.76,
+  "Maryland|2000": 9909.59,
+  "Massachusetts|2000": 15582.25,
+  "Michigan|2000": 12182.44,
+  "Minnesota|2000": 13076.4,
+  "Mississippi|2000": 11678.46,
+  "Missouri|2000": 12329.49,
+  "Montana|2000": 7143.84,
+  "Nebraska|2000": 9794.33,
+  "Nevada|2000": 11367.22,
+  "New Hampshire|2000": 6344.18,
+  "New Jersey|2000": 13756.21,
+  "New Mexico|2000": 15529.06,
+  "New York|2000": 16101.66,
+  "North Carolina|2000": 13545.66,
+  "North Dakota|2000": 9104.33,
+  "Ohio|2000": 10349.25,
+  "Oklahoma|2000": 10291.83,
+  "Oregon|2000": 9674.74,
+  "Pennsylvania|2000": 11446.48,
+  "Rhode Island|2000": 11385.1,
+  "South Carolina|2000": 8908.26,
+  "South Dakota|2000": 9299.38,
+  "Tennessee|2000": 9269.76,
+  "Texas|2000": 10242.64,
+  "Utah|2000": 10088.27,
+  "Vermont|2000": 5235.87,
+  "Virginia|2000": 10405.59,
+  "Washington|2000": 10507.42,
+  "West Virginia|2000": 7915.84,
+  "Wisconsin|2000": 11687.73,
+  "Wyoming|2000": 17183.52,
+  "U.S.|2000": 11902.18
+ }
+}
