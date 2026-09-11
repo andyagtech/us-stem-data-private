@@ -8,7 +8,7 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
-  :root { --bg: var(--bg); --surface: var(--surface); --surface2: var(--border); --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8; --red: #f87171; --green: #4ade80; --orange: #fb923c; --purple: #a78bfa; }
+  :root { --bg: #0f172a; --surface: #1e293b; --surface2: var(--border); --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8; --red: #f87171; --green: #4ade80; --orange: #fb923c; --purple: #a78bfa; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); }
   .page { max-width: 1200px; margin: 0 auto; padding: 24px 32px; }
@@ -31,7 +31,7 @@
   .chart-box .source a { color: var(--accent); text-decoration: none; }
   .chart-box canvas { max-height: 280px; }
   .chart-box.wide { grid-column: 1 / -1; }
-  .chart-box:target { border-color: #38bdf8; box-shadow: 0 0 0 2px rgba(56,189,248,0.3); }
+  .chart-box:target { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(56,189,248,0.3); }
   .share-btn { font-size: 0.7rem; text-decoration: none; opacity: 0.3; transition: opacity 0.15s; margin-left: 6px; }
   .share-btn:hover { opacity: 1; }
   .info-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; margin-bottom: 14px; font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
@@ -59,6 +59,10 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 .themebtn:hover,.themebtn:focus-visible{color:var(--text);border-color:var(--accent);}
 .themebtn .ic{font-size:13px;line-height:1;}
 @media print{.themebtn{display:none;}}
+/* phd-light-status */
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--red:#b91c1c;--green:#15803d;--orange:#c2410c;--purple:#6d28d9;}}
+:root[data-theme="light"]{--red:#b91c1c;--green:#15803d;--orange:#c2410c;--purple:#6d28d9;}
+/* /phd-light-status */
 </style>
 <!-- og:cards -->
 <meta property="og:title" content="China&#x27;s Outbound Students Have Turned Down">

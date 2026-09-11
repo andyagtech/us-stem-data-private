@@ -73,6 +73,10 @@
         { hash: 'industry-section', label: 'By Major Industry' },
       ]},
       { href: '/concentration.html', label: 'The Concentration Effect' },
+      { href: '/institutions.html', label: 'Compare Institutions', anchors: [
+        { hash: 'the-table', label: 'The table' },
+        { hash: 'what-a-row-does-not-mean', label: 'What a row does not mean' },
+      ]},
       { href: '/rankings.html', label: 'Where The Share Is Highest', anchors: [
         { hash: 'institutions', label: 'Institutions' },
         { hash: 'programmes', label: 'Programmes' },
@@ -147,6 +151,7 @@
     { title: 'Reference', items: [
       { href: '/query.html', label: 'Data Query (SQL)' },
       { href: '/data_sources.html', label: 'Data Sources & Methodology' },
+      { href: '/data_requests.html', label: 'Federal Data Requests' },
       { href: '/ask.html', label: 'What You Can Ask' },
       { href: '/methodology.html', label: 'Dataset Catalogue' },
       { href: '/implementation.html', label: 'Implementation' },
@@ -239,34 +244,36 @@
     #shared-sidebar { position: fixed; top: 0; left: 0; width: 220px; height: 100vh; background: var(--surface); border-right: 1px solid var(--border); z-index: 100; display: flex; flex-direction: column; transition: left 0.25s; }
     .sb-header { padding: 14px 16px 8px; border-bottom: 1px solid var(--border); }
     .sb-logo { font-size: 0.9rem; font-weight: 700; color: var(--accent); text-decoration: none; display: block; }
-    .sb-sub { font-size: 0.68rem; color: #64748b; display: block; margin-top: 2px; }
+    .sb-sub { font-size: 0.68rem; color: var(--text-muted); display: block; margin-top: 2px; }
     .sb-body { flex: 1; overflow-y: auto; padding-top: 6px; scrollbar-gutter: stable; }
     .sb-section { padding: 12px 16px 5px; font-size: 0.68rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; display: flex; align-items: center; gap: 6px; user-select: none; }
-    .sb-section:hover { color: #7dd3fc; }
-    .sb-chev { font-size: 0.55rem; transition: transform 0.15s; color: #64748b; }
+    .sb-section:hover { color: var(--text); }
+    .sb-chev { font-size: 0.55rem; transition: transform 0.15s; color: var(--text-muted); }
     .sb-group.collapsed .sb-chev { transform: rotate(-90deg); }
     .sb-group.collapsed .sb-content { display: none; }
     .sb-item { display: block; padding: 5px 16px; color: var(--text-muted); text-decoration: none; font-size: 0.8rem; border-left: 3px solid transparent; transition: all 0.1s; }
-    .sb-sub { padding: 3px 16px 3px 28px; font-size: 0.74rem; color: #64748b; }
-    .sb-sub:hover { color: #cbd5e1; }
+    .sb-sub { padding: 3px 16px 3px 28px; font-size: 0.74rem; color: var(--text-muted); }
+    .sb-sub:hover { color: var(--text); }
     .sb-sub.active { color: var(--accent); }
     .sb-item:hover { background: var(--border); color: var(--text); }
-    .sb-item.active { border-left-color: var(--accent); color: var(--accent); background: rgba(56,189,248,0.08); }
+    .sb-item.active { border-left-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
     .sb-uni { display: flex; justify-content: space-between; align-items: baseline; }
     .sb-uni-meta { display: flex; align-items: center; gap: 4px; }
-    .sb-uni-nra { font-size: 0.7rem; color: #64748b; }
+    .sb-uni-nra { font-size: 0.7rem; color: var(--text-muted); }
     .opt-dot { display: none; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); vertical-align: middle; }
     .h1b-active .opt-dot { display: inline-block; }
     .sb-footer-links { border-top: 1px solid var(--border); padding: 6px 0; }
-    .has-sidebar .page { margin-left: 220px; }
-    .site-footer { text-align: center; padding: 24px 16px; font-size: 0.72rem; color: #64748b; border-top: 1px solid var(--border); margin-top: 24px; }
+    /* The sidebar reserves its own width on <body>. It used to offset only an
+       element called .page, so every page whose wrapper had another name --
+       main, .container, .page-wrap, .header -- ran underneath it. Margin, not
+       padding, so a page's own body padding survives. */
+    body.has-sidebar { margin-left: 220px; }
+    .site-footer { text-align: center; padding: 24px 16px; font-size: 0.72rem; color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 24px; }
     .site-footer a { color: var(--accent); text-decoration: none; }
-    .has-sidebar .site-footer { margin-left: 220px; }
     @media (max-width: 900px) {
       #shared-sidebar { left: -260px; width: 260px; }
       #shared-sidebar.open { left: 0; }
-      .has-sidebar .page { margin-left: 0; }
-      .has-sidebar .site-footer { margin-left: 0; }
+      body.has-sidebar { margin-left: 0; }
       .sb-mobile-btn { display: block !important; }
     }
     .sb-mobile-btn { display: none; position: fixed; top: 8px; left: 8px; z-index: 99; background: var(--surface); border: 1px solid var(--border); color: var(--text-muted); font-size: 1.2rem; padding: 6px 10px; border-radius: 6px; cursor: pointer; }
@@ -275,8 +282,7 @@
     /* Drawer mode: closed by default, opens on hamburger click. Doesn't take horizontal space. */
     body.sb-drawer #shared-sidebar { left: -260px; width: 260px; box-shadow: 4px 0 24px rgba(0,0,0,0.4); }
     body.sb-drawer #shared-sidebar.open { left: 0; }
-    body.sb-drawer.has-sidebar .page { margin-left: 0; }
-    body.sb-drawer.has-sidebar .site-footer { margin-left: 0; }
+    body.sb-drawer.has-sidebar { margin-left: 0; }
     body.sb-drawer .sb-mobile-btn { display: block !important; }
   `;
 

@@ -9,9 +9,9 @@
 <title>Implementation — PhD Demographics</title>
 <style>
 :root {
-  --bg: var(--bg); --surface: var(--surface); --surface2: var(--border);
+  --bg: #0f172a; --surface: #1e293b; --surface2: var(--border);
   --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8;
-  --border: var(--border); --green: #4ade80; --red: #f87171;
+  --border: #334155; --green: #4ade80; --red: #f87171;
   --purple: #a78bfa; --orange: #fb923c; --pink: #f472b6;
   --teal: #2dd4bf; --yellow: #facc15;
 }
@@ -98,6 +98,10 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 .themebtn:hover,.themebtn:focus-visible{color:var(--text);border-color:var(--accent);}
 .themebtn .ic{font-size:13px;line-height:1;}
 @media print{.themebtn{display:none;}}
+/* phd-light-status */
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--green:#15803d;--red:#b91c1c;--purple:#6d28d9;--orange:#c2410c;--pink:#be185d;--teal:#0f766e;--yellow:#a16207;}}
+:root[data-theme="light"]{--green:#15803d;--red:#b91c1c;--purple:#6d28d9;--orange:#c2410c;--pink:#be185d;--teal:#0f766e;--yellow:#a16207;}
+/* /phd-light-status */
 </style>
 <!-- og:cards -->
 <meta property="og:title" content="How the Pipeline Is Built">
@@ -282,7 +286,7 @@ state = pipeline(initial_state)  # PipelineState flows through</pre>
     <p>Once a department name is extracted, it's classified as STEM or non-STEM against a taxonomy of <strong>65 non-STEM departments</strong> (Education, English, History, Political Science, Business, etc.). The entire pipeline then runs twice &mdash; once for each track:</p>
     <div class="info-card">
       <div class="card-title">Parallel Processing Tracks</div>
-      <p style="margin:0.4rem 0;font-size:0.82rem;color:#94a3b8;">Every step from here forward produces two independent outputs. A record classified into "Computer Science" flows through the STEM track; a record in "Education" flows through the non-STEM track.</p>
+      <p style="margin:0.4rem 0;font-size:0.82rem;color:var(--text-muted);">Every step from here forward produces two independent outputs. A record classified into "Computer Science" flows through the STEM track; a record in "Education" flows through the non-STEM track.</p>
       <ul>
         <li><strong>STEM</strong> &rarr; <code>data/processed/stem/{key}.json</code> &rarr; <code>site/data/stem/{key}.json</code> &rarr; <code>site/stem.html</code></li>
         <li><strong>Non-STEM</strong> &rarr; <code>data/processed/nonstem/{key}.json</code> &rarr; <code>site/data/nonstem/{key}.json</code> &rarr; <code>site/non_stem.html</code></li>
@@ -305,11 +309,11 @@ state = pipeline(initial_state)  # PipelineState flows through</pre>
     <p>Step 2 produces three output formats for different consumers:</p>
     <div class="info-card">
       <div class="card-title">Intermediate: Per-University JSON</div>
-      <p style="margin:0.3rem 0;font-size:0.82rem;color:#94a3b8;"><code>data/processed/{stem,nonstem}/{key}.json</code> &mdash; compact arrays consumed by Step 4 (Enrich) and Step 5 (Generate). Each record is a 8-element array: <code>[dept, year, name, classification, confidence, title, url, degree]</code></p>
+      <p style="margin:0.3rem 0;font-size:0.82rem;color:var(--text-muted);"><code>data/processed/{stem,nonstem}/{key}.json</code> &mdash; compact arrays consumed by Step 4 (Enrich) and Step 5 (Generate). Each record is a 8-element array: <code>[dept, year, name, classification, confidence, title, url, degree]</code></p>
     </div>
     <div class="info-card">
       <div class="card-title">Archival: Parquet (ZSTD)</div>
-      <p style="margin:0.3rem 0;font-size:0.82rem;color:#94a3b8;"><code>data/processed/stem_records.parquet</code> (12 MB) and <code>nonstem_records.parquet</code> (5 MB). Columnar format with named fields: <code>university</code>, <code>department</code>, <code>year</code>, <code>name</code>, <code>title</code>, <code>url</code>, <code>degree</code>. ZSTD-compressed via DuckDB. Designed for reproducibility &mdash; anyone can load these in DuckDB, pandas, or R to validate the methodology.</p>
+      <p style="margin:0.3rem 0;font-size:0.82rem;color:var(--text-muted);"><code>data/processed/stem_records.parquet</code> (12 MB) and <code>nonstem_records.parquet</code> (5 MB). Columnar format with named fields: <code>university</code>, <code>department</code>, <code>year</code>, <code>name</code>, <code>title</code>, <code>url</code>, <code>degree</code>. ZSTD-compressed via DuckDB. Designed for reproducibility &mdash; anyone can load these in DuckDB, pandas, or R to validate the methodology.</p>
     </div>
     <pre style="font-size:0.75rem;">-- Validate degree labeling in DuckDB:
 SELECT university,
@@ -401,7 +405,7 @@ GROUP BY university ORDER BY total DESC;</pre>
     <p>Final enriched JSONs are written to <code>site/data/stem/{key}.json</code> and <code>site/data/nonstem/{key}.json</code> &mdash; 202 files total. These are both the pipeline's definitive output and the files served directly to the browser.</p>
     <div class="info-card">
       <div class="card-title">Final JSON Schema (per university)</div>
-      <pre style="margin:0.3rem 0;font-size:0.75rem;background:none;border:none;padding:0;color:#94a3b8;">{
+      <pre style="margin:0.3rem 0;font-size:0.75rem;background:none;border:none;padding:0;color:var(--text-muted);">{
   "key": "mit",
   "name": "MIT",
   "nra": 43.8,

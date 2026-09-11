@@ -11,7 +11,7 @@
 <title>US Graduate Program Demographics and Funding</title>
 <style>
   :root {
-    --bg: var(--bg); --surface: var(--surface); --border: var(--border);
+    --bg: #0f172a; --surface: #1e293b; --border: #334155;
     --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8;
     --hl: #f0a5ae;
 }
@@ -195,6 +195,10 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 .themebtn:hover,.themebtn:focus-visible{color:var(--text);border-color:var(--accent);}
 .themebtn .ic{font-size:13px;line-height:1;}
 @media print{.themebtn{display:none;}}
+/* phd-light-status */
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--hl:#b3123c;}}
+:root[data-theme="light"]{--hl:#b3123c;}
+/* /phd-light-status */
 </style>
 <!-- og:cards -->
 <meta property="og:title" content="Who Earns America&#x27;s Advanced Degrees">

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compare institutions</title>
+<meta name="description" content="Every US institution on one row: core-STEM master's and doctorates with their non-resident shares, graduate enrolment, federal research money and graduate tuition. Sortable, searchable, and aggregatable by state.">
+<meta property="og:title" content="Compare institutions">
+<meta property="og:description" content="One row per institution on a single key, so any two can be compared on the same measures — and any group added up to a state.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og/concentration.png">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.75rem; margin: 0 0 .6rem; line-height: 1.25; max-width: 24ch; }
+  .page-head p { color: var(--text-muted); max-width: 74ch; line-height: 1.65;
+    font-size: .95rem; margin: 0 0 .5rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55;
+    max-width: 82ch; margin: .8rem 0 0; }
+  .controls { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center;
+    margin: 1.6rem 0 .5rem; }
+  .controls input[type=search], .controls select { font: inherit; font-size: .85rem;
+    padding: .42rem .7rem; border-radius: 7px; border: 1px solid var(--border);
+    background: transparent; color: var(--text); }
+  .controls input[type=search] { min-width: 15rem; }
+  .controls input:focus-visible, .controls select:focus-visible,
+  .seg button:focus-visible, th button:focus-visible {
+    outline: 2px solid #38bdf8; outline-offset: 2px; }
+  .seg { display: flex; gap: .4rem; }
+  .seg button { font: inherit; font-size: .82rem; padding: .4rem .9rem;
+    border-radius: 999px; border: 1px solid var(--border); cursor: pointer;
+    background: transparent; color: var(--text-muted); }
+  .seg button[aria-pressed=true] { background: var(--text); color: var(--bg);
+    border-color: var(--text); }
+  .count { color: var(--text-muted); font-size: .8rem;
+    font-variant-numeric: tabular-nums; margin-left: auto; }
+  .tw { overflow-x: auto; margin-top: .9rem; border-top: 1px solid var(--border); }
+  table.cmp { border-collapse: collapse; width: 100%; font-size: .8rem;
+    font-variant-numeric: tabular-nums; }
+  table.cmp th, table.cmp td { padding: .4rem .55rem; text-align: right;
+    white-space: nowrap; border-bottom: 1px solid var(--border); }
+  table.cmp th { position: sticky; top: 0; background: var(--bg); z-index: 1;
+    font-weight: 500; color: var(--text-muted); font-size: .74rem; }
+  table.cmp th button { font: inherit; color: inherit; background: none;
+    border: 0; padding: 0; cursor: pointer; }
+  table.cmp th[aria-sort] button { color: var(--text); font-weight: 600; }
+  table.cmp th:first-child, table.cmp td:first-child { text-align: left;
+    white-space: normal; min-width: 15rem; position: sticky; left: 0;
+    background: var(--bg); }
+  table.cmp td.dim { color: var(--text-muted); }
+  table.cmp tbody tr:hover td { background: rgba(148,163,184,0.07); }
+  .hi { color: var(--hl); }
+  .empty { color: var(--text-muted); }
+  caption { text-align: left; caption-side: top; color: var(--text-muted);
+    font-size: .78rem; padding: 0 0 .6rem; }
+  .caveat { border-left: 2px solid var(--border); padding: .1rem 0 .1rem 1rem;
+    margin: 2rem 0 0; }
+  .caveat h2 { font-size: .95rem; margin: 0 0 .45rem; }
+  #table > h2 { font-size: 1.15rem; margin: 1.8rem 0 .3rem; }
+  #table > p.lede { color: var(--text-muted); max-width: 74ch; line-height: 1.6;
+    font-size: .9rem; margin: 0 0 .2rem; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important; transition-duration: .01ms !important;
+      scroll-behavior: auto !important; }
+  }
+  .caveat p { color: var(--text-muted); font-size: .8rem; line-height: 1.6;
+    max-width: 78ch; margin: 0 0 .5rem; }
+</style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+</head>
+<body data-page="institutions">
+<a class="skip-link" href="#table" data-track="anchor.table">Skip to the table</a>
+<main id="main">
+<div class="wrap">
+
+  <div class="page-head">
+    <h1 id="compare-institutions">Compare institutions</h1>
+    <p>Everything this project knows about an institution, on one row and one
+    key. Degrees and their non-resident shares at both levels, graduate
+    enrolment, the federal research money that reaches it, and what it charges
+    a graduate student from outside the state. Sort on any column, filter to a
+    state or a sector, or switch to the state view to add institutions up.</p>
+    <p>The rows are joined on the IPEDS unit identifier rather than on the
+    institution&rsquo;s name. That matters more than it sounds: the two federal
+    research surveys publish names and no identifier, and matching those by
+    similarity puts Florida A&amp;M&rsquo;s money in the University of
+    Florida&rsquo;s row. Names here are resolved exactly or not at all.</p>
+  </div>
+
+  <div class="controls">
+    <div class="seg" role="group" aria-label="View">
+      <button type="button" data-view="inst" aria-pressed="true" data-track="btn.institutions">Institutions</button>
+      <button type="button" data-view="state" aria-pressed="false" data-track="btn.states">States</button>
+    </div>
+    <input type="search" id="q" placeholder="Search institutions" aria-label="Search institutions">
+    <select id="state" aria-label="Filter by state"><option value="">All states</option></select>
+    <select id="control" aria-label="Filter by sector">
+      <option value="">All sectors</option>
+      <option value="public">Public</option>
+      <option value="private nonprofit">Private nonprofit</option>
+      <option value="private for-profit">Private for-profit</option>
+    </select>
+    <select id="has" aria-label="Restrict to rows with data">
+      <option value="">Any data</option>
+      <option value="masters">Awards core-STEM master&rsquo;s</option>
+      <option value="doctorate">Awards core-STEM doctorates</option>
+      <option value="federal">Receives federal research money</option>
+      <option value="perdoc">Has a per-doctorate ratio</option>
+    </select>
+    <span class="count" id="count" role="status" aria-live="polite"></span>
+  </div>
+
+  <section id="table">
+    <h2 id="the-table">Every institution, every measure</h2>
+    <p class="lede">Sorting a column puts institutions with no data for it last
+    in both directions, because a blank is &ldquo;not surveyed&rdquo; and would
+    otherwise crowd the top of any ascending sort.</p>
+    <div class="tw" id="host"><p class="note">Loading&hellip;</p></div>
+  </section>
+
+  <div class="caveat">
+    <h2 id="what-a-row-does-not-mean">What a row does not mean</h2>
+    <p>None of this is money broken down by citizenship, because no federal
+    agency publishes it that way. IPEDS reports tuition revenue without regard
+    to who paid it and the NSF reports obligations without regard to who they
+    train. A large federal figure sitting beside a large non-resident share is
+    two things measured in the same place, not a payment from one to the other.</p>
+    <p><b>Federal per doctorate is an intensity ratio, not a price.</b> Those
+    obligations fund research whose outputs include papers, instruments,
+    facilities and staff, not only degrees. The column shows the scale of
+    public research money moving through an institution relative to the
+    doctorates it produces. It does not establish that the public paid that sum
+    for any particular degree &mdash; and at the top of that ranking sit medical
+    schools, where the money funds clinical research and the doctorates counted
+    are a fraction of the degrees awarded. The two columns beside it say how
+    large a fraction.</p>
+    <p><b>Non-resident is a visa category, not a birthplace.</b> A naturalised
+    citizen or a permanent resident is counted as domestic throughout, so every
+    share here is a floor on the foreign-born proportion, never a ceiling.</p>
+    <p>Coverage is uneven and the table says so rather than filling gaps with
+    zeroes. A blank federal column means the institution was not in the survey,
+    not that it received nothing.</p>
+  </div>
+
+  <p class="note" id="prov"></p>
+
+</div>
+</main>
+<script src="/institutions.js" defer></script>
+<script src="/analytics-beacon.js" defer></script>
+<script src="/anchors.js" defer></script>
+</body>
+</html>

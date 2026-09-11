@@ -53,6 +53,37 @@ def classification_badge(cat, conf):
     return f'<span class="flag-badge {css_class}" data-origin="{cat}" title="{label}">{flag}</span>'
 
 
+
+# ---------------------------------------------------------------------------
+# OPT series for the national charts, from the published dataset.
+# ---------------------------------------------------------------------------
+# These were number arrays typed into the template, from an older SEVP report
+# vintage that disagrees with the current one by 10% or more in every recent
+# year -- 173,939 OPT authorisations for 2024 where the SEVP table now reads
+# 194,554. The National Charts page and the chat assistant (which reads its
+# series back out of this page) both quoted the stale figure while the
+# briefing, built from opt_national.json, quoted the current one. They are
+# read from that file now, so the site cannot publish two numbers for one year.
+def _opt_series() -> dict[str, str]:
+    import json as _json
+    path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                        "site", "data", "opt_national.json")
+    series = _json.load(open(path))["series"]
+    years = sorted(series, key=int)
+    def arr(key, lo=None):
+        return "[" + ",".join(str(series[y][key]) for y in years
+                              if lo is None or int(y) >= lo) + "]"
+    return {
+        "years": "[" + ",".join(f"'{y}'" for y in years) + "]",
+        "opt": arr("opt"), "stem_opt": arr("stem_opt"), "cpt": arr("cpt"),
+        "pipe_years": "[" + ",".join(y for y in years if int(y) >= 2010) + "]",
+        "pipe_opt": arr("opt", 2010), "pipe_stem_opt": arr("stem_opt", 2010),
+        "pipe_cpt": arr("cpt", 2010),
+    }
+
+
+OPT = _opt_series()
+
 def build_html(all_data, mode='stem'):
     """Build an HTML page with JSON data blob and client-side rendering.
     Only renders one university at a time for performance.
@@ -769,10 +800,10 @@ function initNationalCharts() {{
   }}));
 
   // -- OPT national trends --
-  const optYears = ['2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024'];
-  const optData = [24836,45304,46116,50992,56300,62427,67502,77369,99016,129811,140152,130512,125215,112930,102985,106791,152361,173939];
-  const stemOpt = [2,2128,5869,9356,13504,15937,18782,21456,27493,41782,64481,69650,72116,63906,61543,64844,62036,95384];
-  const cptData = [57403,61171,48568,57409,63911,68482,76223,92528,111135,122529,132380,151525,116338,97368,91352,129849,131117,130586];
+  const optYears = {OPT['years']};
+  const optData = {OPT['opt']};
+  const stemOpt = {OPT['stem_opt']};
+  const cptData = {OPT['cpt']};
 
   natCharts.push(new Chart(document.getElementById('nat-opt-chart'), {{
     type: 'line',
@@ -798,10 +829,10 @@ function initNationalCharts() {{
   }}));
 
   // -- Total Foreign Work Authorizations (OPT + H-1B) --
-  const pipeYears = [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
-  const pipeOpt = [50992,56300,62427,67502,77369,99016,129811,140152,130512,125215,112930,102985,106791,152361,173939];
-  const pipeStemOpt = [9356,13504,15937,18782,21456,27493,41782,64481,69650,72116,63906,61543,64844,62036,95384];
-  const pipeCpt = [57409,63911,68482,76223,92528,111135,122529,132380,151525,116338,97368,91352,129849,131117,130586];
+  const pipeYears = {OPT['pipe_years']};
+  const pipeOpt = {OPT['pipe_opt']};
+  const pipeStemOpt = {OPT['pipe_stem_opt']};
+  const pipeCpt = {OPT['pipe_cpt']};
   const pipeH1b = [8677,12418,8559,10775,11879,9198,9067,9285,9099,11707,28390,34546,23366,10382,10739];
   const pipeTotal = pipeYears.map((_, i) => pipeOpt[i] + pipeStemOpt[i] + pipeCpt[i] + pipeH1b[i]);
 

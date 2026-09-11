@@ -9,7 +9,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
   :root {
-    --bg: var(--bg); --surface: var(--surface); --surface2: var(--border);
+    --bg: #0f172a; --surface: #1e293b; --surface2: var(--border);
     --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8;
     --green: #4ade80; --yellow: #facc15; --orange: #fb923c; --red: #f87171;
     --gray: #64748b;
@@ -43,11 +43,11 @@
   table.heatmap td.uni a { color: var(--accent); text-decoration: none; }
   table.heatmap td.uni a:hover { text-decoration: underline; }
   table.heatmap tr:hover td.uni { background: var(--surface2); }
-  .ok { background: #4ade80; }
+  .ok { background: var(--green); }
   .ok-light { background: #86efac; }
-  .warn { background: #facc15; }
-  .warn-dark { background: #fb923c; }
-  .bad { background: #f87171; }
+  .warn { background: var(--yellow); }
+  .warn-dark { background: var(--orange); }
+  .bad { background: var(--red); }
   .none { background: #475569; color: #cbd5e1 !important; }
   .num-cell { font-variant-numeric: tabular-nums; }
 
@@ -65,6 +65,10 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 .themebtn:hover,.themebtn:focus-visible{color:var(--text);border-color:var(--accent);}
 .themebtn .ic{font-size:13px;line-height:1;}
 @media print{.themebtn{display:none;}}
+/* phd-light-status */
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--green:#15803d;--yellow:#a16207;--orange:#c2410c;--red:#b91c1c;--gray:#4b5563;}}
+:root[data-theme="light"]{--green:#15803d;--yellow:#a16207;--orange:#c2410c;--red:#b91c1c;--gray:#4b5563;}
+/* /phd-light-status */
 </style>
 <!-- og:cards -->
 <meta property="og:title" content="Data Quality Scorecard">
@@ -98,10 +102,10 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
   <div class="panel">
     <div class="panel-desc">Each bar is one university. Width = total records collected from the university's repository (PhD theses + master's theses). Color shows what fraction of those records have a degree level (PhD or MS) parsed out vs left blank — green ≥ 80% labeled, yellow 50–80%, orange 25–50%, red &lt; 25%. Universities with very few records (&lt; 100) are flagged with a red border. Hover for details.</div>
     <div class="legend">
-      <span><span class="swatch" style="background:#4ade80;"></span>≥ 80% labeled</span>
-      <span><span class="swatch" style="background:#facc15;"></span>50–80%</span>
-      <span><span class="swatch" style="background:#fb923c;"></span>25–50%</span>
-      <span><span class="swatch" style="background:#f87171;"></span>&lt; 25%</span>
+      <span><span class="swatch" style="background:var(--green);"></span>≥ 80% labeled</span>
+      <span><span class="swatch" style="background:var(--yellow);"></span>50–80%</span>
+      <span><span class="swatch" style="background:var(--orange);"></span>25–50%</span>
+      <span><span class="swatch" style="background:var(--red);"></span>&lt; 25%</span>
       <span><span class="swatch" style="background:#475569;"></span>0% (no labels at all)</span>
     </div>
     <div style="height: 1900px;"><canvas id="records-chart"></canvas></div>
@@ -138,9 +142,9 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
     <div class="legend">
       <span><span class="swatch" style="background:#16a34a;"></span>All 4 link types</span>
       <span><span class="swatch" style="background:#86efac;"></span>3 of 4</span>
-      <span><span class="swatch" style="background:#facc15;"></span>2 of 4</span>
-      <span><span class="swatch" style="background:#fb923c;"></span>1 of 4</span>
-      <span><span class="swatch" style="background:#f87171;"></span>0</span>
+      <span><span class="swatch" style="background:var(--yellow);"></span>2 of 4</span>
+      <span><span class="swatch" style="background:var(--orange);"></span>1 of 4</span>
+      <span><span class="swatch" style="background:var(--red);"></span>0</span>
     </div>
     <div style="height: 1900px;"><canvas id="link-coverage-chart"></canvas></div>
   </div>

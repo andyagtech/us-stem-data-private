@@ -32,6 +32,7 @@ import json
 import os
 import re
 import subprocess
+import sys
 import tempfile
 import time
 from datetime import datetime
@@ -547,6 +548,20 @@ def _deploy_locked(state: PipelineState, base_dir: Path,
     errors: list[str] = []
     client = _s3()
     prefix = f"{BUILD_PREFIX}/{build_id}/"
+
+    # Every page carries the light/dark switch and its light-mode colours --
+    # but the generators that rebuild the university, methodology and ask
+    # pages do not write them, so each rebuild quietly stripped dark mode from
+    # whatever it touched until someone remembered to re-run the theme script.
+    # Deploy is the one step every page passes through, so it is applied here.
+    # It is idempotent and takes well under a second.
+    theme = subprocess.run([sys.executable, str(base_dir / "scripts" / "add_theme_toggle.py")],
+                           cwd=base_dir, capture_output=True, text=True)
+    if theme.returncode != 0:
+        return state.with_outcome(StepOutcome.err(
+            "deploy", message=f"theme pass failed: {theme.stderr.strip()[:200]}"))
+    for line in theme.stdout.strip().splitlines():
+        print(f"  {line.strip()}")
 
     # What this build should contain -- one walk of site/, not an allowlist.
     plan = _plan_objects(site_dir)

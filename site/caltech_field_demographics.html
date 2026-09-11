@@ -7,7 +7,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
   :root {
-    --bg: var(--bg); --card: var(--surface); --border: var(--border); --text: #e2e8f0;
+    --bg: #0f172a; --card: var(--surface); --border: #334155; --text: #e2e8f0;
     --muted: #94a3b8; --accent: #ef4444; --blue: #3b82f6; --green: #22c55e;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -60,6 +60,10 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 .themebtn:hover,.themebtn:focus-visible{color:var(--text);border-color:var(--accent);}
 .themebtn .ic{font-size:13px;line-height:1;}
 @media print{.themebtn{display:none;}}
+/* phd-light-status */
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--muted:#4b5563;--blue:#1d4ed8;--green:#15803d;}}
+:root[data-theme="light"]{--muted:#4b5563;--blue:#1d4ed8;--green:#15803d;}
+/* /phd-light-status */
 </style>
 <!-- og:cards -->
 <meta property="og:title" content="STEM PhD Demographics by Field and University">

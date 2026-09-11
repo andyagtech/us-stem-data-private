@@ -6,7 +6,7 @@
 <title>Caltech PhD Demographics Dashboard</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
-  :root { --bg: var(--bg); --card: var(--surface); --border: var(--border); --text: #e2e8f0; --muted: #94a3b8; --accent: #ef4444; --accent2: #3b82f6; --accent3: #22c55e; --accent4: #f59e0b; }
+  :root { --bg: #0f172a; --card: var(--surface); --border: #334155; --text: #e2e8f0; --muted: #94a3b8; --accent: #ef4444; --accent2: #3b82f6; --accent3: #22c55e; --accent4: #f59e0b; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
   .container { max-width: 1280px; margin: 0 auto; padding: 2rem 1.5rem; }
@@ -53,6 +53,10 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 .themebtn:hover,.themebtn:focus-visible{color:var(--text);border-color:var(--accent);}
 .themebtn .ic{font-size:13px;line-height:1;}
 @media print{.themebtn{display:none;}}
+/* phd-light-status */
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--muted:#4b5563;--accent2:#1d4ed8;--accent3:#15803d;--accent4:#b45309;}}
+:root[data-theme="light"]{--muted:#4b5563;--accent2:#1d4ed8;--accent3:#15803d;--accent4:#b45309;}
+/* /phd-light-status */
 </style>
 <!-- og:cards -->
 <meta property="og:title" content="Caltech PhD Demographics, 1911–2026">

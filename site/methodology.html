@@ -5,18 +5,20 @@
 <meta name="description" content="Every dataset behind this site, with the
 agency that publishes it and a link to obtain it.">
 <link rel="stylesheet" href="/style.css">
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 </head><body>
 <div class="wrap">
-<h1>Methodology and sources</h1>
+<h1 id="methodology-and-sources">Methodology and sources</h1>
 <p class="lede">Every dataset behind this site, with the agency that publishes
-it and a link to get it yourself. 43 come from federal statistical
+it and a link to get it yourself. 44 come from federal statistical
 sources; 13 do not, and are marked.</p>
 
 <p>This page is generated from the project's dataset catalogue, not written by
 hand, so it cannot fall behind what the site actually uses. A dataset added
 without a source URL fails the consistency checks.</p>
 
-<h2>Datasets</h2>
+<h2 id="datasets">Datasets</h2>
 <table>
 <thead><tr><th>Key</th><th>What it is</th><th>Source</th><th>Link</th>
 <th>Provenance</th></tr></thead>
@@ -45,6 +47,7 @@ without a source URL fails the consistency checks.</p>
 <tr><td><code>h1b_cap_exempt</code></td><td>H-1B petitions from cap-exempt employer types -- universities, nonprofits affiliated with them, and research organisations -- FY2018 to FY2025.</td><td>USCIS annual Report on H-1B Petitions to Congress, Section 2.2</td><td><a href="https://www.uscis.gov/tools/reports-and-studies" rel="noopener">USCIS</a></td><td>government</td></tr>
 <tr><td><code>h1b_enforcement</code></td><td>H-1B wage violations found by the Department of Labor, 2000-2026: cases, back wages, employees and employers.</td><td>US DOL Wage and Hour Division enforcement database (WHISARD)</td><td><a href="https://enforcedata.dol.gov/views/data_catalogs.php" rel="noopener">OFLC</a></td><td>government</td></tr>
 <tr><td><code>humanitarian_admissions</code></td><td>Refugee arrivals 1980-2023 and asylum grants by nationality -- the humanitarian route, for scale against the study and work routes.</td><td>DHS Yearbook of Immigration Statistics, refugee and asylee tables</td><td><a href="https://ohss.dhs.gov/topics/immigration/yearbook" rel="noopener">other</a></td><td>third party</td></tr>
+<tr><td><code>institution_profiles</code></td><td>One row per institution on a single UNITID key -- core-STEM master&#x27;s and doctorates with their non-resident shares, graduate enrolment, federal R&amp;D and obligations, tuition -- with national rankings on each measure and a rollup to states.</td><td>IPEDS Completions, Fall Enrollment, Institutional Characteristics and Directory; NSF HERD FY2024; NSF Federal Support Survey FY2023; NSF GSS 2024</td><td><a href="https://nces.ed.gov/ipeds/use-the-data" rel="noopener">NCES</a></td><td>government</td></tr>
 <tr><td><code>j1_scholars</code></td><td>J-1 academic exchange categories 2015-2024 -- the uncapped route into a university lab that is shrinking while the others grow.</td><td>BridgeUSA participants by calendar year of program begin date</td><td><a href="https://j1visa.state.gov/basics/facts-and-figures/" rel="noopener">BridgeUSA</a></td><td>government</td></tr>
 <tr><td><code>lca</code></td><td>H-1B Labor Condition Applications aggregated per university: volume, job titles, SOC codes and wage quartiles. Feeds every university page.</td><td>US DOL Office of Foreign Labor Certification, LCA disclosure files</td><td><a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" rel="noopener">OFLC</a></td><td>government</td></tr>
 <tr><td><code>lca_wage_levels</code></td><td>Prevailing-wage level promised on certified H-1B filings, by employer, FY2019 and FY2023 -- what was promised, beside what enforcement later found.</td><td>US DOL Office of Foreign Labor Certification, H-1B LCA disclosure data</td><td><a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" rel="noopener">OFLC</a></td><td>government</td></tr>
@@ -79,11 +82,11 @@ without a source URL fails the consistency checks.</p>
 <tr><td><code>working_conditions</code></td><td>Hours worked and reported satisfaction by CURRENT citizenship status -- whether visa dependence shows up in what people work and report, not only in the statute.</td><td>NSF NCSES, Survey of Doctorate Recipients 2023 public-use file</td><td><a href="https://ncses.nsf.gov/surveys/doctorate-recipients/" rel="noopener">NCSES</a></td><td>government</td></tr>
 </tbody></table>
 
-<h2>Derived</h2>
+<h2 id="derived">Derived</h2>
 <p>These are built from the datasets above and have no external source:
-<code>repo_datasets</code>, <code>expansion_phases</code>, <code>live_bundle</code>, <code>site_map</code>, <code>chat_facts</code>, <code>parquet_exports</code>, <code>curated_answers</code>, <code>og_cards</code>.</p>
+<code>repo_datasets</code>, <code>expansion_phases</code>, <code>summary</code>, <code>live_bundle</code>, <code>site_map</code>, <code>chat_facts</code>, <code>parquet_exports</code>, <code>curated_answers</code>, <code>og_cards</code>.</p>
 
-<h2>What the data cannot answer</h2>
+<h2 id="what-the-data-cannot-answer">What the data cannot answer</h2>
 <p>Three limits recur and are stated wherever the figures appear.
 <strong>Cap-exempt status is not published</strong>: USCIS records it on the
 I-129 and releases only national totals by employer category, so every public

@@ -12,7 +12,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
   :root {
-    --bg: var(--bg); --surface: var(--surface); --surface2: var(--border);
+    --bg: #0f172a; --surface: #1e293b; --surface2: var(--border);
     --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8;
     --red: #f87171; --orange: #fb923c; --yellow: #fbbf24;
     --green: #4ade80; --blue: #60a5fa;
@@ -156,8 +156,8 @@
     color: var(--text-muted); width: 100%; text-align: center; padding-top: 6px; }
   body.no-uni .toggle-wrap { cursor: not-allowed; }
   .degree-badge { font-size: 0.65rem; font-weight: 700; padding: 1px 4px; border-radius: 3px; margin-right: 4px; vertical-align: 1px; }
-  .degree-phd { background: rgba(74,222,128,0.15); color: #4ade80; }
-  .degree-ms { background: rgba(251,191,36,0.15); color: #fbbf24; }
+  .degree-phd { background: rgba(74,222,128,0.15); color: var(--green); }
+  .degree-ms { background: rgba(251,191,36,0.15); color: var(--yellow); }
 
   .ms-group { margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--surface2); }
   .ms-group-header { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 4px 0; }
@@ -184,7 +184,7 @@
   .nat-stat.red .num { color: #ef4444; }
   .nat-stat.blue .num { color: var(--accent); }
   .nat-stat.pink .num { color: #f472b6; }
-  .nat-stat.orange .num { color: #fb923c; }
+  .nat-stat.orange .num { color: var(--orange); }
   .nat-charts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
   .nat-chart-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 14px; }
   .nat-chart-box h3 { font-size: 0.85rem; margin-bottom: 2px; }
@@ -305,6 +305,10 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 .themebtn:hover,.themebtn:focus-visible{color:var(--text);border-color:var(--accent);}
 .themebtn .ic{font-size:13px;line-height:1;}
 @media print{.themebtn{display:none;}}
+/* phd-light-status */
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--red:#b91c1c;--orange:#c2410c;--yellow:#a16207;--green:#15803d;--blue:#1d4ed8;}}
+:root[data-theme="light"]{--red:#b91c1c;--orange:#c2410c;--yellow:#a16207;--green:#15803d;--blue:#1d4ed8;}
+/* /phd-light-status */
 </style>
 <!-- og:cards -->
 <meta property="og:title" content="West Virginia U — STEM doctorate demographics">
@@ -443,7 +447,7 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 </ul>
 </noscript>
 
-<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:0;z-index:999;background:var(--accent);color:#0f172a;padding:8px 16px;font-size:0.85rem;text-decoration:none;" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">Skip to content</a>
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:0;z-index:999;background:var(--accent);color:var(--bg);padding:8px 16px;font-size:0.85rem;text-decoration:none;" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">Skip to content</a>
 
 <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="Open navigation menu">☰</button>
 <nav class="sidebar" id="sidebar" aria-label="University navigation">
@@ -506,7 +510,7 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
   <h1>Thesis &amp; Dissertation Lists — High NRA Universities</h1>
   <p class="subtitle" style="font-size:0.78rem;color:var(--text-muted);margin-top:-2px;">NRA = Non-Resident Alien. Universities ranked by NRA share of STEM doctoral completions (IPEDS).</p>
   <p class="subtitle">Every name links to the university's institutional repository for direct verification. 509,072 total records across 106 schools.</p>
-  <div style="background:rgba(251,191,36,0.12);border:1px solid rgba(251,191,36,0.3);border-radius:8px;padding:8px 14px;margin:10px 0 4px;font-size:0.82rem;color:#fbbf24;">Data scraping still in progress. Record counts may change as new data is collected.</div>
+  <div style="background:rgba(251,191,36,0.12);border:1px solid rgba(251,191,36,0.3);border-radius:8px;padding:8px 14px;margin:10px 0 4px;font-size:0.82rem;color:var(--yellow);">Data scraping still in progress. Record counts may change as new data is collected.</div>
 
   <div id="info-section">
     <!-- National stats hero cards -->
@@ -581,7 +585,7 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
           "Theses and Dissertations" collections. These typically include <strong>both doctoral dissertations
           and master's theses</strong>. Only Caltech has explicit PhD-only filtering.
           Where possible, records are labeled
-          <span style="color:#4ade80;">PhD</span> or <span style="color:#fbbf24;">MS</span>
+          <span style="color:var(--green);">PhD</span> or <span style="color:var(--yellow);">MS</span>
           based on available metadata, but many records cannot be distinguished.
           Each name links directly to the original record for verification.
         </p>
@@ -726,12 +730,12 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
   </div>
 
   <footer class="site-footer" style="text-align:center;padding:28px 16px 32px;font-size:0.74rem;color:#64748b;border-top:1px solid #334155;margin-top:32px;line-height:1.7;">
-    A project by <a href="https://andy-barr.com" target="_blank" rel="noopener" style="color:#94a3b8;text-decoration:none;font-weight:600;">Andy Barr</a>. Data from US federal agencies (NCES, NSF, DOL, DHS) and university institutional repositories.<br>
-    <a href="about.html" style="color:#38bdf8;text-decoration:none;">About</a> &middot;
-    <a href="/data_sources.html" style="color:#38bdf8;text-decoration:none;">Methodology</a> &middot;
-    <a href="submit.html" style="color:#38bdf8;text-decoration:none;">Tip Line</a> &middot;
-    <a href="https://x.com/andy_barr_data" target="_blank" rel="noopener" style="color:#38bdf8;text-decoration:none;">Follow on X</a> &middot;
-    <a href="https://buymeacoffee.com/andybarr" target="_blank" rel="noopener" style="color:#38bdf8;text-decoration:none;">Support this Page</a>
+    A project by <a href="https://andy-barr.com" target="_blank" rel="noopener" style="color:var(--text-muted);text-decoration:none;font-weight:600;">Andy Barr</a>. Data from US federal agencies (NCES, NSF, DOL, DHS) and university institutional repositories.<br>
+    <a href="about.html" style="color:var(--accent);text-decoration:none;">About</a> &middot;
+    <a href="/data_sources.html" style="color:var(--accent);text-decoration:none;">Methodology</a> &middot;
+    <a href="submit.html" style="color:var(--accent);text-decoration:none;">Tip Line</a> &middot;
+    <a href="https://x.com/andy_barr_data" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">Follow on X</a> &middot;
+    <a href="https://buymeacoffee.com/andybarr" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">Support this Page</a>
   </footer>
 </main>
 

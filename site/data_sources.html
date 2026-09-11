@@ -11,7 +11,7 @@
 <title>Data Sources &amp; Methodology — USDS China</title>
 <style>
   :root {
-    --bg: var(--bg); --surface: var(--surface); --border: var(--border);
+    --bg: #0f172a; --surface: #1e293b; --border: #334155;
     --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8;
     --accent2: #f472b6; --accent3: #a78bfa; --accent4: #34d399;
     --danger: #ef4444; --orange: #fb923c;
@@ -85,6 +85,10 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 .themebtn:hover,.themebtn:focus-visible{color:var(--text);border-color:var(--accent);}
 .themebtn .ic{font-size:13px;line-height:1;}
 @media print{.themebtn{display:none;}}
+/* phd-light-status */
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--accent2:#be185d;--accent3:#6d28d9;--accent4:#047857;--danger:#b91c1c;--orange:#c2410c;}}
+:root[data-theme="light"]{--accent2:#be185d;--accent3:#6d28d9;--accent4:#047857;--danger:#b91c1c;--orange:#c2410c;}
+/* /phd-light-status */
 </style>
 <!-- og:cards -->
 <meta property="og:title" content="Data Sources &amp; Methodology">
@@ -238,124 +242,107 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
     </p>
   </div>
 
-  <div id="nsf-graduate-student-survey-gss" class="card">
-        <h3 id="derived-datasets">Derived datasets published on this site</h3>
+  <div id="derived-and-limits" class="card">
+    <h3 id="derived-datasets">Derived datasets published on this site</h3>
     <p>
       Every chart here is built from the federal collections above by a script in
       the repository, and each writes a JSON file anyone can download and check:
     </p>
+    <!-- derived:start -->
     <ul>
-      <li><code>/data/concentration_cases.json</code> &mdash; the 49 sustained
-        majority-non-resident departments, with year-by-year detail, the 4-digit
-        programme breakdown and a reporting-consistency check
+      <li><code>/data/concentration_cases.json</code> &mdash; The 49 institution-and-field cells that are sustainedly majority non-resident. Drives the landing-page hero.
         (<code>scripts/build_concentration_cases.py</code>).</li>
-      <li><code>/data/distribution.json</code> &mdash; national department
-        histogram, 2010/2015/2020/2025
+      <li><code>/data/distribution.json</code> &mdash; National department histogram by non-resident share, 2010/2015/2020/2025, at 4-digit CIP.
         (<code>scripts/build_distribution.py</code>).</li>
-      <li><code>/data/programme_shares.json</code> &mdash; national share by
-        programme, 108 programmes with 300+ doctorates
-        (<code>scripts/build_programme_shares.py</code>).</li>
-      <li><code>/data/university_distribution.json</code> &mdash; per-university
-        department spread, 103 institutions
-        (<code>scripts/build_university_distribution.py</code>).</li>
-      <li><code>/data/support_by_citizenship.json</code> &mdash; SED Table 4-1
-        across 19 fields
-        (<code>scripts/build_support_by_citizenship.py</code>).</li>
-      <li><code>/data/nativity_labour.json</code> &mdash; employment by
-        occupation and median weekly earnings, split by nativity
-        (<code>scripts/build_nativity_labour.py</code>).</li>
-      <li><code>/data/humanitarian_admissions.json</code> &mdash; refugee
-        arrivals 1980&ndash;2023 and asylum grants by nationality
-        (<code>scripts/build_humanitarian_admissions.py</code>).</li>
-      <li><code>/data/origin_vs_residence.json</code> &mdash; permanent
-        residents by country of last residence against country of birth
-        (<code>scripts/build_origin_vs_residence.py</code>).</li>
-      <li><code>/data/nonimmigrant_admissions.json</code> &mdash; admissions
-        by class and year with destination state, FY2014&ndash;2023
-        (<code>scripts/build_nonimmigrant_admissions.py</code>).</li>
-      <li><code>/data/employer_profiles.json</code> &mdash; per employer:
-        H-1B requested, granted, denied, the wage level promised and any
-        enforcement findings
+      <li><code>/data/doctorate_origins.json</code> &mdash; The 40 largest countries of origin of temporary-visa doctorate recipients, and parental education by citizenship.
+        (<code>scripts/build_doctorate_origins.py</code>).</li>
+      <li><code>/data/doctorate_outcomes.json</code> &mdash; What US-trained doctorate holders earn and where they work, by citizenship AT THE DOCTORATE, and what became of those on a temporary visa.
+        (<code>scripts/build_doctorate_outcomes.py</code>).</li>
+      <li><code>/data/domestic_pipeline.json</code> &mdash; Domestic core-STEM completions by level 2011-2025, and the rate at which a bachelor's cohort is followed by graduate degrees.
+        (<code>scripts/build_domestic_pipeline.py</code>).</li>
+      <li><code>/data/employer_profiles.json</code> &mdash; One row per employer: H-1B petitions requested, granted and denied, the wage level promised, and any enforcement findings.
         (<code>scripts/build_employer_profiles.py</code>).</li>
-      <li><code>/data/university_foreign_students.json</code> &mdash;
-        non-resident enrolment by institution, with SEVP STEM OPT campuses
-        (<code>scripts/build_university_foreign_students.py</code>).</li>
-      <li><code>/data/expansion_phases.json</code> &mdash; degrees and visa
-        issuances on one time axis, in named windows, with the lead-lag test
+      <li><code>/data/enrolment_and_funding.json</code> &mdash; Temporary-visa share of graduate enrolment joined to federal R&amp;D expenditure -- whether the public money and the foreign enrolment sit in the same institutions.
+        (<code>scripts/join_enrolment_and_funding.py</code>).</li>
+      <li><code>/data/expansion_phases.json</code> &mdash; Non-resident graduate degrees and visa issuances on one time axis, in named windows -- when each part of the pipeline expanded, and in what order.
         (<code>scripts/build_expansion_phases.py</code>).</li>
-      <li><code>/data/tuition_and_appropriations.json</code> &mdash;
-        published in-state tuition at public institutions beside state
-        appropriations per FTE, 2000&ndash;2023, constant dollars
-        (<code>scripts/build_tuition_and_appropriations.py</code>).</li>
-      <li><code>/data/repo_datasets.json</code> &mdash; manifest of eighteen
-        analysis files now published from the repo, with their source paths
-        (<code>scripts/publish_repo_datasets.py</code>).</li>
-      <li><code>/data/wage_level_trend.json</code> &mdash; share of certified
-        H-1B filings at each prevailing-wage level by fiscal year,
-        FY2017&ndash;2026 (<code>scripts/build_wage_level_trend.py</code>).</li>
-      <li><code>/data/local_wage_comparison.json</code> &mdash; H-1B filings
-        against the occupational median in the worksite state, not the
-        national one (<code>scripts/build_local_wage_comparison.py</code>).</li>
-      <li><code>/data/occupational_wages.json</code> &mdash; annual wage
-        percentiles by occupation, BLS OEWS 2019&ndash;2024
-        (<code>scripts/build_occupational_wages.py</code>).</li>
-      <li><code>/data/tuition_dependence.json</code> &mdash; tuition as a
-        share of institutional revenue against foreign graduate share, public
-        and private separately
-        (<code>scripts/build_tuition_dependence.py</code>).</li>
-      <li><code>/data/h1b_approvals.json</code> &mdash; H-1B petitions
-        approved and denied by employer, FY2009&ndash;2023
-        (<code>scripts/build_h1b_approvals.py</code>).</li>
-      <li><code>/data/state_funding_and_enrolment.json</code> &mdash; state
-        appropriations per FTE against non-resident graduate enrolment share,
-        by state (<code>scripts/build_state_funding_and_enrolment.py</code>).</li>
-      <li><code>/data/lca_wage_levels.json</code> &mdash; prevailing-wage
-        level promised on certified H-1B filings, by employer
-        (<code>scripts/build_lca_wage_levels.py</code>).</li>
-      <li><code>/data/h1b_enforcement.json</code> &mdash; H-1B wage
-        violations found by the DOL Wage and Hour Division, 2000&ndash;2026
-        (<code>scripts/build_h1b_enforcement.py</code>).</li>
-      <li><code>/data/visa_bulletin.json</code> &mdash; employment-based
-        final action dates FY1992&ndash;2023 by country, as years of waiting
-        (<code>scripts/build_visa_bulletin.py</code>).</li>
-      <li><code>/data/enrolment_and_funding.json</code> &mdash; temporary-visa
-        share of graduate enrolment joined to federal R&amp;D expenditure by
-        institution (<code>scripts/join_enrolment_and_funding.py</code>).</li>
-      <li><code>/data/visa_issuances.json</code> &mdash; nonimmigrant visa
-        issuances by class and nationality, FY1997&ndash;2024, plus monthly
-        detail (<code>scripts/build_visa_issuances.py</code>).</li>
-      <li><code>/data/gss_institution_ranking.json</code> &mdash; full-time
-        S&amp;E&amp;H graduate enrolment by institution and its temporary-visa
-        share (<code>scripts/build_gss_institution_ranking.py</code>).</li>
-      <li><code>/data/gss_citizenship_trend.json</code> &mdash; science,
-        engineering and health graduate and postdoctoral enrolment by
-        citizenship, 1980&ndash;2024
-        (<code>scripts/build_gss_citizenship_trend.py</code>).</li>
-      <li><code>/data/working_conditions.json</code> &mdash; hours and
-        reported satisfaction by current citizenship status
-        (<code>scripts/build_working_conditions.py</code>).</li>
-      <li><code>/data/lpr_adjustments.json</code> &mdash; permanent residence
-        by class and by type, adjustment against new arrival, FY2014&ndash;2023
-        (<code>scripts/build_lpr_adjustments.py</code>).</li>
-      <li><code>/data/graduate_enrollment.json</code> &mdash; non-resident
-        share of graduate enrolment, all fields, 2010&ndash;2023
-        (<code>scripts/build_graduate_enrollment.py</code>).</li>
-      <li><code>/data/graduate_balance.json</code> &mdash; non-resident share
-        of core-STEM degrees at master's, doctorate and combined graduate
-        level, 1995&ndash;2025
-        (<code>scripts/build_graduate_balance.py</code>).</li>
-      <li><code>/data/fica_exposure.json</code> &mdash; the payroll-tax
-        differential on OPT employment: statutory rates, published
-        authorisation counts, and labelled wage scenarios
+      <li><code>/data/fica_exposure.json</code> &mdash; The employer-side payroll-tax differential on OPT employment, as a rate and as a labelled scenario grid.
         (<code>scripts/build_fica_exposure.py</code>).</li>
-      <li><code>/data/support_trend.json</code> &mdash; the same SED question
-        across seven releases, 2018&ndash;2024: how long the assistantship gap
-        has held (<code>scripts/build_support_trend.py</code>).</li>
-      <li><code>/data/long_series.json</code> &mdash; core-STEM doctorates
-        1995&ndash;2025 (<code>scripts/build_long_series.py</code>).</li>
-      <li><code>/data/taxpayer_cost.json</code> &mdash; federal obligations per
-        STEM doctorate (<code>scripts/build_taxpayer_cost.py</code>).</li>
+      <li><code>/data/grad_support.json</code> &mdash; Full-time doctoral support by mechanism and, within federal support, by funding agency -- whose money pays for graduate study, across 653 institutions.
+        (<code>scripts/build_grad_support.py</code>).</li>
+      <li><code>/data/graduate_balance.json</code> &mdash; Non-resident share of core-STEM degrees at master's level, doctorate level and the two combined, across thirty years -- where in graduate education the balance actually shifted.
+        (<code>scripts/build_graduate_balance.py</code>).</li>
+      <li><code>/data/graduate_enrollment.json</code> &mdash; Non-resident share of graduate enrolment, all fields, 2010-2023 -- an independent read on the degree series.
+        (<code>scripts/build_graduate_enrollment.py</code>).</li>
+      <li><code>/data/gss_citizenship_trend.json</code> &mdash; Forty years of science, engineering and health graduate and postdoctoral enrolment by citizenship, 1980-2024 -- the long STEM-specific view.
+        (<code>scripts/build_gss_citizenship_trend.py</code>).</li>
+      <li><code>/data/gss_institution_ranking.json</code> &mdash; Full-time S&amp;E&amp;H graduate enrolment by institution and the temporary-visa share of it, master's and doctoral, ranked.
+        (<code>scripts/build_gss_institution_ranking.py</code>).</li>
+      <li><code>/data/h1b_approvals.json</code> &mdash; H-1B petitions approved and denied by employer, FY2009-2023 -- what USCIS actually granted, between what employers asked for and what enforcement later found.
+        (<code>scripts/build_h1b_approvals.py</code>).</li>
+      <li><code>/data/h1b_enforcement.json</code> &mdash; H-1B wage violations found by the Department of Labor, 2000-2026: cases, back wages, employees and employers.
+        (<code>scripts/build_h1b_enforcement.py</code>).</li>
+      <li><code>/data/humanitarian_admissions.json</code> &mdash; Refugee arrivals 1980-2023 and asylum grants by nationality -- the humanitarian route, for scale against the study and work routes.
+        (<code>scripts/build_humanitarian_admissions.py</code>).</li>
+      <li><code>/data/institution_profiles.json</code> &mdash; One row per institution on a single UNITID key -- core-STEM master's and doctorates with their non-resident shares, graduate enrolment, federal R&amp;D and obligations, tuition…
+        (<code>scripts/build_institution_profiles.py</code>).</li>
+      <li><code>/data/lca_wage_levels.json</code> &mdash; Prevailing-wage level promised on certified H-1B filings, by employer, FY2019 and FY2023 -- what was promised, beside what enforcement later found.
+        (<code>scripts/build_lca_wage_levels.py</code>).</li>
+      <li><code>/data/level_rankings.json</code> &mdash; Non-resident share rankings at BOTH master's and doctoral level: by institution, by 4-digit CIP, fastest risers, largest cohorts, and the within-institution contrast.
+        (<code>scripts/build_level_rankings.py</code>).</li>
+      <li><code>/data/live_bundle.json</code> &mdash; Everything the live voice dashboard renders, in one ~9 KB file so no chart update touches the network.
+        (<code>scripts/build_live_bundle.py</code>).</li>
+      <li><code>/data/local_wage_comparison.json</code> &mdash; The below-median finding measured against the median for the occupation in the worksite state, not the national one.
+        (<code>scripts/build_local_wage_comparison.py</code>).</li>
+      <li><code>/data/long_series.json</code> &mdash; Core-STEM doctorates 1995-2025: totals, non-resident and domestic counts, share, and the by-field breakdown.
+        (<code>scripts/build_long_series.py</code>).</li>
+      <li><code>/data/lpr_adjustments.json</code> &mdash; Permanent residence by class and by type -- adjustment of status against new arrival. How many green cards go to people already in the country on a temporary visa.
+        (<code>scripts/build_lpr_adjustments.py</code>).</li>
+      <li><code>/data/nativity_labour.json</code> &mdash; Employment by occupation and median weekly earnings, split by nativity -- the domestic side of the ledger.
+        (<code>scripts/build_nativity_labour.py</code>).</li>
+      <li><code>/data/nonimmigrant_admissions.json</code> &mdash; Admissions by class of admission and year, FY2014-2023, with destination state -- the closest substitute for the L-1 and O-1 employer data that is not published.
+        (<code>scripts/build_nonimmigrant_admissions.py</code>).</li>
+      <li><code>/data/occupational_wages.json</code> &mdash; Annual wage percentiles by detailed occupation -- the denominator that prices the H-1B wage levels in dollars.
+        (<code>scripts/build_occupational_wages.py</code>).</li>
+      <li><code>/data/origin_vs_residence.json</code> &mdash; Permanent residents by country of last residence against country of birth -- which countries are waypoints rather than sources.
+        (<code>scripts/build_origin_vs_residence.py</code>).</li>
+      <li><code>/data/repo_datasets.json</code> &mdash; Publishes eighteen analysis files that their own builders write beside their inputs rather than into site/data/.
+        (<code>scripts/publish_repo_datasets.py</code>).</li>
+      <li><code>/data/state_funding_and_enrolment.json</code> &mdash; State appropriations per FTE against the non-resident share of graduate enrolment at public institutions, by state, 2010-2023 -- a test of why the tuition finding exists.
+        (<code>scripts/build_state_funding_and_enrolment.py</code>).</li>
+      <li><code>/data/stay_rates.json</code> &mdash; Where temporary-visa S&amp;E doctorate recipients actually live years after graduating: 73% of the 2017-19 cohort were still in the US in 2023.
+        (<code>scripts/build_stay_rates.py</code>).</li>
+      <li><code>/data/stem_earnings.json</code> &mdash; Median earnings and debt one year after completion, by 4-digit CIP and credential level -- the only federal source that prices a STEM degree by field AND level.
+        (<code>scripts/build_stem_earnings.py</code>).</li>
+      <li><code>/data/summary.json</code> &mdash; The headline figure from every finding, in one file, each with the dataset and path it was read from and the limit on how it may be read.
+        (<code>scripts/build_summary.py</code>).</li>
+      <li><code>/data/support_by_citizenship.json</code> &mdash; Primary source of support by citizenship. The allocation evidence: 76.0% of international S&amp;E doctorate recipients are on assistantships against 53.1% of citizens.
+        (<code>scripts/build_support_by_citizenship.py</code>).</li>
+      <li><code>/data/support_trend.json</code> &mdash; Seven years of primary source of doctoral support by citizenship, 2018-2024 -- how long the assistantship gap has held, and which way it is moving.
+        (<code>scripts/build_support_trend.py</code>).</li>
+      <li><code>/data/taxpayer_cost.json</code> &mdash; Federal obligations per STEM research doctorate, against non-resident share. Quantifies the public-investment claim.
+        (<code>scripts/build_taxpayer_cost.py</code>).</li>
+      <li><code>/data/tuition.json</code> &mdash; What the core-STEM master's expansion is worth in tuition: published out-of-state graduate rates against non-resident master's degrees conferred, with the audited sector total alongside…
+        (<code>scripts/build_tuition_revenue.py</code>).</li>
+      <li><code>/data/tuition_and_appropriations.json</code> &mdash; Published in-state tuition at public institutions beside state appropriations per FTE, 2000-2023, in constant dollars -- what students were charged as states changed what they put in.
+        (<code>scripts/build_tuition_and_appropriations.py</code>).</li>
+      <li><code>/data/tuition_dependence.json</code> &mdash; Tuition as a share of institutional revenue against the foreign share of graduate enrolment, public and private reported separately.
+        (<code>scripts/build_tuition_dependence.py</code>).</li>
+      <li><code>/data/university_distribution.json</code> &mdash; Per-university department distributions: every 4-digit CIP programme with 15+ doctorates, 2015-2022, with its share.
+        (<code>scripts/build_university_distribution.py</code>).</li>
+      <li><code>/data/university_foreign_students.json</code> &mdash; Non-resident enrolment by institution, with SEVP's top campuses by STEM OPT authorisation beside it.
+        (<code>scripts/build_university_foreign_students.py</code>).</li>
+      <li><code>/data/visa_bulletin.json</code> &mdash; Employment-based final action dates FY1992-2023 for India, China, the Philippines and all other countries -- the employer-dependence argument in years.
+        (<code>scripts/build_visa_bulletin.py</code>).</li>
+      <li><code>/data/visa_issuances.json</code> &mdash; Nonimmigrant visa issuances by class and nationality, 1997-2024 -- the entry point, counted at the consulate.
+        (<code>scripts/build_visa_issuances.py</code>).</li>
+      <li><code>/data/wage_level_trend.json</code> &mdash; Share of certified H-1B filings at each prevailing-wage level, by fiscal year -- whether employers have moved toward the bottom of the legal range or away from it.
+        (<code>scripts/build_wage_level_trend.py</code>).</li>
+      <li><code>/data/working_conditions.json</code> &mdash; Hours worked and reported satisfaction by CURRENT citizenship status -- whether visa dependence shows up in what people work and report, not only in the statute.
+        (<code>scripts/build_working_conditions.py</code>).</li>
     </ul>
+    <!-- derived:end -->
+
 
     <h3 id="award-level-transition">The 2008&ndash;09 award-level transition</h3>
     <p>
@@ -383,7 +370,9 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
       This site does not make that calculation, and any figure of that kind found
       elsewhere was invented.
     </p>
+  </div>
 
+  <div id="nsf-graduate-student-survey-gss" class="card">
     <h3>NSF Graduate Student Survey (GSS)</h3>
     <div class="meta">
       <span>Agency: NSF / NCSES</span>

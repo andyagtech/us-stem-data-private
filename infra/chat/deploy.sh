@@ -40,6 +40,11 @@ fi
 echo "Rebuilding chat data artifacts from $REPO ..."
 python3 "$REPO/scripts/build_site_map.py"
 python3 "$REPO/scripts/build_chat_facts.py"
+# summary.json and institutions_compact.json back key_figures and
+# compare_institutions. Both are derived from site/data, so they are rebuilt
+# here rather than trusted from whenever someone last ran them.
+python3 "$REPO/scripts/build_summary.py" --check
+python3 "$REPO/scripts/build_chat_lookups.py"
 
 echo "Syncing handler source into lambda/ ..."
 # Extension modules are listed explicitly rather than globbed so that a
@@ -47,7 +52,7 @@ echo "Syncing handler source into lambda/ ..."
 for f in handler.py prompt.py tools.py blocks.py data_store.py realtime.py cache.py facts.py \
          knowledge_figures.py \
          tools_joins.py tools_demographics.py tools_search.py tools_provenance.py \
-         tools_levels.py; do
+         tools_levels.py tools_summary.py; do
     cp "$SRC/$f" "$SCRIPT_DIR/lambda/$f"
 done
 # The module list above is hand-maintained and has silently omitted a new
@@ -118,7 +123,9 @@ mkdir -p "$SCRIPT_DIR/lambda/chat_data"
 # glob was *.csv *.csv.gz *.json, which silently dropped search_index.bin
 # (tools_search) and sheeo_state_compact.json.gz (tools_demographics) — the
 # deploy still succeeded and both tool families failed at runtime.
-cp "$SRC/chat_data/"* "$SCRIPT_DIR/lambda/chat_data/"
+# Files only: a subdirectory under chat_data/ is not an artifact, and `cp` on
+# one without -r fails -- under set -e, that aborts the whole deploy.
+find "$SRC/chat_data" -maxdepth 1 -type f -not -name ".*" -exec cp {} "$SCRIPT_DIR/lambda/chat_data/" \;
 # Knowledge base: stable prose the assistant should know but that no data
 # tool returns. Loaded by prompt.load_kb().
 rm -rf "$SCRIPT_DIR/lambda/knowledge"
@@ -132,7 +139,8 @@ ls -la "$SCRIPT_DIR/lambda/chat_data"
 # Fail fast if an artifact the data tools need is missing.
 for required in nra_index.csv.gz cip_titles.csv hd_names.csv \
                 universities_compact.json national_series.json site_map.json \
-                search_index.bin sheeo_state_compact.json.gz; do
+                search_index.bin sheeo_state_compact.json.gz \
+                summary.json institutions_compact.json; do
     if [[ ! -s "$SCRIPT_DIR/lambda/chat_data/$required" ]]; then
         echo "ERROR: chat_data/$required is missing or empty."
         exit 1

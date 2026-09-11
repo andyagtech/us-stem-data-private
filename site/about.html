@@ -11,7 +11,7 @@
 <title>About — PhD Demographics</title>
 <style>
   :root {
-    --bg: var(--bg); --surface: var(--surface); --border: var(--border);
+    --bg: #0f172a; --surface: #1e293b; --border: #334155;
     --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8;
     --accent2: #f472b6; --accent3: #a78bfa; --accent4: #34d399;
     --danger: #ef4444; --orange: #fb923c;
@@ -66,6 +66,10 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 .themebtn:hover,.themebtn:focus-visible{color:var(--text);border-color:var(--accent);}
 .themebtn .ic{font-size:13px;line-height:1;}
 @media print{.themebtn{display:none;}}
+/* phd-light-status */
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--accent2:#be185d;--accent3:#6d28d9;--accent4:#047857;--danger:#b91c1c;--orange:#c2410c;}}
+:root[data-theme="light"]{--accent2:#be185d;--accent3:#6d28d9;--accent4:#047857;--danger:#b91c1c;--orange:#c2410c;}
+/* /phd-light-status */
 </style>
 <!-- og:cards -->
 <meta property="og:title" content="About PhD Demographics">

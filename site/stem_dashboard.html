@@ -16,7 +16,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); }
   
-  .header { background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%); color: white; padding: 20px 32px; }
+  .header { background: linear-gradient(135deg, #1e3a5f 0%, var(--accent2) 100%); color: white; padding: 20px 32px; }
   .header h1 { font-size: 22px; font-weight: 700; }
   .header .subtitle { font-size: 13px; opacity: 0.8; margin-top: 4px; }
   .header .stats { display: flex; gap: 24px; margin-top: 12px; flex-wrap: wrap; }
@@ -35,11 +35,11 @@
 
   table { width: 100%; border-collapse: collapse; font-size: 13px; background: var(--bg2); border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
   th { background: var(--bg3); padding: 10px 12px; text-align: left; font-weight: 600; color: var(--text2); cursor: pointer; user-select: none; white-space: nowrap; position: sticky; top: 0; z-index: 1; }
-  th:hover { background: #e2e8f0; }
+  th:hover { background: var(--border); }
   th.sorted-asc::after { content: ' ▲'; font-size: 10px; }
   th.sorted-desc::after { content: ' ▼'; font-size: 10px; }
   td { padding: 8px 12px; border-top: 1px solid var(--border); }
-  tr:hover td { background: #f8fafc; }
+  tr:hover td { background: var(--bg); }
   .num { text-align: right; font-variant-numeric: tabular-nums; }
   .pct { color: var(--text2); }
   .chi { color: var(--chi-color); font-weight: 600; }
@@ -107,6 +107,10 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 .themebtn:hover,.themebtn:focus-visible{color:var(--text);border-color:var(--accent);}
 .themebtn .ic{font-size:13px;line-height:1;}
 @media print{.themebtn{display:none;}}
+/* phd-light-status */
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--text3:#4b5563;--green:#15803d;--red:#b91c1c;--amber:#b45309;--purple:#6d28d9;--chi-color:#b91c1c;--ind-color:#b45309;--kor-color:#6d28d9;--viet-color:#15803d;}}
+:root[data-theme="light"]{--text3:#4b5563;--green:#15803d;--red:#b91c1c;--amber:#b45309;--purple:#6d28d9;--chi-color:#b91c1c;--ind-color:#b45309;--kor-color:#6d28d9;--viet-color:#15803d;}
+/* /phd-light-status */
 </style>
 <!-- og:cards -->
 <meta property="og:title" content="Name Origins Across 438K STEM Records">

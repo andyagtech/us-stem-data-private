@@ -8,7 +8,7 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
-  :root { --bg: var(--bg); --surface: var(--surface); --surface2: var(--border); --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8; --red: #f87171; --green: #4ade80; --orange: #fb923c; }
+  :root { --bg: #0f172a; --surface: #1e293b; --surface2: var(--border); --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8; --red: #f87171; --green: #4ade80; --orange: #fb923c; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); }
   .page { max-width: 1200px; margin: 0 auto; padding: 24px 32px; }
@@ -51,6 +51,10 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 .themebtn:hover,.themebtn:focus-visible{color:var(--text);border-color:var(--accent);}
 .themebtn .ic{font-size:13px;line-height:1;}
 @media print{.themebtn{display:none;}}
+/* phd-light-status */
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--red:#b91c1c;--green:#15803d;--orange:#c2410c;}}
+:root[data-theme="light"]{--red:#b91c1c;--green:#15803d;--orange:#c2410c;}
+/* /phd-light-status */
 </style>
 <!-- og:cards -->
 <meta property="og:title" content="US Government Scholarships and Exchange Programs">
