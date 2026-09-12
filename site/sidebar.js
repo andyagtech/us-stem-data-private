@@ -29,6 +29,7 @@
 
   const sections = [
     { title: 'National', items: [
+      { href: '/overview.html', label: 'National Overview' },
       { href: '/stem.html', label: 'National Charts', anchors: [
         { hash: 'nat-phd', label: 'STEM PhD by Citizenship' },
         { hash: 'nat-opt', label: 'OPT Pipeline' },
@@ -93,6 +94,9 @@
         { hash: 'programmes', label: 'By programme' },
         { hash: 'universities', label: 'Inside one university' },
       ]},
+      { href: '/filers.html', label: 'Who Files The Visas' },
+      { href: '/non_stem.html', label: 'Non-STEM Lists' },
+      { href: '/usaid.html', label: 'Scholarships & NGOs' },
       { href: '/live.html', label: 'Live Dashboard' },
     ]},
     { title: 'International', items: [
@@ -149,13 +153,18 @@
       ]},
     ]},
     { title: 'Reference', items: [
+      { href: '/contents.html', label: 'Table of Contents' },
       { href: '/query.html', label: 'Data Query (SQL)' },
       { href: '/data_sources.html', label: 'Data Sources & Methodology' },
       { href: '/briefing.html', label: 'The Briefing (PDF)' },
       { href: '/data_requests.html', label: 'Federal Data Requests' },
       { href: '/ask.html', label: 'What You Can Ask' },
       { href: '/methodology.html', label: 'Dataset Catalogue' },
+      { href: '/quality.html', label: 'Data Quality' },
       { href: '/implementation.html', label: 'Implementation' },
+      { href: '/department_reports.html', label: 'Department Reports' },
+      { href: '/name_lists.html', label: 'Name Lists' },
+      { href: '/stem_dashboard.html', label: 'Name Classification' },
       { href: '/catalog.json', label: 'Data Catalog (JSON)' },
       { href: '/llms.txt', label: 'WebMCP Integration' },
     ]},
