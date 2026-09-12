@@ -853,6 +853,44 @@
     '#chat-bubble{position:fixed;bottom:20px;right:20px;z-index:1000;width:52px;height:52px;border-radius:50%;background:var(--cb-accent);border:none;cursor:pointer;box-shadow:0 4px 16px rgba(56,189,248,0.4);display:flex;align-items:center;justify-content:center;transition:transform .2s;padding:0;color:var(--cb-accent-ink);}',
     '#chat-bubble:hover{transform:scale(1.08);}',
     '#chat-bubble:focus-visible{outline:2px solid var(--cb-text);outline-offset:3px;}',
+    /* The tour button. Right of 90px puts its left edge under the left edge
+     * of the theme pill above (121-124px wide at right:20px), so the two
+     * circles are spread across that pill's footprint rather than crowded at
+     * the corner. Deliberately quieter than the chat bubble -- outlined, not
+     * filled -- because the chat is the primary action and this is the
+     * secondary one. */
+    '#phd-tour-btn{position:fixed;bottom:20px;right:90px;z-index:1000;width:52px;',
+    'height:52px;border-radius:50%;background:var(--cb-panel);',
+    'border:1px solid var(--cb-border);color:var(--cb-accent);cursor:pointer;',
+    'box-shadow:0 4px 16px rgba(0,0,0,0.28);display:flex;align-items:center;',
+    'justify-content:center;transition:transform .2s,border-color .2s;padding:0;',
+    'font:700 21px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;}',
+    '#phd-tour-btn:hover{transform:scale(1.08);border-color:var(--cb-accent);}',
+    '#phd-tour-btn:focus-visible{outline:2px solid var(--cb-accent);outline-offset:3px;}',
+    /* First-visit hint. A label, not a modal: it names the thing the button
+     * does and gets out of the way. It sits to the LEFT so it never covers
+     * either circle. */
+    '#phd-tour-hint{position:fixed;bottom:26px;right:150px;z-index:1000;',
+    'max-width:min(15rem,calc(100vw - 172px));background:var(--cb-panel);',
+    'color:var(--cb-text);border:1px solid var(--cb-border);border-radius:10px;',
+    'padding:9px 12px;box-shadow:0 6px 22px rgba(0,0,0,0.3);',
+    'font:400 12.5px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;',
+    'display:flex;gap:9px;align-items:flex-start;}',
+    '#phd-tour-hint button{background:none;border:none;color:var(--cb-muted);',
+    'cursor:pointer;font:inherit;font-size:15px;line-height:1;padding:0 1px;}',
+    '#phd-tour-hint button:hover{color:var(--cb-text);}',
+    '#phd-tour-btn.nudge{animation:phd-tour-pulse 2.6s ease-in-out 3;}',
+    '@keyframes phd-tour-pulse{0%,100%{box-shadow:0 4px 16px rgba(0,0,0,0.28);}',
+    '50%{box-shadow:0 4px 16px rgba(0,0,0,0.28),0 0 0 7px rgba(56,189,248,0.16);}}',
+    '@media (prefers-reduced-motion:reduce){#phd-tour-btn.nudge{animation:none;}',
+    '#phd-tour-btn,#chat-bubble{transition:none;}}',
+    /* On a narrow screen the hint would have nowhere to go beside the
+     * buttons, so it sits above them and spans the width instead. */
+    /* 128px, not 84px: the theme pill also sits at bottom:84px and spans the
+     * same right-hand area, so the hint covered it. This clears the pill's
+     * full height. */
+    '@media (max-width:520px){#phd-tour-hint{right:20px;left:20px;bottom:128px;',
+    'max-width:none;}}',
 
     '#chat-panel{position:fixed;bottom:84px;right:20px;z-index:1000;width:420px;max-height:min(640px,80vh);background:var(--cb-panel);border:1px solid var(--cb-border);border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.45);display:none;flex-direction:column;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--cb-text);}',
     '#chat-panel.open{display:flex;}',
@@ -984,6 +1022,19 @@
   bubble.setAttribute('aria-label', 'Open the data assistant');
   bubble.appendChild(icon(ICON.chat, 24));
 
+  /* The tour used to be reachable only from inside the chat panel, and only
+   * on a visit with no conversation yet -- so a reader who never opened the
+   * chat never learned it existed, and anyone who had asked one question
+   * could not find it again at all. This button is the standing entrance:
+   * always present, and it restarts from the first stop however many times
+   * it is pressed. */
+  var tourBtn = el('button');
+  tourBtn.id = 'phd-tour-btn';
+  tourBtn.setAttribute('type', 'button');
+  tourBtn.setAttribute('aria-label', 'Take the guided tour');
+  tourBtn.title = 'Take the guided tour';
+  tourBtn.textContent = '?';
+
   var panel = el('div');
   panel.id = 'chat-panel';
   panel.setAttribute('role', 'dialog');
@@ -1018,6 +1069,7 @@
   panel.appendChild(messagesEl);
   panel.appendChild(inputRow);
   root.appendChild(bubble);
+  root.appendChild(tourBtn);
   root.appendChild(panel);
 
   function mount() {
@@ -1871,6 +1923,97 @@
     else location.href = stop.page + (stop.anchor ? '#' + stop.anchor : '');
   }
 
+  /* The "?" path. Distinct from tourStart in two ways that matter: it clears
+   * any half-finished tour first, so pressing "?" always means "from the
+   * beginning" rather than "resume"; and it opens the panel itself, because
+   * the reader may have pressed it with the chat shut. */
+  var TOUR_SEEN = 'phd-tour-seen';
+  var tourLoading = null;
+
+  /* sidebar.js injects tour.js, but the widget also loads on pages that have
+   * their own navigation and never run sidebar.js -- stem.html among them,
+   * which is the busiest page on the site. The widget therefore loads its own
+   * dependency rather than depending on another script having done it, so the
+   * "?" is never a button that does nothing.
+   */
+  function ensureTour(cb) {
+    if (tourOn()) { cb(true); return; }
+    if (tourLoading) { tourLoading.push(cb); return; }
+    tourLoading = [cb];
+    var s = document.createElement('script');
+    s.src = '/tour.js';
+    function done() {
+      var waiting = tourLoading;
+      tourLoading = null;
+      for (var i = 0; i < waiting.length; i++) {
+        try { waiting[i](tourOn()); } catch (e) { /* inert */ }
+      }
+    }
+    s.addEventListener('load', done);
+    s.addEventListener('error', done);
+    document.body.appendChild(s);
+  }
+
+  function tourRestart() {
+    dismissHint();
+    // Before setOpen, not after: opening the panel runs maybeOfferTour, and
+    // someone who just pressed "?" does not need to be asked whether they
+    // want the tour they are already starting.
+    tourOffered = true;
+    setOpen(true);
+    ensureTour(function (ok) {
+      if (!ok) {
+        var m = newMessage('assistant');
+        m.content.textContent = 'I could not load the tour just now, but ask me '
+          + 'anything and I will take you to the figures.';
+        scrollToEnd();
+        return;
+      }
+      window.PhdTour.clear();         // "?" always means from the beginning
+      tourStart();
+    });
+  }
+
+  function dismissHint() {
+    var h = document.getElementById('phd-tour-hint');
+    if (h) h.remove();
+    tourBtn.classList.remove('nudge');
+    try { localStorage.setItem(TOUR_SEEN, '1'); } catch (e) { /* private mode */ }
+  }
+
+  /* Shown once, on a reader's first visit, and never again. localStorage can
+   * throw or be wiped, so a lost flag costs one extra hint -- not a broken
+   * page. */
+  function maybeHintTour() {
+    if (!tourOn()) return;
+    var seen = true;
+    try { seen = !!localStorage.getItem(TOUR_SEEN); } catch (e) { seen = false; }
+    if (seen || window.PhdTour.state() || convo.length) return;
+    var hint = el('div');
+    hint.id = 'phd-tour-hint';
+    var text = el('span');
+    text.textContent = 'First time here? I can walk you through the finding in '
+      + window.PhdTour.length + ' stops.';
+    var close = el('button');
+    close.setAttribute('type', 'button');
+    close.setAttribute('aria-label', 'Dismiss');
+    close.textContent = '×';
+    close.addEventListener('click', function () { dismissHint(); });
+    text.style.cursor = 'pointer';
+    text.addEventListener('click', tourRestart);
+    hint.appendChild(text);
+    hint.appendChild(close);
+    document.body.appendChild(hint);
+    tourBtn.classList.add('nudge');
+    // It is a hint, not a demand: it goes away on its own. The flag is NOT
+    // set here -- a reader who never looked at the corner should get one more
+    // chance on their next visit.
+    setTimeout(function () {
+      var h = document.getElementById('phd-tour-hint');
+      if (h) { h.remove(); tourBtn.classList.remove('nudge'); }
+    }, 14000);
+  }
+
   function tourStart() {
     if (!tourOn()) return;
     window.PhdTour.start();
@@ -1907,6 +2050,7 @@
   }
 
   bubble.addEventListener('click', function () { setOpen(!isOpen); });
+  tourBtn.addEventListener('click', tourRestart);
   closeBtn.addEventListener('click', function () { setOpen(false); });
   sendBtn.addEventListener('click', function () { send(input.value); });
   input.addEventListener('keydown', function (e) {
@@ -1928,6 +2072,7 @@
   window.__phdChat = {
     version: WIDGET_VERSION,
     open: function () { setOpen(true); },
+    startTour: tourRestart,
     close: function () { setOpen(false); },
     send: send,
     /** Render a hand-written v2 envelope. Test hook. */
@@ -1975,6 +2120,11 @@
 
   // A tour stop on another page is a real navigation; pick it up on arrival.
   window.addEventListener('load', function () {
-    setTimeout(function () { try { tourResume(); } catch (e) { /* inert */ } }, 300);
+    setTimeout(function () {
+      ensureTour(function () {
+        try { tourResume(); } catch (e) { /* inert */ }
+        try { maybeHintTour(); } catch (e) { /* inert */ }
+      });
+    }, 400);
   });
 })();

@@ -489,5 +489,10 @@ go(indexOfHash(), false);
 </script>
 <script src="/anchors.js" defer></script>
 <script src="/analytics-beacon.js" defer></script>
+<!-- The guided tour visits this page (see site/tour.js). Without the
+     widget the tour reached stop 4 of 16, navigated here, and died
+     silently: no panel to narrate from, no way to continue. The
+     widget loads tour.js itself, so this one tag is enough. -->
+<script src="/chat-widget.js"></script>
 </body>
 </html>
