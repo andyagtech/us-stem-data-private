@@ -84,6 +84,7 @@ CACHE_RULES = {
     ".svg": "public, max-age=604800",
     ".xml": "public, max-age=3600",
     ".txt": "public, max-age=3600",
+    ".pdf": "public, max-age=3600",   # rebuilt whenever the briefing is
     ".parquet": "public, max-age=3600",
 }
 
@@ -104,6 +105,9 @@ CONTENT_TYPES = {
     ".txt": "text/plain; charset=utf-8",
     ".svg": "image/svg+xml",
     ".parquet": "application/octet-stream",
+    # Without this the briefing PDFs go out as octet-stream, which makes the
+    # browser download the file instead of opening it.
+    ".pdf": "application/pdf",
 }
 
 

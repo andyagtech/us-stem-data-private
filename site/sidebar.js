@@ -72,7 +72,7 @@
         { hash: 'totals-section', label: 'Totals by Field' },
         { hash: 'industry-section', label: 'By Major Industry' },
       ]},
-      { href: '/concentration.html', label: 'The Concentration Effect' },
+      { href: '/presentation.html', label: 'Presentation: The Concentration Effect' },
       { href: '/institutions.html', label: 'Compare Institutions', anchors: [
         { hash: 'the-table', label: 'The table' },
         { hash: 'what-a-row-does-not-mean', label: 'What a row does not mean' },
@@ -151,6 +151,7 @@
     { title: 'Reference', items: [
       { href: '/query.html', label: 'Data Query (SQL)' },
       { href: '/data_sources.html', label: 'Data Sources & Methodology' },
+      { href: '/briefing.html', label: 'The Briefing (PDF)' },
       { href: '/data_requests.html', label: 'Federal Data Requests' },
       { href: '/ask.html', label: 'What You Can Ask' },
       { href: '/methodology.html', label: 'Dataset Catalogue' },

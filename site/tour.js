@@ -69,7 +69,7 @@
            "master's students mostly pay tuition, so the two are kept separate."
     },
     {
-      page: '/concentration.html',
+      page: '/presentation.html',
       anchor: 'national-flat',
       say: "Now the part most people get wrong. Nationally, the non-resident " +
            "share of US research doctorates has barely moved in fifteen years. " +
@@ -77,21 +77,21 @@
            "finds no trend at all."
     },
     {
-      page: '/concentration.html',
+      page: '/presentation.html',
       anchor: 'concentration',
       say: "What changed is concentration. The count of departments where " +
            "non-residents are the overwhelming majority more than doubled, " +
            "while the national average sat still. The average was hiding it."
     },
     {
-      page: '/concentration.html',
+      page: '/presentation.html',
       anchor: 'by-field',
       say: "And it is not spread evenly. Engineering, computing and mathematics " +
            "separated from everything else. Biology barely moved. This is a " +
            "story about particular fields, not about graduate education at large."
     },
     {
-      page: '/concentration.html',
+      page: '/presentation.html',
       anchor: 'persistence',
       say: "These are not one unusual year. The programs on this list stayed " +
            "above the threshold for a decade or more — it is the settled state " +
