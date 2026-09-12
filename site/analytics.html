@@ -3,43 +3,110 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Owner-only page. Declared in scripts/private_pages.py, which also keeps it
+     out of sitemap.xml, contents.html, the assistant's site_map.json and
+     robots.txt. check_consistency.py fails the build if any of those changes. -->
+<meta name="robots" content="noindex, nofollow">
 <title>Analytics — PhD Demographics</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
-  :root { --bg: #0f172a; --surface: #1e293b; --surface2: var(--border); --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8; }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 24px; }
-  .container { max-width: 1100px; margin: 0 auto; }
-  h1 { font-size: 1.4rem; margin-bottom: 4px; }
-  .subtitle { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px; }
-  .subtitle a { color: var(--accent); text-decoration: none; }
-  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 20px; }
-  .stat-card { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; }
-  .stat-card .label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
-  .stat-card .value { font-size: 1.6rem; font-weight: 700; color: var(--accent); margin-top: 4px; }
-  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
-  .chart-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; }
-  .chart-box h3 { font-size: 0.85rem; margin-bottom: 8px; }
-  .chart-box canvas { max-height: 250px; }
-  .table-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 16px; margin-bottom: 16px; }
-  .table-box h3 { font-size: 0.85rem; margin-bottom: 8px; }
-  table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
-  th { text-align: left; color: var(--text-muted); font-weight: 600; padding: 6px 8px; border-bottom: 1px solid var(--surface2); }
-  td { padding: 5px 8px; border-bottom: 1px solid rgba(51,65,85,0.3); }
-  #auth-screen { position: fixed; inset: 0; background: var(--bg); display: flex; align-items: center; justify-content: center; z-index: 100; }
-  #auth-screen .box { background: var(--surface); padding: 32px; border-radius: 12px; border: 1px solid var(--surface2); text-align: center; }
-  #auth-screen input { background: var(--bg); border: 1px solid var(--surface2); color: var(--text); padding: 8px 14px; border-radius: 6px; font-size: 0.9rem; margin: 12px 0; width: 240px; }
-  #auth-screen button { background: var(--accent); color: var(--bg); border: none; padding: 8px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; }
-  #loading { text-align: center; padding: 60px; color: var(--text-muted); }
-  @media (max-width: 700px) { .charts { grid-template-columns: 1fr; } .stats { grid-template-columns: 1fr 1fr; } body { padding: 12px; } }
+  :root { --bg:#0f172a; --surface:#1e293b; --border:#334155; --text:#e2e8f0;
+    --text-muted:#94a3b8; --accent:#38bdf8; --warn:#fbbf24; --bad:#f87171;
+    --grid:rgba(148,163,184,0.18); --bar:rgba(56,189,248,0.22); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background:var(--bg); color:var(--text); min-height:100vh; padding:24px 16px; }
+  .container { max-width:1180px; margin:0 auto; }
+  h1 { font-size:1.35rem; margin-bottom:2px; letter-spacing:-0.01em; }
+  .subtitle { color:var(--text-muted); font-size:0.85rem; margin-bottom:18px; }
+  .subtitle a { color:var(--accent); text-decoration:none; }
+  .subtitle a:hover { text-decoration:underline; }
+
+  /* Controls */
+  .controls { display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+    margin-bottom:18px; padding:12px 14px; background:var(--surface);
+    border:1px solid var(--border); border-radius:10px; }
+  .controls label { font-size:0.72rem; text-transform:uppercase;
+    letter-spacing:0.05em; color:var(--text-muted); margin-right:5px; }
+  .controls select { background:var(--bg); color:var(--text);
+    border:1px solid var(--border); border-radius:6px; padding:5px 8px;
+    font-size:0.84rem; font-family:inherit; }
+  .controls .spacer { flex:1 1 auto; }
+  .controls .note { font-size:0.74rem; color:var(--text-muted); }
+  .toggle { display:inline-flex; align-items:center; gap:6px; font-size:0.84rem;
+    cursor:pointer; }
+
+  /* Stat tiles. Only the six headline figures get tile treatment; everything
+     else is a table, so the tiles keep their meaning. */
+  .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:10px; margin-bottom:18px; }
+  .stat-card { background:var(--surface); border:1px solid var(--border);
+    border-radius:10px; padding:14px 16px; }
+  .stat-card .label { font-size:0.7rem; color:var(--text-muted);
+    text-transform:uppercase; letter-spacing:0.05em; }
+  .stat-card .value { font-size:1.5rem; font-weight:700; color:var(--accent);
+    margin-top:3px; font-variant-numeric:tabular-nums; }
+  .stat-card .value.muted { color:var(--text); }
+  .stat-card .value.bad { color:var(--bad); }
+  .stat-card .sub { font-size:0.72rem; color:var(--text-muted); margin-top:2px; }
+
+  .charts { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px; }
+  .box { background:var(--surface); border:1px solid var(--border);
+    border-radius:10px; padding:14px 16px; margin-bottom:14px; }
+  .box h3 { font-size:0.82rem; margin-bottom:3px; }
+  .box .hint { font-size:0.72rem; color:var(--text-muted); margin-bottom:9px; }
+  .box canvas { max-height:230px; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .grid2 > .box { margin-bottom:0; }
+
+  /* Tables. A proportion bar sits behind the count cell so a column of
+     numbers reads as a shape without a second chart. */
+  table { width:100%; border-collapse:collapse; font-size:0.8rem; }
+  th { text-align:left; color:var(--text-muted); font-weight:600;
+    padding:5px 8px; border-bottom:1px solid var(--border);
+    font-size:0.72rem; text-transform:uppercase; letter-spacing:0.04em; }
+  td { padding:5px 8px; border-bottom:1px solid var(--border);
+    vertical-align:top; }
+  tr:last-child td { border-bottom:none; }
+  td.num { text-align:right; font-variant-numeric:tabular-nums;
+    white-space:nowrap; width:1%; }
+  td.k { word-break:break-word; }
+  td.bar { width:38%; padding:5px 8px; }
+  td.bar span { display:block; height:7px; border-radius:3px;
+    background:var(--accent); min-width:2px; }
+  td.mono { font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:0.74rem; color:var(--text-muted); }
+  .empty { color:var(--text-muted); font-style:italic; }
+
+  #auth-screen { position:fixed; inset:0; background:var(--bg); display:flex;
+    align-items:center; justify-content:center; z-index:100; }
+  #auth-screen .box { padding:30px; text-align:center; max-width:22rem; }
+  #auth-screen input { background:var(--bg); border:1px solid var(--border);
+    color:var(--text); padding:8px 14px; border-radius:6px; font-size:0.9rem;
+    margin:12px 0; width:240px; font-family:inherit; }
+  #auth-screen button { background:var(--accent); color:var(--bg); border:none;
+    padding:8px 20px; border-radius:6px; font-weight:600; cursor:pointer;
+    font-family:inherit; font-size:0.88rem; }
+  #status { text-align:center; padding:40px; color:var(--text-muted);
+    font-size:0.86rem; }
+  #status.err { color:var(--bad); }
+
+  @media (max-width:760px) {
+    .charts, .grid2 { grid-template-columns:1fr; }
+    .stats { grid-template-columns:1fr 1fr; }
+    body { padding:14px 12px; }
+  }
 
 @media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
 --bg:#ffffff;--surface:#f6f7f9;--border:#d8dee6;--text:#111827;
---text-muted:#4b5563;--accent:#1d4ed8;--hl:#b3123c;color-scheme:light;}}
+--text-muted:#4b5563;--accent:#1d4ed8;--warn:#92400e;--bad:#b3123c;
+--grid:rgba(17,24,39,0.10);--bar:rgba(29,78,216,0.16);color-scheme:light;}}
 :root[data-theme="light"]{
 --bg:#ffffff;--surface:#f6f7f9;--border:#d8dee6;--text:#111827;
---text-muted:#4b5563;--accent:#1d4ed8;--hl:#b3123c;color-scheme:light;}
-.themebtn{position:fixed;right:20px;bottom:84px;z-index:60;display:inline-flex;
+--text-muted:#4b5563;--accent:#1d4ed8;--warn:#92400e;--bad:#b3123c;
+--grid:rgba(17,24,39,0.10);--bar:rgba(29,78,216,0.16);color-scheme:light;}
+.themebtn{position:fixed;right:20px;bottom:20px;z-index:60;display:inline-flex;
 align-items:center;gap:7px;padding:7px 12px;border-radius:999px;
 background:var(--surface);color:var(--text-muted);border:1px solid var(--border);
 cursor:pointer;font:500 12px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',
@@ -47,6 +114,10 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 .themebtn:hover,.themebtn:focus-visible{color:var(--text);border-color:var(--accent);}
 .themebtn .ic{font-size:13px;line-height:1;}
 @media print{.themebtn{display:none;}}
+/* phd-light-status */
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--warn:#a16207;--bad:#b91c1c;}}
+:root[data-theme="light"]{--warn:#a16207;--bad:#b91c1c;}
+/* /phd-light-status */
 </style>
   <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
   <script defer src="/theme.js"></script>
@@ -54,127 +125,312 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 <body>
 <div id="auth-screen">
   <div class="box">
-    <h2>Analytics</h2>
-    <p style="color:var(--text-muted);font-size:0.85rem;margin-top:8px;">Enter password to view analytics</p>
+    <h2 style="font-size:1.1rem">Analytics</h2>
+    <p style="color:var(--text-muted);font-size:0.85rem;margin-top:8px;">Owner only. Enter the password.</p>
     <div><input type="password" id="pw-input" placeholder="Password" onkeydown="if(event.key==='Enter')doAuth()"></div>
     <button onclick="doAuth()">View</button>
   </div>
 </div>
 
 <div class="container" id="dashboard" style="display:none;">
-  <h1>PhD Demographics — Analytics</h1>
-  <p class="subtitle"><a href="stem.html">Back to dashboard</a> &middot; Last <select id="days-select" onchange="loadData()" style="background:var(--surface);color:var(--text);border:1px solid var(--surface2);border-radius:4px;padding:2px 6px;font-size:0.82rem;">
-    <option value="7">7 days</option>
-    <option value="30" selected>30 days</option>
-    <option value="90">90 days</option>
-  </select></p>
+  <h1>Analytics</h1>
+  <p class="subtitle"><a href="/">Back to the site</a> &middot;
+    <span id="meta-line">—</span></p>
+
+  <div class="controls">
+    <span><label for="site-select">Site</label>
+      <select id="site-select"></select></span>
+    <span><label for="days-select">Period</label>
+      <select id="days-select">
+        <option value="7">7 days</option>
+        <option value="30" selected>30 days</option>
+        <option value="90">90 days</option>
+      </select></span>
+    <label class="toggle" style="text-transform:none;letter-spacing:0;margin:0">
+      <input type="checkbox" id="bots-toggle"> include bots
+    </label>
+    <span class="spacer"></span>
+    <span class="note" id="stamp"></span>
+  </div>
 
   <div class="stats">
-    <div class="stat-card"><div class="label">Total Views</div><div class="value" id="s-views">—</div></div>
-    <div class="stat-card"><div class="label">Sessions</div><div class="value" id="s-sessions">—</div></div>
-    <div class="stat-card"><div class="label">Total Clicks</div><div class="value" id="s-clicks">—</div></div>
-    <div class="stat-card"><div class="label">Avg Clicks/Session</div><div class="value" id="s-avg">—</div></div>
+    <div class="stat-card"><div class="label">Page views</div>
+      <div class="value" id="s-views">—</div>
+      <div class="sub" id="s-views-sub"></div></div>
+    <div class="stat-card"><div class="label">Sessions</div>
+      <div class="value" id="s-sessions">—</div>
+      <div class="sub">distinct visitors, by session id</div></div>
+    <div class="stat-card"><div class="label">Views / session</div>
+      <div class="value muted" id="s-vps">—</div>
+      <div class="sub">how far people go</div></div>
+    <div class="stat-card"><div class="label">Read on</div>
+      <div class="value muted" id="s-readon">—</div>
+      <div class="sub">sessions reaching a 2nd page</div></div>
+    <div class="stat-card"><div class="label">Clicks</div>
+      <div class="value muted" id="s-clicks">—</div>
+      <div class="sub" id="s-clicks-sub"></div></div>
+    <div class="stat-card"><div class="label">JS errors</div>
+      <div class="value" id="s-errors">—</div>
+      <div class="sub">reported by the page itself</div></div>
   </div>
 
   <div class="charts">
-    <div class="chart-box"><h3>Views per Day</h3><canvas id="chart-daily"></canvas></div>
-    <div class="chart-box"><h3>Views by Hour (UTC)</h3><canvas id="chart-hourly"></canvas></div>
-    <div class="chart-box"><h3>Top Countries</h3><canvas id="chart-countries"></canvas></div>
-    <div class="chart-box"><h3>Top Cities</h3><canvas id="chart-cities"></canvas></div>
+    <div class="box"><h3>Views per day</h3>
+      <p class="hint">Every day in the period, including the zeroes.</p>
+      <canvas id="chart-daily"></canvas></div>
+    <div class="box"><h3>Views by hour (UTC)</h3>
+      <p class="hint">When the site is read. UTC, not local time.</p>
+      <canvas id="chart-hourly"></canvas></div>
   </div>
 
-  <div class="table-box">
-    <h3>Top Universities Clicked</h3>
-    <table id="tbl-unis"><thead><tr><th>University</th><th>Clicks</th></tr></thead><tbody></tbody></table>
+  <div class="grid2">
+    <div class="box"><h3>Where they came from</h3>
+      <p class="hint">Referrer host. <em>direct</em> is a typed URL, a bookmark,
+        or a client that sends no referrer.</p>
+      <table id="tbl-ref"><thead><tr><th>Source</th><th class="num">Views</th><th></th></tr></thead><tbody></tbody></table></div>
+    <div class="box"><h3>Countries</h3>
+      <p class="hint" id="hint-country">—</p>
+      <table id="tbl-country"><thead><tr><th>Country</th><th class="num">Views</th><th></th></tr></thead><tbody></tbody></table></div>
   </div>
 
-  <div class="table-box">
-    <h3>Recent Sessions</h3>
-    <table id="tbl-sessions"><thead><tr><th>Time</th><th>Country</th><th>Views</th><th>Clicks</th><th>Pages</th></tr></thead><tbody></tbody></table>
+  <div class="grid2" style="margin-top:14px">
+    <div class="box"><h3>Most-read pages</h3>
+      <p class="hint">All views, wherever in the session.</p>
+      <table id="tbl-pages"><thead><tr><th>Page</th><th class="num">Views</th><th></th></tr></thead><tbody></tbody></table></div>
+    <div class="box"><h3>Entry pages</h3>
+      <p class="hint">The first page of a session — what a shared link
+        actually lands on.</p>
+      <table id="tbl-entry"><thead><tr><th>Page</th><th class="num">Sessions</th><th></th></tr></thead><tbody></tbody></table></div>
   </div>
 
-  <div id="loading">Loading...</div>
+  <div class="grid2" style="margin-top:14px">
+    <div class="box"><h3>Universities clicked</h3>
+      <p class="hint">Which institution pages people open from a list.</p>
+      <table id="tbl-unis"><thead><tr><th>University</th><th class="num">Clicks</th><th></th></tr></thead><tbody></tbody></table></div>
+    <div class="box"><h3>Devices</h3>
+      <p class="hint">From the user-agent. Phone-heavy traffic means the
+        charts have to work narrow.</p>
+      <table id="tbl-devices"><thead><tr><th>Device</th><th class="num">Views</th><th></th></tr></thead><tbody></tbody></table></div>
+  </div>
+
+  <div class="box" style="margin-top:14px"><h3>What they clicked</h3>
+    <p class="hint">Every click target the beacon reported, not only
+      university links.</p>
+    <table id="tbl-clicks"><thead><tr><th>Target</th><th class="num">Clicks</th><th></th></tr></thead><tbody></tbody></table></div>
+
+  <div class="grid2">
+    <div class="box"><h3>Errors by message</h3>
+      <p class="hint">A page that throws for a visitor is a page that is
+        broken for them.</p>
+      <table id="tbl-errors"><thead><tr><th>Message</th><th class="num">Count</th></tr></thead><tbody></tbody></table></div>
+    <div class="box"><h3>Errors by page</h3>
+      <p class="hint">Where to look first.</p>
+      <table id="tbl-errpages"><thead><tr><th>Page</th><th class="num">Count</th></tr></thead><tbody></tbody></table></div>
+  </div>
+
+  <div class="box" style="margin-top:14px"><h3>Recent sessions</h3>
+    <p class="hint">The raw events, newest first — the only view here that is
+      not a daily rollup.</p>
+    <table id="tbl-sessions"><thead><tr><th>Time (UTC)</th><th>Country</th><th class="num">Views</th><th class="num">Clicks</th><th>Pages</th></tr></thead><tbody></tbody></table></div>
+
+  <div id="status">Loading…</div>
 </div>
 
 <script>
 const API = 'https://analytics.andy-barr.com/analytics';
 let password = '';
-let charts = {};
+const charts = {};
 
-function doAuth() {
-  password = document.getElementById('pw-input').value || location.hash.replace('#', '');
-  document.getElementById('auth-screen').style.display = 'none';
-  document.getElementById('dashboard').style.display = '';
-  loadData();
+/* Escape everything. Referrer hosts, click targets and error messages are
+   written by whoever visited the site; they are not trusted markup just
+   because this dashboard is mine. The previous version interpolated them
+   straight into innerHTML. */
+function esc(s) {
+  return String(s == null ? '' : s).replace(/[&<>"']/g,
+    c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+const fmt = n => (typeof n === 'number' ? n.toLocaleString() : '—');
+
+function tok(name) {
+  return getComputedStyle(document.documentElement)
+    .getPropertyValue(name).trim() || '#888';
 }
 
-// Auto-auth from hash
+function doAuth() {
+  password = document.getElementById('pw-input').value;
+  if (!password) return;
+  start();
+}
+
+/* A password in the fragment never leaves the browser, which is what makes
+   the private link work: the hash is not sent to the server or logged by
+   CloudFront. It does sit in browser history. */
 if (location.hash.length > 1) {
-  password = location.hash.replace('#', '');
+  password = decodeURIComponent(location.hash.slice(1));
+  start();
+}
+
+function start() {
   document.getElementById('auth-screen').style.display = 'none';
   document.getElementById('dashboard').style.display = '';
+  for (const id of ['site-select', 'days-select', 'bots-toggle']) {
+    document.getElementById(id).addEventListener('change', loadData);
+  }
   loadData();
 }
 
 function loadData() {
   const days = document.getElementById('days-select').value;
-  document.getElementById('loading').style.display = '';
-  fetch(`${API}?password=${encodeURIComponent(password)}&days=${days}`)
-    .then(r => r.json())
-    .then(data => {
-      if (data.error) { alert('Unauthorized'); return; }
-      document.getElementById('loading').style.display = 'none';
-      render(data);
+  const site = document.getElementById('site-select').value;
+  const bots = document.getElementById('bots-toggle').checked ? 'include' : 'exclude';
+  const status = document.getElementById('status');
+  status.className = '';
+  status.style.display = '';
+  status.textContent = 'Loading…';
+  const q = new URLSearchParams({ password, days, bots });
+  if (site) q.set('site', site);
+  fetch(`${API}?${q}`)
+    .then(r => r.json().then(j => ({ ok: r.ok, status: r.status, j })))
+    .then(({ ok, status: code, j }) => {
+      if (!ok || j.error) {
+        status.className = 'err';
+        status.textContent = code === 401
+          ? 'Wrong password.' : `Error ${code}: ${j.error || 'unknown'}`;
+        return;
+      }
+      status.style.display = 'none';
+      render(j);
     })
-    .catch(e => { document.getElementById('loading').textContent = 'Error: ' + e.message; });
+    .catch(e => { status.className = 'err'; status.textContent = 'Error: ' + e.message; });
+}
+
+/* One table renderer for every count table: sorted keys, a proportion bar
+   scaled to the largest value, and an honest empty state rather than a blank
+   box. `mono` is for machine strings (targets, error text). */
+function table(id, obj, opts = {}) {
+  const body = document.querySelector('#' + id + ' tbody');
+  const entries = Object.entries(obj || {})
+    .sort((a, b) => b[1] - a[1]).slice(0, opts.limit || 15);
+  const cols = document.querySelectorAll('#' + id + ' thead th').length;
+  if (!entries.length) {
+    body.innerHTML = `<tr><td class="empty" colspan="${cols}">${
+      esc(opts.empty || 'Nothing recorded in this period.')}</td></tr>`;
+    return;
+  }
+  const max = entries[0][1] || 1;
+  body.innerHTML = entries.map(([k, v]) => {
+    const label = opts.label ? opts.label(k) : k;
+    const bar = cols > 2
+      ? `<td class="bar"><span style="width:${Math.max(2, 100 * v / max)}%"></span></td>` : '';
+    return `<tr><td class="k${opts.mono ? ' mono' : ''}">${esc(label)}</td>` +
+           `<td class="num">${fmt(v)}</td>${bar}</tr>`;
+  }).join('');
+}
+
+function chart(id, type, labels, values, horizontal) {
+  const ink = tok('--text-muted'), grid = tok('--grid'), accent = tok('--accent');
+  if (charts[id]) charts[id].destroy();
+  const value = { beginAtZero: true, ticks: { color: ink, precision: 0 },
+                  grid: { color: grid } };
+  const cat = { ticks: { color: ink, maxRotation: 45, autoSkipPadding: 8 },
+                grid: { display: false } };
+  charts[id] = new Chart(document.getElementById(id).getContext('2d'), {
+    type,
+    data: { labels, datasets: [{ data: values, backgroundColor: type === 'line'
+      ? tok('--bar') : accent, borderColor: accent, fill: type === 'line',
+      tension: 0.25, pointRadius: 2, borderWidth: 2 }] },
+    options: { responsive: true, maintainAspectRatio: true,
+      plugins: { legend: { display: false } },
+      scales: horizontal ? { x: value, y: cat } : { x: cat, y: value } }
+  });
 }
 
 function render(d) {
-  document.getElementById('s-views').textContent = d.total_views.toLocaleString();
-  document.getElementById('s-sessions').textContent = d.total_sessions.toLocaleString();
-  document.getElementById('s-clicks').textContent = d.total_clicks.toLocaleString();
-  document.getElementById('s-avg').textContent = d.avg_clicks_per_session;
-
-  const chartOpts = { responsive: true, plugins: { legend: { display: false } },
-    scales: { y: { beginAtZero: true, ticks: { color: '#94a3b8' }, grid: { color: 'rgba(51,65,85,0.5)' } },
-              x: { ticks: { color: '#94a3b8', maxRotation: 45 }, grid: { display: false } } } };
-  const hbarOpts = { responsive: true, indexAxis: 'y', plugins: { legend: { display: false } },
-    scales: { x: { beginAtZero: true, ticks: { color: '#94a3b8' }, grid: { color: 'rgba(51,65,85,0.5)' } },
-              y: { ticks: { color: '#94a3b8' }, grid: { display: false } } } };
-
-  function makeChart(id, type, labels, data, opts) {
-    if (charts[id]) charts[id].destroy();
-    charts[id] = new Chart(document.getElementById(id).getContext('2d'), {
-      type, data: { labels, datasets: [{ data, backgroundColor: '#38bdf8', borderColor: '#38bdf8', fill: type==='line', tension: 0.3, pointRadius: 3 }] }, options: opts
-    });
+  // Site selector, filled from the sites the collector has actually seen.
+  const sel = document.getElementById('site-select');
+  if (sel.options.length !== (d.sites || []).length) {
+    sel.innerHTML = (d.sites || [d.site]).map(s =>
+      `<option value="${esc(s)}">${esc(s)}</option>`).join('');
   }
+  sel.value = d.site;
 
-  // Daily views
-  const dailyLabels = Object.keys(d.daily_views);
-  makeChart('chart-daily', 'line', dailyLabels.map(d=>d.slice(5)), Object.values(d.daily_views), chartOpts);
+  document.getElementById('meta-line').textContent =
+    `${d.site} · last ${d.period_days} days · bots ${d.bots}`;
+  document.getElementById('stamp').textContent =
+    'read at ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC';
 
-  // Hourly
-  const hours = Array.from({length:24}, (_,i) => i);
-  makeChart('chart-hourly', 'bar', hours.map(h=>h+':00'), hours.map(h => d.hourly_views[h] || 0), chartOpts);
+  document.getElementById('s-views').textContent = fmt(d.total_views);
+  document.getElementById('s-views-sub').textContent =
+    d.period_days ? (d.total_views / d.period_days).toFixed(1) + ' a day' : '';
+  document.getElementById('s-sessions').textContent = fmt(d.total_sessions);
+  document.getElementById('s-vps').textContent =
+    d.views_per_session != null ? d.views_per_session.toFixed(2) : '—';
+  document.getElementById('s-readon').textContent =
+    d.read_on_pct != null ? d.read_on_pct.toFixed(0) + '%' : '—';
+  document.getElementById('s-clicks').textContent = fmt(d.total_clicks);
+  document.getElementById('s-clicks-sub').textContent =
+    d.avg_clicks_per_session != null ? d.avg_clicks_per_session + ' a session' : '';
+  const err = document.getElementById('s-errors');
+  err.textContent = fmt(d.total_errors);
+  err.className = 'value' + (d.total_errors ? ' bad' : ' muted');
 
-  // Countries
-  const countryLabels = Object.keys(d.top_countries).slice(0, 10);
-  makeChart('chart-countries', 'bar', countryLabels, countryLabels.map(c => d.top_countries[c]), hbarOpts);
+  // The API sends this as a sentence fragment; it reads as a caption here.
+  const basis = d.country_basis || '';
+  document.getElementById('hint-country').textContent =
+    basis ? basis[0].toUpperCase() + basis.slice(1) + '.' : '';
 
-  // Cities
-  const cityLabels = Object.keys(d.top_cities).slice(0, 10);
-  makeChart('chart-cities', 'bar', cityLabels, cityLabels.map(c => d.top_cities[c]), hbarOpts);
+  // Daily: keys are dates, oldest first, with the zeroes kept.
+  const days = Object.keys(d.daily_views || {}).sort();
+  chart('chart-daily', 'line', days.map(s => s.slice(5)),
+        days.map(k => d.daily_views[k]));
 
-  // Universities table
-  const uniBody = document.querySelector('#tbl-unis tbody');
-  uniBody.innerHTML = Object.entries(d.top_universities || {}).map(([k,v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('') || '<tr><td colspan="2" style="color:var(--text-muted)">No click data yet</td></tr>';
+  // Hourly: all 24, so a quiet hour reads as quiet rather than as absent.
+  const hours = Array.from({ length: 24 }, (_, i) => i);
+  chart('chart-hourly', 'bar', hours.map(h => String(h).padStart(2, '0')),
+        hours.map(h => (d.hourly_views || {})[h] || 0));
 
-  // Sessions table
-  const sessBody = document.querySelector('#tbl-sessions tbody');
-  sessBody.innerHTML = (d.recent_sessions || []).map(s =>
-    `<tr><td>${s.timestamp.replace('T',' ').slice(0,19)}</td><td>${s.country}</td><td>${s.views}</td><td>${s.clicks}</td><td>${s.pages.join(', ')}</td></tr>`
-  ).join('') || '<tr><td colspan="5" style="color:var(--text-muted)">No sessions yet</td></tr>';
+  table('tbl-ref', d.top_referrers, {
+    label: k => k === '__direct' ? 'direct' : k,
+    empty: 'No referrers yet — all traffic so far is direct.' });
+  table('tbl-country', d.top_countries, { empty: 'No country resolved yet.' });
+  table('tbl-pages', d.top_pages, { limit: 20 });
+  table('tbl-entry', d.top_entry_pages, {
+    empty: 'Entry pages are recorded from the new collector onward.' });
+  table('tbl-unis', d.top_universities, {
+    empty: 'No university links clicked in this period.' });
+  table('tbl-devices', d.devices, {
+    empty: 'Device is recorded from the new collector onward.' });
+  table('tbl-clicks', d.top_clicks, { limit: 20, mono: true,
+    empty: 'No clicks in this period.' });
+  table('tbl-errors', d.top_errors, { mono: true,
+    empty: 'No JavaScript errors reported. ' });
+  table('tbl-errpages', d.errors_by_page, { empty: 'No errors reported.' });
+
+  const rows = (d.recent_sessions || []).map(s =>
+    `<tr><td class="mono">${esc((s.timestamp || '').replace('T', ' ').slice(0, 19))}</td>` +
+    `<td>${esc(s.country || '—')}</td>` +
+    `<td class="num">${fmt(s.views)}</td><td class="num">${fmt(s.clicks)}</td>` +
+    `<td class="k mono">${esc((s.pages || []).join(', '))}</td></tr>`).join('');
+  document.querySelector('#tbl-sessions tbody').innerHTML = rows ||
+    '<tr><td class="empty" colspan="5">No sessions in this period.</td></tr>';
 }
+
+/* Re-render on a theme flip so the charts, whose colours are baked in at
+   construction, do not keep the other theme's greys. */
+new MutationObserver(() => {
+  for (const id in charts) {
+    const c = charts[id];
+    const ink = tok('--text-muted'), grid = tok('--grid'), accent = tok('--accent');
+    for (const ax of Object.values(c.options.scales)) {
+      if (ax.ticks) ax.ticks.color = ink;
+      if (ax.grid && ax.grid.color) ax.grid.color = grid;
+    }
+    c.data.datasets[0].borderColor = accent;
+    c.data.datasets[0].backgroundColor =
+      c.config.type === 'line' ? tok('--bar') : accent;
+    c.update('none');
+  }
+}).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 </script>
 </body>
 </html>

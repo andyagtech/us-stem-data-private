@@ -5,4 +5,10 @@ Allow: /
 # See /llms.txt for agent-friendly documentation
 # See /catalog.json for machine-readable data catalog
 
+# Owner-only pages. These are also marked noindex and are absent from
+# sitemap.xml, the table of contents and the assistant's navigation index.
+# See scripts/private_pages.py -- the single declaration all four read.
+Disallow: /analytics.html
+Disallow: /chat-admin.html
+
 Sitemap: https://phd-demographics.andy-barr.com/sitemap.xml
