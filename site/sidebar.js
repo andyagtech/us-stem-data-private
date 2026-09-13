@@ -9,11 +9,17 @@
   // Pages where sidebar should be a floating drawer (closed by default,
   // doesn't take horizontal space). Used for pages whose own layout
   // already pins a workspace-specific left panel.
-  const DRAWER_PAGES = new Set(['query.html']);
+  // stem.html and non_stem.html pin their own <nav id="sidebar"> of 220px,
+  // which lists the universities -- navigation this one cannot replace. They
+  // get the shared sidebar as a drawer so the page has one pinned panel, not
+  // two. presentation.html is a slide deck: a 220px column would squash every
+  // slide, so it opens on demand too.
+  const DRAWER_PAGES = new Set(['query.html', 'stem.html', 'non_stem.html',
+                                'presentation.html']);
   const isDrawerMode = DRAWER_PAGES.has(currentPage);
   // On pages with their own workspace sidebar, also pin the hamburger
   // hint to the lower-left so it doesn't collide.
-  const CORNER_PAGES = new Set(['query.html']);
+  const CORNER_PAGES = new Set(['query.html', 'stem.html', 'non_stem.html']);
   const isCornerHint = CORNER_PAGES.has(currentPage);
 
   // Persist collapse state across navigations
@@ -163,7 +169,6 @@
       { href: '/quality.html', label: 'Data Quality' },
       { href: '/implementation.html', label: 'Implementation' },
       { href: '/department_reports.html', label: 'Department Reports' },
-      { href: '/name_lists.html', label: 'Name Lists' },
       { href: '/stem_dashboard.html', label: 'Name Classification' },
       { href: '/catalog.json', label: 'Data Catalog (JSON)' },
       { href: '/llms.txt', label: 'WebMCP Integration' },
@@ -278,6 +283,18 @@
        main, .container, .page-wrap, .header -- ran underneath it. Margin, not
        padding, so a page's own body padding survives. */
     body.has-sidebar { margin-left: 220px; }
+    /* Reserving 220px narrows the content area, and a dozen pages then ran
+       past the right edge by ~108px at 1280 wide. The cause is not the
+       sidebar: a grid item defaults to min-width:auto, so a <canvas> that
+       Chart.js sizes in device pixels forces its track wider than the column
+       and drags the page with it. Both halves are needed -- min-width:0 lets
+       the track shrink, max-width:100% stops the canvas exceeding it. Scoped
+       to the chart wrappers rather than every canvas, so the deck and the
+       live dashboard keep sizing themselves. Each affected page carries its
+       own copy of this .charts grid in an inline <style>, so this stylesheet
+       -- injected on every page -- is the only single place to fix it. */
+    .charts > *, .chart-box { min-width: 0; }
+    .charts canvas, .chart-box canvas { max-width: 100%; }
     .site-footer { text-align: center; padding: 24px 16px; font-size: 0.72rem; color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 24px; }
     .site-footer a { color: var(--accent); text-decoration: none; }
     @media (max-width: 900px) {
@@ -321,7 +338,18 @@
   const footer = document.createElement('footer');
   footer.className = 'site-footer';
   footer.innerHTML = 'A project by <a href="https://andy-barr.com" target="_blank" rel="noopener noreferrer">Andy Barr</a>. Data from US federal agencies (NCES, NSF, DOL, DHS) and university institutional repositories.<br>Last updated: August 2026 \u00B7 <a href="data_sources.html">Methodology</a> \u00B7 <a href="submit.html">Tip Line</a> \u00B7 <a href="https://x.com/andy_barr_data" target="_blank" rel="noopener noreferrer">Follow on X</a> \u00B7 <a href="catalog.json">API</a>';
-  document.body.appendChild(footer);
+  // A <body> that is itself a flex or grid container turns anything appended
+  // to it into a track of that layout. On stem.html and non_stem.html, whose
+  // body is display:flex with flex-wrap:nowrap, the footer joined the row
+  // beside the nav and main: it shrank to 104px and hung 64px off the right
+  // edge at phone width. Inside the main content element it is a normal
+  // block again. Detected from the computed style rather than by naming
+  // pages, so a page that adopts a flex body later is handled too.
+  const bodyLayout = getComputedStyle(document.body).display;
+  const footerHost = /flex|grid/.test(bodyLayout)
+    ? (document.querySelector('main, .main, .page, .container') || document.body)
+    : document.body;
+  footerHost.appendChild(footer);
 
   // Remove back-link since sidebar provides navigation
   const backLink = document.querySelector('.back-link');
