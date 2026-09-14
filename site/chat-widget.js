@@ -1586,6 +1586,12 @@
     too_long:             { title: 'That question is too long', help: 'Trim it to about 2,000 characters and send again.' },
     forbidden_origin:     { title: 'The assistant is not available here', help: 'Open the site at phd-demographics.andy-barr.com.' },
     rate_limited:         { title: 'Too many questions at once', help: 'Wait a moment and ask again.' },
+    // The server's daily ceilings. These had no copy, so a reader who hit one
+    // was told "Something broke on our side" -- which is untrue, and invites
+    // retrying a request that will be refused until midnight UTC.
+    daily_budget:         { title: 'Daily limit reached', help: 'Questions it has answered before still work. New ones resume at midnight UTC.' },
+    daily_cap_soft:       { title: 'Daily limit reached', help: 'Common questions still work. New ones resume tomorrow.' },
+    daily_cap:            { title: 'Daily limit reached', help: 'The assistant will be back tomorrow.' },
     upstream_unavailable: { title: 'The model is unreachable', help: 'This usually clears in a few seconds. Retry below.' },
     upstream_timeout:     { title: 'That took too long', help: 'Retry, or ask a narrower question.' },
     internal:             { title: 'Something broke on our side', help: 'Retry. If it keeps happening the assistant is down.' },
@@ -1599,7 +1605,7 @@
   function renderError(code, message, retryAfter) {
     var copy = ERROR_COPY[code] || ERROR_COPY.internal;
     var msg = newMessage('assistant');
-    var kind = code === 'rate_limited' ? 'warn' : 'bad';
+    var kind = (code === 'rate_limited' || code.indexOf('daily_') === 0) ? 'warn' : 'bad';
     renderNotice({
       kind: kind,
       title: copy.title,

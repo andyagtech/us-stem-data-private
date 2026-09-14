@@ -13,7 +13,11 @@
 <style>
   :root { --bg:#0f172a; --surface:#1e293b; --border:#334155; --text:#e2e8f0;
     --text-muted:#94a3b8; --accent:#38bdf8; --warn:#fbbf24; --bad:#f87171;
-    --grid:rgba(148,163,184,0.18); --bar:rgba(56,189,248,0.22); }
+    --grid:rgba(148,163,184,0.18); --bar:rgba(56,189,248,0.22);
+    /* Spend chart fills. Validated as a pair (CVD, lightness band, contrast)
+       against each theme's surface; the brighter --accent/--warn failed the
+       dark lightness band, so the chart takes its own steps of those hues. */
+    --spend-bar:#0284c7; --spend-capped:#d97706; }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
     background:var(--bg); color:var(--text); min-height:100vh; padding:24px 16px; }
@@ -60,6 +64,40 @@
   .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
   .grid2 > .box { margin-bottom:0; }
 
+  /* Chat assistant spend */
+  .spend-head { display:flex; justify-content:space-between; gap:12px;
+    align-items:flex-start; flex-wrap:wrap; }
+  .pill { display:inline-flex; align-items:center; gap:6px; font-size:0.74rem;
+    font-weight:600; padding:4px 10px; border-radius:999px; white-space:nowrap;
+    border:1px solid var(--border); color:var(--text-muted); }
+  .pill.ok { color:var(--text); }
+  .pill.warn { color:var(--warn); border-color:var(--warn); }
+  .pill.bad { color:var(--bad); border-color:var(--bad); }
+  .spend-tiles { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:10px; margin:12px 0 14px; }
+  .spend-tile { border:1px solid var(--border); border-radius:8px; padding:10px 12px; }
+  .spend-tile .label { font-size:0.68rem; color:var(--text-muted);
+    text-transform:uppercase; letter-spacing:0.05em; }
+  .spend-tile .value { font-size:1.25rem; font-weight:700; margin-top:2px;
+    font-variant-numeric:tabular-nums; }
+  .spend-tile .sub { font-size:0.72rem; color:var(--text-muted); margin-top:2px; }
+  .meter { height:6px; border-radius:3px; background:var(--grid); margin-top:7px;
+    overflow:hidden; }
+  .meter span { display:block; height:100%; border-radius:3px;
+    background:var(--spend-bar); }
+  .meter span.warn { background:var(--spend-capped); }
+  .spend-note { font-size:0.8rem; color:var(--bad); padding:6px 0; }
+  /* A fixed-height box the chart fills, rather than an aspect ratio: .box
+     canvas caps height at 230px, and a ratio that suits 1,100px is a sliver
+     at phone width. */
+  .spend-plot { position:relative; height:220px; }
+  .box .spend-plot canvas { max-height:none; }
+  details.spend-table { margin-top:10px; }
+  details.spend-table summary { cursor:pointer; font-size:0.78rem;
+    color:var(--text-muted); padding:4px 0; }
+  details.spend-table summary:focus-visible { outline:2px solid var(--accent);
+    outline-offset:2px; }
+
   /* Tables. A proportion bar sits behind the count cell so a column of
      numbers reads as a shape without a second chart. */
   table { width:100%; border-collapse:collapse; font-size:0.8rem; }
@@ -101,11 +139,13 @@
 @media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
 --bg:#ffffff;--surface:#f6f7f9;--border:#d8dee6;--text:#111827;
 --text-muted:#4b5563;--accent:#1d4ed8;--warn:#92400e;--bad:#b3123c;
---grid:rgba(17,24,39,0.10);--bar:rgba(29,78,216,0.16);color-scheme:light;}}
+--grid:rgba(17,24,39,0.10);--bar:rgba(29,78,216,0.16);color-scheme:light;
+--spend-bar:#1d4ed8;--spend-capped:#a16207;}}
 :root[data-theme="light"]{
 --bg:#ffffff;--surface:#f6f7f9;--border:#d8dee6;--text:#111827;
 --text-muted:#4b5563;--accent:#1d4ed8;--warn:#92400e;--bad:#b3123c;
---grid:rgba(17,24,39,0.10);--bar:rgba(29,78,216,0.16);color-scheme:light;}
+--grid:rgba(17,24,39,0.10);--bar:rgba(29,78,216,0.16);color-scheme:light;
+--spend-bar:#1d4ed8;--spend-capped:#a16207;}
 .themebtn{position:fixed;right:20px;bottom:20px;z-index:60;display:inline-flex;
 align-items:center;gap:7px;padding:7px 12px;border-radius:999px;
 background:var(--surface);color:var(--text-muted);border:1px solid var(--border);
@@ -172,6 +212,45 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
     <div class="stat-card"><div class="label">JS errors</div>
       <div class="value" id="s-errors">—</div>
       <div class="sub">reported by the page itself</div></div>
+  </div>
+
+  <div class="box" id="spend-box" hidden>
+    <div class="spend-head">
+      <div>
+        <h3>Chat assistant spend</h3>
+        <p class="hint">What the assistant spent at the model provider, against its
+          daily limit (resets at midnight UTC). Answers it has given before come from
+          its cache, cost nothing, and keep working after the limit.</p>
+      </div>
+      <span class="pill" id="spend-pill">—</span>
+    </div>
+    <div id="spend-error" class="spend-note" hidden></div>
+    <div class="spend-tiles">
+      <div class="spend-tile"><div class="label">Today</div>
+        <div class="value" id="sp-today">—</div>
+        <div class="sub" id="sp-today-sub"></div>
+        <div class="meter" aria-hidden="true"><span id="sp-meter" style="width:0"></span></div></div>
+      <div class="spend-tile"><div class="label">This period</div>
+        <div class="value" id="sp-period">—</div>
+        <div class="sub" id="sp-period-sub"></div></div>
+      <div class="spend-tile"><div class="label">Model calls</div>
+        <div class="value" id="sp-calls">—</div>
+        <div class="sub" id="sp-calls-sub"></div></div>
+      <div class="spend-tile"><div class="label">Turned away</div>
+        <div class="value" id="sp-refused">—</div>
+        <div class="sub" id="sp-refused-sub"></div></div>
+      <div class="spend-tile"><div class="label">Prompt served from cache</div>
+        <div class="value" id="sp-cached">—</div>
+        <div class="sub">billed at half the input price</div></div>
+    </div>
+    <div class="spend-plot"><canvas id="chart-spend" role="img"
+      aria-label="Daily chat assistant spend in US dollars, with the daily limit marked"></canvas></div>
+    <details class="spend-table">
+      <summary>Daily figures</summary>
+      <table id="tbl-spend"><thead><tr><th>Date (UTC)</th><th class="num">Spent</th>
+        <th class="num">Calls</th><th class="num">Turned away</th><th>Limit</th></tr></thead>
+        <tbody></tbody></table>
+    </details>
   </div>
 
   <div class="charts">
@@ -376,6 +455,8 @@ function render(d) {
 
   // The API sends this as a sentence fragment; it reads as a caption here.
   const basis = d.country_basis || '';
+  renderSpend(d.chat_spend);
+
   document.getElementById('hint-country').textContent =
     basis ? basis[0].toUpperCase() + basis.slice(1) + '.' : '';
 
@@ -415,10 +496,141 @@ function render(d) {
     '<tr><td class="empty" colspan="5">No sessions in this period.</td></tr>';
 }
 
+/* The assistant's spend against its daily limit. Null for a site without the
+   assistant; an {error} when the ledger could not be read, which is shown
+   rather than rendered as a quiet row of zeroes. */
+const money = v => (typeof v === 'number'
+  ? '$' + v.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})
+  : '—');
+let lastSpend = null;
+
+function renderSpend(cs) {
+  lastSpend = cs;
+  const box = document.getElementById('spend-box');
+  box.hidden = !cs;
+  if (!cs) return;
+  const err = document.getElementById('spend-error');
+  err.hidden = !cs.error;
+  if (cs.error) {
+    err.textContent = 'Could not read the spend ledger: ' + cs.error;
+    return;
+  }
+  const budget = cs.budget_usd;
+  const t = cs.today || {spent_usd: 0, calls: 0, refused: 0, capped: false};
+  const pct = budget ? Math.min(100, 100 * t.spent_usd / budget) : 0;
+
+  // State in words as well as colour: a pill that only changed hue would say
+  // nothing to a reader who cannot tell the hues apart.
+  const pill = document.getElementById('spend-pill');
+  if (t.capped) { pill.className = 'pill bad'; pill.textContent = 'Limit reached today'; }
+  else if (pct >= 80) { pill.className = 'pill warn'; pill.textContent = 'Near today\u2019s limit'; }
+  else { pill.className = 'pill ok'; pill.textContent = 'Under today\u2019s limit'; }
+
+  document.getElementById('sp-today').textContent = money(t.spent_usd);
+  document.getElementById('sp-today-sub').textContent =
+    budget ? `of ${money(budget)} \u00b7 ${pct.toFixed(0)}%` : 'no limit recorded yet';
+  const meter = document.getElementById('sp-meter');
+  meter.style.width = pct + '%';
+  meter.className = (t.capped || pct >= 80) ? 'warn' : '';
+
+  // Averaged over the days the ledger covers, not the whole period: before
+  // the ledger existed a day is unmeasured, and counting it as $0 would drag
+  // the average down to nothing.
+  document.getElementById('sp-period').textContent = money(cs.period_spent_usd);
+  document.getElementById('sp-period-sub').textContent = cs.tracked_days
+    ? `${money(cs.avg_per_tracked_day_usd)} a day over ${cs.tracked_days} tracked ` +
+      `day${cs.tracked_days === 1 ? '' : 's'}`
+    : 'nothing tracked in this period';
+  document.getElementById('sp-calls').textContent = fmt(cs.period_calls);
+  document.getElementById('sp-calls-sub').textContent =
+    cs.avg_cost_per_call_usd != null
+      ? `$${cs.avg_cost_per_call_usd.toFixed(3)} each on average` : '';
+  document.getElementById('sp-refused').textContent = fmt(cs.period_refused);
+  document.getElementById('sp-refused-sub').textContent =
+    `questions, on ${cs.days_capped} day${cs.days_capped === 1 ? '' : 's'}`;
+  document.getElementById('sp-cached').textContent =
+    cs.cached_prompt_pct != null ? cs.cached_prompt_pct.toFixed(0) + '%' : '—';
+
+  const dates = Object.keys(cs.daily || {}).sort();
+  const rows = dates.map(k => cs.daily[k]);
+  const ink = tok('--text-muted'), grid = tok('--grid');
+  const bar = tok('--spend-bar'), capped = tok('--spend-capped');
+  const top = Math.max(budget || 0, ...rows.map(r => r.spent_usd)) * 1.15 || 1;
+  if (charts['chart-spend']) charts['chart-spend'].destroy();
+
+  // The limit is a reference drawn on the same dollar axis, not a second
+  // series, so it gets a direct label instead of a legend entry.
+  const limitLabel = {
+    id: 'limitLabel',
+    afterDatasetsDraw(chart) {
+      if (!budget) return;
+      const {ctx, chartArea, scales} = chart;
+      const y = scales.y.getPixelForValue(budget);
+      ctx.save();
+      ctx.fillStyle = ink;
+      ctx.font = '11px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      ctx.textAlign = 'right';
+      ctx.fillText(`${money(budget)} daily limit`, chartArea.right - 2, y - 6);
+      ctx.restore();
+    }
+  };
+  charts['chart-spend'] = new Chart(document.getElementById('chart-spend').getContext('2d'), {
+    data: {
+      labels: dates.map(s => s.slice(5)),
+      datasets: [
+        {type: 'bar', data: rows.map(r => r.spent_usd),
+         backgroundColor: rows.map(r => r.capped ? capped : bar),
+         borderRadius: {topLeft: 4, topRight: 4}, borderSkipped: 'bottom',
+         categoryPercentage: 0.8, barPercentage: 0.9, maxBarThickness: 28},
+        {type: 'line', data: dates.map(() => budget), borderColor: ink,
+         borderWidth: 1.5, borderDash: [5, 4], pointRadius: 0, pointHitRadius: 0,
+         fill: false, hidden: !budget}
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: {display: false},
+        tooltip: {
+          filter: item => item.datasetIndex === 0,
+          callbacks: {
+            title: items => dates[items[0].dataIndex],
+            label: item => {
+              const r = rows[item.dataIndex];
+              return `${money(r.spent_usd)} \u00b7 ${fmt(r.calls)} model calls`;
+            },
+            afterLabel: item => {
+              const r = rows[item.dataIndex];
+              return r.capped ? `Limit reached \u2014 ${fmt(r.refused)} questions turned away` : '';
+            }
+          }
+        }
+      },
+      scales: {
+        x: {ticks: {color: ink, maxRotation: 45, autoSkipPadding: 8}, grid: {display: false}},
+        y: {beginAtZero: true, suggestedMax: top,
+            ticks: {color: ink, callback: v => '$' + v}, grid: {color: grid}}
+      }
+    },
+    plugins: [limitLabel]
+  });
+
+  document.querySelector('#tbl-spend tbody').innerHTML = dates.slice().reverse().map(k => {
+    const r = cs.daily[k];
+    return `<tr><td class="mono">${esc(k)}</td><td class="num">${money(r.spent_usd)}</td>` +
+           `<td class="num">${fmt(r.calls)}</td><td class="num">${fmt(r.refused)}</td>` +
+           `<td>${r.capped ? 'reached' : ''}</td></tr>`;
+  }).join('') || '<tr><td class="empty" colspan="5">No spend recorded in this period.</td></tr>';
+}
+
 /* Re-render on a theme flip so the charts, whose colours are baked in at
    construction, do not keep the other theme's greys. */
 new MutationObserver(() => {
+  // The spend chart colours each bar by state and carries a reference line,
+  // so the generic recolour below would flatten it; it is rebuilt instead.
+  if (lastSpend) renderSpend(lastSpend);
   for (const id in charts) {
+    if (id === 'chart-spend') continue;
     const c = charts[id];
     const ink = tok('--text-muted'), grid = tok('--grid'), accent = tok('--accent');
     for (const ax of Object.values(c.options.scales)) {

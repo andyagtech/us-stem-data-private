@@ -25,6 +25,10 @@ Parameters:
     Type: Number
     Default: 6000
     Description: Past this, refuse outright.
+  DailyBudgetUsd:
+    Type: Number
+    Default: 25
+    Description: Most the assistant may spend at the model provider per UTC day.
   LimiterFailsOpenUntil:
     Type: Number
     Default: 20
@@ -102,6 +106,8 @@ Resources:
             Ref: DailySoftCap
           DAILY_HARD_CAP:
             Ref: DailyHardCap
+          DAILY_BUDGET_USD:
+            Ref: DailyBudgetUsd
           LIMITER_FAILS_OPEN_UNTIL:
             Ref: LimiterFailsOpenUntil
       Policies:

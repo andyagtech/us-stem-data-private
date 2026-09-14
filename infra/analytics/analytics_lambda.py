@@ -52,6 +52,14 @@ from botocore.exceptions import ClientError
 
 dynamodb = boto3.resource("dynamodb")
 TABLE_NAME = os.environ.get("TABLE_NAME", "phd-demographics-analytics")
+# The chat assistant's spend ledger (cloud/chat/budget.py writes one SPEND:<day>
+# row per UTC day). Read here rather than copied here, so the dashboard and the
+# ceiling can never disagree about what was spent. A default rather than a
+# required variable: this function's environment also holds the password, and
+# update-function-configuration replaces the whole environment.
+CHAT_SPEND_TABLE = os.environ.get("CHAT_SPEND_TABLE", "phd-chat-ratelimit-prod")
+CHAT_SITE = "phd-demographics"     # the only site that carries the assistant
+MICRO = 1_000_000
 ANALYTICS_PASSWORD = os.environ["ANALYTICS_PASSWORD"]   # required, no default
 
 # Hosts allowed to write. The key is the Origin host; the value is the site
@@ -515,10 +523,75 @@ def handle_analytics(event):
         "top_errors": _top(buckets["errors_by_message"], 10),
         "errors_by_page": _top(buckets["errors_by_page"], 10),
         "recent_sessions": _recent(table, site, include_bots),
+        "chat_spend": _chat_spend(dates) if site == CHAT_SITE else None,
         "country_basis": "the country each IP block was allocated to, from the "
                          "regional registries; a VPN or cloud region reads as "
                          "its allocation country",
     })
+
+
+def _chat_spend(dates: list) -> dict:
+    """What the assistant spent at the model provider, per day, against its ceiling.
+
+    Never raises. The rollups above are the dashboard's point; a spend read
+    that fails -- a permission not yet granted, the table renamed -- returns an
+    error note in this one field rather than a 500 for the whole page. That is
+    exactly how this reader went dark once already, over a missing GetItem.
+    """
+    try:
+        ledger = dynamodb.Table(CHAT_SPEND_TABLE)
+        daily, budget, tracked = {}, None, []
+        tot = {"spent": 0, "calls": 0, "refused": 0, "prompt": 0, "cached": 0,
+               "completion": 0, "unmeasured": 0}
+        for d in sorted(dates):
+            row = ledger.get_item(Key={"pk": f"SPEND:{d}"}).get("Item") or {}
+            if row:
+                tracked.append(d)
+            spent = int(row.get("spent_micro", 0) or 0)
+            calls = int(row.get("calls", 0) or 0)
+            refused = int(row.get("refused", 0) or 0)
+            day_budget = int(row.get("budget_micro", 0) or 0) or None
+            if day_budget:
+                budget = day_budget          # latest day wins: the ceiling in force
+            tot["spent"] += spent
+            tot["calls"] += calls
+            tot["refused"] += refused
+            tot["prompt"] += int(row.get("prompt_tokens", 0) or 0)
+            tot["cached"] += int(row.get("cached_tokens", 0) or 0)
+            tot["completion"] += int(row.get("completion_tokens", 0) or 0)
+            tot["unmeasured"] += int(row.get("unmeasured_calls", 0) or 0)
+            daily[d] = {"spent_usd": round(spent / MICRO, 4), "calls": calls,
+                        "refused": refused,
+                        "budget_usd": round(day_budget / MICRO, 2) if day_budget else None,
+                        # Capped means someone was actually turned away, not
+                        # merely that spend came close to the line.
+                        "capped": refused > 0}
+        today = daily.get(max(dates)) if dates else None
+        return {
+            "budget_usd": round(budget / MICRO, 2) if budget else None,
+            "today": today,
+            "period_spent_usd": round(tot["spent"] / MICRO, 4),
+            "period_calls": tot["calls"],
+            "period_refused": tot["refused"],
+            "days_capped": sum(1 for v in daily.values() if v["capped"]),
+            # The ledger began on 2026-09-14. A day before that is "not
+            # measured", not "$0", so averages divide by the days it covers.
+            "tracked_days": len(tracked),
+            "tracked_since": min(tracked) if tracked else None,
+            "avg_per_tracked_day_usd": (round(tot["spent"] / len(tracked) / MICRO, 4)
+                                        if tracked else None),
+            "avg_cost_per_call_usd": (round(tot["spent"] / tot["calls"] / MICRO, 4)
+                                      if tot["calls"] else None),
+            "prompt_tokens": tot["prompt"],
+            "cached_prompt_pct": (round(100 * tot["cached"] / tot["prompt"], 1)
+                                  if tot["prompt"] else None),
+            "completion_tokens": tot["completion"],
+            "unmeasured_calls": tot["unmeasured"],
+            "daily": daily,
+        }
+    except Exception as exc:                                   # noqa: BLE001
+        print(f"[ERROR] chat spend read failed: {type(exc).__name__}: {exc}")
+        return {"error": f"{type(exc).__name__}: could not read the chat spend ledger"}
 
 
 def _merge(into: dict, block):

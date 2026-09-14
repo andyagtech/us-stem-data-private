@@ -567,6 +567,21 @@ def _deploy_locked(state: PipelineState, base_dir: Path,
     for line in theme.stdout.strip().splitlines():
         print(f"  {line.strip()}")
 
+    # The pass above has twice written `--x: var(--x)` cycles -- 482 of them on
+    # 2026-08-28, and one on 2026-09-14 that made the analytics spend chart
+    # invisible in dark mode -- and both times the deploy published them,
+    # because the check for exactly this ran only in check_consistency.py, not
+    # between the pass and the upload. Nothing has been uploaded yet, so
+    # refusing here costs a reader nothing.
+    sys.path.insert(0, str(base_dir / "scripts"))
+    from add_theme_toggle import self_referencing_tokens
+    cycles = self_referencing_tokens(site_dir)
+    if cycles:
+        return state.with_outcome(StepOutcome.err(
+            "deploy", message=(f"theme pass left self-referencing CSS tokens in "
+                               f"{len(cycles)} file(s), e.g. {', '.join(cycles[:3])}; "
+                               "nothing was published")))
+
     # What this build should contain -- one walk of site/, not an allowlist.
     plan = _plan_objects(site_dir)
     print(f"  {len(plan)} objects planned")

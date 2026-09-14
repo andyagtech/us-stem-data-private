@@ -12,6 +12,14 @@
         "dynamodb:Scan"
       ],
       "Resource": "arn:aws:dynamodb:us-east-1:534145494912:table/phd-demographics-analytics"
+    },
+    {
+      "Sid": "ChatSpendLedgerRead",
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:GetItem"
+      ],
+      "Resource": "arn:aws:dynamodb:us-east-1:534145494912:table/phd-chat-ratelimit-prod"
     }
   ]
 }

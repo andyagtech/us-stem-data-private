@@ -29,6 +29,13 @@ Parameters:
     Type: Number
     Default: 6000
     Description: Past this, refuse outright.
+  # The ceiling that actually bounds the bill. The request caps above count
+  # questions, and one question can be several model calls each carrying the
+  # whole knowledge base; this counts dollars. See cloud/chat/budget.py.
+  DailyBudgetUsd:
+    Type: Number
+    Default: 25
+    Description: Most the assistant may spend at the model provider per UTC day.
   LimiterFailsOpenUntil:
     Type: Number
     Default: 20
@@ -105,6 +112,7 @@ Resources:
           OPENAI_API_KEY_SSM: "/cms-pipeline/openai-api-key"
           DAILY_SOFT_CAP: !Ref DailySoftCap
           DAILY_HARD_CAP: !Ref DailyHardCap
+          DAILY_BUDGET_USD: !Ref DailyBudgetUsd
           LIMITER_FAILS_OPEN_UNTIL: !Ref LimiterFailsOpenUntil
       Policies:
         - DynamoDBCrudPolicy:
