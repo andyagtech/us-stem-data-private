@@ -1,4 +1,14 @@
-/* Live voice dashboard.
+/* Live dashboard: US graduate degrees by field, level and residency status.
+ *
+ * VOICE IS SWITCHED OFF (2026-09-14). The page shows no microphone, no
+ * transcript and no invitation to speak, because none of it worked: the token
+ * URL below pointed at the retired April `phd-chat` function, which has no
+ * /realtime route, so every attempt ended in "Voice is not available yet".
+ * That function was also a public, uncapped chat endpoint; it is now throttled
+ * to zero. To bring voice back, all three are needed: /realtime deployed on
+ * phd-chat-prod with an API key, its sessions metered by cloud/chat/budget.py
+ * like every other model call, and the button and transcript restored to
+ * live.html. Until then VOICE_ENABLED stays false and the code below is inert.
  *
  * Two halves that are deliberately independent:
  *
@@ -22,7 +32,8 @@
   'use strict';
 
   var BUNDLE_URL = '/data/live_bundle.json';
-  var TOKEN_URL = 'https://7e4ll4vmqi2f5vuamynrhb3n5u0atduv.lambda-url.us-east-1.on.aws/realtime';
+  var VOICE_ENABLED = false;
+  var TOKEN_URL = '';          // no deployed, budgeted /realtime endpoint exists
   var COL = { dom: '#2AA3C4', nra: '#DE5C6B', accent: '#B58A2C' };
 
   var data = null;
@@ -497,7 +508,9 @@
         data = j;
         buildChips();
         opening();
-        $('mic').addEventListener('click', startVoice);
+        if (VOICE_ENABLED && TOKEN_URL && $('mic')) {
+          $('mic').addEventListener('click', startVoice);
+        }
         window.addEventListener('resize', function () {
           clearTimeout(window.__liveRz);
           window.__liveRz = setTimeout(opening, 220);
