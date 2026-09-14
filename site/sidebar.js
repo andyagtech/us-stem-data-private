@@ -295,6 +295,29 @@
        -- injected on every page -- is the only single place to fix it. */
     .charts > *, .chart-box { min-width: 0; }
     .charts canvas, .chart-box canvas { max-width: 100%; }
+    /* Shared responsive repairs. Each page carries its own inline <style>,
+       so there is no site stylesheet to put these in; this one is injected
+       everywhere, which is why they live here. All three are the same bug in
+       different clothes -- a flex or grid child defaults to min-width:auto,
+       so anything with a wide min-content floor (a table, a code block, a
+       column) stops the page shrinking and the reader has to pan sideways. */
+    .content-col, .chart-card, .chart-grid > *, .grid > * { min-width: 0; }
+    pre { overflow-x: auto; max-width: 100%; }
+    /* An inline <code> holding a URL or a file path offers no break
+       opportunity, so it sets a min-content floor wider than a phone screen
+       and takes the whole page with it. Block code is left alone: <pre>
+       already scrolls, and breaking inside it would mangle the formatting. */
+    code { overflow-wrap: anywhere; }
+    pre code { overflow-wrap: normal; }
+    /* A table's min-content is the sum of its columns, which no amount of
+       width:100% will shrink. Letting the TABLE scroll instead of the PAGE
+       is the standard trade: methodology.html laid out at 812px on a 390px
+       phone, so 52% of every page was off-screen.
+       Unconditional, not behind a phone breakpoint: the same table needs 812px
+       and an iPad portrait gives it 768. Pages already set table{width:100%},
+       which a block box still honours, so a table that fits is unchanged --
+       it only scrolls when its columns genuinely do not fit. */
+    table { display: block; overflow-x: auto; max-width: 100%; }
     .site-footer { text-align: center; padding: 24px 16px; font-size: 0.72rem; color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 24px; }
     .site-footer a { color: var(--accent); text-decoration: none; }
     @media (max-width: 900px) {
