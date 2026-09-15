@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The schools that launder visas</title>
+<meta name="description" content="US colleges where foreign students are most of the graduate enrolment: their growth, the federal student aid they take in, and what they report paying recruiting firms. From IPEDS and IRS Form 990 filings.">
+<meta property="og:title" content="The schools that launder visas">
+<meta property="og:description" content="57 US colleges where foreign students are the majority of graduate enrolment — up from 43 in two years — and the federal money they take in.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og/concentration.png">
+<link rel="stylesheet" href="/style.css">
+<style>
+  :root {
+    /* Six series, validated as a set against this site's dark ground (#0f172a)
+       and light ground (#ffffff): CVD separation, lightness band, contrast.
+       Three light hues sit under 3:1 on white, so every line carries a direct
+       label and the figures are repeated in a table. */
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #9085e9;
+    --grid: rgba(148,163,184,0.16); --bar: rgba(148,163,184,0.10);
+  }
+  @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) {
+    --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #4a3aa7;
+    --grid: rgba(17,24,39,0.09); --bar: rgba(17,24,39,0.05); } }
+  :root[data-theme="light"] {
+    --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #4a3aa7;
+    --grid: rgba(17,24,39,0.09); --bar: rgba(17,24,39,0.05); }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.9rem; margin: 0 0 .7rem; line-height: 1.2; max-width: 22ch; }
+  .page-head p { color: var(--text-muted); max-width: 70ch; line-height: 1.65; font-size: .95rem; margin: 0 0 .5rem; }
+  .kicker { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin: 0 0 .6rem; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin: 1.6rem 0 0; }
+  .stat { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; background: var(--surface); }
+  .stat .n { font-size: 1.7rem; font-weight: 800; color: var(--hl); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: .82rem; line-height: 1.45; margin: .3rem 0 0; }
+  .stat .s { font-size: .72rem; color: var(--text-muted); margin: .45rem 0 0; }
+  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+
+  section.block { margin-top: 2.8rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  section.block h2 { font-size: 1.2rem; margin: 0 0 .45rem; }
+  .lede { color: var(--text-muted); max-width: 72ch; line-height: 1.6; font-size: .92rem; margin: 0 0 1rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55; max-width: 80ch; margin: .8rem 0 0; }
+
+  /* One school, as the worked example */
+  .case { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.2rem; align-items: start; }
+  @media (max-width: 860px) { .case { grid-template-columns: 1fr; } }
+  .panel { border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.1rem; }
+  .panel h3 { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); margin: 0 0 .7rem; }
+  .enrol-row { display: grid; grid-template-columns: 3rem 1fr 6.5rem; gap: .6rem; align-items: center; font-size: .84rem; margin: 0 0 .5rem; }
+  .enrol-yr { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+  .enrol-track { background: var(--bar); border-radius: 4px; height: 1.25rem; overflow: hidden; display: flex; }
+  .enrol-track .f { background: var(--hl); height: 100%; }
+  .enrol-track .d { background: var(--text-muted); opacity: .45; height: 100%; }
+  .enrol-n { text-align: right; font-variant-numeric: tabular-nums; }
+  .key { display: flex; gap: 1rem; font-size: .74rem; color: var(--text-muted); margin: .4rem 0 0; flex-wrap: wrap; }
+  .key i { display: inline-block; width: .7rem; height: .7rem; border-radius: 2px; margin-right: .35rem; vertical-align: -1px; }
+  table.mini { width: 100%; border-collapse: collapse; font-size: .82rem; }
+  table.mini th, table.mini td { padding: .4rem .3rem; border-bottom: 1px solid var(--border); text-align: left; }
+  table.mini th { font-size: .7rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); font-weight: 600; }
+  table.mini td.num, table.mini th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.mini tfoot td { font-weight: 700; border-bottom: none; }
+
+  /* All schools */
+  .controls { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; margin: 0 0 .8rem; }
+  .controls input, .controls select { font: inherit; font-size: .85rem; padding: .45rem .7rem; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--surface); color: var(--text); }
+  .controls .count { font-size: .78rem; color: var(--text-muted); margin-left: auto; }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; }
+  table.schools { width: 100%; border-collapse: collapse; font-size: .82rem; min-width: 900px; }
+  table.schools th { position: sticky; top: 0; background: var(--surface); text-align: left; padding: .6rem .7rem;
+    font-size: .7rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); font-weight: 600;
+    border-bottom: 1px solid var(--border); white-space: nowrap; }
+  table.schools th button { all: unset; cursor: pointer; }
+  table.schools th button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  table.schools th[aria-sort="ascending"] button::after { content: " \2191"; }
+  table.schools th[aria-sort="descending"] button::after { content: " \2193"; }
+  table.schools td { padding: .55rem .7rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.schools td.num, table.schools th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.schools .where { color: var(--text-muted); font-size: .74rem; }
+  table.schools .share { font-weight: 700; color: var(--hl); }
+  table.schools .muted { color: var(--text-muted); }
+  .pill { display: inline-block; font-size: .7rem; border: 1px solid var(--border); border-radius: 999px; padding: .05rem .45rem; color: var(--text-muted); white-space: nowrap; }
+
+  /* Visa programmes */
+  .chart-box { position: relative; height: 380px; }
+  .chart-box.short { height: 200px; margin-top: 1rem; }
+  @media (max-width: 600px) { .chart-box { height: 300px; } }
+  .windows { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; margin: 1.2rem 0 0; }
+  @media (max-width: 860px) { .windows { grid-template-columns: 1fr; } }
+  .window { border: 1px solid var(--border); border-radius: 10px; padding: .85rem 1rem; }
+  .window h3 { font-size: .8rem; margin: 0 0 .45rem; }
+  .window p { font-size: .82rem; line-height: 1.55; margin: 0; }
+  .window strong { color: var(--hl); }
+  ol.events { font-size: .8rem; line-height: 1.5; padding-left: 1.4rem; margin: 1rem 0 0; max-width: 90ch; }
+  ol.events li { margin: 0 0 .35rem; }
+  ol.events .tag { font-size: .68rem; border-radius: 999px; padding: 0 .4rem; margin-left: .3rem; border: 1px solid var(--border); color: var(--text-muted); }
+  details.figures { margin-top: 1rem; }
+  details.figures summary { cursor: pointer; font-size: .82rem; color: var(--text-muted); }
+  details.figures summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .caveats { border-left: 2px solid var(--border); padding: .1rem 0 .1rem 1rem; margin: 1.2rem 0 0; }
+  .caveats li { color: var(--text-muted); font-size: .8rem; line-height: 1.6; max-width: 80ch; }
+  .loading { color: var(--text-muted); font-size: .85rem; }
+  a { color: var(--accent); }
+</style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body data-page="visa-schools">
+<main id="main">
+<div class="wrap">
+
+  <header class="page-head">
+    <p class="kicker">Federal records: IPEDS, IRS Form 990, State Department, DHS, USCIS</p>
+    <h1 id="the-schools-that-launder-visas">The schools that launder visas</h1>
+    <p>At a growing number of American colleges, foreign students are most of the
+      graduate enrolment. The school takes the tuition, pays recruiting firms to fill
+      the seats, issues the paperwork for the student visa, and signs off on the work
+      permits that come with it. Most of these schools also collect federal student aid.</p>
+    <div class="stats" id="stats" aria-live="polite"><p class="loading">Loading the federal records…</p></div>
+  </header>
+
+  <section class="block" id="how-it-works">
+    <h2>How it works, at one school</h2>
+    <p class="lede" id="case-lede">Trine University is a private nonprofit college in
+      Angola, Indiana. Its main campus reports almost no foreign graduate students. A
+      second record it files with the Department of Education reports almost nothing else.</p>
+    <div class="case">
+      <div class="panel">
+        <h3>Graduate students on Trine&rsquo;s second federal record</h3>
+        <div id="case-enrol"></div>
+        <div class="key"><span><i style="background:var(--hl)"></i>Foreign (non-resident)</span>
+          <span><i style="background:var(--text-muted);opacity:.45"></i>Everyone else</span></div>
+        <p class="note">IPEDS Fall Enrollment, UNITID 414878, &ldquo;Trine University-Regional/Non-Traditional Campuses&rdquo;.</p>
+      </div>
+      <div class="panel">
+        <h3>What Trine reported paying recruiting firms</h3>
+        <div id="case-990"></div>
+        <p class="note">IRS Form 990, EIN 35-0715530, fiscal years ending 30 April. Services
+          as filed: &ldquo;RECRUITMENT&rdquo;.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="schools">
+    <h2>Every school where foreign students are the majority</h2>
+    <p class="lede">Institutions with at least 100 graduate students where non-residents are
+      half or more of them, fall 2024. Federal aid is what the school took in for its eligible
+      students in 2022&ndash;23; foreign students cannot receive it. Recruiting payments are
+      what nonprofits reported on their own tax returns.</p>
+    <div class="controls">
+      <label for="q" class="sr-only">Search schools</label>
+      <input id="q" type="search" placeholder="Search a school or state" autocomplete="off">
+      <label for="sector" class="sr-only">Sector</label>
+      <select id="sector">
+        <option value="">All sectors</option>
+        <option value="private nonprofit">Private nonprofit</option>
+        <option value="for-profit">For-profit</option>
+        <option value="public">Public</option>
+      </select>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="table-wrap">
+      <table class="schools" id="schools-table">
+        <thead><tr>
+          <th scope="col" data-k="name"><button type="button">School</button></th>
+          <th scope="col" data-k="control"><button type="button">Sector</button></th>
+          <th scope="col" class="num" data-k="grad"><button type="button">Graduate students</button></th>
+          <th scope="col" class="num" data-k="growth"><button type="button">Since 2022</button></th>
+          <th scope="col" class="num" data-k="share" aria-sort="descending"><button type="button">Foreign share</button></th>
+          <th scope="col" class="num" data-k="aid"><button type="button">Federal aid 2022&ndash;23</button></th>
+          <th scope="col" class="num" data-k="recruit"><button type="button">Recruiting paid (990)</button></th>
+        </tr></thead>
+        <tbody><tr><td colspan="7" class="loading">Loading…</td></tr></tbody>
+      </table>
+    </div>
+    <p class="note">&ldquo;Federal aid&rdquo; is undergraduate Pell grants plus federal student loans,
+      paid to the school and credited against tuition and fees; IPEDS does not report graduate
+      federal loans, so it understates what graduate-heavy schools take in. A dash under
+      recruiting means no 990 was found or no recruiting firm was among the contractors the
+      school had to list; &ldquo;parent filer&rdquo; means the return covers a larger university
+      and cannot be attributed to this campus.</p>
+  </section>
+
+  <section class="block" id="visas">
+    <h2>When one visa tightens, the next one grows</h2>
+    <p class="lede">Each line is indexed to 2015. When H-1B adjudication hardened and entry was
+      suspended, graduates already here kept working on the student visa they held &mdash; OPT,
+      the STEM OPT extension and CPT need no new visa, and all three grew while visa issuance fell.</p>
+    <div class="chart-box"><canvas id="chart-index" role="img" aria-label="Visa issuance and student work authorisations, indexed to 2015 equals 100, 2007 to 2024, with policy changes marked"></canvas></div>
+    <div class="chart-box short"><canvas id="chart-denial" role="img" aria-label="H-1B initial petition denial rate by fiscal year"></canvas></div>
+    <div class="windows" id="windows"></div>
+    <ol class="events" id="events"></ol>
+    <div id="later"></div>
+    <details class="figures">
+      <summary>Every federal action in this series, with its primary source</summary>
+      <div id="all-events"></div>
+    </details>
+    <details class="figures">
+      <summary>The figures behind the charts</summary>
+      <div class="table-wrap" style="margin-top:.6rem"><table class="mini" id="figures"></table></div>
+    </details>
+    <ul class="caveats" id="caveats"></ul>
+  </section>
+
+  <section class="block" id="method">
+    <h2>Method and limits</h2>
+    <ul class="caveats">
+      <li>Enrolment is IPEDS Fall Enrollment part A: all graduate students (EFALEVEL 12, LSTUDY 3),
+        non-residents from EFNRALT. Schools with fewer than 100 graduate students are left out,
+        because a handful of students can swing their share.</li>
+      <li>&ldquo;Takes part in federal student aid&rdquo; means the school holds a Title IV Program
+        Participation Agreement (IPEDS directory, OPEFLAG = 1).</li>
+      <li>Pell grants and federal loans are paid to the institution and applied to students&rsquo;
+        tuition and fees first. Non-resident aliens are not eligible for either, so the dollars
+        were awarded to the school&rsquo;s eligible students.</li>
+      <li>Recruiting payments are as filed on each nonprofit&rsquo;s IRS Form 990: the independent
+        contractors paid more than $100,000 whose services are recruitment, and expense lines that
+        name recruitment. For-profit schools and public universities do not file a 990.</li>
+      <li>Visa issuances are counts of visas, not people: a visa is re-stamped for travel.</li>
+    </ul>
+    <p class="note">Built by <code>scripts/build_visa_schools.py</code> and
+      <code>scripts/build_visa_substitution.py</code>. Data: <a href="/data/visa_schools.json">visa_schools.json</a>,
+      <a href="/data/visa_substitution.json">visa_substitution.json</a>.</p>
+  </section>
+
+</div>
+</main>
+<script src="/visa-schools.js" defer></script>
+<script src="/analytics-beacon.js" defer></script>
+<script src="/anchors.js" defer></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

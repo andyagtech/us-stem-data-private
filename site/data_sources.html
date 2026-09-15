@@ -290,7 +290,7 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
         (<code>scripts/build_lca_wage_levels.py</code>).</li>
       <li><code>/data/level_rankings.json</code> &mdash; Non-resident share rankings at BOTH master's and doctoral level: by institution, by 4-digit CIP, fastest risers, largest cohorts, and the within-institution contrast.
         (<code>scripts/build_level_rankings.py</code>).</li>
-      <li><code>/data/live_bundle.json</code> &mdash; Everything the live dashboard renders, in one ~9 KB file so no chart update touches the network.
+      <li><code>/data/live_bundle.json</code> &mdash; Everything the live voice dashboard renders, in one ~9 KB file so no chart update touches the network.
         (<code>scripts/build_live_bundle.py</code>).</li>
       <li><code>/data/local_wage_comparison.json</code> &mdash; The below-median finding measured against the median for the occupation in the worksite state, not the national one.
         (<code>scripts/build_local_wage_comparison.py</code>).</li>
@@ -336,6 +336,10 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
         (<code>scripts/build_visa_bulletin.py</code>).</li>
       <li><code>/data/visa_issuances.json</code> &mdash; Nonimmigrant visa issuances by class and nationality, 1997-2024 -- the entry point, counted at the consulate.
         (<code>scripts/build_visa_issuances.py</code>).</li>
+      <li><code>/data/visa_schools.json</code> &mdash; Every US institution with 100+ graduate students where non-residents are half or more of them: 57 in fall 2024, up from 43 in 2022…
+        (<code>scripts/build_visa_schools.py</code>).</li>
+      <li><code>/data/visa_substitution.json</code> &mdash; Visa issuance by class, student work authorisations and the H-1B denial rate on one timeline, 2007-2024, with the dated federal actions that restricted or expanded each.
+        (<code>scripts/build_visa_substitution.py</code>).</li>
       <li><code>/data/wage_level_trend.json</code> &mdash; Share of certified H-1B filings at each prevailing-wage level, by fiscal year -- whether employers have moved toward the bottom of the legal range or away from it.
         (<code>scripts/build_wage_level_trend.py</code>).</li>
       <li><code>/data/working_conditions.json</code> &mdash; Hours worked and reported satisfaction by CURRENT citizenship status -- whether visa dependence shows up in what people work and report, not only in the statute.

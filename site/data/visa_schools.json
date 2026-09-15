@@ -1,0 +1,3272 @@
+{
+ "_comment": "Schools where foreign students are the majority of graduate enrolment.\n\nWHAT IT COUNTS. Every US institution with at least 100 graduate students where\nnon-resident aliens are 50% or more of them, in IPEDS Fall Enrollment for 2022,\n2023 and 2024; plus, for the schools that qualify in 2024, their three-year\nenrolment trend, sector, whether they take part in federal student aid, the\nfederal aid they took in, and -- for the nonprofits, which file IRS Form 990 --\nwhat they reported paying firms for student recruitment.\n\nWHAT THE FIGURES ARE, EXACTLY.\n  * Graduate enrolment is IPEDS EF part A, EFALEVEL 12 with LSTUDY 3 (all\n    graduate students); \"non-resident\" is EFNRALT. Any other level\n    double-counts, because the file also carries full- and part-time splits.\n  * \"Takes part in federal student aid\" is the IPEDS directory's OPEFLAG = 1:\n    the institution has a Program Participation Agreement for Title IV.\n  * Pell grants and federal loans are IPEDS Student Financial Aid 2022-23, and\n    they are UNDERGRADUATE: IPEDS does not report graduate federal loans. The\n    money is paid to the institution and credited to students' accounts\n    against tuition and fees first. Non-resident aliens are not eligible for\n    either programme, so these dollars were awarded to the school's eligible\n    students -- the school is what receives them.\n  * Recruitment payments are as filed on each nonprofit's Form 990 (Part VII\n    Section B contractors, or the same table filed in Schedule O, and Part IX\n    expense lines naming recruitment). A return filed by a larger parent under\n    the same EIN is flagged and not attributed to the campus.",
+ "sources": {
+  "enrolment": "NCES IPEDS Fall Enrollment, part A, fall 2022-2024",
+  "directory": "NCES IPEDS Institutional Characteristics directory, 2024",
+  "federal_aid": "NCES IPEDS Student Financial Aid, 2022-23 (undergraduate)",
+  "recruitment": "IRS Form 990 e-file returns (IRS bulk release)",
+  "urls": [
+   "https://nces.ed.gov/ipeds/use-the-data",
+   "https://www.irs.gov/charities-non-profits/form-990-series-downloads"
+  ]
+ },
+ "rules": {
+  "min_grad_students": 100,
+  "majority_threshold_pct": 50,
+  "graduate": "EFALEVEL 12, LSTUDY 3",
+  "nonresident": "EFNRALT",
+  "federal_aid_participation": "OPEFLAG = 1"
+ },
+ "latest_fall": 2024,
+ "summary": {
+  "2022": {
+   "national_grad_students": 3240709,
+   "national_nonresident_grad_students": 516009,
+   "national_nonresident_share_pct": 15.9,
+   "at_or_above": {
+    "50": {
+     "schools": 43,
+     "nonresident_grad_students": 62684,
+     "grad_students": 96293,
+     "take_federal_student_aid": 39,
+     "by_sector": {
+      "public": 4,
+      "private nonprofit": 33,
+      "for-profit": 6
+     }
+    },
+    "80": {
+     "schools": 9,
+     "nonresident_grad_students": 8813,
+     "grad_students": 9558,
+     "take_federal_student_aid": 7,
+     "by_sector": {
+      "public": 0,
+      "private nonprofit": 7,
+      "for-profit": 2
+     }
+    },
+    "90": {
+     "schools": 4,
+     "nonresident_grad_students": 6432,
+     "grad_students": 6647,
+     "take_federal_student_aid": 2,
+     "by_sector": {
+      "public": 0,
+      "private nonprofit": 4,
+      "for-profit": 0
+     }
+    }
+   }
+  },
+  "2023": {
+   "national_grad_students": 3274596,
+   "national_nonresident_grad_students": 561038,
+   "national_nonresident_share_pct": 17.1,
+   "at_or_above": {
+    "50": {
+     "schools": 59,
+     "nonresident_grad_students": 100309,
+     "grad_students": 154870,
+     "take_federal_student_aid": 56,
+     "by_sector": {
+      "public": 10,
+      "private nonprofit": 42,
+      "for-profit": 7
+     }
+    },
+    "80": {
+     "schools": 11,
+     "nonresident_grad_students": 16091,
+     "grad_students": 17011,
+     "take_federal_student_aid": 10,
+     "by_sector": {
+      "public": 0,
+      "private nonprofit": 9,
+      "for-profit": 2
+     }
+    },
+    "90": {
+     "schools": 8,
+     "nonresident_grad_students": 13758,
+     "grad_students": 14200,
+     "take_federal_student_aid": 7,
+     "by_sector": {
+      "public": 0,
+      "private nonprofit": 7,
+      "for-profit": 1
+     }
+    }
+   }
+  },
+  "2024": {
+   "national_grad_students": 3335170,
+   "national_nonresident_grad_students": 559236,
+   "national_nonresident_share_pct": 16.8,
+   "at_or_above": {
+    "50": {
+     "schools": 57,
+     "nonresident_grad_students": 96386,
+     "grad_students": 150031,
+     "take_federal_student_aid": 53,
+     "by_sector": {
+      "public": 7,
+      "private nonprofit": 41,
+      "for-profit": 9
+     }
+    },
+    "80": {
+     "schools": 10,
+     "nonresident_grad_students": 18390,
+     "grad_students": 19114,
+     "take_federal_student_aid": 9,
+     "by_sector": {
+      "public": 0,
+      "private nonprofit": 8,
+      "for-profit": 2
+     }
+    },
+    "90": {
+     "schools": 7,
+     "nonresident_grad_students": 17116,
+     "grad_students": 17577,
+     "take_federal_student_aid": 6,
+     "by_sector": {
+      "public": 0,
+      "private nonprofit": 6,
+      "for-profit": 1
+     }
+    }
+   }
+  }
+ },
+ "totals": {
+  "schools": 57,
+  "pell_dollars": 388117534,
+  "pell_recipients": 73325,
+  "federal_loan_dollars": 618170708,
+  "take_federal_student_aid": 53,
+  "recruitment_filers_checked": 41,
+  "schools_reporting_recruitment": 14,
+  "recruiting_firm_dollars": 89735238
+ },
+ "schools": [
+  {
+   "unitid": "414878",
+   "name": "Trine University-Regional/Non-Traditional Campuses",
+   "city": "Angola",
+   "state": "IN",
+   "control": "private nonprofit",
+   "ein": "350715530",
+   "title_iv": true,
+   "web": "trine.edu/online/index.aspx",
+   "grad": 9123,
+   "grad_nra": 8995,
+   "grad_nra_share_pct": 98.6,
+   "total": 9868,
+   "total_nra": 9213,
+   "trend": {
+    "2022": {
+     "grad": 3874,
+     "grad_nra": 3754
+    },
+    "2023": {
+     "grad": 7786,
+     "grad_nra": 7657
+    },
+    "2024": {
+     "grad": 9123,
+     "grad_nra": 8995
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 61,
+    "pell_dollars": 315831,
+    "federal_loan_recipients": 83,
+    "federal_loan_dollars": 487945
+   },
+   "recruitment_990": {
+    "filer_name": "Trine University",
+    "filer_is_parent": true,
+    "returns_checked": 4,
+    "years": [
+     {
+      "tax_period_end": "2022-04-30",
+      "object_id": "202212579349302311",
+      "firms": [
+       {
+        "name": "GRUKUL OVERSEAS",
+        "services": "RECRUITMENT",
+        "amount": 1172023
+       }
+      ],
+      "firms_total": 1172023,
+      "expense_lines": [
+       {
+        "desc": "RECRUITING FEES",
+        "amount": 2412843
+       }
+      ],
+      "expense_lines_total": 2412843,
+      "total_revenue": 136639555
+     },
+     {
+      "tax_period_end": "2023-04-30",
+      "object_id": "202342579349301554",
+      "firms": [
+       {
+        "name": "GRUKUL OVERSEAS",
+        "services": "RECRUITMENT",
+        "amount": 7064198
+       }
+      ],
+      "firms_total": 7064198,
+      "expense_lines": [
+       {
+        "desc": "RECRUITING FEES",
+        "amount": 8600421
+       }
+      ],
+      "expense_lines_total": 8600421,
+      "total_revenue": 187400612
+     },
+     {
+      "tax_period_end": "2024-04-30",
+      "object_id": "202422639349300902",
+      "firms": [
+       {
+        "name": "GRUKUL OVERSEAS",
+        "services": "RECRUITMENT",
+        "amount": 9559423
+       },
+       {
+        "name": "GOELITE INC",
+        "services": "RECRUITMENT",
+        "amount": 1237758
+       }
+      ],
+      "firms_total": 10797181,
+      "expense_lines": [
+       {
+        "desc": "RECRUITING FEES",
+        "amount": 13877793
+       }
+      ],
+      "expense_lines_total": 13877793,
+      "total_revenue": 211620138
+     },
+     {
+      "tax_period_end": "2025-04-30",
+      "object_id": "202522589349300717",
+      "firms": [
+       {
+        "name": "GURUKUL OVERSEAS",
+        "services": "RECRUITMENT",
+        "amount": 7957223
+       },
+       {
+        "name": "CARNEGIE INTERNATIONAL STUDENT INSTITUTE CORP",
+        "services": "RECRUITMENT",
+        "amount": 1573948
+       }
+      ],
+      "firms_total": 9531171,
+      "expense_lines": [
+       {
+        "desc": "RECRUITING FEES",
+        "amount": 15262075
+       }
+      ],
+      "expense_lines_total": 15262075,
+      "total_revenue": 232796308
+     }
+    ],
+    "firms_total": 28564573,
+    "expense_lines_total": 40153132,
+    "headline": {
+     "basis": "firms",
+     "amount": 28564573
+    }
+   }
+  },
+  {
+   "unitid": "487649",
+   "name": "California Institute of Advanced Management",
+   "city": "Alhambra",
+   "state": "CA",
+   "control": "private nonprofit",
+   "ein": "452648658",
+   "title_iv": true,
+   "web": "www.ciam.edu/",
+   "grad": 344,
+   "grad_nra": 338,
+   "grad_nra_share_pct": 98.3,
+   "total": 344,
+   "total_nra": 338,
+   "trend": {
+    "2022": {
+     "grad": 131,
+     "grad_nra": 117
+    },
+    "2023": {
+     "grad": 163,
+     "grad_nra": 159
+    },
+    "2024": {
+     "grad": 344,
+     "grad_nra": 338
+    }
+   },
+   "federal_aid_2022_23": null,
+   "recruitment_990": {
+    "filer_name": "California Institute of Advanced Management",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "195173",
+   "name": "St. Francis College",
+   "city": "Brooklyn",
+   "state": "NY",
+   "control": "private nonprofit",
+   "ein": "111635105",
+   "title_iv": true,
+   "web": "https://www.sfc.edu/",
+   "grad": 2848,
+   "grad_nra": 2796,
+   "grad_nra_share_pct": 98.2,
+   "total": 4567,
+   "total_nra": 3011,
+   "trend": {
+    "2022": {
+     "grad": 385,
+     "grad_nra": 309
+    },
+    "2023": {
+     "grad": 1618,
+     "grad_nra": 1549
+    },
+    "2024": {
+     "grad": 2848,
+     "grad_nra": 2796
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 1075,
+    "pell_dollars": 5630934,
+    "federal_loan_recipients": 634,
+    "federal_loan_dollars": 5926046
+   },
+   "recruitment_990": {
+    "filer_name": "ST FRANCIS COLLEGE",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "117557",
+   "name": "Lincoln University",
+   "city": "Oakland",
+   "state": "CA",
+   "control": "private nonprofit",
+   "ein": "941347042",
+   "title_iv": false,
+   "web": "https://lincolnuca.edu/",
+   "grad": 232,
+   "grad_nra": 224,
+   "grad_nra_share_pct": 96.6,
+   "total": 436,
+   "total_nra": 306,
+   "trend": {
+    "2022": {
+     "grad": 200,
+     "grad_nra": 190
+    },
+    "2023": {
+     "grad": 251,
+     "grad_nra": 240
+    },
+    "2024": {
+     "grad": 232,
+     "grad_nra": 224
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 0,
+    "pell_dollars": 0,
+    "federal_loan_recipients": 0,
+    "federal_loan_dollars": 0
+   },
+   "recruitment_990": {
+    "filer_name": "LINCOLN UNIVERSITY",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "446640",
+   "name": "Harrisburg University of Science and Technology",
+   "city": "Harrisburg",
+   "state": "PA",
+   "control": "private nonprofit",
+   "ein": "251900793",
+   "title_iv": true,
+   "web": "www.harrisburgu.edu/",
+   "grad": 2944,
+   "grad_nra": 2815,
+   "grad_nra_share_pct": 95.6,
+   "total": 3650,
+   "total_nra": 2827,
+   "trend": {
+    "2022": {
+     "grad": 2433,
+     "grad_nra": 2360
+    },
+    "2023": {
+     "grad": 2840,
+     "grad_nra": 2758
+    },
+    "2024": {
+     "grad": 2944,
+     "grad_nra": 2815
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 313,
+    "pell_dollars": 1637359,
+    "federal_loan_recipients": 398,
+    "federal_loan_dollars": 2611428
+   },
+   "recruitment_990": {
+    "filer_name": "HARRISBURG UNIVERSITY OF SCIENCE AND TECHNOLOGY",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [
+     {
+      "tax_period_end": "2022-06-30",
+      "object_id": "202311189349300726",
+      "firms": [
+       {
+        "name": "HOWELL MANAGEMENT SERVICES",
+        "services": "RECRUITING SERV",
+        "amount": 6583120
+       }
+      ],
+      "firms_total": 6583120,
+      "expense_lines": [],
+      "expense_lines_total": 0,
+      "total_revenue": 76201286
+     },
+     {
+      "tax_period_end": "2023-06-30",
+      "object_id": "202421299349301432",
+      "firms": [
+       {
+        "name": "HOWELL MANAGEMENT SERVICES",
+        "services": "STUDENT RECRUITMENT",
+        "amount": 4563400
+       }
+      ],
+      "firms_total": 4563400,
+      "expense_lines": [],
+      "expense_lines_total": 0,
+      "total_revenue": 73360586
+     },
+     {
+      "tax_period_end": "2024-06-30",
+      "object_id": "202501349349303670",
+      "firms": [
+       {
+        "name": "HOWELL MANAGEMENT SERVICES",
+        "services": "STUDENT RECRUITMENT",
+        "amount": 3700000
+       }
+      ],
+      "firms_total": 3700000,
+      "expense_lines": [],
+      "expense_lines_total": 0,
+      "total_revenue": 78734415
+     },
+     {
+      "tax_period_end": "2025-06-30",
+      "object_id": "202601359349306380",
+      "firms": [
+       {
+        "name": "HOWELL MANAGEMENT SERVICES",
+        "services": "STUDENT RECRUITMENT",
+        "amount": 5064160
+       }
+      ],
+      "firms_total": 5064160,
+      "expense_lines": [],
+      "expense_lines_total": 0,
+      "total_revenue": 80148800
+     }
+    ],
+    "firms_total": 19910680,
+    "expense_lines_total": 0,
+    "headline": {
+     "basis": "firms",
+     "amount": 19910680
+    }
+   }
+  },
+  {
+   "unitid": "483780",
+   "name": "Washington University of Science and Technology",
+   "city": "Alexandria",
+   "state": "VA",
+   "control": "for-profit",
+   "ein": "853437119",
+   "title_iv": true,
+   "web": "www.wust.edu/",
+   "grad": 696,
+   "grad_nra": 652,
+   "grad_nra_share_pct": 93.7,
+   "total": 1096,
+   "total_nra": 1020,
+   "trend": {
+    "2022": {
+     "grad": 469,
+     "grad_nra": 386
+    },
+    "2023": {
+     "grad": 803,
+     "grad_nra": 718
+    },
+    "2024": {
+     "grad": 696,
+     "grad_nra": 652
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 0,
+    "pell_dollars": 0,
+    "federal_loan_recipients": 0,
+    "federal_loan_dollars": 0
+   },
+   "recruitment_990": null
+  },
+  {
+   "unitid": "164368",
+   "name": "Hult International Business School",
+   "city": "Cambridge",
+   "state": "MA",
+   "control": "private nonprofit",
+   "ein": "043348440",
+   "title_iv": true,
+   "web": "www.hult.edu/",
+   "grad": 1390,
+   "grad_nra": 1296,
+   "grad_nra_share_pct": 93.2,
+   "total": 2008,
+   "total_nra": 1785,
+   "trend": {
+    "2022": {
+     "grad": 1494,
+     "grad_nra": 1174
+    },
+    "2023": {
+     "grad": 1309,
+     "grad_nra": 1181
+    },
+    "2024": {
+     "grad": 1390,
+     "grad_nra": 1296
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 57,
+    "pell_dollars": 339671,
+    "federal_loan_recipients": 58,
+    "federal_loan_dollars": 397865
+   },
+   "recruitment_990": {
+    "filer_name": "HULT INTERNATIONAL BUSINESS SCHOOL INC",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [
+     {
+      "tax_period_end": "2022-07-31",
+      "object_id": "202300259349301510",
+      "firms": [],
+      "firms_total": 0,
+      "expense_lines": [
+       {
+        "desc": "STUD. ENROLL. & MKTG.",
+        "amount": 33288991
+       }
+      ],
+      "expense_lines_total": 33288991,
+      "total_revenue": 179137520
+     },
+     {
+      "tax_period_end": "2023-07-31",
+      "object_id": "202410749349300621",
+      "firms": [],
+      "firms_total": 0,
+      "expense_lines": [
+       {
+        "desc": "STUD. ENROLL. & MKTG.",
+        "amount": 43434363
+       }
+      ],
+      "expense_lines_total": 43434363,
+      "total_revenue": 191323514
+     },
+     {
+      "tax_period_end": "2024-07-31",
+      "object_id": "202510779349301651",
+      "firms": [],
+      "firms_total": 0,
+      "expense_lines": [
+       {
+        "desc": "STUD. ENROLL. & MKTG.",
+        "amount": 38437203
+       }
+      ],
+      "expense_lines_total": 38437203,
+      "total_revenue": 193212427
+     },
+     {
+      "tax_period_end": "2025-07-31",
+      "object_id": "202610509349301671",
+      "firms": [],
+      "firms_total": 0,
+      "expense_lines": [
+       {
+        "desc": "STUD. ENROLL. & MKTG.",
+        "amount": 36259161
+       }
+      ],
+      "expense_lines_total": 36259161,
+      "total_revenue": 217685844
+     }
+    ],
+    "firms_total": 0,
+    "expense_lines_total": 151419718,
+    "headline": {
+     "basis": "expense_lines",
+     "amount": 151419718,
+     "label": "STUD. ENROLL. & MKTG."
+    }
+   }
+  },
+  {
+   "unitid": "205203",
+   "name": "University of Rio Grande",
+   "city": "Rio Grande",
+   "state": "OH",
+   "control": "private nonprofit",
+   "ein": "314379537",
+   "title_iv": true,
+   "web": "https://www.rio.edu/",
+   "grad": 221,
+   "grad_nra": 195,
+   "grad_nra_share_pct": 88.2,
+   "total": 2258,
+   "total_nra": 412,
+   "trend": {
+    "2022": {
+     "grad": 26,
+     "grad_nra": 11
+    },
+    "2023": {
+     "grad": 138,
+     "grad_nra": 119
+    },
+    "2024": {
+     "grad": 221,
+     "grad_nra": 195
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 636,
+    "pell_dollars": 3071147,
+    "federal_loan_recipients": 725,
+    "federal_loan_dollars": 5289920
+   },
+   "recruitment_990": {
+    "filer_name": "UNIVERSITY OF RIO GRANDE",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "118888",
+   "name": "Northeastern University Oakland",
+   "city": "Oakland",
+   "state": "CA",
+   "control": "private nonprofit",
+   "ein": "041679980",
+   "title_iv": true,
+   "web": "https://oakland.northeastern.edu/",
+   "grad": 176,
+   "grad_nra": 149,
+   "grad_nra_share_pct": 84.7,
+   "total": 640,
+   "total_nra": 219,
+   "trend": {
+    "2022": null,
+    "2023": {
+     "grad": 116,
+     "grad_nra": 107
+    },
+    "2024": {
+     "grad": 176,
+     "grad_nra": 149
+    }
+   },
+   "federal_aid_2022_23": null,
+   "recruitment_990": {
+    "filer_name": "NORTHEASTERN UNIVERSITY",
+    "filer_is_parent": true,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "110778",
+   "name": "Sofia University",
+   "city": "Palo Alto",
+   "state": "CA",
+   "control": "for-profit",
+   "ein": "465225989",
+   "title_iv": true,
+   "web": "www.sofia.edu/",
+   "grad": 1140,
+   "grad_nra": 930,
+   "grad_nra_share_pct": 81.6,
+   "total": 1145,
+   "total_nra": 930,
+   "trend": {
+    "2022": {
+     "grad": 937,
+     "grad_nra": 0
+    },
+    "2023": {
+     "grad": 1030,
+     "grad_nra": 0
+    },
+    "2024": {
+     "grad": 1140,
+     "grad_nra": 930
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 5,
+    "pell_dollars": 6882,
+    "federal_loan_recipients": 6,
+    "federal_loan_dollars": 18572
+   },
+   "recruitment_990": null
+  },
+  {
+   "unitid": "486239",
+   "name": "San Ignacio University",
+   "city": "Doral",
+   "state": "FL",
+   "control": "for-profit",
+   "ein": "260426802",
+   "title_iv": true,
+   "web": "www.sanignaciouniversity.edu/",
+   "grad": 130,
+   "grad_nra": 102,
+   "grad_nra_share_pct": 78.5,
+   "total": 319,
+   "total_nra": 237,
+   "trend": {
+    "2022": {
+     "grad": 88,
+     "grad_nra": 63
+    },
+    "2023": {
+     "grad": 80,
+     "grad_nra": 62
+    },
+    "2024": {
+     "grad": 130,
+     "grad_nra": 102
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 7,
+    "pell_dollars": 19203,
+    "federal_loan_recipients": 3,
+    "federal_loan_dollars": 10832
+   },
+   "recruitment_990": null
+  },
+  {
+   "unitid": "120166",
+   "name": "San Francisco Bay University",
+   "city": "Fremont",
+   "state": "CA",
+   "control": "private nonprofit",
+   "ein": "942933165",
+   "title_iv": false,
+   "web": "https://www.sfbu.edu/",
+   "grad": 263,
+   "grad_nra": 206,
+   "grad_nra_share_pct": 78.3,
+   "total": 389,
+   "total_nra": 294,
+   "trend": {
+    "2022": {
+     "grad": 140,
+     "grad_nra": 128
+    },
+    "2023": {
+     "grad": 266,
+     "grad_nra": 10
+    },
+    "2024": {
+     "grad": 263,
+     "grad_nra": 206
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 0,
+    "pell_dollars": 0,
+    "federal_loan_recipients": 0,
+    "federal_loan_dollars": 0
+   },
+   "recruitment_990": {
+    "filer_name": "SAN FRANCISCO BAY UNIVERSITY",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "182980",
+   "name": "New England College",
+   "city": "Henniker",
+   "state": "NH",
+   "control": "private nonprofit",
+   "ein": "020223955",
+   "title_iv": true,
+   "web": "www.nec.edu/",
+   "grad": 2243,
+   "grad_nra": 1754,
+   "grad_nra_share_pct": 78.2,
+   "total": 3275,
+   "total_nra": 1801,
+   "trend": {
+    "2022": {
+     "grad": 1809,
+     "grad_nra": 1471
+    },
+    "2023": {
+     "grad": 1870,
+     "grad_nra": 1496
+    },
+    "2024": {
+     "grad": 2243,
+     "grad_nra": 1754
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 437,
+    "pell_dollars": 2174689,
+    "federal_loan_recipients": 766,
+    "federal_loan_dollars": 7916097
+   },
+   "recruitment_990": {
+    "filer_name": "New England College",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "461148",
+   "name": "New York Film Academy",
+   "city": "Burbank",
+   "state": "CA",
+   "control": "for-profit",
+   "ein": "133723331",
+   "title_iv": true,
+   "web": "https://www.nyfa.edu/",
+   "grad": 283,
+   "grad_nra": 217,
+   "grad_nra_share_pct": 76.7,
+   "total": 1132,
+   "total_nra": 642,
+   "trend": {
+    "2022": {
+     "grad": 289,
+     "grad_nra": 215
+    },
+    "2023": {
+     "grad": 280,
+     "grad_nra": 211
+    },
+    "2024": {
+     "grad": 283,
+     "grad_nra": 217
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 202,
+    "pell_dollars": 1221943,
+    "federal_loan_recipients": 286,
+    "federal_loan_dollars": 2491153
+   },
+   "recruitment_990": null
+  },
+  {
+   "unitid": "157216",
+   "name": "Lindsey Wilson College",
+   "city": "Columbia",
+   "state": "KY",
+   "control": "private nonprofit",
+   "ein": "610444763",
+   "title_iv": true,
+   "web": "https://www.lindsey.edu/",
+   "grad": 2471,
+   "grad_nra": 1868,
+   "grad_nra_share_pct": 75.6,
+   "total": 4193,
+   "total_nra": 2027,
+   "trend": {
+    "2022": {
+     "grad": 1406,
+     "grad_nra": 655
+    },
+    "2023": {
+     "grad": 2272,
+     "grad_nra": 1392
+    },
+    "2024": {
+     "grad": 2471,
+     "grad_nra": 1868
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 851,
+    "pell_dollars": 4603136,
+    "federal_loan_recipients": 857,
+    "federal_loan_dollars": 4806010
+   },
+   "recruitment_990": {
+    "filer_name": "LINDSEY WILSON UNIVERSITY INC",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [
+     {
+      "tax_period_end": "2022-06-30",
+      "object_id": "202310479349301116",
+      "firms": [
+       {
+        "name": "MALACHI GLOBAL PATHWAY GROUP INC",
+        "services": "RECRUITING",
+        "amount": 843150
+       }
+      ],
+      "firms_total": 843150,
+      "expense_lines": [],
+      "expense_lines_total": 0,
+      "total_revenue": 72953480
+     },
+     {
+      "tax_period_end": "2023-06-30",
+      "object_id": "202411369349301541",
+      "firms": [
+       {
+        "name": "MALACHI GLOBAL PATHWAY GROUP INC",
+        "services": "RECRUITING",
+        "amount": 1237950
+       }
+      ],
+      "firms_total": 1237950,
+      "expense_lines": [],
+      "expense_lines_total": 0,
+      "total_revenue": 74931418
+     },
+     {
+      "tax_period_end": "2024-06-30",
+      "object_id": "202540219349300604",
+      "firms": [
+       {
+        "name": "SYAM S MANTHENA DBA ABHAYA GROUP LLC",
+        "services": "RECRUITING",
+        "amount": 1850405
+       },
+       {
+        "name": "TAURUS SQUARE CONSULTING PRIVATE LIMITED",
+        "services": "RECRUITING",
+        "amount": 570482
+       }
+      ],
+      "firms_total": 2420887,
+      "expense_lines": [],
+      "expense_lines_total": 0,
+      "total_revenue": 85338599
+     },
+     {
+      "tax_period_end": "2025-06-30",
+      "object_id": "202600479349301000",
+      "firms": [
+       {
+        "name": "SYAM S MANTHENA DBA ABHAYA GROUP LLC",
+        "services": "RECRUITING",
+        "amount": 2003315
+       },
+       {
+        "name": "AKK CONSULTING LLP",
+        "services": "RECRUITING",
+        "amount": 651902
+       },
+       {
+        "name": "TAURUS SQUARE CONSULTING PRIVATE LIMITED",
+        "services": "RECRUITING",
+        "amount": 476830
+       }
+      ],
+      "firms_total": 3132047,
+      "expense_lines": [],
+      "expense_lines_total": 0,
+      "total_revenue": 83885911
+     }
+    ],
+    "firms_total": 7634034,
+    "expense_lines_total": 0,
+    "headline": {
+     "basis": "firms",
+     "amount": 7634034
+    }
+   }
+  },
+  {
+   "unitid": "490133",
+   "name": "Westcliff University",
+   "city": "Irvine",
+   "state": "CA",
+   "control": "for-profit",
+   "ein": "460658370",
+   "title_iv": true,
+   "web": "www.westcliff.edu/",
+   "grad": 5323,
+   "grad_nra": 3985,
+   "grad_nra_share_pct": 74.9,
+   "total": 7686,
+   "total_nra": 4204,
+   "trend": {
+    "2022": {
+     "grad": 3808,
+     "grad_nra": 2876
+    },
+    "2023": {
+     "grad": 4495,
+     "grad_nra": 3559
+    },
+    "2024": {
+     "grad": 5323,
+     "grad_nra": 3985
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 38,
+    "pell_dollars": 79999,
+    "federal_loan_recipients": 53,
+    "federal_loan_dollars": 291803
+   },
+   "recruitment_990": null
+  },
+  {
+   "unitid": "165334",
+   "name": "Clark University",
+   "city": "Worcester",
+   "state": "MA",
+   "control": "private nonprofit",
+   "ein": "042111203",
+   "title_iv": true,
+   "web": "www.clarku.edu/",
+   "grad": 1659,
+   "grad_nra": 1234,
+   "grad_nra_share_pct": 74.4,
+   "total": 3925,
+   "total_nra": 1369,
+   "trend": {
+    "2022": {
+     "grad": 1381,
+     "grad_nra": 934
+    },
+    "2023": {
+     "grad": 1755,
+     "grad_nra": 1324
+    },
+    "2024": {
+     "grad": 1659,
+     "grad_nra": 1234
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 508,
+    "pell_dollars": 2510745,
+    "federal_loan_recipients": 1380,
+    "federal_loan_dollars": 8881915
+   },
+   "recruitment_990": {
+    "filer_name": "TRUSTEES OF CLARK UNIVERSITY",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "193308",
+   "name": "Monroe University",
+   "city": "Bronx",
+   "state": "NY",
+   "control": "for-profit",
+   "ein": "132501225",
+   "title_iv": true,
+   "web": "www.monroecollege.edu/",
+   "grad": 1936,
+   "grad_nra": 1389,
+   "grad_nra_share_pct": 71.7,
+   "total": 8141,
+   "total_nra": 2032,
+   "trend": {
+    "2022": {
+     "grad": 1095,
+     "grad_nra": 705
+    },
+    "2023": {
+     "grad": 1524,
+     "grad_nra": 1124
+    },
+    "2024": {
+     "grad": 1936,
+     "grad_nra": 1389
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 3411,
+    "pell_dollars": 15873586,
+    "federal_loan_recipients": 2867,
+    "federal_loan_dollars": 19437735
+   },
+   "recruitment_990": null
+  },
+  {
+   "unitid": "145725",
+   "name": "Illinois Institute of Technology",
+   "city": "Chicago",
+   "state": "IL",
+   "control": "private nonprofit",
+   "ein": "362170136",
+   "title_iv": true,
+   "web": "https://www.iit.edu/",
+   "grad": 5699,
+   "grad_nra": 4066,
+   "grad_nra_share_pct": 71.3,
+   "total": 8834,
+   "total_nra": 4622,
+   "trend": {
+    "2022": {
+     "grad": 3818,
+     "grad_nra": 2393
+    },
+    "2023": {
+     "grad": 5247,
+     "grad_nra": 3792
+    },
+    "2024": {
+     "grad": 5699,
+     "grad_nra": 4066
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 908,
+    "pell_dollars": 5062606,
+    "federal_loan_recipients": 1019,
+    "federal_loan_dollars": 6977636
+   },
+   "recruitment_990": {
+    "filer_name": "Illinois Institute of Technology",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "496469",
+   "name": "Daybreak University",
+   "city": "Anaheim",
+   "state": "CA",
+   "control": "private nonprofit",
+   "ein": "455063134",
+   "title_iv": false,
+   "web": "https://daybreak.edu/",
+   "grad": 145,
+   "grad_nra": 101,
+   "grad_nra_share_pct": 69.7,
+   "total": 145,
+   "total_nra": 101,
+   "trend": {
+    "2022": {
+     "grad": 151,
+     "grad_nra": 110
+    },
+    "2023": {
+     "grad": 148,
+     "grad_nra": 105
+    },
+    "2024": {
+     "grad": 145,
+     "grad_nra": 101
+    }
+   },
+   "federal_aid_2022_23": null,
+   "recruitment_990": {
+    "filer_name": "Daybreak University",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "156365",
+   "name": "Campbellsville University",
+   "city": "Campbellsville",
+   "state": "KY",
+   "control": "private nonprofit",
+   "ein": "610469267",
+   "title_iv": true,
+   "web": "https://www.campbellsville.edu/",
+   "grad": 3988,
+   "grad_nra": 2755,
+   "grad_nra_share_pct": 69.1,
+   "total": 10836,
+   "total_nra": 3050,
+   "trend": {
+    "2022": {
+     "grad": 5364,
+     "grad_nra": 3669
+    },
+    "2023": {
+     "grad": 5598,
+     "grad_nra": 4153
+    },
+    "2024": {
+     "grad": 3988,
+     "grad_nra": 2755
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 1381,
+    "pell_dollars": 7047593,
+    "federal_loan_recipients": 1326,
+    "federal_loan_dollars": 7748364
+   },
+   "recruitment_990": {
+    "filer_name": "CAMPBELLSVILLE UNIVERSITY INC",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "176628",
+   "name": "Avila University",
+   "city": "Kansas City",
+   "state": "MO",
+   "control": "private nonprofit",
+   "ein": "440617326",
+   "title_iv": true,
+   "web": "https://www.avila.edu/",
+   "grad": 1437,
+   "grad_nra": 991,
+   "grad_nra_share_pct": 69.0,
+   "total": 2768,
+   "total_nra": 1052,
+   "trend": {
+    "2022": {
+     "grad": 328,
+     "grad_nra": 6
+    },
+    "2023": {
+     "grad": 537,
+     "grad_nra": 177
+    },
+    "2024": {
+     "grad": 1437,
+     "grad_nra": 991
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 480,
+    "pell_dollars": 2562939,
+    "federal_loan_recipients": 833,
+    "federal_loan_dollars": 4429862
+   },
+   "recruitment_990": {
+    "filer_name": "AVILA UNIVERSITY",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [
+     {
+      "tax_period_end": "2023-06-30",
+      "object_id": "202533359349301503",
+      "firms": [],
+      "firms_total": 0,
+      "expense_lines": [
+       {
+        "desc": "RECRUITMENT",
+        "amount": 272998
+       }
+      ],
+      "expense_lines_total": 272998,
+      "total_revenue": 31357287
+     }
+    ],
+    "firms_total": 0,
+    "expense_lines_total": 272998,
+    "headline": {
+     "basis": "expense_lines",
+     "amount": 272998,
+     "label": "RECRUITMENT"
+    }
+   }
+  },
+  {
+   "unitid": "401223",
+   "name": "World Mission University",
+   "city": "Los Angeles",
+   "state": "CA",
+   "control": "private nonprofit",
+   "ein": "954230730",
+   "title_iv": true,
+   "web": "www.wmu.edu/",
+   "grad": 303,
+   "grad_nra": 206,
+   "grad_nra_share_pct": 68.0,
+   "total": 510,
+   "total_nra": 263,
+   "trend": {
+    "2022": {
+     "grad": 232,
+     "grad_nra": 143
+    },
+    "2023": {
+     "grad": 260,
+     "grad_nra": 149
+    },
+    "2024": {
+     "grad": 303,
+     "grad_nra": 206
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 90,
+    "pell_dollars": 422854,
+    "federal_loan_recipients": 6,
+    "federal_loan_dollars": 16943
+   },
+   "recruitment_990": {
+    "filer_name": "WORLD MISSION UNIVERSITY",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "109651",
+   "name": "Art Center College of Design",
+   "city": "Pasadena",
+   "state": "CA",
+   "control": "private nonprofit",
+   "ein": "951921340",
+   "title_iv": true,
+   "web": "www.artcenter.edu/",
+   "grad": 270,
+   "grad_nra": 183,
+   "grad_nra_share_pct": 67.8,
+   "total": 2308,
+   "total_nra": 1089,
+   "trend": {
+    "2022": {
+     "grad": 285,
+     "grad_nra": 177
+    },
+    "2023": {
+     "grad": 303,
+     "grad_nra": 205
+    },
+    "2024": {
+     "grad": 270,
+     "grad_nra": 183
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 523,
+    "pell_dollars": 2704691,
+    "federal_loan_recipients": 761,
+    "federal_loan_dollars": 5130781
+   },
+   "recruitment_990": {
+    "filer_name": "ART CENTER COLLEGE OF DESIGN",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "129941",
+   "name": "University of New Haven",
+   "city": "West Haven",
+   "state": "CT",
+   "control": "private nonprofit",
+   "ein": "060761704",
+   "title_iv": true,
+   "web": "www.newhaven.edu/",
+   "grad": 4326,
+   "grad_nra": 2927,
+   "grad_nra_share_pct": 67.7,
+   "total": 9229,
+   "total_nra": 3108,
+   "trend": {
+    "2022": {
+     "grad": 4002,
+     "grad_nra": 2577
+    },
+    "2023": {
+     "grad": 4965,
+     "grad_nra": 3516
+    },
+    "2024": {
+     "grad": 4326,
+     "grad_nra": 2927
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 1320,
+    "pell_dollars": 7021728,
+    "federal_loan_recipients": 3899,
+    "federal_loan_dollars": 26461413
+   },
+   "recruitment_990": {
+    "filer_name": "University of New Haven",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "157863",
+   "name": "Union Commonwealth University",
+   "city": "Barbourville",
+   "state": "KY",
+   "control": "private nonprofit",
+   "ein": "610461768",
+   "title_iv": true,
+   "web": "https://www.unionky.edu/",
+   "grad": 549,
+   "grad_nra": 360,
+   "grad_nra_share_pct": 65.6,
+   "total": 1324,
+   "total_nra": 497,
+   "trend": {
+    "2022": {
+     "grad": 246,
+     "grad_nra": 96
+    },
+    "2023": {
+     "grad": 392,
+     "grad_nra": 211
+    },
+    "2024": {
+     "grad": 549,
+     "grad_nra": 360
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 367,
+    "pell_dollars": 2099339,
+    "federal_loan_recipients": 470,
+    "federal_loan_dollars": 3115903
+   },
+   "recruitment_990": {
+    "filer_name": "UNION COMMONWEALTH UNIVERSITY",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [
+     {
+      "tax_period_end": "2024-06-30",
+      "object_id": "202541289349302944",
+      "firms": [
+       {
+        "name": "VESTA TECHNOLOFY SOLUTIONS",
+        "services": "GRADUATE INTERNATIONAL PROGRAM RECRUITIN",
+        "amount": 269440
+       }
+      ],
+      "firms_total": 269440,
+      "expense_lines": [],
+      "expense_lines_total": 0,
+      "total_revenue": 34396819
+     },
+     {
+      "tax_period_end": "2025-06-30",
+      "object_id": "202601269349301730",
+      "firms": [
+       {
+        "name": "VESTA TECHNOLOFY SOLUTIONS",
+        "services": "GRADUATE INTERNATIONAL PROGRAM RECRUITIN",
+        "amount": 407680
+       }
+      ],
+      "firms_total": 407680,
+      "expense_lines": [],
+      "expense_lines_total": 0,
+      "total_revenue": 33995168
+     }
+    ],
+    "firms_total": 677120,
+    "expense_lines_total": 0,
+    "headline": {
+     "basis": "firms",
+     "amount": 677120
+    }
+   }
+  },
+  {
+   "unitid": "219949",
+   "name": "Cumberland University",
+   "city": "Lebanon",
+   "state": "TN",
+   "control": "private nonprofit",
+   "ein": "620599339",
+   "title_iv": true,
+   "web": "www.cumberland.edu/",
+   "grad": 712,
+   "grad_nra": 447,
+   "grad_nra_share_pct": 62.8,
+   "total": 3457,
+   "total_nra": 591,
+   "trend": {
+    "2022": {
+     "grad": 277,
+     "grad_nra": 14
+    },
+    "2023": {
+     "grad": 420,
+     "grad_nra": 169
+    },
+    "2024": {
+     "grad": 712,
+     "grad_nra": 447
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 752,
+    "pell_dollars": 3663652,
+    "federal_loan_recipients": 581,
+    "federal_loan_dollars": 3590523
+   },
+   "recruitment_990": {
+    "filer_name": "CUMBERLAND UNIVERSITY",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [
+     {
+      "tax_period_end": "2022-05-31",
+      "object_id": "202300829349301320",
+      "firms": [],
+      "firms_total": 0,
+      "expense_lines": [
+       {
+        "desc": "RECRUITING",
+        "amount": 67411
+       }
+      ],
+      "expense_lines_total": 67411,
+      "total_revenue": 69170999
+     },
+     {
+      "tax_period_end": "2023-05-31",
+      "object_id": "202400869349301765",
+      "firms": [],
+      "firms_total": 0,
+      "expense_lines": [
+       {
+        "desc": "RECRUITING",
+        "amount": 76152
+       }
+      ],
+      "expense_lines_total": 76152,
+      "total_revenue": 81080501
+     },
+     {
+      "tax_period_end": "2025-05-31",
+      "object_id": "202601049349302160",
+      "firms": [],
+      "firms_total": 0,
+      "expense_lines": [
+       {
+        "desc": "RECRUITING",
+        "amount": 56923
+       }
+      ],
+      "expense_lines_total": 56923,
+      "total_revenue": 82170753
+     }
+    ],
+    "firms_total": 0,
+    "expense_lines_total": 200486,
+    "headline": {
+     "basis": "expense_lines",
+     "amount": 200486,
+     "label": "RECRUITING"
+    }
+   }
+  },
+  {
+   "unitid": "211440",
+   "name": "Carnegie Mellon University",
+   "city": "Pittsburgh",
+   "state": "PA",
+   "control": "private nonprofit",
+   "ein": "250969449",
+   "title_iv": true,
+   "web": "www.cmu.edu/",
+   "grad": 8511,
+   "grad_nra": 5269,
+   "grad_nra_share_pct": 61.9,
+   "total": 15888,
+   "total_nra": 6674,
+   "trend": {
+    "2022": {
+     "grad": 8943,
+     "grad_nra": 5690
+    },
+    "2023": {
+     "grad": 8307,
+     "grad_nra": 5218
+    },
+    "2024": {
+     "grad": 8511,
+     "grad_nra": 5269
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 1074,
+    "pell_dollars": 5987117,
+    "federal_loan_recipients": 2506,
+    "federal_loan_dollars": 12412500
+   },
+   "recruitment_990": {
+    "filer_name": "Carnegie Mellon University",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "176965",
+   "name": "University of Central Missouri",
+   "city": "Warrensburg",
+   "state": "MO",
+   "control": "public",
+   "ein": "446000293",
+   "title_iv": true,
+   "web": "https://www.ucmo.edu/",
+   "grad": 5273,
+   "grad_nra": 3265,
+   "grad_nra_share_pct": 61.9,
+   "total": 12857,
+   "total_nra": 3412,
+   "trend": {
+    "2022": {
+     "grad": 4292,
+     "grad_nra": 2639
+    },
+    "2023": {
+     "grad": 5585,
+     "grad_nra": 3718
+    },
+    "2024": {
+     "grad": 5273,
+     "grad_nra": 3265
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 1884,
+    "pell_dollars": 9196658,
+    "federal_loan_recipients": 2658,
+    "federal_loan_dollars": 16973055
+   },
+   "recruitment_990": null
+  },
+  {
+   "unitid": "186432",
+   "name": "Saint Peter's University",
+   "city": "Jersey City",
+   "state": "NJ",
+   "control": "private nonprofit",
+   "ein": "221508627",
+   "title_iv": true,
+   "web": "www.saintpeters.edu/",
+   "grad": 1309,
+   "grad_nra": 809,
+   "grad_nra_share_pct": 61.8,
+   "total": 3572,
+   "total_nra": 940,
+   "trend": {
+    "2022": {
+     "grad": 1359,
+     "grad_nra": 822
+    },
+    "2023": {
+     "grad": 1572,
+     "grad_nra": 1055
+    },
+    "2024": {
+     "grad": 1309,
+     "grad_nra": 809
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 1122,
+    "pell_dollars": 6348743,
+    "federal_loan_recipients": 688,
+    "federal_loan_dollars": 4244419
+   },
+   "recruitment_990": {
+    "filer_name": "SAINT PETER'S UNIVERSITY",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "192712",
+   "name": "Manhattan School of Music",
+   "city": "New York",
+   "state": "NY",
+   "control": "private nonprofit",
+   "ein": "131656667",
+   "title_iv": true,
+   "web": "https://www.msmnyc.edu/",
+   "grad": 532,
+   "grad_nra": 323,
+   "grad_nra_share_pct": 60.7,
+   "total": 1084,
+   "total_nra": 509,
+   "trend": {
+    "2022": {
+     "grad": 607,
+     "grad_nra": 378
+    },
+    "2023": {
+     "grad": 554,
+     "grad_nra": 360
+    },
+    "2024": {
+     "grad": 532,
+     "grad_nra": 323
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 67,
+    "pell_dollars": 343262,
+    "federal_loan_recipients": 167,
+    "federal_loan_dollars": 1126910
+   },
+   "recruitment_990": {
+    "filer_name": "MANHATTAN SCHOOL OF MUSIC",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "167358",
+   "name": "Northeastern University",
+   "city": "Boston",
+   "state": "MA",
+   "control": "private nonprofit",
+   "ein": "041679980",
+   "title_iv": true,
+   "web": "www.northeastern.edu/",
+   "grad": 15121,
+   "grad_nra": 9104,
+   "grad_nra_share_pct": 60.2,
+   "total": 32553,
+   "total_nra": 11530,
+   "trend": {
+    "2022": {
+     "grad": 13711,
+     "grad_nra": 8505
+    },
+    "2023": {
+     "grad": 15268,
+     "grad_nra": 9725
+    },
+    "2024": {
+     "grad": 15121,
+     "grad_nra": 9104
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 2012,
+    "pell_dollars": 13338373,
+    "federal_loan_recipients": 4620,
+    "federal_loan_dollars": 27327738
+   },
+   "recruitment_990": {
+    "filer_name": "NORTHEASTERN UNIVERSITY",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "197151",
+   "name": "School of Visual Arts",
+   "city": "New York",
+   "state": "NY",
+   "control": "for-profit",
+   "ein": "181603186",
+   "title_iv": true,
+   "web": "https://sva.edu/",
+   "grad": 557,
+   "grad_nra": 334,
+   "grad_nra_share_pct": 60.0,
+   "total": 3812,
+   "total_nra": 1925,
+   "trend": {
+    "2022": {
+     "grad": 594,
+     "grad_nra": 371
+    },
+    "2023": {
+     "grad": 574,
+     "grad_nra": 356
+    },
+    "2024": {
+     "grad": 557,
+     "grad_nra": 334
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 520,
+    "pell_dollars": 2883355,
+    "federal_loan_recipients": 872,
+    "federal_loan_dollars": 5978045
+   },
+   "recruitment_990": null
+  },
+  {
+   "unitid": "219833",
+   "name": "Christian Brothers University",
+   "city": "Memphis",
+   "state": "TN",
+   "control": "private nonprofit",
+   "ein": "620476666",
+   "title_iv": true,
+   "web": "https://www.cbu.edu/",
+   "grad": 617,
+   "grad_nra": 367,
+   "grad_nra_share_pct": 59.5,
+   "total": 1772,
+   "total_nra": 460,
+   "trend": {
+    "2022": {
+     "grad": 681,
+     "grad_nra": 385
+    },
+    "2023": {
+     "grad": 839,
+     "grad_nra": 481
+    },
+    "2024": {
+     "grad": 617,
+     "grad_nra": 367
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 383,
+    "pell_dollars": 2049703,
+    "federal_loan_recipients": 391,
+    "federal_loan_dollars": 3222729
+   },
+   "recruitment_990": {
+    "filer_name": "CHRISTIAN BROTHERS UNIVERSITY",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [
+     {
+      "tax_period_end": "2022-05-31",
+      "object_id": "202321049349300832",
+      "firms": [],
+      "firms_total": 0,
+      "expense_lines": [
+       {
+        "desc": "RECRUITING",
+        "amount": 496592
+       }
+      ],
+      "expense_lines_total": 496592,
+      "total_revenue": 73065264
+     },
+     {
+      "tax_period_end": "2023-05-31",
+      "object_id": "202441069349302509",
+      "firms": [],
+      "firms_total": 0,
+      "expense_lines": [
+       {
+        "desc": "RECRUITING",
+        "amount": 1160419
+       }
+      ],
+      "expense_lines_total": 1160419,
+      "total_revenue": 65399822
+     },
+     {
+      "tax_period_end": "2024-05-31",
+      "object_id": "202541049349300214",
+      "firms": [],
+      "firms_total": 0,
+      "expense_lines": [
+       {
+        "desc": "RECRUITING",
+        "amount": 777838
+       }
+      ],
+      "expense_lines_total": 777838,
+      "total_revenue": 68830763
+     },
+     {
+      "tax_period_end": "2025-05-31",
+      "object_id": "202600489349300715",
+      "firms": [],
+      "firms_total": 0,
+      "expense_lines": [
+       {
+        "desc": "RECRUITING",
+        "amount": 592074
+       }
+      ],
+      "expense_lines_total": 592074,
+      "total_revenue": 71692855
+     }
+    ],
+    "firms_total": 0,
+    "expense_lines_total": 3026923,
+    "headline": {
+     "basis": "expense_lines",
+     "amount": 3026923,
+     "label": "RECRUITING"
+    }
+   }
+  },
+  {
+   "unitid": "146339",
+   "name": "Judson University",
+   "city": "Elgin",
+   "state": "IL",
+   "control": "private nonprofit",
+   "ein": "362515868",
+   "title_iv": true,
+   "web": "www.judsonu.edu/",
+   "grad": 242,
+   "grad_nra": 143,
+   "grad_nra_share_pct": 59.1,
+   "total": 960,
+   "total_nra": 209,
+   "trend": {
+    "2022": {
+     "grad": 175,
+     "grad_nra": 35
+    },
+    "2023": {
+     "grad": 265,
+     "grad_nra": 150
+    },
+    "2024": {
+     "grad": 242,
+     "grad_nra": 143
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 317,
+    "pell_dollars": 1466163,
+    "federal_loan_recipients": 354,
+    "federal_loan_dollars": 1263806
+   },
+   "recruitment_990": {
+    "filer_name": "JUDSON UNIVERSITY A BAPTIST INSTITUTION",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [
+     {
+      "tax_period_end": "2022-05-31",
+      "object_id": "202321049349301012",
+      "firms": [
+       {
+        "name": "Ruffalo Noel Levitz",
+        "services": "Marketing/recruiting services",
+        "amount": 1722866
+       }
+      ],
+      "firms_total": 1722866,
+      "expense_lines": [
+       {
+        "desc": "Recruitment",
+        "amount": 89143
+       }
+      ],
+      "expense_lines_total": 89143,
+      "total_revenue": 36243429
+     },
+     {
+      "tax_period_end": "2023-05-31",
+      "object_id": "202441039349302104",
+      "firms": [
+       {
+        "name": "Ruffalo Noel Levitz",
+        "services": "Marketing/recruiting services",
+        "amount": 1180876
+       }
+      ],
+      "firms_total": 1180876,
+      "expense_lines": [
+       {
+        "desc": "Recruitment",
+        "amount": 99621
+       }
+      ],
+      "expense_lines_total": 99621,
+      "total_revenue": 31976520
+     },
+     {
+      "tax_period_end": "2024-05-31",
+      "object_id": "202511049349300036",
+      "firms": [
+       {
+        "name": "Ruffalo Noel Levitz",
+        "services": "Marketing/recruiting services",
+        "amount": 484231
+       }
+      ],
+      "firms_total": 484231,
+      "expense_lines": [
+       {
+        "desc": "Recruitment",
+        "amount": 56736
+       }
+      ],
+      "expense_lines_total": 56736,
+      "total_revenue": 37387847
+     },
+     {
+      "tax_period_end": "2025-05-31",
+      "object_id": "202641049349301114",
+      "firms": [],
+      "firms_total": 0,
+      "expense_lines": [
+       {
+        "desc": "RECRUITMENT",
+        "amount": 54119
+       }
+      ],
+      "expense_lines_total": 54119,
+      "total_revenue": 40498685
+     }
+    ],
+    "firms_total": 3387973,
+    "expense_lines_total": 299619,
+    "headline": {
+     "basis": "firms",
+     "amount": 3387973
+    }
+   }
+  },
+  {
+   "unitid": "186867",
+   "name": "Stevens Institute of Technology",
+   "city": "Hoboken",
+   "state": "NJ",
+   "control": "private nonprofit",
+   "ein": "022148735",
+   "title_iv": true,
+   "web": "www.stevens.edu/",
+   "grad": 4233,
+   "grad_nra": 2476,
+   "grad_nra_share_pct": 58.5,
+   "total": 8469,
+   "total_nra": 2633,
+   "trend": {
+    "2022": {
+     "grad": 5244,
+     "grad_nra": 3498
+    },
+    "2023": {
+     "grad": 4750,
+     "grad_nra": 3092
+    },
+    "2024": {
+     "grad": 4233,
+     "grad_nra": 2476
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 833,
+    "pell_dollars": 4367543,
+    "federal_loan_recipients": 2237,
+    "federal_loan_dollars": 14270600
+   },
+   "recruitment_990": {
+    "filer_name": "THE TRUSTEES OF THE STEVENS INSTITUTE OF TECHNOLOGY",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [
+     {
+      "tax_period_end": "2023-06-30",
+      "object_id": "202410969349301341",
+      "firms": [
+       {
+        "name": "EDUCO USA INC",
+        "services": "RECRUITING SERVICES",
+        "amount": 3037354
+       }
+      ],
+      "firms_total": 3037354,
+      "expense_lines": [],
+      "expense_lines_total": 0,
+      "total_revenue": 505884074
+     }
+    ],
+    "firms_total": 3037354,
+    "expense_lines_total": 0,
+    "headline": {
+     "basis": "firms",
+     "amount": 3037354
+    }
+   }
+  },
+  {
+   "unitid": "170675",
+   "name": "Lawrence Technological University",
+   "city": "Southfield",
+   "state": "MI",
+   "control": "private nonprofit",
+   "ein": "381369604",
+   "title_iv": true,
+   "web": "www.ltu.edu/",
+   "grad": 1114,
+   "grad_nra": 651,
+   "grad_nra_share_pct": 58.4,
+   "total": 3693,
+   "total_nra": 874,
+   "trend": {
+    "2022": {
+     "grad": 668,
+     "grad_nra": 209
+    },
+    "2023": {
+     "grad": 893,
+     "grad_nra": 447
+    },
+    "2024": {
+     "grad": 1114,
+     "grad_nra": 651
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 380,
+    "pell_dollars": 2116404,
+    "federal_loan_recipients": 1072,
+    "federal_loan_dollars": 7293133
+   },
+   "recruitment_990": {
+    "filer_name": "LAWRENCE TECHNOLOGICAL UNIVERSITY",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [
+     {
+      "tax_period_end": "2022-06-30",
+      "object_id": "202300109349300235",
+      "firms": [
+       {
+        "name": "EDDY HOLDINGS",
+        "services": "ENROLLMENT MGT SERVICES",
+        "amount": 1070513
+       }
+      ],
+      "firms_total": 1070513,
+      "expense_lines": [
+       {
+        "desc": "EDUCATION/TRAINING/DUES/RECRUITMENT",
+        "amount": 1957611
+       }
+      ],
+      "expense_lines_total": 1957611,
+      "total_revenue": 77203633
+     },
+     {
+      "tax_period_end": "2025-06-30",
+      "object_id": "202641139349300409",
+      "firms": [],
+      "firms_total": 0,
+      "expense_lines": [
+       {
+        "desc": "EDUCATION AND TRAINING/ DUES/ RECRUITMENT",
+        "amount": 3363684
+       }
+      ],
+      "expense_lines_total": 3363684,
+      "total_revenue": 91537631
+     }
+    ],
+    "firms_total": 1070513,
+    "expense_lines_total": 5321295,
+    "headline": {
+     "basis": "firms",
+     "amount": 1070513
+    }
+   }
+  },
+  {
+   "unitid": "130989",
+   "name": "Goldey-Beacom College",
+   "city": "Wilmington",
+   "state": "DE",
+   "control": "private nonprofit",
+   "ein": "510109178",
+   "title_iv": true,
+   "web": "www.gbc.edu/",
+   "grad": 304,
+   "grad_nra": 176,
+   "grad_nra_share_pct": 57.9,
+   "total": 1001,
+   "total_nra": 241,
+   "trend": {
+    "2022": {
+     "grad": 392,
+     "grad_nra": 237
+    },
+    "2023": {
+     "grad": 372,
+     "grad_nra": 229
+    },
+    "2024": {
+     "grad": 304,
+     "grad_nra": 176
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 241,
+    "pell_dollars": 1217273,
+    "federal_loan_recipients": 239,
+    "federal_loan_dollars": 1394329
+   },
+   "recruitment_990": {
+    "filer_name": "GOLDEY-BEACOM COLLEGE",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "100830",
+   "name": "Auburn University at Montgomery",
+   "city": "Montgomery",
+   "state": "AL",
+   "control": "public",
+   "ein": "636000724",
+   "title_iv": true,
+   "web": "www.aum.edu/",
+   "grad": 1892,
+   "grad_nra": 1092,
+   "grad_nra_share_pct": 57.7,
+   "total": 5217,
+   "total_nra": 1221,
+   "trend": {
+    "2022": {
+     "grad": 1355,
+     "grad_nra": 663
+    },
+    "2023": {
+     "grad": 1782,
+     "grad_nra": 1074
+    },
+    "2024": {
+     "grad": 1892,
+     "grad_nra": 1092
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 1605,
+    "pell_dollars": 9285415,
+    "federal_loan_recipients": 1712,
+    "federal_loan_dollars": 11566219
+   },
+   "recruitment_990": null
+  },
+  {
+   "unitid": "139205",
+   "name": "Brewton-Parker College",
+   "city": "Mount Vernon",
+   "state": "GA",
+   "control": "private nonprofit",
+   "ein": "580619030",
+   "title_iv": true,
+   "web": "https://www.bpc.edu/",
+   "grad": 104,
+   "grad_nra": 60,
+   "grad_nra_share_pct": 57.7,
+   "total": 1338,
+   "total_nra": 97,
+   "trend": {
+    "2022": null,
+    "2023": {
+     "grad": 74,
+     "grad_nra": 50
+    },
+    "2024": {
+     "grad": 104,
+     "grad_nra": 60
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 420,
+    "pell_dollars": 2328462,
+    "federal_loan_recipients": 440,
+    "federal_loan_dollars": 2732987
+   },
+   "recruitment_990": {
+    "filer_name": "BREWTON-PARKER COLLEGE INC",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "123952",
+   "name": "Southern California Institute of Architecture",
+   "city": "Los Angeles",
+   "state": "CA",
+   "control": "private nonprofit",
+   "ein": "952789388",
+   "title_iv": true,
+   "web": "www.sciarc.edu/",
+   "grad": 181,
+   "grad_nra": 103,
+   "grad_nra_share_pct": 56.9,
+   "total": 418,
+   "total_nra": 212,
+   "trend": {
+    "2022": {
+     "grad": 257,
+     "grad_nra": 152
+    },
+    "2023": {
+     "grad": 218,
+     "grad_nra": 130
+    },
+    "2024": {
+     "grad": 181,
+     "grad_nra": 103
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 53,
+    "pell_dollars": 297076,
+    "federal_loan_recipients": 57,
+    "federal_loan_dollars": 503217
+   },
+   "recruitment_990": {
+    "filer_name": "SOUTHERN CALIFORNIA INSTITUTE OF ARCHITECTURE",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "167057",
+   "name": "The New England Conservatory of Music",
+   "city": "Boston",
+   "state": "MA",
+   "control": "private nonprofit",
+   "ein": "237225104",
+   "title_iv": true,
+   "web": "https://necmusic.edu/",
+   "grad": 432,
+   "grad_nra": 240,
+   "grad_nra_share_pct": 55.6,
+   "total": 853,
+   "total_nra": 414,
+   "trend": {
+    "2022": {
+     "grad": 414,
+     "grad_nra": 195
+    },
+    "2023": {
+     "grad": 391,
+     "grad_nra": 216
+    },
+    "2024": {
+     "grad": 432,
+     "grad_nra": 240
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 31,
+    "pell_dollars": 170399,
+    "federal_loan_recipients": 105,
+    "federal_loan_dollars": 716748
+   },
+   "recruitment_990": {
+    "filer_name": "NEW ENGLAND CONSERVATORY OF MUSIC",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [
+     {
+      "tax_period_end": "2024-06-30",
+      "object_id": "202541329349303234",
+      "firms": [
+       {
+        "name": "BEST FIT EDUCATION LLC",
+        "services": "ENROLLMENT CONSULTING SERVICES",
+        "amount": 189544
+       }
+      ],
+      "firms_total": 189544,
+      "expense_lines": [],
+      "expense_lines_total": 0,
+      "total_revenue": 80188605
+     }
+    ],
+    "firms_total": 189544,
+    "expense_lines_total": 0,
+    "headline": {
+     "basis": "firms",
+     "amount": 189544
+    }
+   }
+  },
+  {
+   "unitid": "482705",
+   "name": "Northeastern University Professional Programs",
+   "city": "Boston",
+   "state": "MA",
+   "control": "private nonprofit",
+   "ein": "041679980",
+   "title_iv": false,
+   "web": "https://www.northeastern.edu/",
+   "grad": 4995,
+   "grad_nra": 2742,
+   "grad_nra_share_pct": 54.9,
+   "total": 7411,
+   "total_nra": 3231,
+   "trend": {
+    "2022": {
+     "grad": 5040,
+     "grad_nra": 2674
+    },
+    "2023": {
+     "grad": 4946,
+     "grad_nra": 3060
+    },
+    "2024": {
+     "grad": 4995,
+     "grad_nra": 2742
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 138,
+    "pell_dollars": 726310,
+    "federal_loan_recipients": 268,
+    "federal_loan_dollars": 1075515
+   },
+   "recruitment_990": {
+    "filer_name": "NORTHEASTERN UNIVERSITY",
+    "filer_is_parent": true,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "228787",
+   "name": "The University of Texas at Dallas",
+   "city": "Richardson",
+   "state": "TX",
+   "control": "public",
+   "ein": "075130556",
+   "title_iv": true,
+   "web": "www.utdallas.edu/",
+   "grad": 8028,
+   "grad_nra": 4398,
+   "grad_nra_share_pct": 54.8,
+   "total": 29886,
+   "total_nra": 5603,
+   "trend": {
+    "2022": {
+     "grad": 9953,
+     "grad_nra": 6032
+    },
+    "2023": {
+     "grad": 9555,
+     "grad_nra": 5883
+    },
+    "2024": {
+     "grad": 8028,
+     "grad_nra": 4398
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 6426,
+    "pell_dollars": 31108287,
+    "federal_loan_recipients": 7626,
+    "federal_loan_dollars": 59508329
+   },
+   "recruitment_990": null
+  },
+  {
+   "unitid": "115773",
+   "name": "Humphreys University-Stockton and Modesto Campuses",
+   "city": "Stockton",
+   "state": "CA",
+   "control": "private nonprofit",
+   "ein": "941196198",
+   "title_iv": true,
+   "web": "www.humphreys.edu/",
+   "grad": 527,
+   "grad_nra": 288,
+   "grad_nra_share_pct": 54.6,
+   "total": 699,
+   "total_nra": 288,
+   "trend": {
+    "2022": {
+     "grad": 234,
+     "grad_nra": 55
+    },
+    "2023": {
+     "grad": 392,
+     "grad_nra": 158
+    },
+    "2024": {
+     "grad": 527,
+     "grad_nra": 288
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 88,
+    "pell_dollars": 484181,
+    "federal_loan_recipients": 94,
+    "federal_loan_dollars": 833437
+   },
+   "recruitment_990": {
+    "filer_name": "HUMPHREYS UNIVERSITY",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [
+     {
+      "tax_period_end": "2022-06-30",
+      "object_id": "202341359349316124",
+      "firms": [],
+      "firms_total": 0,
+      "expense_lines": [
+       {
+        "desc": "RECRUITMENT FEES",
+        "amount": 92250
+       }
+      ],
+      "expense_lines_total": 92250,
+      "total_revenue": 7529174
+     },
+     {
+      "tax_period_end": "2023-06-30",
+      "object_id": "202421309349305332",
+      "firms": [],
+      "firms_total": 0,
+      "expense_lines": [
+       {
+        "desc": "RECRUITMENT FEES",
+        "amount": 448830
+       }
+      ],
+      "expense_lines_total": 448830,
+      "total_revenue": 8407567
+     },
+     {
+      "tax_period_end": "2024-06-30",
+      "object_id": "202531349349313073",
+      "firms": [],
+      "firms_total": 0,
+      "expense_lines": [
+       {
+        "desc": "RECRUITMENT FEES",
+        "amount": 908600
+       }
+      ],
+      "expense_lines_total": 908600,
+      "total_revenue": 10455117
+     },
+     {
+      "tax_period_end": "2025-06-30",
+      "object_id": "202601359349312850",
+      "firms": [],
+      "firms_total": 0,
+      "expense_lines": [
+       {
+        "desc": "RECRUITMENT FEES",
+        "amount": 1512295
+       }
+      ],
+      "expense_lines_total": 1512295,
+      "total_revenue": 11787383
+     }
+    ],
+    "firms_total": 0,
+    "expense_lines_total": 2961975,
+    "headline": {
+     "basis": "expense_lines",
+     "amount": 2961975,
+     "label": "RECRUITMENT FEES"
+    }
+   }
+  },
+  {
+   "unitid": "140951",
+   "name": "Savannah College of Art and Design",
+   "city": "Savannah",
+   "state": "GA",
+   "control": "private nonprofit",
+   "ein": "581357177",
+   "title_iv": true,
+   "web": "www.scad.edu/",
+   "grad": 2998,
+   "grad_nra": 1634,
+   "grad_nra_share_pct": 54.5,
+   "total": 18550,
+   "total_nra": 3841,
+   "trend": {
+    "2022": {
+     "grad": 2832,
+     "grad_nra": 1518
+    },
+    "2023": {
+     "grad": 2918,
+     "grad_nra": 1610
+    },
+    "2024": {
+     "grad": 2998,
+     "grad_nra": 1634
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 2518,
+    "pell_dollars": 12588168,
+    "federal_loan_recipients": 4694,
+    "federal_loan_dollars": 29212019
+   },
+   "recruitment_990": {
+    "filer_name": "SAVANNAH COLLEGE OF ART AND DESIGN INC",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "179894",
+   "name": "Webster University",
+   "city": "Saint Louis",
+   "state": "MO",
+   "control": "private nonprofit",
+   "ein": "430662529",
+   "title_iv": true,
+   "web": "www.webster.edu/",
+   "grad": 5938,
+   "grad_nra": 3230,
+   "grad_nra_share_pct": 54.4,
+   "total": 8260,
+   "total_nra": 3631,
+   "trend": {
+    "2022": {
+     "grad": 4199,
+     "grad_nra": 629
+    },
+    "2023": {
+     "grad": 5402,
+     "grad_nra": 2453
+    },
+    "2024": {
+     "grad": 5938,
+     "grad_nra": 3230
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 616,
+    "pell_dollars": 2990314,
+    "federal_loan_recipients": 965,
+    "federal_loan_dollars": 6504656
+   },
+   "recruitment_990": {
+    "filer_name": "Webster University",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [
+     {
+      "tax_period_end": "2022-05-31",
+      "object_id": "202311079349301036",
+      "firms": [
+       {
+        "name": "RUFFALO NOEL LEVITZ LLC",
+        "services": "ENROLLMENT MANAGEMEN",
+        "amount": 2345632
+       }
+      ],
+      "firms_total": 2345632,
+      "expense_lines": [],
+      "expense_lines_total": 0,
+      "total_revenue": 150158176
+     },
+     {
+      "tax_period_end": "2023-05-31",
+      "object_id": "202421049349300232",
+      "firms": [
+       {
+        "name": "RUFFALO NOEL LEVITZ LLC",
+        "services": "ENROLLMENT MANAGEMEN",
+        "amount": 4704183
+       }
+      ],
+      "firms_total": 4704183,
+      "expense_lines": [],
+      "expense_lines_total": 0,
+      "total_revenue": 126933651
+     },
+     {
+      "tax_period_end": "2024-05-31",
+      "object_id": "202541049349302139",
+      "firms": [
+       {
+        "name": "GUS UK MANAGMENT LIMITED",
+        "services": "STUDENT RECRUITMENT SERVICES",
+        "amount": 4423558
+       },
+       {
+        "name": "RUFFALO NOEL LEVTIZ LLC",
+        "services": "ENROLLMENT MANAGEMENT SERVICES",
+        "amount": 2618324
+       }
+      ],
+      "firms_total": 7041882,
+      "expense_lines": [
+       {
+        "desc": "STUDENT RECRUITMENT (Part IX line 11g other fees, itemized in Schedule O)",
+        "amount": 11563412
+       }
+      ],
+      "expense_lines_total": 11563412,
+      "total_revenue": 170755309
+     },
+     {
+      "tax_period_end": "2025-05-31",
+      "object_id": "202641059349302219",
+      "firms": [
+       {
+        "name": "GUS UK MANAGMENT LIMITED",
+        "services": "STUDENT RECRUITMENT SERVICES",
+        "amount": 7983303
+       },
+       {
+        "name": "RUFFALO NOEL LEVTIZ LLC",
+        "services": "ENROLLMENT MANAGEMENT SERVICES",
+        "amount": 3188447
+       }
+      ],
+      "firms_total": 11171750,
+      "expense_lines": [
+       {
+        "desc": "STUDENT RECRUITMENT (Part IX line 11g other fees, itemized in Schedule O)",
+        "amount": 8528552
+       }
+      ],
+      "expense_lines_total": 8528552,
+      "total_revenue": 166552505
+     }
+    ],
+    "firms_total": 25263447,
+    "expense_lines_total": 20091964,
+    "headline": {
+     "basis": "firms",
+     "amount": 25263447
+    }
+   }
+  },
+  {
+   "unitid": "166489",
+   "name": "Longy School of Music of Bard College",
+   "city": "Cambridge",
+   "state": "MA",
+   "control": "private nonprofit",
+   "ein": "141713034",
+   "title_iv": true,
+   "web": "longy.edu/",
+   "grad": 307,
+   "grad_nra": 166,
+   "grad_nra_share_pct": 54.1,
+   "total": 317,
+   "total_nra": 173,
+   "trend": {
+    "2022": {
+     "grad": 275,
+     "grad_nra": 139
+    },
+    "2023": {
+     "grad": 284,
+     "grad_nra": 155
+    },
+    "2024": {
+     "grad": 307,
+     "grad_nra": 166
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 4,
+    "pell_dollars": 12857,
+    "federal_loan_recipients": 4,
+    "federal_loan_dollars": 14000
+   },
+   "recruitment_990": {
+    "filer_name": "BARD COLLEGE",
+    "filer_is_parent": true,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "217493",
+   "name": "Rhode Island School of Design",
+   "city": "Providence",
+   "state": "RI",
+   "control": "private nonprofit",
+   "ein": "050258956",
+   "title_iv": true,
+   "web": "https://www.risd.edu/",
+   "grad": 433,
+   "grad_nra": 232,
+   "grad_nra_share_pct": 53.6,
+   "total": 2520,
+   "total_nra": 924,
+   "trend": {
+    "2022": {
+     "grad": 512,
+     "grad_nra": 263
+    },
+    "2023": {
+     "grad": 448,
+     "grad_nra": 229
+    },
+    "2024": {
+     "grad": 433,
+     "grad_nra": 232
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 296,
+    "pell_dollars": 1655935,
+    "federal_loan_recipients": 602,
+    "federal_loan_dollars": 4075918
+   },
+   "recruitment_990": {
+    "filer_name": "RHODE ISLAND SCHOOL OF DESIGN",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "480781",
+   "name": "California Miramar University",
+   "city": "San Diego",
+   "state": "CA",
+   "control": "for-profit",
+   "ein": "953132196",
+   "title_iv": true,
+   "web": "www.calmu.edu/",
+   "grad": 112,
+   "grad_nra": 60,
+   "grad_nra_share_pct": 53.6,
+   "total": 247,
+   "total_nra": 84,
+   "trend": {
+    "2022": {
+     "grad": 117,
+     "grad_nra": 98
+    },
+    "2023": {
+     "grad": 117,
+     "grad_nra": 107
+    },
+    "2024": {
+     "grad": 112,
+     "grad_nra": 60
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 46,
+    "pell_dollars": 256858,
+    "federal_loan_recipients": 60,
+    "federal_loan_dollars": 402805
+   },
+   "recruitment_990": null
+  },
+  {
+   "unitid": "153861",
+   "name": "Maharishi International University",
+   "city": "Fairfield",
+   "state": "IA",
+   "control": "private nonprofit",
+   "ein": "421315493",
+   "title_iv": true,
+   "web": "https://www.miu.edu/",
+   "grad": 1670,
+   "grad_nra": 890,
+   "grad_nra_share_pct": 53.3,
+   "total": 2592,
+   "total_nra": 902,
+   "trend": {
+    "2022": {
+     "grad": 1992,
+     "grad_nra": 1218
+    },
+    "2023": {
+     "grad": 1889,
+     "grad_nra": 1076
+    },
+    "2024": {
+     "grad": 1670,
+     "grad_nra": 890
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 376,
+    "pell_dollars": 1856398,
+    "federal_loan_recipients": 438,
+    "federal_loan_dollars": 3906130
+   },
+   "recruitment_990": {
+    "filer_name": "MAHARISHI INTERNATIONAL UNIVERSITY",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "185828",
+   "name": "New Jersey Institute of Technology",
+   "city": "Newark",
+   "state": "NJ",
+   "control": "public",
+   "ein": "226000910",
+   "title_iv": true,
+   "web": "https://www.njit.edu/",
+   "grad": 3047,
+   "grad_nra": 1621,
+   "grad_nra_share_pct": 53.2,
+   "total": 13247,
+   "total_nra": 2224,
+   "trend": {
+    "2022": {
+     "grad": 3313,
+     "grad_nra": 1838
+    },
+    "2023": {
+     "grad": 3484,
+     "grad_nra": 2112
+    },
+    "2024": {
+     "grad": 3047,
+     "grad_nra": 1621
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 3515,
+    "pell_dollars": 19195551,
+    "federal_loan_recipients": 2963,
+    "federal_loan_dollars": 19714669
+   },
+   "recruitment_990": null
+  },
+  {
+   "unitid": "461795",
+   "name": "North American University",
+   "city": "Stafford",
+   "state": "TX",
+   "control": "private nonprofit",
+   "ein": "208825983",
+   "title_iv": true,
+   "web": "www.na.edu/",
+   "grad": 374,
+   "grad_nra": 192,
+   "grad_nra_share_pct": 51.3,
+   "total": 983,
+   "total_nra": 460,
+   "trend": {
+    "2022": {
+     "grad": 374,
+     "grad_nra": 168
+    },
+    "2023": {
+     "grad": 350,
+     "grad_nra": 153
+    },
+    "2024": {
+     "grad": 374,
+     "grad_nra": 192
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 233,
+    "pell_dollars": 1299966,
+    "federal_loan_recipients": 183,
+    "federal_loan_dollars": 1023685
+   },
+   "recruitment_990": {
+    "filer_name": "NORTH AMERICAN UNIVERSITY",
+    "filer_is_parent": false,
+    "returns_checked": 4,
+    "years": [],
+    "firms_total": 0,
+    "expense_lines_total": 0,
+    "headline": null
+   }
+  },
+  {
+   "unitid": "163268",
+   "name": "University of Maryland-Baltimore County",
+   "city": "Baltimore",
+   "state": "MD",
+   "control": "public",
+   "ein": "526002033",
+   "title_iv": true,
+   "web": "umbc.edu/",
+   "grad": 3139,
+   "grad_nra": 1607,
+   "grad_nra_share_pct": 51.2,
+   "total": 13906,
+   "total_nra": 2127,
+   "trend": {
+    "2022": {
+     "grad": 3366,
+     "grad_nra": 1738
+    },
+    "2023": {
+     "grad": 3658,
+     "grad_nra": 2031
+    },
+    "2024": {
+     "grad": 3139,
+     "grad_nra": 1607
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 3145,
+    "pell_dollars": 16645320,
+    "federal_loan_recipients": 3097,
+    "federal_loan_dollars": 19370610
+   },
+   "recruitment_990": null
+  },
+  {
+   "unitid": "485768",
+   "name": "Atlantis University",
+   "city": "Miami",
+   "state": "FL",
+   "control": "for-profit",
+   "ein": "161691262",
+   "title_iv": true,
+   "web": "https://atlantisuniversity.edu/",
+   "grad": 416,
+   "grad_nra": 213,
+   "grad_nra_share_pct": 51.2,
+   "total": 746,
+   "total_nra": 344,
+   "trend": {
+    "2022": {
+     "grad": 407,
+     "grad_nra": 197
+    },
+    "2023": {
+     "grad": 355,
+     "grad_nra": 178
+    },
+    "2024": {
+     "grad": 416,
+     "grad_nra": 213
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 219,
+    "pell_dollars": 1510005,
+    "federal_loan_recipients": 250,
+    "federal_loan_dollars": 1375000
+   },
+   "recruitment_990": null
+  },
+  {
+   "unitid": "104151",
+   "name": "Arizona State University Campus Immersion",
+   "city": "Tempe",
+   "state": "AZ",
+   "control": "public",
+   "ein": "860196696",
+   "title_iv": true,
+   "web": "www.asu.edu/",
+   "grad": 14368,
+   "grad_nra": 7290,
+   "grad_nra_share_pct": 50.7,
+   "total": 79818,
+   "total_nra": 12563,
+   "trend": {
+    "2022": {
+     "grad": 14573,
+     "grad_nra": 7179
+    },
+    "2023": {
+     "grad": 14419,
+     "grad_nra": 7295
+    },
+    "2024": {
+     "grad": 14368,
+     "grad_nra": 7290
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 19427,
+    "pell_dollars": 105571182,
+    "federal_loan_recipients": 18597,
+    "federal_loan_dollars": 123031952
+   },
+   "recruitment_990": null
+  },
+  {
+   "unitid": "227216",
+   "name": "University of North Texas",
+   "city": "Denton",
+   "state": "TX",
+   "control": "public",
+   "ein": "756002149",
+   "title_iv": true,
+   "web": "www.unt.edu/",
+   "grad": 12406,
+   "grad_nra": 6230,
+   "grad_nra_share_pct": 50.2,
+   "total": 46864,
+   "total_nra": 7775,
+   "trend": {
+    "2022": {
+     "grad": 11744,
+     "grad_nra": 5653
+    },
+    "2023": {
+     "grad": 13649,
+     "grad_nra": 7520
+    },
+    "2024": {
+     "grad": 12406,
+     "grad_nra": 6230
+    }
+   },
+   "federal_aid_2022_23": {
+    "pell_recipients": 11914,
+    "pell_dollars": 62749729,
+    "federal_loan_recipients": 12912,
+    "federal_loan_dollars": 121056802
+   },
+   "recruitment_990": null
+  }
+ ]
+}

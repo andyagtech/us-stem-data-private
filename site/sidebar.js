@@ -106,6 +106,12 @@
         { hash: 'universities', label: 'Inside one university' },
       ]},
       { href: '/filers.html', label: 'Who Files The Visas' },
+      { href: '/visa-schools.html', label: 'Schools That Launder Visas', anchors: [
+        { hash: 'how-it-works', label: 'How it works, at one school' },
+        { hash: 'schools', label: 'Every school' },
+        { hash: 'visas', label: 'When one visa tightens' },
+        { hash: 'method', label: 'Method and limits' },
+      ]},
       { href: '/non_stem.html', label: 'Non-STEM Lists' },
       { href: '/usaid.html', label: 'Scholarships & NGOs' },
       { href: '/live.html', label: 'Live Dashboard' },

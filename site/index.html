@@ -203,6 +203,29 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 @media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--hl:#b3123c;}}
 :root[data-theme="light"]{--hl:#b3123c;}
 /* /phd-light-status */
+  /* ---- The case, in four steps ---------------------------------- */
+  .case-kicker { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-muted); margin: 0 0 0.9rem; }
+  .hero h1 { max-width: 760px; }
+  .hero .subtitle { max-width: 620px; }
+  .case { list-style: none; margin: 2rem auto 0; padding: 0; max-width: 1180px;
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.9rem;
+    text-align: left; }
+  .case-step { position: relative; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1rem 1.05rem 0.95rem; display: flex; flex-direction: column; }
+  .case-n { position: absolute; top: 0.85rem; right: 0.95rem; font-size: 0.72rem;
+    font-weight: 700; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+  .case-h { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--text-muted); margin: 0 1.2rem 0.4rem 0; font-weight: 700; }
+  .case-num { font-size: 1.9rem; font-weight: 800; color: var(--hl); margin: 0 0 0.25rem;
+    line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .case-what { font-size: 0.86rem; line-height: 1.5; color: var(--text); margin: 0 0 0.7rem; flex: 1; }
+  .case-src { font-size: 0.72rem; color: var(--text-muted); margin: 0; line-height: 1.45; }
+  .case-src a { color: var(--accent); white-space: nowrap; }
+  @media (max-width: 1100px) { .case { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px)  { .case { grid-template-columns: 1fr; } .hero h1 { font-size: 1.55rem; } }
+  /* Below 900px the sidebar's menu button sits top-left; clear it. */
+  @media (max-width: 900px) { .case-kicker { margin-top: 1.75rem; } }
 </style>
 <!-- og:cards -->
 <meta property="og:title" content="Who Earns America&#x27;s Advanced Degrees">
@@ -232,20 +255,57 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 <a class="skip-link" href="#cases" data-track="anchor.cases">Skip to the data</a>
 <main id="main">
 <div class="hero">
-  <h1 id="finding">An American doing a STEM PhD is
-    <span class="hl">four times more likely to be paying for it themselves</span>.</h1>
-  <p class="subtitle">Three in four international science and engineering
-    doctorates come with a funded position. Barely half of American ones do.
-    The gap runs through every field, and it is the public that funds the
-    difference.<br>
-    <span class="sub-source">Federal data. NSF Survey of Earned Doctorates and
-    IPEDS Completions — mandatory collections, not surveys of opinion.</span></p>
-  <div class="hero-stats">
-    <div class="hero-stat"><div class="num">76%</div><div class="label">Of international STEM doctorates are funded</div></div>
-    <div class="hero-stat"><div class="num">53%</div><div class="label">Of American ones are</div></div>
-    <div class="hero-stat"><div class="num">$875K</div><div class="label">Federal research funding per STEM doctorate</div></div>
-    <div class="hero-stat"><div class="num">60%</div><div class="label">Of new master's seats went to non-residents</div></div>
-  </div>
+  <p class="case-kicker">Federal records: IPEDS, NSF, State Department, DHS, IRS</p>
+  <h1 id="finding">American universities, <span class="hl">paid for by American
+    taxpayers</span>, are training a growing foreign student body.</h1>
+  <p class="subtitle">Every graduate seat is one an American applicant did not get.
+    The degree has become a route into work visas, and some schools now enrol
+    almost no one else &mdash; while still taking federal money.</p>
+
+  <ol class="case">
+    <li class="case-step">
+      <span class="case-n" aria-hidden="true">1</span>
+      <p class="case-h">The public pays</p>
+      <p class="case-num">$875K</p>
+      <p class="case-what">in federal research funding per STEM doctorate. Yet an
+        American doctoral student is <strong>more than four times as likely</strong>
+        to be paying their own way (16.0% vs 3.5%).</p>
+      <p class="case-src">NSF HERD &amp; Survey of Earned Doctorates &middot;
+        <a href="#public-cost" data-track="case.public-cost">What the public puts in</a></p>
+    </li>
+    <li class="case-step">
+      <span class="case-n" aria-hidden="true">2</span>
+      <p class="case-h">The seats go abroad</p>
+      <p class="case-num">60%</p>
+      <p class="case-what">of new core-STEM master&rsquo;s seats went to non-residents
+        &mdash; about 96,000 of 159,000, over a decade in which American master&rsquo;s
+        numbers barely moved.</p>
+      <p class="case-src">IPEDS Completions &amp; Fall Enrollment &middot;
+        <a href="/expansion.html" data-track="case.expansion">The master&rsquo;s expansion</a></p>
+    </li>
+    <li class="case-step">
+      <span class="case-n" aria-hidden="true">3</span>
+      <p class="case-h">The degree becomes a visa</p>
+      <p class="case-num">194,554</p>
+      <p class="case-what">students on OPT work permits in 2024 &mdash;
+        <strong>2.5&times;</strong> the 77,619 of 2014. As one programme tightens the
+        next one grows: H-1B denials hit 24% in 2018 and CPT hit its record; H-1B
+        issuance fell 17% last year while STEM OPT rose 54%.</p>
+      <p class="case-src">DHS SEVP &middot; State Department &middot; USCIS &middot;
+        <a href="/visa-schools.html#visas" data-track="case.visas">When one visa tightens</a></p>
+    </li>
+    <li class="case-step">
+      <span class="case-n" aria-hidden="true">4</span>
+      <p class="case-h">Schools that launder visas</p>
+      <p class="case-num">57</p>
+      <p class="case-what">schools where foreign students are most of the graduate
+        enrolment, up from 43 in 2022; seven are 90% foreign or more. They took
+        <strong>$1.0bn</strong> in federal student aid, and the nonprofits among them
+        reported <strong>$89.7M</strong> paid to recruiting firms.</p>
+      <p class="case-src">IPEDS &middot; IRS Form 990 &middot;
+        <a href="/visa-schools.html" data-track="case.visa-schools">The schools</a></p>
+    </li>
+  </ol>
   <p class="hero-note"><a href="#who-pays" data-track="anchor.who-pays">Who gets funded</a>&nbsp;&middot; <a href="#clearance" data-track="anchor.clearance">The clearance test</a>&nbsp;&middot; <a href="#opportunity" data-track="anchor.opportunity">The seats</a>&nbsp;&middot; <a href="#cases" data-track="anchor.cases-2">The 49 departments</a>&nbsp;&middot; <a href="#public-cost" data-track="anchor.public-cost">What the public puts in</a>&nbsp;&middot; <a href="/expansion.html" data-track="nav.expansion">The master&rsquo;s expansion</a>&nbsp;&middot; <a href="/rankings.html" data-track="nav.rankings">Where the share is highest</a>&nbsp;&middot; <a href="/filers.html" data-track="nav.filers">Who files the visas</a>&nbsp;&middot; <a href="#method" data-track="anchor.method">Method and limits</a></p>
 </div>
 
