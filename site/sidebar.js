@@ -1,7 +1,12 @@
 // Shared sidebar + footer for all pages
 (function() {
   const currentPath = location.pathname;
-  const currentPage = currentPath.split('/').pop() || 'stem.html';
+  // "/" is the homepage. This fell back to 'stem.html', left over from when
+  // that was the landing page; once stem.html became a drawer page the site's
+  // front door lost its sidebar and showed a corner hamburger instead -- at
+  // "/" only, which is the URL every shared link lands on, while /index.html
+  // looked fine and was the one every check loaded.
+  const currentPage = currentPath.split('/').pop() || 'index.html';
   // Detect if we're on a university page like /universities/mit.html
   const uniMatch = currentPath.match(/\/universities\/([a-z0-9_]+)\.html/);
   const currentUniKey = uniMatch ? uniMatch[1] : null;
@@ -309,15 +314,13 @@
        already scrolls, and breaking inside it would mangle the formatting. */
     code { overflow-wrap: anywhere; }
     pre code { overflow-wrap: normal; }
-    /* A table's min-content is the sum of its columns, which no amount of
-       width:100% will shrink. Letting the TABLE scroll instead of the PAGE
-       is the standard trade: methodology.html laid out at 812px on a 390px
-       phone, so 52% of every page was off-screen.
-       Unconditional, not behind a phone breakpoint: the same table needs 812px
-       and an iPad portrait gives it 768. Pages already set table{width:100%},
-       which a block box still honours, so a table that fits is unchanged --
-       it only scrolls when its columns genuinely do not fit. */
-    table { display: block; overflow-x: auto; max-width: 100%; }
+    /* Tables that would push the page sideways get a scroll box of their own;
+       see wrapOverflowingTables(). Not table{display:block}, which this used
+       to be: a block table keeps its box at 100% but lays its rows out at
+       their content width, so a three-column table ended three-quarters of
+       the way across its card, borders and shaded rows stopping short. */
+    .sb-table-scroll { overflow-x: auto; max-width: 100%;
+      -webkit-overflow-scrolling: touch; }
     .site-footer { text-align: center; padding: 24px 16px; font-size: 0.72rem; color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 24px; }
     .site-footer a { color: var(--accent); text-decoration: none; }
     @media (max-width: 900px) {
@@ -391,6 +394,41 @@
       }
     })
     .catch(() => {/* fail silently — sidebar still has other groups */});
+
+  // A table too wide for its column scrolls inside its own box instead of
+  // moving the page. Only when it really overflows, and only when its author
+  // has not already put it in a scroll container -- most have (all 101 on the
+  // homepage), and a second container would take over their sticky headers.
+  // Tables that fit keep their DOM untouched. Re-checked as content renders
+  // and on resize, because most of these tables are filled in by script.
+  function inScroller(el) {
+    for (let p = el.parentElement; p && p !== document.body; p = p.parentElement) {
+      const cs = getComputedStyle(p);
+      if (/(auto|scroll)/.test(cs.overflowX + cs.overflowY)) return true;
+    }
+    return false;
+  }
+  function wrapOverflowingTables() {
+    document.querySelectorAll('table').forEach(function (t) {
+      const box = t.parentElement;
+      if (!box || box.classList.contains('sb-table-scroll')) return;
+      if (t.scrollWidth <= box.clientWidth + 1 || inScroller(t)) return;
+      const wrap = document.createElement('div');
+      wrap.className = 'sb-table-scroll';
+      box.insertBefore(wrap, t);
+      wrap.appendChild(t);
+    });
+  }
+  let tableTimer = null;
+  function scheduleTables() {
+    clearTimeout(tableTimer);
+    tableTimer = setTimeout(wrapOverflowingTables, 150);
+  }
+  scheduleTables();
+  window.addEventListener('load', scheduleTables);
+  window.addEventListener('resize', scheduleTables);
+  new MutationObserver(scheduleTables).observe(document.body,
+    { childList: true, subtree: true });
 
   // Keep the in-page anchor sub-items in step with the fragment, so a link
   // followed or pasted mid-session highlights the right section.
