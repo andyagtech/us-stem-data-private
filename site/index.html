@@ -28,6 +28,10 @@
   .hero h1 .hl { color: var(--hl); }
   .hero-note { color: var(--text-muted); font-size: 0.78rem; margin: 1.5rem auto 0; max-width: 620px; }
   .hero-note a { color: var(--accent); }
+  /* A link never splits across lines ("The" / "master's expansion"), and
+     each separator is bound to the link before it by a no-break space, so a
+     line can only break AFTER a dot -- never mid-link, never on a leading dot. */
+  .hero-note a { white-space: nowrap; }
   .lede { color: var(--text-muted); max-width: 62ch; line-height: 1.6; margin: 0 0 1.25rem; font-size: 0.92rem; }
   .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; }
   table.cases { width: 100%; border-collapse: collapse; font-size: 0.88rem; min-width: 640px; }
@@ -242,15 +246,7 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
     <div class="hero-stat"><div class="num">$875K</div><div class="label">Federal research funding per STEM doctorate</div></div>
     <div class="hero-stat"><div class="num">60%</div><div class="label">Of new master's seats went to non-residents</div></div>
   </div>
-  <p class="hero-note"><a href="#who-pays" data-track="anchor.who-pays">Who gets funded</a> &middot;
-    <a href="#clearance" data-track="anchor.clearance">The clearance test</a> &middot;
-    <a href="#opportunity" data-track="anchor.opportunity">The seats</a> &middot;
-    <a href="#cases" data-track="anchor.cases-2">The 49 departments</a> &middot;
-    <a href="#public-cost" data-track="anchor.public-cost">What the public puts in</a> &middot;
-    <a href="/expansion.html" data-track="nav.expansion">The master&rsquo;s expansion</a> &middot;
-    <a href="/rankings.html" data-track="nav.rankings">Where the share is highest</a> &middot;
-      <a href="/filers.html" data-track="nav.filers">Who files the visas</a> &middot;
-    <a href="#method" data-track="anchor.method">Method and limits</a></p>
+  <p class="hero-note"><a href="#who-pays" data-track="anchor.who-pays">Who gets funded</a>&nbsp;&middot; <a href="#clearance" data-track="anchor.clearance">The clearance test</a>&nbsp;&middot; <a href="#opportunity" data-track="anchor.opportunity">The seats</a>&nbsp;&middot; <a href="#cases" data-track="anchor.cases-2">The 49 departments</a>&nbsp;&middot; <a href="#public-cost" data-track="anchor.public-cost">What the public puts in</a>&nbsp;&middot; <a href="/expansion.html" data-track="nav.expansion">The master&rsquo;s expansion</a>&nbsp;&middot; <a href="/rankings.html" data-track="nav.rankings">Where the share is highest</a>&nbsp;&middot; <a href="/filers.html" data-track="nav.filers">Who files the visas</a>&nbsp;&middot; <a href="#method" data-track="anchor.method">Method and limits</a></p>
 </div>
 
 <div class="content">

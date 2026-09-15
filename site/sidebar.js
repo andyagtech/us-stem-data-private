@@ -216,15 +216,28 @@
 
     // Insert Universities group between National and International
     // Use stem.html#key so the full SPA (with toggles/panels) handles each university
-    const uniItems = universities.map(u => {
+    // Ranked by the figure each row shows. The list used to arrive in config
+    // order -- 74.3%, 66.7%, 64.5%, 66.1%, 58.8%, 46.9%, 48.7% -- which reads
+    // as a ranking and is not one. Ties share a rank (1, 2, 2, 4) and are
+    // listed alphabetically; a school with no figure goes last, unranked.
+    const ranked = universities.slice().sort((a, b) =>
+      ((b.nra ?? -1) - (a.nra ?? -1)) || a.name.localeCompare(b.name));
+    let prevNra = null, prevRank = 0;
+    const uniItems = ranked.map((u, i) => {
+      const hasNra = typeof u.nra === 'number';
+      const rank = !hasNra ? '' : (u.nra === prevNra ? prevRank : i + 1);
+      if (hasNra) { prevNra = u.nra; prevRank = rank; }
       const active = currentUniKey === u.key ? ' active' : '';
       const dot = u.has_opt ? '<span class="opt-dot"></span>' : '';
-      return `<a href="/stem.html#${u.key}" class="sb-item sb-uni${active}" data-key="${u.key}"><span>${u.name}</span><span class="sb-uni-meta"><span class="sb-uni-nra">${u.nra}%</span>${dot}</span></a>`;
+      // One decimal throughout, so a ranked column reads as one column: the
+      // data holds 56 for Iowa State and 55.9 for the school below it.
+      const nra = hasNra ? `${u.nra.toFixed(1)}%` : '\u2014';
+      return `<a href="/stem.html#${u.key}" class="sb-item sb-uni${active}" data-key="${u.key}"><span class="sb-uni-rank">${rank}</span><span class="sb-uni-name">${u.name}</span><span class="sb-uni-meta"><span class="sb-uni-nra">${nra}</span>${dot}</span></a>`;
     }).join('');
     const uniCollapsed = collapsedSections.has('Universities') ? ' collapsed' : '';
     const uniGroup = `<div class="sb-group${uniCollapsed}" data-section="Universities">
         <div class="sb-section" onclick="window._sbToggle(this.parentElement)"><span class="sb-chev">\u25BC</span> Universities (${universities.length})</div>
-        <div class="sb-content">${uniItems}</div>
+        <div class="sb-content"><p class="sb-note">Ranked by NRA share of STEM doctoral completions (IPEDS).</p>${uniItems}</div>
       </div>`;
 
     // National (0), Universities (1), International (2 → was 1), Reference (3 → was 2)
@@ -251,8 +264,12 @@
 
   const html = `
     <div class="sb-header">
-      <a href="index.html" class="sb-logo">PhD Demographics</a>
-      <span class="sb-sub">US Graduate Program Research</span>
+      <div class="sb-brand">
+        <a href="index.html" class="sb-logo">PhD Demographics</a>
+        <span class="sb-tagline">US Graduate Program Research</span>
+      </div>
+      <button type="button" class="sb-hide" aria-controls="shared-sidebar"
+        aria-label="Hide the sidebar" title="Hide the sidebar" data-track="nav.sidebar-hide">\u00AB</button>
     </div>
     <div class="sb-body">${buildGroups()}</div>
     <div class="sb-footer-links">
@@ -264,7 +281,14 @@
     #shared-sidebar { position: fixed; top: 0; left: 0; width: 220px; height: 100vh; background: var(--surface); border-right: 1px solid var(--border); z-index: 100; display: flex; flex-direction: column; transition: left 0.25s; }
     .sb-header { padding: 14px 16px 8px; border-bottom: 1px solid var(--border); }
     .sb-logo { font-size: 0.9rem; font-weight: 700; color: var(--accent); text-decoration: none; display: block; }
-    .sb-sub { font-size: 0.68rem; color: var(--text-muted); display: block; margin-top: 2px; }
+    .sb-tagline { font-size: 0.68rem; color: var(--text-muted); display: block; margin-top: 2px; }
+    .sb-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+    .sb-hide { flex: 0 0 auto; background: none; border: 1px solid transparent;
+      color: var(--text-muted); border-radius: 6px; cursor: pointer; font-size: 1rem;
+      line-height: 1; padding: 3px 7px; margin: -3px -8px 0 0; }
+    .sb-hide:hover { color: var(--text); border-color: var(--border); }
+    .sb-hide:focus-visible, .sb-mobile-btn:focus-visible {
+      outline: 2px solid var(--accent); outline-offset: 2px; }
     .sb-body { flex: 1; overflow-y: auto; padding-top: 6px; scrollbar-gutter: stable; }
     .sb-section { padding: 12px 16px 5px; font-size: 0.68rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; display: flex; align-items: center; gap: 6px; user-select: none; }
     .sb-section:hover { color: var(--text); }
@@ -277,7 +301,13 @@
     .sb-sub.active { color: var(--accent); }
     .sb-item:hover { background: var(--border); color: var(--text); }
     .sb-item.active { border-left-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
-    .sb-uni { display: flex; justify-content: space-between; align-items: baseline; }
+    .sb-uni { display: flex; align-items: baseline; gap: 6px; }
+    .sb-uni-rank { flex: 0 0 1.6em; text-align: right; font-size: 0.68rem;
+      color: var(--text-muted); font-variant-numeric: tabular-nums; }
+    .sb-uni-name { flex: 1 1 auto; min-width: 0; }
+    .sb-uni .sb-uni-meta { font-variant-numeric: tabular-nums; }
+    .sb-note { margin: 2px 16px 6px; font-size: 0.68rem; line-height: 1.35;
+      color: var(--text-muted); }
     .sb-uni-meta { display: flex; align-items: center; gap: 4px; }
     .sb-uni-nra { font-size: 0.7rem; color: var(--text-muted); }
     .opt-dot { display: none; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); vertical-align: middle; }
@@ -337,6 +367,30 @@
     body.sb-drawer #shared-sidebar.open { left: 0; }
     body.sb-drawer.has-sidebar { margin-left: 0; }
     body.sb-drawer .sb-mobile-btn { display: block !important; }
+    /* Collapsed by the reader. Only where the sidebar would otherwise be
+       pinned -- a desktop-width page that is not a drawer page. It collapses
+       to a 36px rail holding the menu button, and the page gets the other
+       184px back. A rail rather than a floating button: floating it top-left
+       covered the heading on nine pages, and bottom-left covered charts and
+       table cells on twenty-six at 1024px wide. Content starts right of the
+       rail, so nothing can sit under it. Below 900px, and on drawer pages,
+       nothing changes. */
+    @media (min-width: 901px) {
+      body.sb-hidden:not(.sb-drawer) #shared-sidebar { left: -260px; }
+      body.sb-hidden:not(.sb-drawer).has-sidebar { margin-left: 36px; }
+      /* flex, not block: a button centres its content vertically whatever its
+         padding says, which left the menu icon halfway down the page. */
+      body.sb-hidden:not(.sb-drawer) .sb-mobile-btn { display: flex; flex-direction: column;
+        align-items: center; justify-content: flex-start; top: 0; left: 0;
+        width: 36px; height: 100vh; padding: 12px 0 0; border: 0; border-radius: 0;
+        border-right: 1px solid var(--border); background: var(--surface);
+        font-size: 1.05rem; line-height: 1; text-align: center; vertical-align: top; }
+      body.sb-hidden:not(.sb-drawer) .sb-mobile-btn:hover { color: var(--text); }
+    }
+    /* No slide on page load: a reader who hid it should not watch it leave
+       again on every page they open. */
+    body.sb-no-anim #shared-sidebar { transition: none; }
+    @media (prefers-reduced-motion: reduce) { #shared-sidebar { transition: none; } }
   `;
 
   // Inject styles
@@ -348,6 +402,17 @@
   const nav = document.createElement('nav');
   nav.id = 'shared-sidebar';
   nav.innerHTML = html;
+  // Open by default; hidden only if this reader hid it. Remembered across
+  // pages so the choice is not undone by every link they follow.
+  const HIDDEN_KEY = 'sb_hidden';
+  function readHidden() {
+    try { return localStorage.getItem(HIDDEN_KEY) === '1'; } catch { return false; }
+  }
+  function writeHidden(v) {
+    try { if (v) localStorage.setItem(HIDDEN_KEY, '1'); else localStorage.removeItem(HIDDEN_KEY); } catch {}
+  }
+  document.body.classList.add('sb-no-anim');
+  if (readHidden()) document.body.classList.add('sb-hidden');
   document.body.prepend(nav);
   document.body.classList.add('has-sidebar');
   if (isDrawerMode) document.body.classList.add('sb-drawer');
@@ -356,9 +421,46 @@
   // Mobile toggle
   const btn = document.createElement('button');
   btn.className = 'sb-mobile-btn';
+  btn.type = 'button';
   btn.textContent = '\u2630';
-  btn.onclick = () => nav.classList.toggle('open');
+  btn.setAttribute('aria-controls', 'shared-sidebar');
+  btn.setAttribute('data-track', 'nav.sidebar-show');
   document.body.appendChild(btn);
+
+  const hideBtn = nav.querySelector('.sb-hide');
+  // "Pinned" is the desktop layout the hide control applies to. Elsewhere the
+  // sidebar is an overlay drawer, and the same two buttons open and close it.
+  const pinnedLayout = () => !isDrawerMode && window.matchMedia('(min-width: 901px)').matches;
+  function syncControls() {
+    const shown = pinnedLayout()
+      ? !document.body.classList.contains('sb-hidden')
+      : nav.classList.contains('open');
+    btn.setAttribute('aria-expanded', String(shown));
+    btn.setAttribute('aria-label', shown ? 'Hide the sidebar' : 'Show the sidebar');
+    btn.title = btn.getAttribute('aria-label');
+    hideBtn.setAttribute('aria-expanded', String(shown));
+  }
+  function setHidden(hidden) {
+    document.body.classList.toggle('sb-hidden', hidden);
+    writeHidden(hidden);
+    syncControls();
+    (hidden ? btn : hideBtn).focus({ preventScroll: true });
+    // The content column just changed width. Charts and the wide-table check
+    // size themselves on resize, so tell them once the slide has finished.
+    setTimeout(() => window.dispatchEvent(new Event('resize')), 280);
+  }
+  btn.addEventListener('click', () => {
+    if (pinnedLayout()) setHidden(false);
+    else { nav.classList.toggle('open'); syncControls(); }
+  });
+  hideBtn.addEventListener('click', () => {
+    if (pinnedLayout()) setHidden(true);
+    else { nav.classList.remove('open'); syncControls(); btn.focus({ preventScroll: true }); }
+  });
+  window.addEventListener('resize', syncControls);
+  syncControls();
+  requestAnimationFrame(() => requestAnimationFrame(() =>
+    document.body.classList.remove('sb-no-anim')));
 
   // Inject footer
   const footer = document.createElement('footer');
