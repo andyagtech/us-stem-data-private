@@ -336,6 +336,67 @@
         '<td class="num">' + (dr[y] == null ? '—' : dr[y] + '%') + '</td></tr>';
     }).join('') + '</tbody>';
 
+    var oc = visaData.opt_cost || {};
+    if (oc.employer_share_pct) {
+      $('opt-cost-lede').innerHTML =
+        'Two things make an OPT graduate cheaper and more biddable than the American ' +
+        'graduate beside them, and both are written into federal law rather than left to ' +
+        'the market: ' + esc(oc.rule);
+      var empl = Math.round(1000 * oc.employer_share_pct);       // 7.65% of $100,000
+      var both = Math.round(1000 * oc.total_payroll_tax_pct);    // 15.3% of $100,000
+      $('opt-cost').innerHTML = [
+        { h: 'Payroll tax: ' + oc.total_payroll_tax_pct + '% that is never paid',
+          p: 'The wages are not &ldquo;employment&rdquo;, so neither side pays: not the ' +
+            'employer&rsquo;s <strong>' + oc.employer_share_pct + '%</strong> nor the ' +
+            'worker&rsquo;s <strong>' + oc.employer_share_pct + '%</strong>. On a $100,000 ' +
+            'salary the employer keeps <strong>$' + empl.toLocaleString('en-US') + '</strong> ' +
+            'and the graduate takes home $' + empl.toLocaleString('en-US') + ' more than an ' +
+            'American on the same figure — so the same take-home can be bought for a lower ' +
+            'salary, and <strong>$' + both.toLocaleString('en-US') + '</strong> of cost ' +
+            'disappears from the job.' },
+        { h: 'The job is the visa', p: '<em>&ldquo;' + esc(oc.dependency_quote) + '&rdquo;</em> — ' +
+            esc(oc.dependency_rule) + ' An American graduate who leaves a job looks for ' +
+            'another one; a graduate on OPT has 90 days before losing the right to stay.' },
+        { h: 'No petition, cap or lottery', p: 'OPT is work authorisation on a visa the ' +
+            'graduate already holds. The student files the application; the employer files ' +
+            'nothing with USCIS, enters no lottery and pays no petition fee. ' +
+            esc(oc.stem_opt_pay_rule) }
+      ].map(function (c) { return '<div class="window"><h3>' + c.h + '</h3><p>' + c.p + '</p></div>'; }).join('');
+      $('opt-cost-note').innerHTML = 'Sources: <a href="' + esc(oc.statute_url) +
+        '" target="_blank" rel="noopener noreferrer">' + esc(oc.statute) + '</a>, ' +
+        '<a href="' + esc(oc.irs_url) + '" target="_blank" rel="noopener noreferrer">IRS guidance ' +
+        'on foreign student liability for Social Security and Medicare taxes</a>, and ' +
+        '<a href="' + esc(oc.stem_opt_rule_url) + '" target="_blank" rel="noopener noreferrer">' +
+        '8 CFR 214.2(f)(10)</a>, including ' + esc(oc.dependency_cite) + '. The tax exclusion ' +
+        'applies while the graduate is a nonresident alien for tax purposes; it ends if they ' +
+        'become a resident alien or change status.';
+    }
+
+    var tn = visaData.tn || {};
+    if (tn.issuance_year) {
+      var byNat = Object.keys(tn.issued_by_nationality || {}).slice(0, 2).map(function (c) {
+        return esc(c) + ' ' + n(tn.issued_by_nationality[c]); }).join(', ');
+      var admYears = Object.keys(tn.admissions || {}).sort();
+      var lastAdm = admYears[admYears.length - 1];
+      $('tn-lede').textContent = 'TN rose while H-1B collapsed, which looks like the same ' +
+        'substitution — but it is a different path, open only to Canadians and Mexicans, and ' +
+        'the visa series barely sees it. That is why TN is kept out of the chart above.';
+      $('tn-cards').innerHTML = [
+        { h: 'The visas go almost entirely to Mexicans', p: 'TN visas issued in FY' +
+            esc(tn.issuance_year) + ': <strong>' + byNat + '</strong>. ' +
+            esc(tn.why_the_visa_series_misses_it) },
+        { h: 'The real traffic is in admissions', p: lastAdm ? '<strong>' +
+            n(tn.admissions[lastAdm]) + '</strong> TN admissions in ' + esc(lastAdm) +
+            ', against about ' + n(tn.issued_by_nationality.Mexico || 0) + ' visas issued. ' +
+            'Admissions count entries, not people: a commuter crossing weekly is counted ' +
+            'every time.' : 'No admissions series available.' },
+        { h: 'What the data cannot tell you', p: esc(tn.what_the_data_cannot_say) }
+      ].map(function (c) { return '<div class="window"><h3>' + c.h + '</h3><p>' + c.p + '</p></div>'; }).join('');
+      $('tn-note').textContent = 'Sources: State Department Nonimmigrant Visa Detail Tables ' +
+        '(issuances, by nationality) and the DHS Yearbook of Immigration Statistics ' +
+        '(admissions by class). Country of birth is not published for either series.';
+    }
+
     $('caveats').innerHTML = (visaData.caveats || []).map(function (c) {
       return '<li>' + esc(c) + '</li>'; }).join('');
   }

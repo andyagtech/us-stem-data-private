@@ -110,6 +110,8 @@
         { hash: 'how-it-works', label: 'How it works, at one school' },
         { hash: 'schools', label: 'Every school' },
         { hash: 'visas', label: 'When one visa tightens' },
+        { hash: 'cheaper', label: 'Why an OPT hire costs less' },
+        { hash: 'tn', label: 'TN is a different path' },
         { hash: 'method', label: 'Method and limits' },
       ]},
       { href: '/non_stem.html', label: 'Non-STEM Lists' },
