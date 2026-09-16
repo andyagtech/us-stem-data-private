@@ -37,9 +37,23 @@
     try { localStorage.setItem('sb_collapsed', JSON.stringify([...set])); } catch {}
   }
   let collapsedSections = getCollapsedSections();
+  // "Has this reader chosen?" cannot be read from sb_collapsed being non-empty:
+  // stem.html and non_stem.html build their own pinned nav and write their own
+  // group names into the same key, so a reader who collapsed a group there
+  // would silently switch this rail back to all-nine-sections-open. Only this
+  // file writes sb_touched.
+  const hasSavedCollapse = (function () {
+    try { return localStorage.getItem('sb_touched') === '1'; } catch { return false; }
+  })();
+  // The rail carries nine sections now. Opening all of them puts forty items
+  // in a 260px column, which is the problem the sections were meant to solve.
+  // So on a first visit only the section holding the current page is open;
+  // once the reader opens or closes anything themselves, their state is kept
+  // and this never overrides it again.
+  const UNIVERSITIES_AFTER = '4 · Who profits';
 
   const sections = [
-    { title: 'National', items: [
+    { title: 'Start here', items: [
       { href: '/overview.html', label: 'National Overview' },
       { href: '/stem.html', label: 'National Charts', anchors: [
         { hash: 'nat-phd', label: 'STEM PhD by Citizenship' },
@@ -50,12 +64,45 @@
         { hash: 'nat-visa-calc', label: 'Cumulative Visa Calculator' },
         { hash: 'nat-fields', label: 'NRA by STEM Field' },
       ]},
+      { href: '/presentation.html', label: 'Presentation: The Concentration Effect' },
+    ]},
+    { title: '1 · The public pays for the doctorate', items: [
       { href: '/ipeds_dashboard.html', label: 'IPEDS PhD Dashboard', anchors: [
         { hash: 'panel-trends', label: 'Trends' },
         { hash: 'panel-demographics', label: 'Demographics' },
         { hash: 'panel-institutions', label: 'Institutions' },
         { hash: 'panel-states', label: 'States' },
       ]},
+      { href: '/distributions.html', label: 'Distributions', anchors: [
+        { hash: 'national', label: 'National, then and now' },
+        { hash: 'programmes', label: 'By programme' },
+        { hash: 'universities', label: 'Inside one university' },
+      ]},
+      { href: '/non_stem.html', label: 'Non-STEM Lists' },
+      { href: '/rankings.html', label: 'Where The Share Is Highest', anchors: [
+        { hash: 'institutions', label: 'Institutions' },
+        { hash: 'programmes', label: 'Programmes' },
+        { hash: 'contrast', label: 'Two programmes, one university' },
+      ]},
+    ]},
+    { title: "2 · The master's is sold", items: [
+      { href: '/expansion.html', label: "The Master's Expansion", anchors: [
+        { hash: 'volume', label: 'In absolute numbers' },
+        { hash: 'share', label: 'As a proportion' },
+        { hash: 'visas', label: 'The visas' },
+        { hash: 'billed', label: 'What it is worth' },
+      ]},
+      { href: '/institutions.html', label: 'Compare Institutions', anchors: [
+        { hash: 'the-table', label: 'The table' },
+        { hash: 'what-a-row-does-not-mean', label: 'What a row does not mean' },
+      ]},
+      { href: '/rankings.html', label: 'Where The Share Is Highest', anchors: [
+        { hash: 'institutions', label: 'Institutions' },
+        { hash: 'programmes', label: 'Programmes' },
+        { hash: 'contrast', label: 'Two programmes, one university' },
+      ]},
+    ]},
+    { title: '3 · The degree becomes a visa', items: [
       { href: '/immigration.html', label: 'Immigration Pipeline' },
       { href: '/pipeline.html', label: 'Pipeline Analysis', anchors: [
         { hash: 'pipeline-chart-section', label: 'A. Full Pipeline' },
@@ -84,28 +131,9 @@
         { hash: 'totals-section', label: 'Totals by Field' },
         { hash: 'industry-section', label: 'By Major Industry' },
       ]},
-      { href: '/presentation.html', label: 'Presentation: The Concentration Effect' },
-      { href: '/institutions.html', label: 'Compare Institutions', anchors: [
-        { hash: 'the-table', label: 'The table' },
-        { hash: 'what-a-row-does-not-mean', label: 'What a row does not mean' },
-      ]},
-      { href: '/rankings.html', label: 'Where The Share Is Highest', anchors: [
-        { hash: 'institutions', label: 'Institutions' },
-        { hash: 'programmes', label: 'Programmes' },
-        { hash: 'contrast', label: 'Two programmes, one university' },
-      ]},
-      { href: '/expansion.html', label: "The Master's Expansion", anchors: [
-        { hash: 'volume', label: 'In absolute numbers' },
-        { hash: 'share', label: 'As a proportion' },
-        { hash: 'visas', label: 'The visas' },
-        { hash: 'billed', label: 'What it is worth' },
-      ]},
-      { href: '/distributions.html', label: 'Distributions', anchors: [
-        { hash: 'national', label: 'National, then and now' },
-        { hash: 'programmes', label: 'By programme' },
-        { hash: 'universities', label: 'Inside one university' },
-      ]},
       { href: '/filers.html', label: 'Who Files The Visas' },
+    ]},
+    { title: '4 · Who profits', items: [
       { href: '/visa-schools.html', label: 'Schools That Launder Visas', anchors: [
         { hash: 'how-it-works', label: 'How it works, at one school' },
         { hash: 'schools', label: 'Every school' },
@@ -114,9 +142,21 @@
         { hash: 'tn', label: 'TN is a different path' },
         { hash: 'method', label: 'Method and limits' },
       ]},
-      { href: '/non_stem.html', label: 'Non-STEM Lists' },
+      { href: '/bodyshops.html', label: 'The Visa Body Shops', anchors: [
+        { hash: 'test', label: 'What counts as a body shop' },
+        { hash: 'firms', label: 'The firms that meet the test' },
+        { hash: 'wages', label: 'Same job title, two prices' },
+        { hash: 'trend', label: 'Four years of filings' },
+        { hash: 'barred', label: 'Who has been barred' },
+        { hash: 'concentration', label: 'How concentrated it is' },
+        { hash: 'method', label: 'Method and limits' },
+      ]},
       { href: '/usaid.html', label: 'Scholarships & NGOs' },
+      { href: '/filers.html', label: 'Who Files The Visas' },
+    ]},
+    { title: 'Explore', items: [
       { href: '/live.html', label: 'Live Dashboard' },
+      { href: '/query.html', label: 'Data Query (SQL)' },
     ]},
     { title: 'International', items: [
       { href: '/india.html', label: 'India (Outbound)', anchors: [
@@ -196,6 +236,27 @@
 
   let universities = [];
 
+  // Which sections hold the page being read. A page listed twice lights up in
+  // both, which is the point of listing it twice.
+  function sectionsWithCurrentPage() {
+    return sections.filter(s => s.items.some(p =>
+      p.href.replace(/^\//, '') === currentPage)).map(s => s.title);
+  }
+
+  // Runs ONCE per page load, never on a rerender: a reader who closes the
+  // section they are reading should have it stay closed until they navigate.
+  function openTheSectionBeingRead() {
+    const open = new Set(sectionsWithCurrentPage());
+    if (currentUniKey) open.add('Universities');
+    if (!open.size) open.add('Start here');       // a page in no section
+    // Whatever else is or is not collapsed, the page being read is reachable.
+    open.forEach(t => collapsedSections.delete(t));
+    if (hasSavedCollapse) return;                 // the reader's own choices win
+    sections.forEach(s => { if (!open.has(s.title)) collapsedSections.add(s.title); });
+    if (!open.has('Universities')) collapsedSections.add('Universities');
+  }
+  openTheSectionBeingRead();
+
   function buildGroups() {
     const currentHash = (location.hash || '').replace(/^#/, '');
     const groupHtml = sections.map(s => {
@@ -248,8 +309,15 @@
         <div class="sb-content"><p class="sb-note">Ranked by NRA share of STEM doctoral completions (IPEDS).</p>${uniItems}</div>
       </div>`;
 
-    // National (0), Universities (1), International (2 → was 1), Reference (3 → was 2)
-    return [groupHtml[0], uniGroup, groupHtml[1], groupHtml[2]].join('');
+    // Universities goes in by NAME, after the last step of the argument. This
+    // used to be a hardcoded list of indices -- [0, uni, 1, 2] -- written when
+    // there were three sections. A fourth was added later and simply fell off
+    // the end: the About group, with the tip line in it, has never rendered on
+    // any page. An index list cannot say that it is incomplete; a splice can.
+    const out = sections.map((s, i) => groupHtml[i]);
+    const after = sections.findIndex(s => s.title === UNIVERSITIES_AFTER);
+    out.splice(after < 0 ? out.length : after + 1, 0, uniGroup);
+    return out.join('');
   }
 
   // Global toggle handler that persists state
@@ -263,6 +331,7 @@
       collapsedSections.delete(section);
     }
     setCollapsedSections(collapsedSections);
+    try { localStorage.setItem('sb_touched', '1'); } catch {}
   };
 
   function rerender() {

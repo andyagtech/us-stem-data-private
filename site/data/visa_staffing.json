@@ -1,0 +1,2726 @@
+{
+ "_comment": "Who actually sponsors H-1B workers: the staffing and consulting trade.\n\nWHY THIS EXISTS. The published lists of \"top employers\" are Amazon, Google and\nMicrosoft, which is what a reader of the news sees. They are not where the\nvolume sits. This reads every row USCIS publishes -- fifteen fiscal years of\nits H-1B Employer Data Hub, one row per employer per year -- and separates the\nfirms whose business IS supplying workers from the firms that hire them for\nthemselves, using the employer's own NAICS code rather than a guess from its\nname.\n\nWHAT IT MEASURES, AND WHAT EACH FIGURE MEANS.\n  * INITIAL approvals are new workers entering the programme; CONTINUING\n    approvals are extensions and amendments for someone already in it. They\n    must never be summed: the same person appears again every time their\n    petition is renewed. The ratio between them is itself the signal --\n    a firm with many continuing approvals per initial one is holding workers\n    over years, which is what a staffing arrangement looks like.\n  * The DENIAL rate is USCIS's own, per employer and year.\n  * INDUSTRY, as far as the hub goes. Every row carries a NAICS code of\n    exactly two digits -- \"54\", \"56\" -- which is a sector, not an industry:\n    \"54\" holds law firms, engineering consultancies and IT consultancies\n    alike. A staffing agency CANNOT be separated from its clients here. That\n    classification needs the Labor Department's disclosure files, which carry\n    six digits plus the employer's own dependency and third-party-placement\n    answers; it is done in build_visa_bodyshops.py, and this file's job is\n    the thing the hub does better than anything else -- counting approved\n    people, by employer, over fifteen years.\n\nWHO IS BARRED. The Labor Department's debarment lists are joined on the\nemployer name (data/policy/debarments.json, verified against the live DOL\npages). Two things about that list matter more than its contents: it is very\nshort, and a SUSPENSION pending investigation -- the action reported against\nCloudera and Cognizant -- never appears on it at all, because DOL publishes\nno list of suspensions.",
+ "sources": {
+  "employers": "USCIS H-1B Employer Data Hub, fiscal years 2009-2023",
+  "employers_url": "https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub",
+  "debarments": "US Department of Labor debarment lists (WHD H-1B; ETA PERM, H-2A, H-2B)",
+  "debarments_url": "https://www.dol.gov/agencies/whd/immigration/h1b/debarment"
+ },
+ "definitions": {
+  "initial_vs_continuing": "Initial approvals are new workers entering the programme; continuing approvals are extensions for people already in it. Summing them counts the same person every year.",
+  "sectors": {
+   "54": "Professional, scientific and technical services",
+   "56": "Administrative and support services (includes staffing agencies)",
+   "51": "Information",
+   "52": "Finance and insurance",
+   "61": "Educational services",
+   "62": "Health care and social assistance",
+   "33": "Manufacturing",
+   "99": "Unclassified"
+  },
+  "naics_limit": "Every hub row carries a two-digit NAICS sector, never an industry. Sector 54 holds law firms and IT consultancies together, so a staffing firm cannot be separated from its clients in this data. That separation is made from the Labor Department's disclosure files instead, in visa_bodyshops.json."
+ },
+ "years": [
+  "2009",
+  "2010",
+  "2011",
+  "2012",
+  "2013",
+  "2014",
+  "2015",
+  "2016",
+  "2017",
+  "2018",
+  "2019",
+  "2020",
+  "2021",
+  "2022",
+  "2023"
+ ],
+ "by_year": {
+  "2009": {
+   "initial_approval": 99764,
+   "continuing_approval": 127660,
+   "initial_denial": 18091
+  },
+  "2010": {
+   "initial_approval": 83530,
+   "continuing_approval": 108875,
+   "initial_denial": 7332
+  },
+  "2011": {
+   "initial_approval": 114854,
+   "continuing_approval": 155180,
+   "initial_denial": 8578
+  },
+  "2012": {
+   "initial_approval": 140799,
+   "continuing_approval": 129017,
+   "initial_denial": 7398
+  },
+  "2013": {
+   "initial_approval": 130732,
+   "continuing_approval": 164530,
+   "initial_denial": 9590
+  },
+  "2014": {
+   "initial_approval": 130615,
+   "continuing_approval": 202185,
+   "initial_denial": 10643
+  },
+  "2015": {
+   "initial_approval": 111844,
+   "continuing_approval": 176655,
+   "initial_denial": 7642
+  },
+  "2016": {
+   "initial_approval": 105090,
+   "continuing_approval": 252116,
+   "initial_denial": 11293
+  },
+  "2017": {
+   "initial_approval": 96166,
+   "continuing_approval": 277226,
+   "initial_denial": 14518
+  },
+  "2018": {
+   "initial_approval": 87887,
+   "continuing_approval": 247067,
+   "initial_denial": 28181
+  },
+  "2019": {
+   "initial_approval": 132966,
+   "continuing_approval": 256350,
+   "initial_denial": 35633
+  },
+  "2020": {
+   "initial_approval": 122893,
+   "continuing_approval": 303829,
+   "initial_denial": 18275
+  },
+  "2021": {
+   "initial_approval": 141194,
+   "continuing_approval": 333928,
+   "initial_denial": 5667
+  },
+  "2022": {
+   "initial_approval": 138378,
+   "continuing_approval": 327807,
+   "initial_denial": 3132
+  },
+  "2023": {
+   "initial_approval": 38314,
+   "continuing_approval": 138635,
+   "initial_denial": 2432
+  }
+ },
+ "totals": {
+  "employers": 368825,
+  "initial_approvals": 1675026,
+  "top10_share_pct": 11.2,
+  "top50_share_pct": 23.3,
+  "top200_share_pct": 32.7,
+  "employers_with_5_or_fewer": 340672,
+  "employers_with_5_or_fewer_share_pct": 17.6
+ },
+ "by_sector": {
+  "54": {
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 928936,
+   "continuing_approval": 1765699,
+   "employers": 127012,
+   "share_pct": 55.5
+  },
+  "61": {
+   "sector": "Educational services",
+   "initial_approval": 179672,
+   "continuing_approval": 189246,
+   "employers": 21002,
+   "share_pct": 10.7
+  },
+  "33": {
+   "sector": "Manufacturing",
+   "initial_approval": 126609,
+   "continuing_approval": 275787,
+   "employers": 27881,
+   "share_pct": 7.6
+  },
+  "62": {
+   "sector": "Health care and social assistance",
+   "initial_approval": 89381,
+   "continuing_approval": 127912,
+   "employers": 43032,
+   "share_pct": 5.3
+  },
+  "51": {
+   "sector": "Information",
+   "initial_approval": 86447,
+   "continuing_approval": 225098,
+   "employers": 17296,
+   "share_pct": 5.2
+  },
+  "52": {
+   "sector": "Finance and insurance",
+   "initial_approval": 75758,
+   "continuing_approval": 237182,
+   "employers": 21165,
+   "share_pct": 4.5
+  },
+  "45": {
+   "sector": "Other",
+   "initial_approval": 41443,
+   "continuing_approval": 94453,
+   "employers": 3000,
+   "share_pct": 2.5
+  },
+  "32": {
+   "sector": "Other",
+   "initial_approval": 21070,
+   "continuing_approval": 44932,
+   "employers": 9679,
+   "share_pct": 1.3
+  },
+  "99": {
+   "sector": "Unclassified",
+   "initial_approval": 19229,
+   "continuing_approval": 21515,
+   "employers": 28440,
+   "share_pct": 1.1
+  },
+  "56": {
+   "sector": "Administrative and support services (includes staffing agencies)",
+   "initial_approval": 17070,
+   "continuing_approval": 28430,
+   "employers": 7236,
+   "share_pct": 1.0
+  },
+  "42": {
+   "sector": "Other",
+   "initial_approval": 13906,
+   "continuing_approval": 30270,
+   "employers": 10422,
+   "share_pct": 0.8
+  },
+  "44": {
+   "sector": "Other",
+   "initial_approval": 10513,
+   "continuing_approval": 33481,
+   "employers": 9539,
+   "share_pct": 0.6
+  },
+  "23": {
+   "sector": "Other",
+   "initial_approval": 8587,
+   "continuing_approval": 11666,
+   "employers": 5979,
+   "share_pct": 0.5
+  },
+  "81": {
+   "sector": "Other",
+   "initial_approval": 7784,
+   "continuing_approval": 9532,
+   "employers": 7570,
+   "share_pct": 0.5
+  },
+  "31": {
+   "sector": "Other",
+   "initial_approval": 7696,
+   "continuing_approval": 16217,
+   "employers": 5883,
+   "share_pct": 0.5
+  },
+  "21": {
+   "sector": "Other",
+   "initial_approval": 5974,
+   "continuing_approval": 9832,
+   "employers": 1999,
+   "share_pct": 0.4
+  },
+  "55": {
+   "sector": "Other",
+   "initial_approval": 5591,
+   "continuing_approval": 24404,
+   "employers": 1379,
+   "share_pct": 0.3
+  },
+  "48": {
+   "sector": "Other",
+   "initial_approval": 5221,
+   "continuing_approval": 13084,
+   "employers": 3544,
+   "share_pct": 0.3
+  },
+  "53": {
+   "sector": "Other",
+   "initial_approval": 5056,
+   "continuing_approval": 9352,
+   "employers": 5340,
+   "share_pct": 0.3
+  },
+  "72": {
+   "sector": "Other",
+   "initial_approval": 4865,
+   "continuing_approval": 9356,
+   "employers": 6964,
+   "share_pct": 0.3
+  },
+  "71": {
+   "sector": "Other",
+   "initial_approval": 4444,
+   "continuing_approval": 4539,
+   "employers": 3650,
+   "share_pct": 0.3
+  },
+  "22": {
+   "sector": "Other",
+   "initial_approval": 3711,
+   "continuing_approval": 9178,
+   "employers": 1885,
+   "share_pct": 0.2
+  },
+  "92": {
+   "sector": "Other",
+   "initial_approval": 3185,
+   "continuing_approval": 5190,
+   "employers": 3241,
+   "share_pct": 0.2
+  },
+  "11": {
+   "sector": "Other",
+   "initial_approval": 1490,
+   "continuing_approval": 2150,
+   "employers": 1354,
+   "share_pct": 0.1
+  },
+  "49": {
+   "sector": "Other",
+   "initial_approval": 1388,
+   "continuing_approval": 2555,
+   "employers": 583,
+   "share_pct": 0.1
+  }
+ },
+ "top_firm_families": [
+  {
+   "family": "COGNIZANT TECHNOLOGY SOLUTIONS US CORP",
+   "names": [
+    "COGNIZANT",
+    "COGNIZANT TECH SOLNS CORP",
+    "COGNIZANT TECH SOLNS US CORP",
+    "COGNIZANT TECH SOLUTIONS  US CORP",
+    "COGNIZANT TECH SOLUTIONS CORP",
+    "COGNIZANT TECH SOLUTIONS US CO",
+    "COGNIZANT TECH SOLUTIONS US CORP",
+    "COGNIZANT TECHNOLOGY",
+    "COGNIZANT TECHNOLOGY SOLN US CORP",
+    "COGNIZANT TECHNOLOGY SOLNS US CORP",
+    "COGNIZANT TECHNOLOGY SOLUTIONS",
+    "COGNIZANT TECHNOLOGY SOLUTIONS US",
+    "COGNIZANT TECHNOLOGY SOLUTIONS US CORP"
+   ],
+   "initial_approval": 50945,
+   "continuing_approval": 139857,
+   "share_pct": 3.04
+  },
+  {
+   "family": "INFOSYS TECHNOLOGIES LIMITED",
+   "names": [
+    "INFOSYS LIMITED",
+    "INFOSYS LTD",
+    "INFOSYS SOLUTIONS INC",
+    "INFOSYS TECH LIMITED",
+    "INFOSYS TECHNOLOGIES LIMITED",
+    "INFOSYS TECHNOLOGIES LTD",
+    "INFOSYS TECHS LIMITED",
+    "INFOSYS TECHS LTD"
+   ],
+   "initial_approval": 44084,
+   "continuing_approval": 94257,
+   "share_pct": 2.63
+  },
+  {
+   "family": "TATA CONSULTANCY SERVICES LIMITED",
+   "names": [
+    "TATA CONSULTANCY SERVICES LIMITED",
+    "TATA CONSULTANCY SERVICES LTD",
+    "TATA CONSULTANCY SVCS LIMITED",
+    "TATA CONSULTANCY SVCS LTD"
+   ],
+   "initial_approval": 43770,
+   "continuing_approval": 71022,
+   "share_pct": 2.61
+  },
+  {
+   "family": "WIPRO TECHNOLOGIES",
+   "names": [
+    "WIPRO LIMITED",
+    "WIPRO LLC",
+    "WIPRO LTD",
+    "WIPRO TECHNOLOGIES"
+   ],
+   "initial_approval": 28645,
+   "continuing_approval": 46159,
+   "share_pct": 1.71
+  },
+  {
+   "family": "ACCENTURE TECHNOLOGY SOLUTIONS",
+   "names": [
+    "ACCENTURE INC",
+    "ACCENTURE LLP",
+    "ACCENTURE TECH SOLUTIONS",
+    "ACCENTURE TECHNOLOGY SOLUTIONS"
+   ],
+   "initial_approval": 22416,
+   "continuing_approval": 28286,
+   "share_pct": 1.34
+  },
+  {
+   "family": "MICROSOFT CORPORATION",
+   "names": [
+    "MICROSOFT",
+    "MICROSOFT CORP",
+    "MICROSOFT CORPORATION"
+   ],
+   "initial_approval": 18950,
+   "continuing_approval": 45182,
+   "share_pct": 1.13
+  },
+  {
+   "family": "AMAZON.COM SERVICES SERVICES INC",
+   "names": [
+    "AMAZON COM SERVICES INC",
+    "AMAZON COM SERVICES LLC",
+    "AMAZON COM SVCS INC",
+    "AMAZON.COM SERVICES INC",
+    "AMAZON.COM SERVICES LLC",
+    "AMAZON.COM SERVICES SERVICES INC"
+   ],
+   "initial_approval": 17118,
+   "continuing_approval": 37737,
+   "share_pct": 1.02
+  },
+  {
+   "family": "GOOGLE LLC",
+   "names": [
+    "GOOGLE INC",
+    "GOOGLE LLC"
+   ],
+   "initial_approval": 14591,
+   "continuing_approval": 33275,
+   "share_pct": 0.87
+  },
+  {
+   "family": "HCL AMERICA SOLUTIONS INC",
+   "names": [
+    "HCL AMERICA INC",
+    "HCL AMERICA SOLUTIONS INC"
+   ],
+   "initial_approval": 14344,
+   "continuing_approval": 23093,
+   "share_pct": 0.86
+  },
+  {
+   "family": "TECH MAHINDRA (AMERICAS) INC",
+   "names": [
+    "TECH MAHINDRA (AMERICAS) INC",
+    "TECH MAHINDRA AMERICAS INC"
+   ],
+   "initial_approval": 12288,
+   "continuing_approval": 15598,
+   "share_pct": 0.73
+  },
+  {
+   "family": "INTEL CORPORATION",
+   "names": [
+    "INTEL CORP",
+    "INTEL CORPORATION"
+   ],
+   "initial_approval": 11203,
+   "continuing_approval": 19676,
+   "share_pct": 0.67
+  },
+  {
+   "family": "DELOITTE CONSULTING LLP",
+   "names": [
+    "DELOITTE CONSULTING",
+    "DELOITTE CONSULTING LLP"
+   ],
+   "initial_approval": 10149,
+   "continuing_approval": 38156,
+   "share_pct": 0.61
+  },
+  {
+   "family": "IBM INDIA PRIVATE LIMITED",
+   "names": [
+    "IBM INDIA PRIVATE LIMITED",
+    "IBM INDIA PRIVATE LTD"
+   ],
+   "initial_approval": 9482,
+   "continuing_approval": 12434,
+   "share_pct": 0.57
+  },
+  {
+   "family": "APPLE INC.",
+   "names": [
+    "APPLE INC",
+    "APPLE INC."
+   ],
+   "initial_approval": 8308,
+   "continuing_approval": 24377,
+   "share_pct": 0.5
+  },
+  {
+   "family": "IBM CORPORATION",
+   "names": [
+    "IBM",
+    "IBM CORP",
+    "IBM CORPORATION"
+   ],
+   "initial_approval": 7837,
+   "continuing_approval": 12073,
+   "share_pct": 0.47
+  },
+  {
+   "family": "FACEBOOK SERVICES INC",
+   "names": [
+    "FACEBOOK INC",
+    "FACEBOOK SERVICES INC",
+    "FACEBOOK SVCS INC"
+   ],
+   "initial_approval": 7593,
+   "continuing_approval": 15018,
+   "share_pct": 0.45
+  },
+  {
+   "family": "AMAZON CORPORATE LLC",
+   "names": [
+    "AMAZON CORPORATE LLC"
+   ],
+   "initial_approval": 7577,
+   "continuing_approval": 8447,
+   "share_pct": 0.45
+  },
+  {
+   "family": "ERNST YOUNG US CORP LLP",
+   "names": [
+    "ERNST & YOUNG LLP",
+    "ERNST & YOUNG US LLP",
+    "ERNST YOUNG LLP",
+    "ERNST YOUNG US CORP LLP",
+    "ERNST YOUNG US LLP"
+   ],
+   "initial_approval": 6963,
+   "continuing_approval": 20085,
+   "share_pct": 0.42
+  },
+  {
+   "family": "LARSEN & TOUBRO INFOTECH LIMITED",
+   "names": [
+    "LARSEN & TOUBRO INFOTECH LIMITED",
+    "LARSEN & TOUBRO INFOTECH LLC",
+    "LARSEN & TOUBRO INFOTECH LTD",
+    "LARSEN &TOUBRO INFOTECH LIMITED",
+    "LARSEN TOUBRO INFOTECH LIMITED",
+    "LARSEN TOUBRO INFOTECH LTD"
+   ],
+   "initial_approval": 6839,
+   "continuing_approval": 9422,
+   "share_pct": 0.41
+  },
+  {
+   "family": "CAPGEMINI AMERICA INC",
+   "names": [
+    "CAPGEMINI AMERICA INC"
+   ],
+   "initial_approval": 6554,
+   "continuing_approval": 18481,
+   "share_pct": 0.39
+  },
+  {
+   "family": "SYNTEL CONSULTING, INC",
+   "names": [
+    "SYNTEL CONSULTING INC",
+    "SYNTEL CONSULTING, INC"
+   ],
+   "initial_approval": 6276,
+   "continuing_approval": 6218,
+   "share_pct": 0.37
+  },
+  {
+   "family": "QUALCOMM TECHNOLOGIES, INC",
+   "names": [
+    "QUALCOMM INC",
+    "QUALCOMM INCORPORATED",
+    "QUALCOMM TECH INC",
+    "QUALCOMM TECHNOLOGIES INC",
+    "QUALCOMM TECHNOLOGIES, INC"
+   ],
+   "initial_approval": 5588,
+   "continuing_approval": 11865,
+   "share_pct": 0.33
+  },
+  {
+   "family": "CISCO SYSTEMS INC",
+   "names": [
+    "CISCO SYSTEMS",
+    "CISCO SYSTEMS INC"
+   ],
+   "initial_approval": 5060,
+   "continuing_approval": 16353,
+   "share_pct": 0.3
+  },
+  {
+   "family": "ORACLE AMERICA INC",
+   "names": [
+    "ORACLE AMERICA",
+    "ORACLE AMERICA INC"
+   ],
+   "initial_approval": 4984,
+   "continuing_approval": 15802,
+   "share_pct": 0.3
+  },
+  {
+   "family": "PRICEWATERHOUSECOOPERS LLP",
+   "names": [
+    "PRICEWATERHOUSECOOPERS LLP"
+   ],
+   "initial_approval": 4638,
+   "continuing_approval": 8006,
+   "share_pct": 0.28
+  },
+  {
+   "family": "GOLDMAN SACHS SERVICES LLC",
+   "names": [
+    "GOLDMAN SACHS & CO",
+    "GOLDMAN SACHS & CO LLC",
+    "GOLDMAN SACHS CO",
+    "GOLDMAN SACHS CO LLC",
+    "GOLDMAN SACHS SERVICES LLC"
+   ],
+   "initial_approval": 4368,
+   "continuing_approval": 6880,
+   "share_pct": 0.26
+  },
+  {
+   "family": "MPHASIS CORPORATION",
+   "names": [
+    "MPHASIS CORP",
+    "MPHASIS CORPORATION",
+    "MPHASIS LIMITED"
+   ],
+   "initial_approval": 4254,
+   "continuing_approval": 9336,
+   "share_pct": 0.25
+  },
+  {
+   "family": "JPMORGAN CHASE & CO",
+   "names": [
+    "JPMORGAN CHASE & CO",
+    "JPMORGAN CHASE CO"
+   ],
+   "initial_approval": 3860,
+   "continuing_approval": 18859,
+   "share_pct": 0.23
+  },
+  {
+   "family": "DELOITTE & TOUCHE LLC",
+   "names": [
+    "DELOITTE & TOUCHE LLC",
+    "DELOITTE & TOUCHE LLP",
+    "DELOITTE TOUCHE LLP"
+   ],
+   "initial_approval": 3790,
+   "continuing_approval": 6321,
+   "share_pct": 0.23
+  },
+  {
+   "family": "MINDTREE LIMITED",
+   "names": [
+    "MINDTREE LIMITED",
+    "MINDTREE LTD"
+   ],
+   "initial_approval": 3726,
+   "continuing_approval": 6910,
+   "share_pct": 0.22
+  },
+  {
+   "family": "UST GLOBAL INC",
+   "names": [
+    "UST GLOBAL INC"
+   ],
+   "initial_approval": 3502,
+   "continuing_approval": 7363,
+   "share_pct": 0.21
+  },
+  {
+   "family": "SATYAM COMPUTER SERVICES LIMITED",
+   "names": [
+    "SATYAM COMPUTER SERVICES LIMITED",
+    "SATYAM COMPUTER SERVICES LTD",
+    "SATYAM COMPUTER SVCS LTD"
+   ],
+   "initial_approval": 3285,
+   "continuing_approval": 2444,
+   "share_pct": 0.2
+  },
+  {
+   "family": "AMAZON WEB SERVICES INC",
+   "names": [
+    "AMAZON WEB SERVICES INC",
+    "AMAZON WEB SERVICES LLC",
+    "AMAZON WEB SVCS INC"
+   ],
+   "initial_approval": 3115,
+   "continuing_approval": 8485,
+   "share_pct": 0.19
+  },
+  {
+   "family": "HEXAWARE TECHNOLOGIES INC",
+   "names": [
+    "HEXAWARE SOLUTIONS LLC",
+    "HEXAWARE TECHNOLOGIES",
+    "HEXAWARE TECHNOLOGIES INC",
+    "HEXAWARE TECHNOLOGY INC",
+    "HEXAWARE TECHS INC"
+   ],
+   "initial_approval": 2936,
+   "continuing_approval": 5700,
+   "share_pct": 0.18
+  },
+  {
+   "family": "CUMMINS INC",
+   "names": [
+    "CUMMINS INC"
+   ],
+   "initial_approval": 2798,
+   "continuing_approval": 6138,
+   "share_pct": 0.17
+  },
+  {
+   "family": "WAL MART ASSOCIATES INC",
+   "names": [
+    "WAL MART ASSOCIATES INC",
+    "WAL-MART ASSOCIATES INC"
+   ],
+   "initial_approval": 2650,
+   "continuing_approval": 10526,
+   "share_pct": 0.16
+  },
+  {
+   "family": "KPMG USA INC",
+   "names": [
+    "KPMG LLP",
+    "KPMG USA INC"
+   ],
+   "initial_approval": 2584,
+   "continuing_approval": 5538,
+   "share_pct": 0.15
+  },
+  {
+   "family": "PATNI AMERICAS INC",
+   "names": [
+    "PATNI AMERICAS INC"
+   ],
+   "initial_approval": 2552,
+   "continuing_approval": 1479,
+   "share_pct": 0.15
+  },
+  {
+   "family": "IGATE TECHNOLOGIES INC.",
+   "names": [
+    "IGATE SOLUTIONS LLC",
+    "IGATE TECH INC",
+    "IGATE TECHNOLOGIES INC",
+    "IGATE TECHNOLOGIES INC.",
+    "IGATE TECHS INC"
+   ],
+   "initial_approval": 2551,
+   "continuing_approval": 5884,
+   "share_pct": 0.15
+  },
+  {
+   "family": "SYNECHRON INC",
+   "names": [
+    "SYNECHRON INC"
+   ],
+   "initial_approval": 2482,
+   "continuing_approval": 4777,
+   "share_pct": 0.15
+  }
+ ],
+ "top_employers": [
+  {
+   "employer": "WIPRO LIMITED",
+   "state": "NJ",
+   "city": "EAST BRUNSWICK",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 28456,
+   "continuing_approval": 46111,
+   "continuing_per_initial": 1.62,
+   "initial_denial_rate_pct": 8.7,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "TATA CONSULTANCY SERVICES LIMITED",
+   "state": "MD",
+   "city": "ROCKVILLE",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 23478,
+   "continuing_approval": 5805,
+   "continuing_per_initial": 0.25,
+   "initial_denial_rate_pct": 5.0,
+   "first_year": "2009",
+   "last_year": "2020"
+  },
+  {
+   "employer": "ACCENTURE LLP",
+   "state": "IL",
+   "city": "CHICAGO",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 21444,
+   "continuing_approval": 27998,
+   "continuing_per_initial": 1.31,
+   "initial_denial_rate_pct": 6.9,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "TATA CONSULTANCY SVCS LTD",
+   "state": "MD",
+   "city": "ROCKVILLE",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 20266,
+   "continuing_approval": 65084,
+   "continuing_per_initial": 3.21,
+   "initial_denial_rate_pct": 9.4,
+   "first_year": "2011",
+   "last_year": "2023"
+  },
+  {
+   "employer": "INFOSYS TECHNOLOGIES LIMITED",
+   "state": "TX",
+   "city": "PLANO",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 20078,
+   "continuing_approval": 23156,
+   "continuing_per_initial": 1.15,
+   "initial_denial_rate_pct": 4.6,
+   "first_year": "2009",
+   "last_year": "2013"
+  },
+  {
+   "employer": "INFOSYS LIMITED",
+   "state": "TX",
+   "city": "DALLAS",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 20029,
+   "continuing_approval": 37784,
+   "continuing_per_initial": 1.89,
+   "initial_denial_rate_pct": 11.5,
+   "first_year": "2012",
+   "last_year": "2023"
+  },
+  {
+   "employer": "MICROSOFT CORPORATION",
+   "state": "WA",
+   "city": "REDMOND",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 17410,
+   "continuing_approval": 42616,
+   "continuing_per_initial": 2.45,
+   "initial_denial_rate_pct": 1.4,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "HCL AMERICA INC",
+   "state": "CA",
+   "city": "SUNNYVALE",
+   "naics": "52",
+   "sector": "Finance and insurance",
+   "initial_approval": 14038,
+   "continuing_approval": 22858,
+   "continuing_per_initial": 1.63,
+   "initial_denial_rate_pct": 8.4,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "COGNIZANT TECH SOLNS US CORP",
+   "state": "TX",
+   "city": "COLLEGE STATION",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 13086,
+   "continuing_approval": 78508,
+   "continuing_per_initial": 6.0,
+   "initial_denial_rate_pct": 22.4,
+   "first_year": "2014",
+   "last_year": "2019"
+  },
+  {
+   "employer": "TECH MAHINDRA AMERICAS INC",
+   "state": "NJ",
+   "city": "SOUTH PLAINFIELD",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 9798,
+   "continuing_approval": 14064,
+   "continuing_per_initial": 1.44,
+   "initial_denial_rate_pct": 13.4,
+   "first_year": "2014",
+   "last_year": "2023"
+  },
+  {
+   "employer": "IBM INDIA PRIVATE LIMITED",
+   "state": "NC",
+   "city": "RALEIGH",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 9443,
+   "continuing_approval": 12425,
+   "continuing_per_initial": 1.32,
+   "initial_denial_rate_pct": 8.5,
+   "first_year": "2009",
+   "last_year": "2022"
+  },
+  {
+   "employer": "DELOITTE CONSULTING LLP",
+   "state": "PA",
+   "city": "PHILADELPHIA",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 9431,
+   "continuing_approval": 36671,
+   "continuing_per_initial": 3.89,
+   "initial_denial_rate_pct": 11.3,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "AMAZON COM SERVICES LLC",
+   "state": "WA",
+   "city": "SEATTLE",
+   "naics": "45",
+   "sector": null,
+   "initial_approval": 9282,
+   "continuing_approval": 18307,
+   "continuing_per_initial": 1.97,
+   "initial_denial_rate_pct": 2.2,
+   "first_year": "2020",
+   "last_year": "2022"
+  },
+  {
+   "employer": "COGNIZANT TECH SOLNS US CORP",
+   "state": "NJ",
+   "city": "TEANECK",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 9201,
+   "continuing_approval": 6359,
+   "continuing_per_initial": 0.69,
+   "initial_denial_rate_pct": 6.2,
+   "first_year": "2012",
+   "last_year": "2022"
+  },
+  {
+   "employer": "APPLE INC",
+   "state": "CA",
+   "city": "CUPERTINO",
+   "naics": "33",
+   "sector": "Manufacturing",
+   "initial_approval": 8299,
+   "continuing_approval": 24304,
+   "continuing_per_initial": 2.93,
+   "initial_denial_rate_pct": 1.3,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "GOOGLE LLC",
+   "state": "CA",
+   "city": "MOUNTAIN VIEW",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 8167,
+   "continuing_approval": 23554,
+   "continuing_per_initial": 2.88,
+   "initial_denial_rate_pct": 1.9,
+   "first_year": "2018",
+   "last_year": "2023"
+  },
+  {
+   "employer": "IBM CORPORATION",
+   "state": "NC",
+   "city": "RESEARCH TRIANGLE PA",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 7764,
+   "continuing_approval": 11979,
+   "continuing_per_initial": 1.54,
+   "initial_denial_rate_pct": 7.6,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "AMAZON CORPORATE LLC",
+   "state": "WA",
+   "city": "SEATTLE",
+   "naics": "45",
+   "sector": null,
+   "initial_approval": 7568,
+   "continuing_approval": 8440,
+   "continuing_per_initial": 1.12,
+   "initial_denial_rate_pct": 0.9,
+   "first_year": "2010",
+   "last_year": "2019"
+  },
+  {
+   "employer": "FACEBOOK INC",
+   "state": "CA",
+   "city": "PALO ALTO",
+   "naics": "51",
+   "sector": "Information",
+   "initial_approval": 7226,
+   "continuing_approval": 14957,
+   "continuing_per_initial": 2.07,
+   "initial_denial_rate_pct": 1.0,
+   "first_year": "2009",
+   "last_year": "2022"
+  },
+  {
+   "employer": "COGNIZANT TECH SOLUTIONS US CORP",
+   "state": "NJ",
+   "city": "TEANECK",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 6933,
+   "continuing_approval": 6236,
+   "continuing_per_initial": 0.9,
+   "initial_denial_rate_pct": 36.9,
+   "first_year": "2009",
+   "last_year": "2015"
+  },
+  {
+   "employer": "LARSEN & TOUBRO INFOTECH LIMITED",
+   "state": "NJ",
+   "city": "EDISON",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 6806,
+   "continuing_approval": 9382,
+   "continuing_per_initial": 1.38,
+   "initial_denial_rate_pct": 2.9,
+   "first_year": "2009",
+   "last_year": "2018"
+  },
+  {
+   "employer": "SYNTEL CONSULTING INC",
+   "state": "MI",
+   "city": "TROY",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 6273,
+   "continuing_approval": 6218,
+   "continuing_per_initial": 0.99,
+   "initial_denial_rate_pct": 4.5,
+   "first_year": "2009",
+   "last_year": "2019"
+  },
+  {
+   "employer": "INTEL CORPORATION",
+   "state": "CA",
+   "city": "SANTA CLARA",
+   "naics": "33",
+   "sector": "Manufacturing",
+   "initial_approval": 5881,
+   "continuing_approval": 7197,
+   "continuing_per_initial": 1.22,
+   "initial_denial_rate_pct": 0.4,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "CAPGEMINI AMERICA INC",
+   "state": "IL",
+   "city": "CHICAGO",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 5584,
+   "continuing_approval": 17766,
+   "continuing_per_initial": 3.18,
+   "initial_denial_rate_pct": 28.4,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "COGNIZANT TECHNOLOGY SOLNS US CORP",
+   "state": "NJ",
+   "city": "TEANECK",
+   "naics": "11",
+   "sector": null,
+   "initial_approval": 5193,
+   "continuing_approval": 6124,
+   "continuing_per_initial": 1.18,
+   "initial_denial_rate_pct": 15.4,
+   "first_year": "2012",
+   "last_year": "2013"
+  },
+  {
+   "employer": "INTEL CORPORATION",
+   "state": "AZ",
+   "city": "PHOENIX",
+   "naics": "33",
+   "sector": "Manufacturing",
+   "initial_approval": 5162,
+   "continuing_approval": 12319,
+   "continuing_per_initial": 2.39,
+   "initial_denial_rate_pct": 1.7,
+   "first_year": "2012",
+   "last_year": "2023"
+  },
+  {
+   "employer": "CISCO SYSTEMS INC",
+   "state": "CA",
+   "city": "SAN JOSE",
+   "naics": "33",
+   "sector": "Manufacturing",
+   "initial_approval": 5060,
+   "continuing_approval": 16336,
+   "continuing_per_initial": 3.23,
+   "initial_denial_rate_pct": 2.7,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "COGNIZANT TECH SOLUTIONS US CORP",
+   "state": "TX",
+   "city": "COLLEGE STATION",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 5033,
+   "continuing_approval": 13411,
+   "continuing_per_initial": 2.66,
+   "initial_denial_rate_pct": 5.7,
+   "first_year": "2009",
+   "last_year": "2020"
+  },
+  {
+   "employer": "GOOGLE INC",
+   "state": "TX",
+   "city": "DALLAS",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 4691,
+   "continuing_approval": 7358,
+   "continuing_per_initial": 1.57,
+   "initial_denial_rate_pct": 0.6,
+   "first_year": "2011",
+   "last_year": "2018"
+  },
+  {
+   "employer": "PRICEWATERHOUSECOOPERS LLP",
+   "state": "FL",
+   "city": "TAMPA",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 4631,
+   "continuing_approval": 7987,
+   "continuing_per_initial": 1.72,
+   "initial_denial_rate_pct": 3.8,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "COGNIZANT TECHNOLOGY SOLUTIONS US",
+   "state": "NJ",
+   "city": "TEANECK",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 4436,
+   "continuing_approval": 2494,
+   "continuing_per_initial": 0.56,
+   "initial_denial_rate_pct": 4.3,
+   "first_year": "2010",
+   "last_year": "2020"
+  },
+  {
+   "employer": "MPHASIS CORPORATION",
+   "state": "NY",
+   "city": "NEW YORK",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 4248,
+   "continuing_approval": 9305,
+   "continuing_per_initial": 2.19,
+   "initial_denial_rate_pct": 8.2,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "ERNST & YOUNG US LLP",
+   "state": "NJ",
+   "city": "SECAUCUS",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 3908,
+   "continuing_approval": 10549,
+   "continuing_per_initial": 2.7,
+   "initial_denial_rate_pct": 5.6,
+   "first_year": "2013",
+   "last_year": "2020"
+  },
+  {
+   "employer": "INFOSYS LTD",
+   "state": "TX",
+   "city": "DALLAS",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 3885,
+   "continuing_approval": 32975,
+   "continuing_per_initial": 8.49,
+   "initial_denial_rate_pct": 13.1,
+   "first_year": "2012",
+   "last_year": "2019"
+  },
+  {
+   "employer": "QUALCOMM TECHNOLOGIES INC",
+   "state": "CA",
+   "city": "SAN DIEGO",
+   "naics": "33",
+   "sector": "Manufacturing",
+   "initial_approval": 3845,
+   "continuing_approval": 9007,
+   "continuing_per_initial": 2.34,
+   "initial_denial_rate_pct": 1.5,
+   "first_year": "2013",
+   "last_year": "2023"
+  },
+  {
+   "employer": "ORACLE AMERICA INC",
+   "state": "CA",
+   "city": "REDWOOD CITY",
+   "naics": "11",
+   "sector": null,
+   "initial_approval": 3728,
+   "continuing_approval": 11301,
+   "continuing_per_initial": 3.03,
+   "initial_denial_rate_pct": 2.7,
+   "first_year": "2010",
+   "last_year": "2023"
+  },
+  {
+   "employer": "AMAZON.COM SERVICES LLC",
+   "state": "VA",
+   "city": "ARLINGTON",
+   "naics": "45",
+   "sector": null,
+   "initial_approval": 3556,
+   "continuing_approval": 10481,
+   "continuing_per_initial": 2.95,
+   "initial_denial_rate_pct": 0.9,
+   "first_year": "2022",
+   "last_year": "2023"
+  },
+  {
+   "employer": "COGNIZANT TECHNOLOGY SOLUTIONS US CORP",
+   "state": "TX",
+   "city": "COLLEGE STATION",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 3546,
+   "continuing_approval": 6424,
+   "continuing_per_initial": 1.81,
+   "initial_denial_rate_pct": 1.1,
+   "first_year": "2022",
+   "last_year": "2023"
+  },
+  {
+   "employer": "UST GLOBAL INC",
+   "state": "CA",
+   "city": "ALISO VIEJO",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 3501,
+   "continuing_approval": 7353,
+   "continuing_per_initial": 2.1,
+   "initial_denial_rate_pct": 7.2,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "COGNIZANT TECHNOLOGY SOLUTIONS US",
+   "state": "TX",
+   "city": "COLLEGE STATION",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 3487,
+   "continuing_approval": 20174,
+   "continuing_per_initial": 5.79,
+   "initial_denial_rate_pct": 30.6,
+   "first_year": "2014",
+   "last_year": "2022"
+  },
+  {
+   "employer": "AMAZON.COM SERVICES INC",
+   "state": "WA",
+   "city": "SEATTLE",
+   "naics": "45",
+   "sector": null,
+   "initial_approval": 3027,
+   "continuing_approval": 4187,
+   "continuing_per_initial": 1.38,
+   "initial_denial_rate_pct": 3.9,
+   "first_year": "2019",
+   "last_year": "2019"
+  },
+  {
+   "employer": "MINDTREE LIMITED",
+   "state": "NJ",
+   "city": "WARREN",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 2929,
+   "continuing_approval": 6610,
+   "continuing_per_initial": 2.26,
+   "initial_denial_rate_pct": 6.5,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "HEXAWARE TECHNOLOGIES INC",
+   "state": "NJ",
+   "city": "JAMESBURG",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 2865,
+   "continuing_approval": 5615,
+   "continuing_per_initial": 1.96,
+   "initial_denial_rate_pct": 6.2,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "CUMMINS INC",
+   "state": "TN",
+   "city": "NASHVILLE",
+   "naics": "99",
+   "sector": "Unclassified",
+   "initial_approval": 2736,
+   "continuing_approval": 6116,
+   "continuing_per_initial": 2.24,
+   "initial_denial_rate_pct": 1.3,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "JPMORGAN CHASE & CO",
+   "state": "IL",
+   "city": "CHICAGO",
+   "naics": "51",
+   "sector": "Information",
+   "initial_approval": 2667,
+   "continuing_approval": 10134,
+   "continuing_per_initial": 3.8,
+   "initial_denial_rate_pct": 2.0,
+   "first_year": "2009",
+   "last_year": "2022"
+  },
+  {
+   "employer": "PATNI AMERICAS INC",
+   "state": "MA",
+   "city": "CAMBRIDGE",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 2519,
+   "continuing_approval": 1470,
+   "continuing_per_initial": 0.58,
+   "initial_denial_rate_pct": 16.4,
+   "first_year": "2009",
+   "last_year": "2013"
+  },
+  {
+   "employer": "AMAZON WEB SERVICES INC",
+   "state": "WA",
+   "city": "SEATTLE",
+   "naics": "51",
+   "sector": "Information",
+   "initial_approval": 2474,
+   "continuing_approval": 5778,
+   "continuing_per_initial": 2.34,
+   "initial_denial_rate_pct": 3.8,
+   "first_year": "2014",
+   "last_year": "2022"
+  },
+  {
+   "employer": "AMAZON FULFILLMENT SERVICES INC",
+   "state": "WA",
+   "city": "SEATTLE",
+   "naics": "45",
+   "sector": null,
+   "initial_approval": 2462,
+   "continuing_approval": 2112,
+   "continuing_per_initial": 0.86,
+   "initial_denial_rate_pct": 1.0,
+   "first_year": "2009",
+   "last_year": "2018"
+  },
+  {
+   "employer": "NVIDIA CORPORATION",
+   "state": "CA",
+   "city": "SANTA CLARA",
+   "naics": "33",
+   "sector": "Manufacturing",
+   "initial_approval": 2255,
+   "continuing_approval": 5043,
+   "continuing_per_initial": 2.24,
+   "initial_denial_rate_pct": 1.4,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "DELOITTE & TOUCHE LLP",
+   "state": "PA",
+   "city": "PHILADELPHIA",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 2130,
+   "continuing_approval": 3493,
+   "continuing_per_initial": 1.64,
+   "initial_denial_rate_pct": 3.1,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "KPMG LLP",
+   "state": "TX",
+   "city": "DALLAS",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 1802,
+   "continuing_approval": 4603,
+   "continuing_per_initial": 2.55,
+   "initial_denial_rate_pct": 1.9,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "UNIVERSITY OF MICHIGAN",
+   "state": "MI",
+   "city": "ANN ARBOR",
+   "naics": "61",
+   "sector": "Educational services",
+   "initial_approval": 1793,
+   "continuing_approval": 1772,
+   "continuing_per_initial": 0.99,
+   "initial_denial_rate_pct": 0.4,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "EBAY INC",
+   "state": "CA",
+   "city": "SAN JOSE",
+   "naics": "45",
+   "sector": null,
+   "initial_approval": 1754,
+   "continuing_approval": 5646,
+   "continuing_per_initial": 3.22,
+   "initial_denial_rate_pct": 1.6,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "ERNST YOUNG US LLP",
+   "state": "NJ",
+   "city": "SECAUCUS",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 1736,
+   "continuing_approval": 8160,
+   "continuing_per_initial": 4.7,
+   "initial_denial_rate_pct": 3.5,
+   "first_year": "2016",
+   "last_year": "2023"
+  },
+  {
+   "employer": "PAYPAL INC",
+   "state": "CA",
+   "city": "SAN JOSE",
+   "naics": "45",
+   "sector": null,
+   "initial_approval": 1687,
+   "continuing_approval": 6104,
+   "continuing_per_initial": 3.62,
+   "initial_denial_rate_pct": 1.5,
+   "first_year": "2009",
+   "last_year": "2023"
+  },
+  {
+   "employer": "SATYAM COMPUTER SERVICES LTD",
+   "state": "NJ",
+   "city": "PARSIPANNY",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 1676,
+   "continuing_approval": 950,
+   "continuing_per_initial": 0.57,
+   "initial_denial_rate_pct": 6.3,
+   "first_year": "2009",
+   "last_year": "2014"
+  },
+  {
+   "employer": "BLOOMBERG LP",
+   "state": "NY",
+   "city": "NEW YORK",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 1641,
+   "continuing_approval": 4381,
+   "continuing_per_initial": 2.67,
+   "initial_denial_rate_pct": 1.8,
+   "first_year": "2011",
+   "last_year": "2023"
+  },
+  {
+   "employer": "SATYAM COMPUTER SERVICES LIMITED",
+   "state": "NJ",
+   "city": "PARISPANNY",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 1602,
+   "continuing_approval": 1490,
+   "continuing_per_initial": 0.93,
+   "initial_denial_rate_pct": 8.0,
+   "first_year": "2009",
+   "last_year": "2016"
+  },
+  {
+   "employer": "UBER TECHNOLOGIES INC",
+   "state": "CA",
+   "city": "SAN FRANCISCO",
+   "naics": "54",
+   "sector": "Professional, scientific and technical services",
+   "initial_approval": 1596,
+   "continuing_approval": 4221,
+   "continuing_per_initial": 2.64,
+   "initial_denial_rate_pct": 5.9,
+   "first_year": "2011",
+   "last_year": "2023"
+  },
+  {
+   "employer": "LINKEDIN CORPORATION",
+   "state": "CA",
+   "city": "MOUNTAIN VIEW",
+   "naics": "51",
+   "sector": "Information",
+   "initial_approval": 1587,
+   "continuing_approval": 5542,
+   "continuing_per_initial": 3.49,
+   "initial_denial_rate_pct": 1.2,
+   "first_year": "2010",
+   "last_year": "2023"
+  }
+ ],
+ "debarred_in_the_hub": [
+  {
+   "employer": "ACME UNIVERSAL INC",
+   "state": "GU",
+   "initial_approval": 1,
+   "continuing_approval": 1,
+   "debarments": [
+    {
+     "programme": "H-2B",
+     "start": "Permanent",
+     "end": null,
+     "reason": "WHD Debarment",
+     "employer_as_listed": "Acme Universal Inc."
+    }
+   ]
+  },
+  {
+   "employer": "MAYFLOWER GREENHOUSE",
+   "state": "WI",
+   "initial_approval": 0,
+   "continuing_approval": 1,
+   "debarments": [
+    {
+     "programme": "H-2A",
+     "start": "February 21, 2025",
+     "end": "February 20, 2027",
+     "reason": "WHD Debarment",
+     "employer_as_listed": "Mayflower Greenhouse, Inc."
+    }
+   ]
+  },
+  {
+   "employer": "POLYPHASE SYSTEMS INC",
+   "state": "GU",
+   "initial_approval": 0,
+   "continuing_approval": 0,
+   "debarments": [
+    {
+     "programme": "H-2B",
+     "start": "September 12, 2025",
+     "end": "September 12, 2027",
+     "reason": "WHD Debarment",
+     "employer_as_listed": "Polyphase Systems, Inc."
+    }
+   ]
+  },
+  {
+   "employer": "MAYFLOWER GREENHOUSE INC",
+   "state": "WI",
+   "initial_approval": 0,
+   "continuing_approval": 1,
+   "debarments": [
+    {
+     "programme": "H-2A",
+     "start": "February 21, 2025",
+     "end": "February 20, 2027",
+     "reason": "WHD Debarment",
+     "employer_as_listed": "Mayflower Greenhouse, Inc."
+    }
+   ]
+  },
+  {
+   "employer": "GOWRATECH LLC",
+   "state": "NY",
+   "initial_approval": 3,
+   "continuing_approval": 3,
+   "debarments": [
+    {
+     "programme": "H-1B",
+     "start": "5/12/2025",
+     "end": "5/11/2027",
+     "reason": "Willful violator (WHD H-1B debarment/disqualification)",
+     "employer_as_listed": "GowraTech, LLC"
+    }
+   ]
+  },
+  {
+   "employer": "RENOTEK GROUP LLC",
+   "state": "NJ",
+   "initial_approval": 20,
+   "continuing_approval": 4,
+   "debarments": [
+    {
+     "programme": "H-1B",
+     "start": "8/8/2025",
+     "end": "8/7/2027",
+     "reason": "Willful violator (WHD H-1B debarment/disqualification)",
+     "employer_as_listed": "Renotek Group LLC"
+    }
+   ]
+  },
+  {
+   "employer": "SEELOZ INC",
+   "state": "CA",
+   "initial_approval": 4,
+   "continuing_approval": 0,
+   "debarments": [
+    {
+     "programme": "H-1B",
+     "start": "3/4/2026",
+     "end": "3/3/2028",
+     "reason": "Willful violator (WHD H-1B debarment/disqualification)",
+     "employer_as_listed": "Seeloz, Inc."
+    }
+   ]
+  }
+ ],
+ "debarment_lists": [
+  {
+   "programme": "H-1B (Wage and Hour Division debarred/disqualified employers; OFLC will not accept filings from these employers per 20 CFR 655.750(d) and 655.855(d))",
+   "as_of": "Effective September 1, 2026; page 'Last Updated' August 28, 2026 (retrieved 2026-09-15)",
+   "source_url": "https://www.dol.gov/agencies/whd/immigration/h1b/debarment",
+   "count": 5,
+   "entries": [
+    {
+     "employer": "GowraTech, LLC",
+     "city": null,
+     "state": null,
+     "start": "5/12/2025",
+     "end": "5/11/2027",
+     "reason": "Willful violator (WHD H-1B debarment/disqualification)"
+    },
+    {
+     "employer": "Renotek Group LLC",
+     "city": null,
+     "state": null,
+     "start": "8/8/2025",
+     "end": "8/7/2027",
+     "reason": "Willful violator (WHD H-1B debarment/disqualification)"
+    },
+    {
+     "employer": "Seeloz, Inc.",
+     "city": null,
+     "state": null,
+     "start": "3/4/2026",
+     "end": "3/3/2028",
+     "reason": "Willful violator (WHD H-1B debarment/disqualification)"
+    },
+    {
+     "employer": "Sherwood at Mount Dora, Inc. dba Sherwood Academy",
+     "city": null,
+     "state": null,
+     "start": "5/26/2026",
+     "end": "5/25/2028",
+     "reason": "Willful violator (WHD H-1B debarment/disqualification)"
+    },
+    {
+     "employer": "Da Vinci at Hunters Creek, Inc. dba Da Vinci Academy",
+     "city": null,
+     "state": null,
+     "start": "8/3/2026",
+     "end": "8/2/2028",
+     "reason": "Willful violator (WHD H-1B debarment/disqualification)"
+    }
+   ]
+  },
+  {
+   "programme": "PERM (Permanent Labor Certification Program debarments, 20 CFR 656.31(f))",
+   "as_of": "Retrieved 2026-09-15; page prints no explicit last-updated date",
+   "source_url": "https://www.dol.gov/agencies/eta/foreign-labor/program-debarments",
+   "count": 2,
+   "entries": [
+    {
+     "employer": "Dwight Molina",
+     "city": "Hialeah",
+     "state": "Florida",
+     "start": "May 29, 2025",
+     "end": "May 29, 2028",
+     "reason": "Failure to respond to an audit — 20 C.F.R. 656.31(f)(1)(ii)",
+     "entity_type": "Agent"
+    },
+    {
+     "employer": "Hercules Staffing, LLC",
+     "city": "Orem",
+     "state": "Utah",
+     "start": "May 29, 2025",
+     "end": "May 29, 2027",
+     "reason": "Failure to respond to an audit — 20 C.F.R. 656.31(f)(1)(ii)",
+     "entity_type": "Employer"
+    }
+   ]
+  },
+  {
+   "programme": "H-2A (Temporary Agricultural Labor Certification Program debarments, 20 CFR 655.182)",
+   "as_of": "Retrieved 2026-09-15; page prints no explicit last-updated date",
+   "source_url": "https://www.dol.gov/agencies/eta/foreign-labor/program-debarments",
+   "count": 48,
+   "entries": [
+    {
+     "employer": "AA Huapilla, LLC",
+     "city": "Immokalee",
+     "state": "Florida",
+     "start": "February 25, 2024",
+     "end": "February 25, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Abendroth's Apple Ridge Orchard LLC d/b/a Abendroth's Apple Ridge Orchard",
+     "city": "Wolcott",
+     "state": "New York",
+     "start": "October 16, 2024",
+     "end": "October 15, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "AGRO Cargo LL d/b/a AGRO Cargo",
+     "city": "Yuma",
+     "state": "Arizona",
+     "start": "March 23, 2024",
+     "end": "March 23, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Labor Contractor"
+    },
+    {
+     "employer": "Agrofarms and Grains, LLC",
+     "city": "Santa Maria",
+     "state": "California",
+     "start": "November 2, 2024",
+     "end": "November 1, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Antonio Chavez Ramos",
+     "city": null,
+     "state": "Georgia",
+     "start": "September 24, 2024",
+     "end": "September 24, 2027",
+     "reason": "Settlement Agreement",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Aranjo Farms, LLC",
+     "city": "Parker",
+     "state": "Arizona",
+     "start": "March 14, 2026",
+     "end": "March 13, 2029",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Arnold Farms, Inc",
+     "city": "Hinsdale",
+     "state": "Montana",
+     "start": "May 29, 2025",
+     "end": "May 29, 2027",
+     "reason": "Impeding the overall audit process",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Benet Senatus, Jr.",
+     "city": "Immokalee",
+     "state": "Florida",
+     "start": "November 13, 2023",
+     "end": "November 13, 2026",
+     "reason": "WHD Debarment",
+     "entity_type": "Labor Contractor"
+    },
+    {
+     "employer": "Berkshire Nursery & Supply Corp.",
+     "city": "Patterson",
+     "state": "New York",
+     "start": "March 17, 2025",
+     "end": "March 16, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Cantu Harvesting",
+     "city": "Edinburg",
+     "state": "Texas",
+     "start": "February 28, 2024",
+     "end": "February 20, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Labor Contractor"
+    },
+    {
+     "employer": "Centeno Sod, Inc.",
+     "city": "Palmetto",
+     "state": "Florida",
+     "start": "July 11, 2025",
+     "end": "July 10, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Charles Michael King",
+     "city": null,
+     "state": null,
+     "start": "October 30, 2023",
+     "end": "October 30, 2026",
+     "reason": "Plea Agreement",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Daniel Mendoza",
+     "city": null,
+     "state": null,
+     "start": "August 26, 2024",
+     "end": "August 26, 2027",
+     "reason": "Plea Agreement",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Delia Ibarra Rojas",
+     "city": null,
+     "state": "Georgia",
+     "start": "March 8, 2026",
+     "end": "March 8, 2029",
+     "reason": "Plea Agreement",
+     "entity_type": "Labor Contractor"
+    },
+    {
+     "employer": "Enrique Duque Tovar",
+     "city": null,
+     "state": "Georgia",
+     "start": "May 29, 2026",
+     "end": "May 29, 2029",
+     "reason": "Plea Agreement",
+     "entity_type": "Labor Contractor"
+    },
+    {
+     "employer": "Ester Ibarra Garcia",
+     "city": null,
+     "state": null,
+     "start": "August 26, 2024",
+     "end": "August 26, 2027",
+     "reason": "Plea Agreement",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Gonzalez & Gonzalez Harvest, LLC dba Gonzalez Almaraz, Maria H-2ALC",
+     "city": "Interlachen",
+     "state": "Florida",
+     "start": "July 13, 2025",
+     "end": "July 12, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Labor Contractor"
+    },
+    {
+     "employer": "Gumara Canela",
+     "city": "Alma",
+     "state": "Georgia",
+     "start": "January 15, 2026",
+     "end": "January 16, 2029",
+     "reason": "Plea Agreement",
+     "entity_type": "Labor Contractor"
+    },
+    {
+     "employer": "JC Longoria Castro",
+     "city": "Vidalia",
+     "state": "Georgia",
+     "start": "November 15, 2024",
+     "end": "November 14, 2027",
+     "reason": "Plea Agreement",
+     "entity_type": "Labor Contractor"
+    },
+    {
+     "employer": "Jan Enterprises, LLC",
+     "city": "Portage County",
+     "state": "Wisconsin",
+     "start": "February 21, 2025",
+     "end": "February 20, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Jevon Natali DBA: Jevon Natali Farms",
+     "city": "Iowa",
+     "state": "Louisiana",
+     "start": "November 1, 2026",
+     "end": "October 31, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Jesus Flores",
+     "city": "New Rochelle",
+     "state": "New York",
+     "start": "March 17, 2025",
+     "end": "March 16, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Agent"
+    },
+    {
+     "employer": "Jose Carmen Duque Tovar",
+     "city": null,
+     "state": "Georgia",
+     "start": "March 8, 2026",
+     "end": "March 8, 2029",
+     "reason": "Plea Agreement",
+     "entity_type": "Labor Contractor"
+    },
+    {
+     "employer": "Juana Ibarra Carrillo",
+     "city": null,
+     "state": "Georgia",
+     "start": "May 14, 2026",
+     "end": "May 13, 2029",
+     "reason": "Plea Agreement",
+     "entity_type": "Labor Contractor"
+    },
+    {
+     "employer": "International Labor Management Corporation (ILMC)",
+     "city": "Vass",
+     "state": "North Carolina",
+     "start": "August 1, 2014",
+     "end": "Permanent",
+     "reason": "Plea agreement before the US District Court for the Middle District of N. Carolina",
+     "entity_type": "Agent"
+    },
+    {
+     "employer": "Harvest Plus, LLC",
+     "city": "Kennewick",
+     "state": "Washington",
+     "start": "August 29, 2024",
+     "end": "August 29, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Labor Contractor"
+    },
+    {
+     "employer": "Kusmenko Kustom Farming",
+     "city": "Zap",
+     "state": "North Dakota",
+     "start": "August 23, 2023",
+     "end": "August 23, 2026",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Las Princesas Corporation",
+     "city": "Washington",
+     "state": "North Carolina",
+     "start": "September 9, 2024",
+     "end": "September 9, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Nava Flow",
+     "city": null,
+     "state": null,
+     "start": "April 16, 2025",
+     "end": "April 16, 2027",
+     "reason": "Failure to respond to an audit",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Norma Santiago Lopez",
+     "city": "Burgaw",
+     "state": "North Carolina",
+     "start": "March 27, 2026",
+     "end": "March 26, 2029",
+     "reason": "WHD Debarment",
+     "entity_type": "Labor Contractor"
+    },
+    {
+     "employer": "North Metro Companies, LLC",
+     "city": "Faribault",
+     "state": "Minnesota",
+     "start": "January 18, 2024",
+     "end": "January 17, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Novaro Perez Guzman",
+     "city": "Snow Hill",
+     "state": "North Carolina",
+     "start": "December 4, 2024",
+     "end": "December 3, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Labor Contractor"
+    },
+    {
+     "employer": "Maria Esther Gamas-Perez d/b/a Familia Contractor, LLC",
+     "city": "Snow Hill",
+     "state": "North Carolina",
+     "start": "March 22, 2026",
+     "end": "March 22, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Labor Contractor"
+    },
+    {
+     "employer": "Maria Leticia Patricio",
+     "city": "Nicholls",
+     "state": "Georgia",
+     "start": "March 13, 2025",
+     "end": "March 12, 2028",
+     "reason": "Plea Agreement",
+     "entity_type": "Labor Contractor"
+    },
+    {
+     "employer": "Martin Vazquez",
+     "city": "Pierson",
+     "state": "Florida",
+     "start": "June 13, 2024",
+     "end": "June 13, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Mayflower Greenhouse, Inc.",
+     "city": "Oneida",
+     "state": "Wisconsin",
+     "start": "February 21, 2025",
+     "end": "February 20, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Michael Wayne Butikofer",
+     "city": "Monon",
+     "state": "Iowa",
+     "start": null,
+     "end": "Permanent",
+     "reason": "Plea Agreement",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Perez Gamas Contractor, LLC and Yadira Perez Gamas, individually",
+     "city": "Snow Hill",
+     "state": "North Carolina",
+     "start": "January 23, 2024",
+     "end": "January 23, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Reymundo Perez Guzman",
+     "city": "Snow Hill",
+     "state": "North Carolina",
+     "start": "July 17, 2024",
+     "end": "July 17, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Labor Contractor"
+    },
+    {
+     "employer": "Rosa Contracting & Construction, Inc.",
+     "city": "New Rochelle",
+     "state": "New York",
+     "start": "March 17, 2025",
+     "end": "March 16, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Rosa Contracting, Inc",
+     "city": "New Rochelle",
+     "state": "New York",
+     "start": "March 17, 2025",
+     "end": "March 16, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Rosa Land Tech and Design, Inc.",
+     "city": "New Rochelle",
+     "state": "New York",
+     "start": "March 17, 2025",
+     "end": "March 16, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "RYM Trucking LLC",
+     "city": "Dexter",
+     "state": "New Mexico",
+     "start": "September 16, 2025",
+     "end": "September 15, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Sunshine State Harvesting, LLC",
+     "city": "Pierson",
+     "state": "Florida",
+     "start": "April 13, 2024",
+     "end": "April 13, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Labor Contractor"
+    },
+    {
+     "employer": "Stanley McGauley",
+     "city": null,
+     "state": null,
+     "start": "October 30, 2023",
+     "end": "October 30, 2026",
+     "reason": "Plea Agreement",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Tri-State Lawn Care, Inc. & Michael Anthony Wheeler",
+     "city": "Flatwoods",
+     "state": "Kentucky",
+     "start": "August 16, 2019",
+     "end": "August 16, 2029",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Vernon Dixon Harvesting, Inc",
+     "city": "Fort Pierce",
+     "state": "Florida",
+     "start": "July 12, 2025",
+     "end": "July 11, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Labor Contractor"
+    },
+    {
+     "employer": "Volusia Labor Solutions LLC",
+     "city": "Pierson",
+     "state": "Florida",
+     "start": "June 13, 2024",
+     "end": "June 13, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Labor Contractor"
+    }
+   ]
+  },
+  {
+   "programme": "H-2B (Temporary Non-Agricultural Labor Certification Program debarments, 20 CFR 655.31)",
+   "as_of": "Retrieved 2026-09-15; page prints no explicit last-updated date",
+   "source_url": "https://www.dol.gov/agencies/eta/foreign-labor/program-debarments",
+   "count": 56,
+   "entries": [
+    {
+     "employer": "5G Masonry, LLC dba Rosales Masonry",
+     "city": "Ozark",
+     "state": "Missouri",
+     "start": "April 14, 2025",
+     "end": "April 13, 2030",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "A & C Forestry Service, LLC",
+     "city": "Eleva",
+     "state": "Wisconsin",
+     "start": "February 15, 2023",
+     "end": "February 14, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Acme Universal Inc.",
+     "city": null,
+     "state": "Guam",
+     "start": "Permanent",
+     "end": null,
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Aguilar Brothers, Inc.",
+     "city": "Brownsville",
+     "state": "Texas",
+     "start": "February 7, 2025",
+     "end": "February 7, 2028",
+     "reason": "Failure to respond to audit request",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Alstone Hospitality LLC DBA Alstone Hospitality",
+     "city": "Myrtle Beach",
+     "state": "South Carolina",
+     "start": "November 1, 2024",
+     "end": "November 1, 2027",
+     "reason": "Failure to respond to audit request",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "American Construction Group",
+     "city": "Hudson",
+     "state": "Ohio",
+     "start": "July 31, 2024",
+     "end": "July 31, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Blossom Cleaning and Multi Services LLC d/b/a Blossom Cleaning and Multi Services",
+     "city": "Quincy",
+     "state": "Florida",
+     "start": "June 28, 2026",
+     "end": "June 27, 2031",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Buildings and Builders Company, LLC",
+     "city": "Lewis Center",
+     "state": "Ohio",
+     "start": "February 12, 2025",
+     "end": "February 11, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Boughton Hotel Corporation dba The Colony Hotel",
+     "city": "Kennebunkport",
+     "state": "Maine",
+     "start": "September 1, 2022",
+     "end": "September 1, 2026",
+     "reason": "Failure to respond to audit request",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Buttercup Farm & Garden, Inc.",
+     "city": "Shelter Island",
+     "state": "New York",
+     "start": "October 16, 2024",
+     "end": "October 16, 2026",
+     "reason": "Substantial Failure to Meet Terms and Conditions of the H-2B Application for Temporary Employment Certification",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Cleaner Hands, LLC",
+     "city": "Branson",
+     "state": "Missouri",
+     "start": "December 4, 2025",
+     "end": "December 3, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Contessa Racing, Inc. d/b/a Contessa Racing",
+     "city": "Hoosick Falls",
+     "state": "New York",
+     "start": "March 18, 2022",
+     "end": "March 17, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Cosmos Landscapes",
+     "city": "Austin",
+     "state": "Texas",
+     "start": "August 1, 2022",
+     "end": "August 1, 2027",
+     "reason": "Impeding an audit, misrepresentation of fact, failure to comply with the employer's obligations to recruit U.S. workers.",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "D&O Consulting Services, LLC; aka Mayra Ortiz; aka Mayra Elorza; aka Mayra Barradas",
+     "city": "Duluth",
+     "state": "Georgia",
+     "start": "April 17, 2026",
+     "end": "April 16, 2031",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Dai Wang",
+     "city": null,
+     "state": "Guam",
+     "start": "Permanent",
+     "end": null,
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Diamond Cove Marina Inc.",
+     "city": "Montauk",
+     "state": "New York",
+     "start": "October 22, 2023",
+     "end": "October 22, 2026",
+     "reason": "Failure to respond to audit request",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Designscapes, LLC",
+     "city": "South Jordan",
+     "state": "Utah",
+     "start": "December 2, 2024",
+     "end": "December 2, 2027",
+     "reason": "Failure to respond to audit request",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "El Carreton, Inc. dba El Carreton Taqueria",
+     "city": "Gainesville",
+     "state": "Georgia",
+     "start": "August 31, 2026",
+     "end": "August 30. 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Even Greener Grounds, Inc.",
+     "city": "Warren",
+     "state": "Michigan",
+     "start": "May 15, 2025",
+     "end": "May 15, 2027",
+     "reason": "Failure to respond to audit request",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Extreme Getaway Homes, LLC",
+     "city": "Celebration",
+     "state": "Florida",
+     "start": "January 19, 2025",
+     "end": "January 18, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Gemma C. Oscianas",
+     "city": "Barrigara",
+     "state": "Guam",
+     "start": "September 12, 2025",
+     "end": "September 12, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Glendalyn C. Carolino",
+     "city": "Barrigara",
+     "state": "Guam",
+     "start": "September 12, 2025",
+     "end": "September 12, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Grandview Landscaping",
+     "city": "Denver",
+     "state": "Colorado",
+     "start": "August 17, 2022",
+     "end": "August 16, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Hoenigman Landscaping Co. LLC",
+     "city": "Newbury",
+     "state": "Ohio",
+     "start": "July 18, 2023",
+     "end": "July 18, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "International Labor Management Corporation",
+     "city": "Vass",
+     "state": "North Carolina",
+     "start": "August 1, 2014",
+     "end": "Permanent",
+     "reason": "Plea agreement before US District Court for Middle District of North Carolina",
+     "entity_type": "Agent"
+    },
+    {
+     "employer": "International Real General Contractors, LLC",
+     "city": "Strongsville",
+     "state": "Ohio",
+     "start": "November 16, 2024",
+     "end": "November 16, 2026",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "JB's Do-It-All Cleaning Services, LLC d/b/a First Class Hospitality Services",
+     "city": "Panama City Beach",
+     "state": "Florida",
+     "start": "April 15, 2026",
+     "end": "April 14, 2031",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "J. Nichols Construction, Inc.",
+     "city": "Wylie",
+     "state": "Texas",
+     "start": "January 31, 2025",
+     "end": "January 31, 2028",
+     "reason": "Failure to respond to audit request",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Joe's Friendly Service & Son, Inc.",
+     "city": "Centerport",
+     "state": "New York",
+     "start": "August 28, 2023",
+     "end": "August 28, 2028",
+     "reason": "Substantial Failure to Meet Terms and Conditions of the H-2B Application for Temporary Employment Certification",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Jorel G. Tereas",
+     "city": "Barrigara",
+     "state": "Guam",
+     "start": "January 28, 2026",
+     "end": "January 29, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Joseph J. Sanders d/b/a J & J Recycling",
+     "city": "Tofte",
+     "state": "Minnesota",
+     "start": "April 7, 2026",
+     "end": "April 6, 2031",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Lucero Pool Plaster, Inc.",
+     "city": "Schaumburg",
+     "state": "Illinois",
+     "start": "April 10, 2025",
+     "end": "April 9, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "M&M Carpenter, Inc.",
+     "city": "Auburn Hills",
+     "state": "MI",
+     "start": "November 7, 2022",
+     "end": "November 7, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Maria Teresa Gozum",
+     "city": null,
+     "state": "Guam",
+     "start": "Permanent",
+     "end": null,
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Merriam Group, LLC d/b/a Econocuts Landscape Management",
+     "city": "Channelview",
+     "state": "Texas",
+     "start": "May 1, 2022",
+     "end": "May 1, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Michael Wayne Butikofer",
+     "city": "Monon",
+     "state": "Iowa",
+     "start": null,
+     "end": "Permanent",
+     "reason": "Plea Agreement",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Nantucket Donuts and Diner dba The Downyflake Restaurant",
+     "city": "Nantucket",
+     "state": "Massachusetts",
+     "start": "November 17, 2022",
+     "end": "November 17, 2027",
+     "reason": "Failure to comply with the employer's obligations to recruit U.S. Workers",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Nationwide Structural, LLC",
+     "city": "Austin",
+     "state": "Texas",
+     "start": "March 2, 2023",
+     "end": "March 2, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Northwoods Forestry, Inc.",
+     "city": "Eau Clare",
+     "state": "Wisconsin",
+     "start": "February 15, 2023",
+     "end": "February 14, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "One Love Hospitality & Landscape, LLC d/b/a One Love Hospitality and Landscape",
+     "city": "Quincy",
+     "state": "Florida",
+     "start": "June 28, 2026",
+     "end": "June 27, 2031",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Patrick Cooper dba Patrick Cooper Painting Contractor, Inc.",
+     "city": "Danville",
+     "state": "Kentucky",
+     "start": "November 5, 2023",
+     "end": "November 5, 2026",
+     "reason": "Failure to respond to audit request",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Polyphase Systems, Inc.",
+     "city": "Barrigara",
+     "state": "Guam",
+     "start": "September 12, 2025",
+     "end": "September 12, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Pramukhraj Pierre, LLC",
+     "city": "Irvin",
+     "state": "Texas",
+     "start": "October 28, 2024",
+     "end": "October 28, 2026",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Ronald C. Carolino",
+     "city": "Barrigara",
+     "state": "Guam",
+     "start": "September 12, 2025",
+     "end": "September 12, 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Scott G. Tereas",
+     "city": "Barrigara",
+     "state": "Guam",
+     "start": "January 28, 2026",
+     "end": "January 29, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Selina D. G. Tereas",
+     "city": "Barrigara",
+     "state": "Guam",
+     "start": "January 28, 2026",
+     "end": "January 29, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Shaolin G. Tereas",
+     "city": "Barrigara",
+     "state": "Guam",
+     "start": "January 28, 2026",
+     "end": "January 29, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Sister's Saloon & Spa",
+     "city": "Nantucket",
+     "state": "Massachusetts",
+     "start": "November 1, 2024",
+     "end": "November 1, 2027",
+     "reason": "Failure to respond to audit request",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Stachowski Farm, Inc.",
+     "city": "Mantua",
+     "state": "OH",
+     "start": "September 11, 2025",
+     "end": "September 10, 2026",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Stone Masonry, LLC dba Rock and Stone Masonry",
+     "city": "Ozark",
+     "state": "Missouri",
+     "start": "April 14, 2025",
+     "end": "April 13, 2030",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Stone Creek Landscaping, Inc.",
+     "city": "Rexburg",
+     "state": "Idaho",
+     "start": "November 19, 2022",
+     "end": "November 19, 2027",
+     "reason": "Failure to comply with the employer's obligations to recruit U.S. Workers",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Tereas, Inc.",
+     "city": "Barrigara",
+     "state": "Guam",
+     "start": "January 28, 2026",
+     "end": "January 29, 2028",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Tex-Mex Trucking, Inc.",
+     "city": "El Paso",
+     "state": "Texas",
+     "start": "September 29, 2022",
+     "end": "September 28 2027",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Timmons Sprinkler Systems, Inc",
+     "city": "Sioux Falls",
+     "state": "South Dakota",
+     "start": "December 6, 2024",
+     "end": "December 6, 2027",
+     "reason": "Failure to respond to audit request",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Xin Bo “Paul” Yu",
+     "city": null,
+     "state": "Guam",
+     "start": "Permanent",
+     "end": null,
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    },
+    {
+     "employer": "Zimmerman Restaurant LLC d/b/a The Blue Monkey Cafe & Bistro",
+     "city": "Provincetown",
+     "state": "Massachusetts",
+     "start": "July 11, 2025",
+     "end": "July,10, 2030",
+     "reason": "WHD Debarment",
+     "entity_type": "Employer"
+    }
+   ]
+  }
+ ],
+ "suspensions": [
+  {
+   "claim": "Cognizant was blocked from filing new PERM applications pending an investigation; existing H-1B visas and approved labor certifications remain valid; triggered by whistleblower complaints and a White House fraud task force.",
+   "verdict": "PARTIALLY VERIFIED — no primary DOL/OFLC instrument found. The only primary-source record located is public statements by the DOL Inspector General (official @DOLOIG / Anthony P. D'Esposito X account) on September 8, 2026. There is NO DOL news release, NO OFLC announcement on dol.gov/agencies/eta/foreign-labor/news or flag.dol.gov/announcements, NO Federal Register document, and NO located court/OCAHO filing naming Cognizant. Cognizant does NOT appear on any published OFLC or WHD debarment list. The 'existing visas/certifications remain valid' and 'whistleblower complaints' details are reported by secondary media only and are not stated in any primary document found.",
+   "evidence": "DOL OIG press release of July 8, 2026 is the primary record of the underlying investigation: 'The U.S. Department of Labor, Office of Inspector General (OIG), today launched a major investigation and is intensifying enforcement efforts to combat fraud and human trafficking in the H-1B and Program Electronica Review Management (PERM) systems. Working alongside federal law enforcement partners and President Donald Trump and Vice President J.D. Vance's Taks Force to Eliminate Fraud...' It names NO companies and announces NO suspension of filings. The September 8, 2026 action was announced by IG D'Esposito on X ('Cognizant. Cloudera. H1-B processing suspended.'), reported by Business Standard, Epoch Times, Newsweek and others. Distinction: this is a SUSPENSION PENDING INVESTIGATION, not a debarment; suspensions do not appear on the published debarment lists.",
+   "source_url": "https://oig.dol.gov/public/Press%20Releases/DOL%20OIG%20Launches%20Investigation%20into%20H-1B%20Visa%20Fraud%20and%20Human%20Trafficking.pdf ; https://www.oig.dol.gov/oigpressreleases.htm ; https://www.dol.gov/agencies/eta/foreign-labor/news",
+   "date": "OIG investigation announced July 8, 2026; Cognizant PERM suspension announced by IG on X September 8, 2026"
+  },
+  {
+   "claim": "Cloudera was blocked from filing new PERM applications pending an investigation.",
+   "verdict": "VERIFIED for a May 12, 2026 PERM suspension via an official DOL news release (a distinct, earlier action from the September 8, 2026 IG announcement). The September 8, 2026 extension to H-1B processing rests only on the IG's X statements, with no primary DOL instrument found.",
+   "evidence": "DOL news release, May 12, 2026: 'US departments of Labor, Justice announce enforcement actions against Cloudera Inc. for alleged Immigration and Nationality Act violations.' The Employment and Training Administration's Office of Foreign Labor Certification suspended processing of all permanent labor certification applications filed by, or on behalf of, Cloudera for 180 days, extendable pending the outcome of the DOJ investigation. This followed a DOJ Civil Rights Division (Immigrant and Employee Rights Section) lawsuit filed April 28, 2026 before the Office of the Chief Administrative Hearing Officer (OCAHO), alleging Cloudera created a non-functional recruitment email address so U.S. workers could not apply, then certified to ETA that no qualified U.S. workers were available. This is a SUSPENSION under OFLC's existing suspension authority, not a debarment. Cloudera does NOT appear on any published debarment list.",
+   "source_url": "https://www.dol.gov/newsroom/releases/eta/eta20260512 ; https://www.justice.gov/opa/pr/civil-rights-division-sues-cloudera-excluding-us-workers-applying-high-paying-technology ; https://www.justice.gov/crt/media/1438366/dl?inline=",
+   "date": "DOJ complaint filed April 28, 2026; DOL/OFLC 180-day PERM suspension announced May 12, 2026"
+  }
+ ],
+ "no_list_published": [
+  {
+   "body": "USCIS",
+   "item": "Employers barred from H-1B/STEM OPT sponsorship",
+   "finding": "No USCIS-published list of barred employers exists. USCIS acts on DOL debarments: under 8 CFR 214.1/20 CFR part 655, 'upon debarment by the Department of Labor pursuant to 20 CFR part 655, USCIS may deny any petition filed by that petitioner for nonimmigrant status under section 101(a)(15)(H)... for a period of at least 1 year but not more than 5 years.' The operative public list remains DOL's.",
+   "source_url": "https://www.uscis.gov/working-in-the-united-states/h-1b-specialty-occupations"
+  },
+  {
+   "body": "ICE / SEVP (DHS)",
+   "item": "Employers barred or suspended from SEVP / STEM OPT",
+   "finding": "No such public list is published. SEVP's most recent relevant document, Broadcast Message 2603-02 'STEM OPT Employer Fraud' (March 23, 2026), warns DSOs about fraud among 'IT recruitment, consulting firms, and staffing agencies' and lists fraud indicators from site visits, but names no employers and references no list of barred employers. SEVP decertifies SCHOOLS, not employers; there is no employer debarment mechanism in the SEVP/OPT regulations. STEM OPT employer eligibility turns on E-Verify good standing, and USCIS publishes no list of E-Verify participants either.",
+   "source_url": "https://www.ice.gov/doclib/sevis/pdf/bcm260302.pdf"
+  },
+  {
+   "body": "DOL WHD",
+   "item": "Separate WHD public enforcement dataset of H-1B debarments",
+   "finding": "WHD's H-1B debarment list IS the WHD enforcement product (the page is on dol.gov/agencies/whd). The separate WHD enforcement database (enforcedata.dol.gov) carries H-1B investigation case data with back-wage and civil-money-penalty amounts but does not publish debarment start/end dates; the debarment page is authoritative for those.",
+   "source_url": "https://www.dol.gov/agencies/whd/immigration/h1b/debarment"
+  },
+  {
+   "body": "DOL / OFLC",
+   "item": "Published list of employers SUSPENDED (as opposed to debarred) pending investigation",
+   "finding": "None exists. OFLC publishes debarments only. Suspensions under OFLC's suspension authority (as applied to Cloudera, and as reported for Cognizant) are announced ad hoc by press release or not at all, and do not appear on any list. This is why Cognizant and Cloudera are absent from the debarment lists despite the reported actions.",
+   "source_url": "https://www.dol.gov/agencies/eta/foreign-labor/program-debarments"
+  }
+ ],
+ "caveats": [
+  "Every hub row carries a two-digit NAICS sector and nothing finer, so no count here separates a staffing firm from the companies it supplies.",
+  "The hub names an employer per fiscal year; a firm that renames or splits entities appears as more than one employer.",
+  "Debarment is a formal bar with dates. A suspension pending investigation is not published in any list, so absence from these lists is not evidence of good standing.",
+  "Retrieved 2026-09-15. www.dol.gov blocks command-line clients via Akamai (HTTP 403); pages were retrieved through a browser-equivalent fetcher, which returns the debarments page as a print-rendered PDF. Content was cross-checked by two independent fetches for the H-1B list.",
+  "There is no separate OFLC-issued H-1B/LCA debarment list. The OFLC debarments page defers entirely to WHD: 'The link below is to a list of employers debarred or disqualified by the Wage and Hour Division. The Office of Foreign Labor Certification... will not accept for filing any application or attestation submitted by these employers under 20 CFR Part 656 or 20 CFR subparts A, B, C, D, E, H, or I. (See, 20 CFR 655.750(d); 20 CFR 655.855(d).)'",
+  "DATA-QUALITY FINDING: the downloadable worksheet linked from the WHD H-1B debarment page (https://www.dol.gov/sites/dolgov/files/WHD/legacy/files/H1BDebarmentList.xls) is STALE. Its internal footer reads '(EFFECTIVE May 1, 2024)' and 'Last Updated on April 30, 2024', and the file's OLE metadata shows it was last saved 2024-03-31. It contains a completely different, now-expired roster (Broadgate, Inc.; Macks USA, Inc. and Mujeeb Rahman, Individually; Packet One, LLC; Virtulytix, Inc.; BER-IT, Inc.; Bonzer, LLC; Amica Technology Solutions, LLC) and shares no entries with the current HTML table. Anyone scripting against the .xls would get a roster over two years out of date. The HTML table is authoritative.",
+  "The H-1B list publishes no employer addresses: an 'Employer Address' column exists in the table structure but is empty for all five current entries. The list also carries no stated violation basis beyond the 'Willful Violator' flag (all five are flagged Yes); WHD refers readers to Fact Sheet #62S for the definition of a willful violator employer.",
+  "SCALE OF DEBARRED EMPLOYERS: the debarment lists are populated almost entirely by very small entities. All five current H-1B debarments are small firms — two are Florida private schools (Sherwood Academy in Mount Dora; Da Vinci Academy in Hunters Creek/Orlando) and three are small IT/staffing-type companies. No large-cap or well-known corporation appears on any of the four lists. The H-2A and H-2B lists are dominated by individual farm labor contractors, single-site farms, landscapers, restaurants, hotels and small construction firms; 13 of the 56 H-2B entries are Guam-based individuals or small companies. The PERM list has just two names, one of them an individual agent. The large firms named in 2026 enforcement news (Cognizant, Cloudera) appear on NO list, because the action against them was suspension pending investigation rather than debarment.",
+  "DEBARMENT vs SUSPENSION: a debarment is a formal bar for a fixed period (or permanent) and is published on these lists. A suspension pending investigation is temporary, is imposed under OFLC's separate suspension authority, and is NOT published on any list. All five named H-1B companies are debarments. Cognizant and Cloudera are suspensions.",
+  "Four entries across the lists are PERMANENT debarments: International Labor Management Corporation (ILMC) of Vass, NC (on both H-2A and H-2B, from August 1, 2014, by plea agreement in the US District Court for the Middle District of North Carolina); Michael Wayne Butikofer of Monon, Iowa (on both H-2A and H-2B, plea agreement, no start date printed); and on H-2B, four Guam entities/individuals — Acme Universal Inc., Dai Wang, Maria Teresa Gozum and Xin Bo 'Paul' Yu — listed as 'Permanent' with no end date.",
+  "Several entries on the OFLC lists contain typographical errors in the source, transcribed here verbatim: El Carreton end date 'August 30. 2027'; Zimmerman Restaurant end date 'July,10, 2030'; Tex-Mex Trucking end date 'September 28 2027'; Cantu Harvesting start February 28, 2024 with end February 20, 2027; Gumara Canela start January 15, 2026 with end January 16, 2029; Jorel/Scott/Selina/Shaolin Tereas and Tereas, Inc. start January 28, 2026 with end January 29, 2028; Jevon Natali has a start date of November 1, 2026 (in the future relative to retrieval) with end October 31, 2027; Maria Esther Gamas-Perez shows a one-year term (March 22, 2026 to March 22, 2027) against the three-year norm. The July 8, 2026 OIG press release also contains two errors in the source: 'Program Electronica Review Management' (PERM is Program Electronic Review Management) and 'Taks Force'.",
+  "Expired debarments are published separately by OFLC: 'Expired H-2A Debarments, FY 2014-current' and 'Expired H-2B Debarments, FY2014-current' are linked from the debarments page. No expired-debarment archive is published for H-1B or PERM.",
+  "OFLC also points to a related but distinct WHD list: ineligible Farm Labor Contractors under the Migrant and Seasonal Agricultural Worker Protection Act (MSPA), at https://www.dol.gov/agencies/whd/agriculture/mspa/farm-labor-contractors/. This is an MSPA registration list, not a visa-programme debarment list.",
+  "A Federal Register full-text search for Cognizant/Cloudera in connection with labor certification returned zero documents, confirming no rulemaking or FR notice underlies either action."
+ ]
+}

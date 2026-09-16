@@ -339,26 +339,24 @@
     var oc = visaData.opt_cost || {};
     if (oc.employer_share_pct) {
       $('opt-cost-lede').innerHTML =
-        'Two things make an OPT graduate cheaper and more biddable than the American ' +
-        'graduate beside them, and both are written into federal law rather than left to ' +
-        'the market: ' + esc(oc.rule);
+        'Two things make an OPT graduate cheaper than the American graduate beside them. ' +
+        'Federal law writes both. ' + esc(oc.rule);
       var empl = Math.round(1000 * oc.employer_share_pct);       // 7.65% of $100,000
       var both = Math.round(1000 * oc.total_payroll_tax_pct);    // 15.3% of $100,000
       $('opt-cost').innerHTML = [
         { h: 'Payroll tax: ' + oc.total_payroll_tax_pct + '% that is never paid',
-          p: 'The wages are not &ldquo;employment&rdquo;, so neither side pays: not the ' +
-            'employer&rsquo;s <strong>' + oc.employer_share_pct + '%</strong> nor the ' +
-            'worker&rsquo;s <strong>' + oc.employer_share_pct + '%</strong>. On a $100,000 ' +
-            'salary the employer keeps <strong>$' + empl.toLocaleString('en-US') + '</strong> ' +
-            'and the graduate takes home $' + empl.toLocaleString('en-US') + ' more than an ' +
-            'American on the same figure — so the same take-home can be bought for a lower ' +
-            'salary, and <strong>$' + both.toLocaleString('en-US') + '</strong> of cost ' +
-            'disappears from the job.' },
-        { h: 'The job is the visa', p: '<em>&ldquo;' + esc(oc.dependency_quote) + '&rdquo;</em> — ' +
-            esc(oc.dependency_rule) + ' An American graduate who leaves a job looks for ' +
-            'another one; a graduate on OPT has 90 days before losing the right to stay.' },
+          p: 'The wages are not &ldquo;employment&rdquo;. Neither side pays. The employer ' +
+            'skips <strong>' + oc.employer_share_pct + '%</strong> and the worker skips ' +
+            'another <strong>' + oc.employer_share_pct + '%</strong>. On a $100,000 salary ' +
+            'the employer never pays <strong>$' + empl.toLocaleString('en-US') + '</strong>. ' +
+            'The graduate takes home $' + empl.toLocaleString('en-US') + ' more than an ' +
+            'American on the same figure. The same take-home therefore costs less to buy, ' +
+            'and <strong>$' + both.toLocaleString('en-US') + '</strong> leaves the job.' },
+        { h: 'The job is the visa', p: '<em>&ldquo;' + esc(oc.dependency_quote) + '&rdquo;</em> ' +
+            esc(oc.dependency_rule) + ' An American graduate who quits looks for another job. ' +
+            'A graduate on OPT has 90 days before losing the right to stay.' },
         { h: 'No petition, cap or lottery', p: 'OPT is work authorisation on a visa the ' +
-            'graduate already holds. The student files the application; the employer files ' +
+            'graduate already holds. The student files the application. The employer files ' +
             'nothing with USCIS, enters no lottery and pays no petition fee. ' +
             esc(oc.stem_opt_pay_rule) }
       ].map(function (c) { return '<div class="window"><h3>' + c.h + '</h3><p>' + c.p + '</p></div>'; }).join('');

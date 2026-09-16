@@ -46,6 +46,20 @@ python3 "$REPO/scripts/build_chat_facts.py"
 python3 "$REPO/scripts/build_summary.py" --check
 python3 "$REPO/scripts/build_chat_lookups.py"
 
+# The record search index is NOT cheap to build, so it was left out of this
+# block -- and then shipped untouched for a month while the corpus grew by
+# 190,678 records. The assistant searched a corpus that no longer existed and
+# said nothing, because a stale index answers normally; it just cannot find
+# what it has never seen. Rebuilt only when a record file is newer than it.
+INDEX="$REPO/cloud/chat/chat_data/search_index.bin"
+if [[ -z "$(find "$REPO/site/data/stem" "$REPO/site/data/nonstem" -name '*.json' \
+            -newer "$INDEX" -print -quit 2>/dev/null)" ]]; then
+    echo "  search index is current"
+else
+    echo "  search index is behind the corpus, rebuilding (this takes a few minutes) ..."
+    python3 "$REPO/scripts/build_chat_search_index.py"
+fi
+
 echo "Syncing handler source into lambda/ ..."
 # Extension modules are listed explicitly rather than globbed so that a
 # stray file in cloud/chat/ never ships to the Lambda by accident.

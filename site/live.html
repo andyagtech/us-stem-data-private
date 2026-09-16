@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Live — Who the Expansion Was Built For</title>
-<meta name="description" content="An interactive dashboard of US graduate degree awards by field, level and residency status.">
+<meta name="description" content="A live, voice-driven dashboard of US graduate degree awards by field, level and residency status. Ask it a question and the charts redraw.">
 <meta property="og:title" content="Live data dashboard — US graduate degrees">
-<meta property="og:description" content="US graduate degree awards by field, level and residency status. Pick a field and the charts redraw.">
+<meta property="og:description" content="Ask it a question out loud. The charts move as you speak.">
 <meta property="og:image" content="https://phd-demographics.andy-barr.com/og/concentration.png">
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="/style.css">
@@ -26,6 +26,18 @@
     letter-spacing:-.01em;}
   .live-title span{color:var(--live-dim);font-size:.85rem;font-family:inherit;
     display:block;font-weight:400;margin-top:.15rem;}
+  .mic-btn{margin-left:auto;display:inline-flex;align-items:center;gap:.6rem;
+    background:var(--nra);color:#fff;border:0;border-radius:999px;
+    padding:.62rem 1.15rem;font-size:.92rem;font-weight:600;cursor:pointer;
+    font-family:inherit;transition:transform .12s ease,background .2s ease;}
+  .mic-btn:hover{transform:translateY(-1px);}
+  .mic-btn[data-state="live"]{background:var(--dom);}
+  .mic-btn[data-state="connecting"]{background:var(--live-faint);cursor:wait;}
+  .mic-btn:disabled{opacity:.55;cursor:not-allowed;transform:none;}
+  .mic-dot{width:9px;height:9px;border-radius:50%;background:#fff;flex:0 0 auto;}
+  .mic-btn[data-state="live"] .mic-dot{animation:pulse 1.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.35;transform:scale(.75);}}
+  @media (prefers-reduced-motion:reduce){.mic-btn[data-state="live"] .mic-dot{animation:none;}}
 
   .live-main{max-width:1180px;margin:0 auto;padding:1.5rem;
     display:grid;grid-template-columns:1fr 300px;gap:1.25rem;align-items:start;}
@@ -64,6 +76,15 @@
     margin:0;font-variant-numeric:tabular-nums;}
   .kpi-cap{color:var(--live-dim);font-size:.82rem;margin:.5rem 0 0;line-height:1.45;}
 
+  .transcript{background:var(--live-panel);border:1px solid var(--live-edge);
+    border-radius:14px;padding:1rem 1.1rem;max-height:290px;overflow-y:auto;}
+  .transcript h3{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;
+    color:var(--live-dim);margin:0 0 .6rem;font-weight:600;}
+  .t-line{font-size:.88rem;line-height:1.5;margin:0 0 .55rem;color:var(--live-dim);}
+  .t-line.you{color:var(--live-ink);}
+  .t-line b{color:var(--live-faint);font-weight:600;font-size:.75rem;
+    text-transform:uppercase;letter-spacing:.05em;display:block;}
+
 
   .prompts{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.9rem;}
   .prompt-chip{background:transparent;border:1px solid var(--live-edge);
@@ -86,6 +107,9 @@
   <header class="live-head">
     <h1 id="who-the-expansion-was-built-for-us-graduate" class="live-title">Who the expansion was built for
       <span>US graduate degrees by field, level and residency status</span></h1>
+    <button class="mic-btn" id="mic" data-state="idle" type="button" data-track="btn.mic">
+      <span class="mic-dot"></span><span id="mic-label">Start talking</span>
+    </button>
   </header>
 
   <main class="live-main">
@@ -103,7 +127,11 @@
       <div class="kpi">
         <p class="kpi-label" id="kpi-label">Non-resident share, latest</p>
         <p class="kpi-value" id="kpi-value">—</p>
-        <p class="kpi-cap" id="kpi-cap"></p>
+        <p class="kpi-cap" id="kpi-cap">Press start and ask about a field.</p>
+      </div>
+      <div class="transcript" id="transcript">
+        <h3 id="conversation">Conversation</h3>
+        <div id="t-body"></div>
       </div>
     </aside>
   </main>

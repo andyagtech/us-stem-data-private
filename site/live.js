@@ -1,14 +1,17 @@
 /* Live dashboard: US graduate degrees by field, level and residency status.
  *
- * VOICE IS SWITCHED OFF (2026-09-14). The page shows no microphone, no
- * transcript and no invitation to speak, because none of it worked: the token
- * URL below pointed at the retired April `phd-chat` function, which has no
- * /realtime route, so every attempt ended in "Voice is not available yet".
- * That function was also a public, uncapped chat endpoint; it is now throttled
- * to zero. To bring voice back, all three are needed: /realtime deployed on
- * phd-chat-prod with an API key, its sessions metered by cloud/chat/budget.py
- * like every other model call, and the button and transcript restored to
- * live.html. Until then VOICE_ENABLED stays false and the code below is inert.
+ * VOICE IS ON (2026-09-16), against phd-chat-prod. It was off for two days
+ * because all three of the things it needs were missing: the /realtime route
+ * pointed at the retired April `phd-chat` function, which has no such route;
+ * the route that did exist read OPENAI_API_KEY straight from the environment,
+ * which nothing sets, because the key lives in SSM; and nothing metered the
+ * session. All three are fixed. A session is now charged its worst case to
+ * cloud/chat/budget.py BEFORE the token is minted, and there is no settlement
+ * because the audio never touches our servers -- see that file.
+ *
+ * If voice is refused (daily voice budget spent, or the ledger unwritable) the
+ * page says so in one line and stays a working dashboard. That is the contract
+ * below: every chart the voice can summon is also reachable by clicking.
  *
  * Two halves that are deliberately independent:
  *
@@ -32,8 +35,10 @@
   'use strict';
 
   var BUNDLE_URL = '/data/live_bundle.json';
-  var VOICE_ENABLED = false;
-  var TOKEN_URL = '';          // no deployed, budgeted /realtime endpoint exists
+  var VOICE_ENABLED = true;
+  // The budgeted /realtime route on phd-chat-prod. Same function as the typed
+  // assistant, same daily ledger, different upstream API.
+  var TOKEN_URL = 'https://lamsi2swef2o2ark2ylnupz5wy0vedcw.lambda-url.us-east-1.on.aws/realtime';
   var COL = { dom: '#2AA3C4', nra: '#DE5C6B', accent: '#B58A2C' };
 
   var data = null;
@@ -398,8 +403,15 @@
     fetch(TOKEN_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' },
                        body: '{}' })
       .then(function (r) {
-        if (!r.ok) throw new Error('token ' + r.status);
-        return r.json();
+        if (r.ok) return r.json();
+        // The server says WHY it refused -- the voice budget for today is
+        // spent, or the ledger could not be written. Carry that sentence
+        // through instead of replacing it with a status code.
+        return r.json().catch(function () { return {}; }).then(function (b) {
+          var e = new Error('token ' + r.status);
+          e.detail = b && b.detail;
+          throw e;
+        });
       })
       .then(function (tok) {
         if (!tok.client_secret) throw new Error('no token');
@@ -423,7 +435,10 @@
 
             return pc.createOffer().then(function (offer) {
               return pc.setLocalDescription(offer).then(function () {
-                return fetch('https://api.openai.com/v1/realtime?model=' +
+                // /v1/realtime was the beta and now answers 400 with "The
+                // Realtime Beta API is no longer supported. Please use
+                // /v1/realtime/calls for the GA API." Taking it at its word.
+                return fetch('https://api.openai.com/v1/realtime/calls?model=' +
                              encodeURIComponent(tok.model), {
                   method: 'POST',
                   body: offer.sdp,
@@ -449,8 +464,10 @@
       .catch(function (err) {
         stopVoice(null);
         var m = String(err && err.message || '');
-        if (m.indexOf('token') === 0 || m === 'no token') {
-          say('System', 'Voice is not available yet — the realtime endpoint is not deployed. Everything on this page still works; use the buttons below the chart.');
+        if (err && err.detail) {
+          say('System', err.detail);
+        } else if (m.indexOf('token') === 0 || m === 'no token') {
+          say('System', 'Voice could not start. Everything on this page still works; use the buttons below the chart.');
         } else if (m.indexOf('Permission') >= 0 || m.indexOf('NotAllowed') >= 0) {
           say('System', 'Microphone permission was declined.');
         } else {
