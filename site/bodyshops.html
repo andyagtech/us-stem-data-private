@@ -81,7 +81,13 @@
   table.mini th { font-size: .7rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); font-weight: 600; }
   table.mini td.num, table.mini th.num { text-align: right; font-variant-numeric: tabular-nums; }
   .caveats { border-left: 2px solid var(--border); padding: .1rem 0 .1rem 1rem; margin: 1.2rem 0 0; }
-  .caveats li { color: var(--text-muted); font-size: .8rem; line-height: 1.6; max-width: 80ch; }
+  /* A caveat names a file -- data/h1b/lca_archive_manifest.json -- and a path
+     has no space in it to break at, so on a phone it set the minimum width of
+     the whole page and pushed every section 124px sideways. Only this list and
+     the method note carry paths, so only they get the anywhere-break. */
+  .caveats li { color: var(--text-muted); font-size: .8rem; line-height: 1.6; max-width: 80ch;
+    overflow-wrap: anywhere; }
+  .note code, .caveats code { overflow-wrap: anywhere; }
   .loading { color: var(--text-muted); font-size: .85rem; }
   a { color: var(--accent); }
 </style>

@@ -431,7 +431,7 @@ def build_html(all_data, mode='stem'):
 
 <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="Open navigation menu">\u2630</button>
 <nav class="sidebar" id="sidebar" aria-label="University navigation">
-  <h3>PhD Demographics</h3>
+  <h3>STEM Demographics</h3>
   <div class="sidebar-group" id="sg-national">
     <div class="sidebar-section" onclick="toggleSidebarGroup('sg-national')"><span class="chevron">\u25BC</span> National</div>
     <div class="sidebar-group-content">
@@ -540,6 +540,12 @@ def build_html(all_data, mode='stem'):
         <canvas id="nat-visa-chart"></canvas>
         <p class="source">Source: <a href="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-statistics.html" target="_blank">US State Department Visa Statistics</a></p>
       </div>
+      <div class="nat-chart-box" id="nat-fields"{' style="display:none;"' if is_nonstem else ''}>
+        <h3>NRA Enrollment by STEM Field<a class="share-anchor" href="#nat-fields" onclick="shareAnchor('nat-fields',event);return false;" title="Copy link to this chart" aria-label="Copy link to this chart">#</a></h3>
+        <p class="nat-desc">In Computer Science and Engineering, the majority of graduate students are non-resident aliens.</p>
+        <canvas id="nat-field-chart"></canvas>
+        <p class="source">Source: <a href="https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-in-science-and-engineering" target="_blank">NSF Graduate Student Survey (STEM only — non-STEM equivalent not yet plotted)</a></p>
+      </div>
       <div class="nat-chart-box" id="nat-visa-calc">
         <h3>Cumulative Visa Calculator<a class="share-anchor" href="#nat-visa-calc" onclick="shareAnchor('nat-visa-calc',event);return false;" title="Copy link to this chart" aria-label="Copy link to this chart">#</a></h3>
         <p class="nat-desc">Total visa issuances between two years. Select a range to see cumulative counts.</p>
@@ -550,12 +556,6 @@ def build_html(all_data, mode='stem'):
         </div>
         <div id="cum-results" style="font-size:0.82rem;line-height:1.8;"></div>
         <p class="source">Source: US State Department visa issuances at consulates abroad</p>
-      </div>
-      <div class="nat-chart-box" id="nat-fields"{' style="display:none;"' if is_nonstem else ''}>
-        <h3>NRA Enrollment by STEM Field<a class="share-anchor" href="#nat-fields" onclick="shareAnchor('nat-fields',event);return false;" title="Copy link to this chart" aria-label="Copy link to this chart">#</a></h3>
-        <p class="nat-desc">In Computer Science and Engineering, the majority of graduate students are non-resident aliens.</p>
-        <canvas id="nat-field-chart"></canvas>
-        <p class="source">Source: <a href="https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-in-science-and-engineering" target="_blank">NSF Graduate Student Survey (STEM only — non-STEM equivalent not yet plotted)</a></p>
       </div>
     </div>
 
@@ -2810,6 +2810,12 @@ const _origShowUni = showUni;
 
 }})();
 </script>
+<!-- The shared navigation. This tag used to be absent here and present in the
+     generated file, because it was added to stem.html and non_stem.html by
+     hand: regenerating the pages silently deleted the sidebar from both, and
+     only the consistency check noticed. A generated file is never the place to
+     put anything by hand. -->
+<script src="/sidebar.js"></script>
 <script src="/chat-widget.js"></script>
 </body>
 </html>"""

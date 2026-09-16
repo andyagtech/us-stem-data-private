@@ -342,8 +342,8 @@
   const html = `
     <div class="sb-header">
       <div class="sb-brand">
-        <a href="index.html" class="sb-logo">PhD Demographics</a>
-        <span class="sb-tagline">US Graduate Program Research</span>
+        <span class="sb-logo">STEM Demographics</span>
+        <span class="sb-tagline">American academia trends</span>
       </div>
       <button type="button" class="sb-hide" aria-controls="shared-sidebar"
         aria-label="Hide the sidebar" title="Hide the sidebar" data-track="nav.sidebar-hide">\u00AB</button>
@@ -355,9 +355,23 @@
   `;
 
   const css = `
-    #shared-sidebar { position: fixed; top: 0; left: 0; width: 220px; height: 100vh; background: var(--surface); border-right: 1px solid var(--border); z-index: 100; display: flex; flex-direction: column; transition: left 0.25s; }
+    /* ONE width for every page, declared once. The rail was 220px on most
+       pages and 260px in drawer mode, so it visibly changed size as a reader
+       moved around. 260 is the one that fits the section names without
+       wrapping them three lines deep.
+       The explicit padding:0 is not decoration. #shared-sidebar is a <nav>,
+       and overview.html styles its own top bar with a bare "nav" selector
+       carrying 24px of side padding -- which landed on this element and
+       squeezed its usable width by 48px, wrapping the brand and every section
+       label on that page alone.
+       An id beats a type selector, so declaring it here ends that class of
+       collision for any page, not just the one that had it. */
+    #shared-sidebar { position: fixed; top: 0; left: 0; width: 260px; height: 100vh; padding: 0; margin: 0; background: var(--surface); border-right: 1px solid var(--border); z-index: 100; display: flex; flex-direction: column; transition: left 0.25s; }
     .sb-header { padding: 14px 16px 8px; border-bottom: 1px solid var(--border); }
-    .sb-logo { font-size: 0.9rem; font-weight: 700; color: var(--accent); text-decoration: none; display: block; }
+    /* The name stays on one line. It wrapped to two on any page whose own CSS
+       narrowed this rail, and a masthead that reflows page to page reads as a
+       different site each time. */
+    .sb-logo { font-size: 0.9rem; font-weight: 700; color: var(--accent); text-decoration: none; display: block; white-space: nowrap; }
     .sb-tagline { font-size: 0.68rem; color: var(--text-muted); display: block; margin-top: 2px; }
     .sb-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
     .sb-hide { flex: 0 0 auto; background: none; border: 1px solid transparent;
@@ -394,8 +408,8 @@
        element called .page, so every page whose wrapper had another name --
        main, .container, .page-wrap, .header -- ran underneath it. Margin, not
        padding, so a page's own body padding survives. */
-    body.has-sidebar { margin-left: 220px; }
-    /* Reserving 220px narrows the content area, and a dozen pages then ran
+    body.has-sidebar { margin-left: 260px; }
+    /* Reserving the rail's width narrows the content area, and a dozen pages ran
        past the right edge by ~108px at 1280 wide. The cause is not the
        sidebar: a grid item defaults to min-width:auto, so a <canvas> that
        Chart.js sizes in device pixels forces its track wider than the column
