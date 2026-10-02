@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Petroleum — critical industries</title>
+<meta name="description" content="Petroleum: 85.3% of US research doctorates in this field go to non-residents, against 27.0% across all fields. The programmes, the institutions, and whether the work requires citizenship.">
+<meta property="og:title" content="Petroleum — critical industries">
+<meta property="og:description" content="Petroleum: 85.3% of US research doctorates in this field go to non-residents, against 27.0% across all fields. The programmes, the institutions, and whether the work requires citizenship.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og/concentration.png">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.9rem; margin: 0 0 .7rem; line-height: 1.2; max-width: 24ch; }
+  .page-head p { color: var(--text-muted); max-width: 70ch; line-height: 1.65; font-size: .95rem; margin: 0 0 .5rem; }
+  .kicker { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin: 0 0 .6rem; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin: 1.6rem 0 0; }
+  .stat { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; background: var(--surface); }
+  .stat .n { font-size: 1.7rem; font-weight: 800; color: var(--hl); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: .82rem; line-height: 1.45; margin: .3rem 0 0; }
+  .stat .s { font-size: .72rem; color: var(--text-muted); margin: .45rem 0 0; }
+  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+  section.block { margin-top: 2.8rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  section.block h2 { font-size: 1.2rem; margin: 0 0 .45rem; }
+  .lede { color: var(--text-muted); max-width: 72ch; line-height: 1.6; font-size: .92rem; margin: 0 0 1rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55; max-width: 80ch; margin: .8rem 0 0; overflow-wrap: anywhere; }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; }
+  table.t { width: 100%; border-collapse: collapse; font-size: .84rem; }
+  table.t th { text-align: left; padding: .6rem .7rem; font-size: .7rem; text-transform: uppercase;
+    letter-spacing: .05em; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  table.t td { padding: .55rem .7rem; border-bottom: 1px solid var(--border); }
+  table.t td.num, table.t th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.t tr:last-child td { border-bottom: none; }
+  .share { font-weight: 700; color: var(--hl); }
+  .muted { color: var(--text-muted); }
+  .pill { display: inline-block; font-size: .7rem; border: 1px solid var(--border); border-radius: 999px;
+    padding: .05rem .5rem; color: var(--text-muted); white-space: nowrap; }
+  .pill.gated { border-color: var(--hl); color: var(--hl); font-weight: 600; }
+  .gate { border-left: 3px solid var(--hl); background: var(--surface); border-radius: 0 10px 10px 0;
+    padding: .9rem 1.1rem; margin: 1.2rem 0 0; }
+  .gate h3 { font-size: .85rem; margin: 0 0 .4rem; }
+  .gate p { font-size: .85rem; line-height: 1.6; margin: 0; color: var(--text-muted); }
+  .proxy { border: 1px dashed var(--border); border-radius: 10px; padding: .9rem 1.1rem; margin: 1.2rem 0 0; }
+  .proxy h3 { font-size: .8rem; margin: 0 0 .4rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); }
+  .proxy p { font-size: .85rem; line-height: 1.6; margin: 0; }
+  /* The industry cards on the hub. */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: .8rem; margin: 1.4rem 0 0; }
+  .card { border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.1rem; background: var(--surface);
+    display: flex; flex-direction: column; gap: .45rem; text-decoration: none; color: inherit; }
+  .card:hover { border-color: var(--hl); }
+  .card .pc { font-size: 2rem; font-weight: 800; color: var(--hl); line-height: 1; font-variant-numeric: tabular-nums; }
+  .card .nm { font-size: .95rem; font-weight: 700; }
+  .card .sub { font-size: .76rem; color: var(--text-muted); line-height: 1.45; }
+  /* Share by year. One axis, every line directly labelled. */
+  .chart { margin: 1.2rem 0 0; }
+  .chart svg { width: 100%; height: auto; max-width: 100%; display: block; }
+  .chart .gl { stroke: var(--border); stroke-width: 1; }
+  .chart .ln { fill: none; stroke: var(--hl); stroke-width: 2; }
+  .chart .base { fill: none; stroke: var(--text-muted); stroke-width: 1.5; stroke-dasharray: 4 3; opacity: .7; }
+  .chart text { fill: var(--text-muted); font-size: 10px; }
+  .chart text.lab { fill: var(--text); font-size: 11px; font-weight: 600; }
+  .caveats { border-left: 2px solid var(--border); padding: .1rem 0 .1rem 1rem; margin: 1.2rem 0 0; }
+  .caveats li { color: var(--text-muted); font-size: .8rem; line-height: 1.6; max-width: 80ch; overflow-wrap: anywhere; }
+  a { color: var(--accent); }
+</style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+</head>
+<body data-page="industry-petroleum">
+<main id="main">
+<div class="wrap">
+
+  <header class="page-head">
+    <p class="kicker"><a href="/industries">Critical industries</a> &middot;
+      NCES IPEDS, 2015&ndash;2022</p>
+    <h1 id="petroleum">Petroleum</h1>
+    <p>Reservoir engineering, drilling and production. The degree is specific to the industry: there is no other career for a petroleum engineering doctorate.</p>
+    <div class="stats">
+      <div class="stat"><p class="n">85.3%</p><p class="l">of research doctorates in
+        this field go to non-residents</p>
+        <p class="s">+58.3 points against the
+          27.0% national figure</p></div>
+      <div class="stat"><p class="n">943</p><p class="l">doctorates awarded in
+        the window</p><p class="s">804 of them to non-residents</p></div>
+      <div class="stat"><p class="n">16</p><p class="l">institutions award
+        this doctorate at all</p><p class="s">the whole national capacity</p></div>
+      <div class="stat"><p class="n" style="font-size:1.1rem">None</p>
+        <p class="l">federal access regime on the work itself</p>
+        <p class="s">no export-control or access regime by default</p></div>
+    </div>
+    <div class="gate" style="border-left-color:var(--border)"><h3>No federal access restriction by default</h3><p>No export-control or access-authorisation regime applies by default. Open to anyone with the right to work in the United States.</p></div>
+    
+  </header>
+
+  
+
+  <section class="block" id="levels">
+    <h2>Where the American pipeline stops</h2>
+    <p class="lede">The same field at three levels, in 2025. The subject does not
+      change. Only the level does.</p>
+    <div class="table-wrap"><table class="t">
+      <thead><tr><th>Level</th><th class="num">Awarded to Americans</th>
+        <th class="num">Share American</th><th class="num">Awarded to non-residents</th>
+        <th class="num">Total</th></tr></thead>
+      <tbody><tr><td>Bachelor&#x27;s</td><td class="num">284</td><td class="num share">68.6%</td><td class="num muted">130</td><td class="num muted">414</td></tr><tr><td>Master&#x27;s</td><td class="num">53</td><td class="num share">28.0%</td><td class="num muted">136</td><td class="num muted">189</td></tr><tr><td>Doctorate</td><td class="num">28</td><td class="num share">27.2%</td><td class="num muted">75</td><td class="num muted">103</td></tr></tbody></table></div>
+    <p class="note">Americans take <strong>68.6%</strong> of the 414 bachelor&rsquo;s degrees in this field and <strong>28.0%</strong> of the 189 master&rsquo;s degrees. The undergraduate pipeline is American. The graduate pipeline above it is not, and the graduate degree is the one that leads to the work this page is about. See <a href="/expansion">the master&rsquo;s expansion</a> for the same pattern across every field.</p>
+  </section>
+
+  <section class="block" id="programmes">
+    <h2>The programmes behind the number</h2>
+    <p class="lede">Every CIP code this page counts, and what each contributes. Disagree with
+      the mapping and you can see exactly which rows to drop.</p>
+    <div class="table-wrap"><table class="t">
+      <thead><tr><th>Programme</th><th class="num">Non-resident share</th>
+        <th class="num">Doctorates</th><th class="num">Non-residents</th></tr></thead>
+      <tbody><tr><td>Petroleum Engineering<div class="muted" style="font-size:.74rem">CIP 14.2501</div></td><td class="num share">85.3%</td><td class="num">943</td><td class="num muted">804</td></tr></tbody></table></div>
+  </section>
+
+  <section class="block" id="schools">
+    <h2>Where it is taught</h2>
+    <p class="lede">The institutions awarding these doctorates, largest first. Ten or more
+      over the window.</p>
+    <div class="table-wrap"><table class="t">
+      <thead><tr><th>Institution</th><th class="num">Non-resident share</th>
+        <th class="num">Doctorates</th><th class="num">Non-residents</th></tr></thead>
+      <tbody><tr><td>Texas A&amp;M University-College Station</td><td class="num share">82.1%</td><td class="num">196</td><td class="num muted">161</td></tr><tr><td>The University of Texas at Austin</td><td class="num share">84.4%</td><td class="num">160</td><td class="num muted">135</td></tr><tr><td>Pennsylvania State University-Main Campus</td><td class="num share">86.3%</td><td class="num">102</td><td class="num muted">88</td></tr><tr><td>Colorado School of Mines</td><td class="num share">85.7%</td><td class="num">70</td><td class="num muted">60</td></tr><tr><td>University of Oklahoma-Norman Campus</td><td class="num share">83.6%</td><td class="num">61</td><td class="num muted">51</td></tr><tr><td>University of Tulsa</td><td class="num share">93.3%</td><td class="num">60</td><td class="num muted">56</td></tr><tr><td>Missouri University of Science and Technology</td><td class="num share">90.4%</td><td class="num">52</td><td class="num muted">47</td></tr><tr><td>Texas Tech University</td><td class="num share">87.0%</td><td class="num">46</td><td class="num muted">40</td></tr><tr><td>Louisiana State University and Agricultural &amp; Mechanical College</td><td class="num share">81.6%</td><td class="num">38</td><td class="num muted">31</td></tr><tr><td>University of Wyoming</td><td class="num share">94.4%</td><td class="num">36</td><td class="num muted">34</td></tr><tr><td>Stanford University</td><td class="num share">85.2%</td><td class="num">27</td><td class="num muted">23</td></tr><tr><td>495767</td><td class="num share">87.5%</td><td class="num">24</td><td class="num muted">21</td></tr><tr><td>University of Houston</td><td class="num share">73.9%</td><td class="num">23</td><td class="num muted">17</td></tr><tr><td>University of Southern California</td><td class="num share">73.7%</td><td class="num">19</td><td class="num muted">14</td></tr><tr><td>University of North Dakota</td><td class="num share">89.5%</td><td class="num">19</td><td class="num muted">17</td></tr><tr><td>New Mexico Institute of Mining and Technology</td><td class="num share">90.0%</td><td class="num">10</td><td class="num muted">9</td></tr></tbody></table></div>
+  </section>
+
+  <section class="block" id="trend">
+    <h2>The share since 1995</h2>
+    <p class="lede">Non-resident share of the doctorates awarded each year, against the
+      national figure for all fields.</p>
+    <div class="chart"><svg viewBox="0 0 760 230" role="img" aria-label="Petroleum non-resident share by year, 1995 to 2025"><line class="gl" x1="34" y1="204.0" x2="664" y2="204.0"/><text x="28" y="207.0" text-anchor="end">0%</text><line class="gl" x1="34" y1="156.5" x2="664" y2="156.5"/><text x="28" y="159.5" text-anchor="end">25%</text><line class="gl" x1="34" y1="109.0" x2="664" y2="109.0"/><text x="28" y="112.0" text-anchor="end">50%</text><line class="gl" x1="34" y1="61.5" x2="664" y2="61.5"/><text x="28" y="64.5" text-anchor="end">75%</text><line class="gl" x1="34" y1="14.0" x2="664" y2="14.0"/><text x="28" y="17.0" text-anchor="end">100%</text><path class="base" d="M34,152.7 L664,152.7"/><text x="668" y="155.7">all fields 27.0%</text><path class="ln" d="M34.0,91.5 L55.0,64.3 L76.0,43.6 L97.0,52.0 L139.0,57.1 L160.0,39.7 L181.0,49.9 L202.0,32.6 L223.0,48.6 L244.0,49.0 L265.0,35.1 L286.0,39.7 L307.0,18.0 L328.0,39.7 L349.0,29.4 L370.0,23.7 L391.0,47.4 L412.0,47.6 L433.0,36.4 L454.0,35.3 L475.0,30.3 L496.0,47.1 L517.0,41.2 L538.0,37.4 L559.0,53.3 L580.0,41.7 L601.0,49.7 L622.0,59.2 L643.0,51.1 L664.0,65.7"/><circle cx="664.0" cy="65.7" r="4" fill="var(--hl)"/><text class="lab" x="656.0" y="51.7" text-anchor="end">72.8%</text><text x="34.0" y="222" text-anchor="start">1995</text><text x="349.0" y="222" text-anchor="middle">2010</text><text x="664.0" y="222" text-anchor="end">2025</text></svg></div>
+    <p class="note">The line runs the full published history. The headline
+      <strong>85.3%</strong> above is pooled over 2015&ndash;2022,
+      the window this site uses everywhere, so the two figures answer different
+      questions and will not match. Years with fewer than 20 doctorates nationally are
+      omitted, because a share computed on a dozen degrees moves on one student.</p>
+  </section>
+
+  <section class="block" id="method">
+    <h2>Method and limits</h2>
+    <ul class="caveats"><li>A CIP code is a field of study. Nobody in this data is observed working in the industry it is matched to.</li><li>The battery entry is a proxy built from materials programmes, because IPEDS publishes no battery category.</li><li>Shares are of degrees awarded, not of the current workforce. A doctorate awarded in 2016 may have left the country or the field.</li><li>&#x27;Non-resident alien&#x27; is the IPEDS reporting category: a student on a temporary visa. Permanent residents are counted as domestic.</li><li>The restriction note states the law as written. It is not an observed hiring outcome: this data cannot show who was employed, under what authorisation, or whether they stayed.</li><li>Export control, access authorisation and a security clearance are three different things. Only a DOE L or Q access authorisation requires US citizenship.</li></ul>
+    <p class="note">Built by <code>scripts/build_critical_industries.py</code> from
+      <a href="https://nces.ed.gov/ipeds/use-the-data" target="_blank" rel="noopener noreferrer">NCES IPEDS Completions, research doctorates, 2015-2022</a>.
+      Compare the other four on <a href="/industries">the hub</a>.</p>
+  </section>
+
+</div>
+</main>
+<script src="/sidebar.js" defer></script>
+</body>
+</html>

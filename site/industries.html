@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Critical industries</title>
+<meta name="description" content="Who the United States trains to run the industries it cannot offshore: mining, petroleum, aerospace, battery technology and nuclear, by non-resident share of research doctorates.">
+<meta property="og:title" content="Critical industries">
+<meta property="og:description" content="Who the United States trains to run the industries it cannot offshore: mining, petroleum, aerospace, battery technology and nuclear, by non-resident share of research doctorates.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og/concentration.png">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.9rem; margin: 0 0 .7rem; line-height: 1.2; max-width: 24ch; }
+  .page-head p { color: var(--text-muted); max-width: 70ch; line-height: 1.65; font-size: .95rem; margin: 0 0 .5rem; }
+  .kicker { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin: 0 0 .6rem; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin: 1.6rem 0 0; }
+  .stat { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; background: var(--surface); }
+  .stat .n { font-size: 1.7rem; font-weight: 800; color: var(--hl); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: .82rem; line-height: 1.45; margin: .3rem 0 0; }
+  .stat .s { font-size: .72rem; color: var(--text-muted); margin: .45rem 0 0; }
+  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+  section.block { margin-top: 2.8rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  section.block h2 { font-size: 1.2rem; margin: 0 0 .45rem; }
+  .lede { color: var(--text-muted); max-width: 72ch; line-height: 1.6; font-size: .92rem; margin: 0 0 1rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55; max-width: 80ch; margin: .8rem 0 0; overflow-wrap: anywhere; }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; }
+  table.t { width: 100%; border-collapse: collapse; font-size: .84rem; }
+  table.t th { text-align: left; padding: .6rem .7rem; font-size: .7rem; text-transform: uppercase;
+    letter-spacing: .05em; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  table.t td { padding: .55rem .7rem; border-bottom: 1px solid var(--border); }
+  table.t td.num, table.t th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.t tr:last-child td { border-bottom: none; }
+  .share { font-weight: 700; color: var(--hl); }
+  .muted { color: var(--text-muted); }
+  .pill { display: inline-block; font-size: .7rem; border: 1px solid var(--border); border-radius: 999px;
+    padding: .05rem .5rem; color: var(--text-muted); white-space: nowrap; }
+  .pill.gated { border-color: var(--hl); color: var(--hl); font-weight: 600; }
+  .gate { border-left: 3px solid var(--hl); background: var(--surface); border-radius: 0 10px 10px 0;
+    padding: .9rem 1.1rem; margin: 1.2rem 0 0; }
+  .gate h3 { font-size: .85rem; margin: 0 0 .4rem; }
+  .gate p { font-size: .85rem; line-height: 1.6; margin: 0; color: var(--text-muted); }
+  .proxy { border: 1px dashed var(--border); border-radius: 10px; padding: .9rem 1.1rem; margin: 1.2rem 0 0; }
+  .proxy h3 { font-size: .8rem; margin: 0 0 .4rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); }
+  .proxy p { font-size: .85rem; line-height: 1.6; margin: 0; }
+  /* The industry cards on the hub. */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: .8rem; margin: 1.4rem 0 0; }
+  .card { border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.1rem; background: var(--surface);
+    display: flex; flex-direction: column; gap: .45rem; text-decoration: none; color: inherit; }
+  .card:hover { border-color: var(--hl); }
+  .card .pc { font-size: 2rem; font-weight: 800; color: var(--hl); line-height: 1; font-variant-numeric: tabular-nums; }
+  .card .nm { font-size: .95rem; font-weight: 700; }
+  .card .sub { font-size: .76rem; color: var(--text-muted); line-height: 1.45; }
+  /* Share by year. One axis, every line directly labelled. */
+  .chart { margin: 1.2rem 0 0; }
+  .chart svg { width: 100%; height: auto; max-width: 100%; display: block; }
+  .chart .gl { stroke: var(--border); stroke-width: 1; }
+  .chart .ln { fill: none; stroke: var(--hl); stroke-width: 2; }
+  .chart .base { fill: none; stroke: var(--text-muted); stroke-width: 1.5; stroke-dasharray: 4 3; opacity: .7; }
+  .chart text { fill: var(--text-muted); font-size: 10px; }
+  .chart text.lab { fill: var(--text); font-size: 11px; font-weight: 600; }
+  .caveats { border-left: 2px solid var(--border); padding: .1rem 0 .1rem 1rem; margin: 1.2rem 0 0; }
+  .caveats li { color: var(--text-muted); font-size: .8rem; line-height: 1.6; max-width: 80ch; overflow-wrap: anywhere; }
+  a { color: var(--accent); }
+</style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+</head>
+<body data-page="industries">
+<main id="main">
+<div class="wrap">
+
+  <header class="page-head">
+    <p class="kicker">Federal records: NCES IPEDS Completions, 2015&ndash;2022</p>
+    <h1 id="critical-industries">Five industries the country cannot offshore</h1>
+    <p>An ore body is where it is. So is a well, an airframe line, a cell plant and a
+      reactor. The work has to be done here, by people who are here. This page asks
+      who the United States is training to do it.</p>
+    <p>Each share below is the non-resident share of the research doctorates awarded
+      in that field. The national figure across all fields is <strong>27.0%</strong>.
+      Every one of these five runs above it, and petroleum runs higher than any other
+      field on this site.</p>
+    <div class="cards"><a class="card" href="/industries/petroleum" data-track="industry.petroleum"><span class="pc">85.3%</span><span class="nm">Petroleum</span><span class="sub">943 doctorates at 16 institutions</span></a><a class="card" href="/industries/ai" data-track="industry.ai"><span class="pc">63.3%</span><span class="nm">Artificial intelligence</span><span class="sub">8,891 doctorates at 122 institutions</span></a><a class="card" href="/industries/mining" data-track="industry.mining"><span class="pc">56.4%</span><span class="nm">Mining and metals</span><span class="sub">303 doctorates at 8 institutions</span></a><a class="card" href="/industries/battery" data-track="industry.battery"><span class="pc">51.6%</span><span class="nm">Battery technology</span><span class="sub">6,738 doctorates at 113 institutions</span></a><a class="card" href="/industries/aerospace" data-track="industry.aerospace"><span class="pc">42.6%</span><span class="nm">Aerospace</span><span class="sub">2,911 doctorates at 49 institutions</span><span class="pill">Export control</span></a><a class="card" href="/industries/nuclear" data-track="industry.nuclear"><span class="pc">32.8%</span><span class="nm">Nuclear</span><span class="sub">1,318 doctorates at 28 institutions</span><span class="pill">Access authorisation</span></a></div>
+  </header>
+
+  <section class="block" id="all">
+    <h2>All five, side by side</h2>
+    <div class="table-wrap"><table class="t">
+      <thead><tr><th>Industry</th><th class="num">Non-resident share</th>
+        <th class="num">Doctorates</th><th class="num">Institutions</th>
+        <th>Federal access regime</th><th>CIP codes used</th></tr></thead>
+      <tbody><tr><td><a href="/industries/petroleum">Petroleum</a></td><td class="num share">85.3%</td><td class="num">943</td><td class="num muted">16</td><td class="muted">&amp;mdash;</td><td class="muted">14.2501</td></tr><tr><td><a href="/industries/ai">Artificial intelligence</a></td><td class="num share">63.3%</td><td class="num">8,891</td><td class="num muted">122</td><td class="muted">&amp;mdash;</td><td class="muted">11.0102, 11.0701, 30.7001</td></tr><tr><td><a href="/industries/mining">Mining and metals</a></td><td class="num share">56.4%</td><td class="num">303</td><td class="num muted">8</td><td class="muted">&amp;mdash;</td><td class="muted">14.2101, 14.2001</td></tr><tr><td><a href="/industries/battery">Battery technology</a></td><td class="num share">51.6%</td><td class="num">6,738</td><td class="num muted">113</td><td class="muted">&amp;mdash;</td><td class="muted">14.1801, 40.1001</td></tr><tr><td><a href="/industries/aerospace">Aerospace</a></td><td class="num share">42.6%</td><td class="num">2,911</td><td class="num muted">49</td><td class="muted">Export control</td><td class="muted">14.0201</td></tr><tr><td><a href="/industries/nuclear">Nuclear</a></td><td class="num share">32.8%</td><td class="num">1,318</td><td class="num muted">28</td><td class="muted">Access authorisation</td><td class="muted">14.2301</td></tr></tbody></table></div>
+    <p class="note">Pooled over 2015&ndash;2022. Each industry
+      page lists the programmes behind its number and the institutions that award them.</p>
+  </section>
+
+  <section class="block" id="grid">
+    <h2>Who runs it, once it is built</h2>
+    <p class="lede">These five fields are measured by who gets the doctorate. The grid
+      itself is not: electrician and lineworker credentials go almost entirely to
+      Americans, so the question there is not who, but how many. The country awards
+      fewer than a hundred power plant technology credentials a year, nationally.</p>
+    <p><a href="/industries/grid">The grid workforce &rarr;</a></p>
+  </section>
+
+  <section class="block" id="restrictions">
+    <h2>What restricts this work, precisely</h2>
+    <p class="lede">Some of this work carries federal access restrictions. Three different
+      regimes get run together under the word &ldquo;clearance&rdquo;, and they are not the
+      same thing. Export control turns on
+      <strong>U.S. person</strong> status (22 CFR 120.62), which <strong>includes lawful
+      permanent residents</strong> &mdash; it is not a clearance and does not require
+      citizenship. Unescorted access at a commercial reactor (10 CFR 73.56) is a background
+      and fitness-for-duty determination, also not a clearance. A <strong>security
+      clearance</strong> is eligibility for access to classified information under EO 12968
+      and SEAD 4; DOE&rsquo;s L and Q authorisations (10 CFR 710) are of that kind and do
+      require citizenship.</p>
+    <div class="table-wrap"><table class="t">
+      <thead><tr><th>Industry</th><th>Regime</th><th>What it actually says</th></tr></thead>
+      <tbody><tr><td>Petroleum</td><td class="muted">None by default</td><td>No export-control or access-authorisation regime applies by default. Open to anyone with the right to work in the United States.</td></tr><tr><td>Artificial intelligence</td><td class="muted">None by default</td><td>No export-control or access-authorisation regime applies to the field as such. Specific defence or intelligence work carries its own rules, and some frontier model weights and semiconductor design tools fall under export control, but a computer science doctorate does not.</td></tr><tr><td>Mining and metals</td><td class="muted">None by default</td><td>No export-control or access-authorisation regime applies by default. Some critical-minerals work carries federal funding conditions, which are grant terms and not a personnel restriction.</td></tr><tr><td>Battery technology</td><td class="muted">None by default</td><td>No export-control or access-authorisation regime applies by default, though specific DOE-funded programmes may attach their own conditions.</td></tr><tr><td>Aerospace</td><td class="muted">Export control</td><td>Much of this work is export-controlled. ITAR (22 CFR 120-130) limits access to defence articles and technical data to a &#x27;U.S. person&#x27; as defined at 22 CFR 120.62: a citizen, a lawful permanent resident, or a protected individual. This is not a security clearance and it does not require citizenship &mdash; a permanent resident qualifies. It does exclude someone on a temporary visa, which is exactly who IPEDS counts as a non-resident alien.</td></tr><tr><td>Nuclear</td><td class="muted">Access authorisation</td><td>Two different regimes, often confused. Unescorted access to a commercial reactor requires NRC access authorisation under 10 CFR 73.56 &mdash; a background investigation and fitness-for-duty determination, not a security clearance, and not restricted by citizenship on its face. DOE work on weapons-adjacent programmes requires an L or Q access authorisation under 10 CFR 710, which IS a clearance and does require US citizenship. Most civil nuclear engineering falls under the first, not the second.</td></tr></tbody></table></div>
+    <p class="note">One consequence is worth stating because it is easy to get backwards.
+      IPEDS counts a permanent resident as domestic, so every non-resident alien in these
+      figures is on a temporary visa and is therefore outside the U.S.-person definition
+      that export control uses. That is a statement about what the rules say, not about who
+      was hired: this data records a degree awarded and nothing more.</p>
+  </section>
+
+  <section class="block" id="method">
+    <h2>Method and limits</h2>
+    <p class="lede">A CIP code is a field of study. It is not an industry, and nobody in this
+      data is observed working anywhere. The mapping from field to industry is this
+      site&rsquo;s, and every page shows the codes it used so the mapping can be argued with.</p>
+    <ul class="caveats"><li>A CIP code is a field of study. Nobody in this data is observed working in the industry it is matched to.</li><li>The battery entry is a proxy built from materials programmes, because IPEDS publishes no battery category.</li><li>Shares are of degrees awarded, not of the current workforce. A doctorate awarded in 2016 may have left the country or the field.</li><li>&#x27;Non-resident alien&#x27; is the IPEDS reporting category: a student on a temporary visa. Permanent residents are counted as domestic.</li><li>The restriction note states the law as written. It is not an observed hiring outcome: this data cannot show who was employed, under what authorisation, or whether they stayed.</li><li>Export control, access authorisation and a security clearance are three different things. Only a DOE L or Q access authorisation requires US citizenship.</li></ul>
+    <p class="note">Built by <code>scripts/build_critical_industries.py</code> and
+      <code>scripts/build_industry_pages.py</code> from
+      <a href="https://nces.ed.gov/ipeds/use-the-data" target="_blank" rel="noopener noreferrer">NCES IPEDS Completions, research doctorates, 2015-2022</a>.</p>
+  </section>
+
+</div>
+</main>
+<script src="/sidebar.js" defer></script>
+</body>
+</html>

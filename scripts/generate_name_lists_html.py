@@ -436,9 +436,9 @@ def build_html(all_data, mode='stem'):
     <div class="sidebar-section" onclick="toggleSidebarGroup('sg-national')"><span class="chevron">\u25BC</span> National</div>
     <div class="sidebar-group-content">
       <a href="javascript:void(0)" class="nav-item nav-page" onclick="showNational();">National Charts</a>
-      <a href="ipeds_dashboard.html" class="nav-item nav-page">IPEDS PhD Dashboard</a>
-      <a href="immigration.html" class="nav-item nav-page">Immigration Pipeline</a>
-      <a href="pipeline.html" class="nav-item nav-page">Pipeline Analysis</a>
+      <a href="ipeds_dashboard" class="nav-item nav-page">IPEDS PhD Dashboard</a>
+      <a href="immigration" class="nav-item nav-page">Immigration Pipeline</a>
+      <a href="pipeline" class="nav-item nav-page">Pipeline Analysis</a>
     </div>
   </div>
   <div class="sidebar-group" id="sg-universities">
@@ -450,21 +450,21 @@ def build_html(all_data, mode='stem'):
   <div class="sidebar-group" id="sg-international">
     <div class="sidebar-section" onclick="toggleSidebarGroup('sg-international')"><span class="chevron">\u25BC</span> International</div>
     <div class="sidebar-group-content">
-      <a href="india.html" class="nav-item nav-page">India (Outbound)</a>
-      <a href="china.html" class="nav-item nav-page">China (Outbound)</a>
-      <a href="canada.html" class="nav-item nav-page">Canada</a>
-      <a href="uk.html" class="nav-item nav-page">United Kingdom</a>
-      <a href="eu.html" class="nav-item nav-page">EU &amp; Germany</a>
-      <a href="mexico.html" class="nav-item nav-page">Mexico</a>
-      <a href="vwp.html" class="nav-item nav-page">Visa Waiver Program</a>
+      <a href="india" class="nav-item nav-page">India (Outbound)</a>
+      <a href="china" class="nav-item nav-page">China (Outbound)</a>
+      <a href="canada" class="nav-item nav-page">Canada</a>
+      <a href="uk" class="nav-item nav-page">United Kingdom</a>
+      <a href="eu" class="nav-item nav-page">EU &amp; Germany</a>
+      <a href="mexico" class="nav-item nav-page">Mexico</a>
+      <a href="vwp" class="nav-item nav-page">Visa Waiver Program</a>
     </div>
   </div>
   <div class="sidebar-group" id="sg-reference">
     <div class="sidebar-section" onclick="toggleSidebarGroup('sg-reference')"><span class="chevron">\u25BC</span> Reference</div>
     <div class="sidebar-group-content">
-      <a href="query.html" class="nav-item nav-page">Data Query (SQL)</a>
-      <a href="data_sources.html" class="nav-item nav-page">Data Sources &amp; Methodology</a>
-      <a href="implementation.html" class="nav-item nav-page">Implementation</a>
+      <a href="query" class="nav-item nav-page">Data Query (SQL)</a>
+      <a href="data_sources" class="nav-item nav-page">Data Sources &amp; Methodology</a>
+      <a href="implementation" class="nav-item nav-page">Implementation</a>
       <a href="/catalog.json" class="nav-item nav-page">Data Catalog (JSON)</a>
       <a href="llms.txt" class="nav-item nav-page">WebMCP Integration</a>
     </div>
@@ -472,8 +472,8 @@ def build_html(all_data, mode='stem'):
   <div class="sidebar-group" id="sg-about">
     <div class="sidebar-section" onclick="toggleSidebarGroup('sg-about')"><span class="chevron">\u25BC</span> About</div>
     <div class="sidebar-group-content">
-      <a href="about.html" class="nav-item nav-page">About this Project</a>
-      <a href="submit.html" class="nav-item nav-page">Tip Line</a>
+      <a href="about" class="nav-item nav-page">About this Project</a>
+      <a href="submit" class="nav-item nav-page">Tip Line</a>
       <a href="https://andy-barr.com" target="_blank" rel="noopener" class="nav-item nav-page">Personal Webpage</a>
       <a href="https://buymeacoffee.com/andybarr" target="_blank" rel="noopener" class="nav-item nav-page">Support this Page</a>
     </div>
@@ -483,9 +483,9 @@ def build_html(all_data, mode='stem'):
 
 <main class="main" id="main-content">
   <header class="top-nav" role="banner">
-    <a href="index.html" class="top-nav-btn">Education Index</a>
+    <a href="index" class="top-nav-btn">Education Index</a>
     <a href="{"stem.html" if is_nonstem else "non_stem.html"}" class="top-nav-btn">{"STEM View" if is_nonstem else "Non-STEM View"}</a>
-    <a href="data_sources.html" class="top-nav-btn">Data Sources</a>
+    <a href="data_sources" class="top-nav-btn">Data Sources</a>
   </header>
   <h1>{"Non-STEM " if is_nonstem else ""}Thesis &amp; Dissertation Lists — High NRA Universities</h1>
   <p class="subtitle" style="font-size:0.78rem;color:var(--text-muted);margin-top:-2px;">NRA = Non-Resident Alien. Universities ranked by NRA share of STEM doctoral completions (IPEDS).</p>
@@ -719,9 +719,9 @@ def build_html(all_data, mode='stem'):
 
   <footer class="site-footer" style="text-align:center;padding:28px 16px 32px;font-size:0.74rem;color:#64748b;border-top:1px solid #334155;margin-top:32px;line-height:1.7;">
     A project by <a href="https://andy-barr.com" target="_blank" rel="noopener" style="color:#94a3b8;text-decoration:none;font-weight:600;">Andy Barr</a>. Data from US federal agencies (NCES, NSF, DOL, DHS) and university institutional repositories.<br>
-    <a href="about.html" style="color:#38bdf8;text-decoration:none;">About</a> &middot;
-    <a href="data_sources.html" style="color:#38bdf8;text-decoration:none;">Methodology</a> &middot;
-    <a href="submit.html" style="color:#38bdf8;text-decoration:none;">Tip Line</a> &middot;
+    <a href="about" style="color:#38bdf8;text-decoration:none;">About</a> &middot;
+    <a href="data_sources" style="color:#38bdf8;text-decoration:none;">Methodology</a> &middot;
+    <a href="submit" style="color:#38bdf8;text-decoration:none;">Tip Line</a> &middot;
     <a href="https://x.com/andy_barr_data" target="_blank" rel="noopener" style="color:#38bdf8;text-decoration:none;">Follow on X</a> &middot;
     <a href="https://buymeacoffee.com/andybarr" target="_blank" rel="noopener" style="color:#38bdf8;text-decoration:none;">Support this Page</a>
   </footer>

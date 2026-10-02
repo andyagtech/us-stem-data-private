@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Battery technology — critical industries</title>
+<meta name="description" content="Battery technology: 51.6% of US research doctorates in this field go to non-residents, against 27.0% across all fields. The programmes, the institutions, and whether the work requires citizenship.">
+<meta property="og:title" content="Battery technology — critical industries">
+<meta property="og:description" content="Battery technology: 51.6% of US research doctorates in this field go to non-residents, against 27.0% across all fields. The programmes, the institutions, and whether the work requires citizenship.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og/concentration.png">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.9rem; margin: 0 0 .7rem; line-height: 1.2; max-width: 24ch; }
+  .page-head p { color: var(--text-muted); max-width: 70ch; line-height: 1.65; font-size: .95rem; margin: 0 0 .5rem; }
+  .kicker { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin: 0 0 .6rem; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin: 1.6rem 0 0; }
+  .stat { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; background: var(--surface); }
+  .stat .n { font-size: 1.7rem; font-weight: 800; color: var(--hl); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: .82rem; line-height: 1.45; margin: .3rem 0 0; }
+  .stat .s { font-size: .72rem; color: var(--text-muted); margin: .45rem 0 0; }
+  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+  section.block { margin-top: 2.8rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  section.block h2 { font-size: 1.2rem; margin: 0 0 .45rem; }
+  .lede { color: var(--text-muted); max-width: 72ch; line-height: 1.6; font-size: .92rem; margin: 0 0 1rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55; max-width: 80ch; margin: .8rem 0 0; overflow-wrap: anywhere; }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; }
+  table.t { width: 100%; border-collapse: collapse; font-size: .84rem; }
+  table.t th { text-align: left; padding: .6rem .7rem; font-size: .7rem; text-transform: uppercase;
+    letter-spacing: .05em; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  table.t td { padding: .55rem .7rem; border-bottom: 1px solid var(--border); }
+  table.t td.num, table.t th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.t tr:last-child td { border-bottom: none; }
+  .share { font-weight: 700; color: var(--hl); }
+  .muted { color: var(--text-muted); }
+  .pill { display: inline-block; font-size: .7rem; border: 1px solid var(--border); border-radius: 999px;
+    padding: .05rem .5rem; color: var(--text-muted); white-space: nowrap; }
+  .pill.gated { border-color: var(--hl); color: var(--hl); font-weight: 600; }
+  .gate { border-left: 3px solid var(--hl); background: var(--surface); border-radius: 0 10px 10px 0;
+    padding: .9rem 1.1rem; margin: 1.2rem 0 0; }
+  .gate h3 { font-size: .85rem; margin: 0 0 .4rem; }
+  .gate p { font-size: .85rem; line-height: 1.6; margin: 0; color: var(--text-muted); }
+  .proxy { border: 1px dashed var(--border); border-radius: 10px; padding: .9rem 1.1rem; margin: 1.2rem 0 0; }
+  .proxy h3 { font-size: .8rem; margin: 0 0 .4rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); }
+  .proxy p { font-size: .85rem; line-height: 1.6; margin: 0; }
+  /* The industry cards on the hub. */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: .8rem; margin: 1.4rem 0 0; }
+  .card { border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.1rem; background: var(--surface);
+    display: flex; flex-direction: column; gap: .45rem; text-decoration: none; color: inherit; }
+  .card:hover { border-color: var(--hl); }
+  .card .pc { font-size: 2rem; font-weight: 800; color: var(--hl); line-height: 1; font-variant-numeric: tabular-nums; }
+  .card .nm { font-size: .95rem; font-weight: 700; }
+  .card .sub { font-size: .76rem; color: var(--text-muted); line-height: 1.45; }
+  /* Share by year. One axis, every line directly labelled. */
+  .chart { margin: 1.2rem 0 0; }
+  .chart svg { width: 100%; height: auto; max-width: 100%; display: block; }
+  .chart .gl { stroke: var(--border); stroke-width: 1; }
+  .chart .ln { fill: none; stroke: var(--hl); stroke-width: 2; }
+  .chart .base { fill: none; stroke: var(--text-muted); stroke-width: 1.5; stroke-dasharray: 4 3; opacity: .7; }
+  .chart text { fill: var(--text-muted); font-size: 10px; }
+  .chart text.lab { fill: var(--text); font-size: 11px; font-weight: 600; }
+  .caveats { border-left: 2px solid var(--border); padding: .1rem 0 .1rem 1rem; margin: 1.2rem 0 0; }
+  .caveats li { color: var(--text-muted); font-size: .8rem; line-height: 1.6; max-width: 80ch; overflow-wrap: anywhere; }
+  a { color: var(--accent); }
+</style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+</head>
+<body data-page="industry-battery">
+<main id="main">
+<div class="wrap">
+
+  <header class="page-head">
+    <p class="kicker"><a href="/industries">Critical industries</a> &middot;
+      NCES IPEDS, 2015&ndash;2022</p>
+    <h1 id="battery">Battery technology</h1>
+    <p>Cell chemistry, electrodes and electrolytes sit inside materials programmes. No federal category names the industry.</p>
+    <div class="stats">
+      <div class="stat"><p class="n">51.6%</p><p class="l">of research doctorates in
+        this field go to non-residents</p>
+        <p class="s">+24.6 points against the
+          27.0% national figure</p></div>
+      <div class="stat"><p class="n">6,738</p><p class="l">doctorates awarded in
+        the window</p><p class="s">3,474 of them to non-residents</p></div>
+      <div class="stat"><p class="n">113</p><p class="l">institutions award
+        this doctorate at all</p><p class="s">the whole national capacity</p></div>
+      <div class="stat"><p class="n" style="font-size:1.1rem">None</p>
+        <p class="l">federal access regime on the work itself</p>
+        <p class="s">no export-control or access regime by default</p></div>
+    </div>
+    <div class="gate" style="border-left-color:var(--border)"><h3>No federal access restriction by default</h3><p>No export-control or access-authorisation regime applies by default, though specific DOE-funded programmes may attach their own conditions.</p></div>
+    <div class="proxy"><h3>This category is ours, not the government&rsquo;s</h3><p>IPEDS HAS NO BATTERY CATEGORY. This is the closest honest proxy: the materials programmes that produce electrode, electrolyte and cell researchers. It therefore counts people who will never work on a battery, and misses battery work done inside chemistry and chemical engineering. Treat it as the materials pipeline, which is what it measures.</p></div>
+  </header>
+
+  
+
+  <section class="block" id="levels">
+    <h2>Where the American pipeline stops</h2>
+    <p class="lede">The same field at three levels, in 2025. The subject does not
+      change. Only the level does.</p>
+    <div class="table-wrap"><table class="t">
+      <thead><tr><th>Level</th><th class="num">Awarded to Americans</th>
+        <th class="num">Share American</th><th class="num">Awarded to non-residents</th>
+        <th class="num">Total</th></tr></thead>
+      <tbody><tr><td>Bachelor&#x27;s</td><td class="num">1,198</td><td class="num share">90.8%</td><td class="num muted">121</td><td class="num muted">1,319</td></tr><tr><td>Master&#x27;s</td><td class="num">847</td><td class="num share">58.9%</td><td class="num muted">591</td><td class="num muted">1,438</td></tr><tr><td>Doctorate</td><td class="num">454</td><td class="num share">50.8%</td><td class="num muted">439</td><td class="num muted">893</td></tr></tbody></table></div>
+    <p class="note">Americans take <strong>90.8%</strong> of the 1,319 bachelor&rsquo;s degrees in this field and <strong>58.9%</strong> of the 1,438 master&rsquo;s degrees. The undergraduate pipeline is American. The graduate pipeline above it is not, and the graduate degree is the one that leads to the work this page is about. See <a href="/expansion">the master&rsquo;s expansion</a> for the same pattern across every field.</p>
+  </section>
+
+  <section class="block" id="programmes">
+    <h2>The programmes behind the number</h2>
+    <p class="lede">Every CIP code this page counts, and what each contributes. Disagree with
+      the mapping and you can see exactly which rows to drop.</p>
+    <div class="table-wrap"><table class="t">
+      <thead><tr><th>Programme</th><th class="num">Non-resident share</th>
+        <th class="num">Doctorates</th><th class="num">Non-residents</th></tr></thead>
+      <tbody><tr><td>Materials Engineering<div class="muted" style="font-size:.74rem">CIP 14.1801</div></td><td class="num share">53.1%</td><td class="num">5,542</td><td class="num muted">2,945</td></tr><tr><td>Materials Science<div class="muted" style="font-size:.74rem">CIP 40.1001</div></td><td class="num share">44.2%</td><td class="num">1,196</td><td class="num muted">529</td></tr></tbody></table></div>
+  </section>
+
+  <section class="block" id="schools">
+    <h2>Where it is taught</h2>
+    <p class="lede">The institutions awarding these doctorates, largest first. Ten or more
+      over the window.</p>
+    <div class="table-wrap"><table class="t">
+      <thead><tr><th>Institution</th><th class="num">Non-resident share</th>
+        <th class="num">Doctorates</th><th class="num">Non-residents</th></tr></thead>
+      <tbody><tr><td>Massachusetts Institute of Technology</td><td class="num share">54.4%</td><td class="num">261</td><td class="num muted">142</td></tr><tr><td>Northwestern University</td><td class="num share">43.3%</td><td class="num">252</td><td class="num muted">109</td></tr><tr><td>Georgia Institute of Technology-Main Campus</td><td class="num share">48.6%</td><td class="num">210</td><td class="num muted">102</td></tr><tr><td>University of Illinois Urbana-Champaign</td><td class="num share">63.5%</td><td class="num">189</td><td class="num muted">120</td></tr><tr><td>Stanford University</td><td class="num share">41.8%</td><td class="num">189</td><td class="num muted">79</td></tr><tr><td>University of California-San Diego</td><td class="num share">63.0%</td><td class="num">181</td><td class="num muted">114</td></tr><tr><td>University of California-Santa Barbara</td><td class="num share">12.7%</td><td class="num">181</td><td class="num muted">23</td></tr><tr><td>Purdue University-Main Campus</td><td class="num share">56.4%</td><td class="num">179</td><td class="num muted">101</td></tr><tr><td>University of California-Los Angeles</td><td class="num share">64.3%</td><td class="num">154</td><td class="num muted">99</td></tr><tr><td>University of Florida</td><td class="num share">38.7%</td><td class="num">150</td><td class="num muted">58</td></tr><tr><td>University of Michigan-Ann Arbor</td><td class="num share">40.0%</td><td class="num">145</td><td class="num muted">58</td></tr><tr><td>Carnegie Mellon University</td><td class="num share">52.5%</td><td class="num">141</td><td class="num muted">74</td></tr><tr><td>Ohio State University-Main Campus</td><td class="num share">50.4%</td><td class="num">139</td><td class="num muted">70</td></tr><tr><td>Pennsylvania State University-Main Campus</td><td class="num share">45.3%</td><td class="num">139</td><td class="num muted">63</td></tr><tr><td>Texas A&amp;M University-College Station</td><td class="num share">65.5%</td><td class="num">139</td><td class="num muted">91</td></tr><tr><td>North Carolina State University at Raleigh</td><td class="num share">42.0%</td><td class="num">138</td><td class="num muted">58</td></tr><tr><td>Arizona State University Campus Immersion</td><td class="num share">69.8%</td><td class="num">126</td><td class="num muted">88</td></tr><tr><td>University of California-Berkeley</td><td class="num share">43.3%</td><td class="num">120</td><td class="num muted">52</td></tr><tr><td>Stony Brook University</td><td class="num share">70.9%</td><td class="num">117</td><td class="num muted">83</td></tr><tr><td>University of Wisconsin-Madison</td><td class="num share">56.9%</td><td class="num">116</td><td class="num muted">66</td></tr><tr><td>The University of Tennessee-Knoxville</td><td class="num share">59.5%</td><td class="num">111</td><td class="num muted">66</td></tr><tr><td>University of Connecticut</td><td class="num share">60.4%</td><td class="num">96</td><td class="num muted">58</td></tr><tr><td>University of California-Riverside</td><td class="num share">47.3%</td><td class="num">91</td><td class="num muted">43</td></tr><tr><td>University of Minnesota-Twin Cities</td><td class="num share">57.3%</td><td class="num">89</td><td class="num muted">51</td></tr><tr><td>University of Delaware</td><td class="num share">55.7%</td><td class="num">88</td><td class="num muted">49</td></tr></tbody></table></div>
+  </section>
+
+  <section class="block" id="trend">
+    <h2>The share since 1995</h2>
+    <p class="lede">Non-resident share of the doctorates awarded each year, against the
+      national figure for all fields.</p>
+    <div class="chart"><svg viewBox="0 0 760 230" role="img" aria-label="Battery technology non-resident share by year, 1995 to 2025"><line class="gl" x1="34" y1="204.0" x2="664" y2="204.0"/><text x="28" y="207.0" text-anchor="end">0%</text><line class="gl" x1="34" y1="156.5" x2="664" y2="156.5"/><text x="28" y="159.5" text-anchor="end">25%</text><line class="gl" x1="34" y1="109.0" x2="664" y2="109.0"/><text x="28" y="112.0" text-anchor="end">50%</text><line class="gl" x1="34" y1="61.5" x2="664" y2="61.5"/><text x="28" y="64.5" text-anchor="end">75%</text><line class="gl" x1="34" y1="14.0" x2="664" y2="14.0"/><text x="28" y="17.0" text-anchor="end">100%</text><path class="base" d="M34,152.7 L664,152.7"/><text x="668" y="155.7">all fields 27.0%</text><path class="ln" d="M34.0,115.7 L55.0,120.4 L76.0,124.2 L97.0,131.6 L139.0,123.1 L160.0,106.3 L181.0,102.9 L202.0,100.1 L223.0,86.8 L244.0,85.6 L265.0,90.2 L286.0,91.0 L307.0,91.3 L328.0,88.9 L349.0,107.1 L370.0,95.3 L391.0,110.3 L412.0,99.9 L433.0,104.8 L454.0,101.6 L475.0,107.1 L496.0,108.2 L517.0,105.6 L538.0,109.2 L559.0,102.9 L580.0,105.0 L601.0,107.9 L622.0,109.4 L643.0,110.1 L664.0,110.5"/><circle cx="664.0" cy="110.5" r="4" fill="var(--hl)"/><text class="lab" x="656.0" y="96.5" text-anchor="end">49.2%</text><text x="34.0" y="222" text-anchor="start">1995</text><text x="349.0" y="222" text-anchor="middle">2010</text><text x="664.0" y="222" text-anchor="end">2025</text></svg></div>
+    <p class="note">The line runs the full published history. The headline
+      <strong>51.6%</strong> above is pooled over 2015&ndash;2022,
+      the window this site uses everywhere, so the two figures answer different
+      questions and will not match. Years with fewer than 20 doctorates nationally are
+      omitted, because a share computed on a dozen degrees moves on one student.</p>
+  </section>
+
+  <section class="block" id="method">
+    <h2>Method and limits</h2>
+    <ul class="caveats"><li>A CIP code is a field of study. Nobody in this data is observed working in the industry it is matched to.</li><li>The battery entry is a proxy built from materials programmes, because IPEDS publishes no battery category.</li><li>Shares are of degrees awarded, not of the current workforce. A doctorate awarded in 2016 may have left the country or the field.</li><li>&#x27;Non-resident alien&#x27; is the IPEDS reporting category: a student on a temporary visa. Permanent residents are counted as domestic.</li><li>The restriction note states the law as written. It is not an observed hiring outcome: this data cannot show who was employed, under what authorisation, or whether they stayed.</li><li>Export control, access authorisation and a security clearance are three different things. Only a DOE L or Q access authorisation requires US citizenship.</li></ul>
+    <p class="note">Built by <code>scripts/build_critical_industries.py</code> from
+      <a href="https://nces.ed.gov/ipeds/use-the-data" target="_blank" rel="noopener noreferrer">NCES IPEDS Completions, research doctorates, 2015-2022</a>.
+      Compare the other four on <a href="/industries">the hub</a>.</p>
+  </section>
+
+</div>
+</main>
+<script src="/sidebar.js" defer></script>
+</body>
+</html>

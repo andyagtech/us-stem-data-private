@@ -7,6 +7,11 @@
   // "/" only, which is the URL every shared link lands on, while /index.html
   // looked fine and was the one every check loaded.
   const currentPage = currentPath.split('/').pop() || 'index.html';
+  // The full path, normalised the way a nav href is: no leading slash, no
+  // .html, no trailing slash. "/industries/grid.html" and "/industries/grid"
+  // both become "industries/grid".
+  const currentKey = (currentPath.replace(/^\//, '').replace(/\.html$/, '')
+    .replace(/\/$/, '')) || 'index';
   // Detect if we're on a university page like /universities/mit.html
   const uniMatch = currentPath.match(/\/universities\/([a-z0-9_]+)\.html/);
   const currentUniKey = uniMatch ? uniMatch[1] : null;
@@ -54,8 +59,8 @@
 
   const sections = [
     { title: 'Start here', items: [
-      { href: '/overview.html', label: 'National Overview' },
-      { href: '/stem.html', label: 'National Charts', anchors: [
+      { href: '/overview', label: 'National Overview' },
+      { href: '/stem', label: 'National Charts', anchors: [
         { hash: 'nat-phd', label: 'STEM PhD by Citizenship' },
         { hash: 'nat-opt', label: 'OPT Pipeline' },
         { hash: 'nat-funding', label: 'R&D vs American PhDs' },
@@ -64,47 +69,47 @@
         { hash: 'nat-visa-calc', label: 'Cumulative Visa Calculator' },
         { hash: 'nat-fields', label: 'NRA by STEM Field' },
       ]},
-      { href: '/presentation.html', label: 'Presentation: The Concentration Effect' },
+      { href: '/presentation', label: 'Presentation: The Concentration Effect' },
     ]},
     { title: '1 · The public pays for the doctorate', items: [
-      { href: '/ipeds_dashboard.html', label: 'IPEDS PhD Dashboard', anchors: [
+      { href: '/ipeds_dashboard', label: 'IPEDS PhD Dashboard', anchors: [
         { hash: 'panel-trends', label: 'Trends' },
         { hash: 'panel-demographics', label: 'Demographics' },
         { hash: 'panel-institutions', label: 'Institutions' },
         { hash: 'panel-states', label: 'States' },
       ]},
-      { href: '/distributions.html', label: 'Distributions', anchors: [
+      { href: '/distributions', label: 'Distributions', anchors: [
         { hash: 'national', label: 'National, then and now' },
         { hash: 'programmes', label: 'By programme' },
         { hash: 'universities', label: 'Inside one university' },
       ]},
-      { href: '/non_stem.html', label: 'Non-STEM Lists' },
-      { href: '/rankings.html', label: 'Where The Share Is Highest', anchors: [
+      { href: '/non_stem', label: 'Non-STEM Lists' },
+      { href: '/rankings', label: 'Where The Share Is Highest', anchors: [
         { hash: 'institutions', label: 'Institutions' },
         { hash: 'programmes', label: 'Programmes' },
         { hash: 'contrast', label: 'Two programmes, one university' },
       ]},
     ]},
     { title: "2 · The master's is sold", items: [
-      { href: '/expansion.html', label: "The Master's Expansion", anchors: [
+      { href: '/expansion', label: "The Master's Expansion", anchors: [
         { hash: 'volume', label: 'In absolute numbers' },
         { hash: 'share', label: 'As a proportion' },
         { hash: 'visas', label: 'The visas' },
         { hash: 'billed', label: 'What it is worth' },
       ]},
-      { href: '/institutions.html', label: 'Compare Institutions', anchors: [
+      { href: '/institutions', label: 'Compare Institutions', anchors: [
         { hash: 'the-table', label: 'The table' },
         { hash: 'what-a-row-does-not-mean', label: 'What a row does not mean' },
       ]},
-      { href: '/rankings.html', label: 'Where The Share Is Highest', anchors: [
+      { href: '/rankings', label: 'Where The Share Is Highest', anchors: [
         { hash: 'institutions', label: 'Institutions' },
         { hash: 'programmes', label: 'Programmes' },
         { hash: 'contrast', label: 'Two programmes, one university' },
       ]},
     ]},
     { title: '3 · The degree becomes a visa', items: [
-      { href: '/immigration.html', label: 'Immigration Pipeline' },
-      { href: '/pipeline.html', label: 'Pipeline Analysis', anchors: [
+      { href: '/immigration', label: 'Immigration Pipeline' },
+      { href: '/pipeline', label: 'Pipeline Analysis', anchors: [
         { hash: 'pipeline-chart-section', label: 'A. Full Pipeline' },
         { hash: 'f1-diverge-chart-section', label: 'B. China vs India (F-1)' },
         { hash: 'h1b-diverge-chart-section', label: 'B. China vs India (H-1B)' },
@@ -113,7 +118,7 @@
         { hash: 'indexed-chart-section', label: 'E. Pipeline Growth' },
         { hash: 'heatmap-chart-section', label: 'F. Country × State' },
       ]},
-      { href: '/medical.html', label: 'Medical Immigration', anchors: [
+      { href: '/medical', label: 'Medical Immigration', anchors: [
         { hash: 'history-section', label: 'Enrollment 1980-2025' },
         { hash: 'recent-section', label: 'Apps vs Matric vs Grad' },
         { hash: 'daca-section', label: 'DACA Med Students' },
@@ -125,16 +130,16 @@
         { hash: 'nrmp-section', label: 'NRMP Match: IMGs' },
         { hash: 'nrmp-rate-section', label: 'NRMP IMG Match Rate' },
       ]},
-      { href: '/workforce.html', label: 'STEM Workforce (SDR)', anchors: [
+      { href: '/workforce', label: 'STEM Workforce (SDR)', anchors: [
         { hash: 'by-field-section', label: 'Foreign-Born by Field' },
         { hash: 'citizenship-section', label: 'Citizenship Composition' },
         { hash: 'totals-section', label: 'Totals by Field' },
         { hash: 'industry-section', label: 'By Major Industry' },
       ]},
-      { href: '/filers.html', label: 'Who Files The Visas' },
+      { href: '/filers', label: 'Who Files The Visas' },
     ]},
     { title: '4 · Who profits', items: [
-      { href: '/visa-schools.html', label: 'Schools That Launder Visas', anchors: [
+      { href: '/visa-schools', label: 'Schools That Launder Visas', anchors: [
         { hash: 'how-it-works', label: 'How it works, at one school' },
         { hash: 'schools', label: 'Every school' },
         { hash: 'visas', label: 'When one visa tightens' },
@@ -142,7 +147,7 @@
         { hash: 'tn', label: 'TN is a different path' },
         { hash: 'method', label: 'Method and limits' },
       ]},
-      { href: '/bodyshops.html', label: 'The Visa Body Shops', anchors: [
+      { href: '/bodyshops', label: 'The Visa Body Shops', anchors: [
         { hash: 'test', label: 'What counts as a body shop' },
         { hash: 'firms', label: 'The firms that meet the test' },
         { hash: 'wages', label: 'Same job title, two prices' },
@@ -151,15 +156,33 @@
         { hash: 'concentration', label: 'How concentrated it is' },
         { hash: 'method', label: 'Method and limits' },
       ]},
-      { href: '/usaid.html', label: 'Scholarships & NGOs' },
-      { href: '/filers.html', label: 'Who Files The Visas' },
+      { href: '/usaid', label: 'Scholarships & NGOs' },
+      { href: '/filers', label: 'Who Files The Visas' },
+    ]},
+    { title: 'Critical industries', items: [
+      { href: '/industries', label: 'All Five, Compared', anchors: [
+        { hash: 'grid', label: 'Who runs it, once built' },
+        { hash: 'all', label: 'Side by side' },
+        { hash: 'restrictions', label: 'What restricts the work' },
+        { hash: 'method', label: 'Method and limits' },
+      ]},
+      { href: '/industries/grid', label: 'The Grid Workforce', anchors: [
+        { hash: 'scarcest', label: 'The smallest pipelines' },
+        { hash: 'programmes', label: 'Every programme' },
+      ]},
+      { href: '/industries/ai', label: 'Artificial Intelligence' },
+      { href: '/industries/petroleum', label: 'Petroleum' },
+      { href: '/industries/mining', label: 'Mining & Metals' },
+      { href: '/industries/battery', label: 'Battery Technology' },
+      { href: '/industries/aerospace', label: 'Aerospace' },
+      { href: '/industries/nuclear', label: 'Nuclear' },
     ]},
     { title: 'Explore', items: [
-      { href: '/live.html', label: 'Live Dashboard' },
-      { href: '/query.html', label: 'Data Query (SQL)' },
+      { href: '/live', label: 'Live Dashboard' },
+      { href: '/query', label: 'Data Query (SQL)' },
     ]},
     { title: 'International', items: [
-      { href: '/india.html', label: 'India (Outbound)', anchors: [
+      { href: '/india', label: 'India (Outbound)', anchors: [
         { hash: 'us-canada-chart-section', label: 'US vs Canada' },
         { hash: 'destinations-chart-section', label: 'Top Destinations' },
         { hash: 'field-chart-section', label: 'US Field of Study' },
@@ -167,7 +190,7 @@
         { hash: 'medical-dest-chart-section', label: 'Medical Destinations' },
         { hash: 'fmge-chart-section', label: 'FMGE Pass Rate' },
       ]},
-      { href: '/china.html', label: 'China (Outbound)', anchors: [
+      { href: '/china', label: 'China (Outbound)', anchors: [
         { hash: 'us-chart-section', label: 'Students in the US' },
         { hash: 'sevis-chart-section', label: 'SEVIS Active Records' },
         { hash: 'vs-india-chart-section', label: 'China vs India' },
@@ -175,7 +198,7 @@
         { hash: 'canada-chart-section', label: 'Canada Study Permits' },
         { hash: 'return-chart-section', label: 'Cumulative Return Rate' },
       ]},
-      { href: '/canada.html', label: 'Canada', anchors: [
+      { href: '/canada', label: 'Canada', anchors: [
         { hash: 'total-chart-section', label: 'Total International' },
         { hash: 'countries-chart-section', label: 'Top Source Countries' },
         { hash: 'flow-chart-section', label: 'New Study Permits' },
@@ -183,26 +206,26 @@
         { hash: 'pgwp-section', label: 'PGWP by Province' },
         { hash: 'imp-section', label: 'IMP Work Permit Stock' },
       ]},
-      { href: '/uk.html', label: 'United Kingdom', anchors: [
+      { href: '/uk', label: 'United Kingdom', anchors: [
         { hash: 'enrollment-chart-section', label: 'Enrollment' },
         { hash: 'visa-chart-section', label: 'Student Visa Grants' },
         { hash: 'grad-route-chart-section', label: 'Graduate Route' },
         { hash: 'ho-level-section', label: 'Visas by Course Level' },
         { hash: 'ho-region-section', label: 'Visas by World Region' },
       ]},
-      { href: '/eu.html', label: 'EU & Germany', anchors: [
+      { href: '/eu', label: 'EU & Germany', anchors: [
         { hash: 'germany-total-chart-section', label: 'Students in Germany' },
         { hash: 'india-china-chart-section', label: 'India vs China' },
         { hash: 'eu-destinations-chart-section', label: 'EU Destinations' },
         { hash: 'eu-in-us-chart-section', label: 'EU Students in the US' },
       ]},
-      { href: '/mexico.html', label: 'Mexico', anchors: [
+      { href: '/mexico', label: 'Mexico', anchors: [
         { hash: 'us-trend-chart-section', label: 'Mexicans in the US' },
         { hash: 'destinations-chart-section', label: 'All Destinations' },
         { hash: 'level-chart-section', label: 'Study Level' },
         { hash: 'states-chart-section', label: 'Top US States' },
       ]},
-      { href: '/vwp.html', label: 'Visa Waiver Program', anchors: [
+      { href: '/vwp', label: 'Visa Waiver Program', anchors: [
         { hash: 'nat-top20-chart-section', label: 'Top 20 Naturalizations' },
         { hash: 'vwp-nat-chart-section', label: 'VWP Naturalizations' },
         { hash: 'overstay-chart-section', label: 'Overstay Rates' },
@@ -212,23 +235,23 @@
       ]},
     ]},
     { title: 'Reference', items: [
-      { href: '/contents.html', label: 'Table of Contents' },
-      { href: '/query.html', label: 'Data Query (SQL)' },
-      { href: '/data_sources.html', label: 'Data Sources & Methodology' },
-      { href: '/briefing.html', label: 'The Briefing (PDF)' },
-      { href: '/data_requests.html', label: 'Federal Data Requests' },
-      { href: '/ask.html', label: 'What You Can Ask' },
-      { href: '/methodology.html', label: 'Dataset Catalogue' },
-      { href: '/quality.html', label: 'Data Quality' },
-      { href: '/implementation.html', label: 'Implementation' },
-      { href: '/department_reports.html', label: 'Department Reports' },
-      { href: '/stem_dashboard.html', label: 'Name Classification' },
+      { href: '/contents', label: 'Table of Contents' },
+      { href: '/query', label: 'Data Query (SQL)' },
+      { href: '/data_sources', label: 'Data Sources & Methodology' },
+      { href: '/briefing', label: 'The Briefing (PDF)' },
+      { href: '/data_requests', label: 'Federal Data Requests' },
+      { href: '/ask', label: 'What You Can Ask' },
+      { href: '/methodology', label: 'Dataset Catalogue' },
+      { href: '/quality', label: 'Data Quality' },
+      { href: '/implementation', label: 'Implementation' },
+      { href: '/department_reports', label: 'Department Reports' },
+      { href: '/stem_dashboard', label: 'Name Classification' },
       { href: '/catalog.json', label: 'Data Catalog (JSON)' },
       { href: '/llms.txt', label: 'WebMCP Integration' },
     ]},
     { title: 'About', items: [
-      { href: '/about.html', label: 'About this Project' },
-      { href: '/submit.html', label: 'Tip Line' },
+      { href: '/about', label: 'About this Project' },
+      { href: '/submit', label: 'Tip Line' },
       { href: 'https://andy-barr.com', label: 'Personal Webpage', external: true },
       { href: 'https://buymeacoffee.com/andybarr', label: 'Support this Page', external: true },
     ]},
@@ -239,8 +262,14 @@
   // Which sections hold the page being read. A page listed twice lights up in
   // both, which is the point of listing it twice.
   function sectionsWithCurrentPage() {
-    return sections.filter(s => s.items.some(p =>
-      p.href.replace(/^\//, '') === currentPage)).map(s => s.title);
+    // Must use the same comparison as the item rendering, or a page opens no
+    // section at all: /industries/mining reduced to "mining", which matches no
+    // entry, so every section stayed shut and the page the reader was on was
+    // nowhere in the rail.
+    return sections.filter(s => s.items.some(p => {
+      const item = p.href.replace(/^\//, '').replace(/\.html$/, '');
+      return item === currentKey || item === currentPage;
+    })).map(s => s.title);
   }
 
   // Runs ONCE per page load, never on a rerender: a reader who closes the
@@ -261,8 +290,8 @@
     const currentHash = (location.hash || '').replace(/^#/, '');
     const groupHtml = sections.map(s => {
       const items = s.items.map(p => {
-        const itemPath = p.href.replace(/^\//, '');
-        const isCurrentPage = currentPage === itemPath;
+        const itemPath = p.href.replace(/^\//, '').replace(/\.html$/, '');
+        const isCurrentPage = currentKey === itemPath || currentPage === itemPath;
         const active = isCurrentPage ? ' active' : '';
         const target = p.external ? ' target="_blank" rel="noopener"' : '';
         let html = `<a href="${p.href}"${target} class="sb-item${active}">${p.label}</a>`;
@@ -350,7 +379,7 @@
     </div>
     <div class="sb-body">${buildGroups()}</div>
     <div class="sb-footer-links">
-      <a href="index.html" class="sb-item${currentPage === 'index.html' ? ' active' : ''}">Home</a>
+      <a href="index" class="sb-item${currentPage === 'index.html' ? ' active' : ''}">Home</a>
     </div>
   `;
 
@@ -556,7 +585,7 @@
   // Inject footer
   const footer = document.createElement('footer');
   footer.className = 'site-footer';
-  footer.innerHTML = 'A project by <a href="https://andy-barr.com" target="_blank" rel="noopener noreferrer">Andy Barr</a>. Data from US federal agencies (NCES, NSF, DOL, DHS) and university institutional repositories.<br>Last updated: August 2026 \u00B7 <a href="data_sources.html">Methodology</a> \u00B7 <a href="submit.html">Tip Line</a> \u00B7 <a href="https://x.com/andy_barr_data" target="_blank" rel="noopener noreferrer">Follow on X</a> \u00B7 <a href="catalog.json">API</a>';
+  footer.innerHTML = 'A project by <a href="https://andy-barr.com" target="_blank" rel="noopener noreferrer">Andy Barr</a>. Data from US federal agencies (NCES, NSF, DOL, DHS) and university institutional repositories.<br>Last updated: August 2026 \u00B7 <a href="data_sources">Methodology</a> \u00B7 <a href="submit">Tip Line</a> \u00B7 <a href="https://x.com/andy_barr_data" target="_blank" rel="noopener noreferrer">Follow on X</a> \u00B7 <a href="catalog.json">API</a>';
   // A <body> that is itself a flex or grid container turns anything appended
   // to it into a track of that layout. On stem.html and non_stem.html, whose
   // body is display:flex with flex-wrap:nowrap, the footer joined the row

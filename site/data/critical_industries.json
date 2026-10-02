@@ -1,0 +1,1718 @@
+{
+ "_comment": "Five industries the United States cannot import, and who it trains to run them.\n\nWHY THESE FIVE. Mining, petroleum, aerospace, batteries and nuclear are\nindustries where the work is physically here and cannot be offshored: an ore\nbody, a well, an airframe, a cell plant, a reactor. If the people who hold the\ndoctorates in those fields are overwhelmingly here on temporary visas, the\ncountry has a supply problem that no amount of hiring abroad fixes.\n\nWHAT RESTRICTS THE WORK, SAID PRECISELY. Some of this work carries federal\naccess restrictions, and they are three different regimes that are routinely\nrun together. They are not the same thing and this file does not treat them as\nthe same thing.\n\n  EXPORT CONTROL (ITAR, 22 CFR 120-130; EAR, 15 CFR 730-774) limits access to\n  controlled technical data to a \"U.S. person\" -- 22 CFR 120.62 -- which means\n  a citizen, a LAWFUL PERMANENT RESIDENT, or a protected individual under\n  8 USC 1324b(a)(3). It is NOT a security clearance and it does NOT require\n  citizenship. A green-card holder needs no authorisation to do ITAR work.\n\n  ACCESS AUTHORISATION at a commercial reactor (10 CFR 73.56) is a background\n  investigation and fitness-for-duty determination for unescorted access. It\n  is NOT a security clearance either.\n\n  A SECURITY CLEARANCE is eligibility for access to classified national\n  security information, adjudicated under EO 12968 and SEAD 4, and DOE's L and\n  Q access authorisations (10 CFR 710) are of this kind. These do require US\n  citizenship. Very little of what a doctorate holder does in these five\n  industries falls here.\n\nWHY THE DISTINCTION MATTERS FOR THIS DATA, and it is the one place it bites:\nIPEDS counts a permanent resident as domestic, so every \"non-resident alien\"\nin these counts is on a temporary visa and is therefore NOT a U.S. person for\nexport-control purposes. The export-control line falls exactly on the\npopulation this dataset measures. That is a statement about law, not about who\nwas hired: IPEDS records a degree awarded and nothing else.\n\nTHE MAP BELOW IS AN EDITORIAL CLAIM, not a federal category. IPEDS publishes\nCIP codes, and a CIP code is a field of study, not an industry. Four of these\nfive map onto codes that plainly belong to the industry. BATTERIES DO NOT:\nthere is no battery CIP, so that entry is a declared proxy built from materials\nprogrammes, and every page that shows it says so. A reader who disagrees with a\nmapping can see exactly which codes produced every number.\n\nTHE 2010 RECODE is handled by bases_for(), as everywhere else here. Counting\naward bases naively double-counts the transition years and inflates every\nprogramme by roughly a fifth.",
+ "source": "NCES IPEDS Completions, research doctorates, 2015-2022",
+ "source_url": "https://nces.ed.gov/ipeds/use-the-data",
+ "window": {
+  "from": 2015,
+  "to": 2022
+ },
+ "level_year": 2025,
+ "public_record": [
+  {
+   "id": "burgum_mining_graduates_2026",
+   "speaker": "Doug Burgum, US Secretary of the Interior",
+   "venue": "Public conversation with Robert Friedland",
+   "date": "2026-09-29",
+   "source_url": "https://www.youtube.com/watch?v=q7tq2y9QuvY",
+   "source_note": "Quoted from the video's original-language automatic caption track (en-orig), retrieved 2026-10-01. Automatic captions carry transcription errors; the wording is as captioned, and a second English track on the same video is a machine translation of a Russian dub and was not used.",
+   "quote": "The current estimate is that last year we graduated less than 300 graduates across the 17 remaining schools of mines.",
+   "checks": [
+    {
+     "label": "Mining and mineral engineering credentials awarded nationally, all levels",
+     "stated": "fewer than 300",
+     "found": 256,
+     "cip": [
+      "14.2101"
+     ],
+     "year": 2025
+    },
+    {
+     "label": "Institutions awarding mining or metallurgy credentials",
+     "stated": "17",
+     "found": 18,
+     "cip": [
+      "14.2101",
+      "14.2001"
+     ],
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "id": "burgum_lawyers_2026",
+   "speaker": "Doug Burgum, US Secretary of the Interior",
+   "venue": "Public conversation with Robert Friedland",
+   "date": "2026-09-29",
+   "source_url": "https://www.youtube.com/watch?v=q7tq2y9QuvY",
+   "source_note": "Same source and caption track as above.",
+   "quote": "As a side note, we did graduate 36,000 lawyers last year.",
+   "checks": [
+    {
+     "label": "Law degrees awarded nationally, all levels",
+     "stated": "36,000",
+     "found": 36920,
+     "cip": [
+      "22.0101"
+     ],
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "id": "burgum_china_mining_graduates_2026",
+   "speaker": "Doug Burgum, US Secretary of the Interior",
+   "venue": "Public conversation with Robert Friedland",
+   "date": "2026-09-29",
+   "source_url": "https://www.youtube.com/watch?v=q7tq2y9QuvY",
+   "source_note": "Same source and caption track as above.",
+   "quote": "Estimate is that China graduated 12,000.",
+   "outside_scope": "This figure concerns Chinese institutions. This site measures US institutions through IPEDS and holds no data on graduate counts abroad, so there is nothing here to set beside it. It is recorded as stated."
+  }
+ ],
+ "national": {
+  "doctorates": 586177,
+  "nra": 158557,
+  "share": 27.0,
+  "note": "All research doctorates in the same window, as the baseline every industry share is read against."
+ },
+ "definitions": {
+  "cip_is_not_an_industry": "IPEDS publishes a field of study, not an employer. Every mapping here is this site's, and each industry lists the codes it used.",
+  "restriction": "The federal access regime that applies to the work, where one does. Export control and access authorisation are NOT security clearances, and only a DOE L or Q authorisation requires US citizenship. See each industry's note for the exact rule.",
+  "us_person": "Export control turns on 'U.S. person' (22 CFR 120.62), which includes lawful permanent residents. IPEDS counts permanent residents as domestic, so every non-resident alien here is outside that definition.",
+  "share": "Non-resident alien share of research doctorates awarded.",
+  "levels": "The same field at bachelor's, master's and doctorate in the newest Completions year. It holds the subject constant and varies only the level, which is the most direct measure here of where the American pipeline stops."
+ },
+ "industries": [
+  {
+   "levels": [
+    {
+     "level": "Bachelor's",
+     "awards": 414,
+     "nra": 130,
+     "share": 31.4,
+     "domestic": 284,
+     "domestic_share": 68.6
+    },
+    {
+     "level": "Master's",
+     "awards": 189,
+     "nra": 136,
+     "share": 72.0,
+     "domestic": 53,
+     "domestic_share": 28.0
+    },
+    {
+     "level": "Doctorate",
+     "awards": 103,
+     "nra": 75,
+     "share": 72.8,
+     "domestic": 28,
+     "domestic_share": 27.2
+    }
+   ],
+   "slug": "petroleum",
+   "name": "Petroleum",
+   "restriction": null,
+   "restriction_note": "No export-control or access-authorisation regime applies by default. Open to anyone with the right to work in the United States.",
+   "why": "Reservoir engineering, drilling and production. The degree is specific to the industry: there is no other career for a petroleum engineering doctorate.",
+   "proxy": null,
+   "url": "/industries/petroleum.html",
+   "cips": [
+    "14.2501"
+   ],
+   "doctorates": 943,
+   "nra": 804,
+   "share": 85.3,
+   "institutions": 16,
+   "programmes": [
+    {
+     "cip": "14.2501",
+     "title": "Petroleum Engineering",
+     "label": "Petroleum Engineering",
+     "doctorates": 943,
+     "nra": 804,
+     "share": 85.3,
+     "series": {
+      "1995": 59.2,
+      "1996": 73.5,
+      "1997": 84.4,
+      "1998": 80.0,
+      "2000": 77.3,
+      "2001": 86.5,
+      "2002": 81.1,
+      "2003": 90.2,
+      "2004": 81.8,
+      "2005": 81.6,
+      "2006": 88.9,
+      "2007": 86.5,
+      "2008": 97.9,
+      "2009": 86.5,
+      "2010": 91.9,
+      "2011": 94.9,
+      "2012": 82.4,
+      "2013": 82.3,
+      "2014": 88.2,
+      "2015": 88.8,
+      "2016": 91.4,
+      "2017": 82.6,
+      "2018": 85.7,
+      "2019": 87.7,
+      "2020": 79.3,
+      "2021": 85.4,
+      "2022": 81.2,
+      "2023": 76.2,
+      "2024": 80.5,
+      "2025": 72.8
+     }
+    }
+   ],
+   "series": {
+    "1995": 59.2,
+    "1996": 73.5,
+    "1997": 84.4,
+    "1998": 80.0,
+    "2000": 77.3,
+    "2001": 86.5,
+    "2002": 81.1,
+    "2003": 90.2,
+    "2004": 81.8,
+    "2005": 81.6,
+    "2006": 88.9,
+    "2007": 86.5,
+    "2008": 97.9,
+    "2009": 86.5,
+    "2010": 91.9,
+    "2011": 94.9,
+    "2012": 82.4,
+    "2013": 82.3,
+    "2014": 88.2,
+    "2015": 88.8,
+    "2016": 91.4,
+    "2017": 82.6,
+    "2018": 85.7,
+    "2019": 87.7,
+    "2020": 79.3,
+    "2021": 85.4,
+    "2022": 81.2,
+    "2023": 76.2,
+    "2024": 80.5,
+    "2025": 72.8
+   },
+   "top_schools": [
+    {
+     "unitid": "228723",
+     "name": "Texas A&M University-College Station",
+     "doctorates": 196,
+     "nra": 161,
+     "share": 82.1
+    },
+    {
+     "unitid": "228778",
+     "name": "The University of Texas at Austin",
+     "doctorates": 160,
+     "nra": 135,
+     "share": 84.4
+    },
+    {
+     "unitid": "214777",
+     "name": "Pennsylvania State University-Main Campus",
+     "doctorates": 102,
+     "nra": 88,
+     "share": 86.3
+    },
+    {
+     "unitid": "126775",
+     "name": "Colorado School of Mines",
+     "doctorates": 70,
+     "nra": 60,
+     "share": 85.7
+    },
+    {
+     "unitid": "207500",
+     "name": "University of Oklahoma-Norman Campus",
+     "doctorates": 61,
+     "nra": 51,
+     "share": 83.6
+    },
+    {
+     "unitid": "207971",
+     "name": "University of Tulsa",
+     "doctorates": 60,
+     "nra": 56,
+     "share": 93.3
+    },
+    {
+     "unitid": "178411",
+     "name": "Missouri University of Science and Technology",
+     "doctorates": 52,
+     "nra": 47,
+     "share": 90.4
+    },
+    {
+     "unitid": "229115",
+     "name": "Texas Tech University",
+     "doctorates": 46,
+     "nra": 40,
+     "share": 87.0
+    },
+    {
+     "unitid": "159391",
+     "name": "Louisiana State University and Agricultural & Mechanical College",
+     "doctorates": 38,
+     "nra": 31,
+     "share": 81.6
+    },
+    {
+     "unitid": "240727",
+     "name": "University of Wyoming",
+     "doctorates": 36,
+     "nra": 34,
+     "share": 94.4
+    },
+    {
+     "unitid": "243744",
+     "name": "Stanford University",
+     "doctorates": 27,
+     "nra": 23,
+     "share": 85.2
+    },
+    {
+     "unitid": "495767",
+     "name": "495767",
+     "doctorates": 24,
+     "nra": 21,
+     "share": 87.5
+    },
+    {
+     "unitid": "225511",
+     "name": "University of Houston",
+     "doctorates": 23,
+     "nra": 17,
+     "share": 73.9
+    },
+    {
+     "unitid": "123961",
+     "name": "University of Southern California",
+     "doctorates": 19,
+     "nra": 14,
+     "share": 73.7
+    },
+    {
+     "unitid": "200280",
+     "name": "University of North Dakota",
+     "doctorates": 19,
+     "nra": 17,
+     "share": 89.5
+    },
+    {
+     "unitid": "187967",
+     "name": "New Mexico Institute of Mining and Technology",
+     "doctorates": 10,
+     "nra": 9,
+     "share": 90.0
+    }
+   ]
+  },
+  {
+   "levels": [
+    {
+     "level": "Bachelor's",
+     "awards": 54901,
+     "nra": 6088,
+     "share": 11.1,
+     "domestic": 48813,
+     "domestic_share": 88.9
+    },
+    {
+     "level": "Master's",
+     "awards": 35488,
+     "nra": 24578,
+     "share": 69.3,
+     "domestic": 10910,
+     "domestic_share": 30.7
+    },
+    {
+     "level": "Doctorate",
+     "awards": 2007,
+     "nra": 1251,
+     "share": 62.3,
+     "domestic": 756,
+     "domestic_share": 37.7
+    }
+   ],
+   "slug": "ai",
+   "name": "Artificial intelligence",
+   "restriction": null,
+   "restriction_note": "No export-control or access-authorisation regime applies to the field as such. Specific defence or intelligence work carries its own rules, and some frontier model weights and semiconductor design tools fall under export control, but a computer science doctorate does not.",
+   "why": "The models and the people who build them. Computer science carries the volume; the named AI and data science codes are newer and smaller, and are counted separately on this page so neither is hidden inside the other.",
+   "proxy": null,
+   "url": "/industries/ai.html",
+   "cips": [
+    "11.0102",
+    "11.0701",
+    "30.7001"
+   ],
+   "doctorates": 8891,
+   "nra": 5629,
+   "share": 63.3,
+   "institutions": 122,
+   "programmes": [
+    {
+     "cip": "11.0701",
+     "title": "Computer Science",
+     "label": "Computer Science",
+     "doctorates": 8624,
+     "nra": 5444,
+     "share": 63.1,
+     "series": {
+      "1995": 38.8,
+      "1996": 42.1,
+      "1997": 43.6,
+      "1998": 39.8,
+      "2000": 42.9,
+      "2001": 44.8,
+      "2002": 52.2,
+      "2003": 55.4,
+      "2004": 49.0,
+      "2005": 52.9,
+      "2006": 63.7,
+      "2007": 53.3,
+      "2008": 60.6,
+      "2009": 54.5,
+      "2010": 52.4,
+      "2011": 51.7,
+      "2012": 54.7,
+      "2013": 57.2,
+      "2014": 58.8,
+      "2015": 60.8,
+      "2016": 62.3,
+      "2017": 60.0,
+      "2018": 60.5,
+      "2019": 61.2,
+      "2020": 66.0,
+      "2021": 65.7,
+      "2022": 66.1,
+      "2023": 63.4,
+      "2024": 63.4,
+      "2025": 63.1
+     }
+    },
+    {
+     "cip": "11.0102",
+     "title": "Artificial Intelligence",
+     "label": "Artificial Intelligence",
+     "doctorates": 254,
+     "nra": 177,
+     "share": 69.7,
+     "series": {
+      "2008": 51.6,
+      "2009": 46.9,
+      "2011": 59.1,
+      "2012": 70.8,
+      "2013": 69.6,
+      "2014": 64.1,
+      "2015": 57.1,
+      "2016": 67.6,
+      "2018": 61.3,
+      "2019": 71.7,
+      "2020": 68.8,
+      "2021": 79.3,
+      "2022": 75.7,
+      "2023": 72.7,
+      "2024": 52.8,
+      "2025": 47.3
+     }
+    },
+    {
+     "cip": "30.7001",
+     "title": "Data Science, General",
+     "label": "Data Science",
+     "doctorates": 13,
+     "nra": 8,
+     "share": 61.5,
+     "series": {
+      "2024": 77.4,
+      "2025": 56.1
+     }
+    }
+   ],
+   "series": {
+    "1995": 38.8,
+    "1996": 42.1,
+    "1997": 43.6,
+    "1998": 39.8,
+    "2000": 42.9,
+    "2001": 44.8,
+    "2002": 52.2,
+    "2003": 55.7,
+    "2004": 49.1,
+    "2005": 53.3,
+    "2006": 63.5,
+    "2007": 53.1,
+    "2008": 60.3,
+    "2009": 54.2,
+    "2010": 52.5,
+    "2011": 51.9,
+    "2012": 55.2,
+    "2013": 57.5,
+    "2014": 59.0,
+    "2015": 60.7,
+    "2016": 62.5,
+    "2017": 60.3,
+    "2018": 60.5,
+    "2019": 61.6,
+    "2020": 66.0,
+    "2021": 66.1,
+    "2022": 66.3,
+    "2023": 63.8,
+    "2024": 63.3,
+    "2025": 62.3
+   },
+   "top_schools": [
+    {
+     "unitid": "211440",
+     "name": "Carnegie Mellon University",
+     "doctorates": 374,
+     "nra": 244,
+     "share": 65.2
+    },
+    {
+     "unitid": "166683",
+     "name": "Massachusetts Institute of Technology",
+     "doctorates": 359,
+     "nra": 192,
+     "share": 53.5
+    },
+    {
+     "unitid": "145637",
+     "name": "University of Illinois Urbana-Champaign",
+     "doctorates": 357,
+     "nra": 249,
+     "share": 69.7
+    },
+    {
+     "unitid": "110635",
+     "name": "University of California-Berkeley",
+     "doctorates": 277,
+     "nra": 119,
+     "share": 43.0
+    },
+    {
+     "unitid": "123961",
+     "name": "University of Southern California",
+     "doctorates": 263,
+     "nra": 183,
+     "share": 69.6
+    },
+    {
+     "unitid": "243744",
+     "name": "Stanford University",
+     "doctorates": 260,
+     "nra": 113,
+     "share": 43.5
+    },
+    {
+     "unitid": "110662",
+     "name": "University of California-Los Angeles",
+     "doctorates": 216,
+     "nra": 154,
+     "share": 71.3
+    },
+    {
+     "unitid": "174066",
+     "name": "University of Minnesota-Twin Cities",
+     "doctorates": 212,
+     "nra": 137,
+     "share": 64.6
+    },
+    {
+     "unitid": "110680",
+     "name": "University of California-San Diego",
+     "doctorates": 205,
+     "nra": 126,
+     "share": 61.5
+    },
+    {
+     "unitid": "199193",
+     "name": "North Carolina State University at Raleigh",
+     "doctorates": 200,
+     "nra": 105,
+     "share": 52.5
+    },
+    {
+     "unitid": "243780",
+     "name": "Purdue University-Main Campus",
+     "doctorates": 200,
+     "nra": 162,
+     "share": 81.0
+    },
+    {
+     "unitid": "104151",
+     "name": "Arizona State University Campus Immersion",
+     "doctorates": 197,
+     "nra": 153,
+     "share": 77.7
+    },
+    {
+     "unitid": "110653",
+     "name": "University of California-Irvine",
+     "doctorates": 173,
+     "nra": 121,
+     "share": 69.9
+    },
+    {
+     "unitid": "166629",
+     "name": "University of Massachusetts-Amherst",
+     "doctorates": 168,
+     "nra": 95,
+     "share": 56.5
+    },
+    {
+     "unitid": "190415",
+     "name": "Cornell University",
+     "doctorates": 165,
+     "nra": 114,
+     "share": 69.1
+    },
+    {
+     "unitid": "110671",
+     "name": "University of California-Riverside",
+     "doctorates": 163,
+     "nra": 116,
+     "share": 71.2
+    },
+    {
+     "unitid": "110644",
+     "name": "University of California-Davis",
+     "doctorates": 155,
+     "nra": 92,
+     "share": 59.4
+    },
+    {
+     "unitid": "190150",
+     "name": "Columbia University in the City of New York",
+     "doctorates": 153,
+     "nra": 94,
+     "share": 61.4
+    },
+    {
+     "unitid": "126614",
+     "name": "University of Colorado Boulder",
+     "doctorates": 138,
+     "nra": 59,
+     "share": 42.8
+    },
+    {
+     "unitid": "163286",
+     "name": "University of Maryland-College Park",
+     "doctorates": 135,
+     "nra": 89,
+     "share": 65.9
+    },
+    {
+     "unitid": "199120",
+     "name": "University of North Carolina at Chapel Hill",
+     "doctorates": 134,
+     "nra": 82,
+     "share": 61.2
+    },
+    {
+     "unitid": "110705",
+     "name": "University of California-Santa Barbara",
+     "doctorates": 129,
+     "nra": 92,
+     "share": 71.3
+    },
+    {
+     "unitid": "214777",
+     "name": "Pennsylvania State University-Main Campus",
+     "doctorates": 121,
+     "nra": 101,
+     "share": 83.5
+    },
+    {
+     "unitid": "151351",
+     "name": "Indiana University-Bloomington",
+     "doctorates": 116,
+     "nra": 82,
+     "share": 70.7
+    },
+    {
+     "unitid": "145600",
+     "name": "University of Illinois Chicago",
+     "doctorates": 114,
+     "nra": 86,
+     "share": 75.4
+    }
+   ]
+  },
+  {
+   "levels": [
+    {
+     "level": "Bachelor's",
+     "awards": 225,
+     "nra": 13,
+     "share": 5.8,
+     "domestic": 212,
+     "domestic_share": 94.2
+    },
+    {
+     "level": "Master's",
+     "awards": 114,
+     "nra": 63,
+     "share": 55.3,
+     "domestic": 51,
+     "domestic_share": 44.7
+    },
+    {
+     "level": "Doctorate",
+     "awards": 34,
+     "nra": 15,
+     "share": 44.1,
+     "domestic": 19,
+     "domestic_share": 55.9
+    }
+   ],
+   "slug": "mining",
+   "name": "Mining and metals",
+   "restriction": null,
+   "restriction_note": "No export-control or access-authorisation regime applies by default. Some critical-minerals work carries federal funding conditions, which are grant terms and not a personnel restriction.",
+   "why": "The people who open mines and process ore. Geology is deliberately excluded: most geologists never work in mining, and including them would describe earth science instead.",
+   "proxy": null,
+   "url": "/industries/mining.html",
+   "cips": [
+    "14.2101",
+    "14.2001"
+   ],
+   "doctorates": 303,
+   "nra": 171,
+   "share": 56.4,
+   "institutions": 8,
+   "programmes": [
+    {
+     "cip": "14.2101",
+     "title": "Mining and Mineral Engineering",
+     "label": "Mining and Mineral Engineering",
+     "doctorates": 163,
+     "nra": 106,
+     "share": 65.0,
+     "series": {
+      "1995": 69.2,
+      "1996": 63.6,
+      "2015": 63.6,
+      "2016": 62.5,
+      "2018": 85.0,
+      "2020": 63.6,
+      "2021": 62.5,
+      "2024": 62.5,
+      "2025": 56.5
+     }
+    },
+    {
+     "cip": "14.2001",
+     "title": "Metallurgical Engineering",
+     "label": "Metallurgical Engineering",
+     "doctorates": 140,
+     "nra": 65,
+     "share": 46.4,
+     "series": {
+      "1995": 56.8,
+      "1996": 58.3,
+      "1997": 63.4,
+      "1998": 52.9,
+      "2000": 66.7,
+      "2001": 66.7,
+      "2002": 65.8,
+      "2003": 70.5,
+      "2004": 66.7,
+      "2005": 67.7,
+      "2006": 69.7,
+      "2007": 62.5,
+      "2008": 60.9,
+      "2009": 71.0,
+      "2011": 45.0,
+      "2012": 65.0,
+      "2017": 52.4,
+      "2018": 45.0,
+      "2022": 38.1
+     }
+    }
+   ],
+   "series": {
+    "1995": 60.0,
+    "1996": 60.0,
+    "1997": 62.9,
+    "1998": 56.7,
+    "2000": 71.2,
+    "2001": 64.1,
+    "2002": 67.4,
+    "2003": 64.7,
+    "2004": 57.1,
+    "2005": 64.1,
+    "2006": 66.7,
+    "2007": 50.0,
+    "2008": 65.6,
+    "2009": 68.3,
+    "2011": 43.5,
+    "2012": 64.3,
+    "2013": 55.3,
+    "2014": 61.3,
+    "2015": 63.4,
+    "2016": 56.4,
+    "2017": 54.3,
+    "2018": 65.0,
+    "2019": 56.2,
+    "2020": 55.0,
+    "2021": 52.8,
+    "2022": 47.5,
+    "2023": 51.5,
+    "2024": 57.6,
+    "2025": 44.1
+   },
+   "top_schools": [
+    {
+     "unitid": "126775",
+     "name": "Colorado School of Mines",
+     "doctorates": 102,
+     "nra": 37,
+     "share": 36.3
+    },
+    {
+     "unitid": "230764",
+     "name": "University of Utah",
+     "doctorates": 62,
+     "nra": 42,
+     "share": 67.7
+    },
+    {
+     "unitid": "178411",
+     "name": "Missouri University of Science and Technology",
+     "doctorates": 52,
+     "nra": 30,
+     "share": 57.7
+    },
+    {
+     "unitid": "233921",
+     "name": "Virginia Polytechnic Institute and State University",
+     "doctorates": 27,
+     "nra": 18,
+     "share": 66.7
+    },
+    {
+     "unitid": "157085",
+     "name": "University of Kentucky",
+     "doctorates": 24,
+     "nra": 17,
+     "share": 70.8
+    },
+    {
+     "unitid": "104179",
+     "name": "University of Arizona",
+     "doctorates": 23,
+     "nra": 18,
+     "share": 78.3
+    },
+    {
+     "unitid": "182290",
+     "name": "University of Nevada-Reno",
+     "doctorates": 12,
+     "nra": 8,
+     "share": 66.7
+    }
+   ]
+  },
+  {
+   "levels": [
+    {
+     "level": "Bachelor's",
+     "awards": 1319,
+     "nra": 121,
+     "share": 9.2,
+     "domestic": 1198,
+     "domestic_share": 90.8
+    },
+    {
+     "level": "Master's",
+     "awards": 1438,
+     "nra": 591,
+     "share": 41.1,
+     "domestic": 847,
+     "domestic_share": 58.9
+    },
+    {
+     "level": "Doctorate",
+     "awards": 893,
+     "nra": 439,
+     "share": 49.2,
+     "domestic": 454,
+     "domestic_share": 50.8
+    }
+   ],
+   "slug": "battery",
+   "name": "Battery technology",
+   "restriction": null,
+   "restriction_note": "No export-control or access-authorisation regime applies by default, though specific DOE-funded programmes may attach their own conditions.",
+   "why": "Cell chemistry, electrodes and electrolytes sit inside materials programmes. No federal category names the industry.",
+   "proxy": "IPEDS HAS NO BATTERY CATEGORY. This is the closest honest proxy: the materials programmes that produce electrode, electrolyte and cell researchers. It therefore counts people who will never work on a battery, and misses battery work done inside chemistry and chemical engineering. Treat it as the materials pipeline, which is what it measures.",
+   "url": "/industries/battery.html",
+   "cips": [
+    "14.1801",
+    "40.1001"
+   ],
+   "doctorates": 6738,
+   "nra": 3474,
+   "share": 51.6,
+   "institutions": 113,
+   "programmes": [
+    {
+     "cip": "14.1801",
+     "title": "Materials Engineering",
+     "label": "Materials Engineering",
+     "doctorates": 5542,
+     "nra": 2945,
+     "share": 53.1,
+     "series": {
+      "1995": 46.5,
+      "1996": 44.0,
+      "1997": 42.0,
+      "1998": 38.1,
+      "2000": 42.6,
+      "2001": 51.4,
+      "2002": 53.2,
+      "2003": 54.7,
+      "2004": 61.7,
+      "2005": 62.3,
+      "2006": 59.9,
+      "2007": 59.5,
+      "2008": 59.3,
+      "2009": 60.6,
+      "2010": 54.2,
+      "2011": 59.0,
+      "2012": 49.9,
+      "2013": 57.3,
+      "2014": 53.3,
+      "2015": 55.4,
+      "2016": 52.4,
+      "2017": 52.3,
+      "2018": 54.4,
+      "2019": 52.2,
+      "2020": 54.1,
+      "2021": 52.9,
+      "2022": 51.8,
+      "2023": 51.2,
+      "2024": 50.1,
+      "2025": 48.5
+     }
+    },
+    {
+     "cip": "40.1001",
+     "title": "Materials Science",
+     "label": "Materials Science",
+     "doctorates": 1196,
+     "nra": 529,
+     "share": 44.2,
+     "series": {
+      "2010": 37.3,
+      "2011": 50.4,
+      "2012": 47.1,
+      "2013": 43.0,
+      "2014": 46.7,
+      "2015": 47.1,
+      "2016": 44.7,
+      "2017": 41.7,
+      "2018": 39.6,
+      "2019": 39.4,
+      "2020": 49.2,
+      "2021": 47.3,
+      "2022": 46.0,
+      "2023": 44.4,
+      "2024": 46.8,
+      "2025": 52.0
+     }
+    }
+   ],
+   "series": {
+    "1995": 46.5,
+    "1996": 44.0,
+    "1997": 42.0,
+    "1998": 38.1,
+    "2000": 42.6,
+    "2001": 51.4,
+    "2002": 53.2,
+    "2003": 54.7,
+    "2004": 61.7,
+    "2005": 62.3,
+    "2006": 59.9,
+    "2007": 59.5,
+    "2008": 59.3,
+    "2009": 60.6,
+    "2010": 51.0,
+    "2011": 57.2,
+    "2012": 49.3,
+    "2013": 54.8,
+    "2014": 52.2,
+    "2015": 53.9,
+    "2016": 51.0,
+    "2017": 50.4,
+    "2018": 51.8,
+    "2019": 49.9,
+    "2020": 53.2,
+    "2021": 52.1,
+    "2022": 50.6,
+    "2023": 49.8,
+    "2024": 49.4,
+    "2025": 49.2
+   },
+   "top_schools": [
+    {
+     "unitid": "166683",
+     "name": "Massachusetts Institute of Technology",
+     "doctorates": 261,
+     "nra": 142,
+     "share": 54.4
+    },
+    {
+     "unitid": "147767",
+     "name": "Northwestern University",
+     "doctorates": 252,
+     "nra": 109,
+     "share": 43.3
+    },
+    {
+     "unitid": "139755",
+     "name": "Georgia Institute of Technology-Main Campus",
+     "doctorates": 210,
+     "nra": 102,
+     "share": 48.6
+    },
+    {
+     "unitid": "145637",
+     "name": "University of Illinois Urbana-Champaign",
+     "doctorates": 189,
+     "nra": 120,
+     "share": 63.5
+    },
+    {
+     "unitid": "243744",
+     "name": "Stanford University",
+     "doctorates": 189,
+     "nra": 79,
+     "share": 41.8
+    },
+    {
+     "unitid": "110680",
+     "name": "University of California-San Diego",
+     "doctorates": 181,
+     "nra": 114,
+     "share": 63.0
+    },
+    {
+     "unitid": "110705",
+     "name": "University of California-Santa Barbara",
+     "doctorates": 181,
+     "nra": 23,
+     "share": 12.7
+    },
+    {
+     "unitid": "243780",
+     "name": "Purdue University-Main Campus",
+     "doctorates": 179,
+     "nra": 101,
+     "share": 56.4
+    },
+    {
+     "unitid": "110662",
+     "name": "University of California-Los Angeles",
+     "doctorates": 154,
+     "nra": 99,
+     "share": 64.3
+    },
+    {
+     "unitid": "134130",
+     "name": "University of Florida",
+     "doctorates": 150,
+     "nra": 58,
+     "share": 38.7
+    },
+    {
+     "unitid": "170976",
+     "name": "University of Michigan-Ann Arbor",
+     "doctorates": 145,
+     "nra": 58,
+     "share": 40.0
+    },
+    {
+     "unitid": "211440",
+     "name": "Carnegie Mellon University",
+     "doctorates": 141,
+     "nra": 74,
+     "share": 52.5
+    },
+    {
+     "unitid": "204796",
+     "name": "Ohio State University-Main Campus",
+     "doctorates": 139,
+     "nra": 70,
+     "share": 50.4
+    },
+    {
+     "unitid": "214777",
+     "name": "Pennsylvania State University-Main Campus",
+     "doctorates": 139,
+     "nra": 63,
+     "share": 45.3
+    },
+    {
+     "unitid": "228723",
+     "name": "Texas A&M University-College Station",
+     "doctorates": 139,
+     "nra": 91,
+     "share": 65.5
+    },
+    {
+     "unitid": "199193",
+     "name": "North Carolina State University at Raleigh",
+     "doctorates": 138,
+     "nra": 58,
+     "share": 42.0
+    },
+    {
+     "unitid": "104151",
+     "name": "Arizona State University Campus Immersion",
+     "doctorates": 126,
+     "nra": 88,
+     "share": 69.8
+    },
+    {
+     "unitid": "110635",
+     "name": "University of California-Berkeley",
+     "doctorates": 120,
+     "nra": 52,
+     "share": 43.3
+    },
+    {
+     "unitid": "196097",
+     "name": "Stony Brook University",
+     "doctorates": 117,
+     "nra": 83,
+     "share": 70.9
+    },
+    {
+     "unitid": "240444",
+     "name": "University of Wisconsin-Madison",
+     "doctorates": 116,
+     "nra": 66,
+     "share": 56.9
+    },
+    {
+     "unitid": "221759",
+     "name": "The University of Tennessee-Knoxville",
+     "doctorates": 111,
+     "nra": 66,
+     "share": 59.5
+    },
+    {
+     "unitid": "129020",
+     "name": "University of Connecticut",
+     "doctorates": 96,
+     "nra": 58,
+     "share": 60.4
+    },
+    {
+     "unitid": "110671",
+     "name": "University of California-Riverside",
+     "doctorates": 91,
+     "nra": 43,
+     "share": 47.3
+    },
+    {
+     "unitid": "174066",
+     "name": "University of Minnesota-Twin Cities",
+     "doctorates": 89,
+     "nra": 51,
+     "share": 57.3
+    },
+    {
+     "unitid": "130943",
+     "name": "University of Delaware",
+     "doctorates": 88,
+     "nra": 49,
+     "share": 55.7
+    }
+   ]
+  },
+  {
+   "levels": [
+    {
+     "level": "Bachelor's",
+     "awards": 6786,
+     "nra": 376,
+     "share": 5.5,
+     "domestic": 6410,
+     "domestic_share": 94.5
+    },
+    {
+     "level": "Master's",
+     "awards": 2669,
+     "nra": 517,
+     "share": 19.4,
+     "domestic": 2152,
+     "domestic_share": 80.6
+    },
+    {
+     "level": "Doctorate",
+     "awards": 461,
+     "nra": 175,
+     "share": 38.0,
+     "domestic": 286,
+     "domestic_share": 62.0
+    }
+   ],
+   "slug": "aerospace",
+   "name": "Aerospace",
+   "restriction": "Export control",
+   "restriction_note": "Much of this work is export-controlled. ITAR (22 CFR 120-130) limits access to defence articles and technical data to a 'U.S. person' as defined at 22 CFR 120.62: a citizen, a lawful permanent resident, or a protected individual. This is not a security clearance and it does not require citizenship -- a permanent resident qualifies. It does exclude someone on a temporary visa, which is exactly who IPEDS counts as a non-resident alien.",
+   "why": "Airframes, propulsion and spacecraft. The clearest case of a field trained one way and employed another.",
+   "proxy": null,
+   "url": "/industries/aerospace.html",
+   "cips": [
+    "14.0201"
+   ],
+   "doctorates": 2911,
+   "nra": 1239,
+   "share": 42.6,
+   "institutions": 49,
+   "programmes": [
+    {
+     "cip": "14.0201",
+     "title": "Aerospace, Aeronautical, and Astronautical/Space Engineering, General",
+     "label": "Aerospace, Aeronautical and Astronautical Engineering",
+     "doctorates": 2911,
+     "nra": 1239,
+     "share": 42.6,
+     "series": {
+      "1995": 40.8,
+      "1996": 40.6,
+      "1997": 34.3,
+      "1998": 41.7,
+      "2000": 38.4,
+      "2001": 50.0,
+      "2002": 60.1,
+      "2003": 58.9,
+      "2004": 61.6,
+      "2005": 55.6,
+      "2006": 57.8,
+      "2007": 51.6,
+      "2008": 54.0,
+      "2009": 44.9,
+      "2010": 45.1,
+      "2011": 44.0,
+      "2012": 39.2,
+      "2013": 44.1,
+      "2014": 37.3,
+      "2015": 36.0,
+      "2016": 36.0,
+      "2017": 36.7,
+      "2018": 42.6,
+      "2019": 44.4,
+      "2020": 46.6,
+      "2021": 49.0,
+      "2022": 46.8,
+      "2023": 42.3,
+      "2024": 39.3,
+      "2025": 38.0
+     }
+    }
+   ],
+   "series": {
+    "1995": 40.8,
+    "1996": 40.6,
+    "1997": 34.3,
+    "1998": 41.7,
+    "2000": 38.4,
+    "2001": 50.0,
+    "2002": 60.1,
+    "2003": 58.9,
+    "2004": 61.6,
+    "2005": 55.6,
+    "2006": 57.8,
+    "2007": 51.6,
+    "2008": 54.0,
+    "2009": 44.9,
+    "2010": 45.1,
+    "2011": 44.0,
+    "2012": 39.2,
+    "2013": 44.1,
+    "2014": 37.3,
+    "2015": 36.0,
+    "2016": 36.0,
+    "2017": 36.7,
+    "2018": 42.6,
+    "2019": 44.4,
+    "2020": 46.6,
+    "2021": 49.0,
+    "2022": 46.8,
+    "2023": 42.3,
+    "2024": 39.3,
+    "2025": 38.0
+   },
+   "top_schools": [
+    {
+     "unitid": "139755",
+     "name": "Georgia Institute of Technology-Main Campus",
+     "doctorates": 302,
+     "nra": 134,
+     "share": 44.4
+    },
+    {
+     "unitid": "243780",
+     "name": "Purdue University-Main Campus",
+     "doctorates": 264,
+     "nra": 146,
+     "share": 55.3
+    },
+    {
+     "unitid": "126614",
+     "name": "University of Colorado Boulder",
+     "doctorates": 195,
+     "nra": 46,
+     "share": 23.6
+    },
+    {
+     "unitid": "166683",
+     "name": "Massachusetts Institute of Technology",
+     "doctorates": 193,
+     "nra": 84,
+     "share": 43.5
+    },
+    {
+     "unitid": "170976",
+     "name": "University of Michigan-Ann Arbor",
+     "doctorates": 162,
+     "nra": 71,
+     "share": 43.8
+    },
+    {
+     "unitid": "243744",
+     "name": "Stanford University",
+     "doctorates": 150,
+     "nra": 46,
+     "share": 30.7
+    },
+    {
+     "unitid": "163286",
+     "name": "University of Maryland-College Park",
+     "doctorates": 116,
+     "nra": 27,
+     "share": 23.3
+    },
+    {
+     "unitid": "233921",
+     "name": "Virginia Polytechnic Institute and State University",
+     "doctorates": 111,
+     "nra": 56,
+     "share": 50.5
+    },
+    {
+     "unitid": "228723",
+     "name": "Texas A&M University-College Station",
+     "doctorates": 110,
+     "nra": 54,
+     "share": 49.1
+    },
+    {
+     "unitid": "110404",
+     "name": "California Institute of Technology",
+     "doctorates": 86,
+     "nra": 45,
+     "share": 52.3
+    },
+    {
+     "unitid": "145637",
+     "name": "University of Illinois Urbana-Champaign",
+     "doctorates": 86,
+     "nra": 49,
+     "share": 57.0
+    },
+    {
+     "unitid": "174066",
+     "name": "University of Minnesota-Twin Cities",
+     "doctorates": 85,
+     "nra": 51,
+     "share": 60.0
+    },
+    {
+     "unitid": "228778",
+     "name": "The University of Texas at Austin",
+     "doctorates": 72,
+     "nra": 33,
+     "share": 45.8
+    },
+    {
+     "unitid": "236948",
+     "name": "University of Washington-Seattle Campus",
+     "doctorates": 68,
+     "nra": 23,
+     "share": 33.8
+    },
+    {
+     "unitid": "228769",
+     "name": "The University of Texas at Arlington",
+     "doctorates": 61,
+     "nra": 38,
+     "share": 62.3
+    },
+    {
+     "unitid": "153603",
+     "name": "Iowa State University",
+     "doctorates": 58,
+     "nra": 42,
+     "share": 72.4
+    },
+    {
+     "unitid": "134130",
+     "name": "University of Florida",
+     "doctorates": 57,
+     "nra": 13,
+     "share": 22.8
+    },
+    {
+     "unitid": "200697",
+     "name": "Air Force Institute of Technology-Graduate School of Engineering & Management",
+     "doctorates": 56,
+     "nra": 0,
+     "share": 0.0
+    },
+    {
+     "unitid": "201885",
+     "name": "University of Cincinnati-Main Campus",
+     "doctorates": 53,
+     "nra": 31,
+     "share": 58.5
+    },
+    {
+     "unitid": "123961",
+     "name": "University of Southern California",
+     "doctorates": 49,
+     "nra": 21,
+     "share": 42.9
+    },
+    {
+     "unitid": "204796",
+     "name": "Ohio State University-Main Campus",
+     "doctorates": 49,
+     "nra": 15,
+     "share": 30.6
+    },
+    {
+     "unitid": "214777",
+     "name": "Pennsylvania State University-Main Campus",
+     "doctorates": 49,
+     "nra": 21,
+     "share": 42.9
+    },
+    {
+     "unitid": "199193",
+     "name": "North Carolina State University at Raleigh",
+     "doctorates": 48,
+     "nra": 20,
+     "share": 41.7
+    },
+    {
+     "unitid": "110662",
+     "name": "University of California-Los Angeles",
+     "doctorates": 38,
+     "nra": 4,
+     "share": 10.5
+    },
+    {
+     "unitid": "194824",
+     "name": "Rensselaer Polytechnic Institute",
+     "doctorates": 38,
+     "nra": 10,
+     "share": 26.3
+    }
+   ]
+  },
+  {
+   "levels": [
+    {
+     "level": "Bachelor's",
+     "awards": 443,
+     "nra": 13,
+     "share": 2.9,
+     "domestic": 430,
+     "domestic_share": 97.1
+    },
+    {
+     "level": "Master's",
+     "awards": 301,
+     "nra": 40,
+     "share": 13.3,
+     "domestic": 261,
+     "domestic_share": 86.7
+    },
+    {
+     "level": "Doctorate",
+     "awards": 153,
+     "nra": 45,
+     "share": 29.4,
+     "domestic": 108,
+     "domestic_share": 70.6
+    }
+   ],
+   "slug": "nuclear",
+   "name": "Nuclear",
+   "restriction": "Access authorisation",
+   "restriction_note": "Two different regimes, often confused. Unescorted access to a commercial reactor requires NRC access authorisation under 10 CFR 73.56 -- a background investigation and fitness-for-duty determination, not a security clearance, and not restricted by citizenship on its face. DOE work on weapons-adjacent programmes requires an L or Q access authorisation under 10 CFR 710, which IS a clearance and does require US citizenship. Most civil nuclear engineering falls under the first, not the second.",
+   "why": "Reactor physics, fuel cycle and radiological engineering.",
+   "proxy": null,
+   "url": "/industries/nuclear.html",
+   "cips": [
+    "14.2301"
+   ],
+   "doctorates": 1318,
+   "nra": 432,
+   "share": 32.8,
+   "institutions": 28,
+   "programmes": [
+    {
+     "cip": "14.2301",
+     "title": "Nuclear Engineering",
+     "label": "Nuclear Engineering",
+     "doctorates": 1318,
+     "nra": 432,
+     "share": 32.8,
+     "series": {
+      "1995": 45.2,
+      "1996": 35.4,
+      "1997": 46.2,
+      "1998": 43.0,
+      "2000": 43.0,
+      "2001": 37.7,
+      "2002": 55.0,
+      "2003": 42.9,
+      "2004": 55.1,
+      "2005": 60.3,
+      "2006": 56.2,
+      "2007": 46.4,
+      "2008": 48.0,
+      "2009": 42.0,
+      "2010": 32.4,
+      "2011": 28.9,
+      "2012": 37.0,
+      "2013": 30.0,
+      "2014": 29.7,
+      "2015": 30.4,
+      "2016": 35.4,
+      "2017": 22.9,
+      "2018": 26.6,
+      "2019": 40.2,
+      "2020": 35.8,
+      "2021": 36.5,
+      "2022": 34.7,
+      "2023": 31.0,
+      "2024": 36.1,
+      "2025": 29.4
+     }
+    }
+   ],
+   "series": {
+    "1995": 45.2,
+    "1996": 35.4,
+    "1997": 46.2,
+    "1998": 43.0,
+    "2000": 43.0,
+    "2001": 37.7,
+    "2002": 55.0,
+    "2003": 42.9,
+    "2004": 55.1,
+    "2005": 60.3,
+    "2006": 56.2,
+    "2007": 46.4,
+    "2008": 48.0,
+    "2009": 42.0,
+    "2010": 32.4,
+    "2011": 28.9,
+    "2012": 37.0,
+    "2013": 30.0,
+    "2014": 29.7,
+    "2015": 30.4,
+    "2016": 35.4,
+    "2017": 22.9,
+    "2018": 26.6,
+    "2019": 40.2,
+    "2020": 35.8,
+    "2021": 36.5,
+    "2022": 34.7,
+    "2023": 31.0,
+    "2024": 36.1,
+    "2025": 29.4
+   },
+   "top_schools": [
+    {
+     "unitid": "170976",
+     "name": "University of Michigan-Ann Arbor",
+     "doctorates": 148,
+     "nra": 37,
+     "share": 25.0
+    },
+    {
+     "unitid": "166683",
+     "name": "Massachusetts Institute of Technology",
+     "doctorates": 122,
+     "nra": 60,
+     "share": 49.2
+    },
+    {
+     "unitid": "228723",
+     "name": "Texas A&M University-College Station",
+     "doctorates": 119,
+     "nra": 43,
+     "share": 36.1
+    },
+    {
+     "unitid": "221759",
+     "name": "The University of Tennessee-Knoxville",
+     "doctorates": 111,
+     "nra": 14,
+     "share": 12.6
+    },
+    {
+     "unitid": "199193",
+     "name": "North Carolina State University at Raleigh",
+     "doctorates": 94,
+     "nra": 43,
+     "share": 45.7
+    },
+    {
+     "unitid": "110635",
+     "name": "University of California-Berkeley",
+     "doctorates": 92,
+     "nra": 18,
+     "share": 19.6
+    },
+    {
+     "unitid": "240444",
+     "name": "University of Wisconsin-Madison",
+     "doctorates": 76,
+     "nra": 13,
+     "share": 17.1
+    },
+    {
+     "unitid": "145637",
+     "name": "University of Illinois Urbana-Champaign",
+     "doctorates": 72,
+     "nra": 43,
+     "share": 59.7
+    },
+    {
+     "unitid": "139755",
+     "name": "Georgia Institute of Technology-Main Campus",
+     "doctorates": 60,
+     "nra": 5,
+     "share": 8.3
+    },
+    {
+     "unitid": "243780",
+     "name": "Purdue University-Main Campus",
+     "doctorates": 41,
+     "nra": 24,
+     "share": 58.5
+    },
+    {
+     "unitid": "194824",
+     "name": "Rensselaer Polytechnic Institute",
+     "doctorates": 40,
+     "nra": 14,
+     "share": 35.0
+    },
+    {
+     "unitid": "204796",
+     "name": "Ohio State University-Main Campus",
+     "doctorates": 37,
+     "nra": 17,
+     "share": 45.9
+    },
+    {
+     "unitid": "209542",
+     "name": "Oregon State University",
+     "doctorates": 37,
+     "nra": 8,
+     "share": 21.6
+    },
+    {
+     "unitid": "178411",
+     "name": "Missouri University of Science and Technology",
+     "doctorates": 36,
+     "nra": 26,
+     "share": 72.2
+    },
+    {
+     "unitid": "134130",
+     "name": "University of Florida",
+     "doctorates": 35,
+     "nra": 9,
+     "share": 25.7
+    },
+    {
+     "unitid": "178396",
+     "name": "University of Missouri-Columbia",
+     "doctorates": 33,
+     "nra": 10,
+     "share": 30.3
+    },
+    {
+     "unitid": "214777",
+     "name": "Pennsylvania State University-Main Campus",
+     "doctorates": 30,
+     "nra": 11,
+     "share": 36.7
+    },
+    {
+     "unitid": "200697",
+     "name": "Air Force Institute of Technology-Graduate School of Engineering & Management",
+     "doctorates": 28,
+     "nra": 0,
+     "share": 0.0
+    },
+    {
+     "unitid": "142276",
+     "name": "Idaho State University",
+     "doctorates": 20,
+     "nra": 8,
+     "share": 40.0
+    },
+    {
+     "unitid": "155399",
+     "name": "Kansas State University",
+     "doctorates": 20,
+     "nra": 8,
+     "share": 40.0
+    },
+    {
+     "unitid": "126775",
+     "name": "Colorado School of Mines",
+     "doctorates": 15,
+     "nra": 4,
+     "share": 26.7
+    },
+    {
+     "unitid": "230764",
+     "name": "University of Utah",
+     "doctorates": 14,
+     "nra": 3,
+     "share": 21.4
+    }
+   ]
+  }
+ ],
+ "caveats": [
+  "A CIP code is a field of study. Nobody in this data is observed working in the industry it is matched to.",
+  "The battery entry is a proxy built from materials programmes, because IPEDS publishes no battery category.",
+  "Shares are of degrees awarded, not of the current workforce. A doctorate awarded in 2016 may have left the country or the field.",
+  "'Non-resident alien' is the IPEDS reporting category: a student on a temporary visa. Permanent residents are counted as domestic.",
+  "The restriction note states the law as written. It is not an observed hiring outcome: this data cannot show who was employed, under what authorisation, or whether they stayed.",
+  "Export control, access authorisation and a security clearance are three different things. Only a DOE L or Q access authorisation requires US citizenship."
+ ]
+}

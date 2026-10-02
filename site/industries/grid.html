@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The grid workforce</title>
+<meta name="description" content="How many Americans the United States trains to run its energy infrastructure: power plant, lineworker, electrician and HVAC credentials awarded each year, and how few of them there are.">
+<meta property="og:title" content="The grid workforce">
+<meta property="og:description" content="How many Americans the United States trains to run its energy infrastructure: power plant, lineworker, electrician and HVAC credentials awarded each year, and how few of them there are.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og/concentration.png">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.9rem; margin: 0 0 .7rem; line-height: 1.2; max-width: 24ch; }
+  .page-head p { color: var(--text-muted); max-width: 70ch; line-height: 1.65; font-size: .95rem; margin: 0 0 .5rem; }
+  .kicker { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin: 0 0 .6rem; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin: 1.6rem 0 0; }
+  .stat { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; background: var(--surface); }
+  .stat .n { font-size: 1.7rem; font-weight: 800; color: var(--hl); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: .82rem; line-height: 1.45; margin: .3rem 0 0; }
+  .stat .s { font-size: .72rem; color: var(--text-muted); margin: .45rem 0 0; }
+  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+  section.block { margin-top: 2.8rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  section.block h2 { font-size: 1.2rem; margin: 0 0 .45rem; }
+  .lede { color: var(--text-muted); max-width: 72ch; line-height: 1.6; font-size: .92rem; margin: 0 0 1rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55; max-width: 80ch; margin: .8rem 0 0; overflow-wrap: anywhere; }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; }
+  table.t { width: 100%; border-collapse: collapse; font-size: .84rem; }
+  table.t th { text-align: left; padding: .6rem .7rem; font-size: .7rem; text-transform: uppercase;
+    letter-spacing: .05em; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  table.t td { padding: .55rem .7rem; border-bottom: 1px solid var(--border); }
+  table.t td.num, table.t th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.t tr:last-child td { border-bottom: none; }
+  .share { font-weight: 700; color: var(--hl); }
+  .muted { color: var(--text-muted); }
+  .pill { display: inline-block; font-size: .7rem; border: 1px solid var(--border); border-radius: 999px;
+    padding: .05rem .5rem; color: var(--text-muted); white-space: nowrap; }
+  .pill.gated { border-color: var(--hl); color: var(--hl); font-weight: 600; }
+  .gate { border-left: 3px solid var(--hl); background: var(--surface); border-radius: 0 10px 10px 0;
+    padding: .9rem 1.1rem; margin: 1.2rem 0 0; }
+  .gate h3 { font-size: .85rem; margin: 0 0 .4rem; }
+  .gate p { font-size: .85rem; line-height: 1.6; margin: 0; color: var(--text-muted); }
+  .proxy { border: 1px dashed var(--border); border-radius: 10px; padding: .9rem 1.1rem; margin: 1.2rem 0 0; }
+  .proxy h3 { font-size: .8rem; margin: 0 0 .4rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); }
+  .proxy p { font-size: .85rem; line-height: 1.6; margin: 0; }
+  /* The industry cards on the hub. */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: .8rem; margin: 1.4rem 0 0; }
+  .card { border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.1rem; background: var(--surface);
+    display: flex; flex-direction: column; gap: .45rem; text-decoration: none; color: inherit; }
+  .card:hover { border-color: var(--hl); }
+  .card .pc { font-size: 2rem; font-weight: 800; color: var(--hl); line-height: 1; font-variant-numeric: tabular-nums; }
+  .card .nm { font-size: .95rem; font-weight: 700; }
+  .card .sub { font-size: .76rem; color: var(--text-muted); line-height: 1.45; }
+  /* Share by year. One axis, every line directly labelled. */
+  .chart { margin: 1.2rem 0 0; }
+  .chart svg { width: 100%; height: auto; max-width: 100%; display: block; }
+  .chart .gl { stroke: var(--border); stroke-width: 1; }
+  .chart .ln { fill: none; stroke: var(--hl); stroke-width: 2; }
+  .chart .base { fill: none; stroke: var(--text-muted); stroke-width: 1.5; stroke-dasharray: 4 3; opacity: .7; }
+  .chart text { fill: var(--text-muted); font-size: 10px; }
+  .chart text.lab { fill: var(--text); font-size: 11px; font-weight: 600; }
+  .caveats { border-left: 2px solid var(--border); padding: .1rem 0 .1rem 1rem; margin: 1.2rem 0 0; }
+  .caveats li { color: var(--text-muted); font-size: .8rem; line-height: 1.6; max-width: 80ch; overflow-wrap: anywhere; }
+  a { color: var(--accent); }
+</style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+</head>
+<body data-page="grid">
+<main id="main">
+<div class="wrap">
+
+  <header class="page-head">
+    <p class="kicker"><a href="/industries">Critical industries</a> &middot;
+      NCES IPEDS Completions, 2000&ndash;2025</p>
+    <h1 id="the-grid-workforce">The grid is run by Americans. There are not many of them.</h1>
+    <p>Every other page on this site asks who gets the degree. Ask that about the
+      electrical grid and the answer is already settled: electrician credentials are
+      <strong>0.2%</strong> non-resident and
+      lineworker credentials <strong>0.3%</strong>.
+      These are American jobs held by Americans.</p>
+    <p>So the question worth asking is not who. It is <strong>how many</strong> &mdash;
+      and the country is about to ask this workforce to build more generation and more
+      transmission than it has in fifty years.</p>
+    <div class="stats">
+      <div class="stat"><p class="n">62</p>
+        <p class="l">power plant technology credentials awarded in 2025,
+          <strong>in the entire country</strong></p>
+        <p class="s">at 5 institutions</p></div>
+      <div class="stat"><p class="n">78</p>
+        <p class="l">nuclear power technology credentials, every level combined</p>
+        <p class="s">down 54.1% in ten years</p></div>
+      <div class="stat"><p class="n">83,102</p>
+        <p class="l">credentials across every programme on this page</p>
+        <p class="s">generation, transmission, the trade and the engineering</p></div>
+      <div class="stat"><p class="n">90.3%</p>
+        <p class="l">of them went to Americans</p>
+        <p class="s">the workforce is domestic; the question is its size</p></div>
+    </div>
+  </header>
+
+  <section class="block" id="scarcest">
+    <h2>The smallest pipelines in the country</h2>
+    <p class="lede">These are national totals. Not per state, not per region &mdash; the
+      whole United States, every award level from a short certificate upward.</p>
+    <div class="table-wrap"><table class="t">
+      <thead><tr><th>Programme</th><th class="num">Awards, 2025</th>
+        <th class="num">Institutions</th></tr></thead>
+      <tbody><tr><td>Power Plant Technology<div class="muted" style="font-size:.74rem">CIP 15.1702</div></td><td class="num share">62</td><td class="num muted">5</td></tr><tr><td>Nuclear/Nuclear Power Technology<div class="muted" style="font-size:.74rem">CIP 41.0205</div></td><td class="num share">78</td><td class="num muted">8</td></tr><tr><td>Electrical and Power Transmission Installers, Other<div class="muted" style="font-size:.74rem">CIP 46.0399</div></td><td class="num share">94</td><td class="num muted">5</td></tr><tr><td>Ocean Engineering<div class="muted" style="font-size:.74rem">CIP 14.2401</div></td><td class="num share">263</td><td class="num muted">15</td></tr><tr><td>Nuclear Engineering<div class="muted" style="font-size:.74rem">CIP 14.2301</div></td><td class="num share">914</td><td class="num muted">30</td></tr><tr><td>Industrial Electronics Technology<div class="muted" style="font-size:.74rem">CIP 47.0105</div></td><td class="num share">1,207</td><td class="num muted">71</td></tr></tbody></table></div>
+    <p class="note">A programme that awarded nothing in 2025 is left out:
+      that is a pipeline that has closed, not a small one.</p>
+  </section>
+
+  <section class="block" id="programmes">
+    <h2>Every programme, by what it staffs</h2>
+    <p class="lede">Awards in the latest year, how many institutions award them, the
+      ten-year change, and the non-resident share &mdash; which is small everywhere except
+      the engineering.</p>
+    <h3 style="font-size:.95rem;margin:1.6rem 0 .5rem">Generation <span class="muted" style="font-weight:400;font-size:.8rem">&middot; 1,054 awards, 9.5% non-resident</span></h3><div class="table-wrap"><table class="t"><thead><tr><th>Programme</th><th class="num">Awards, 2025</th><th class="num">Institutions</th><th class="num">10-year change</th><th class="num">Non-resident</th></tr></thead><tbody><tr><td>Nuclear Engineering<div class="muted" style="font-size:.74rem">CIP 14.2301</div></td><td class="num">914</td><td class="num muted">30</td><td class="num">-17.6%</td><td class="num muted">10.8%</td></tr><tr><td>Nuclear/Nuclear Power Technology<div class="muted" style="font-size:.74rem">CIP 41.0205</div></td><td class="num">78</td><td class="num muted">8</td><td class="num">-54.1%</td><td class="num muted">1.3%</td></tr><tr><td>Power Plant Technology<div class="muted" style="font-size:.74rem">CIP 15.1702</div></td><td class="num">62</td><td class="num muted">5</td><td class="num"></td><td class="num muted">0.0%</td></tr></tbody></table></div><h3 style="font-size:.95rem;margin:1.6rem 0 .5rem">Transmission and distribution <span class="muted" style="font-weight:400;font-size:.8rem">&middot; 3,356 awards, 0.2% non-resident</span></h3><div class="table-wrap"><table class="t"><thead><tr><th>Programme</th><th class="num">Awards, 2025</th><th class="num">Institutions</th><th class="num">10-year change</th><th class="num">Non-resident</th></tr></thead><tbody><tr><td>Lineworker<div class="muted" style="font-size:.74rem">CIP 46.0303</div></td><td class="num">1,973</td><td class="num muted">60</td><td class="num">+39.0%</td><td class="num muted">0.3%</td></tr><tr><td>Electrical and Power Transmission Installation, General<div class="muted" style="font-size:.74rem">CIP 46.0301</div></td><td class="num">1,289</td><td class="num muted">43</td><td class="num">-8.5%</td><td class="num muted">0.2%</td></tr><tr><td>Electrical and Power Transmission Installers, Other<div class="muted" style="font-size:.74rem">CIP 46.0399</div></td><td class="num">94</td><td class="num muted">5</td><td class="num">-16.8%</td><td class="num muted">0.0%</td></tr></tbody></table></div><h3 style="font-size:.95rem;margin:1.6rem 0 .5rem">Electrical trade and technicians <span class="muted" style="font-weight:400;font-size:.8rem">&middot; 28,265 awards, 0.6% non-resident</span></h3><div class="table-wrap"><table class="t"><thead><tr><th>Programme</th><th class="num">Awards, 2025</th><th class="num">Institutions</th><th class="num">10-year change</th><th class="num">Non-resident</th></tr></thead><tbody><tr><td>Electrician<div class="muted" style="font-size:.74rem">CIP 46.0302</div></td><td class="num">22,058</td><td class="num muted">414</td><td class="num">+63.2%</td><td class="num muted">0.2%</td></tr><tr><td>Electrical and Electronics Engineering Technology<div class="muted" style="font-size:.74rem">CIP 15.0303</div></td><td class="num">5,000</td><td class="num muted">316</td><td class="num">-53.6%</td><td class="num muted">2.4%</td></tr><tr><td>Industrial Electronics Technology<div class="muted" style="font-size:.74rem">CIP 47.0105</div></td><td class="num">1,207</td><td class="num muted">71</td><td class="num">-41.3%</td><td class="num muted">0.2%</td></tr></tbody></table></div><h3 style="font-size:.95rem;margin:1.6rem 0 .5rem">Engineering that designs it <span class="muted" style="font-weight:400;font-size:.8rem">&middot; 26,532 awards, 28.9% non-resident</span></h3><div class="table-wrap"><table class="t"><thead><tr><th>Programme</th><th class="num">Awards, 2025</th><th class="num">Institutions</th><th class="num">10-year change</th><th class="num">Non-resident</th></tr></thead><tbody><tr><td>Electrical and Electronics Engineering<div class="muted" style="font-size:.74rem">CIP 14.1001</div></td><td class="num">26,269</td><td class="num muted">423</td><td class="num">-10.2%</td><td class="num muted">29.1%</td></tr><tr><td>Ocean Engineering<div class="muted" style="font-size:.74rem">CIP 14.2401</div></td><td class="num">263</td><td class="num muted">15</td><td class="num">-17.3%</td><td class="num muted">13.7%</td></tr></tbody></table></div><h3 style="font-size:.95rem;margin:1.6rem 0 .5rem">The buildings that hang off it <span class="muted" style="font-weight:400;font-size:.8rem">&middot; 23,895 awards, 0.3% non-resident</span></h3><div class="table-wrap"><table class="t"><thead><tr><th>Programme</th><th class="num">Awards, 2025</th><th class="num">Institutions</th><th class="num">10-year change</th><th class="num">Non-resident</th></tr></thead><tbody><tr><td>HVAC and Refrigeration Maintenance Technology<div class="muted" style="font-size:.74rem">CIP 47.0201</div></td><td class="num">17,853</td><td class="num muted">513</td><td class="num">-2.0%</td><td class="num muted">0.3%</td></tr><tr><td>HVAC and Refrigeration Engineering Technology<div class="muted" style="font-size:.74rem">CIP 15.0501</div></td><td class="num">6,042</td><td class="num muted">132</td><td class="num">-15.0%</td><td class="num muted">0.5%</td></tr></tbody></table></div>
+  </section>
+
+  <section class="block" id="method">
+    <h2>Method and limits</h2>
+    <p class="lede">This page counts credentials awarded. It does not count workers, and a
+      credential is not a career.</p>
+    <ul class="caveats"><li>IPEDS covers institutions that take Title IV federal aid. Much electrical and line work is learned in union or employer apprenticeships that award no IPEDS credential, so for the trades these counts are a floor on the pipeline rather than the pipeline.</li><li>A credential awarded is not a worker hired, and not a worker who stayed in the field.</li><li>Programmes are matched by CIP code. A college that teaches line work inside a broader electrical programme is counted under that broader code.</li><li>&#x27;Non-resident alien&#x27; is the IPEDS category: a student on a temporary visa. Permanent residents count as domestic.</li></ul>
+    <p class="note">Built by <code>scripts/build_grid_capacity.py</code> from
+      <a href="https://nces.ed.gov/ipeds/use-the-data" target="_blank" rel="noopener noreferrer">NCES IPEDS Completions, all award levels, 2000-2025</a>.
+      The composition question &mdash; who gets the degree &mdash; is on
+      <a href="/industries">the industry pages</a>.</p>
+  </section>
+
+</div>
+</main>
+<script src="/sidebar.js" defer></script>
+</body>
+</html>

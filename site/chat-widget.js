@@ -209,10 +209,16 @@
   var siteMapPromise = null;
 
   function normPath(p) {
+    // One key per page, whichever form it arrives in. The site serves
+    // /industries/mining and /industries/mining.html as the same page, so the
+    // extension is dropped here: the site map now carries clean paths, and a
+    // link written with .html -- in an older cached answer, or typed by the
+    // model from memory -- still resolves to the same entry.
     if (!p) return '';
     var s = String(p);
     if (s.charAt(0) !== '/') s = '/' + s;
-    if (s === '/') s = '/index.html';
+    if (s === '/') return '/index';
+    s = s.replace(/\.html$/, '');
     return s;
   }
 

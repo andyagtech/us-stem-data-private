@@ -1,0 +1,795 @@
+{
+ "_comment": "How many Americans the country trains to run its energy infrastructure.\n\nA DIFFERENT QUESTION FROM THE REST OF THIS SITE. Everywhere else here asks who\ngets the degree: what share of a field goes to people on temporary visas. Ask\nthat about the grid and the answer is nothing -- electrician completions are\n0.2% non-resident, lineworker 0.0%. These jobs are already done by Americans.\n\nSo the question that matters is not WHO. It is HOW MANY. The United States\nawards fewer than a hundred power plant technology credentials a year, at every\nlevel combined, while planning the largest grid build-out in decades. That is a\ncapacity number, and nothing else on this site measures capacity.\n\nWHAT THIS COUNTS. IPEDS Completions, every award level from a short certificate\nto a doctorate, for the programmes that staff generation, transmission and the\nbuildings that hang off them. Counts, not shares. The non-resident share is\ncarried too, because its smallness is the finding that justifies the page.\n\nTHE LIMIT THAT MATTERS MOST, and it belongs on the page and not only here:\nIPEDS covers institutions that take Title IV federal aid. A great deal of\nelectrical and line work is learned in union or employer apprenticeships --\nIBEW and NECA programmes among them -- that award no IPEDS credential and\nappear nowhere in this file. For the trades these counts are a FLOOR on the\npipeline, not the pipeline. The engineering and power-plant numbers do not have\nthat problem, because those credentials are awarded by colleges.",
+ "source": "NCES IPEDS Completions, all award levels, 2000-2025",
+ "source_url": "https://nces.ed.gov/ipeds/use-the-data",
+ "latest_year": 2025,
+ "years": [
+  2000,
+  2001,
+  2002,
+  2003,
+  2004,
+  2005,
+  2006,
+  2007,
+  2008,
+  2009,
+  2010,
+  2011,
+  2012,
+  2013,
+  2014,
+  2015,
+  2016,
+  2017,
+  2018,
+  2019,
+  2020,
+  2021,
+  2022,
+  2023,
+  2024,
+  2025
+ ],
+ "totals": {
+  "awards": 83102,
+  "nra": 8035,
+  "nra_share": 9.7
+ },
+ "definitions": {
+  "counts_not_shares": "This page counts people. Every other industry page on this site measures the non-resident share of a field; here that share is near zero, so the number that matters is how many the country trains at all.",
+  "award_levels": "Every level from a certificate under a year to a doctorate. IPEDS rollup rows (20, 21, 99) are excluded because they repeat the detail rows.",
+  "first_major_only": "First-major rows only. A second-major row repeats a student already counted."
+ },
+ "groups": [
+  {
+   "group": "Generation",
+   "latest_awards": 1054,
+   "latest_nra": 100,
+   "nra_share": 9.5,
+   "programmes": [
+    {
+     "cip": "14.2301",
+     "title": "Nuclear Engineering",
+     "latest_awards": 914,
+     "latest_nra": 99,
+     "nra_share": 10.8,
+     "institutions": 30,
+     "levels": [
+      {
+       "level": "Bachelor's",
+       "awards": 443,
+       "nra_share": 2.9
+      },
+      {
+       "level": "Master's",
+       "awards": 301,
+       "nra_share": 13.3
+      },
+      {
+       "level": "Doctorate",
+       "awards": 153,
+       "nra_share": 29.4
+      },
+      {
+       "level": "6",
+       "awards": 17,
+       "nra_share": 5.9
+      }
+     ],
+     "series": {
+      "2008": 795,
+      "2009": 739,
+      "2010": 846,
+      "2011": 963,
+      "2012": 1111,
+      "2013": 1184,
+      "2014": 1162,
+      "2015": 1109,
+      "2016": 1045,
+      "2017": 1088,
+      "2018": 1045,
+      "2019": 1010,
+      "2020": 917,
+      "2021": 840,
+      "2022": 836,
+      "2023": 863,
+      "2024": 922,
+      "2025": 914
+     },
+     "change_10y": -17.6
+    },
+    {
+     "cip": "41.0205",
+     "title": "Nuclear/Nuclear Power Technology",
+     "latest_awards": 78,
+     "latest_nra": 1,
+     "nra_share": 1.3,
+     "institutions": 8,
+     "levels": [
+      {
+       "level": "Associate",
+       "awards": 44,
+       "nra_share": 2.3
+      },
+      {
+       "level": "Bachelor's",
+       "awards": 32,
+       "nra_share": 0.0
+      },
+      {
+       "level": "6",
+       "awards": 2,
+       "nra_share": 0.0
+      }
+     ],
+     "series": {
+      "2008": 73,
+      "2009": 57,
+      "2010": 152,
+      "2011": 207,
+      "2012": 219,
+      "2013": 265,
+      "2014": 177,
+      "2015": 170,
+      "2016": 176,
+      "2017": 205,
+      "2018": 147,
+      "2019": 140,
+      "2020": 60,
+      "2021": 58,
+      "2022": 69,
+      "2023": 48,
+      "2024": 59,
+      "2025": 78
+     },
+     "change_10y": -54.1
+    },
+    {
+     "cip": "15.1702",
+     "title": "Power Plant Technology",
+     "latest_awards": 62,
+     "latest_nra": 0,
+     "nra_share": 0.0,
+     "institutions": 5,
+     "levels": [
+      {
+       "level": "Associate",
+       "awards": 39,
+       "nra_share": 0.0
+      },
+      {
+       "level": "Bachelor's",
+       "awards": 23,
+       "nra_share": 0.0
+      }
+     ],
+     "series": {
+      "2020": 48,
+      "2021": 93,
+      "2022": 64,
+      "2023": 83,
+      "2024": 74,
+      "2025": 62
+     },
+     "change_10y": null
+    },
+    {
+     "cip": "15.0503",
+     "title": "Energy Systems Technology",
+     "latest_awards": 0,
+     "latest_nra": 0,
+     "nra_share": null,
+     "institutions": 0,
+     "levels": [],
+     "series": {
+      "2008": 252,
+      "2009": 397,
+      "2010": 916,
+      "2011": 1683,
+      "2012": 2126,
+      "2013": 1787,
+      "2014": 1983,
+      "2015": 1787,
+      "2016": 1509,
+      "2017": 1516,
+      "2018": 1225,
+      "2019": 1009
+     },
+     "change_10y": null
+    }
+   ]
+  },
+  {
+   "group": "Transmission and distribution",
+   "latest_awards": 3356,
+   "latest_nra": 8,
+   "nra_share": 0.2,
+   "programmes": [
+    {
+     "cip": "46.0303",
+     "title": "Lineworker",
+     "latest_awards": 1973,
+     "latest_nra": 5,
+     "nra_share": 0.3,
+     "institutions": 60,
+     "levels": [
+      {
+       "level": "Certificate, 1-2 years",
+       "awards": 1494,
+       "nra_share": 0.0
+      },
+      {
+       "level": "Associate",
+       "awards": 440,
+       "nra_share": 0.0
+      },
+      {
+       "level": "Certificate, 2-4 years",
+       "awards": 39,
+       "nra_share": 12.8
+      }
+     ],
+     "series": {
+      "2008": 1013,
+      "2009": 1126,
+      "2010": 1329,
+      "2011": 1292,
+      "2012": 1305,
+      "2013": 1216,
+      "2014": 1468,
+      "2015": 1419,
+      "2016": 1607,
+      "2017": 1811,
+      "2018": 1874,
+      "2019": 1677,
+      "2020": 1377,
+      "2021": 1482,
+      "2022": 1550,
+      "2023": 1515,
+      "2024": 1955,
+      "2025": 1973
+     },
+     "change_10y": 39.0
+    },
+    {
+     "cip": "46.0301",
+     "title": "Electrical and Power Transmission Installation, General",
+     "latest_awards": 1289,
+     "latest_nra": 3,
+     "nra_share": 0.2,
+     "institutions": 43,
+     "levels": [
+      {
+       "level": "Associate",
+       "awards": 692,
+       "nra_share": 0.3
+      },
+      {
+       "level": "Certificate, 1-2 years",
+       "awards": 597,
+       "nra_share": 0.2
+      }
+     ],
+     "series": {
+      "2008": 741,
+      "2009": 799,
+      "2010": 1049,
+      "2011": 1272,
+      "2012": 1428,
+      "2013": 1612,
+      "2014": 1310,
+      "2015": 1408,
+      "2016": 1262,
+      "2017": 1520,
+      "2018": 1895,
+      "2019": 2045,
+      "2020": 959,
+      "2021": 1007,
+      "2022": 1071,
+      "2023": 1063,
+      "2024": 1087,
+      "2025": 1289
+     },
+     "change_10y": -8.5
+    },
+    {
+     "cip": "46.0399",
+     "title": "Electrical and Power Transmission Installers, Other",
+     "latest_awards": 94,
+     "latest_nra": 0,
+     "nra_share": 0.0,
+     "institutions": 5,
+     "levels": [
+      {
+       "level": "Associate",
+       "awards": 58,
+       "nra_share": 0.0
+      },
+      {
+       "level": "Certificate, 1-2 years",
+       "awards": 36,
+       "nra_share": 0.0
+      }
+     ],
+     "series": {
+      "2008": 197,
+      "2009": 304,
+      "2010": 204,
+      "2011": 114,
+      "2012": 144,
+      "2013": 154,
+      "2014": 144,
+      "2015": 113,
+      "2016": 236,
+      "2017": 103,
+      "2018": 121,
+      "2019": 118,
+      "2020": 68,
+      "2021": 102,
+      "2022": 86,
+      "2023": 76,
+      "2024": 145,
+      "2025": 94
+     },
+     "change_10y": -16.8
+    }
+   ]
+  },
+  {
+   "group": "Electrical trade and technicians",
+   "latest_awards": 28265,
+   "latest_nra": 171,
+   "nra_share": 0.6,
+   "programmes": [
+    {
+     "cip": "46.0302",
+     "title": "Electrician",
+     "latest_awards": 22058,
+     "latest_nra": 50,
+     "nra_share": 0.2,
+     "institutions": 414,
+     "levels": [
+      {
+       "level": "Certificate, 1-2 years",
+       "awards": 18157,
+       "nra_share": 0.2
+      },
+      {
+       "level": "Associate",
+       "awards": 3145,
+       "nra_share": 0.3
+      },
+      {
+       "level": "Certificate, 2-4 years",
+       "awards": 756,
+       "nra_share": 1.5
+      }
+     ],
+     "series": {
+      "2008": 13146,
+      "2009": 13384,
+      "2010": 15702,
+      "2011": 17062,
+      "2012": 15124,
+      "2013": 13859,
+      "2014": 14819,
+      "2015": 13520,
+      "2016": 14742,
+      "2017": 15488,
+      "2018": 16307,
+      "2019": 17517,
+      "2020": 11110,
+      "2021": 12113,
+      "2022": 14026,
+      "2023": 15972,
+      "2024": 18910,
+      "2025": 22058
+     },
+     "change_10y": 63.2
+    },
+    {
+     "cip": "15.0303",
+     "title": "Electrical and Electronics Engineering Technology",
+     "latest_awards": 5000,
+     "latest_nra": 118,
+     "nra_share": 2.4,
+     "institutions": 316,
+     "levels": [
+      {
+       "level": "Associate",
+       "awards": 2524,
+       "nra_share": 1.7
+      },
+      {
+       "level": "Bachelor's",
+       "awards": 1361,
+       "nra_share": 4.5
+      },
+      {
+       "level": "Certificate, 1-2 years",
+       "awards": 1105,
+       "nra_share": 1.1
+      },
+      {
+       "level": "Master's",
+       "awards": 5,
+       "nra_share": 40.0
+      },
+      {
+       "level": "6",
+       "awards": 3,
+       "nra_share": 0.0
+      },
+      {
+       "level": "Certificate, 2-4 years",
+       "awards": 2,
+       "nra_share": 0.0
+      }
+     ],
+     "series": {
+      "2008": 11889,
+      "2009": 12062,
+      "2010": 12241,
+      "2011": 13525,
+      "2012": 12937,
+      "2013": 11975,
+      "2014": 11009,
+      "2015": 10768,
+      "2016": 7398,
+      "2017": 7489,
+      "2018": 7069,
+      "2019": 7204,
+      "2020": 5017,
+      "2021": 4550,
+      "2022": 4241,
+      "2023": 4140,
+      "2024": 4554,
+      "2025": 5000
+     },
+     "change_10y": -53.6
+    },
+    {
+     "cip": "47.0105",
+     "title": "Industrial Electronics Technology",
+     "latest_awards": 1207,
+     "latest_nra": 3,
+     "nra_share": 0.2,
+     "institutions": 71,
+     "levels": [
+      {
+       "level": "Associate",
+       "awards": 644,
+       "nra_share": 0.3
+      },
+      {
+       "level": "Certificate, 1-2 years",
+       "awards": 546,
+       "nra_share": 0.0
+      },
+      {
+       "level": "Certificate, 2-4 years",
+       "awards": 17,
+       "nra_share": 5.9
+      }
+     ],
+     "series": {
+      "2008": 1685,
+      "2009": 1909,
+      "2010": 1984,
+      "2011": 1954,
+      "2012": 1832,
+      "2013": 1730,
+      "2014": 1762,
+      "2015": 2056,
+      "2016": 2228,
+      "2017": 2489,
+      "2018": 2591,
+      "2019": 2794,
+      "2020": 1145,
+      "2021": 1143,
+      "2022": 1121,
+      "2023": 1203,
+      "2024": 1106,
+      "2025": 1207
+     },
+     "change_10y": -41.3
+    }
+   ]
+  },
+  {
+   "group": "Engineering that designs it",
+   "latest_awards": 26532,
+   "latest_nra": 7673,
+   "nra_share": 28.9,
+   "programmes": [
+    {
+     "cip": "14.1001",
+     "title": "Electrical and Electronics Engineering",
+     "latest_awards": 26269,
+     "latest_nra": 7637,
+     "nra_share": 29.1,
+     "institutions": 423,
+     "levels": [
+      {
+       "level": "Bachelor's",
+       "awards": 14902,
+       "nra_share": 8.8
+      },
+      {
+       "level": "Master's",
+       "awards": 8538,
+       "nra_share": 56.6
+      },
+      {
+       "level": "Doctorate",
+       "awards": 2123,
+       "nra_share": 67.3
+      },
+      {
+       "level": "Certificate, 1-2 years",
+       "awards": 272,
+       "nra_share": 1.1
+      },
+      {
+       "level": "Associate",
+       "awards": 248,
+       "nra_share": 3.2
+      },
+      {
+       "level": "6",
+       "awards": 159,
+       "nra_share": 28.9
+      },
+      {
+       "level": "8",
+       "awards": 25,
+       "nra_share": 44.0
+      },
+      {
+       "level": "Other doctorate",
+       "awards": 1,
+       "nra_share": 100.0
+      },
+      {
+       "level": "Certificate, 2-4 years",
+       "awards": 1,
+       "nra_share": 0.0
+      }
+     ],
+     "series": {
+      "2008": 23723,
+      "2009": 23551,
+      "2010": 22946,
+      "2011": 23778,
+      "2012": 24405,
+      "2013": 24734,
+      "2014": 26489,
+      "2015": 29255,
+      "2016": 32105,
+      "2017": 32355,
+      "2018": 31057,
+      "2019": 30535,
+      "2020": 29506,
+      "2021": 27843,
+      "2022": 25567,
+      "2023": 26682,
+      "2024": 25603,
+      "2025": 26269
+     },
+     "change_10y": -10.2
+    },
+    {
+     "cip": "14.2401",
+     "title": "Ocean Engineering",
+     "latest_awards": 263,
+     "latest_nra": 36,
+     "nra_share": 13.7,
+     "institutions": 15,
+     "levels": [
+      {
+       "level": "Bachelor's",
+       "awards": 165,
+       "nra_share": 0.6
+      },
+      {
+       "level": "Master's",
+       "awards": 59,
+       "nra_share": 18.6
+      },
+      {
+       "level": "Doctorate",
+       "awards": 20,
+       "nra_share": 60.0
+      },
+      {
+       "level": "6",
+       "awards": 15,
+       "nra_share": 66.7
+      },
+      {
+       "level": "8",
+       "awards": 3,
+       "nra_share": 66.7
+      },
+      {
+       "level": "Associate",
+       "awards": 1,
+       "nra_share": 0.0
+      }
+     ],
+     "series": {
+      "2008": 232,
+      "2009": 246,
+      "2010": 298,
+      "2011": 301,
+      "2012": 262,
+      "2013": 313,
+      "2014": 317,
+      "2015": 318,
+      "2016": 308,
+      "2017": 335,
+      "2018": 305,
+      "2019": 346,
+      "2020": 302,
+      "2021": 285,
+      "2022": 296,
+      "2023": 290,
+      "2024": 275,
+      "2025": 263
+     },
+     "change_10y": -17.3
+    }
+   ]
+  },
+  {
+   "group": "The buildings that hang off it",
+   "latest_awards": 23895,
+   "latest_nra": 83,
+   "nra_share": 0.3,
+   "programmes": [
+    {
+     "cip": "47.0201",
+     "title": "HVAC and Refrigeration Maintenance Technology",
+     "latest_awards": 17853,
+     "latest_nra": 53,
+     "nra_share": 0.3,
+     "institutions": 513,
+     "levels": [
+      {
+       "level": "Certificate, 1-2 years",
+       "awards": 15156,
+       "nra_share": 0.2
+      },
+      {
+       "level": "Associate",
+       "awards": 2464,
+       "nra_share": 0.6
+      },
+      {
+       "level": "Certificate, 2-4 years",
+       "awards": 233,
+       "nra_share": 1.7
+      }
+     ],
+     "series": {
+      "2008": 12595,
+      "2009": 14178,
+      "2010": 19158,
+      "2011": 20929,
+      "2012": 20042,
+      "2013": 19058,
+      "2014": 18921,
+      "2015": 18219,
+      "2016": 18236,
+      "2017": 18422,
+      "2018": 19781,
+      "2019": 19885,
+      "2020": 12976,
+      "2021": 13032,
+      "2022": 14208,
+      "2023": 13680,
+      "2024": 14096,
+      "2025": 17853
+     },
+     "change_10y": -2.0
+    },
+    {
+     "cip": "15.0501",
+     "title": "HVAC and Refrigeration Engineering Technology",
+     "latest_awards": 6042,
+     "latest_nra": 30,
+     "nra_share": 0.5,
+     "institutions": 132,
+     "levels": [
+      {
+       "level": "Certificate, 1-2 years",
+       "awards": 5446,
+       "nra_share": 0.5
+      },
+      {
+       "level": "Associate",
+       "awards": 554,
+       "nra_share": 0.5
+      },
+      {
+       "level": "Certificate, 2-4 years",
+       "awards": 21,
+       "nra_share": 0.0
+      },
+      {
+       "level": "Bachelor's",
+       "awards": 21,
+       "nra_share": 0.0
+      }
+     ],
+     "series": {
+      "2008": 5448,
+      "2009": 6298,
+      "2010": 8141,
+      "2011": 12068,
+      "2012": 10342,
+      "2013": 7301,
+      "2014": 7561,
+      "2015": 7112,
+      "2016": 6451,
+      "2017": 7013,
+      "2018": 6217,
+      "2019": 6462,
+      "2020": 3942,
+      "2021": 4236,
+      "2022": 4830,
+      "2023": 4385,
+      "2024": 4909,
+      "2025": 6042
+     },
+     "change_10y": -15.0
+    }
+   ]
+  }
+ ],
+ "scarcest": [
+  {
+   "title": "Power Plant Technology",
+   "cip": "15.1702",
+   "latest_awards": 62,
+   "institutions": 5
+  },
+  {
+   "title": "Nuclear/Nuclear Power Technology",
+   "cip": "41.0205",
+   "latest_awards": 78,
+   "institutions": 8
+  },
+  {
+   "title": "Electrical and Power Transmission Installers, Other",
+   "cip": "46.0399",
+   "latest_awards": 94,
+   "institutions": 5
+  },
+  {
+   "title": "Ocean Engineering",
+   "cip": "14.2401",
+   "latest_awards": 263,
+   "institutions": 15
+  },
+  {
+   "title": "Nuclear Engineering",
+   "cip": "14.2301",
+   "latest_awards": 914,
+   "institutions": 30
+  },
+  {
+   "title": "Industrial Electronics Technology",
+   "cip": "47.0105",
+   "latest_awards": 1207,
+   "institutions": 71
+  }
+ ],
+ "caveats": [
+  "IPEDS covers institutions that take Title IV federal aid. Much electrical and line work is learned in union or employer apprenticeships that award no IPEDS credential, so for the trades these counts are a floor on the pipeline rather than the pipeline.",
+  "A credential awarded is not a worker hired, and not a worker who stayed in the field.",
+  "Programmes are matched by CIP code. A college that teaches line work inside a broader electrical programme is counted under that broader code.",
+  "'Non-resident alien' is the IPEDS category: a student on a temporary visa. Permanent residents count as domestic."
+ ]
+}

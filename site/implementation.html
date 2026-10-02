@@ -357,7 +357,7 @@ GROUP BY university ORDER BY total DESC;</pre>
 
     <h3 id="lca-disclosure-data">LCA Disclosure Data</h3>
     <p><a href="https://www.dol.gov/agencies/eta/foreign-labor/performance" target="_blank">DOL</a> Labor Condition Applications (FY2013&ndash;FY2026 Q3): 32 Excel files totaling 3.6 GB. Extracts job titles (normalized to remove Excel artifacts like <code>="Assistant Professor"</code>), SOC occupation codes, wage statistics with percentile breakdowns, and yearly certification counts.</p>
-    <p><strong>Employer matching is on word boundaries.</strong> It used to be a bare substring test, which credited every employer containing the letters <code>MIT</code> &mdash; INFOSYS LIMITED, WIPRO LIMITED, TATA CONSULTANCY SERVICES LIMITED &mdash; to MIT, inflating its total to 565,883 against a corpus median near 1,200. It now reads 3,487. See <a href="/data_sources.html#corrections">Corrections</a>.</p>
+    <p><strong>Employer matching is on word boundaries.</strong> It used to be a bare substring test, which credited every employer containing the letters <code>MIT</code> &mdash; INFOSYS LIMITED, WIPRO LIMITED, TATA CONSULTANCY SERVICES LIMITED &mdash; to MIT, inflating its total to 565,883 against a corpus median near 1,200. It now reads 3,487. See <a href="/data_sources#corrections">Corrections</a>.</p>
     <p><strong>DuckDB acceleration:</strong> XLSX files are converted to CSV once (cached in <code>lca/csv_cache/</code>), then queried via DuckDB SQL for fast employer-name joins. Falls back to openpyxl row-by-row parsing (~25 min) if DuckDB is unavailable.</p>
 
     <h3 id="opt-stem-opt">OPT / STEM OPT</h3>
