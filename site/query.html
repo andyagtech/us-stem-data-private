@@ -116,6 +116,43 @@
   /* -- Editor + Results -- */
   .editor-panel { flex: 1; display: flex; flex-direction: column; min-width: 0; }
 
+  /* ---- GUIDE DRAWER ---------------------------------------------------
+     A third column of .main. Open it is a fixed 320px; closed it collapses
+     to a 34px rail carrying only the toggle, so the results table gets the
+     width back. Below 1100px it is hidden entirely -- at that size the
+     table needs every pixel and the guide would push it off screen. */
+  .guide { flex: 0 0 320px; border-left: 1px solid var(--border);
+    background: var(--surface); display: flex; min-width: 0;
+    position: relative; transition: flex-basis .18s ease; }
+  .guide.collapsed { flex-basis: 34px; }
+  .guide-toggle { position: absolute; top: 8px; left: 6px; z-index: 2;
+    width: 22px; height: 22px; line-height: 1; border: 1px solid var(--border);
+    border-radius: 5px; background: var(--bg); color: var(--text-muted);
+    cursor: pointer; font-size: .9rem; padding: 0; }
+  .guide-toggle:hover { color: var(--hl); border-color: var(--hl); }
+  .guide.collapsed .guide-toggle { transform: rotate(180deg); }
+  .guide-body { overflow-y: auto; padding: 36px 18px 28px; font-size: .8rem;
+    line-height: 1.6; color: var(--text); }
+  .guide.collapsed .guide-body { display: none; }
+  .guide-body h2 { font-size: .7rem; text-transform: uppercase;
+    letter-spacing: .07em; color: var(--text-muted); margin: 1.4rem 0 .4rem;
+    font-weight: 700; }
+  .guide-body h2:first-child { margin-top: 0; }
+  .guide-body p { margin: 0 0 .6rem; }
+  .guide-body ul { margin: 0 0 .6rem; padding-left: 1.05rem; }
+  .guide-body li { margin: 0 0 .4rem; }
+  .guide-body code { font-family: var(--mono, ui-monospace, monospace);
+    font-size: .74rem; background: var(--bg); border: 1px solid var(--border);
+    border-radius: 3px; padding: 0 3px; }
+  .guide-tip { color: var(--text-muted); font-size: .75rem; }
+  .guide-tables { margin: 0; }
+  .guide-tables dt { font-family: var(--mono, ui-monospace, monospace);
+    font-size: .75rem; color: var(--hl); font-weight: 600; margin-top: .5rem; }
+  .guide-tables dd { margin: .1rem 0 0; color: var(--text-muted);
+    font-size: .76rem; line-height: 1.5; }
+  @media (max-width: 1100px) { .guide { display: none; } }
+
+
   .query-area {
     padding: 12px 16px; border-bottom: 1px solid var(--border);
     display: flex; flex-direction: column; gap: 8px;
@@ -290,6 +327,81 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
       </div>
     </div>
   </div>
+  <!-- GUIDE DRAWER. The right third of this page was empty at every width
+       above about 1200px while the results table was clipped on the left.
+       The drawer gives that space a job and hands it back on demand: closed,
+       it is a 34px rail and the table gets the full width. The state is
+       remembered per reader. -->
+  <aside class="guide" id="guide" aria-label="How to use this console">
+    <button class="guide-toggle" id="guideToggle" type="button"
+            aria-expanded="true" aria-controls="guideBody"
+            title="Hide the guide">&rsaquo;</button>
+    <div class="guide-body" id="guideBody">
+      <h2>What this is</h2>
+      <p>Every table below is loaded into your browser and queried there.
+      Nothing is sent to a server. The data is the same data the rest of the
+      site is built from.</p>
+
+      <h2>Start with an example</h2>
+      <p>The grey buttons under the <strong>Run</strong> box are worked
+      examples for whichever table you have selected. They are the quickest
+      way in: click one, read the SQL, then change it.</p>
+      <p class="guide-tip">Pick a table in the left rail to see its own
+      examples.</p>
+
+      <h2>The six tables</h2>
+      <dl class="guide-tables">
+        <dt>stem_records</dt>
+        <dd>509,072 STEM theses and dissertations. One row per award:
+        university, department, year, author, title. <strong>The browser
+        loads the first 500,000</strong> of them, so a count here is 500,000
+        and not 509,072 &mdash; the full file is in the parquet.</dd>
+        <dt>nonstem_records</dt>
+        <dd>199,321 of the same, outside STEM.</dd>
+        <dt>h1b_perm_public</dt>
+        <dd>42,833 certified green-card filings by universities, school
+        districts, state agencies and utilities. <strong>The only table with
+        citizenship and country of birth.</strong></dd>
+        <dt>h1b_industry</dt>
+        <dd>4,783 six-digit NAICS industries, with filings, employers and
+        median wage.</dd>
+        <dt>h1b_occupation</dt>
+        <dd>1,043 SOC occupations, the same way.</dd>
+        <dt>h1b_employers</dt>
+        <dd>38,836 employers with their filing counts and wage levels.</dd>
+      </dl>
+
+      <h2>Why a count can look short</h2>
+      <p>Tables load into your browser's memory, so the console caps each at
+      500,000 rows and says so in the status line when it does. Only
+      <code>stem_records</code> is large enough to be capped. The downloadable
+      parquet is complete.</p>
+
+      <h2>Joining them</h2>
+      <p><code>h1b_employers.naics</code> joins to
+      <code>h1b_industry.naics</code>. <code>h1b_perm_public.employer</code>
+      joins to <code>h1b_employers.employer</code> once both sides are
+      upper-cased. <code>university</code> is the same key in both record
+      tables.</p>
+      <p>The examples marked <strong>join</strong> show each of these.</p>
+
+      <h2>Reading the numbers honestly</h2>
+      <ul>
+        <li>A filing is permission to employ, not proof of hiring. Every
+        count is a ceiling on intent.</li>
+        <li>Count filings by application. One application can cover many
+        positions, and weighting by positions hands every share to the bulk
+        filers.</li>
+        <li>Record counts differ by how much a university publishes, not
+        only by how much it awards.</li>
+      </ul>
+
+      <h2>Elsewhere</h2>
+      <p><a href="/catalog.json">catalog.json</a> describes every published
+      dataset. The parquet files are downloadable from
+      <code>/data/exports/</code> and work with DuckDB directly.</p>
+    </div>
+  </aside>
 </div>
 
 <script type="module">
@@ -657,6 +769,7 @@ let activeTable = null;
 // Per-table sample queries based on actual schemas
 const TABLE_QUERIES = {
   'stem_records': [
+    { label: 'join: STEM against non-STEM, same university', sql: `SELECT s.university,\n       COUNT(DISTINCT s.name) AS stem,\n       COUNT(DISTINCT n.name) AS nonstem\nFROM stem_records s\nLEFT JOIN nonstem_records n ON s.university = n.university\nGROUP BY s.university\nORDER BY stem DESC\nLIMIT 40` },
     { label: 'Preview', sql: `SELECT *\nFROM stem_records\nLIMIT 100` },
     { label: 'By university', sql: `SELECT university, COUNT(*) AS records\nFROM stem_records\nGROUP BY university\nORDER BY records DESC` },
     { label: 'By year', sql: `SELECT year, COUNT(*) AS records\nFROM stem_records\nGROUP BY year\nORDER BY year` },
@@ -665,9 +778,10 @@ const TABLE_QUERIES = {
     { label: 'Search by name', sql: `SELECT university, department, year, name, title\nFROM stem_records\nWHERE name LIKE '%Zhang%'\nLIMIT 50` },
     { label: 'MIT records', sql: `SELECT department, year, name, title\nFROM stem_records\nWHERE university = 'mit'\nORDER BY year DESC, department\nLIMIT 100` },
     { label: 'CS departments', sql: `SELECT university, COUNT(*) AS records\nFROM stem_records\nWHERE department LIKE '%Computer%'\nGROUP BY university\nORDER BY records DESC` },
-    { label: 'STEM + Non-STEM', sql: `SELECT 'STEM' AS category, COUNT(*) AS total FROM stem_records\nUNION ALL\nSELECT 'Non-STEM', COUNT(*) FROM nonstem_records` },
+    { label: 'STEM + Non-STEM', sql: `SELECT 'STEM' AS category, COUNT(*) AS total FROM stem_records\nUNION ALL\nSELECT 'Non-STEM' AS category, COUNT(*) AS total FROM nonstem_records` },
   ],
   'h1b_perm_public': [
+    { label: 'join: public sponsors that also file H-1Bs', sql: `SELECT p.employer, p.sector,\n       COUNT(*) AS perm_filings,\n       max(e.employer_filings) AS h1b_filings\nFROM h1b_perm_public p\nJOIN h1b_employers e ON upper(p.employer) = upper(e.employer)\nGROUP BY p.employer, p.sector\nORDER BY perm_filings DESC\nLIMIT 40` },
     { label: 'Preview', sql: `SELECT *\nFROM h1b_perm_public\nLIMIT 100` },
     { label: 'Who the public sector sponsors, by country', sql: `SELECT citizenship, COUNT(*) AS filings\nFROM h1b_perm_public\nWHERE citizenship <> ''\nGROUP BY citizenship\nORDER BY filings DESC\nLIMIT 25` },
     { label: 'Every state-agency filing, with nationality', sql: `SELECT fiscal_year, state, employer, job_title, citizenship, birth_country, wage\nFROM h1b_perm_public\nWHERE sector = 'state_agencies'\nORDER BY fiscal_year DESC, state` },
@@ -692,6 +806,8 @@ const TABLE_QUERIES = {
     { label: 'Teaching occupations', sql: `SELECT soc, soc_title, filings, employers, median_wage\nFROM h1b_occupation\nWHERE soc LIKE '25-%'\nORDER BY filings DESC` },
   ],
   'h1b_employers': [
+    { label: 'join: what industry each big filer sits in', sql: `SELECT e.employer, e.employer_filings, i.naics, i.top_title,\n       i.median_wage AS industry_median\nFROM h1b_employers e\nJOIN h1b_industry i ON e.naics = i.naics\nWHERE e.employer_filings >= 500\nORDER BY e.employer_filings DESC\nLIMIT 50` },
+    { label: 'join: filers paying under their own industry', sql: `SELECT e.employer, e.employer_filings, e.median_wage,\n       i.median_wage AS industry_median,\n       i.median_wage - e.median_wage AS below\nFROM h1b_employers e\nJOIN h1b_industry i ON e.naics = i.naics\nWHERE e.employer_filings >= 200\n  AND e.median_wage IS NOT NULL AND i.median_wage IS NOT NULL\n  AND e.median_wage < i.median_wage\nORDER BY below DESC\nLIMIT 40` },
     { label: 'Preview', sql: `SELECT *\nFROM h1b_employers\nLIMIT 100` },
     { label: 'Biggest filers', sql: `SELECT employer, employer_filings, median_wage, low_level_pct\nFROM h1b_employers\nORDER BY employer_filings DESC\nLIMIT 50` },
     { label: 'Volume filers paying at the bottom', sql: `SELECT employer, employer_filings, median_wage, low_level_pct\nFROM h1b_employers\nWHERE employer_filings >= 500\nORDER BY low_level_pct DESC\nLIMIT 40` },
@@ -727,7 +843,7 @@ function updateExampleQueries() {
 
   // Cross-table queries
   if (tables['stem_records'] && tables['nonstem_records']) {
-    examples.push({ label: 'All records', sql: `SELECT 'STEM' AS type, university, department, year, name, title\nFROM stem_records\nUNION ALL\nSELECT 'Non-STEM', university, department, year, name, title\nFROM nonstem_records\nLIMIT 200` });
+    examples.push({ label: 'All records', sql: `SELECT 'STEM' AS type, university, department, year, name, title\nFROM stem_records\nUNION ALL\nSELECT 'Non-STEM' AS type, university, department, year, name, title\nFROM nonstem_records\nLIMIT 200` });
   }
 
   exampleQueries.innerHTML = examples.map(e =>
@@ -855,5 +971,31 @@ window.addEventListener('hashchange', activateTableFromHash);
 <script src="/sidebar.js"></script>
 <script src="/anchors.js" defer></script>
 <script src="/analytics-beacon.js" defer></script>
+
+<script>
+/* The drawer's open state is a per-reader convenience, so it lives in
+   sessionStorage and a failure to read it is not an error -- private mode
+   throws on access and the drawer simply opens. */
+(function () {
+  var g = document.getElementById('guide');
+  var b = document.getElementById('guideToggle');
+  if (!g || !b) return;
+  function apply(collapsed) {
+    g.classList.toggle('collapsed', collapsed);
+    b.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+    b.title = collapsed ? 'Show the guide' : 'Hide the guide';
+  }
+  var start = false;
+  try { start = sessionStorage.getItem('phd-query-guide') === 'closed'; }
+  catch (e) { /* private mode */ }
+  apply(start);
+  b.addEventListener('click', function () {
+    var now = !g.classList.contains('collapsed');
+    apply(now);
+    try { sessionStorage.setItem('phd-query-guide', now ? 'closed' : 'open'); }
+    catch (e) { /* private mode */ }
+  });
+})();
+</script>
 </body>
 </html>

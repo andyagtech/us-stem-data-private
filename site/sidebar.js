@@ -930,10 +930,34 @@
   // edge at phone width. Inside the main content element it is a normal
   // block again. Detected from the computed style rather than by naming
   // pages, so a page that adopts a flex body later is handled too.
-  const bodyLayout = getComputedStyle(document.body).display;
-  const footerHost = /flex|grid/.test(bodyLayout)
-    ? (document.querySelector('main, .main, .page, .container') || document.body)
-    : document.body;
+  // The host must STACK ITS CHILDREN VERTICALLY, which is not the same as
+  // "is not a flex body". The first version only asked whether <body> was a
+  // flex container and, if so, moved the footer into .main -- but on
+  // /query .main is itself `display:flex` in the ROW direction, so the
+  // footer became a fourth column beside the rail, the editor and the
+  // guide, and sat in the top-right corner taking a third of the page.
+  // Fixing the row on <body> had created the same bug one level down.
+  //
+  // So: walk the candidates and take the first that actually stacks. A
+  // column-direction flex body -- which /query has -- is a perfectly good
+  // host and is now used directly.
+  const stacksVertically = (el) => {
+    if (!el) return false;
+    const cs = getComputedStyle(el);
+    if (cs.display === 'flex' || cs.display === 'inline-flex') {
+      return cs.flexDirection.startsWith('column');
+    }
+    if (cs.display === 'grid' || cs.display === 'inline-grid') {
+      // One column is a stack; more than one is a row of tracks.
+      return cs.gridTemplateColumns.split(' ').filter(Boolean).length <= 1;
+    }
+    return true;   // block, flow-root and the rest stack by default
+  };
+  const footerHost =
+    [document.body,
+     document.querySelector('main, .main, .page, .container')]
+      .find(stacksVertically)
+    || document.body;
   footerHost.appendChild(footer);
 
   // Remove back-link since sidebar provides navigation

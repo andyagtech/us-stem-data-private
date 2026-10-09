@@ -1,1740 +1,2451 @@
 {
-  "version": "1.0.0",
-  "last_updated": "2026-03-31T23:05:17Z",
-  "description": "PhD Demographics \u2014 Thesis & Dissertation data from 107 US research universities",
-  "source": "https://phd-demographics.andy-barr.com",
-  "license": "Public data from US government sources (IPEDS, NSF) and university institutional repositories (OAI-PMH)",
-  "contact": "https://phd-demographics.andy-barr.com/data_sources.html",
+  "version": "2.0.0",
+  "last_updated": "2026-10-09T10:43:50Z",
+  "description": "Machine-readable catalogue of every dataset published by phd-demographics.andy-barr.com. Generated from the data at build time.",
+  "source": "https://phd-demographics.andy-barr.com/",
+  "license": "Public domain federal data. Attribution appreciated.",
+  "contact": "https://phd-demographics.andy-barr.com/about",
+  "totals": {
+    "stem_records": 509072,
+    "nonstem_records": 199321,
+    "universities": 106,
+    "built_datasets": 92
+  },
   "datasets": {
     "stem_universities": {
-      "description": "STEM thesis & dissertation records by university",
+      "description": "STEM thesis and dissertation records by university",
       "format": "JSON",
-      "count": 107,
-      "total_records": 334788,
+      "count": 106,
+      "total_records": 509072,
       "files": [
-        {
-          "key": "auburn",
-          "name": "Auburn",
-          "nra_pct": 25.6,
-          "records": 1111,
-          "url": "/data/stem/auburn.json",
-          "size_bytes": 210844
-        },
         {
           "key": "binghamton",
           "name": "Binghamton",
           "nra_pct": 56.9,
-          "records": 94,
+          "records": 156,
           "url": "/data/stem/binghamton.json",
-          "size_bytes": 23726
+          "size_bytes": 49054
         },
         {
           "key": "boise_state",
           "name": "Boise State",
           "nra_pct": 29.7,
-          "records": 789,
+          "records": 1185,
           "url": "/data/stem/boise_state.json",
-          "size_bytes": 158243
+          "size_bytes": 246613
         },
         {
           "key": "bu",
           "name": "Boston U",
           "nra_pct": 34.2,
-          "records": 10651,
+          "records": 8134,
           "url": "/data/stem/bu.json",
-          "size_bytes": 1871884
+          "size_bytes": 1507973
         },
         {
           "key": "byu",
           "name": "BYU",
-          "nra_pct": 30.9,
-          "records": 2393,
+          "nra_pct": 26.4,
+          "records": 4202,
           "url": "/data/stem/byu.json",
-          "size_bytes": 466388
+          "size_bytes": 816528
         },
         {
           "key": "caltech",
           "name": "Caltech",
-          "nra_pct": 64.9,
-          "records": 2354,
+          "nra_pct": 41.2,
+          "records": 2435,
           "url": "/data/stem/caltech.json",
-          "size_bytes": 493527
+          "size_bytes": 530023
         },
         {
           "key": "clemson",
           "name": "Clemson",
           "nra_pct": 55.2,
-          "records": 1534,
+          "records": 5290,
           "url": "/data/stem/clemson.json",
-          "size_bytes": 310606
+          "size_bytes": 1037752
         },
         {
           "key": "cmu",
           "name": "Carnegie Mellon",
-          "nra_pct": 56.8,
-          "records": 2997,
+          "nra_pct": 55.9,
+          "records": 3331,
           "url": "/data/stem/cmu.json",
-          "size_bytes": 520035
+          "size_bytes": 597150
         },
         {
           "key": "columbia",
           "name": "Columbia",
-          "nra_pct": 19.7,
-          "records": 3683,
+          "nra_pct": 42.5,
+          "records": 5797,
           "url": "/data/stem/columbia.json",
-          "size_bytes": 669125
+          "size_bytes": 1070648
         },
         {
           "key": "cornell",
           "name": "Cornell",
-          "nra_pct": 32.2,
-          "records": 4934,
+          "nra_pct": 41.3,
+          "records": 10051,
           "url": "/data/stem/cornell.json",
-          "size_bytes": 915186
+          "size_bytes": 1946693
+        },
+        {
+          "key": "cu_boulder",
+          "name": "CU Boulder",
+          "nra_pct": 23.4,
+          "records": 3734,
+          "url": "/data/stem/cu_boulder.json",
+          "size_bytes": 866144
         },
         {
           "key": "cuny",
           "name": "CUNY Grad Center",
           "nra_pct": 38.5,
-          "records": 1600,
+          "records": 2231,
           "url": "/data/stem/cuny.json",
-          "size_bytes": 304470
+          "size_bytes": 430811
         },
         {
           "key": "dartmouth",
           "name": "Dartmouth",
-          "nra_pct": 34.9,
-          "records": 266,
+          "nra_pct": 34.4,
+          "records": 665,
           "url": "/data/stem/dartmouth.json",
-          "size_bytes": 58033
+          "size_bytes": 146699
         },
         {
           "key": "duke",
           "name": "Duke",
           "nra_pct": 37.3,
-          "records": 2261,
+          "records": 4639,
           "url": "/data/stem/duke.json",
-          "size_bytes": 418646
+          "size_bytes": 863573
         },
         {
           "key": "gatech",
           "name": "Georgia Tech",
           "nra_pct": 52.4,
-          "records": 5959,
+          "records": 10438,
           "url": "/data/stem/gatech.json",
-          "size_bytes": 1127592
+          "size_bytes": 1932406
         },
         {
           "key": "gmu",
           "name": "George Mason",
-          "nra_pct": 17.7,
-          "records": 1545,
+          "nra_pct": 32.6,
+          "records": 5987,
           "url": "/data/stem/gmu.json",
-          "size_bytes": 272216
+          "size_bytes": 1202122
         },
         {
           "key": "harvard",
           "name": "Harvard",
           "nra_pct": 33.0,
-          "records": 4193,
+          "records": 6204,
           "url": "/data/stem/harvard.json",
-          "size_bytes": 809517
+          "size_bytes": 1222893
         },
         {
           "key": "iowa_state",
           "name": "Iowa State",
-          "nra_pct": 55.5,
-          "records": 25940,
+          "nra_pct": 56.0,
+          "records": 6972,
           "url": "/data/stem/iowa_state.json",
-          "size_bytes": 4934053
+          "size_bytes": 1362892
         },
         {
           "key": "kstate",
           "name": "Kansas State",
           "nra_pct": 58.3,
-          "records": 2678,
+          "records": 4859,
           "url": "/data/stem/kstate.json",
-          "size_bytes": 485169
+          "size_bytes": 899945
         },
         {
           "key": "la_tech",
           "name": "Louisiana Tech",
-          "nra_pct": 22.5,
-          "records": 208,
+          "nra_pct": 54.3,
+          "records": 408,
           "url": "/data/stem/la_tech.json",
-          "size_bytes": 46899
+          "size_bytes": 97385
         },
         {
           "key": "lsu",
           "name": "LSU",
           "nra_pct": 52.3,
-          "records": 2967,
+          "records": 5630,
           "url": "/data/stem/lsu.json",
-          "size_bytes": 626638
+          "size_bytes": 1174679
         },
         {
           "key": "marquette",
           "name": "Marquette",
-          "nra_pct": 48.6,
-          "records": 301,
+          "nra_pct": 38.6,
+          "records": 1190,
           "url": "/data/stem/marquette.json",
-          "size_bytes": 67532
+          "size_bytes": 259728
         },
         {
           "key": "mines",
           "name": "CO School of Mines",
           "nra_pct": 39.8,
-          "records": 7555,
+          "records": 3325,
           "url": "/data/stem/mines.json",
-          "size_bytes": 1384583
+          "size_bytes": 684339
         },
         {
           "key": "missouri_st",
           "name": "Missouri S&T",
-          "nra_pct": 73.2,
-          "records": 1468,
+          "nra_pct": 74.3,
+          "records": 2852,
           "url": "/data/stem/missouri_st.json",
-          "size_bytes": 318399
+          "size_bytes": 617190
         },
         {
           "key": "mit",
           "name": "MIT",
           "nra_pct": 43.8,
-          "records": 14236,
+          "records": 21505,
           "url": "/data/stem/mit.json",
-          "size_bytes": 2670334
+          "size_bytes": 3898823
+        },
+        {
+          "key": "montana_state",
+          "name": "Montana State U",
+          "nra_pct": 15.3,
+          "records": 7238,
+          "url": "/data/stem/montana_state.json",
+          "size_bytes": 1375944
         },
         {
           "key": "msstate",
           "name": "Mississippi State",
-          "nra_pct": 53.0,
-          "records": 2389,
+          "nra_pct": 49.2,
+          "records": 5290,
           "url": "/data/stem/msstate.json",
-          "size_bytes": 472863
+          "size_bytes": 1204809
         },
         {
           "key": "msu",
           "name": "Michigan State",
-          "nra_pct": 16.7,
-          "records": 3912,
+          "nra_pct": 49.0,
+          "records": 7135,
           "url": "/data/stem/msu.json",
-          "size_bytes": 741558
+          "size_bytes": 1363761
         },
         {
           "key": "mtu",
           "name": "Michigan Tech",
-          "nra_pct": 62.0,
-          "records": 1621,
+          "nra_pct": 66.7,
+          "records": 2751,
           "url": "/data/stem/mtu.json",
-          "size_bytes": 323907
+          "size_bytes": 548686
         },
         {
           "key": "nau",
           "name": "Northern Arizona",
-          "nra_pct": 22.8,
-          "records": 370,
+          "nra_pct": 16.6,
+          "records": 746,
           "url": "/data/stem/nau.json",
-          "size_bytes": 104640
+          "size_bytes": 209265
         },
         {
           "key": "ncstate",
           "name": "NC State",
-          "nra_pct": 37.8,
-          "records": 6626,
+          "nra_pct": 43.9,
+          "records": 16516,
           "url": "/data/stem/ncstate.json",
-          "size_bytes": 1369858
+          "size_bytes": 3254204
         },
         {
           "key": "niu",
           "name": "Northern Illinois",
-          "nra_pct": 34.4,
-          "records": 991,
+          "nra_pct": 20.5,
+          "records": 1255,
           "url": "/data/stem/niu.json",
-          "size_bytes": 221818
+          "size_bytes": 290161
         },
         {
           "key": "njit",
           "name": "NJIT",
-          "nra_pct": 70.1,
-          "records": 738,
+          "nra_pct": 70.7,
+          "records": 1291,
           "url": "/data/stem/njit.json",
-          "size_bytes": 150946
+          "size_bytes": 265758
         },
         {
           "key": "northern_colorado",
           "name": "U Northern Colorado",
-          "nra_pct": 11.9,
-          "records": 153,
+          "nra_pct": 8.1,
+          "records": 226,
           "url": "/data/stem/northern_colorado.json",
-          "size_bytes": 34243
+          "size_bytes": 56617
         },
         {
           "key": "northwestern",
           "name": "Northwestern",
-          "nra_pct": 20.4,
-          "records": 2292,
+          "nra_pct": 37.9,
+          "records": 2565,
           "url": "/data/stem/northwestern.json",
-          "size_bytes": 506815
+          "size_bytes": 582840
         },
         {
           "key": "olemiss",
           "name": "Ole Miss",
-          "nra_pct": 39.2,
-          "records": 890,
+          "nra_pct": 32.6,
+          "records": 1602,
           "url": "/data/stem/olemiss.json",
-          "size_bytes": 169833
-        },
-        {
-          "key": "oregon_state",
-          "name": "Oregon State",
-          "nra_pct": 22.9,
-          "records": 2,
-          "url": "/data/stem/oregon_state.json",
-          "size_bytes": 2309
+          "size_bytes": 309386
         },
         {
           "key": "osu",
           "name": "Ohio State",
           "nra_pct": 46.9,
-          "records": 1433,
+          "records": 2678,
           "url": "/data/stem/osu.json",
-          "size_bytes": 255512
+          "size_bytes": 476177
         },
         {
           "key": "pdx",
           "name": "Portland State",
-          "nra_pct": 41.2,
-          "records": 988,
+          "nra_pct": 33.2,
+          "records": 1781,
           "url": "/data/stem/pdx.json",
-          "size_bytes": 205151
+          "size_bytes": 372405
         },
         {
           "key": "penn_state",
           "name": "Penn State",
-          "nra_pct": 32.5,
-          "records": 9639,
+          "nra_pct": 50.8,
+          "records": 17856,
           "url": "/data/stem/penn_state.json",
-          "size_bytes": 1851344
+          "size_bytes": 3411502
         },
         {
           "key": "purdue",
           "name": "Purdue",
           "nra_pct": 60.3,
-          "records": 8058,
+          "records": 14605,
           "url": "/data/stem/purdue.json",
-          "size_bytes": 1661165
+          "size_bytes": 2979639
         },
         {
           "key": "rice",
           "name": "Rice",
-          "nra_pct": 52.4,
-          "records": 4650,
+          "nra_pct": 51.3,
+          "records": 3826,
           "url": "/data/stem/rice.json",
-          "size_bytes": 822512
+          "size_bytes": 710435
         },
         {
           "key": "rit",
           "name": "RIT",
-          "nra_pct": 57.3,
-          "records": 2574,
+          "nra_pct": 57.1,
+          "records": 4522,
           "url": "/data/stem/rit.json",
-          "size_bytes": 464087
+          "size_bytes": 840051
         },
         {
           "key": "rpi",
           "name": "RPI",
           "nra_pct": 48.7,
-          "records": 3930,
+          "records": 5739,
           "url": "/data/stem/rpi.json",
-          "size_bytes": 761799
+          "size_bytes": 1156852
         },
         {
           "key": "sdsu",
           "name": "SD State",
-          "nra_pct": 59.6,
-          "records": 1264,
+          "nra_pct": 64.5,
+          "records": 2189,
           "url": "/data/stem/sdsu.json",
-          "size_bytes": 262074
+          "size_bytes": 456016
         },
         {
           "key": "siu",
           "name": "Southern Illinois",
-          "nra_pct": 71.3,
-          "records": 620,
+          "nra_pct": 57.1,
+          "records": 3210,
           "url": "/data/stem/siu.json",
-          "size_bytes": 125880
+          "size_bytes": 617447
         },
         {
           "key": "smu",
           "name": "SMU",
-          "nra_pct": 65.3,
-          "records": 488,
+          "nra_pct": 61.3,
+          "records": 510,
           "url": "/data/stem/smu.json",
-          "size_bytes": 102226
+          "size_bytes": 119747
         },
         {
           "key": "stanford",
           "name": "Stanford",
           "nra_pct": 35.5,
-          "records": 7032,
+          "records": 12048,
           "url": "/data/stem/stanford.json",
-          "size_bytes": 1221031
+          "size_bytes": 2030710
         },
         {
           "key": "stony_brook",
           "name": "Stony Brook",
-          "nra_pct": 49.6,
-          "records": 587,
+          "nra_pct": 58.8,
+          "records": 2334,
           "url": "/data/stem/stony_brook.json",
-          "size_bytes": 140235
+          "size_bytes": 433235
         },
         {
           "key": "syracuse",
           "name": "Syracuse",
-          "nra_pct": 47.5,
-          "records": 975,
+          "nra_pct": 51.6,
+          "records": 1619,
           "url": "/data/stem/syracuse.json",
-          "size_bytes": 181492
+          "size_bytes": 311547
         },
         {
           "key": "temple",
           "name": "Temple",
-          "nra_pct": 10.6,
-          "records": 1410,
+          "nra_pct": 35.4,
+          "records": 4108,
           "url": "/data/stem/temple.json",
-          "size_bytes": 269036
+          "size_bytes": 829469
         },
         {
           "key": "ttu",
           "name": "Texas Tech",
           "nra_pct": 57.4,
-          "records": 932,
+          "records": 6005,
           "url": "/data/stem/ttu.json",
-          "size_bytes": 169585
+          "size_bytes": 1090046
         },
         {
           "key": "uarizona",
           "name": "U Arizona",
           "nra_pct": 36.3,
-          "records": 6225,
+          "records": 10002,
           "url": "/data/stem/uarizona.json",
-          "size_bytes": 1121039
+          "size_bytes": 1803147
         },
         {
           "key": "uarkansas",
           "name": "U Arkansas",
-          "nra_pct": 54.3,
-          "records": 2332,
+          "nra_pct": 50.5,
+          "records": 3664,
           "url": "/data/stem/uarkansas.json",
-          "size_bytes": 452015
+          "size_bytes": 714466
         },
         {
           "key": "ubuffalo",
           "name": "U Buffalo",
-          "nra_pct": 54.1,
-          "records": 890,
+          "nra_pct": 54.4,
+          "records": 3155,
           "url": "/data/stem/ubuffalo.json",
-          "size_bytes": 168675
+          "size_bytes": 596595
         },
         {
           "key": "ucberkeley",
           "name": "UC Berkeley",
           "nra_pct": 29.3,
-          "records": 5334,
+          "records": 9469,
           "url": "/data/stem/ucberkeley.json",
-          "size_bytes": 1015908
+          "size_bytes": 1796542
         },
         {
           "key": "ucdavis",
           "name": "UC Davis",
-          "nra_pct": 30.0,
-          "records": 2510,
+          "nra_pct": 29.4,
+          "records": 3148,
           "url": "/data/stem/ucdavis.json",
-          "size_bytes": 497538
+          "size_bytes": 633273
         },
         {
           "key": "ucf",
           "name": "UCF",
           "nra_pct": 53.8,
-          "records": 2539,
+          "records": 4253,
           "url": "/data/stem/ucf.json",
-          "size_bytes": 489294
+          "size_bytes": 815125
         },
         {
           "key": "ucirvine",
           "name": "UC Irvine",
-          "nra_pct": 35.0,
-          "records": 3745,
+          "nra_pct": 33.2,
+          "records": 5239,
           "url": "/data/stem/ucirvine.json",
-          "size_bytes": 722182
+          "size_bytes": 1010775
         },
         {
           "key": "ucla",
           "name": "UCLA",
           "nra_pct": 37.3,
-          "records": 5793,
+          "records": 9548,
           "url": "/data/stem/ucla.json",
-          "size_bytes": 1125861
+          "size_bytes": 1848470
         },
         {
           "key": "ucmerced",
           "name": "UC Merced",
-          "nra_pct": 30.0,
-          "records": 676,
+          "nra_pct": 37.4,
+          "records": 1040,
           "url": "/data/stem/ucmerced.json",
-          "size_bytes": 134333
+          "size_bytes": 212271
         },
         {
           "key": "uconn",
           "name": "UConn",
-          "nra_pct": 17.1,
-          "records": 3,
+          "nra_pct": 49.7,
+          "records": 2289,
           "url": "/data/stem/uconn.json",
-          "size_bytes": 2533
+          "size_bytes": 467053
         },
         {
           "key": "ucriverside",
           "name": "UC Riverside",
-          "nra_pct": 34.0,
-          "records": 2358,
+          "nra_pct": 38.6,
+          "records": 3974,
           "url": "/data/stem/ucriverside.json",
-          "size_bytes": 461626
+          "size_bytes": 772734
         },
         {
           "key": "ucsb",
           "name": "UC Santa Barbara",
-          "nra_pct": 32.0,
-          "records": 2127,
+          "nra_pct": 29.8,
+          "records": 2818,
           "url": "/data/stem/ucsb.json",
-          "size_bytes": 415291
+          "size_bytes": 552489
         },
         {
           "key": "ucsc",
           "name": "UC Santa Cruz",
-          "nra_pct": 28.0,
-          "records": 1499,
+          "nra_pct": 19.7,
+          "records": 2382,
           "url": "/data/stem/ucsc.json",
-          "size_bytes": 287592
+          "size_bytes": 462630
         },
         {
           "key": "ucsd",
           "name": "UC San Diego",
           "nra_pct": 36.6,
-          "records": 6149,
+          "records": 10499,
           "url": "/data/stem/ucsd.json",
-          "size_bytes": 1180027
+          "size_bytes": 2004626
         },
         {
           "key": "ucsf",
           "name": "UCSF",
-          "nra_pct": 25.0,
-          "records": 1246,
+          "nra_pct": 9.3,
+          "records": 2270,
           "url": "/data/stem/ucsf.json",
-          "size_bytes": 240138
+          "size_bytes": 451250
         },
         {
           "key": "udel",
           "name": "U Delaware",
           "nra_pct": 46.3,
-          "records": 1952,
+          "records": 5058,
           "url": "/data/stem/udel.json",
-          "size_bytes": 372667
+          "size_bytes": 1134616
         },
         {
           "key": "udenver",
           "name": "U Denver",
-          "nra_pct": 45.2,
-          "records": 599,
+          "nra_pct": 27.0,
+          "records": 932,
           "url": "/data/stem/udenver.json",
-          "size_bytes": 118875
+          "size_bytes": 189494
         },
         {
           "key": "uf",
           "name": "U Florida",
-          "nra_pct": 18.4,
-          "records": 7901,
+          "nra_pct": 45.2,
+          "records": 15291,
           "url": "/data/stem/uf.json",
-          "size_bytes": 1545338
-        },
-        {
-          "key": "uga",
-          "name": "U Georgia",
-          "nra_pct": 20.2,
-          "records": 13127,
-          "url": "/data/stem/uga.json",
-          "size_bytes": 2906521
+          "size_bytes": 2955644
         },
         {
           "key": "uhouston",
           "name": "U Houston",
           "nra_pct": 64.5,
-          "records": 3466,
+          "records": 4607,
           "url": "/data/stem/uhouston.json",
-          "size_bytes": 615141
+          "size_bytes": 845333
         },
         {
           "key": "uiuc",
           "name": "UIUC",
-          "nra_pct": 37.9,
-          "records": 4508,
+          "nra_pct": 52.1,
+          "records": 4762,
           "url": "/data/stem/uiuc.json",
-          "size_bytes": 788827
+          "size_bytes": 859073
         },
         {
           "key": "ukansas",
           "name": "U Kansas",
           "nra_pct": 39.2,
-          "records": 2858,
+          "records": 4274,
           "url": "/data/stem/ukansas.json",
-          "size_bytes": 534249
+          "size_bytes": 826764
         },
         {
           "key": "uky",
           "name": "U Kentucky",
-          "nra_pct": 10.9,
-          "records": 0,
+          "nra_pct": 43.5,
+          "records": 2811,
           "url": "/data/stem/uky.json",
-          "size_bytes": 1737
+          "size_bytes": 551085
         },
         {
           "key": "ulouisville",
           "name": "U Louisville",
-          "nra_pct": 47.4,
-          "records": 1205,
+          "nra_pct": 43.2,
+          "records": 2040,
           "url": "/data/stem/ulouisville.json",
-          "size_bytes": 237801
+          "size_bytes": 411324
         },
         {
           "key": "umass",
           "name": "UMass Amherst",
           "nra_pct": 49.3,
-          "records": 2002,
+          "records": 4378,
           "url": "/data/stem/umass.json",
-          "size_bytes": 380313
+          "size_bytes": 835800
         },
         {
           "key": "umd",
           "name": "U Maryland",
-          "nra_pct": 34.8,
-          "records": 3798,
+          "nra_pct": 45.2,
+          "records": 6809,
           "url": "/data/stem/umd.json",
-          "size_bytes": 722835
+          "size_bytes": 1279089
         },
         {
           "key": "umemphis",
           "name": "U Memphis",
-          "nra_pct": 47.9,
-          "records": 1301,
+          "nra_pct": 31.6,
+          "records": 2221,
           "url": "/data/stem/umemphis.json",
-          "size_bytes": 247930
+          "size_bytes": 431463
         },
         {
           "key": "umissouri",
           "name": "U Missouri",
           "nra_pct": 50.2,
-          "records": 2532,
+          "records": 6638,
           "url": "/data/stem/umissouri.json",
-          "size_bytes": 462637
+          "size_bytes": 1229174
         },
         {
           "key": "umn",
           "name": "U Minnesota",
           "nra_pct": 38.8,
-          "records": 6512,
+          "records": 10582,
           "url": "/data/stem/umn.json",
-          "size_bytes": 1192140
+          "size_bytes": 1942598
         },
         {
           "key": "umt",
           "name": "U Montana",
-          "nra_pct": 19.9,
-          "records": 853,
+          "nra_pct": 14.7,
+          "records": 1526,
           "url": "/data/stem/umt.json",
-          "size_bytes": 166492
+          "size_bytes": 299793
         },
         {
           "key": "und",
           "name": "U North Dakota",
-          "nra_pct": 53.5,
-          "records": 901,
+          "nra_pct": 37.8,
+          "records": 1810,
           "url": "/data/stem/und.json",
-          "size_bytes": 171189
+          "size_bytes": 345954
         },
         {
           "key": "unh",
           "name": "U New Hampshire",
-          "nra_pct": 46.8,
-          "records": 437,
+          "nra_pct": 42.6,
+          "records": 1763,
           "url": "/data/stem/unh.json",
-          "size_bytes": 89322
+          "size_bytes": 346270
         },
         {
           "key": "unl",
           "name": "U Nebraska-Lincoln",
-          "nra_pct": 49.2,
-          "records": 1349,
+          "nra_pct": 49.1,
+          "records": 2265,
           "url": "/data/stem/unl.json",
-          "size_bytes": 290942
+          "size_bytes": 486221
         },
         {
           "key": "unlv",
           "name": "UNLV",
-          "nra_pct": 38.5,
-          "records": 1258,
+          "nra_pct": 32.3,
+          "records": 2225,
           "url": "/data/stem/unlv.json",
-          "size_bytes": 265074
+          "size_bytes": 475633
         },
         {
           "key": "unm",
           "name": "U New Mexico",
-          "nra_pct": 38.7,
-          "records": 121,
+          "nra_pct": 34.0,
+          "records": 3311,
           "url": "/data/stem/unm.json",
-          "size_bytes": 27062
+          "size_bytes": 658588
         },
         {
           "key": "unt",
           "name": "U North Texas",
-          "nra_pct": 45.0,
-          "records": 1618,
+          "nra_pct": 41.4,
+          "records": 3125,
           "url": "/data/stem/unt.json",
-          "size_bytes": 335133
+          "size_bytes": 650658
         },
         {
           "key": "uoregon",
           "name": "U Oregon",
-          "nra_pct": 11.8,
-          "records": 1591,
+          "nra_pct": 10.4,
+          "records": 2368,
           "url": "/data/stem/uoregon.json",
-          "size_bytes": 276717
+          "size_bytes": 434043
         },
         {
           "key": "upenn",
           "name": "U Penn",
           "nra_pct": 31.6,
-          "records": 4454,
+          "records": 5574,
           "url": "/data/stem/upenn.json",
-          "size_bytes": 882844
+          "size_bytes": 1178391
         },
         {
           "key": "usc_columbia",
           "name": "U South Carolina",
           "nra_pct": 47.0,
-          "records": 2204,
+          "records": 3827,
           "url": "/data/stem/usc_columbia.json",
-          "size_bytes": 427491
+          "size_bytes": 747287
         },
         {
           "key": "usd",
           "name": "U South Dakota",
-          "nra_pct": 48.9,
-          "records": 141,
+          "nra_pct": 25.8,
+          "records": 172,
           "url": "/data/stem/usd.json",
-          "size_bytes": 31268
+          "size_bytes": 47375
         },
         {
           "key": "usf",
           "name": "U South Florida",
           "nra_pct": 41.5,
-          "records": 2759,
+          "records": 4693,
           "url": "/data/stem/usf.json",
-          "size_bytes": 542811
+          "size_bytes": 921362
         },
         {
           "key": "usm",
           "name": "U Southern Miss",
-          "nra_pct": 15.4,
-          "records": 395,
+          "nra_pct": 10.2,
+          "records": 1328,
           "url": "/data/stem/usm.json",
-          "size_bytes": 79465
+          "size_bytes": 268749
         },
         {
           "key": "utah_state",
           "name": "Utah State",
-          "nra_pct": 17.3,
-          "records": 1493,
+          "nra_pct": 14.9,
+          "records": 2607,
           "url": "/data/stem/utah_state.json",
-          "size_bytes": 295682
+          "size_bytes": 519877
         },
         {
           "key": "utarlington",
           "name": "UT Arlington",
           "nra_pct": 65.5,
-          "records": 2221,
+          "records": 4035,
           "url": "/data/stem/utarlington.json",
-          "size_bytes": 469830
+          "size_bytes": 830567
         },
         {
           "key": "utaustin",
           "name": "UT Austin",
           "nra_pct": 46.4,
-          "records": 9248,
+          "records": 17990,
           "url": "/data/stem/utaustin.json",
-          "size_bytes": 1639662
+          "size_bytes": 3478286
         },
         {
           "key": "utdallas",
           "name": "UT Dallas",
-          "nra_pct": 59.3,
-          "records": 3242,
+          "nra_pct": 66.1,
+          "records": 2289,
           "url": "/data/stem/utdallas.json",
-          "size_bytes": 565410
+          "size_bytes": 465812
         },
         {
           "key": "utk",
           "name": "U Tennessee",
-          "nra_pct": 17.2,
-          "records": 11338,
+          "nra_pct": 37.3,
+          "records": 4492,
           "url": "/data/stem/utk.json",
-          "size_bytes": 2517202
+          "size_bytes": 1022063
         },
         {
           "key": "uutah",
           "name": "U Utah",
-          "nra_pct": 15.9,
-          "records": 1569,
+          "nra_pct": 37.1,
+          "records": 3828,
           "url": "/data/stem/uutah.json",
-          "size_bytes": 314273
+          "size_bytes": 780606
         },
         {
           "key": "uva",
           "name": "U Virginia",
-          "nra_pct": 14.1,
-          "records": 962,
+          "nra_pct": 35.2,
+          "records": 7619,
           "url": "/data/stem/uva.json",
-          "size_bytes": 232455
+          "size_bytes": 1840911
         },
         {
           "key": "uw_seattle",
           "name": "UW Seattle",
-          "nra_pct": 16.6,
-          "records": 4770,
+          "nra_pct": 26.2,
+          "records": 7134,
           "url": "/data/stem/uw_seattle.json",
-          "size_bytes": 1179482
+          "size_bytes": 1765448
         },
         {
           "key": "uwmadison",
           "name": "UW Madison",
-          "nra_pct": 19.7,
-          "records": 461,
+          "nra_pct": 36.6,
+          "records": 633,
           "url": "/data/stem/uwmadison.json",
-          "size_bytes": 86401
+          "size_bytes": 132556
         },
         {
           "key": "vt",
           "name": "Virginia Tech",
           "nra_pct": 53.6,
-          "records": 12676,
+          "records": 13278,
           "url": "/data/stem/vt.json",
-          "size_bytes": 2363034
+          "size_bytes": 2472612
         },
         {
           "key": "washu",
           "name": "Wash U St Louis",
           "nra_pct": 37.7,
-          "records": 2000,
+          "records": 3310,
           "url": "/data/stem/washu.json",
-          "size_bytes": 394136
+          "size_bytes": 656719
         },
         {
           "key": "wayne_state",
           "name": "Wayne State",
           "nra_pct": 40.2,
-          "records": 1058,
+          "records": 2506,
           "url": "/data/stem/wayne_state.json",
-          "size_bytes": 225062
+          "size_bytes": 526506
         },
         {
           "key": "wsu",
           "name": "Washington State",
-          "nra_pct": 18.0,
-          "records": 758,
+          "nra_pct": 47.2,
+          "records": 4707,
           "url": "/data/stem/wsu.json",
-          "size_bytes": 203876
+          "size_bytes": 1260137
         },
         {
           "key": "wvu",
           "name": "West Virginia U",
           "nra_pct": 42.8,
-          "records": 2524,
+          "records": 4404,
           "url": "/data/stem/wvu.json",
-          "size_bytes": 498152
+          "size_bytes": 873315
         },
         {
           "key": "yale",
           "name": "Yale",
           "nra_pct": 33.2,
-          "records": 919,
+          "records": 1235,
           "url": "/data/stem/yale.json",
-          "size_bytes": 193064
+          "size_bytes": 278769
         }
       ]
     },
     "nonstem_universities": {
-      "description": "Non-STEM thesis & dissertation records by university",
+      "description": "Non-STEM thesis and dissertation records by university",
       "format": "JSON",
-      "count": 107,
-      "total_records": 136383,
+      "count": 106,
+      "total_records": 199321,
       "files": [
-        {
-          "key": "auburn",
-          "name": "Auburn",
-          "records": 191,
-          "url": "/data/nonstem/auburn.json",
-          "size_bytes": 39533
-        },
         {
           "key": "binghamton",
           "name": "Binghamton",
-          "records": 68,
+          "nra_pct": 56.9,
+          "records": 90,
           "url": "/data/nonstem/binghamton.json",
-          "size_bytes": 16699
+          "size_bytes": 35205
         },
         {
           "key": "boise_state",
           "name": "Boise State",
-          "records": 394,
+          "nra_pct": 29.7,
+          "records": 677,
           "url": "/data/nonstem/boise_state.json",
-          "size_bytes": 77339
+          "size_bytes": 141967
         },
         {
           "key": "bu",
           "name": "Boston U",
-          "records": 7005,
+          "nra_pct": 34.2,
+          "records": 3225,
           "url": "/data/nonstem/bu.json",
-          "size_bytes": 1204617
+          "size_bytes": 599069
         },
         {
           "key": "byu",
           "name": "BYU",
-          "records": 1549,
+          "nra_pct": 26.4,
+          "records": 2856,
           "url": "/data/nonstem/byu.json",
-          "size_bytes": 297375
+          "size_bytes": 555374
         },
         {
           "key": "caltech",
           "name": "Caltech",
+          "nra_pct": 41.2,
           "records": 0,
           "url": "/data/nonstem/caltech.json",
-          "size_bytes": 2655
+          "size_bytes": 16316
         },
         {
           "key": "clemson",
           "name": "Clemson",
-          "records": 598,
+          "nra_pct": 55.2,
+          "records": 2255,
           "url": "/data/nonstem/clemson.json",
-          "size_bytes": 122078
+          "size_bytes": 435670
         },
         {
           "key": "cmu",
           "name": "Carnegie Mellon",
-          "records": 727,
+          "nra_pct": 55.9,
+          "records": 803,
           "url": "/data/nonstem/cmu.json",
-          "size_bytes": 118137
+          "size_bytes": 151054
         },
         {
           "key": "columbia",
           "name": "Columbia",
-          "records": 3545,
+          "nra_pct": 42.5,
+          "records": 5656,
           "url": "/data/nonstem/columbia.json",
-          "size_bytes": 628226
+          "size_bytes": 1025350
         },
         {
           "key": "cornell",
           "name": "Cornell",
-          "records": 1411,
+          "nra_pct": 41.3,
+          "records": 1428,
           "url": "/data/nonstem/cornell.json",
-          "size_bytes": 260483
+          "size_bytes": 274921
+        },
+        {
+          "key": "cu_boulder",
+          "name": "CU Boulder",
+          "nra_pct": 23.4,
+          "records": 1079,
+          "url": "/data/nonstem/cu_boulder.json",
+          "size_bytes": 258435
         },
         {
           "key": "cuny",
           "name": "CUNY Grad Center",
-          "records": 2875,
+          "nra_pct": 38.5,
+          "records": 3986,
           "url": "/data/nonstem/cuny.json",
-          "size_bytes": 543173
+          "size_bytes": 757457
         },
         {
           "key": "dartmouth",
           "name": "Dartmouth",
-          "records": 8,
+          "nra_pct": 34.4,
+          "records": 116,
           "url": "/data/nonstem/dartmouth.json",
-          "size_bytes": 6437
+          "size_bytes": 35773
         },
         {
           "key": "duke",
           "name": "Duke",
-          "records": 976,
+          "nra_pct": 37.3,
+          "records": 1842,
           "url": "/data/nonstem/duke.json",
-          "size_bytes": 173545
+          "size_bytes": 342710
         },
         {
           "key": "gatech",
           "name": "Georgia Tech",
-          "records": 405,
+          "nra_pct": 52.4,
+          "records": 810,
           "url": "/data/nonstem/gatech.json",
-          "size_bytes": 75692
+          "size_bytes": 158351
         },
         {
           "key": "gmu",
           "name": "George Mason",
-          "records": 1087,
+          "nra_pct": 32.6,
+          "records": 3954,
           "url": "/data/nonstem/gmu.json",
-          "size_bytes": 194860
+          "size_bytes": 793797
         },
         {
           "key": "harvard",
           "name": "Harvard",
-          "records": 2108,
+          "nra_pct": 33.0,
+          "records": 2920,
           "url": "/data/nonstem/harvard.json",
-          "size_bytes": 395128
+          "size_bytes": 564691
         },
         {
           "key": "iowa_state",
           "name": "Iowa State",
-          "records": 7265,
+          "nra_pct": 56.0,
+          "records": 2008,
           "url": "/data/nonstem/iowa_state.json",
-          "size_bytes": 1332053
+          "size_bytes": 389790
         },
         {
           "key": "kstate",
           "name": "Kansas State",
-          "records": 1959,
+          "nra_pct": 58.3,
+          "records": 3047,
           "url": "/data/nonstem/kstate.json",
-          "size_bytes": 357603
+          "size_bytes": 563867
         },
         {
           "key": "la_tech",
           "name": "Louisiana Tech",
-          "records": 146,
+          "nra_pct": 54.3,
+          "records": 243,
           "url": "/data/nonstem/la_tech.json",
-          "size_bytes": 33318
+          "size_bytes": 62650
         },
         {
           "key": "lsu",
           "name": "LSU",
-          "records": 1735,
+          "nra_pct": 52.3,
+          "records": 3357,
           "url": "/data/nonstem/lsu.json",
-          "size_bytes": 347411
+          "size_bytes": 673131
         },
         {
           "key": "marquette",
           "name": "Marquette",
-          "records": 299,
+          "nra_pct": 38.6,
+          "records": 735,
           "url": "/data/nonstem/marquette.json",
-          "size_bytes": 65661
+          "size_bytes": 166928
         },
         {
           "key": "mines",
           "name": "CO School of Mines",
-          "records": 440,
+          "nra_pct": 39.8,
+          "records": 10,
           "url": "/data/nonstem/mines.json",
-          "size_bytes": 86658
+          "size_bytes": 23982
         },
         {
           "key": "missouri_st",
           "name": "Missouri S&T",
-          "records": 22,
+          "nra_pct": 74.3,
+          "records": 40,
           "url": "/data/nonstem/missouri_st.json",
-          "size_bytes": 8634
+          "size_bytes": 21545
         },
         {
           "key": "mit",
           "name": "MIT",
-          "records": 2415,
+          "nra_pct": 43.8,
+          "records": 3493,
           "url": "/data/nonstem/mit.json",
-          "size_bytes": 431588
+          "size_bytes": 617501
+        },
+        {
+          "key": "montana_state",
+          "name": "Montana State U",
+          "nra_pct": 15.3,
+          "records": 3097,
+          "url": "/data/nonstem/montana_state.json",
+          "size_bytes": 583107
         },
         {
           "key": "msstate",
           "name": "Mississippi State",
-          "records": 725,
+          "nra_pct": 49.2,
+          "records": 0,
           "url": "/data/nonstem/msstate.json",
-          "size_bytes": 144721
+          "size_bytes": 22343
         },
         {
           "key": "msu",
           "name": "Michigan State",
-          "records": 2260,
+          "nra_pct": 49.0,
+          "records": 4258,
           "url": "/data/nonstem/msu.json",
-          "size_bytes": 417642
+          "size_bytes": 807670
         },
         {
           "key": "mtu",
           "name": "Michigan Tech",
-          "records": 117,
+          "nra_pct": 66.7,
+          "records": 222,
           "url": "/data/nonstem/mtu.json",
-          "size_bytes": 27169
+          "size_bytes": 58427
         },
         {
           "key": "nau",
           "name": "Northern Arizona",
-          "records": 382,
+          "nra_pct": 16.6,
+          "records": 492,
           "url": "/data/nonstem/nau.json",
-          "size_bytes": 102642
+          "size_bytes": 138155
         },
         {
           "key": "ncstate",
           "name": "NC State",
-          "records": 685,
+          "nra_pct": 43.9,
+          "records": 2481,
           "url": "/data/nonstem/ncstate.json",
-          "size_bytes": 143818
+          "size_bytes": 504758
         },
         {
           "key": "niu",
           "name": "Northern Illinois",
-          "records": 1040,
+          "nra_pct": 20.5,
+          "records": 1322,
           "url": "/data/nonstem/niu.json",
-          "size_bytes": 230757
+          "size_bytes": 306127
         },
         {
           "key": "njit",
           "name": "NJIT",
-          "records": 23,
+          "nra_pct": 70.7,
+          "records": 36,
           "url": "/data/nonstem/njit.json",
-          "size_bytes": 9187
+          "size_bytes": 23811
         },
         {
           "key": "northern_colorado",
           "name": "U Northern Colorado",
-          "records": 592,
+          "nra_pct": 8.1,
+          "records": 888,
           "url": "/data/nonstem/northern_colorado.json",
-          "size_bytes": 121749
+          "size_bytes": 186540
         },
         {
           "key": "northwestern",
           "name": "Northwestern",
-          "records": 1090,
+          "nra_pct": 37.9,
+          "records": 1177,
           "url": "/data/nonstem/northwestern.json",
-          "size_bytes": 232296
+          "size_bytes": 270164
         },
         {
           "key": "olemiss",
           "name": "Ole Miss",
-          "records": 983,
+          "nra_pct": 32.6,
+          "records": 1697,
           "url": "/data/nonstem/olemiss.json",
-          "size_bytes": 179081
-        },
-        {
-          "key": "oregon_state",
-          "name": "Oregon State",
-          "records": 0,
-          "url": "/data/nonstem/oregon_state.json",
-          "size_bytes": 1877
+          "size_bytes": 315541
         },
         {
           "key": "osu",
           "name": "Ohio State",
-          "records": 554,
+          "nra_pct": 46.9,
+          "records": 878,
           "url": "/data/nonstem/osu.json",
-          "size_bytes": 100638
+          "size_bytes": 167628
         },
         {
           "key": "pdx",
           "name": "Portland State",
-          "records": 778,
+          "nra_pct": 33.2,
+          "records": 1547,
           "url": "/data/nonstem/pdx.json",
-          "size_bytes": 154262
+          "size_bytes": 316379
         },
         {
           "key": "penn_state",
           "name": "Penn State",
-          "records": 0,
+          "nra_pct": 50.8,
+          "records": 70,
           "url": "/data/nonstem/penn_state.json",
-          "size_bytes": 1854
+          "size_bytes": 27578
         },
         {
           "key": "purdue",
           "name": "Purdue",
-          "records": 1847,
+          "nra_pct": 60.3,
+          "records": 3685,
           "url": "/data/nonstem/purdue.json",
-          "size_bytes": 373432
+          "size_bytes": 756548
         },
         {
           "key": "rice",
           "name": "Rice",
-          "records": 1285,
+          "nra_pct": 51.3,
+          "records": 1130,
           "url": "/data/nonstem/rice.json",
-          "size_bytes": 224419
+          "size_bytes": 211838
         },
         {
           "key": "rit",
           "name": "RIT",
-          "records": 374,
+          "nra_pct": 57.1,
+          "records": 679,
           "url": "/data/nonstem/rit.json",
-          "size_bytes": 70867
+          "size_bytes": 136655
         },
         {
           "key": "rpi",
           "name": "RPI",
-          "records": 74,
+          "nra_pct": 48.7,
+          "records": 59,
           "url": "/data/nonstem/rpi.json",
-          "size_bytes": 25195
+          "size_bytes": 34561
         },
         {
           "key": "sdsu",
           "name": "SD State",
-          "records": 160,
+          "nra_pct": 64.5,
+          "records": 296,
           "url": "/data/nonstem/sdsu.json",
-          "size_bytes": 34406
+          "size_bytes": 73295
         },
         {
           "key": "siu",
           "name": "Southern Illinois",
-          "records": 524,
+          "nra_pct": 57.1,
+          "records": 2053,
           "url": "/data/nonstem/siu.json",
-          "size_bytes": 107999
+          "size_bytes": 400446
         },
         {
           "key": "smu",
           "name": "SMU",
-          "records": 280,
+          "nra_pct": 61.3,
+          "records": 257,
           "url": "/data/nonstem/smu.json",
-          "size_bytes": 55227
+          "size_bytes": 64862
         },
         {
           "key": "stanford",
           "name": "Stanford",
-          "records": 1929,
+          "nra_pct": 35.5,
+          "records": 2892,
           "url": "/data/nonstem/stanford.json",
-          "size_bytes": 315639
+          "size_bytes": 466610
         },
         {
           "key": "stony_brook",
           "name": "Stony Brook",
-          "records": 251,
+          "nra_pct": 58.8,
+          "records": 705,
           "url": "/data/nonstem/stony_brook.json",
-          "size_bytes": 55935
+          "size_bytes": 137612
         },
         {
           "key": "syracuse",
           "name": "Syracuse",
-          "records": 548,
+          "nra_pct": 51.6,
+          "records": 1091,
           "url": "/data/nonstem/syracuse.json",
-          "size_bytes": 101057
+          "size_bytes": 215519
         },
         {
           "key": "temple",
           "name": "Temple",
-          "records": 1731,
+          "nra_pct": 35.4,
+          "records": 1350,
           "url": "/data/nonstem/temple.json",
-          "size_bytes": 321294
+          "size_bytes": 273900
         },
         {
           "key": "ttu",
           "name": "Texas Tech",
-          "records": 474,
+          "nra_pct": 57.4,
+          "records": 3405,
           "url": "/data/nonstem/ttu.json",
-          "size_bytes": 88958
+          "size_bytes": 626878
         },
         {
           "key": "uarizona",
           "name": "U Arizona",
-          "records": 3834,
+          "nra_pct": 36.3,
+          "records": 5773,
           "url": "/data/nonstem/uarizona.json",
-          "size_bytes": 697263
+          "size_bytes": 1048537
         },
         {
           "key": "uarkansas",
           "name": "U Arkansas",
-          "records": 1349,
+          "nra_pct": 50.5,
+          "records": 2064,
           "url": "/data/nonstem/uarkansas.json",
-          "size_bytes": 244763
+          "size_bytes": 387555
         },
         {
           "key": "ubuffalo",
           "name": "U Buffalo",
-          "records": 309,
+          "nra_pct": 54.4,
+          "records": 1186,
           "url": "/data/nonstem/ubuffalo.json",
-          "size_bytes": 59866
+          "size_bytes": 229016
         },
         {
           "key": "ucberkeley",
           "name": "UC Berkeley",
-          "records": 2118,
+          "nra_pct": 29.3,
+          "records": 4122,
           "url": "/data/nonstem/ucberkeley.json",
-          "size_bytes": 391826
+          "size_bytes": 777647
         },
         {
           "key": "ucdavis",
           "name": "UC Davis",
-          "records": 701,
+          "nra_pct": 29.4,
+          "records": 861,
           "url": "/data/nonstem/ucdavis.json",
-          "size_bytes": 136339
+          "size_bytes": 182738
         },
         {
           "key": "ucf",
           "name": "UCF",
-          "records": 1837,
+          "nra_pct": 53.8,
+          "records": 3344,
           "url": "/data/nonstem/ucf.json",
-          "size_bytes": 337689
+          "size_bytes": 624746
         },
         {
           "key": "ucirvine",
           "name": "UC Irvine",
-          "records": 1575,
+          "nra_pct": 33.2,
+          "records": 2117,
           "url": "/data/nonstem/ucirvine.json",
-          "size_bytes": 291441
+          "size_bytes": 405823
         },
         {
           "key": "ucla",
           "name": "UCLA",
-          "records": 2955,
+          "nra_pct": 37.3,
+          "records": 4889,
           "url": "/data/nonstem/ucla.json",
-          "size_bytes": 560261
+          "size_bytes": 938624
         },
         {
           "key": "ucmerced",
           "name": "UC Merced",
-          "records": 244,
+          "nra_pct": 37.4,
+          "records": 321,
           "url": "/data/nonstem/ucmerced.json",
-          "size_bytes": 50708
+          "size_bytes": 75341
         },
         {
           "key": "uconn",
           "name": "UConn",
-          "records": 0,
+          "nra_pct": 49.7,
+          "records": 1104,
           "url": "/data/nonstem/uconn.json",
-          "size_bytes": 1906
+          "size_bytes": 227705
         },
         {
           "key": "ucriverside",
           "name": "UC Riverside",
-          "records": 908,
+          "nra_pct": 38.6,
+          "records": 1790,
           "url": "/data/nonstem/ucriverside.json",
-          "size_bytes": 172538
+          "size_bytes": 336123
         },
         {
           "key": "ucsb",
           "name": "UC Santa Barbara",
-          "records": 1056,
+          "nra_pct": 29.8,
+          "records": 1375,
           "url": "/data/nonstem/ucsb.json",
-          "size_bytes": 203729
+          "size_bytes": 277070
         },
         {
           "key": "ucsc",
           "name": "UC Santa Cruz",
-          "records": 695,
+          "nra_pct": 19.7,
+          "records": 1090,
           "url": "/data/nonstem/ucsc.json",
-          "size_bytes": 130184
+          "size_bytes": 213401
         },
         {
           "key": "ucsd",
           "name": "UC San Diego",
-          "records": 1596,
+          "nra_pct": 36.6,
+          "records": 3048,
           "url": "/data/nonstem/ucsd.json",
-          "size_bytes": 286640
+          "size_bytes": 558947
         },
         {
           "key": "ucsf",
           "name": "UCSF",
-          "records": 210,
+          "nra_pct": 9.3,
+          "records": 396,
           "url": "/data/nonstem/ucsf.json",
-          "size_bytes": 44867
+          "size_bytes": 96660
         },
         {
           "key": "udel",
           "name": "U Delaware",
-          "records": 457,
+          "nra_pct": 46.3,
+          "records": 505,
           "url": "/data/nonstem/udel.json",
-          "size_bytes": 91538
+          "size_bytes": 128615
         },
         {
           "key": "udenver",
           "name": "U Denver",
-          "records": 836,
+          "nra_pct": 27.0,
+          "records": 1489,
           "url": "/data/nonstem/udenver.json",
-          "size_bytes": 156566
+          "size_bytes": 288989
         },
         {
           "key": "uf",
           "name": "U Florida",
-          "records": 1201,
+          "nra_pct": 45.2,
+          "records": 2557,
           "url": "/data/nonstem/uf.json",
-          "size_bytes": 222154
-        },
-        {
-          "key": "uga",
-          "name": "U Georgia",
-          "records": 6002,
-          "url": "/data/nonstem/uga.json",
-          "size_bytes": 1347205
+          "size_bytes": 457122
         },
         {
           "key": "uhouston",
           "name": "U Houston",
-          "records": 1678,
+          "nra_pct": 64.5,
+          "records": 2462,
           "url": "/data/nonstem/uhouston.json",
-          "size_bytes": 303681
+          "size_bytes": 462547
         },
         {
           "key": "uiuc",
           "name": "UIUC",
-          "records": 1079,
+          "nra_pct": 52.1,
+          "records": 1207,
           "url": "/data/nonstem/uiuc.json",
-          "size_bytes": 195335
+          "size_bytes": 232595
         },
         {
           "key": "ukansas",
           "name": "U Kansas",
-          "records": 3048,
+          "nra_pct": 39.2,
+          "records": 4702,
           "url": "/data/nonstem/ukansas.json",
-          "size_bytes": 545944
+          "size_bytes": 874741
         },
         {
           "key": "uky",
           "name": "U Kentucky",
-          "records": 0,
+          "nra_pct": 43.5,
+          "records": 1947,
           "url": "/data/nonstem/uky.json",
-          "size_bytes": 1737
+          "size_bytes": 379448
         },
         {
           "key": "ulouisville",
           "name": "U Louisville",
-          "records": 899,
+          "nra_pct": 43.2,
+          "records": 1579,
           "url": "/data/nonstem/ulouisville.json",
-          "size_bytes": 173460
+          "size_bytes": 317542
         },
         {
           "key": "umass",
           "name": "UMass Amherst",
-          "records": 2256,
+          "nra_pct": 49.3,
+          "records": 2608,
           "url": "/data/nonstem/umass.json",
-          "size_bytes": 423892
+          "size_bytes": 501050
         },
         {
           "key": "umd",
           "name": "U Maryland",
-          "records": 15,
+          "nra_pct": 45.2,
+          "records": 21,
           "url": "/data/nonstem/umd.json",
-          "size_bytes": 10989
+          "size_bytes": 27938
         },
         {
           "key": "umemphis",
           "name": "U Memphis",
-          "records": 888,
+          "nra_pct": 31.6,
+          "records": 1609,
           "url": "/data/nonstem/umemphis.json",
-          "size_bytes": 173161
+          "size_bytes": 320228
         },
         {
           "key": "umissouri",
           "name": "U Missouri",
-          "records": 1474,
+          "nra_pct": 50.2,
+          "records": 3816,
           "url": "/data/nonstem/umissouri.json",
-          "size_bytes": 270899
+          "size_bytes": 712509
         },
         {
           "key": "umn",
           "name": "U Minnesota",
-          "records": 2698,
+          "nra_pct": 38.8,
+          "records": 4606,
           "url": "/data/nonstem/umn.json",
-          "size_bytes": 478540
+          "size_bytes": 836243
         },
         {
           "key": "umt",
           "name": "U Montana",
-          "records": 785,
+          "nra_pct": 14.7,
+          "records": 1507,
           "url": "/data/nonstem/umt.json",
-          "size_bytes": 140264
+          "size_bytes": 271812
         },
         {
           "key": "und",
           "name": "U North Dakota",
-          "records": 674,
+          "nra_pct": 37.8,
+          "records": 1414,
           "url": "/data/nonstem/und.json",
-          "size_bytes": 128385
+          "size_bytes": 271179
         },
         {
           "key": "unh",
           "name": "U New Hampshire",
-          "records": 142,
+          "nra_pct": 42.6,
+          "records": 700,
           "url": "/data/nonstem/unh.json",
-          "size_bytes": 31976
+          "size_bytes": 144291
         },
         {
           "key": "unl",
           "name": "U Nebraska-Lincoln",
-          "records": 1006,
+          "nra_pct": 49.1,
+          "records": 1867,
           "url": "/data/nonstem/unl.json",
-          "size_bytes": 208706
+          "size_bytes": 390042
         },
         {
           "key": "unlv",
           "name": "UNLV",
-          "records": 1219,
+          "nra_pct": 32.3,
+          "records": 2360,
           "url": "/data/nonstem/unlv.json",
-          "size_bytes": 246657
+          "size_bytes": 485104
         },
         {
           "key": "unm",
           "name": "U New Mexico",
-          "records": 94,
+          "nra_pct": 34.0,
+          "records": 2275,
           "url": "/data/nonstem/unm.json",
-          "size_bytes": 22030
+          "size_bytes": 452165
         },
         {
           "key": "unt",
           "name": "U North Texas",
-          "records": 2225,
+          "nra_pct": 41.4,
+          "records": 3840,
           "url": "/data/nonstem/unt.json",
-          "size_bytes": 454712
+          "size_bytes": 793851
         },
         {
           "key": "uoregon",
           "name": "U Oregon",
-          "records": 1143,
+          "nra_pct": 10.4,
+          "records": 1799,
           "url": "/data/nonstem/uoregon.json",
-          "size_bytes": 202317
+          "size_bytes": 332900
         },
         {
           "key": "upenn",
           "name": "U Penn",
-          "records": 4370,
+          "nra_pct": 31.6,
+          "records": 3380,
           "url": "/data/nonstem/upenn.json",
-          "size_bytes": 847147
+          "size_bytes": 689980
         },
         {
           "key": "usc_columbia",
           "name": "U South Carolina",
-          "records": 2182,
+          "nra_pct": 47.0,
+          "records": 3654,
           "url": "/data/nonstem/usc_columbia.json",
-          "size_bytes": 405256
+          "size_bytes": 692661
         },
         {
           "key": "usd",
           "name": "U South Dakota",
-          "records": 162,
+          "nra_pct": 25.8,
+          "records": 197,
           "url": "/data/nonstem/usd.json",
-          "size_bytes": 34849
+          "size_bytes": 51425
         },
         {
           "key": "usf",
           "name": "U South Florida",
-          "records": 1973,
+          "nra_pct": 41.5,
+          "records": 3409,
           "url": "/data/nonstem/usf.json",
-          "size_bytes": 377563
+          "size_bytes": 663539
         },
         {
           "key": "usm",
           "name": "U Southern Miss",
-          "records": 698,
+          "nra_pct": 10.2,
+          "records": 1903,
           "url": "/data/nonstem/usm.json",
-          "size_bytes": 135207
+          "size_bytes": 370419
         },
         {
           "key": "utah_state",
           "name": "Utah State",
-          "records": 595,
+          "nra_pct": 14.9,
+          "records": 1073,
           "url": "/data/nonstem/utah_state.json",
-          "size_bytes": 114129
+          "size_bytes": 216155
         },
         {
           "key": "utarlington",
           "name": "UT Arlington",
-          "records": 756,
+          "nra_pct": 65.5,
+          "records": 1470,
           "url": "/data/nonstem/utarlington.json",
-          "size_bytes": 158065
+          "size_bytes": 310314
         },
         {
           "key": "utaustin",
           "name": "UT Austin",
-          "records": 5671,
+          "nra_pct": 46.4,
+          "records": 6293,
           "url": "/data/nonstem/utaustin.json",
-          "size_bytes": 976706
+          "size_bytes": 1052710
         },
         {
           "key": "utdallas",
           "name": "UT Dallas",
-          "records": 797,
+          "nra_pct": 66.1,
+          "records": 875,
           "url": "/data/nonstem/utdallas.json",
-          "size_bytes": 142850
+          "size_bytes": 184798
         },
         {
           "key": "utk",
           "name": "U Tennessee",
-          "records": 4633,
+          "nra_pct": 37.3,
+          "records": 2539,
           "url": "/data/nonstem/utk.json",
-          "size_bytes": 1023929
+          "size_bytes": 576394
         },
         {
           "key": "uutah",
           "name": "U Utah",
-          "records": 380,
+          "nra_pct": 37.1,
+          "records": 919,
           "url": "/data/nonstem/uutah.json",
-          "size_bytes": 80354
+          "size_bytes": 209068
         },
         {
           "key": "uva",
           "name": "U Virginia",
-          "records": 3,
+          "nra_pct": 35.2,
+          "records": 15,
           "url": "/data/nonstem/uva.json",
-          "size_bytes": 15589
+          "size_bytes": 31756
         },
         {
           "key": "uw_seattle",
           "name": "UW Seattle",
-          "records": 1804,
+          "nra_pct": 26.2,
+          "records": 2872,
           "url": "/data/nonstem/uw_seattle.json",
-          "size_bytes": 423765
+          "size_bytes": 700480
         },
         {
           "key": "uwmadison",
           "name": "UW Madison",
-          "records": 216,
+          "nra_pct": 36.6,
+          "records": 258,
           "url": "/data/nonstem/uwmadison.json",
-          "size_bytes": 43876
+          "size_bytes": 66988
         },
         {
           "key": "vt",
           "name": "Virginia Tech",
-          "records": 2998,
+          "nra_pct": 53.6,
+          "records": 3019,
           "url": "/data/nonstem/vt.json",
-          "size_bytes": 545134
+          "size_bytes": 566763
         },
         {
           "key": "washu",
           "name": "Wash U St Louis",
-          "records": 1194,
+          "nra_pct": 37.7,
+          "records": 2164,
           "url": "/data/nonstem/washu.json",
-          "size_bytes": 219575
+          "size_bytes": 412342
         },
         {
           "key": "wayne_state",
           "name": "Wayne State",
-          "records": 740,
+          "nra_pct": 40.2,
+          "records": 1651,
           "url": "/data/nonstem/wayne_state.json",
-          "size_bytes": 155554
+          "size_bytes": 349722
         },
         {
           "key": "wsu",
           "name": "Washington State",
-          "records": 245,
+          "nra_pct": 47.2,
+          "records": 1801,
           "url": "/data/nonstem/wsu.json",
-          "size_bytes": 67964
+          "size_bytes": 485089
         },
         {
           "key": "wvu",
           "name": "West Virginia U",
-          "records": 1302,
+          "nra_pct": 42.8,
+          "records": 2414,
           "url": "/data/nonstem/wvu.json",
-          "size_bytes": 249321
+          "size_bytes": 472214
         },
         {
           "key": "yale",
           "name": "Yale",
-          "records": 524,
+          "nra_pct": 33.2,
+          "records": 668,
           "url": "/data/nonstem/yale.json",
-          "size_bytes": 107131
+          "size_bytes": 157408
         }
       ]
     },
-    "taxonomy": {
-      "description": "Canonical department taxonomy mapping 782 variant names to 44 standard categories",
+    "exports": {
+      "description": "Columnar exports. These are the tables the SQL console at /query loads, and they can be queried directly with DuckDB from this URL.",
+      "format": "Parquet",
+      "count": 6,
+      "files": [
+        {
+          "name": "h1b_employers",
+          "url": "/data/exports/h1b_employers.parquet",
+          "format": "Parquet",
+          "size_bytes": 469294
+        },
+        {
+          "name": "h1b_industry",
+          "url": "/data/exports/h1b_industry.parquet",
+          "format": "Parquet",
+          "size_bytes": 128011
+        },
+        {
+          "name": "h1b_occupation",
+          "url": "/data/exports/h1b_occupation.parquet",
+          "format": "Parquet",
+          "size_bytes": 39278
+        },
+        {
+          "name": "h1b_perm_public",
+          "url": "/data/exports/h1b_perm_public.parquet",
+          "format": "Parquet",
+          "size_bytes": 800506
+        },
+        {
+          "name": "nonstem_records",
+          "url": "/data/exports/nonstem_records.parquet",
+          "format": "Parquet",
+          "size_bytes": 8829102
+        },
+        {
+          "name": "stem_records",
+          "url": "/data/exports/stem_records.parquet",
+          "format": "Parquet",
+          "size_bytes": 22505053
+        }
+      ]
+    },
+    "built_datasets": {
+      "description": "Built datasets. Each is produced by one script in scripts/ from the federal source named in source_url, and every figure on the site is read from one of these at render time.",
       "format": "JSON",
-      "url": "/data/taxonomy.json"
+      "count": 65,
+      "files": [
+        {
+          "key": "concentration_cases",
+          "url": "/data/concentration_cases.json",
+          "summary": "The 49 institution-and-field cells that are sustainedly majority non-resident. Drives the landing-page hero.",
+          "source": "derived",
+          "source_url": "https://nces.ed.gov/ipeds/use-the-data",
+          "cadence": "after nra_index changes",
+          "size_bytes": 135534
+        },
+        {
+          "key": "critical_industries",
+          "url": "/data/critical_industries.json",
+          "summary": "Five industries the country cannot offshore -- mining, petroleum, aerospace, battery technology and nuclear -- by non-resident share of the research doctorates that staff them, with the programmes and institutions behind each.",
+          "source": "NCES IPEDS Completions, research doctorates by CIP and citizenship",
+          "source_url": "https://nces.ed.gov/ipeds/use-the-data",
+          "cadence": "annual, with IPEDS Completions",
+          "size_bytes": 42988
+        },
+        {
+          "key": "data_asks",
+          "url": "/data/data_asks.json",
+          "summary": "The Data Asks page: what the federal government holds or once published that would answer a question this site cannot.",
+          "source": "derived",
+          "source_url": "",
+          "cadence": "when an ask is added, or when a dataset it cites changes shape",
+          "size_bytes": 32423
+        },
+        {
+          "key": "distribution",
+          "url": "/data/distribution.json",
+          "summary": "National department histogram by non-resident share, 2010/2015/2020/2025, at 4-digit CIP.",
+          "source": "derived",
+          "source_url": "https://nces.ed.gov/ipeds/use-the-data",
+          "cadence": "after nra_index changes",
+          "size_bytes": 1734
+        },
+        {
+          "key": "doctorate_origins",
+          "url": "/data/doctorate_origins.json",
+          "summary": "The 40 largest countries of origin of temporary-visa doctorate recipients, and parental education by citizenship.",
+          "source": "NSF NCSES, Survey of Earned Doctorates 2024, tables 7-8 and 5-5",
+          "source_url": "https://ncses.nsf.gov/pubs/nsf25349/data-tables",
+          "cadence": "annual, with the SED",
+          "size_bytes": 8168
+        },
+        {
+          "key": "doctorate_outcomes",
+          "url": "/data/doctorate_outcomes.json",
+          "summary": "What US-trained doctorate holders earn and where they work, by citizenship AT THE DOCTORATE, and what became of those on a temporary visa.",
+          "source": "NSF NCSES, Survey of Doctorate Recipients 2023 public-use file",
+          "source_url": "https://ncses.nsf.gov/surveys/doctorate-recipients/",
+          "cadence": "biennial, with the SDR",
+          "size_bytes": 6693
+        },
+        {
+          "key": "domestic_pipeline",
+          "url": "/data/domestic_pipeline.json",
+          "summary": "Domestic core-STEM completions by level 2011-2025, and the rate at which a bachelor's cohort is followed by graduate degrees.",
+          "source": "NCES IPEDS Completions",
+          "source_url": "https://nces.ed.gov/ipeds/use-the-data",
+          "cadence": "annual, with IPEDS",
+          "size_bytes": 9519
+        },
+        {
+          "key": "employer_profiles",
+          "url": "/data/employer_profiles.json",
+          "summary": "One row per employer: H-1B petitions requested, granted and denied, the wage level promised, and any enforcement findings.",
+          "source": "Joined from h1b_approvals, lca_wage_levels and h1b_enforcement",
+          "source_url": "https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub",
+          "cadence": "rebuild when any input changes",
+          "size_bytes": 38434
+        },
+        {
+          "key": "enrolment_and_funding",
+          "url": "/data/enrolment_and_funding.json",
+          "summary": "Temporary-visa share of graduate enrolment joined to federal R&D expenditure -- whether the public money and the foreign enrolment sit in the same institutions.",
+          "source": "NSF NCSES GSS 2024 and HERD FY2024 table 14",
+          "source_url": "https://ncses.nsf.gov/surveys/higher-education-research-development/",
+          "cadence": "annual, with GSS and HERD",
+          "size_bytes": 21288
+        },
+        {
+          "key": "eor_market",
+          "url": "/data/eor_market.json",
+          "summary": "The employment route that needs no visa: which employer-of-record vendors reference each other, how many country pages each publishes, and the pages whose own address names the H-1B.",
+          "source": "Employer-of-record vendors' own published sitemaps",
+          "source_url": "https://www.deel.com/sitemap.xml",
+          "cadence": "on demand; the vendors republish continuously",
+          "size_bytes": 28303
+        },
+        {
+          "key": "expansion_phases",
+          "url": "/data/expansion_phases.json",
+          "summary": "Non-resident graduate degrees and visa issuances on one time axis, in named windows -- when each part of the pipeline expanded, and in what order.",
+          "source": "Derived from graduate_balance and visa_issuances",
+          "source_url": "",
+          "cadence": "rebuild when either input changes",
+          "size_bytes": 11150
+        },
+        {
+          "key": "fica_exposure",
+          "url": "/data/fica_exposure.json",
+          "summary": "The employer-side payroll-tax differential on OPT employment, as a rate and as a labelled scenario grid.",
+          "source": "IRC 3121(b)(19) and IRS guidance; DHS SEVP authorisation counts",
+          "source_url": "https://www.irs.gov/individuals/international-taxpayers/foreign-student-liability-for-social-security-and-medicare-taxes",
+          "cadence": "on statute change or a new SEVP release",
+          "size_bytes": 2335
+        },
+        {
+          "key": "grad_support",
+          "url": "/data/grad_support.json",
+          "summary": "Full-time doctoral support by mechanism and, within federal support, by funding agency -- whose money pays for graduate study, across 653 institutions.",
+          "source": "NSF NCSES, Survey of Graduate Students and Postdoctorates, 2024",
+          "source_url": "https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-s-e/",
+          "cadence": "annual, with GSS",
+          "size_bytes": 4003
+        },
+        {
+          "key": "graduate_balance",
+          "url": "/data/graduate_balance.json",
+          "summary": "Non-resident share of core-STEM degrees at master's level, doctorate level and the two combined, across thirty years -- where in graduate education the balance actually shifted.",
+          "source": "NCES IPEDS Completions, 1995-2025",
+          "source_url": "https://nces.ed.gov/ipeds/use-the-data",
+          "cadence": "annual, with IPEDS Completions",
+          "size_bytes": 9581
+        },
+        {
+          "key": "graduate_enrollment",
+          "url": "/data/graduate_enrollment.json",
+          "summary": "Non-resident share of graduate enrolment, all fields, 2010-2023 -- an independent read on the degree series.",
+          "source": "NCES IPEDS Fall Enrolment (EF), 2010-2023",
+          "source_url": "https://nces.ed.gov/ipeds/use-the-data",
+          "cadence": "annual, with IPEDS Fall Enrolment",
+          "size_bytes": 6222
+        },
+        {
+          "key": "grid_capacity",
+          "url": "/data/grid_capacity.json",
+          "summary": "How many credentials the United States awards each year in the programmes that staff generation, transmission and the electrical trade -- counts rather than shares, because this workforce is already almost entirely domestic and the question is its size. 62 power plant technology credentials nationally in 2025, at five institutions.",
+          "source": "NCES IPEDS Completions, all award levels, 2000-2025",
+          "source_url": "https://nces.ed.gov/ipeds/use-the-data",
+          "cadence": "annual, with IPEDS Completions",
+          "size_bytes": 17629
+        },
+        {
+          "key": "gss_citizenship_trend",
+          "url": "/data/gss_citizenship_trend.json",
+          "summary": "Forty years of science, engineering and health graduate and postdoctoral enrolment by citizenship, 1980-2024 -- the long STEM-specific view.",
+          "source": "NSF NCSES, Survey of Graduate Students and Postdoctorates, table 1-7",
+          "source_url": "https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-s-e/",
+          "cadence": "annual, with GSS",
+          "size_bytes": 11921
+        },
+        {
+          "key": "gss_institution_ranking",
+          "url": "/data/gss_institution_ranking.json",
+          "summary": "Full-time S&E&H graduate enrolment by institution and the temporary-visa share of it, master's and doctoral, ranked.",
+          "source": "NSF NCSES, Survey of Graduate Students and Postdoctorates, 2024",
+          "source_url": "https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-s-e/",
+          "cadence": "annual, with GSS",
+          "size_bytes": 158430
+        },
+        {
+          "key": "h1b_approvals",
+          "url": "/data/h1b_approvals.json",
+          "summary": "H-1B petitions approved and denied by employer, FY2009-2023 -- what USCIS actually granted, between what employers asked for and what enforcement later found.",
+          "source": "USCIS H-1B Employer Data Hub",
+          "source_url": "https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub",
+          "cadence": "quarterly, with USCIS hub releases",
+          "size_bytes": 87290
+        },
+        {
+          "key": "h1b_by_industry",
+          "url": "/data/h1b_by_industry.json",
+          "summary": "Certified LCAs by six-digit NAICS. Six digits separates a staffing firm from a law firm; the USCIS hub's two cannot.",
+          "source": "US DOL OFLC LCA disclosure files",
+          "source_url": "https://www.dol.gov/agencies/eta/foreign-labor/performance",
+          "cadence": "quarterly, as DOL releases",
+          "size_bytes": 5805962
+        },
+        {
+          "key": "h1b_by_occupation",
+          "url": "/data/h1b_by_occupation.json",
+          "summary": "Certified LCAs by SOC occupation: the custodial, food-service and personal-care roles as well as the professorships.",
+          "source": "US DOL OFLC LCA disclosure files",
+          "source_url": "https://www.dol.gov/agencies/eta/foreign-labor/performance",
+          "cadence": "quarterly, as DOL releases",
+          "size_bytes": 1664698
+        },
+        {
+          "key": "h1b_enforcement",
+          "url": "/data/h1b_enforcement.json",
+          "summary": "H-1B wage violations found by the Department of Labor, 2000-2026: cases, back wages, employees and employers.",
+          "source": "US DOL Wage and Hour Division enforcement database (WHISARD)",
+          "source_url": "https://enforcedata.dol.gov/views/data_catalogs.php",
+          "cadence": "periodic, with DOL enforcement releases",
+          "size_bytes": 21112
+        },
+        {
+          "key": "humanitarian_admissions",
+          "url": "/data/humanitarian_admissions.json",
+          "summary": "Refugee arrivals 1980-2023 and asylum grants by nationality -- the humanitarian route, for scale against the study and work routes.",
+          "source": "DHS Yearbook of Immigration Statistics, refugee and asylee tables",
+          "source_url": "https://ohss.dhs.gov/topics/immigration/yearbook",
+          "cadence": "annual, with the DHS Yearbook",
+          "size_bytes": 2899
+        },
+        {
+          "key": "institution_funding",
+          "url": "/data/institution_funding.json",
+          "summary": "State and federal appropriations received by each public institution, so a campus's non-resident share can sit beside the public money going into it.",
+          "source": "NCES IPEDS Finance, GASB form (F1A)",
+          "source_url": "https://nces.ed.gov/ipeds/use-the-data",
+          "cadence": "annual, with the IPEDS finance release",
+          "size_bytes": 184461
+        },
+        {
+          "key": "institution_profiles",
+          "url": "/data/institution_profiles.json",
+          "summary": "One row per institution on a single UNITID key -- core-STEM master's and doctorates with their non-resident shares, graduate enrolment, federal R&D and obligations, tuition -- with national rankings on each measure and a rollup to states.",
+          "source": "IPEDS Completions, Fall Enrollment, Institutional Characteristics and Directory; NSF HERD FY2024; NSF Federal Support Survey FY2023; NSF GSS 2024",
+          "source_url": "https://nces.ed.gov/ipeds/use-the-data",
+          "cadence": "annual, with IPEDS completions",
+          "size_bytes": 2408793
+        },
+        {
+          "key": "lca_wage_levels",
+          "url": "/data/lca_wage_levels.json",
+          "summary": "Prevailing-wage level promised on certified H-1B filings, by employer, FY2019 and FY2023 -- what was promised, beside what enforcement later found.",
+          "source": "US DOL Office of Foreign Labor Certification, H-1B LCA disclosure data",
+          "source_url": "https://www.dol.gov/agencies/eta/foreign-labor/performance",
+          "cadence": "quarterly, with OFLC disclosure releases",
+          "size_bytes": 36706
+        },
+        {
+          "key": "level_rankings",
+          "url": "/data/level_rankings.json",
+          "summary": "Non-resident share rankings at BOTH master's and doctoral level: by institution, by 4-digit CIP, fastest risers, largest cohorts, and the within-institution contrast.",
+          "source": "derived",
+          "source_url": "https://nces.ed.gov/ipeds/use-the-data",
+          "cadence": "after a new Completions year lands",
+          "size_bytes": 50502
+        },
+        {
+          "key": "live_bundle",
+          "url": "/data/live_bundle.json",
+          "summary": "Everything the live voice dashboard renders, in one ~9 KB file so no chart update touches the network.",
+          "source": "derived",
+          "source_url": "",
+          "cadence": "after nra_index or f1_series changes",
+          "size_bytes": 9519
+        },
+        {
+          "key": "local_wage_comparison",
+          "url": "/data/local_wage_comparison.json",
+          "summary": "The below-median finding measured against the median for the occupation in the worksite state, not the national one.",
+          "source": "BLS OEWS state file and US DOL OFLC LCA disclosure data",
+          "source_url": "https://www.bls.gov/oes/tables.htm",
+          "cadence": "quarterly, with OFLC and annually with OEWS",
+          "size_bytes": 5280
+        },
+        {
+          "key": "long_series",
+          "url": "/data/long_series.json",
+          "summary": "Core-STEM doctorates 1995-2025: totals, non-resident and domestic counts, share, and the by-field breakdown.",
+          "source": "derived",
+          "source_url": "https://nces.ed.gov/ipeds/use-the-data",
+          "cadence": "after nra_index changes",
+          "size_bytes": 5996
+        },
+        {
+          "key": "lpr_adjustments",
+          "url": "/data/lpr_adjustments.json",
+          "summary": "Permanent residence by class and by type -- adjustment of status against new arrival. How many green cards go to people already in the country on a temporary visa.",
+          "source": "DHS Office of Homeland Security Statistics, Yearbook of Immigration Statistics, table 6",
+          "source_url": "https://ohss.dhs.gov/topics/immigration/yearbook",
+          "cadence": "annual, with the DHS Yearbook",
+          "size_bytes": 5653
+        },
+        {
+          "key": "name_lists",
+          "url": "/data/name_lists.json",
+          "summary": "The entry point for the thesis and dissertation name lists, and the counts behind it: records, universities, departments and the year range.",
+          "source": "derived from the harvested thesis and dissertation records",
+          "source_url": "",
+          "cadence": "whenever generate_name_lists_html runs",
+          "size_bytes": 3742
+        },
+        {
+          "key": "nativity_labour",
+          "url": "/data/nativity_labour.json",
+          "summary": "Employment by occupation and median weekly earnings, split by nativity -- the domestic side of the ledger.",
+          "source": "BLS Current Population Survey, foreign-born workers news release",
+          "source_url": "https://www.bls.gov/news.release/forbrn.nr0.htm",
+          "cadence": "annual, with the BLS foreign-born release",
+          "size_bytes": 27365
+        },
+        {
+          "key": "nonimmigrant_admissions",
+          "url": "/data/nonimmigrant_admissions.json",
+          "summary": "Admissions by class of admission and year, FY2014-2023, with destination state -- the closest substitute for the L-1 and O-1 employer data that is not published.",
+          "source": "DHS Yearbook of Immigration Statistics, nonimmigrant tables",
+          "source_url": "https://ohss.dhs.gov/topics/immigration/yearbook",
+          "cadence": "annual, with the DHS Yearbook",
+          "size_bytes": 6708
+        },
+        {
+          "key": "occupational_wages",
+          "url": "/data/occupational_wages.json",
+          "summary": "Annual wage percentiles by detailed occupation -- the denominator that prices the H-1B wage levels in dollars.",
+          "source": "BLS Occupational Employment and Wage Statistics, national files 2019-2024",
+          "source_url": "https://www.bls.gov/oes/tables.htm",
+          "cadence": "annual, with the OEWS release",
+          "size_bytes": 642915
+        },
+        {
+          "key": "origin_vs_residence",
+          "url": "/data/origin_vs_residence.json",
+          "summary": "Permanent residents by country of last residence against country of birth -- which countries are waypoints rather than sources.",
+          "source": "DHS Yearbook of Immigration Statistics, tables 2 and 3",
+          "source_url": "https://ohss.dhs.gov/topics/immigration/yearbook",
+          "cadence": "annual, with the DHS Yearbook",
+          "size_bytes": 69196
+        },
+        {
+          "key": "postdoc_citizenship",
+          "url": "/data/postdoc_citizenship.json",
+          "summary": "Postdoctoral appointees by citizenship and by federal support, per institution, including the nine universities named in the 2026-10-08 J-1 investigation.",
+          "source": "NSF NCSES Survey of Graduate Students and Postdoctorates, 2024",
+          "source_url": "https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-s-e/",
+          "cadence": "annual, with the GSS release",
+          "size_bytes": 13094
+        },
+        {
+          "key": "public_employer_perm",
+          "url": "/data/public_employer_perm.json",
+          "summary": "Every certified permanent-residence filing by a university, a school district or a state agency, with the worker's citizenship, birth country and the visa held when the employer filed.",
+          "source": "US DOL OFLC PERM disclosure files, FY2013-FY2024",
+          "source_url": "https://www.dol.gov/agencies/eta/foreign-labor/performance",
+          "cadence": "never again; see notes",
+          "size_bytes": 22216762
+        },
+        {
+          "key": "repo_datasets",
+          "url": "/data/repo_datasets.json",
+          "summary": "Publishes eighteen analysis files that their own builders write beside their inputs rather than into site/data/.",
+          "source": "Derived: copies of analysis files built elsewhere in the repo",
+          "source_url": "",
+          "cadence": "rebuild after any of the source builders",
+          "size_bytes": 2707
+        },
+        {
+          "key": "security_cases",
+          "url": "/data/security_cases.json",
+          "summary": "The government's own list of China-related prosecutions, parsed from the archived DOJ page, with each defendant's role read from DOJ's own headline; plus the cases charged after that list stopped being updated.",
+          "source": "US Department of Justice, National Security Division -- archived China Initiative case compilation, plus individual US Attorney press releases",
+          "source_url": "https://www.justice.gov/archives/nsd/information-about-department-justice-s-china-initiative-and-compilation-china-related",
+          "cadence": "never -- the source list was frozen on 19 November 2021",
+          "size_bytes": 66704
+        },
+        {
+          "key": "site_map",
+          "url": "/data/chat/site_map.json",
+          "summary": "Every page, title, description and anchor, walked from the actual HTML so the assistant's page list cannot drift.",
+          "source": "derived",
+          "source_url": "",
+          "cadence": "after any page is added, renamed or re-sectioned",
+          "size_bytes": 119061
+        },
+        {
+          "key": "state_agencies",
+          "url": "/data/state_agencies.json",
+          "summary": "Which arms of state government sponsor H-1B workers, and for what: approvals by agency and state, with the job titles and wages from the employer's own certified applications.",
+          "source": "USCIS H-1B Employer Data Hub, plus US DOL OFLC LCA disclosure files for job titles and wages",
+          "source_url": "https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub",
+          "cadence": "annual, as USCIS republishes the Data Hub",
+          "size_bytes": 80340
+        },
+        {
+          "key": "state_agencies",
+          "url": "/data/state_agencies.json",
+          "summary": "H-1B filings by agencies of state government.",
+          "source": "USCIS H-1B Employer Data Hub and DOL LCA disclosure files",
+          "source_url": "https://www.dol.gov/agencies/eta/foreign-labor/performance",
+          "cadence": "quarterly, as DOL releases",
+          "size_bytes": 80340
+        },
+        {
+          "key": "state_funding_and_enrolment",
+          "url": "/data/state_funding_and_enrolment.json",
+          "summary": "State appropriations per FTE against the non-resident share of graduate enrolment at public institutions, by state, 2010-2023 -- a test of why the tuition finding exists.",
+          "source": "SHEEO State Higher Education Finance FY2024, and NCES IPEDS Fall Enrolment",
+          "source_url": "https://shef.sheeo.org/data-downloads/",
+          "cadence": "annual, with SHEF and IPEDS",
+          "size_bytes": 17921
+        },
+        {
+          "key": "state_residency",
+          "url": "/data/state_residency.json",
+          "summary": "In-state against out-of-state at public four-year institutions in each state: the split of full-time-equivalent enrolment, and the net tuition and fee revenue collected per student from each group.",
+          "source": "SHEEO State Higher Education Finance, student residency data, FY2020-FY2024",
+          "source_url": "https://shef.sheeo.org/",
+          "cadence": "annual, with the SHEF release",
+          "size_bytes": 192213
+        },
+        {
+          "key": "states_index",
+          "url": "/data/states_index.json",
+          "summary": "The state list the sidebar expands under All State Profiles.",
+          "source": "derived",
+          "source_url": "",
+          "cadence": "after build_state_pages",
+          "size_bytes": 3383
+        },
+        {
+          "key": "stay_rates",
+          "url": "/data/stay_rates.json",
+          "summary": "Where temporary-visa S&E doctorate recipients actually live years after graduating: 73% of the 2017-19 cohort were still in the US in 2023.",
+          "source": "NCSES NSF 25-325, Table 1",
+          "source_url": "https://ncses.nsf.gov/pubs/nsf25325",
+          "cadence": "when NCSES republishes",
+          "size_bytes": 2279
+        },
+        {
+          "key": "stem_earnings",
+          "url": "/data/stem_earnings.json",
+          "summary": "Median earnings and debt one year after completion, by 4-digit CIP and credential level -- the only federal source that prices a STEM degree by field AND level.",
+          "source": "U.S. Department of Education, College Scorecard field of study file",
+          "source_url": "https://collegescorecard.ed.gov/data/",
+          "cadence": "annual, with the Scorecard release",
+          "size_bytes": 7317
+        },
+        {
+          "key": "summary",
+          "url": "/data/summary.json",
+          "summary": "The headline figure from every finding, in one file, each with the dataset and path it was read from and the limit on how it may be read.",
+          "source": "Derived from this project's own published datasets",
+          "source_url": null,
+          "cadence": "rebuild whenever any source dataset is rebuilt",
+          "size_bytes": 7607
+        },
+        {
+          "key": "support_by_citizenship",
+          "url": "/data/support_by_citizenship.json",
+          "summary": "Primary source of support by citizenship. The allocation evidence: 76.0% of international S&E doctorate recipients are on assistantships against 53.1% of citizens.",
+          "source": "NSF Survey of Earned Doctorates, Table 4-1",
+          "source_url": "https://ncses.nsf.gov/surveys/earned-doctorates/",
+          "cadence": "annually, when SED publishes",
+          "size_bytes": 9374
+        },
+        {
+          "key": "support_trend",
+          "url": "/data/support_trend.json",
+          "summary": "Seven years of primary source of doctoral support by citizenship, 2018-2024 -- how long the assistantship gap has held, and which way it is moving.",
+          "source": "NSF NCSES, Survey of Earned Doctorates, primary-source-of-support table, 2018-2024 releases",
+          "source_url": "https://ncses.nsf.gov/surveys/earned-doctorates/",
+          "cadence": "annual, with each SED release",
+          "size_bytes": 7455
+        },
+        {
+          "key": "taxpayer_cost",
+          "url": "/data/taxpayer_cost.json",
+          "summary": "Federal obligations per STEM research doctorate, against non-resident share. Quantifies the public-investment claim.",
+          "source": "derived (NSF NCSES Federal Support Survey + IPEDS)",
+          "source_url": "https://ncses.nsf.gov/surveys/federal-support-survey/",
+          "cadence": "after nra_index or federal_support changes",
+          "size_bytes": 21230
+        },
+        {
+          "key": "tuition",
+          "url": "/data/tuition.json",
+          "summary": "What the core-STEM master's expansion is worth in tuition: published out-of-state graduate rates against non-resident master's degrees conferred, with the audited sector total alongside, in constant 2024 dollars.",
+          "source": "derived",
+          "source_url": "https://nces.ed.gov/ipeds/use-the-data",
+          "cadence": "annually, when IPEDS IC and finance files are released",
+          "size_bytes": 12406
+        },
+        {
+          "key": "tuition_and_appropriations",
+          "url": "/data/tuition_and_appropriations.json",
+          "summary": "Published in-state tuition at public institutions beside state appropriations per FTE, 2000-2023, in constant dollars -- what students were charged as states changed what they put in.",
+          "source": "NCES IPEDS Institutional Characteristics, SHEEO SHEF, and BLS CPI-U",
+          "source_url": "https://nces.ed.gov/ipeds/use-the-data",
+          "cadence": "annual, with IPEDS and SHEF",
+          "size_bytes": 348129
+        },
+        {
+          "key": "tuition_dependence",
+          "url": "/data/tuition_dependence.json",
+          "summary": "Tuition as a share of institutional revenue against the foreign share of graduate enrolment, public and private reported separately.",
+          "source": "NCES IPEDS Finance FY2023-24, and NSF NCSES GSS 2024",
+          "source_url": "https://nces.ed.gov/ipeds/use-the-data",
+          "cadence": "annual, with IPEDS Finance",
+          "size_bytes": 19564
+        },
+        {
+          "key": "university_distribution",
+          "url": "/data/university_distribution.json",
+          "summary": "Per-university department distributions: every 4-digit CIP programme with 15+ doctorates, 2015-2022, with its share.",
+          "source": "derived",
+          "source_url": "https://nces.ed.gov/ipeds/use-the-data",
+          "cadence": "after nra_index changes",
+          "size_bytes": 208954
+        },
+        {
+          "key": "university_foreign_students",
+          "url": "/data/university_foreign_students.json",
+          "summary": "Non-resident enrolment by institution, with SEVP's top campuses by STEM OPT authorisation beside it.",
+          "source": "NCES IPEDS Fall Enrolment and DHS SEVP top-campus tables",
+          "source_url": "https://nces.ed.gov/ipeds/use-the-data",
+          "cadence": "annual, with IPEDS and SEVP",
+          "size_bytes": 17646
+        },
+        {
+          "key": "visa_bodyshops",
+          "url": "/data/visa_bodyshops.json",
+          "summary": "Which H-1B employers supply workers to other companies, from the employers' own certified filings: six-digit industry, the H-1B-dependency answer, third-party placement, and the wage tier they chose -- plus the same-occupation wage gap between placed and directly-hired positions.",
+          "source": "US Department of Labor, Office of Foreign Labor Certification, H-1B Labor Condition Application disclosure files",
+          "source_url": "https://www.dol.gov/agencies/eta/foreign-labor/performance",
+          "cadence": "quarterly, as OFLC publishes disclosure files",
+          "size_bytes": 2634978
+        },
+        {
+          "key": "visa_bulletin",
+          "url": "/data/visa_bulletin.json",
+          "summary": "Employment-based final action dates FY1992-2023 for India, China, the Philippines and all other countries -- the employer-dependence argument in years.",
+          "source": "US Department of State, Visa Bulletin historical final action dates",
+          "source_url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html",
+          "cadence": "monthly, with the Visa Bulletin",
+          "size_bytes": 462514
+        },
+        {
+          "key": "visa_issuances",
+          "url": "/data/visa_issuances.json",
+          "summary": "Nonimmigrant visa issuances by class and nationality, 1997-2024 -- the entry point, counted at the consulate.",
+          "source": "US Department of State, Nonimmigrant Visa Detail Tables, FY1997-2024",
+          "source_url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-statistics/nonimmigrant-visa-statistics.html",
+          "cadence": "annual, with the State Department detail tables",
+          "size_bytes": 647710
+        },
+        {
+          "key": "visa_schools",
+          "url": "/data/visa_schools.json",
+          "summary": "Every US institution with 100+ graduate students where non-residents are half or more of them: 57 in fall 2024, up from 43 in 2022, with their federal student aid and the recruitment payments the nonprofits report to the IRS.",
+          "source": "NCES IPEDS Fall Enrollment 2022-2024, Institutional Characteristics directory 2024 and Student Financial Aid 2022-23; IRS Form 990 e-file returns",
+          "source_url": "https://nces.ed.gov/ipeds/use-the-data",
+          "cadence": "annual, with IPEDS Fall Enrolment and the IRS 990 release",
+          "size_bytes": 71944
+        },
+        {
+          "key": "visa_staffing",
+          "url": "/data/visa_staffing.json",
+          "summary": "Every H-1B employer USCIS names, fiscal 2009-2023: 368,825 of them and 1,675,026 initial approvals, with how concentrated the programme is, the same firm's several filing names collapsed into one, and the debarred employers that appear.",
+          "source": "USCIS H-1B Employer Data Hub; US Department of Labor debarment lists",
+          "source_url": "https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub",
+          "cadence": "annual, when USCIS refreshes the hub",
+          "size_bytes": 82819
+        },
+        {
+          "key": "visa_substitution",
+          "url": "/data/visa_substitution.json",
+          "summary": "Visa issuance by class, student work authorisations and the H-1B denial rate on one timeline, 2007-2024, with the dated federal actions that restricted or expanded each.",
+          "source": "US Department of State Nonimmigrant Visa Detail Tables; DHS SEVP OPT/STEM OPT/CPT; USCIS H-1B Employer Data Hub; Federal Register",
+          "source_url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-statistics/nonimmigrant-visa-statistics.html",
+          "cadence": "annual",
+          "size_bytes": 51061
+        },
+        {
+          "key": "wage_level_trend",
+          "url": "/data/wage_level_trend.json",
+          "summary": "Share of certified H-1B filings at each prevailing-wage level, by fiscal year -- whether employers have moved toward the bottom of the legal range or away from it.",
+          "source": "US DOL OFLC, H-1B LCA disclosure archive FY2017-2026",
+          "source_url": "https://www.dol.gov/agencies/eta/foreign-labor/performance",
+          "cadence": "quarterly, with OFLC releases",
+          "size_bytes": 4862
+        },
+        {
+          "key": "working_conditions",
+          "url": "/data/working_conditions.json",
+          "summary": "Hours worked and reported satisfaction by CURRENT citizenship status -- whether visa dependence shows up in what people work and report, not only in the statute.",
+          "source": "NSF NCSES, Survey of Doctorate Recipients 2023 public-use file",
+          "source_url": "https://ncses.nsf.gov/surveys/doctorate-recipients/",
+          "cadence": "biennial, with the SDR",
+          "size_bytes": 4326
+        }
+      ]
     }
   },
   "record_schema": {
-    "description": "Each university JSON contains a records array. Each record is [dept, year, name, origin_class, confidence, title, url, degree_type]",
+    "description": "Each university JSON holds a records array. Each record is a positional array: department, year, name, origin_class, confidence, title, url, degree_type",
     "fields": [
       {
         "index": 0,
         "name": "department",
         "type": "string",
-        "description": "Department or field of study (normalized via taxonomy)"
+        "description": "Department or field of study, normalised via the taxonomy"
       },
       {
         "index": 1,
         "name": "year",
         "type": "integer",
-        "description": "Year of thesis/dissertation completion"
+        "description": "Year of award"
       },
       {
         "index": 2,
         "name": "name",
         "type": "string",
-        "description": "Author name (Last, First)"
+        "description": "Author, as the awarding repository recorded it, with catalogue artefacts removed"
       },
       {
         "index": 3,
-        "name": "origin_classification",
+        "name": "origin_class",
         "type": "string",
-        "description": "Name-based origin estimate: chinese, indian, korean, arabic, iranian, turkish, vietnamese, other, or empty"
+        "description": "Name-classification bucket"
       },
       {
         "index": 4,
         "name": "confidence",
         "type": "string",
-        "description": "Classification confidence (currently unused)"
+        "description": "Classifier confidence"
       },
       {
         "index": 5,
         "name": "title",
         "type": "string",
-        "description": "Thesis/dissertation title (truncated to 90 chars)"
+        "description": "Title of the thesis or dissertation, truncated to 90 characters"
       },
       {
         "index": 6,
         "name": "url",
         "type": "string",
-        "description": "URL to the institutional repository record"
+        "description": "Link to the record in the awarding university's repository"
       },
       {
         "index": 7,
         "name": "degree_type",
         "type": "string",
-        "description": "phd, ms, or empty if unknown"
+        "description": "PhD, MS or unlabelled"
       }
-    ],
-    "enrichment_fields": {
-      "enrollment": "NSF GSS graduate enrollment data (2024)",
-      "funding": "NSF HERD R&D expenditure data",
-      "completions_trend": "IPEDS doctoral completion trend (2010-2024)",
-      "tuition": "IPEDS graduate tuition (in-state and out-of-state)",
-      "financial_aid": "IPEDS graduate financial aid",
-      "faculty": "IPEDS instructional faculty demographics",
-      "dept_links": "Links to department homepages and student directories"
-    }
+    ]
   },
   "government_sources": [
-    {
-      "name": "IPEDS",
-      "agency": "National Center for Education Statistics (NCES)",
-      "url": "https://nces.ed.gov/ipeds/"
-    },
-    {
-      "name": "NSF HERD",
-      "agency": "National Science Foundation NCSES",
-      "url": "https://ncses.nsf.gov/surveys/higher-education-research-development/"
-    },
-    {
-      "name": "NSF GSS",
-      "agency": "National Science Foundation NCSES",
-      "url": "https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-in-science-and-engineering/"
-    },
-    {
-      "name": "NSF SED",
-      "agency": "National Science Foundation NCSES",
-      "url": "https://ncses.nsf.gov/surveys/earned-doctorates/"
-    },
-    {
-      "name": "NSF SDR",
-      "agency": "National Science Foundation NCSES",
-      "url": "https://ncses.nsf.gov/surveys/survey-of-doctorate-recipients/"
-    },
-    {
-      "name": "DOL H-1B",
-      "agency": "Department of Labor ETA",
-      "url": "https://www.dol.gov/agencies/eta/foreign-labor/performance"
-    },
-    {
-      "name": "DHS SEVP",
-      "agency": "Department of Homeland Security ICE",
-      "url": "https://studyinthestates.dhs.gov/"
-    },
-    {
-      "name": "USASpending",
-      "agency": "Department of the Treasury",
-      "url": "https://www.usaspending.gov/"
-    }
+    "https://collegescorecard.ed.gov/data/",
+    "https://enforcedata.dol.gov/views/data_catalogs.php",
+    "https://hub.buildfellowship.com/projects",
+    "https://j1visa.state.gov/basics/facts-and-figures/",
+    "https://nces.ed.gov/ipeds/use-the-data",
+    "https://ncses.nsf.gov/pubs/nsf25325",
+    "https://ncses.nsf.gov/pubs/nsf25349/data-tables",
+    "https://ncses.nsf.gov/surveys/doctorate-recipients/",
+    "https://ncses.nsf.gov/surveys/earned-doctorates/",
+    "https://ncses.nsf.gov/surveys/federal-support-survey/",
+    "https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-s-e/",
+    "https://ncses.nsf.gov/surveys/higher-education-research-development/",
+    "https://ncses.nsf.gov/surveys/national-survey-college-graduates/",
+    "https://ohss.dhs.gov/topics/immigration/yearbook",
+    "https://projects.propublica.org/nonprofits/api",
+    "https://reporter.nih.gov/exporter",
+    "https://shef.sheeo.org/",
+    "https://shef.sheeo.org/data-downloads/",
+    "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html",
+    "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-statistics.html",
+    "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-statistics/nonimmigrant-visa-statistics.html",
+    "https://www.bls.gov/news.release/forbrn.nr0.htm",
+    "https://www.bls.gov/oes/tables.htm",
+    "https://www.buildfellowship.com/impact",
+    "https://www.deel.com/sitemap.xml",
+    "https://www.dol.gov/agencies/eta/foreign-labor/performance",
+    "https://www.ellis.com/visa-sponsors/cap-exempt",
+    "https://www.ice.gov/sevis/whats-new",
+    "https://www.irs.gov/individuals/international-taxpayers/foreign-student-liability-for-social-security-and-medicare-taxes",
+    "https://www.justice.gov/archives/nsd/information-about-department-justice-s-china-initiative-and-compilation-china-related",
+    "https://www.uscis.gov/sites/default/files/document/reports/stem_related_petition_trends_eb2_and_o1a_categories_factsheet_fy23.pdf",
+    "https://www.uscis.gov/tools/reports-and-studies",
+    "https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub"
   ]
 }
