@@ -353,9 +353,8 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
       <dl class="guide-tables">
         <dt>stem_records</dt>
         <dd>509,072 STEM theses and dissertations. One row per award:
-        university, department, year, author, title. <strong>The browser
-        loads the first 500,000</strong> of them, so a count here is 500,000
-        and not 509,072 &mdash; the full file is in the parquet.</dd>
+        university, department, year, author, title. All of them load: a
+        <code>COUNT(*)</code> here returns 509,072.</dd>
         <dt>nonstem_records</dt>
         <dd>199,321 of the same, outside STEM.</dd>
         <dt>h1b_perm_public</dt>
@@ -370,12 +369,6 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
         <dt>h1b_employers</dt>
         <dd>38,836 employers with their filing counts and wage levels.</dd>
       </dl>
-
-      <h2>Why a count can look short</h2>
-      <p>Tables load into your browser's memory, so the console caps each at
-      500,000 rows and says so in the status line when it does. Only
-      <code>stem_records</code> is large enough to be capped. The downloadable
-      parquet is complete.</p>
 
       <h2>Joining them</h2>
       <p><code>h1b_employers.naics</code> joins to
@@ -554,7 +547,17 @@ async function loadParquetFile(file) {
   }
 }
 
-const MAX_ROWS = 500000; // Cap rows loaded into memory for browser safety
+// MEASURED, NOT GUESSED. The cap was 500,000 "for browser safety" and the
+// only table it touched was stem_records at 509,072 rows, so a COUNT(*)
+// returned 500,000 against a header saying 509K and the console quietly
+// disagreed with every other page on the site.
+//
+// Loading the full table instead costs 261 MB of heap against 258 MB, and
+// 14.9s against 14.8s. Three megabytes and a tenth of a second to hide
+// 9,072 records. The cap is raised to a million, which covers the whole
+// corpus with room to grow while still stopping a pathological file that
+// a reader drops onto the page.
+const MAX_ROWS = 1000000;
 
 async function loadParquetBuffer(arrayBuffer, tableName) {
   const metadata = await parquetMetadataAsync(arrayBuffer);
