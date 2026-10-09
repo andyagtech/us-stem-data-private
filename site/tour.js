@@ -336,7 +336,13 @@
       { page: '/public-sector-visas', anchor: 'state_agencies',
         say: "And the public payroll itself: every state-agency " +
              "permanent-residence filing in the country, with the worker's " +
-             "citizenship and the federal case number." }
+             "citizenship and the federal case number." },
+      { page: '/postdocs', anchor: 'the-finding',
+        say: "And the job the doctorate leads to. 58.3% of postdoctoral " +
+             "appointees in this country hold a temporary visa, so " +
+             "Americans are a minority of the people doing postdoctoral " +
+             "research here \u2014 in a workforce where about half the " +
+             "posts are paid for by the federal government." }
     ]
   };
 
@@ -427,6 +433,12 @@
            "full, with the worker's citizenship and the federal case number. " +
            "Open a state to see its departments."
     },
+      { page: '/postdocs', anchor: 'the-finding',
+        say: "And the job the doctorate leads to. 58.3% of postdoctoral " +
+             "appointees in this country hold a temporary visa, so " +
+             "Americans are a minority of the people doing postdoctoral " +
+             "research here \u2014 in a workforce where about half the " +
+             "posts are paid for by the federal government." },
     {
       page: '/data_requests',
       anchor: 'asks',

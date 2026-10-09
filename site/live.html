@@ -37,6 +37,18 @@
     letter-spacing:-.01em;}
   .live-title span{color:var(--live-dim);font-size:.85rem;font-family:inherit;
     display:block;font-weight:400;margin-top:.15rem;}
+  /* THE MIC SITS UNDER THE CHART. In the header it was a red button in the
+     far corner, furthest from the thing it talks about and easy to miss
+     entirely; under the board and centred it reads as the next step after
+     the suggestions. margin-left:auto is dropped with it -- that rule only
+     made sense while it was the last item of a flex header. */
+  /* The source note is a sibling of the grid, not a cell in it, so it
+     inherited no side padding and ran edge to edge on a tablet while the
+     chart above it was inset by 1.5rem. */
+  .foot{padding-left:1.5rem;padding-right:1.5rem;max-width:1180px;margin-left:auto;margin-right:auto;}
+  @media(max-width:620px){.foot{padding-left:.85rem;padding-right:.85rem;}}
+  .mic-row{display:flex;justify-content:center;margin-top:1.1rem;}
+  .mic-row .mic-btn{margin-left:0;}
   .mic-btn{margin-left:auto;display:inline-flex;align-items:center;gap:.6rem;
     background:var(--nra);color:#fff;border:0;border-radius:999px;
     padding:.62rem 1.15rem;font-size:.92rem;font-weight:600;cursor:pointer;
@@ -154,9 +166,7 @@
   <header class="live-head">
     <h1 id="who-the-expansion-was-built-for-us-graduate" class="live-title">Who the expansion was built for
       <span>US graduate degrees by field, level and residency status</span></h1>
-    <button class="mic-btn" id="mic" data-state="idle" type="button" data-track="btn.mic">
-      <span class="mic-dot"></span><span id="mic-label">Start talking</span>
-    </button>
+
   </header>
 
   <main class="live-main">
@@ -168,6 +178,11 @@
       <div class="chart-holder" id="chart-holder"></div>
       <div class="legend" id="legend"></div>
       <div class="prompts" id="prompts"></div>
+      <div class="mic-row">
+      <button class="mic-btn" id="mic" data-state="idle" type="button" data-track="btn.mic">
+        <span class="mic-dot"></span><span id="mic-label">Start talking</span>
+      </button>
+      </div>
     </section>
 
     <aside class="side">

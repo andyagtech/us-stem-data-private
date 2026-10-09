@@ -121,6 +121,16 @@
      to a 34px rail carrying only the toggle, so the results table gets the
      width back. Below 1100px it is hidden entirely -- at that size the
      table needs every pixel and the guide would push it off screen. */
+  /* The results table is as wide as its widest row -- 1,576px for a join
+     with long employer names -- and on a phone that scrolled the whole
+     page sideways instead of the table. The scroll belongs to the table's
+     own container. */
+  .results-area { overflow-x: auto; }
+  .results-area table { min-width: max-content; }
+  @media (max-width: 760px) {
+    .editor-panel { min-width: 0; }
+    .query-area, .results-area { max-width: 100vw; }
+  }
   .guide { flex: 0 0 320px; border-left: 1px solid var(--border);
     background: var(--surface); display: flex; min-width: 0;
     position: relative; transition: flex-basis .18s ease; }

@@ -885,6 +885,14 @@
     '#phd-tour-hint button{background:none;border:none;color:var(--cb-muted);',
     'cursor:pointer;font:inherit;font-size:15px;line-height:1;padding:0 1px;}',
     '#phd-tour-hint button:hover{color:var(--cb-text);}',
+    /* SIZED BY INSETS, NOT BY 100vw. The rule above caps the toast with
+       calc(100vw - 172px), and 100vw counts the overflow the toast itself
+       causes: it grew the page, the page grew vw, and the cap grew with
+       it. At 375px the toast measured 435px and took every page on the
+       site sideways with it, because this widget is on all of them.
+       Pinning left and right cannot feed back that way. */
+    '@media (max-width:620px){#phd-tour-hint{left:12px;right:12px;',
+    'max-width:none;bottom:84px;}}',
     '#phd-tour-btn.nudge{animation:phd-tour-pulse 2.6s ease-in-out 3;}',
     '@keyframes phd-tour-pulse{0%,100%{box-shadow:0 4px 16px rgba(0,0,0,0.28);}',
     '50%{box-shadow:0 4px 16px rgba(0,0,0,0.28),0 0 0 7px rgba(56,189,248,0.16);}}',
