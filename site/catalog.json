@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "last_updated": "2026-10-09T10:43:50Z",
+  "last_updated": "2026-10-09T14:01:45Z",
   "description": "Machine-readable catalogue of every dataset published by phd-demographics.andy-barr.com. Generated from the data at build time.",
   "source": "https://phd-demographics.andy-barr.com/",
   "license": "Public domain federal data. Attribution appreciated.",
@@ -40,7 +40,7 @@
           "nra_pct": 34.2,
           "records": 8134,
           "url": "/data/stem/bu.json",
-          "size_bytes": 1507973
+          "size_bytes": 1507947
         },
         {
           "key": "byu",
@@ -72,7 +72,7 @@
           "nra_pct": 55.9,
           "records": 3331,
           "url": "/data/stem/cmu.json",
-          "size_bytes": 597150
+          "size_bytes": 650398
         },
         {
           "key": "columbia",
@@ -208,7 +208,7 @@
           "nra_pct": 43.8,
           "records": 21505,
           "url": "/data/stem/mit.json",
-          "size_bytes": 3898823
+          "size_bytes": 3898673
         },
         {
           "key": "montana_state",
@@ -232,7 +232,7 @@
           "nra_pct": 49.0,
           "records": 7135,
           "url": "/data/stem/msu.json",
-          "size_bytes": 1363761
+          "size_bytes": 1377555
         },
         {
           "key": "mtu",
@@ -248,7 +248,7 @@
           "nra_pct": 16.6,
           "records": 746,
           "url": "/data/stem/nau.json",
-          "size_bytes": 209265
+          "size_bytes": 208938
         },
         {
           "key": "ncstate",
@@ -312,7 +312,7 @@
           "nra_pct": 33.2,
           "records": 1781,
           "url": "/data/stem/pdx.json",
-          "size_bytes": 372405
+          "size_bytes": 379529
         },
         {
           "key": "penn_state",
@@ -416,7 +416,7 @@
           "nra_pct": 57.4,
           "records": 6005,
           "url": "/data/stem/ttu.json",
-          "size_bytes": 1090046
+          "size_bytes": 1089973
         },
         {
           "key": "uarizona",
@@ -544,7 +544,7 @@
           "nra_pct": 46.3,
           "records": 5058,
           "url": "/data/stem/udel.json",
-          "size_bytes": 1134616
+          "size_bytes": 1134574
         },
         {
           "key": "udenver",
@@ -928,7 +928,7 @@
           "nra_pct": 55.9,
           "records": 803,
           "url": "/data/nonstem/cmu.json",
-          "size_bytes": 151054
+          "size_bytes": 163902
         },
         {
           "key": "columbia",
@@ -1064,7 +1064,7 @@
           "nra_pct": 43.8,
           "records": 3493,
           "url": "/data/nonstem/mit.json",
-          "size_bytes": 617501
+          "size_bytes": 617491
         },
         {
           "key": "montana_state",
@@ -1088,7 +1088,7 @@
           "nra_pct": 49.0,
           "records": 4258,
           "url": "/data/nonstem/msu.json",
-          "size_bytes": 807670
+          "size_bytes": 816008
         },
         {
           "key": "mtu",
@@ -1168,7 +1168,7 @@
           "nra_pct": 33.2,
           "records": 1547,
           "url": "/data/nonstem/pdx.json",
-          "size_bytes": 316379
+          "size_bytes": 322567
         },
         {
           "key": "penn_state",
@@ -1272,7 +1272,7 @@
           "nra_pct": 57.4,
           "records": 3405,
           "url": "/data/nonstem/ttu.json",
-          "size_bytes": 626878
+          "size_bytes": 626848
         },
         {
           "key": "uarizona",
@@ -1757,13 +1757,13 @@
           "name": "nonstem_records",
           "url": "/data/exports/nonstem_records.parquet",
           "format": "Parquet",
-          "size_bytes": 8829102
+          "size_bytes": 8828791
         },
         {
           "name": "stem_records",
           "url": "/data/exports/stem_records.parquet",
           "format": "Parquet",
-          "size_bytes": 22505053
+          "size_bytes": 22502416
         }
       ]
     },
@@ -2139,7 +2139,7 @@
           "source": "derived",
           "source_url": "",
           "cadence": "after any page is added, renamed or re-sectioned",
-          "size_bytes": 119061
+          "size_bytes": 119270
         },
         {
           "key": "state_agencies",

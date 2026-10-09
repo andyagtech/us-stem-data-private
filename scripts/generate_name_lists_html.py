@@ -2811,6 +2811,7 @@ def load_all(stem_filter='stem'):
 
 
 from clean_author_name import clean_author_name
+from resolve_record_url import resolve_record_url
 
 
 def write_data_files(all_data, data_dir, is_nonstem=False):
@@ -2830,10 +2831,17 @@ def write_data_files(all_data, data_dir, is_nonstem=False):
             # point means the page, the search index, the chat tool and the
             # exports all get the same name. The raw harvest is untouched.
             nm = clean_author_name(r['name'])
+            # RESOLVE THE LINK HERE TOO. Some repositories handed back their
+            # own identifier instead of a URL -- a DOI, an OAI id, an
+            # Islandora etd: -- and the page rendered it as a relative href,
+            # so 8,491 "verify this record" links resolved against our own
+            # host and 404ed. Anything with no safe mapping becomes '' and
+            # the row renders unlinked, which is honest.
+            url = resolve_record_url(r['url']) or ''
             compact.append([
                 r['dept'], r['year'], nm,
                 r['classification'] or '', r['confidence'] or '',
-                r['title'][:90], r['url'], r.get('degree', ''),
+                r['title'][:90], url, r.get('degree', ''),
             ])
             # Add to search index: just name + dept, enough for matching
             search_entries.append([uni_key, nm, r['dept'], r['year']])
