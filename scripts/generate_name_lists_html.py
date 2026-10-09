@@ -1264,6 +1264,7 @@ function showUni(key, skipHash) {{
     updateFundingChart();
     updateEnrollmentPanel();
     updateH1bPanel();
+    consumePendingPanels();
     consumePendingAnchor();
     return;
   }}
@@ -1282,6 +1283,7 @@ function showUni(key, skipHash) {{
         updateFundingChart();
         updateEnrollmentPanel();
         updateH1bPanel();
+        consumePendingPanels();
         consumePendingAnchor();
       }}
     }})
@@ -2329,6 +2331,59 @@ function focusAnchor(id) {{
 let _pendingAnchor = null;
 let _pendingUntil = 0;
 
+// THE PANELS RENDER AFTER THE URL IS READ, so a panel named in a link has to
+// be remembered and opened later, exactly as the anchor above is.
+//
+// Measured on /stem#mit--funding: DOMContentLoaded at 1031ms, load at
+// 1097ms, and the funding container first appears at 1183ms. Every
+// turnOn() in the old code ran before that -- the boot IIFE at parse time,
+// and a setTimeout(120) that expired some 900ms early -- so each one
+// toggled a panel that was not in the document yet and silently did
+// nothing. The toggle itself was never broken: called by hand once the
+// page has settled it works instantly.
+let _pendingPanels = [];
+let _pendingPanelsUntil = 0;
+
+function queuePanels(names) {{
+  _pendingPanelsUntil = Date.now() + 8000;
+  for (const n of names) {{
+    if (n && PANEL_ANCHORS[n] && _pendingPanels.indexOf(n) === -1) {{
+      _pendingPanels.push(n);
+    }}
+  }}
+  // If the panels are already on screen -- a link pasted into an open tab,
+  // or a second link to the university already shown -- this applies now
+  // and the queue drains immediately.
+  consumePendingPanels();
+}}
+
+// Called after every renderUni(), before the anchor is consumed, so the
+// panel is open and has its height before anything scrolls to it.
+function consumePendingPanels() {{
+  if (!_pendingPanels.length) return;
+  // A panel a university simply does not have never renders, so without an
+  // expiry the request would sit in the queue and open that panel on the
+  // NEXT university the reader clicks. Bounded like the anchor request.
+  if (Date.now() > _pendingPanelsUntil) {{ _pendingPanels = []; return; }}
+  const waiting = [];
+  for (const n of _pendingPanels) {{
+    const p = PANEL_ANCHORS[n];
+    if (p.isOn()) continue;
+    p.turnOn();
+    // THE ONLY HONEST TEST OF READINESS IS WHETHER THE TOGGLE TOOK. A first
+    // attempt at this checked that the panel's container was in the
+    // document, which proves nothing: the containers ship in the static
+    // page and exist from the first byte. Meanwhile every toggle begins
+    //     if (document.body.classList.contains('no-uni')) return;
+    // and refuses to act until a university has loaded. So the container
+    // test passed, turnOn() did nothing, the request was dropped as
+    // satisfied, and the panel stayed shut -- the same bug one layer up.
+    // Asking isOn() afterwards cannot be fooled this way.
+    if (!p.isOn()) waiting.push(n);
+  }}
+  _pendingPanels = waiting;
+}}
+
 function requestAnchor(id) {{
   _pendingAnchor = id;
   _pendingUntil = Date.now() + 4000;
@@ -2359,17 +2414,20 @@ function applyUrlState(state) {{
     return;
   }}
 
-  // Panel toggles carried in the link, applied before the panels render.
-  if (state.params.enrollment === '1' && !enrollmentVisible) toggleEnrollment();
-  if (state.params.funding === '1' && !fundingVisible) toggleFunding();
-  if (state.params.h1b === '1' && !h1bVisible) toggleH1b();
-  if (state.params.ms === '1' && !msVisible) toggleMs();
+  // Panel toggles carried in the link. QUEUED, not fired: at this point the
+  // panels may not be in the document yet. Both URL shapes land here --
+  // #key?funding=1, which the page writes itself, and #key--funding, which
+  // the share button writes.
+  const wantPanels = [];
+  if (state.params.enrollment === '1') wantPanels.push('enrollment');
+  if (state.params.funding === '1') wantPanels.push('funding');
+  if (state.params.h1b === '1') wantPanels.push('h1b');
+  if (state.panel) wantPanels.push(state.panel);
+  if (wantPanels.length) queuePanels(wantPanels);
 
-  // A panel anchor opens the panel it names.
-  if (state.panel) {{
-    const p = PANEL_ANCHORS[state.panel];
-    if (!p.isOn()) p.turnOn();
-  }}
+  // The master's toggle is a body class rather than a rendered panel, so it
+  // does not need the queue.
+  if (state.params.ms === '1' && !msVisible) toggleMs();
   // #<uni_key>--<year> addresses a master's block, which is hidden unless the
   // master's toggle is on.
   if (state.segs.length === 2 && /^[0-9]{{4}}$/.test(state.segs[1]) && !msVisible) toggleMs();
@@ -2388,14 +2446,12 @@ function applyUrlState(state) {{
       && typeof UNI_CACHE !== 'undefined' && !UNI_CACHE[state.uniKey]) {{
     UNI_CACHE[state.uniKey] = window._preloadedUniData;
   }}
-  if (state.panel) {{
-    // Panels live outside #content and are already in the DOM.
-    showUni(state.uniKey, true);
-    setTimeout(() => focusAnchor(target), 120);
-  }} else {{
-    requestAnchor(target);
-    showUni(state.uniKey, true);
-  }}
+  // One path for both. The old code assumed a panel was "already in the
+  // DOM" and scrolled to it after a fixed 120ms; it is not, and the guess
+  // was always going to be wrong on a slow connection. requestAnchor holds
+  // the target for a few seconds and every render re-applies it.
+  requestAnchor(target);
+  showUni(state.uniKey, true);
 }}
 
 // Share anchor — copy a link to one specific thing on the page

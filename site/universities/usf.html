@@ -10,10 +10,16 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <title>U South Florida — PhD Demographics</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<!-- THE SHARED STYLESHEET FIRST, then this page's own rules. The tokens are
+     defined once in style.css and the block below only overrides what this
+     page genuinely needs. An earlier version omitted this link and carried a
+     full private copy of the palette, which is how stem.html came to define
+     --bg without --hl and render a button transparent on white. A rebuild
+     puts the link back, so the fix survives regeneration. -->
 <link rel="stylesheet" href="/style.css">
 <style>
   :root {
-    --bg: #0f172a; --surface: #1e293b; --surface2: var(--border);
+    --bg: #0f172a; --surface: #1e293b; --surface2: #334155;
     --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8;
     --red: #f87171; --orange: #fb923c; --yellow: #fbbf24;
     --green: #4ade80; --blue: #60a5fa;
@@ -157,8 +163,8 @@
     color: var(--text-muted); width: 100%; text-align: center; padding-top: 6px; }
   body.no-uni .toggle-wrap { cursor: not-allowed; }
   .degree-badge { font-size: 0.65rem; font-weight: 700; padding: 1px 4px; border-radius: 3px; margin-right: 4px; vertical-align: 1px; }
-  .degree-phd { background: rgba(74,222,128,0.15); color: var(--green); }
-  .degree-ms { background: rgba(251,191,36,0.15); color: var(--yellow); }
+  .degree-phd { background: rgba(74,222,128,0.15); color: #4ade80; }
+  .degree-ms { background: rgba(251,191,36,0.15); color: #fbbf24; }
 
   .ms-group { margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--surface2); }
   .ms-group-header { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 4px 0; }
@@ -185,7 +191,7 @@
   .nat-stat.red .num { color: #ef4444; }
   .nat-stat.blue .num { color: var(--accent); }
   .nat-stat.pink .num { color: #f472b6; }
-  .nat-stat.orange .num { color: var(--orange); }
+  .nat-stat.orange .num { color: #fb923c; }
   .nat-charts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
   .nat-chart-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 14px; }
   .nat-chart-box h3 { font-size: 0.85rem; margin-bottom: 2px; }
@@ -274,11 +280,11 @@
   .coach-tooltip .coach-arrow.left { left: -7px; top: 50%; transform: translateY(-50%) rotate(-45deg); }
   .coach-tooltip .coach-arrow.right { right: -7px; top: 50%; transform: translateY(-50%) rotate(135deg); }
   .coach-tooltip .coach-arrow.top { top: -7px; left: 30px; transform: rotate(45deg); }
-  .coach-dismiss { display: inline-block; margin-top: 10px; background: var(--accent); color: var(--bg); border: none; padding: 5px 14px; border-radius: 5px; font-size: 0.78rem; font-weight: 600; cursor: pointer; }
+  .coach-dismiss { display: inline-block; margin-top: 10px; background: var(--accent); color: #0f172a; border: none; padding: 5px 14px; border-radius: 5px; font-size: 0.78rem; font-weight: 600; cursor: pointer; }
   @keyframes coach-pulse { 0%,100% { box-shadow: 0 0 0 4px var(--accent), 0 0 20px rgba(56,189,248,0.4); } 50% { box-shadow: 0 0 0 8px var(--accent), 0 0 30px rgba(56,189,248,0.6); } }
   .coach-highlight { animation: coach-pulse 1.5s ease-in-out infinite; }
 
-  .mobile-menu-btn { display: none; position: fixed; bottom: 16px; left: 16px; z-index: 98; background: var(--accent); color: var(--bg); border: none; border-radius: 50%; width: 48px; height: 48px; font-size: 1.3rem; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.3); align-items: center; justify-content: center; }
+  .mobile-menu-btn { display: none; position: fixed; bottom: 16px; left: 16px; z-index: 98; background: var(--accent); color: #0f172a; border: none; border-radius: 50%; width: 48px; height: 48px; font-size: 1.3rem; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.3); align-items: center; justify-content: center; }
 
   /* General dept visual distinction */
   .dept-section.dept-general { border-style: dashed; opacity: 0.85; }
@@ -291,25 +297,6 @@
 
   .nav-item-wrap { display: flex; align-items: center; }
   .nav-item-wrap .nav-item { flex: 1; }
-
-@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
---bg:#ffffff;--surface:#f6f7f9;--border:#d8dee6;--text:#111827;
---text-muted:#4b5563;--accent:#1d4ed8;--hl:#b3123c;color-scheme:light;}}
-:root[data-theme="light"]{
---bg:#ffffff;--surface:#f6f7f9;--border:#d8dee6;--text:#111827;
---text-muted:#4b5563;--accent:#1d4ed8;--hl:#b3123c;color-scheme:light;}
-.themebtn{position:fixed;right:20px;bottom:84px;z-index:60;display:inline-flex;
-align-items:center;gap:7px;padding:7px 12px;border-radius:999px;
-background:var(--surface);color:var(--text-muted);border:1px solid var(--border);
-cursor:pointer;font:500 12px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',
-Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
-.themebtn:hover,.themebtn:focus-visible{color:var(--text);border-color:var(--accent);}
-.themebtn .ic{font-size:13px;line-height:1;}
-@media print{.themebtn{display:none;}}
-/* phd-light-status */
-@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--red:#b91c1c;--orange:#c2410c;--yellow:#a16207;--green:#15803d;--blue:#1d4ed8;}}
-:root[data-theme="light"]{--red:#b91c1c;--orange:#c2410c;--yellow:#a16207;--green:#15803d;--blue:#1d4ed8;}
-/* /phd-light-status */
 </style>
 <!-- og:cards -->
 <meta property="og:title" content="U South Florida — STEM doctorate demographics">
@@ -448,18 +435,25 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 </ul>
 </noscript>
 
-<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:0;z-index:999;background:var(--accent);color:var(--bg);padding:8px 16px;font-size:0.85rem;text-decoration:none;" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">Skip to content</a>
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:0;z-index:999;background:var(--accent);color:#0f172a;padding:8px 16px;font-size:0.85rem;text-decoration:none;" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">Skip to content</a>
 
 <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="Open navigation menu">☰</button>
+<!-- The navigation is sidebar.js, shared with every other page on the
+     site. These pages used to bake in their own 21 KB copy, which
+     diverged from the shared one and meant a reader arriving on a
+     university page -- the most likely landing page from a shared
+     link -- saw a different site. 2.1 MB of duplicated markup. -->
+
 <main class="main" id="main-content">
   <header class="top-nav" role="banner">
-    <a href="/index.html" class="top-nav-btn">Education Index</a>
+    <a href="index" class="top-nav-btn">Education Index</a>
     <a href="/non_stem.html" class="top-nav-btn">Non-STEM View</a>
-    <a href="/data_sources.html" class="top-nav-btn">Data Sources</a>
+    <a href="data_sources" class="top-nav-btn">Data Sources</a>
   </header>
   <h1>Thesis &amp; Dissertation Lists — High NRA Universities</h1>
   <p class="subtitle" style="font-size:0.78rem;color:var(--text-muted);margin-top:-2px;">NRA = Non-Resident Alien. Universities ranked by NRA share of STEM doctoral completions (IPEDS).</p>
   <p class="subtitle">Every name links to the university's institutional repository for direct verification. 509,072 total records across 106 schools.</p>
+  <div style="background:rgba(251,191,36,0.12);border:1px solid rgba(251,191,36,0.3);border-radius:8px;padding:8px 14px;margin:10px 0 4px;font-size:0.82rem;color:#fbbf24;">Data scraping still in progress. Record counts may change as new data is collected.</div>
 
   <div id="info-section">
     <!-- National stats hero cards -->
@@ -501,6 +495,12 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
         <canvas id="nat-visa-chart"></canvas>
         <p class="source">Source: <a href="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-statistics.html" target="_blank">US State Department Visa Statistics</a></p>
       </div>
+      <div class="nat-chart-box" id="nat-fields">
+        <h3>NRA Enrollment by STEM Field<a class="share-anchor" href="#nat-fields" onclick="shareAnchor('nat-fields',event);return false;" title="Copy link to this chart" aria-label="Copy link to this chart">#</a></h3>
+        <p class="nat-desc">In Computer Science and Engineering, the majority of graduate students are non-resident aliens.</p>
+        <canvas id="nat-field-chart"></canvas>
+        <p class="source">Source: <a href="https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-in-science-and-engineering" target="_blank">NSF Graduate Student Survey (STEM only — non-STEM equivalent not yet plotted)</a></p>
+      </div>
       <div class="nat-chart-box" id="nat-visa-calc">
         <h3>Cumulative Visa Calculator<a class="share-anchor" href="#nat-visa-calc" onclick="shareAnchor('nat-visa-calc',event);return false;" title="Copy link to this chart" aria-label="Copy link to this chart">#</a></h3>
         <p class="nat-desc">Total visa issuances between two years. Select a range to see cumulative counts.</p>
@@ -511,12 +511,6 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
         </div>
         <div id="cum-results" style="font-size:0.82rem;line-height:1.8;"></div>
         <p class="source">Source: US State Department visa issuances at consulates abroad</p>
-      </div>
-      <div class="nat-chart-box" id="nat-fields">
-        <h3>NRA Enrollment by STEM Field<a class="share-anchor" href="#nat-fields" onclick="shareAnchor('nat-fields',event);return false;" title="Copy link to this chart" aria-label="Copy link to this chart">#</a></h3>
-        <p class="nat-desc">In Computer Science and Engineering, the majority of graduate students are non-resident aliens.</p>
-        <canvas id="nat-field-chart"></canvas>
-        <p class="source">Source: <a href="https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-in-science-and-engineering" target="_blank">NSF Graduate Student Survey (STEM only — non-STEM equivalent not yet plotted)</a></p>
       </div>
     </div>
 
@@ -534,7 +528,7 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
           "Theses and Dissertations" collections. These typically include <strong>both doctoral dissertations
           and master's theses</strong>. Only Caltech has explicit PhD-only filtering.
           Where possible, records are labeled
-          <span style="color:var(--green);">PhD</span> or <span style="color:var(--yellow);">MS</span>
+          <span style="color:#4ade80;">PhD</span> or <span style="color:#fbbf24;">MS</span>
           based on available metadata, but many records cannot be distinguished.
           Each name links directly to the original record for verification.
         </p>
@@ -679,12 +673,12 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
   </div>
 
   <footer class="site-footer" style="text-align:center;padding:28px 16px 32px;font-size:0.74rem;color:#64748b;border-top:1px solid #334155;margin-top:32px;line-height:1.7;">
-    A project by <a href="https://andy-barr.com" target="_blank" rel="noopener" style="color:var(--text-muted);text-decoration:none;font-weight:600;">Andy Barr</a>. Data from US federal agencies (NCES, NSF, DOL, DHS) and university institutional repositories.<br>
-    <a href="about.html" style="color:var(--accent);text-decoration:none;">About</a> &middot;
-    <a href="/data_sources.html" style="color:var(--accent);text-decoration:none;">Methodology</a> &middot;
-    <a href="submit.html" style="color:var(--accent);text-decoration:none;">Tip Line</a> &middot;
-    <a href="https://x.com/andy_barr_data" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">Follow on X</a> &middot;
-    <a href="https://buymeacoffee.com/andybarr" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">Support this Page</a>
+    A project by <a href="https://andy-barr.com" target="_blank" rel="noopener" style="color:#94a3b8;text-decoration:none;font-weight:600;">Andy Barr</a>. Data from US federal agencies (NCES, NSF, DOL, DHS) and university institutional repositories.<br>
+    <a href="about" style="color:#38bdf8;text-decoration:none;">About</a> &middot;
+    <a href="data_sources" style="color:#38bdf8;text-decoration:none;">Methodology</a> &middot;
+    <a href="submit" style="color:#38bdf8;text-decoration:none;">Tip Line</a> &middot;
+    <a href="https://x.com/andy_barr_data" target="_blank" rel="noopener" style="color:#38bdf8;text-decoration:none;">Follow on X</a> &middot;
+    <a href="https://buymeacoffee.com/andybarr" target="_blank" rel="noopener" style="color:#38bdf8;text-decoration:none;">Support this Page</a>
   </footer>
 </main>
 
@@ -6293,7 +6287,7 @@ function initNationalCharts() {
 
   // -- OPT national trends --
   const optYears = ['2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024'];
-  const optData = [24836,45304,46116,50992,56300,62427,67502,77369,99016,129811,140152,130512,125215,112930,102985,106791,152361,173939];
+  const optData = [24838,45357,46198,51080,56421,62628,67740,77619,99323,137570,152681,145564,138898,122699,115651,117301,160627,194554];
   const stemOpt = [2,2128,5869,9356,13504,15937,18782,21456,27493,41782,64481,69650,72116,63906,61543,64844,62036,95384];
   const cptData = [57403,61171,48568,57409,63911,68482,76223,92528,111135,122529,132380,151525,116338,97368,91352,129849,131117,130586];
 
@@ -6322,7 +6316,7 @@ function initNationalCharts() {
 
   // -- Total Foreign Work Authorizations (OPT + H-1B) --
   const pipeYears = [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
-  const pipeOpt = [50992,56300,62427,67502,77369,99016,129811,140152,130512,125215,112930,102985,106791,152361,173939];
+  const pipeOpt = [51080,56421,62628,67740,77619,99323,137570,152681,145564,138898,122699,115651,117301,160627,194554];
   const pipeStemOpt = [9356,13504,15937,18782,21456,27493,41782,64481,69650,72116,63906,61543,64844,62036,95384];
   const pipeCpt = [57409,63911,68482,76223,92528,111135,122529,132380,151525,116338,97368,91352,129849,131117,130586];
   const pipeH1b = [8677,12418,8559,10775,11879,9198,9067,9285,9099,11707,28390,34546,23366,10382,10739];
@@ -6727,8 +6721,7 @@ function renderUni(uni) {
   return html;
 }
 
-function toggleSidebar(){ /* the shared sidebar owns this now */ }
-function __retiredToggleSidebar() {
+function toggleSidebar() {
   document.getElementById('sidebar')?.classList.toggle('open');
 }
 
@@ -6795,6 +6788,7 @@ function showUni(key, skipHash) {
     updateFundingChart();
     updateEnrollmentPanel();
     updateH1bPanel();
+    consumePendingPanels();
     consumePendingAnchor();
     return;
   }
@@ -6813,6 +6807,7 @@ function showUni(key, skipHash) {
         updateFundingChart();
         updateEnrollmentPanel();
         updateH1bPanel();
+        consumePendingPanels();
         consumePendingAnchor();
       }
     })
@@ -7860,6 +7855,59 @@ function focusAnchor(id) {
 let _pendingAnchor = null;
 let _pendingUntil = 0;
 
+// THE PANELS RENDER AFTER THE URL IS READ, so a panel named in a link has to
+// be remembered and opened later, exactly as the anchor above is.
+//
+// Measured on /stem#mit--funding: DOMContentLoaded at 1031ms, load at
+// 1097ms, and the funding container first appears at 1183ms. Every
+// turnOn() in the old code ran before that -- the boot IIFE at parse time,
+// and a setTimeout(120) that expired some 900ms early -- so each one
+// toggled a panel that was not in the document yet and silently did
+// nothing. The toggle itself was never broken: called by hand once the
+// page has settled it works instantly.
+let _pendingPanels = [];
+let _pendingPanelsUntil = 0;
+
+function queuePanels(names) {
+  _pendingPanelsUntil = Date.now() + 8000;
+  for (const n of names) {
+    if (n && PANEL_ANCHORS[n] && _pendingPanels.indexOf(n) === -1) {
+      _pendingPanels.push(n);
+    }
+  }
+  // If the panels are already on screen -- a link pasted into an open tab,
+  // or a second link to the university already shown -- this applies now
+  // and the queue drains immediately.
+  consumePendingPanels();
+}
+
+// Called after every renderUni(), before the anchor is consumed, so the
+// panel is open and has its height before anything scrolls to it.
+function consumePendingPanels() {
+  if (!_pendingPanels.length) return;
+  // A panel a university simply does not have never renders, so without an
+  // expiry the request would sit in the queue and open that panel on the
+  // NEXT university the reader clicks. Bounded like the anchor request.
+  if (Date.now() > _pendingPanelsUntil) { _pendingPanels = []; return; }
+  const waiting = [];
+  for (const n of _pendingPanels) {
+    const p = PANEL_ANCHORS[n];
+    if (p.isOn()) continue;
+    p.turnOn();
+    // THE ONLY HONEST TEST OF READINESS IS WHETHER THE TOGGLE TOOK. A first
+    // attempt at this checked that the panel's container was in the
+    // document, which proves nothing: the containers ship in the static
+    // page and exist from the first byte. Meanwhile every toggle begins
+    //     if (document.body.classList.contains('no-uni')) return;
+    // and refuses to act until a university has loaded. So the container
+    // test passed, turnOn() did nothing, the request was dropped as
+    // satisfied, and the panel stayed shut -- the same bug one layer up.
+    // Asking isOn() afterwards cannot be fooled this way.
+    if (!p.isOn()) waiting.push(n);
+  }
+  _pendingPanels = waiting;
+}
+
 function requestAnchor(id) {
   _pendingAnchor = id;
   _pendingUntil = Date.now() + 4000;
@@ -7890,17 +7938,20 @@ function applyUrlState(state) {
     return;
   }
 
-  // Panel toggles carried in the link, applied before the panels render.
-  if (state.params.enrollment === '1' && !enrollmentVisible) toggleEnrollment();
-  if (state.params.funding === '1' && !fundingVisible) toggleFunding();
-  if (state.params.h1b === '1' && !h1bVisible) toggleH1b();
-  if (state.params.ms === '1' && !msVisible) toggleMs();
+  // Panel toggles carried in the link. QUEUED, not fired: at this point the
+  // panels may not be in the document yet. Both URL shapes land here --
+  // #key?funding=1, which the page writes itself, and #key--funding, which
+  // the share button writes.
+  const wantPanels = [];
+  if (state.params.enrollment === '1') wantPanels.push('enrollment');
+  if (state.params.funding === '1') wantPanels.push('funding');
+  if (state.params.h1b === '1') wantPanels.push('h1b');
+  if (state.panel) wantPanels.push(state.panel);
+  if (wantPanels.length) queuePanels(wantPanels);
 
-  // A panel anchor opens the panel it names.
-  if (state.panel) {
-    const p = PANEL_ANCHORS[state.panel];
-    if (!p.isOn()) p.turnOn();
-  }
+  // The master's toggle is a body class rather than a rendered panel, so it
+  // does not need the queue.
+  if (state.params.ms === '1' && !msVisible) toggleMs();
   // #<uni_key>--<year> addresses a master's block, which is hidden unless the
   // master's toggle is on.
   if (state.segs.length === 2 && /^[0-9]{4}$/.test(state.segs[1]) && !msVisible) toggleMs();
@@ -7919,14 +7970,12 @@ function applyUrlState(state) {
       && typeof UNI_CACHE !== 'undefined' && !UNI_CACHE[state.uniKey]) {
     UNI_CACHE[state.uniKey] = window._preloadedUniData;
   }
-  if (state.panel) {
-    // Panels live outside #content and are already in the DOM.
-    showUni(state.uniKey, true);
-    setTimeout(() => focusAnchor(target), 120);
-  } else {
-    requestAnchor(target);
-    showUni(state.uniKey, true);
-  }
+  // One path for both. The old code assumed a panel was "already in the
+  // DOM" and scrolled to it after a fixed 120ms; it is not, and the guess
+  // was always going to be wrong on a slow connection. requestAnchor holds
+  // the target for a few seconds and every render re-applies it.
+  requestAnchor(target);
+  showUni(state.uniKey, true);
 }
 
 // Share anchor — copy a link to one specific thing on the page
@@ -8303,6 +8352,12 @@ const _origShowUni = showUni;
 
 })();
 </script>
+<!-- The shared navigation. This tag used to be absent here and present in the
+     generated file, because it was added to stem.html and non_stem.html by
+     hand: regenerating the pages silently deleted the sidebar from both, and
+     only the consistency check noticed. A generated file is never the place to
+     put anything by hand. -->
+<script src="/analytics-beacon.js" defer></script>
 <script src="/sidebar.js"></script>
 <script src="/chat-widget.js"></script>
 
@@ -8330,6 +8385,5 @@ const _origShowUni = showUni;
 })();
 </script>
 
-<script src="/analytics-beacon.js" defer></script>
 </body>
 </html>

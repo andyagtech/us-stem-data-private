@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "last_updated": "2026-10-09T14:01:45Z",
+  "last_updated": "2026-10-09T14:24:16Z",
   "description": "Machine-readable catalogue of every dataset published by phd-demographics.andy-barr.com. Generated from the data at build time.",
   "source": "https://phd-demographics.andy-barr.com/",
   "license": "Public domain federal data. Attribution appreciated.",
