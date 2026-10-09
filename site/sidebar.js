@@ -922,7 +922,7 @@
   // Inject footer
   const footer = document.createElement('footer');
   footer.className = 'site-footer';
-  footer.innerHTML = 'A project by <a href="https://andy-barr.com" target="_blank" rel="noopener noreferrer">Andy Barr</a>. Data from US federal agencies (NCES, NSF, DOL, DHS) and university institutional repositories.<br>Last updated: August 2026 \u00B7 <a href="data_sources">Methodology</a> \u00B7 <a href="submit">Tip Line</a> \u00B7 <a href="https://x.com/andy_barr_data" target="_blank" rel="noopener noreferrer">Follow on X</a> \u00B7 <a href="catalog.json">API</a>';
+  footer.innerHTML = 'A project by <a href="https://andy-barr.com" target="_blank" rel="noopener noreferrer">Andy Barr</a>. Data from US federal agencies (NCES, NSF, DOL, DHS) and university institutional repositories.<br>Last updated: <!--auto:data_last_updated-->October 2026<!--/auto--> \u00B7 <a href="data_sources">Methodology</a> \u00B7 <a href="submit">Tip Line</a> \u00B7 <a href="https://x.com/andy_barr_data" target="_blank" rel="noopener noreferrer">Follow on X</a> \u00B7 <a href="catalog.json">API</a>';
   // A <body> that is itself a flex or grid container turns anything appended
   // to it into a track of that layout. On stem.html and non_stem.html, whose
   // body is display:flex with flex-wrap:nowrap, the footer joined the row
