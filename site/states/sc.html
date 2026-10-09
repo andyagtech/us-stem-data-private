@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>South Carolina: who the graduate programmes are for</title>
+<meta name="description" content="Every degree-granting institution in South Carolina, the research doctorates each awards, how many go to non-residents, and the federal research money that arrives. Built from IPEDS, NSF and NCSES.">
+<meta property="og:title" content="South Carolina: who the graduate programmes are for">
+<meta property="og:description" content="Every degree-granting institution in South Carolina, the research doctorates each awards, how many go to non-residents, and the federal research money that arrives. Built from IPEDS, NSF and NCSES.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og/concentration.png">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.9rem; margin: 0 0 .7rem; line-height: 1.2; }
+  .page-head p { color: var(--text-muted); max-width: 72ch; line-height: 1.65; font-size: .95rem; margin: 0 0 .6rem; }
+  .kicker { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin: 0 0 .6rem; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin: 1.6rem 0 0; }
+  .stat { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; background: var(--surface); }
+  .stat .n { font-size: 1.7rem; font-weight: 800; color: var(--hl); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: .82rem; line-height: 1.45; margin: .3rem 0 0; }
+  .stat .s { font-size: .72rem; color: var(--text-muted); margin: .45rem 0 0; }
+  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+  section.block { margin-top: 2.8rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  section.block h2 { font-size: 1.2rem; margin: 0 0 .45rem; }
+  .lede { color: var(--text-muted); max-width: 74ch; line-height: 1.6; font-size: .92rem; margin: 0 0 1rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55; max-width: 82ch; margin: .9rem 0 0; }
+  .table-wrap { overflow-x: auto; }
+  table.t { width: 100%; border-collapse: collapse; font-size: .84rem; margin: .6rem 0 0; }
+  table.t th { text-align: left; font-size: .71rem; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--text-muted); font-weight: 600; padding: .4rem .5rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  table.t td { padding: .42rem .5rem; border-bottom: 1px solid var(--border); }
+  table.t td.num, table.t th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.t td.muted { color: var(--text-muted); }
+  table.t td.share { font-weight: 600; color: var(--hl); }
+  table.t th.share-col { color: var(--hl); }
+  table.t td.share, table.t th.share-col {
+    background: color-mix(in srgb, var(--hl) 7%, transparent); }
+  table.t th.sortable { cursor: pointer; }
+  .scale { display: flex; align-items: center; gap: .7rem; margin: 1rem 0 0; flex-wrap: wrap; }
+  .scale .seg { font-size: .8rem; }
+  .barpair { margin: 1rem 0 0; }
+  .barpair .row { display: grid; grid-template-columns: 11rem 1fr auto; gap: .6rem; align-items: center;
+    padding: .3rem 0; font-size: .86rem; }
+  .barpair .lab { color: var(--text-muted); }
+  /* display:block on both. A <span> is inline by default, so width and
+     height are ignored on it -- every fill rendered at zero width inside a
+     full-width track, which made a 2.9% bar and a 47.4% bar look identical. */
+  .barpair .track { display: block; background: rgba(148,163,184,0.14);
+    border-radius: 3px; height: 16px; overflow: hidden; }
+  .barpair .fill { display: block; height: 100%; border-radius: 3px;
+    background: #3987e5; min-width: 2px; }
+  .barpair .fill.nat { background: rgba(148,163,184,0.55); }
+  .barpair .v { font-variant-numeric: tabular-nums; font-weight: 600; }
+  /* The state bar sits directly above its national counterpart, so each pair
+     is one comparison. A gap after the pair keeps the eye from reading all
+     four as a single ranked list. */
+  .barpair .row.pair-end { margin-bottom: .55rem; }
+  @media (max-width: 620px) { .barpair .row { grid-template-columns: 1fr auto; } .barpair .track { display: none; } }
+  .callout { border: 1px solid var(--border); border-left-width: 3px; border-radius: 10px;
+    padding: 1rem 1.1rem; margin: 1rem 0 0; background: var(--surface); }
+  .callout h3 { margin: 0 0 .35rem; font-size: 1rem; }
+  .callout p { margin: 0 0 .5rem; font-size: .88rem; line-height: 1.55; color: var(--text-muted); }
+</style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+</head>
+<body data-page="state" data-state-name="South Carolina" data-state-abbr="SC">
+<a class="skip-link" href="#institutions">Skip to the institutions</a>
+<main id="main">
+<div class="wrap">
+
+  <div class="page-head">
+    <p class="kicker">State profile &middot; SC</p>
+    <h1 id="sc-graduate-programmes">South Carolina</h1>
+    <p>South Carolina has <strong>36</strong> degree-granting
+    institutions in this data. Between them they award
+    <strong>1,656</strong> research doctorates and
+    <strong>5,866</strong> master&rsquo;s degrees over the
+    window, and take <strong>$514.5m</strong> in federal
+    research and development money.</p>
+    <p>This page counts every institution in the state, including the ones that
+    award no graduate degree at all. Leaving those out would make a state look
+    like its flagship.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">36</div>
+      <p class="l">institutions in the state</p>
+      <p class="s">13 award a research doctorate.
+        2 enrol no graduate students at all.</p></div>
+    <div class="stat"><div class="n">44.4%</div>
+      <p class="l">of research doctorates go to
+        <span data-term="nra">non-residents</span></p>
+      <p class="s">736 of
+        1,656. National figure: 38.9%.</p></div>
+    <div class="stat"><div class="n">10.8%</div>
+      <p class="l">of graduate enrolment is non-resident</p>
+      <p class="s">3,259 of
+        30,295 graduate students.</p></div>
+    <div class="stat"><div class="n">$514.5m</div>
+      <p class="l">federal research and development money</p>
+      <p class="s">Across 17 institutions.
+        $451.4m in total federal obligations.</p></div>
+  </div>
+
+  <section class="block" id="against-the-country">
+    <h2>Where South Carolina sits</h2>
+    <p class="lede">The non-resident share of research doctorates, against the
+    same figure for the country. That is <strong>5.5 points above</strong> the national figure of 38.9%.</p>
+    <div class="barpair">
+      <div class="row"><span class="lab">South Carolina</span>
+        <span class="track"><span class="fill" style="width:100.0%"></span></span>
+        <span class="v">44.4%</span></div>
+      <div class="row"><span class="lab">United States</span>
+        <span class="track"><span class="fill nat" style="width:87.6%"></span></span>
+        <span class="v">38.9%</span></div>
+    </div>
+    <p class="note">South Carolina ranks <strong>10</strong> of 52
+    states on that share, and <strong>30</strong> of 56 on the
+    number of research doctorates it awards. Rank 1 is the highest. Only states
+    that award doctorates are ranked.</p>
+  </section>
+
+  
+  <section class="block" id="levels">
+    <h2>Undergraduate and graduate, side by side</h2>
+    <p class="lede">The same institutions at two levels. Undergraduate is the
+    remainder once graduate enrolment is taken out of the total, and both
+    levels carry their own non-resident count.
+    In South Carolina the graduate share is <strong>9.1 points higher</strong> than the undergraduate share.</p>
+    <div class="barpair">
+      <div class="row"><span class="lab">Undergraduate</span>
+        <span class="track"><span class="fill" style="width:9.9%"></span></span>
+        <span class="v">1.7%</span></div>
+      <div class="row pair-end"><span class="lab">US undergraduate</span>
+        <span class="track"><span class="fill nat" style="width:21.1%"></span></span>
+        <span class="v">3.6%</span></div>
+      <div class="row"><span class="lab">Graduate</span>
+        <span class="track"><span class="fill" style="width:63.2%"></span></span>
+        <span class="v">10.8%</span></div>
+      <div class="row"><span class="lab">US graduate</span>
+        <span class="track"><span class="fill nat" style="width:100.0%"></span></span>
+        <span class="v">17.1%</span></div>
+    </div>
+    <p class="note" style="margin:0 0 .4rem">Click any column heading to sort.
+    Click it again to reverse. The panel under the table narrows what is shown
+    &mdash; everything is shown until you ask for less.</p>
+    <div class="table-wrap"><table class="t" data-sortable data-controls>
+      <thead><tr><th>Institution</th>
+        <th class="num">Undergraduates</th><th class="num">Non-res</th>
+        <th class="num share-col">Share</th>
+        <th class="num">Graduates</th><th class="num">Non-res</th>
+        <th class="num share-col">Share</th>
+        <th class="num">State funding</th><th class="num">Federal R&amp;D</th></tr></thead>
+      <tbody><tr data-has-grad="1"><td data-sort="university of south carolina-columbia">University of South Carolina-Columbia</td><td class="num" data-sort="28470">28,470</td><td class="num" data-sort="590">590</td><td class="num share" data-sort="2.1">2.1%</td><td class="num" data-sort="8109">8,109</td><td class="num" data-sort="1071">1,071</td><td class="num share" data-sort="13.2">13.2%</td><td class="num" data-sort="330156238">$330.2m</td><td class="num" data-sort="277329000">$277.3m</td></tr><tr data-has-grad="1"><td data-sort="clemson university">Clemson University</td><td class="num" data-sort="22875">22,875</td><td class="num" data-sort="192">192</td><td class="num share" data-sort="0.8">0.8%</td><td class="num" data-sort="5872">5,872</td><td class="num" data-sort="1598">1,598</td><td class="num share" data-sort="27.2">27.2%</td><td class="num" data-sort="240691223">$240.7m</td><td class="num" data-sort="338533000">$338.5m</td></tr><tr data-has-grad="1"><td data-sort="college of charleston">College of Charleston</td><td class="num" data-sort="10660">10,660</td><td class="num" data-sort="108">108</td><td class="num share" data-sort="1.0">1.0%</td><td class="num" data-sort="1069">1,069</td><td class="num" data-sort="23">23</td><td class="num share" data-sort="2.2">2.2%</td><td class="num" data-sort="51072610">$51.1m</td><td class="num" data-sort="8662000">$8.7m</td></tr><tr data-has-grad="1"><td data-sort="coastal carolina university">Coastal Carolina University</td><td class="num" data-sort="10306">10,306</td><td class="num" data-sort="86">86</td><td class="num share" data-sort="0.8">0.8%</td><td class="num" data-sort="523">523</td><td class="num" data-sort="24">24</td><td class="num share" data-sort="4.6">4.6%</td><td class="num" data-sort="32495119">$32.5m</td><td class="num" data-sort="5094000">$5.1m</td></tr><tr data-has-grad="0"><td data-sort="greenville technical college">Greenville Technical College</td><td class="num" data-sort="10661">10,661</td><td class="num" data-sort="49">49</td><td class="num share" data-sort="0.5">0.5%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="27683618">$27.7m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="0"><td data-sort="piedmont technical college">Piedmont Technical College</td><td class="num" data-sort="4999">4,999</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="13269320">$13.3m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="university of south carolina-upstate">University of South Carolina-Upstate</td><td class="num" data-sort="4471">4,471</td><td class="num" data-sort="68">68</td><td class="num share" data-sort="1.5">1.5%</td><td class="num" data-sort="475">475</td><td class="num" data-sort="13">13</td><td class="num share" data-sort="2.7">2.7%</td><td class="num" data-sort="31626768">$31.6m</td><td class="num" data-sort="2764000">$2.8m</td></tr><tr data-has-grad="1"><td data-sort="winthrop university">Winthrop University</td><td class="num" data-sort="3787">3,787</td><td class="num" data-sort="59">59</td><td class="num share" data-sort="1.6">1.6%</td><td class="num" data-sort="907">907</td><td class="num" data-sort="19">19</td><td class="num share" data-sort="2.1">2.1%</td><td class="num" data-sort="34076296">$34.1m</td><td class="num" data-sort="3466000">$3.5m</td></tr><tr data-has-grad="1"><td data-sort="lander university">Lander University</td><td class="num" data-sort="3669">3,669</td><td class="num" data-sort="96">96</td><td class="num share" data-sort="2.6">2.6%</td><td class="num" data-sort="694">694</td><td class="num" data-sort="19">19</td><td class="num share" data-sort="2.7">2.7%</td><td class="num" data-sort="21283050">$21.3m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="anderson university">Anderson University</td><td class="num" data-sort="3413">3,413</td><td class="num" data-sort="57">57</td><td class="num share" data-sort="1.7">1.7%</td><td class="num" data-sort="912">912</td><td class="num" data-sort="119">119</td><td class="num share" data-sort="13.0">13.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="francis marion university">Francis Marion University</td><td class="num" data-sort="3623">3,623</td><td class="num" data-sort="86">86</td><td class="num share" data-sort="2.4">2.4%</td><td class="num" data-sort="394">394</td><td class="num" data-sort="17">17</td><td class="num share" data-sort="4.3">4.3%</td><td class="num" data-sort="32997895">$33.0m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="university of south carolina aiken">University of South Carolina Aiken</td><td class="num" data-sort="3109">3,109</td><td class="num" data-sort="46">46</td><td class="num share" data-sort="1.5">1.5%</td><td class="num" data-sort="746">746</td><td class="num" data-sort="16">16</td><td class="num share" data-sort="2.1">2.1%</td><td class="num" data-sort="23332548">$23.3m</td><td class="num" data-sort="1609000">$1.6m</td></tr><tr data-has-grad="1"><td data-sort="citadel military college of south carolina">Citadel Military College of South Carolina</td><td class="num" data-sort="2661">2,661</td><td class="num" data-sort="25">25</td><td class="num share" data-sort="0.9">0.9%</td><td class="num" data-sort="1066">1,066</td><td class="num" data-sort="9">9</td><td class="num share" data-sort="0.8">0.8%</td><td class="num" data-sort="22179480">$22.2m</td><td class="num" data-sort="4969000">$5.0m</td></tr><tr data-has-grad="1"><td data-sort="charleston southern university">Charleston Southern University</td><td class="num" data-sort="2914">2,914</td><td class="num" data-sort="67">67</td><td class="num share" data-sort="2.3">2.3%</td><td class="num" data-sort="631">631</td><td class="num" data-sort="28">28</td><td class="num share" data-sort="4.4">4.4%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="medical university of south carolina">Medical University of South Carolina</td><td class="num" data-sort="281">281</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="2836">2,836</td><td class="num" data-sort="73">73</td><td class="num share" data-sort="2.6">2.6%</td><td class="num" data-sort="164925090">$164.9m</td><td class="num" data-sort="320990000">$321.0m</td></tr><tr data-has-grad="1"><td data-sort="south carolina state university">South Carolina State University</td><td class="num" data-sort="2762">2,762</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="279">279</td><td class="num" data-sort="4">4</td><td class="num share" data-sort="1.4">1.4%</td><td class="num" data-sort="97228269">$97.2m</td><td class="num" data-sort="12496000">$12.5m</td></tr><tr data-has-grad="1"><td data-sort="bob jones university">Bob Jones University</td><td class="num" data-sort="2477">2,477</td><td class="num" data-sort="179">179</td><td class="num share" data-sort="7.2">7.2%</td><td class="num" data-sort="416">416</td><td class="num" data-sort="57">57</td><td class="num share" data-sort="13.7">13.7%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="columbia international university">Columbia International University</td><td class="num" data-sort="916">916</td><td class="num" data-sort="37">37</td><td class="num share" data-sort="4.0">4.0%</td><td class="num" data-sort="1715">1,715</td><td class="num" data-sort="107">107</td><td class="num share" data-sort="6.2">6.2%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="furman university">Furman University</td><td class="num" data-sort="2327">2,327</td><td class="num" data-sort="113">113</td><td class="num share" data-sort="4.9">4.9%</td><td class="num" data-sort="178">178</td><td class="num" data-sort="3">3</td><td class="num share" data-sort="1.7">1.7%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="3231000">$3.2m</td></tr><tr data-has-grad="1"><td data-sort="north greenville university">North Greenville University</td><td class="num" data-sort="1944">1,944</td><td class="num" data-sort="32">32</td><td class="num share" data-sort="1.6">1.6%</td><td class="num" data-sort="275">275</td><td class="num" data-sort="8">8</td><td class="num share" data-sort="2.9">2.9%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="university of south carolina beaufort">University of South Carolina Beaufort</td><td class="num" data-sort="2067">2,067</td><td class="num" data-sort="40">40</td><td class="num share" data-sort="1.9">1.9%</td><td class="num" data-sort="54">54</td><td class="num" data-sort="4">4</td><td class="num share" data-sort="7.4">7.4%</td><td class="num" data-sort="14524366">$14.5m</td><td class="num" data-sort="1177000">$1.2m</td></tr><tr data-has-grad="1"><td data-sort="strayer university-south carolina">Strayer University-South Carolina</td><td class="num" data-sort="1830">1,830</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="231">231</td><td class="num" data-sort="1">1</td><td class="num share" data-sort="0.4">0.4%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="claflin university">Claflin University</td><td class="num" data-sort="1754">1,754</td><td class="num" data-sort="40">40</td><td class="num share" data-sort="2.3">2.3%</td><td class="num" data-sort="81">81</td><td class="num" data-sort="9">9</td><td class="num share" data-sort="11.1">11.1%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="1816000">$1.8m</td></tr><tr data-has-grad="1"><td data-sort="benedict college">Benedict College</td><td class="num" data-sort="1694">1,694</td><td class="num" data-sort="233">233</td><td class="num share" data-sort="13.8">13.8%</td><td class="num" data-sort="37">37</td><td class="num" data-sort="1">1</td><td class="num share" data-sort="2.7">2.7%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="7788000">$7.8m</td></tr><tr data-has-grad="1"><td data-sort="columbia college">Columbia College</td><td class="num" data-sort="1268">1,268</td><td class="num" data-sort="10">10</td><td class="num share" data-sort="0.8">0.8%</td><td class="num" data-sort="304">304</td><td class="num" data-sort="6">6</td><td class="num share" data-sort="2.0">2.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="newberry college">Newberry College</td><td class="num" data-sort="1462">1,462</td><td class="num" data-sort="58">58</td><td class="num share" data-sort="4.0">4.0%</td><td class="num" data-sort="45">45</td><td class="num" data-sort="2">2</td><td class="num share" data-sort="4.4">4.4%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="converse university">Converse University</td><td class="num" data-sort="852">852</td><td class="num" data-sort="62">62</td><td class="num share" data-sort="7.3">7.3%</td><td class="num" data-sort="489">489</td><td class="num" data-sort="16">16</td><td class="num share" data-sort="3.3">3.3%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="coker university">Coker University</td><td class="num" data-sort="1187">1,187</td><td class="num" data-sort="63">63</td><td class="num share" data-sort="5.3">5.3%</td><td class="num" data-sort="76">76</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="southern wesleyan university">Southern Wesleyan University</td><td class="num" data-sort="887">887</td><td class="num" data-sort="2">2</td><td class="num share" data-sort="0.2">0.2%</td><td class="num" data-sort="301">301</td><td class="num" data-sort="5">5</td><td class="num share" data-sort="1.7">1.7%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="presbyterian college">Presbyterian College</td><td class="num" data-sort="903">903</td><td class="num" data-sort="43">43</td><td class="num share" data-sort="4.8">4.8%</td><td class="num" data-sort="233">233</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="erskine college">Erskine College</td><td class="num" data-sort="854">854</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="130">130</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="allen university">Allen University</td><td class="num" data-sort="635">635</td><td class="num" data-sort="10">10</td><td class="num share" data-sort="1.6">1.6%</td><td class="num" data-sort="42">42</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="charleston school of law">Charleston School of Law</td><td class="num" data-sort="0">0</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="675">675</td><td class="num" data-sort="2">2</td><td class="num share" data-sort="0.3">0.3%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="voorhees university">Voorhees University</td><td class="num" data-sort="460">460</td><td class="num" data-sort="38">38</td><td class="num share" data-sort="8.3">8.3%</td><td class="num" data-sort="55">55</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="south university-columbia">South University-Columbia</td><td class="num" data-sort="445">445</td><td class="num" data-sort="5">5</td><td class="num share" data-sort="1.1">1.1%</td><td class="num" data-sort="64">64</td><td class="num" data-sort="1">1</td><td class="num share" data-sort="1.6">1.6%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="sherman college of chiropractic">Sherman College of Chiropractic</td><td class="num" data-sort="0">0</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="381">381</td><td class="num" data-sort="4">4</td><td class="num share" data-sort="1.0">1.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr></tbody></table></div>
+    <p class="lede">The two levels diverge most at <strong>Clemson University</strong>: <strong>0.8%</strong> of its 22,875 undergraduates and <strong>27.2%</strong> of its 5,872 graduate students. These are different admissions systems with different applicant pools, different money and different reasons to say yes, and a single state figure hides both.</p>
+    <p class="note">2,494 of 142,623 undergraduates and 3,259 of
+    30,295 graduate students.
+    IPEDS reports no graduate enrolment for 2 of these institutions; their rows show a dash rather than a zero, because the file not carrying a number is not the same as the number being none.</p>
+  </section>
+
+
+
+  
+  <section class="block" id="blend">
+    <h2>What the state figure is an average of</h2>
+    <p class="lede">The largest graduate enrolments in South Carolina, each with its
+    own non-resident share. Nothing here is excluded from the figures above.
+    The point is to show what they are made of.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Graduate students</th>
+        <th class="num">Share of the state</th>
+        <th class="num">Non-resident</th></tr></thead>
+      <tbody><tr><td>University of South Carolina-Columbia</td><td class="num">8,109</td><td class="num muted">26.8%</td><td class="num share">13.2%</td></tr><tr><td>Clemson University</td><td class="num">5,872</td><td class="num muted">19.4%</td><td class="num share">27.2%</td></tr><tr><td>Medical University of South Carolina</td><td class="num">2,836</td><td class="num muted">9.4%</td><td class="num share">2.6%</td></tr><tr><td>Columbia International University</td><td class="num">1,715</td><td class="num muted">5.7%</td><td class="num share">6.2%</td></tr><tr><td>College of Charleston</td><td class="num">1,069</td><td class="num muted">3.5%</td><td class="num share">2.2%</td></tr><tr><td>Citadel Military College of South Carolina</td><td class="num">1,066</td><td class="num muted">3.5%</td><td class="num share">0.8%</td></tr></tbody></table></div>
+    <p class="note">No single institution decides this figure. The largest, University of South Carolina-Columbia, holds 26.8% of the state&rsquo;s graduate enrolment, and removing it moves the state share from 10.8% to 9.9%.</p>
+  </section>
+
+
+  
+  <section class="block" id="training">
+    <h2>Practical training, and the other student visas</h2>
+    <p class="lede">A student visa does not end at graduation. Optional
+    Practical Training lets a graduate work on the same visa, and a STEM degree
+    adds a further twenty-four months. It applies at both levels &mdash; a
+    foreign undergraduate can take OPT as readily as a doctoral graduate
+    &mdash; which is why the undergraduate share above is not the end of the
+    story.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">OPT authorisations</th>
+        <th class="num">National rank</th>
+        <th class="num">STEM OPT authorisations</th><th class="num">National rank</th>
+        <th class="num">Students employed</th></tr></thead>
+      <tbody><tr><td>Clemson University</td><td class="num">0</td><td class="num muted">&mdash;</td><td class="num">121</td><td class="num muted">88</td><td class="num">0</td></tr></tbody></table></div>
+    <p class="note"><strong>Do not add these two columns together.</strong> A
+    graduate who holds post-completion OPT and then a STEM extension in the
+    same year appears in both, and the sum counts that person twice. They are
+    authorisations, not people. Figures are for 2023, from SEVP&rsquo;s
+    top-100 and top-200 school lists &mdash; an institution outside those lists
+    has no published figure, which is a fact about the list and never a zero.</p>
+    <p class="note"><strong>J-1 physicians.</strong> South Carolina is not in the published top twelve states for J-1 physicians in graduate medical education, which is the only state breakdown ECFMG publishes. That is an absence from a short list, not a zero.</p>
+  </section>
+
+
+  
+  <section class="block" id="residency">
+    <h2>In-state against out-of-state</h2>
+    <p class="lede">Public four-year institutions, FY2024. Every foreign
+    student pays the out-of-state rate, so this is the price attached to the
+    non-resident column everywhere else on this page.</p>
+    <p class="lede">An out-of-state student in South Carolina is worth <strong>2.28&times;</strong> an in-state one to the institution. They are <strong>39.2%</strong> of the students and <strong>57.4%</strong> of the tuition revenue.</p>
+    <div class="table-wrap"><table class="t">
+      <thead><tr><th>Measure</th><th class="num">In-state</th>
+        <th class="num">Out-of-state</th></tr></thead>
+      <tbody><tr><td>Share of students (FTE)</td><td class="num">60.8%</td><td class="num">39.2%</td></tr><tr><td>Net tuition and fees collected per student</td><td class="num">$8,827</td><td class="num share">$20,119</td></tr><tr><td>Share of tuition revenue</td><td class="num">39.0%</td><td class="num share">57.4%</td></tr></tbody></table></div>
+    <p class="note"><strong>Out-of-state is not the same as foreign.</strong>
+    SHEEO counts international students and domestic students from other states
+    in one column. This shows what a non-resident pays, never how many of them
+    are foreign. Figures are <strong>net</strong> tuition and fee revenue per
+    full-time-equivalent student &mdash; what the institution actually
+    collected after its own aid, not the published price. Public four-year
+    institutions only; medical FTE excluded.
+    </p>
+  </section>
+
+
+  <section class="block" id="institutions">
+    <h2>Every institution</h2>
+    <p class="lede">Largest first by total enrolment. A dash means the
+    institution awards none of that degree, or that no federal research money
+    was matched to it.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th>City</th><th>Control</th>
+        <th class="num">Enrolled</th><th class="num">Graduate</th>
+        <th class="num">Master&rsquo;s</th><th class="num">Non-res</th>
+        <th class="num">Doctorates</th><th class="num">Non-res</th>
+        <th class="num">Federal R&amp;D</th></tr></thead>
+      <tbody><tr><td>University of South Carolina-Columbia</td><td class="muted">Columbia</td><td class="muted">public</td><td class="num" data-sort="36579">36,579</td><td class="num" data-sort="8109">8,109</td><td class="num">966</td><td class="num share">267</td><td class="num">1,944</td><td class="num share">495</td><td class="num" data-sort="277329000">$277.3m</td></tr><tr><td>Clemson University</td><td class="muted">Clemson</td><td class="muted">public</td><td class="num" data-sort="28747">28,747</td><td class="num" data-sort="5872">5,872</td><td class="num">3,369</td><td class="num share">1,444</td><td class="num">1,347</td><td class="num share">533</td><td class="num" data-sort="338533000">$338.5m</td></tr><tr><td>College of Charleston</td><td class="muted">Charleston</td><td class="muted">public</td><td class="num" data-sort="11729">11,729</td><td class="num" data-sort="1069">1,069</td><td class="num">177</td><td class="num share">9</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="8662000">$8.7m</td></tr><tr><td>Coastal Carolina University</td><td class="muted">Conway</td><td class="muted">public</td><td class="num" data-sort="10829">10,829</td><td class="num" data-sort="523">523</td><td class="num">102</td><td class="num share">5</td><td class="num">64</td><td class="num share">5</td><td class="num" data-sort="5094000">$5.1m</td></tr><tr><td>Greenville Technical College</td><td class="muted">Greenville</td><td class="muted">public</td><td class="num" data-sort="10661">10,661</td><td class="num" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Piedmont Technical College</td><td class="muted">Greenwood</td><td class="muted">public</td><td class="num" data-sort="4999">4,999</td><td class="num" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>University of South Carolina-Upstate</td><td class="muted">Spartanburg</td><td class="muted">public</td><td class="num" data-sort="4946">4,946</td><td class="num" data-sort="475">475</td><td class="num">5</td><td class="num share">1</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="2764000">$2.8m</td></tr><tr><td>Winthrop University</td><td class="muted">Rock Hill</td><td class="muted">public</td><td class="num" data-sort="4694">4,694</td><td class="num" data-sort="907">907</td><td class="num">84</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="3466000">$3.5m</td></tr><tr><td>Lander University</td><td class="muted">Greenwood</td><td class="muted">public</td><td class="num" data-sort="4363">4,363</td><td class="num" data-sort="694">694</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Anderson University</td><td class="muted">Anderson</td><td class="muted">private nonprofit</td><td class="num" data-sort="4325">4,325</td><td class="num" data-sort="912">912</td><td class="num">68</td><td class="num share">68</td><td class="num">123</td><td class="num share">1</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Francis Marion University</td><td class="muted">Florence</td><td class="muted">public</td><td class="num" data-sort="4017">4,017</td><td class="num" data-sort="394">394</td><td class="num">89</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>University of South Carolina Aiken</td><td class="muted">Aiken</td><td class="muted">public</td><td class="num" data-sort="3855">3,855</td><td class="num" data-sort="746">746</td><td class="num">55</td><td class="num share">1</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="1609000">$1.6m</td></tr><tr><td>Citadel Military College of South Carolina</td><td class="muted">Charleston</td><td class="muted">public</td><td class="num" data-sort="3727">3,727</td><td class="num" data-sort="1066">1,066</td><td class="num">385</td><td class="num share">5</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="4969000">$5.0m</td></tr><tr><td>Charleston Southern University</td><td class="muted">Charleston</td><td class="muted">private nonprofit</td><td class="num" data-sort="3545">3,545</td><td class="num" data-sort="631">631</td><td class="num">107</td><td class="num share">9</td><td class="num">108</td><td class="num share">1</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Medical University of South Carolina</td><td class="muted">Charleston</td><td class="muted">public</td><td class="num" data-sort="3117">3,117</td><td class="num" data-sort="2836">2,836</td><td class="num">161</td><td class="num share">4</td><td class="num">1,279</td><td class="num share">20</td><td class="num" data-sort="320990000">$321.0m</td></tr><tr><td>South Carolina State University</td><td class="muted">Orangeburg</td><td class="muted">public</td><td class="num" data-sort="3041">3,041</td><td class="num" data-sort="279">279</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num">105</td><td class="num share">0</td><td class="num" data-sort="12496000">$12.5m</td></tr><tr><td>Bob Jones University</td><td class="muted">Greenville</td><td class="muted">private nonprofit</td><td class="num" data-sort="2893">2,893</td><td class="num" data-sort="416">416</td><td class="num">78</td><td class="num share">17</td><td class="num">18</td><td class="num share">4</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Columbia International University</td><td class="muted">Columbia</td><td class="muted">private nonprofit</td><td class="num" data-sort="2631">2,631</td><td class="num" data-sort="1715">1,715</td><td class="num">120</td><td class="num share">7</td><td class="num">402</td><td class="num share">40</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Furman University</td><td class="muted">Greenville</td><td class="muted">private nonprofit</td><td class="num" data-sort="2505">2,505</td><td class="num" data-sort="178">178</td><td class="num">23</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="3231000">$3.2m</td></tr><tr><td>North Greenville University</td><td class="muted">Tigerville</td><td class="muted">private nonprofit</td><td class="num" data-sort="2219">2,219</td><td class="num" data-sort="275">275</td><td class="num">12</td><td class="num share">0</td><td class="num">67</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>University of South Carolina Beaufort</td><td class="muted">Bluffton</td><td class="muted">public</td><td class="num" data-sort="2121">2,121</td><td class="num" data-sort="54">54</td><td class="num">14</td><td class="num share">6</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="1177000">$1.2m</td></tr><tr><td>Strayer University-South Carolina</td><td class="muted">Greenville</td><td class="muted">private for-profit</td><td class="num" data-sort="2061">2,061</td><td class="num" data-sort="231">231</td><td class="num">18</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Claflin University</td><td class="muted">Orangeburg</td><td class="muted">private nonprofit</td><td class="num" data-sort="1835">1,835</td><td class="num" data-sort="81">81</td><td class="num">33</td><td class="num share">12</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="1816000">$1.8m</td></tr><tr><td>Benedict College</td><td class="muted">Columbia</td><td class="muted">private nonprofit</td><td class="num" data-sort="1731">1,731</td><td class="num" data-sort="37">37</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="7788000">$7.8m</td></tr><tr><td>Columbia College</td><td class="muted">Columbia</td><td class="muted">private nonprofit</td><td class="num" data-sort="1572">1,572</td><td class="num" data-sort="304">304</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Newberry College</td><td class="muted">Newberry</td><td class="muted">private nonprofit</td><td class="num" data-sort="1507">1,507</td><td class="num" data-sort="45">45</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Converse University</td><td class="muted">Spartanburg</td><td class="muted">private nonprofit</td><td class="num" data-sort="1341">1,341</td><td class="num" data-sort="489">489</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num">117</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Coker University</td><td class="muted">Hartsville</td><td class="muted">private nonprofit</td><td class="num" data-sort="1263">1,263</td><td class="num" data-sort="76">76</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Southern Wesleyan University</td><td class="muted">Central</td><td class="muted">private nonprofit</td><td class="num" data-sort="1188">1,188</td><td class="num" data-sort="301">301</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num">61</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Presbyterian College</td><td class="muted">Clinton</td><td class="muted">private nonprofit</td><td class="num" data-sort="1136">1,136</td><td class="num" data-sort="233">233</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Erskine College</td><td class="muted">Due West</td><td class="muted">private nonprofit</td><td class="num" data-sort="984">984</td><td class="num" data-sort="130">130</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num">21</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Allen University</td><td class="muted">Columbia</td><td class="muted">private nonprofit</td><td class="num" data-sort="677">677</td><td class="num" data-sort="42">42</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Charleston School of Law</td><td class="muted">Charleston</td><td class="muted">private for-profit</td><td class="num" data-sort="675">675</td><td class="num" data-sort="675">675</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Voorhees University</td><td class="muted">Denmark</td><td class="muted">private nonprofit</td><td class="num" data-sort="515">515</td><td class="num" data-sort="55">55</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>South University-Columbia</td><td class="muted">Columbia</td><td class="muted">private for-profit</td><td class="num" data-sort="509">509</td><td class="num" data-sort="64">64</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Sherman College of Chiropractic</td><td class="muted">Boiling Springs</td><td class="muted">private nonprofit</td><td class="num" data-sort="381">381</td><td class="num" data-sort="381">381</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr></tbody></table></div>
+    <p class="note">Degrees are pooled over
+    2021&ndash;2025. Enrolment
+    and federal money are the most recent year in the file. &ldquo;Non-res&rdquo;
+    means a student here on a temporary visa, almost always F-1 or J-1. A green
+    card holder is not counted in it.</p>
+  </section>
+
+  <section class="block" id="concentration">
+    <h2>How few institutions this is</h2>
+    <p class="lede">Of the 36 institutions in
+    South Carolina, <strong>13</strong> award a research doctorate at
+    all, and the largest two award 58.2% of them.
+    A state&rsquo;s graduate pipeline is a much smaller thing than its list of
+    colleges.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Research doctorates</th>
+        <th class="num">Non-resident</th><th class="num share-col">Share</th>
+        <th class="num">Share of the state&rsquo;s doctorates</th></tr></thead>
+      <tbody><tr><td>University of South Carolina-Columbia</td><td class="num">1,944</td><td class="num">495</td><td class="num share">25.5%</td><td class="num muted">34.4%</td></tr><tr><td>Clemson University</td><td class="num">1,347</td><td class="num">533</td><td class="num share">39.6%</td><td class="num muted">23.8%</td></tr><tr><td>Medical University of South Carolina</td><td class="num">1,279</td><td class="num">20</td><td class="num share">1.6%</td><td class="num muted">22.6%</td></tr><tr><td>Columbia International University</td><td class="num">402</td><td class="num">40</td><td class="num share">10.0%</td><td class="num muted">7.1%</td></tr><tr><td>Anderson University</td><td class="num">123</td><td class="num">1</td><td class="num share">0.8%</td><td class="num muted">2.2%</td></tr><tr><td>Converse University</td><td class="num">117</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">2.1%</td></tr><tr><td>Charleston Southern University</td><td class="num">108</td><td class="num">1</td><td class="num share">0.9%</td><td class="num muted">1.9%</td></tr><tr><td>South Carolina State University</td><td class="num">105</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">1.9%</td></tr><tr><td>North Greenville University</td><td class="num">67</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">1.2%</td></tr><tr><td>Coastal Carolina University</td><td class="num">64</td><td class="num">5</td><td class="num share">7.8%</td><td class="num muted">1.1%</td></tr><tr><td>Southern Wesleyan University</td><td class="num">61</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">1.1%</td></tr><tr><td>Erskine College</td><td class="num">21</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">0.4%</td></tr><tr><td>Bob Jones University</td><td class="num">18</td><td class="num">4</td><td class="num share">22.2%</td><td class="num muted">0.3%</td></tr></tbody></table></div>
+  </section>
+  <section class="block" id="survey">
+    <h2>The foreign share of graduate students, where the survey reaches</h2>
+    <p class="lede">The NSF Survey of Graduate Students and Postdoctorates asks
+    institutions directly, and it covers 9 of the
+    36 institutions in South Carolina. It is a different
+    measure from the degree counts above: enrolled students rather than degrees
+    awarded.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Doctoral students foreign</th>
+        <th class="num">Master&rsquo;s students foreign</th></tr></thead>
+      <tbody><tr><td>Coastal Carolina University</td><td class="num share">80.0%</td><td class="num">16.7%</td></tr><tr><td>Clemson University</td><td class="num share">58.3%</td><td class="num">47.3%</td></tr><tr><td>University of South Carolina-Columbia</td><td class="num share">52.5%</td><td class="num">21.4%</td></tr><tr><td>Medical University of South Carolina</td><td class="num share">16.9%</td><td class="num">0.0%</td></tr><tr><td>College of Charleston</td><td class="num share">&mdash;%</td><td class="num">2.2%</td></tr><tr><td>Winthrop University</td><td class="num share">&mdash;%</td><td class="num">2.3%</td></tr><tr><td>Citadel Military College of South Carolina</td><td class="num share">&mdash;%</td><td class="num">1.6%</td></tr><tr><td>Furman University</td><td class="num share">&mdash;%</td><td class="num">0.0%</td></tr><tr><td>Claflin University</td><td class="num share">&mdash;%</td><td class="num">0.0%</td></tr></tbody></table></div>
+    <div class="callout">
+      <h3>Coastal Carolina University</h3>
+      <p>The highest foreign share of doctoral students in the state, at
+      <strong>80.0%</strong>. It is not the largest institution here
+      and it is not the one with the most federal money. Size and share are
+      different questions, and a state page that ranked only by size would not
+      show this.</p>
+    </div>
+  </section>
+  <section class="block" id="state-money">
+    <h2>What the state itself puts in</h2>
+    <p class="lede">State appropriations per full-time-equivalent student, from
+    the SHEEO finance survey, against the change in the foreign share of
+    graduate enrolment over the same window.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Measure</th><th class="num">First year</th>
+        <th class="num">Last year</th><th class="num">Change</th></tr></thead>
+      <tbody>
+        <tr><td>State appropriations per FTE student</td>
+          <td class="num">$6,902</td>
+          <td class="num">$7,552</td>
+          <td class="num share">+9.4%</td></tr>
+        <tr><td>Foreign share of graduate enrolment</td>
+          <td class="num">10.2%</td>
+          <td class="num">12.6%</td>
+          <td class="num share">+2.3 pts</td></tr>
+      </tbody></table></div>
+    <p class="note">These two rows move for their own reasons. Nothing here
+    shows that one caused the other, and the page does not say it did.</p>
+  </section>
+  <section class="block" id="departments">
+    <h2>Department by department</h2>
+    <p class="lede">The dissertation corpus reaches
+    2 institutions in this state,
+    covering 43 departments.
+    <strong>18</strong> of them are majority non-resident.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th>Department</th>
+        <th class="num">Doctorates</th><th class="num">Non-resident</th>
+        <th class="num share-col">Share</th></tr></thead>
+      <tbody><tr><td class="muted">Clemson</td><td>Electrical and Electronics Engineering</td><td class="num">77</td><td class="num">66</td><td class="num share">85.7%</td></tr><tr><td class="muted">Clemson</td><td>Civil Engineering, General</td><td class="num">103</td><td class="num">86</td><td class="num share">83.5%</td></tr><tr><td class="muted">Clemson</td><td>Mechanical Engineering</td><td class="num">90</td><td class="num">74</td><td class="num share">82.2%</td></tr><tr><td class="muted">Clemson</td><td>Computer Engineering, General</td><td class="num">25</td><td class="num">19</td><td class="num share">76.0%</td></tr><tr><td class="muted">Clemson</td><td>Industrial Engineering</td><td class="num">55</td><td class="num">41</td><td class="num share">74.5%</td></tr><tr><td class="muted">Clemson</td><td>Engineering, Other</td><td class="num">70</td><td class="num">52</td><td class="num share">74.3%</td></tr><tr><td class="muted">Clemson</td><td>Physics, General</td><td class="num">66</td><td class="num">43</td><td class="num share">65.2%</td></tr><tr><td class="muted">Clemson</td><td>Materials Engineering</td><td class="num">59</td><td class="num">34</td><td class="num share">57.6%</td></tr><tr><td class="muted">Clemson</td><td>Chemistry, General</td><td class="num">108</td><td class="num">59</td><td class="num share">54.6%</td></tr><tr><td class="muted">Clemson</td><td>Environmental/Environmental Health Engineering</td><td class="num">41</td><td class="num">22</td><td class="num share">53.7%</td></tr><tr><td class="muted">Clemson</td><td>Chemical Engineering</td><td class="num">47</td><td class="num">25</td><td class="num share">53.2%</td></tr><tr><td class="muted">Clemson</td><td>Computer and Information Sciences, General</td><td class="num">44</td><td class="num">23</td><td class="num share">52.3%</td></tr><tr><td class="muted">Clemson</td><td>Mathematics, General</td><td class="num">87</td><td class="num">39</td><td class="num share">44.8%</td></tr><tr><td class="muted">Clemson</td><td>Bioengineering and Biomedical Engineering</td><td class="num">122</td><td class="num">47</td><td class="num share">38.5%</td></tr><tr><td class="muted">Clemson</td><td>Biochemistry</td><td class="num">24</td><td class="num">9</td><td class="num share">37.5%</td></tr><tr><td class="muted">Clemson</td><td>Informatics</td><td class="num">24</td><td class="num">8</td><td class="num share">33.3%</td></tr><tr><td class="muted">Clemson</td><td>Biology/Biological Sciences, General</td><td class="num">28</td><td class="num">7</td><td class="num share">25.0%</td></tr><tr><td class="muted">Clemson</td><td>Animal Genetics</td><td class="num">20</td><td class="num">5</td><td class="num share">25.0%</td></tr><tr><td class="muted">Clemson</td><td>Human/Medical Genetics</td><td class="num">24</td><td class="num">6</td><td class="num share">25.0%</td></tr><tr><td class="muted">Clemson</td><td>Toxicology</td><td class="num">18</td><td class="num">4</td><td class="num share">22.2%</td></tr><tr><td class="muted">Clemson</td><td>Engineering-Related Fields, Other</td><td class="num">17</td><td class="num">1</td><td class="num share">5.9%</td></tr><tr><td class="muted">Clemson</td><td>Industrial and Organizational Psychology</td><td class="num">42</td><td class="num">1</td><td class="num share">2.4%</td></tr><tr><td class="muted">Clemson</td><td>Psychology, Other</td><td class="num">18</td><td class="num">0</td><td class="num share">0.0%</td></tr><tr><td class="muted">U South Carolina</td><td>Mechanical Engineering</td><td class="num">90</td><td class="num">76</td><td class="num share">84.4%</td></tr><tr><td class="muted">U South Carolina</td><td>Statistics, General</td><td class="num">46</td><td class="num">37</td><td class="num share">80.4%</td></tr><tr><td class="muted">U South Carolina</td><td>Civil Engineering, General</td><td class="num">55</td><td class="num">43</td><td class="num share">78.2%</td></tr><tr><td class="muted">U South Carolina</td><td>Computer Engineering, General</td><td class="num">71</td><td class="num">55</td><td class="num share">77.5%</td></tr><tr><td class="muted">U South Carolina</td><td>Electrical and Electronics Engineering</td><td class="num">66</td><td class="num">51</td><td class="num share">77.3%</td></tr><tr><td class="muted">U South Carolina</td><td>Chemical Engineering</td><td class="num">96</td><td class="num">57</td><td class="num share">59.4%</td></tr><tr><td class="muted">U South Carolina</td><td>Physics, General</td><td class="num">38</td><td class="num">19</td><td class="num share">50.0%</td></tr><tr><td class="muted">U South Carolina</td><td>Chemistry, General</td><td class="num">193</td><td class="num">87</td><td class="num share">45.1%</td></tr><tr><td class="muted">U South Carolina</td><td>Geology/Earth Science, General</td><td class="num">25</td><td class="num">11</td><td class="num share">44.0%</td></tr><tr><td class="muted">U South Carolina</td><td>Biostatistics</td><td class="num">16</td><td class="num">7</td><td class="num share">43.8%</td></tr><tr><td class="muted">U South Carolina</td><td>Epidemiology</td><td class="num">54</td><td class="num">18</td><td class="num share">33.3%</td></tr><tr><td class="muted">U South Carolina</td><td>Biomedical Sciences, General</td><td class="num">65</td><td class="num">21</td><td class="num share">32.3%</td></tr><tr><td class="muted">U South Carolina</td><td>Mathematics, General</td><td class="num">57</td><td class="num">16</td><td class="num share">28.1%</td></tr><tr><td class="muted">U South Carolina</td><td>Bioengineering and Biomedical Engineering</td><td class="num">18</td><td class="num">5</td><td class="num share">27.8%</td></tr><tr><td class="muted">U South Carolina</td><td>Marine Biology and Biological Oceanography</td><td class="num">18</td><td class="num">4</td><td class="num share">22.2%</td></tr><tr><td class="muted">U South Carolina</td><td>Biology/Biological Sciences, General</td><td class="num">65</td><td class="num">14</td><td class="num share">21.5%</td></tr><tr><td class="muted">U South Carolina</td><td>Experimental Psychology</td><td class="num">26</td><td class="num">4</td><td class="num share">15.4%</td></tr><tr><td class="muted">U South Carolina</td><td>Exercise Physiology and Kinesiology</td><td class="num">57</td><td class="num">7</td><td class="num share">12.3%</td></tr><tr><td class="muted">U South Carolina</td><td>School Psychology</td><td class="num">32</td><td class="num">2</td><td class="num share">6.2%</td></tr><tr><td class="muted">U South Carolina</td><td>Clinical Psychology</td><td class="num">55</td><td class="num">3</td><td class="num share">5.5%</td></tr></tbody></table></div>
+    <p class="note">From the dissertation corpus, which is built from what
+    universities publish about their own graduates. It covers the institutions
+    on this site, not every institution in the state, so it is a floor.</p>
+  </section>
+  <section class="block" id="not-published">
+    <h2>What is not published for a state this size</h2>
+    <p class="lede">Two of the measures this site uses elsewhere do not exist
+    at this scale, and the reason is the same in both cases: the agency
+    publishes a ranked extract rather than the whole file.</p>
+    <ul class="lede">
+      <li><strong>Practical training is not published here.</strong> SEVP
+      releases the top 100 and top 200 schools for OPT and STEM OPT, not every
+      school. An institution outside those lists has no published figure at
+      all. Its absence is a fact about the list, not about the institution, and
+      it must never be read as a zero.</li>
+      <li><strong>Student visa counts are not published by state.</strong> DHS
+      reports SEVIS records nationally and names a few states per region in its
+      commentary. For most states it publishes a percentage change and no
+      count, so the number of foreign students physically in a state cannot be
+      read off the federal release.</li>
+      <li><strong>Enrolment is the measure that does exist.</strong> IPEDS asks
+      every institution directly, which is why this page is built from it. It
+      counts students enrolled, not visas issued, and the two are different
+      questions.</li>
+    </ul>
+  </section>
+
+  <section class="block" id="method">
+    <h2>Method and limits</h2>
+    <ul class="lede">
+      <li><strong>Non-resident means here on a temporary visa.</strong> IPEDS
+      defines it as a person &ldquo;who is not a citizen or national of the
+      United States and who is in this country on a visa or temporary basis and
+      does not have the right to remain indefinitely.&rdquo; A green card holder
+      is therefore never counted here. Neither is a refugee or an asylee. Those
+      students are reported in the race and ethnicity categories alongside
+      citizens. For students the category is overwhelmingly F-1 and J-1.</li>
+      <li><strong>It is not ethnicity and not country of origin.</strong> A
+      US-born citizen of any background is never non-resident. The status is
+      recorded when the student enrols, for the enrolment figures, and when the
+      degree is awarded, for the degree counts. These files cannot be split any
+      other way.</li>
+      <li><strong>Degrees are pooled</strong> over
+      2021&ndash;2025, because a
+      single year at a small institution moves on one student.</li>
+      <li><strong>Enrolment and awards are different measures</strong> and will
+      not agree. One counts people on a given day; the other counts degrees
+      conferred over five years.</li>
+      <li><strong>Federal money is matched to a campus</strong>, and a system
+      that reports centrally can carry money its branches spend.</li>
+      <li><strong>This page shows composition, not displacement.</strong> It
+      records who received the degrees. It does not show that anyone was kept
+      out, and nothing here should be read that way.</li>
+    </ul>
+    <p class="note">Built by <code>scripts/build_state_pages.py</code> from
+    <a href="/data/institution_profiles.json">institution_profiles.json</a>,
+    <a href="/data/state_funding_and_enrolment.json">state_funding_and_enrolment.json</a>
+    and <a href="/data/university_distribution.json">university_distribution.json</a>.
+    Compare the country on <a href="/overview">the national overview</a>.</p>
+  </section>
+
+</div>
+</main>
+<script src="/analytics-beacon.js" defer></script>
+<script src="/states.js" defer></script>
+<script src="/anchors.js" defer></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

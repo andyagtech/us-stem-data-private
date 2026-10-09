@@ -9,6 +9,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>US Graduate Program Demographics and Funding</title>
+<link rel="stylesheet" href="/style.css">
 <style>
   :root {
     --bg: #0f172a; --surface: #1e293b; --border: #334155;
@@ -16,7 +17,7 @@
     --hl: #f0a5ae;
 }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+  body { font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
   /* Hero */
   .hero { padding: 4rem 1.5rem 3rem; text-align: center; background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%); border-bottom: 1px solid var(--border); }
@@ -80,7 +81,14 @@
   tr.case-row .inst::after { content: " \203A"; color: var(--text-muted);
     display: inline-block; transition: transform .15s; }
   tr.case-row.open .inst::after { transform: rotate(90deg); }
-  tr.detail-row td { background: rgba(15,23,42,0.6); padding: 1rem 1.1rem; }
+  /* The expanded row used a hardcoded rgba(15,23,42,0.6). On the dark ground
+     that reads as a recessed panel; in light mode it paints a grey slab over
+     white and every text token -- which is near-black in light mode -- then
+     sits on grey. Use the surface token instead, which is #f6f7f9 in light and
+     #1e293b in dark, so the panel is a LIFT in both themes rather than a
+     darkening in one of them. */
+  tr.detail-row td { background: var(--surface); padding: 1rem 1.1rem;
+    border-left: 3px solid var(--accent); }
   .detail-h { color: var(--text-muted); font-size: 0.78rem; margin: 0 0 .6rem;
     text-transform: uppercase; letter-spacing: .06em; }
   table.detail-years { border-collapse: collapse; font-size: 0.82rem;
@@ -115,6 +123,19 @@
   .prov-check a { color: var(--accent); }
   .sub-source { display: block; margin-top: .6rem; font-size: .82rem;
     color: var(--text-muted); }
+  .field-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; margin: 1.3rem 0 0; }
+  @media (max-width: 620px) { .field-cols { grid-template-columns: 1fr; } }
+  .field-head { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--text-muted); margin: 0 0 .5rem; }
+  ol.field-list { list-style: none; margin: 0; padding: 0; }
+  ol.field-list li { display: grid; grid-template-columns: 3.6rem 1fr; gap: .6rem;
+    padding: .34rem 0; border-bottom: 1px solid var(--border); align-items: baseline; }
+  ol.field-list .p { font-weight: 800; font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+  ol.field-list.low .p { color: #4ade80; }
+  ol.field-list .t { font-size: .88rem; line-height: 1.35; }
+  ol.field-list .c { display: block; font-size: .72rem; color: var(--text-muted); margin-top: .1rem; }
+  ul.case-list { margin: .6rem 0 0; padding-left: 1.15rem; }
+  ul.case-list li { margin: 0 0 .7rem; line-height: 1.6; }
   .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.2rem 0 0; }
   @media (max-width: 620px) { .compare { grid-template-columns: 1fr; } }
   .compare-item { border: 1px solid var(--border); border-radius: 12px;
@@ -258,9 +279,9 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
   <p class="case-kicker">Federal records: IPEDS, NSF, State Department, DHS, IRS</p>
   <h1 id="finding">American universities, <span class="hl">paid for by American
     taxpayers</span>, train a foreign elite.</h1>
-  <p class="subtitle">Every graduate seat is one an American applicant did not get.
-    The degree is now a route to a work visa. Some schools enrol almost no one
-    else. They still take federal money.</p>
+  <p class="subtitle">Every graduate seat filled by an international student is
+    one an American did not get. Universities sold out the American people,
+    while still receiving federal and state money.</p>
 
   <ol class="case">
     <li class="case-step">
@@ -286,11 +307,15 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
     <li class="case-step">
       <span class="case-n" aria-hidden="true">3</span>
       <p class="case-h">The degree becomes a cheaper worker</p>
-      <p class="case-num">194,554</p>
-      <p class="case-what">students on OPT work permits in 2024, <strong>2.5&times;</strong>
-        the 77,619 of 2014. Employers owe no payroll tax on their wages. That makes them
-        <strong>15.3% cheaper</strong> to hire than an American graduate. Their right to be
-        here is tied to their job, and employers like dependent workers.</p>
+      <p class="case-num"><!--auto:data:opt_national.series.2024.opt|n-->194,554<!--/auto--></p>
+      <p class="case-what">students on OPT work permits in 2024, <strong><!--auto:opt_growth_since_2014-->2.5&times;<!--/auto--></strong>
+        the <!--auto:data:opt_national.series.2014.opt|n-->77,619<!--/auto--> of 2014. Employers owe no
+        payroll tax on their wages. The employer saves
+        <!--auto:data:fica_exposure.rates.employer_side|pct2-->7.65%<!--/auto-->. The worker keeps
+        another <!--auto:data:fica_exposure.rates.employer_side|pct2-->7.65%<!--/auto-->. Together that is
+        <strong><!--auto:data:fica_exposure.rates.employer_plus_employee|pct1-->15.3%<!--/auto--> less</strong>
+        than an American graduate costs. Their right to be here is tied to their job, and
+        employers like dependent workers.</p>
       <p class="case-src">26 U.S.C. 3121(b)(19) &middot; 8 CFR 214.2(f)(10) &middot; DHS SEVP &middot;
         <a href="/visa-schools#cheaper" data-track="case.cheaper">Why an OPT hire costs less</a></p>
     </li>
@@ -306,7 +331,7 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
         <a href="/visa-schools" data-track="case.visa-schools">The schools</a></p>
     </li>
   </ol>
-  <p class="hero-note"><a href="#who-pays" data-track="anchor.who-pays">Who gets funded</a>&nbsp;&middot; <a href="#clearance" data-track="anchor.clearance">The clearance test</a>&nbsp;&middot; <a href="#opportunity" data-track="anchor.opportunity">The seats</a>&nbsp;&middot; <a href="#cases" data-track="anchor.cases-2">The 49 departments</a>&nbsp;&middot; <a href="#public-cost" data-track="anchor.public-cost">What the public puts in</a>&nbsp;&middot; <a href="/expansion" data-track="nav.expansion">The master&rsquo;s expansion</a>&nbsp;&middot; <a href="/rankings" data-track="nav.rankings">Where the share is highest</a>&nbsp;&middot; <a href="/filers" data-track="nav.filers">Who files the visas</a>&nbsp;&middot; <a href="#method" data-track="anchor.method">Method and limits</a></p>
+  <p class="hero-note"><a href="#who-pays" data-track="anchor.who-pays">Who gets funded</a>&nbsp;&middot; <a href="#opportunity" data-track="anchor.opportunity">The seats</a>&nbsp;&middot; <a href="#cases" data-track="anchor.cases-2">The 49 departments</a>&nbsp;&middot; <a href="#public-cost" data-track="anchor.public-cost">What the public puts in</a>&nbsp;&middot; <a href="/expansion" data-track="nav.expansion">The master&rsquo;s expansion</a>&nbsp;&middot; <a href="/rankings" data-track="nav.rankings">Where the share is highest</a>&nbsp;&middot; <a href="/filers" data-track="nav.filers">Who files the visas</a>&nbsp;&middot; <a href="#fields" data-track="anchor.fields">Most and fewest fields</a>&nbsp;&middot; <a href="#method" data-track="anchor.method">Method and limits</a></p>
 </div>
 
 <div class="content">
@@ -350,6 +375,67 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
     runs through <strong>every one of the nineteen fields</strong> the survey
     covers, from social sciences to engineering. Not one runs the other way.</p>
 
+    <p class="lede" style="margin-top:1rem">Six places that pattern shows up.
+    Every figure below is built from the data and moves when the data
+    moves.</p>
+
+    <ul class="lede case-list">
+      <li><a href="/stem.html#missouri_st" data-track="case.missouri">Missouri
+        S&amp;T</a> takes
+        <strong><!--auto:data:institution_profiles.institutions[unitid=178411].federal.rd_total|usdm-->$69.5m<!--/auto--></strong>
+        in federal research and development money.
+        <strong><!--auto:data:university_distribution.missouri_st.majority_non_resident|n-->16<!--/auto--></strong>
+        of its
+        <!--auto:data:university_distribution.missouri_st.departments|n-->18<!--/auto-->
+        doctoral departments are majority non-resident, and the institution
+        pools at
+        <strong><!--auto:data:university_distribution.missouri_st.pooled_share|pct1-->75.1%<!--/auto--></strong>.</li>
+
+      <li>Critical fields are not exempt.
+        <a href="/industries/petroleum" data-track="case.petroleum">Petroleum
+        engineering</a> doctorates go to non-residents
+        <strong><!--auto:data:critical_industries.industries[slug=petroleum].share|pct1-->85.3%<!--/auto--></strong>
+        of the time, across
+        <!--auto:data:critical_industries.industries[slug=petroleum].doctorates|n-->943<!--/auto-->
+        doctorates.</li>
+
+      <li>The degrees become the workforce.
+        <strong><!--auto:data:workforce_dashboard.by_field[field=Electrical &amp; Computer Eng].foreign_born_pct|pct1-->70.5%<!--/auto--></strong>
+        of American
+        <a href="/workforce" data-track="case.workforce">electrical and
+        computer engineering doctorate holders</a> are foreign-born.</li>
+
+      <li>Some institutions
+        <a href="/visa-schools" data-track="case.visa-schools">sell the
+        route</a>. At the
+        <!--auto:data:visa_schools.totals.schools|n-->57<!--/auto-->
+        colleges where foreign students are most of the graduate enrolment,
+        undergraduates drew
+        <strong><!--auto:data:visa_schools.totals.federal_loan_dollars|usdm-->$618.2m<!--/auto--></strong>
+        in federal loans, and the schools reported paying
+        <strong><!--auto:data:visa_schools.totals.recruiting_firm_dollars|usdm-->$89.7m<!--/auto--></strong>
+        to recruiting firms.</li>
+
+      <li>The visa has a price. For software developers, the
+        <a href="/bodyshops" data-track="case.bodyshops">firms that place
+        workers at another company</a> promise a median
+        <strong><!--auto:data:visa_bodyshops.by_occupation[occupation=Software Developers].placed_median_wage|usd-->$105,997<!--/auto--></strong>
+        against
+        <strong><!--auto:data:visa_bodyshops.by_occupation[occupation=Software Developers].direct_median_wage|usd-->$145,116<!--/auto--></strong>
+        for a direct hire. Same job title, a
+        <!--auto:data:visa_bodyshops.by_occupation[occupation=Software Developers].gap_pct|pct1-->27.0%<!--/auto-->
+        gap.</li>
+
+      <li>It reaches medicine.
+        <strong><!--auto:data:medical_dashboard.nrmp_2026.imgs_matched|n-->9,682<!--/auto--></strong>
+        of
+        <!--auto:data:medical_dashboard.nrmp_2026.pgy1_positions_offered|n-->41,126<!--/auto-->
+        first-year
+        <a href="/medical" data-track="case.medical">residency positions</a>
+        went to international medical graduates, which is
+        <strong><!--auto:data:medical_dashboard.nrmp_2026.img_share_pct|pct1-->23.5%<!--/auto--></strong>.</li>
+    </ul>
+
     <p class="hero-note" style="text-align:left;max-width:none">
       NSF Survey of Earned Doctorates, Table 4-1 (2024) — a census of research
       doctorate recipients, administered by institutions and completed before
@@ -358,45 +444,11 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
       <a href="#method" data-track="anchor.method-2">Method and limits</a></p>
   </div>
 
-  <div id="clearance" class="section">
-    <h2>What happens when citizenship is required</h2>
-    <p class="lede">Computer science doctorates go to non-residents about
-    <strong>63%</strong> of the time. Information-security doctorates — the
-    field closest to classified work, where a clearance is normally a condition
-    of the job — go to non-residents <strong>2.5%</strong> of the time.</p>
-
-    <div class="compare">
-      <div class="compare-item">
-        <div class="compare-num">63.1<span>%</span></div>
-        <div class="compare-lab">Computer Science</div>
-        <div class="compare-sub">8,624 doctorates · 119 institutions</div>
-      </div>
-      <div class="compare-item compare-low">
-        <div class="compare-num">2.5<span>%</span></div>
-        <div class="compare-lab">Computer &amp; Information Systems Security</div>
-        <div class="compare-sub">511 doctorates · 8 institutions</div>
-      </div>
-    </div>
-
-    <p class="lede" style="margin-top:1rem">Same discipline. Largely the same
-    universities. The difference is that one of them requires citizenship and the
-    other does not — and where it is required, Americans fill the programmes.
-    That is worth sitting with: the composition of these fields is not a fact
-    of nature or a shortage of American talent. It responds to what is asked
-    for.</p>
-
-    <p class="hero-note" style="text-align:left;max-width:none">
-      The security programmes are small &mdash; 511 doctorates against 8,624.
-      What IPEDS records is which degrees were awarded, not why anyone was
-      admitted. <a href="#method" data-track="anchor.method-3">How far this can be pushed</a>.</p>
-  </div>
-
   <div id="same-campus" class="section">
     <h2>The same university, two programmes</h2>
-    <p class="lede">The clearance contrast holds across two fields. This one
-    holds inside a single institution &mdash; same campus, same degree level,
-    same admissions office &mdash; which removes the easiest objection to all of
-    it.</p>
+    <p class="lede">One institution. Same campus, same degree level, same
+    admissions office. The only thing that changes is the subject, and that
+    removes the easiest objection to all of it.</p>
 
     <div class="compare">
       <div class="compare-side">
@@ -557,16 +609,6 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
           <div class="card-meta">509,072 STEM records &middot; 2010&ndash;2026</div>
         </div>
       </a>
-      <a class="card" href="non_stem.html">
-        <div class="card-title">Non-STEM Graduate Names</div>
-        <div class="card-desc">Education, Humanities, Social Sciences, and other non-STEM dissertations at the same universities.</div>
-        <div class="card-meta">199,321 records</div>
-      </a>
-      <a class="card" href="stem_dashboard.html">
-        <div class="card-title">Approximate Classifications</div>
-        <div class="card-desc">Name-based origin classification trends across universities and fields with searchable lookup.</div>
-        <div class="card-meta">Surname-based estimates</div>
-      </a>
     </div>
   </div>
 
@@ -589,6 +631,36 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
         <div class="card-meta">Slide deck &middot; 1995&ndash;2025 &middot; IPEDS</div>
       </a>
     </div>
+  </div>
+
+  <div id="fields" class="section">
+    <h2>The fields with the most non-residents, and the fewest</h2>
+    <p class="lede">Every research doctorate awarded in the United States, by
+    four-digit field, pooled across every institution. A field qualifies with
+    at least <span data-f="min">&hellip;</span> doctorates nationally. The
+    spread is the finding: these are not slightly different numbers.</p>
+
+    <div class="field-cols">
+      <div>
+        <p class="field-head">Most non-resident</p>
+        <ol class="field-list" id="fields-top"><li class="loading">Loading&hellip;</li></ol>
+      </div>
+      <div>
+        <p class="field-head">Fewest non-resident</p>
+        <ol class="field-list" id="fields-bottom"><li class="loading">Loading&hellip;</li></ol>
+      </div>
+    </div>
+
+    <p class="lede" style="margin-top:1rem">The composition of a field is not a
+    fact of nature. It is not a shortage of American talent either, because
+    the same country fills the bottom list to the brim. It responds to what is
+    asked for.</p>
+
+    <p class="hero-note" style="text-align:left;max-width:none">
+      Pooled 2015&ndash;2022. What IPEDS records is which degrees were awarded,
+      not why anyone was admitted.
+      <a href="/distributions" data-track="nav.distributions-2">The full distribution</a> &middot;
+      <a href="#method" data-track="anchor.method-3">How far this can be pushed</a>.</p>
   </div>
 
   <div id="reference" class="section">
@@ -622,6 +694,24 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
     </div>
   </div>
 
+
+  <div id="other-records" class="section">
+    <h2>Other record sets</h2>
+    <p class="lede">The same universities, read two other ways. Neither is the
+    STEM corpus and neither should be quoted as it.</p>
+    <div class="card-grid">
+      <a class="card" href="non_stem.html">
+        <div class="card-title">Non-STEM Graduate Names</div>
+        <div class="card-desc">Education, Humanities, Social Sciences, and other non-STEM dissertations at the same universities.</div>
+        <div class="card-meta">199,321 records</div>
+      </a>
+      <a class="card" href="stem_dashboard.html">
+        <div class="card-title">Approximate Classifications</div>
+        <div class="card-desc">Name-based origin classification trends across universities and fields with searchable lookup.</div>
+        <div class="card-meta">Surname-based estimates</div>
+      </a>
+    </div>
+  </div>
 
   <div id="contact" class="section contact-section">
     <h2>Get in touch</h2>
@@ -665,12 +755,6 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
         reading &mdash; IPEDS records degrees awarded, not who applied, who was
         admitted, or why anyone chose a programme. The gaps are measured. The
         explanation is not.</li>
-      <li><strong>The clearance contrast is a reading.</strong> Information
-        security runs at 2.5% non-resident against computer science at 63.1%,
-        and the obvious explanation is that a clearance is normally a condition
-        of the job. IPEDS cannot confirm that: it records degrees awarded, not
-        why anyone was admitted, and 511 doctorates is a small base. The
-        contrast is measured; the explanation for it is inferred.</li>
       <li><strong>Awards and funding, not admissions.</strong> IPEDS records
         which degrees were awarded and to whom; it does not record who applied
         or who was admitted. Domestic STEM doctorates rose about a third
@@ -707,6 +791,41 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 <script src="/anchors.js" defer></script>
 
 <script>
+
+/* The most and fewest non-resident fields, from /data/programme_shares.json.
+   Rendered rather than typed, so a rebuild moves the homepage and a stale
+   figure cannot survive one. */
+(function () {
+  function esc(t) {
+    return String(t == null ? '' : t).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function paint(host, rows, low) {
+    if (!host) return;
+    host.className = 'field-list' + (low ? ' low' : '');
+    host.innerHTML = rows.map(function (r) {
+      return '<li><span class="p">' + r.share.toFixed(1) + '%</span>' +
+        '<span class="t">' + esc(r.title) +
+        '<span class="c">' + r.doctorates.toLocaleString('en-US') +
+        ' doctorates &middot; ' + r.institutions + ' institutions</span></span></li>';
+    }).join('');
+  }
+  fetch('/data/programme_shares.json').then(function (r) { return r.json(); })
+    .then(function (d) {
+      var rows = d.programmes.slice().sort(function (a, b) { return b.share - a.share; });
+      paint(document.getElementById('fields-top'), rows.slice(0, 6), false);
+      paint(document.getElementById('fields-bottom'), rows.slice(-6).reverse(), true);
+      document.querySelectorAll('[data-f="min"]').forEach(function (el) {
+        el.textContent = d.min_doctorates.toLocaleString('en-US');
+      });
+    })
+    .catch(function () {
+      document.querySelectorAll('.field-list .loading').forEach(function (el) {
+        el.textContent = 'Could not load the field shares.';
+      });
+    });
+})();
 
 function buildDetail(c) {
   var wrap = document.createElement('div');

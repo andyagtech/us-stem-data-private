@@ -8,8 +8,9 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>National Overview — USDS China</title>
+<title>National Overview — PhD Demographics</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="/style.css">
 <style>
   :root {
     --bg: #0f172a; --surface: #1e293b; --border: #334155;
@@ -18,7 +19,7 @@
     --accent5: #fb923c; --danger: #ef4444;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+  body { font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
   .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
 
   /* Navigation */
@@ -28,7 +29,12 @@
   nav .brand { color: var(--text); font-weight: 700; font-size: 0.95rem; }
 
   /* Hero Stats */
-  .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+  .hero { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .7rem; margin-bottom: 2.5rem; }
+  .hero .stat-card { padding: .85rem .7rem; }
+  .hero .number { font-size: 1.5rem; }
+  .hero .label { font-size: .64rem; line-height: 1.3; }
+  @media (max-width: 1250px) { .hero { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 700px)  { .hero { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; text-align: center; }
   .stat-card .number { font-size: 2.2rem; font-weight: 800; color: var(--accent); line-height: 1.1; }
   .stat-card .label { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
@@ -43,6 +49,48 @@
   .chart-box canvas { max-height: 420px; }
 
   /* Two-column layout */
+  .cases-first { margin: 0 0 2.5rem; }
+  .cases-first h2 { margin: 0 0 .3rem; }
+  .cases-first .lede { color: var(--text-muted); font-size: .92rem; margin: 0 0 1rem; max-width: 70ch; }
+  .case-links { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; }
+  @media (max-width: 900px) { .case-links { grid-template-columns: 1fr; } }
+  .case-link { display: flex; flex-direction: column; gap: .3rem; text-decoration: none;
+    border: 1px solid var(--border); border-left-width: 3px; border-left-color: var(--hl);
+    border-radius: 10px; padding: 1rem 1.1rem; background: var(--surface); color: inherit; }
+  .case-link:hover { border-color: var(--hl); }
+  .cl-figure { font-size: 2rem; font-weight: 800; color: var(--hl); line-height: 1;
+    font-variant-numeric: tabular-nums; }
+  .cl-title { font-weight: 700; font-size: 1rem; }
+  .cl-note { font-size: .83rem; line-height: 1.5; color: var(--text-muted); }
+  .tour-start { display: flex; flex-direction: column; align-items: center;
+    gap: .5rem; margin: 1.8rem 0 .5rem; text-align: center; }
+  .tour-btn { display: inline-block; font-weight: 650; font-size: .95rem; text-decoration: none;
+    padding: .6rem 1.6rem; border-radius: 999px; background: var(--hl); color: var(--bg);
+    border: 1px solid var(--hl); }
+  .tour-btn:hover { filter: brightness(1.08); }
+  .tour-note { font-size: .83rem; color: var(--text-muted); max-width: 52ch; line-height: 1.5; }
+  .steps { margin: 2.6rem 0 0; }
+  .steps h2 { margin: 0 0 .3rem; }
+  .steps .lede { color: var(--text-muted); font-size: .92rem; margin: 0 0 1rem; max-width: 70ch; }
+  .step-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
+  .step { display: grid; grid-template-columns: 2.1rem 1fr auto; gap: .9rem;
+    align-items: center; border: 1px solid var(--border); border-radius: 10px;
+    padding: .85rem 1rem; background: var(--surface); }
+  .step-n { font-size: 1.3rem; font-weight: 800; color: var(--text-muted);
+    text-align: center; font-variant-numeric: tabular-nums; }
+  .step-title { font-weight: 700; font-size: 1rem; text-decoration: none; color: var(--hl); }
+  .step-title:hover { text-decoration: underline; }
+  .step-why { margin: .2rem 0 0; font-size: .85rem; line-height: 1.5; color: var(--text-muted); }
+  /* A light button: the step link is the primary action, the tour is the
+     alternative. Making both solid would give the row two equal calls. */
+  .step-tour { font: inherit; font-size: .82rem; font-weight: 650; cursor: pointer;
+    padding: .35rem 1rem; border-radius: 999px; background: transparent;
+    color: var(--hl); border: 1px solid var(--hl); white-space: nowrap; }
+  .step-tour:hover { background: var(--hl); color: var(--bg); }
+  @media (max-width: 620px) {
+    .step { grid-template-columns: 2.1rem 1fr; }
+    .step-tour { grid-column: 2; justify-self: start; margin-top: .4rem; }
+  }
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   @media (max-width: 800px) { .two-col { grid-template-columns: 1fr; } }
 
@@ -103,22 +151,134 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 <!-- /og:cards -->
   <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
   <script defer src="/theme.js"></script>
+<style id="conclusion-style">
+  /* The conclusion closes the page, so it is separated from the evidence
+     above it and from whatever the template puts below. An earlier version
+     had neither margin and collided with the next heading. */
+  .conclusion { border-top: 3px solid var(--hl); margin: 3.5rem 0 2.5rem;
+    padding: 1.6rem 0 0; clear: both; }
+  .conclusion h2 { font-size: 1.35rem; margin: 0 0 .5rem; }
+  .conclusion .cx-lede { font-size: 1.18rem; line-height: 1.55; font-weight: 600;
+    max-width: 60ch; margin: 0 0 1.1rem; }
+  .conclusion .cx-body p { font-size: 1rem; line-height: 1.7; max-width: 68ch;
+    margin: 0 0 .9rem; }
+  .conclusion .cx-body p:last-child { margin-bottom: 0; }
+  .cx-onward { margin: 1.8rem 0 0; padding: 1.1rem 0 0; border-top: 1px solid var(--border); }
+  .cx-onward-head { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--text-muted); margin: 0 0 .7rem; }
+  .cx-next-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: .7rem; }
+  .cx-next { display: block; text-decoration: none; color: inherit;
+    border: 1px solid var(--border); border-radius: 10px; padding: .75rem .9rem;
+    background: var(--surface); }
+  .cx-next:hover { border-color: var(--hl); }
+  .cx-label { display: block; font-weight: 650; font-size: .92rem; color: var(--hl); }
+  .cx-why { display: block; font-size: .8rem; line-height: 1.45; color: var(--text-muted);
+    margin-top: .2rem; }
+</style>
 </head>
 <body>
 <!-- Navigation provided by /nav.js drawer -->
 
 <div class="container">
+
+  <section id="start-here" class="cases-first">
+    <h2 id="the-clearest-cases">The clearest cases</h2>
+    <p class="lede">Three places where the pattern is not subtle. Each links to
+      the page that shows the workings.</p>
+    <div class="case-links">
+      <a class="case-link" href="/universities/njit.html">
+        <span class="cl-figure"><!--auto:data:universities_index.universities[key=njit].nra|pct1-->70.7%<!--/auto--></span>
+        <span class="cl-title">NJIT</span>
+        <span class="cl-note">Non-resident share of STEM doctorates at one
+          public university in Newark. Nearly every doctorate it awards in
+          electrical and computer engineering goes to a temporary visa
+          holder.</span>
+      </a>
+      <a class="case-link" href="/industries/petroleum.html">
+        <span class="cl-figure"><!--auto:data:critical_industries.industries[slug=petroleum].share|pct1-->85.3%<!--/auto--></span>
+        <span class="cl-title">Petroleum engineering</span>
+        <span class="cl-note">The non-resident share of every petroleum
+          engineering doctorate awarded in the United States over the window.
+          An industry the country calls strategic, taught almost entirely to
+          people who cannot work in its restricted parts.</span>
+      </a>
+      <a class="case-link" href="/institutions">
+        <span class="cl-figure"><!--auto:data:level_rankings.levels.masters.institutions_majority_nra|n-->121<!--/auto--></span>
+        <span class="cl-title">The master&rsquo;s, institution by institution</span>
+        <span class="cl-note">Institutions where <strong>most</strong> of the
+          master&rsquo;s degrees awarded go to non-residents, out of
+          <!--auto:data:level_rankings.levels.masters.institutions_eligible|n-->567<!--/auto-->
+          large enough to count. The doctorate is the headline; the
+          master&rsquo;s is the money.</span>
+      </a>
+    </div>
+    <p class="tour-start">
+      <a href="/overview#the-clearest-cases" data-start-tour class="tour-btn">
+        Take the guided tour
+      </a>
+      <span class="tour-note">The assistant walks you through the finding, stop by stop, across the pages that show the workings.</span>
+    </p>
+  </section>
+
+
+  <section id="the-argument" class="steps">
+    <h2 id="the-argument-in-four-steps">The argument, in four steps</h2>
+    <p class="lede">Each step is a section of the site and stands on its own
+      evidence. Read them in order, or take the short tour of any one.</p>
+    <ol class="step-list">
+      <li class="step">
+        <span class="step-n">1</span>
+        <div class="step-body">
+          <a class="step-title" href="/ipeds_dashboard">The public pays for the doctorate</a>
+          <p class="step-why">A STEM doctorate is a funded job, not a purchase.
+            Roughly $875,000 of federal research money stands behind each one.</p>
+        </div>
+        <button type="button" class="step-tour" data-start-tour="step1">Tour</button>
+      </li>
+      <li class="step">
+        <span class="step-n">2</span>
+        <div class="step-body">
+          <a class="step-title" href="/expansion">The master&rsquo;s is a moneymaker</a>
+          <p class="step-why">Ten times the volume of the doctorate, and where
+            the change actually happened. At 121 institutions, most of those
+            degrees go to people who are not Americans.</p>
+        </div>
+        <button type="button" class="step-tour" data-start-tour="step2">Tour</button>
+      </li>
+      <li class="step">
+        <span class="step-n">3</span>
+        <div class="step-body">
+          <a class="step-title" href="/immigration">The degree becomes a visa</a>
+          <p class="step-why">OPT authorizations grew elevenfold since 2007.
+            The degree is the entry point to a work authorization.</p>
+        </div>
+        <button type="button" class="step-tour" data-start-tour="step3">Tour</button>
+      </li>
+      <li class="step">
+        <span class="step-n">4</span>
+        <div class="step-body">
+          <a class="step-title" href="/visa-schools">Who profits</a>
+          <p class="step-why">The schools that sell the route, the firms that
+            hire on the far side, and the public payroll that sponsors
+            directly.</p>
+        </div>
+        <button type="button" class="step-tour" data-start-tour="step4">Tour</button>
+      </li>
+    </ol>
+  </section>
+
   <h1 id="national-graduate-education-overview">National Graduate Education Overview</h1>
   <p class="subtitle">Aggregate data from NSF Survey of Earned Doctorates, NSF Graduate Student Survey, and IPEDS</p>
 
   <!-- ===== 1. HERO STATS ===== -->
   <div class="hero">
     <div class="stat-card">
-      <div class="number">58,131</div>
+      <div class="number"><!--auto:data:sed_series.series.2024.all|n-->58,131<!--/auto--></div>
       <div class="label">Doctorates Awarded (2024)</div>
     </div>
     <div class="stat-card highlight">
-      <div class="number">33.3%</div>
+      <div class="number"><!--auto:data:sed_series.series.2024.share|pct1-->33.3%<!--/auto--></div>
       <div class="label">Temporary Visa Holders (2024)</div>
     </div>
     <div class="stat-card alt">
@@ -126,21 +286,31 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
       <div class="label">S&E Foreign (Temp Visa, 2024)</div>
     </div>
     <div class="stat-card">
-      <div class="number">314,569</div>
-      <div class="label">NRA Grad Students (IPEDS 2022)</div>
+      <div class="number"><!--auto:data:gss_citizenship_trend.series.2024.graduate_students.temporary_visa|n-->314,569<!--/auto--></div>
+      <div class="label">Grad Students on a Temporary Visa (NSF GSS 2024)</div>
     </div>
     <div class="stat-card highlight">
-      <div class="number">38.4%</div>
-      <div class="label">Grad NRA Share (IPEDS 2022)</div>
+      <div class="number"><!--auto:data:gss_citizenship_trend.series.2024.graduate_students.share|pct1-->38.5%<!--/auto--></div>
+      <div class="label">Their Share of All Grad Students (NSF GSS 2024)</div>
     </div>
     <div class="stat-card alt">
-      <div class="number">45,103</div>
-      <div class="label">Chinese PhDs (2018-2024 Total)</div>
+      <div class="number"><!--auto:data:doctorate_origins.countries[country=China].recipients|n-->6,756<!--/auto--></div>
+      <div class="label">Chinese Doctorate Recipients (<!--auto:data:doctorate_origins.year|raw-->2024<!--/auto-->)</div>
     </div>
   </div>
 
   <!-- ===== 2. TREND CHART ===== -->
-  <div id="doctorate-trends-1979-2024" class="section">
+  
+
+
+
+
+
+
+
+
+
+<div id="doctorate-trends-1979-2024" class="section">
     <h2>Doctorate Trends, 1979-2024</h2>
     <p class="desc">Total doctorates awarded by citizenship status (NSF SED Table 1-6)</p>
     <div class="chart-box">
@@ -189,9 +359,9 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
       <canvas id="optNationalChart"></canvas>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-top:1rem;">
-      <div class="stat-card"><div class="stat-value" style="color:var(--accent);">269,323</div><div class="stat-label">Total OPT Authorizations (2024)</div></div>
-      <div class="stat-card"><div class="stat-value" style="color:var(--accent3);">95,384</div><div class="stat-label">STEM OPT Extensions (2024)</div></div>
-      <div class="stat-card"><div class="stat-value" style="color:var(--accent4);">130,586</div><div class="stat-label">CPT Authorizations (2024)</div></div>
+      <div class="stat-card"><div class="stat-value" style="color:var(--accent);"><!--auto:data:opt_national.series.2024.total_sevis_with_opt|n-->269,323<!--/auto--></div><div class="stat-label">Students Holding Any OPT (2024)</div></div>
+      <div class="stat-card"><div class="stat-value" style="color:var(--accent3);"><!--auto:data:opt_national.series.2024.stem_opt|n-->95,384<!--/auto--></div><div class="stat-label">STEM OPT Extensions (2024)</div></div>
+      <div class="stat-card"><div class="stat-value" style="color:var(--accent4);"><!--auto:data:opt_national.series.2024.cpt|n-->130,586<!--/auto--></div><div class="stat-label">CPT Authorizations (2024)</div></div>
       <div class="stat-card"><div class="stat-value" style="color:var(--accent5);">11x</div><div class="stat-label">OPT Growth Since 2007</div></div>
     </div>
     <p class="source">Source: ICE/SEVP — Total Number Annual OPT, STEM OPT, CPT Authorizations CY2007-2024</p>
@@ -225,6 +395,30 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
   </div>
 
 </div>
+
+
+
+
+<!-- conclusion:begin -->
+<section class="conclusion" id="what-this-means">
+  <h2>What this adds up to</h2>
+  <p class="cx-lede">Public money pays for these programs, and a growing number of them now award most of their seats to people who are not Americans.</p>
+  <div class="cx-body">
+    <p>American research universities are paid for by Americans. Federal research funding runs to roughly $875,000 for every STEM research doctorate awarded, and state legislatures fund the public ones on top of that. The people who pay are entitled to ask who the money produces.</p>
+    <p>The answer is increasingly not them. At <!--auto:data:level_rankings.levels.masters.institutions_majority_nra|n-->121<!--/auto--> of the <!--auto:data:level_rankings.levels.masters.institutions_eligible|n-->567<!--/auto--> institutions large enough to measure, most of the master's degrees awarded go to people who are not Americans. At <!--auto:data:level_rankings.levels.doctorate.institutions_majority_nra|n-->56<!--/auto--> institutions the same is true of the doctorate.</p>
+    <p>A seat is a finite thing. An American who is not admitted to a program does not get a smaller share of it; they get none of it. When most of a publicly funded program's seats go to temporary visa holders year after year, the effect on American applicants is the same whatever anyone intended, and the people funding it are the ones going without.</p>
+  </div>
+  <div class="cx-onward">
+    <p class="cx-onward-head">Where to look next</p>
+    <div class="cx-next-row">
+    <a class="cx-next" href="/institutions"><span class="cx-label">Compare any two institutions</span><span class="cx-why">The master&#x27;s level, institution by institution.</span></a>
+    <a class="cx-next" href="/visa-schools"><span class="cx-label">Schools that launder visas</span><span class="cx-why">Where the graduate program is the product and the visa is why it sells.</span></a>
+    <a class="cx-next" href="/data_requests"><span class="cx-label">What the government will not publish</span><span class="cx-why">Twenty-four asks, most needing no new collection.</span></a>
+    </div>
+  </div>
+</section>
+<!-- conclusion:end -->
+
 
 <script>
 // ============================================================
@@ -632,5 +826,6 @@ document.querySelector('#uniTable thead th[data-col="nra"] .arrow').textContent 
 </script>
 <script src="/sidebar.js"></script>
 <script src="/anchors.js" defer></script>
+<script src="/analytics-beacon.js" defer></script>
 </body>
 </html>

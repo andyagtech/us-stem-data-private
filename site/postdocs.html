@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Postdocs and Citizenship</title>
+<meta name="description" content="Postdoctoral appointees by citizenship, 2024. 58.3% of the national postdoctoral workforce holds a temporary visa.">
+<meta property="og:title" content="Postdocs and Citizenship">
+<meta property="og:description" content="Postdoctoral appointees by citizenship, 2024. 58.3% of the national postdoctoral workforce holds a temporary visa.">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.9rem; margin: 0 0 .7rem; line-height: 1.2; }
+  .page-head p { color: var(--text-muted); max-width: 72ch; line-height: 1.65;
+    font-size: .95rem; margin: 0 0 .6rem; }
+  .kicker { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--text-muted); margin: 0 0 .6rem; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: .8rem; margin: 1.6rem 0 0; }
+  .stat { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem;
+    background: var(--surface); }
+  .stat .n { font-size: 1.7rem; font-weight: 800; color: var(--hl); line-height: 1.1;
+    font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: .82rem; line-height: 1.45; margin: .3rem 0 0; }
+  .stat .s { font-size: .72rem; color: var(--text-muted); margin: .45rem 0 0; }
+  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+  section.block { margin-top: 2.8rem; border-top: 1px solid var(--border);
+    padding-top: 1.6rem; }
+  section.block h2 { font-size: 1.2rem; margin: 0 0 .45rem; }
+  .lede { color: var(--text-muted); max-width: 74ch; line-height: 1.6;
+    font-size: .92rem; margin: 0 0 1rem; }
+  section.block p { max-width: 74ch; line-height: 1.68; font-size: .92rem;
+    margin: 0 0 .95rem; }
+  section.block ul.lede { padding-left: 1.1rem; }
+  section.block ul.lede li { margin: 0 0 .5rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55;
+    max-width: 82ch; margin: .9rem 0 0; }
+  .table-wrap { overflow-x: auto; }
+  table.t { width: 100%; border-collapse: collapse; font-size: .84rem; margin: .6rem 0 0; }
+  table.t th { text-align: left; font-size: .71rem; text-transform: uppercase;
+    letter-spacing: .06em; color: var(--text-muted); font-weight: 600;
+    padding: .4rem .5rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  table.t td { padding: .42rem .5rem; border-bottom: 1px solid var(--border); }
+  table.t td.num, table.t th.num { text-align: right;
+    font-variant-numeric: tabular-nums; white-space: nowrap; }
+  table.t tr.named td { font-weight: 600; }
+
+  /* THE BAR IS THE WHOLE CHART. One series, drawn to a 100% scale, with the
+     national line marked across it so every row is read against the same
+     reference rather than against the row above. A block element, not a
+     span: a span ignores width and the bars render as hairlines. */
+  .barrow { display: grid; grid-template-columns: 17rem 1fr 4.2rem;
+    gap: .6rem; align-items: center; margin: 0 0 .32rem; font-size: .83rem; }
+  .barrow .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .track { position: relative; background: var(--border); border-radius: 3px;
+    height: 1.1rem; overflow: hidden; }
+  .track .fill { display: block; height: 100%; background: var(--hl);
+    border-radius: 3px 0 0 3px; }
+  .track .fill.us { background: var(--text-muted); opacity: .45; }
+  .barrow .pc { text-align: right; font-variant-numeric: tabular-nums;
+    font-weight: 600; }
+  .natline { position: relative; height: 1.3rem; margin: .1rem 0 .7rem;
+    grid-column: 2; }
+  .scale { display: grid; grid-template-columns: 17rem 1fr 4.2rem; gap: .6rem;
+    font-size: .68rem; color: var(--text-muted); margin-top: .35rem; }
+  .scale .ticks { display: flex; justify-content: space-between; }
+  @media (max-width: 720px) {
+    .barrow, .scale { grid-template-columns: 9rem 1fr 3.4rem; }
+  }
+  .callout { border: 1px solid var(--border); border-left: 3px solid var(--hl);
+    border-radius: 8px; background: var(--surface); padding: 1rem 1.1rem;
+    margin: 1.2rem 0 0; }
+  .callout p { margin: 0 0 .55rem; font-size: .9rem; line-height: 1.6; }
+  .callout p:last-child { margin-bottom: 0; }
+  .cmp { display: grid; grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: .8rem; margin: 1.2rem 0 0; }
+  @media (max-width: 680px) { .cmp { grid-template-columns: 1fr; } }
+</style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+</head>
+<body data-page="postdocs">
+<main class="wrap">
+<div class="page-head">
+<p class="kicker">NSF Survey of Graduate Students and Postdoctorates, 2024</p>
+<h1>Who holds the postdoc jobs</h1>
+<p>A postdoctoral appointment is the job an American doctorate leads to. It is
+the step between the degree and a faculty position or a research career, and
+roughly half of these posts are paid for with federal research money.</p>
+<p>This page counts them by citizenship. A postdoc is counted as American here
+if they are a citizen or a permanent resident. Everyone else holds a temporary
+visa.</p>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="n">69,877</div>
+    <p class="l">postdoctoral appointees</p>
+    <p class="s">at 339 institutions, 2024</p></div>
+  <div class="stat"><div class="n">58.3%</div>
+    <p class="l">hold a temporary visa</p>
+    <p class="s">40,746 of 69,877</p></div>
+  <div class="stat"><div class="n">29,131</div>
+    <p class="l">are American</p>
+    <p class="s">citizens and permanent residents, 41.7%</p></div>
+  <div class="stat"><div class="n">48.1%</div>
+    <p class="l">are federally supported</p>
+    <p class="s">33,582 posts on federal money</p></div>
+</div>
+
+<section class="block" id="the-finding">
+<h2>Americans are a minority of the postdoctoral workforce</h2>
+<p class="lede">Not at nine universities. Nationally.</p>
+<p>58.3% of postdoctoral appointees in the United States hold a
+temporary visa. American citizens and permanent residents are
+41.7% &mdash; a minority of the people doing postdoctoral
+research in their own country, in a workforce where about half the posts are
+paid for by the federal government.</p>
+<p>This is the measured finding. What follows is what it means for the nine
+universities named in October.</p>
+</section>
+
+<section class="block" id="the-nine">
+<h2>The nine named universities</h2>
+<p class="lede">On 8 October 2026 the Department of Labor and the Department of
+Justice announced an investigation into J-1 visa use at nine universities, and
+said that about 61% of postdoctoral researchers and federally funded workers
+at those institutions are foreign nationals, against a national average of
+38%.</p>
+<p>The first figure checks out. Computed from the NSF survey, the nine come to
+<strong>60.7%</strong>: 8,545 of
+14,080 postdocs on a temporary visa.</p>
+<p>The second figure does not match this survey. The national average on the
+same measure is <strong>58.3%</strong>, not 38%. The two numbers
+count different things, and the difference decides what the story is.</p>
+
+<div class="cmp">
+  <div class="stat"><div class="n">60.7%</div>
+    <p class="l">the nine named universities</p>
+    <p class="s">8,545 of 14,080 postdocs on a temporary visa</p></div>
+  <div class="stat"><div class="n">58.3%</div>
+    <p class="l">every institution in the survey</p>
+    <p class="s">40,746 of 69,877</p></div>
+</div>
+
+<div class="callout">
+<p><strong>The nine are not outliers. They are typical.</strong> They sit about
+2.4 points above a national figure that is
+already over half.</p>
+<p>That is the larger finding. If these nine were far above a low national
+average, this would be a story about nine universities and an enforcement
+action would address it. They are not. On this measure the American
+postdoctoral workforce is a minority of itself everywhere, and the nine named
+institutions look much like the rest of the country.</p>
+</div>
+
+<div class="table-wrap">
+<table class="t">
+<thead><tr><th>Institution</th><th class="num">Postdocs</th>
+<th class="num">Temporary visa</th><th class="num">American</th>
+<th class="num">Share foreign</th></tr></thead>
+<tbody>
+<tr class="named"><td>Yale University</td><td class="num">1,458</td><td class="num">1,015</td><td class="num">443</td><td class="num">69.6%</td></tr><tr class="named"><td>Massachusetts Institute of Technology</td><td class="num">1,452</td><td class="num">988</td><td class="num">464</td><td class="num">68.0%</td></tr><tr class="named"><td>California Institute of Technology</td><td class="num">574</td><td class="num">388</td><td class="num">186</td><td class="num">67.6%</td></tr><tr class="named"><td>Stanford University</td><td class="num">2,645</td><td class="num">1,723</td><td class="num">922</td><td class="num">65.1%</td></tr><tr class="named"><td>University of California, Davis</td><td class="num">679</td><td class="num">441</td><td class="num">238</td><td class="num">64.9%</td></tr><tr class="named"><td>Arizona State University</td><td class="num">311</td><td class="num">193</td><td class="num">118</td><td class="num">62.1%</td></tr><tr class="named"><td>University of Pittsburgh</td><td class="num">826</td><td class="num">482</td><td class="num">344</td><td class="num">58.4%</td></tr><tr class="named"><td>Harvard University</td><td class="num">5,813</td><td class="num">3,142</td><td class="num">2,671</td><td class="num">54.1%</td></tr><tr class="named"><td>Brown University</td><td class="num">322</td><td class="num">173</td><td class="num">149</td><td class="num">53.7%</td></tr></tbody>
+<tfoot><tr><th>The nine together</th><th class="num">14,080</th>
+<th class="num">8,545</th>
+<th class="num">5,535</th>
+<th class="num">60.7%</th></tr>
+<tr><th>Every institution surveyed</th><th class="num">69,877</th>
+<th class="num">40,746</th><th class="num">29,131</th>
+<th class="num">58.3%</th></tr></tfoot>
+</table>
+</div>
+<p class="note">Institutions are matched on their federal UNITID, not on their
+name. The investigation was announced on 8 October 2026. This page reports
+that it was announced and what the survey counts. It makes no claim that any
+institution broke a law.</p>
+</section>
+
+<section class="block" id="ranking">
+<h2>The institutions with the highest shares</h2>
+<p class="lede">Every institution reporting at least 50
+postdocs, ranked by the share holding a temporary visa. The nine named
+universities are shown in bold where they appear.</p>
+<div class="barrow"><span class="nm">Missouri University of Science and Technology (56)</span><span class="track"><span class="fill" style="width:94.6%"></span></span><span class="pc">94.6%</span></div><div class="barrow"><span class="nm">University of Texas M. D. Anderson Cancer Center, The (595)</span><span class="track"><span class="fill" style="width:86.2%"></span></span><span class="pc">86.2%</span></div><div class="barrow"><span class="nm">University of Tennessee, The, Health Science Center (90)</span><span class="track"><span class="fill" style="width:85.6%"></span></span><span class="pc">85.6%</span></div><div class="barrow"><span class="nm">Augusta University (133)</span><span class="track"><span class="fill" style="width:85.0%"></span></span><span class="pc">85.0%</span></div><div class="barrow"><span class="nm">University of Missouri, Columbia (381)</span><span class="track"><span class="fill" style="width:84.5%"></span></span><span class="pc">84.5%</span></div><div class="barrow"><span class="nm">University of Texas Health Science Center at Houston, The (369)</span><span class="track"><span class="fill" style="width:81.6%"></span></span><span class="pc">81.6%</span></div><div class="barrow"><span class="nm">University of Texas Southwestern Medical Center, The (602)</span><span class="track"><span class="fill" style="width:79.7%"></span></span><span class="pc">79.7%</span></div><div class="barrow"><span class="nm">Case Western Reserve University (243)</span><span class="track"><span class="fill" style="width:79.4%"></span></span><span class="pc">79.4%</span></div><div class="barrow"><span class="nm">Albert Einstein College of Medicine (240)</span><span class="track"><span class="fill" style="width:78.8%"></span></span><span class="pc">78.8%</span></div><div class="barrow"><span class="nm">Cornell University (488)</span><span class="track"><span class="fill" style="width:78.5%"></span></span><span class="pc">78.5%</span></div><div class="barrow"><span class="nm">University of Oklahoma, The (87)</span><span class="track"><span class="fill" style="width:78.2%"></span></span><span class="pc">78.2%</span></div><div class="barrow"><span class="nm">Rice University (231)</span><span class="track"><span class="fill" style="width:77.1%"></span></span><span class="pc">77.1%</span></div><div class="barrow"><span class="nm">Cold Spring Harbor Laboratory (142)</span><span class="track"><span class="fill" style="width:76.8%"></span></span><span class="pc">76.8%</span></div><div class="barrow"><span class="nm">Mayo Clinic, Mayo Graduate School (833)</span><span class="track"><span class="fill" style="width:76.6%"></span></span><span class="pc">76.6%</span></div><div class="barrow"><span class="nm">Southern Methodist University (64)</span><span class="track"><span class="fill" style="width:76.6%"></span></span><span class="pc">76.6%</span></div><div class="barrow"><span class="nm">University of Mississippi, The (106)</span><span class="track"><span class="fill" style="width:76.4%"></span></span><span class="pc">76.4%</span></div><div class="barrow"><span class="nm">City of Hope, Irell and Manella Graduate School of Biological Sciences (197)</span><span class="track"><span class="fill" style="width:75.1%"></span></span><span class="pc">75.1%</span></div><div class="barrow"><span class="nm">Kansas State University (77)</span><span class="track"><span class="fill" style="width:74.0%"></span></span><span class="pc">74.0%</span></div><div class="barrow"><span class="nm">University of Nebraska Medical Center (134)</span><span class="track"><span class="fill" style="width:73.1%"></span></span><span class="pc">73.1%</span></div><div class="barrow"><span class="nm">University of Houston (212)</span><span class="track"><span class="fill" style="width:73.1%"></span></span><span class="pc">73.1%</span></div><div class="barrow"><span class="nm">Northwestern University (1,090)</span><span class="track"><span class="fill" style="width:72.8%"></span></span><span class="pc">72.8%</span></div><div class="barrow"><span class="nm">University of South Carolina (114)</span><span class="track"><span class="fill" style="width:72.8%"></span></span><span class="pc">72.8%</span></div><div class="barrow"><span class="nm">Texas A&amp;M University (580)</span><span class="track"><span class="fill" style="width:72.4%"></span></span><span class="pc">72.4%</span></div><div class="barrow"><span class="nm">Georgia Institute of Technology (352)</span><span class="track"><span class="fill" style="width:72.2%"></span></span><span class="pc">72.2%</span></div><div class="barrow"><span class="nm">Icahn School of Medicine at Mount Sinai (527)</span><span class="track"><span class="fill" style="width:72.1%"></span></span><span class="pc">72.1%</span></div><div class="scale"><span></span>
+  <span class="ticks"><span>0%</span><span>25%</span><span>50%</span>
+  <span>75%</span><span>100%</span></span><span></span></div>
+<p class="note">175 institutions clear the
+floor of 50 postdocs. A unit with nine postdocs and six on
+a visa is 67% and tells a reader nothing, which is why the floor exists.</p>
+</section>
+
+<section class="block" id="federal">
+<h2>Who pays for the posts</h2>
+<p class="lede">48.1% of postdoctoral
+appointments are federally supported &mdash; 33,582
+posts.</p>
+<div class="table-wrap">
+<table class="t">
+<thead><tr><th>Federal source</th><th class="num">Postdocs supported</th></tr></thead>
+<tbody>
+<tr><td>NIH</td><td class="num">19,413</td></tr><tr><td>NSF</td><td class="num">3,913</td></tr><tr><td>Defense</td><td class="num">2,452</td></tr><tr><td>Energy</td><td class="num">2,245</td></tr><tr><td>Agriculture</td><td class="num">1,166</td></tr><tr><td>HHS</td><td class="num">1,037</td></tr><tr><td>NASA</td><td class="num">701</td></tr></tbody></table>
+</div>
+<p class="note">The survey reports how many postdocs are federally supported
+and how many hold a temporary visa. It does not report how many are both, so
+these two figures cannot be multiplied. A page that multiplied them would be
+inventing a number the survey does not contain.</p>
+</section>
+
+<section class="block" id="method">
+<h2>Method and limits</h2>
+<p class="lede">What this counts, and what it cannot.</p>
+<ul class="lede">
+<li>A postdoc counted as foreign holds a temporary visa. US citizens and permanent residents are counted as American.</li><li>The survey reports how many postdocs are federally supported and how many are foreign. It does not report how many are both, so the two figures cannot be multiplied.</li><li>Figures are summed from organisational units to the institution. A single GSS row is a school or department, not a university.</li><li>This counts postdoctoral appointees. Graduate students are a different population and are measured separately.</li></ul>
+<p class="note">Source: NSF NCSES, Survey of Graduate Students and Postdoctorates, 2024.
+<a href="https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-s-e/">https://ncses.nsf.gov/surveys/graduate-students-postdoctorates-s-e/</a>. Built by
+<code>scripts/build_postdoc_citizenship.py</code> from the institution
+microdata, summed from organisational units to institutions.</p>
+</section>
+</main>
+<script src="/analytics-beacon.js" defer></script>
+<script src="/anchors.js" defer></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

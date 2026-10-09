@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Washington: who the graduate programmes are for</title>
+<meta name="description" content="Every degree-granting institution in Washington, the research doctorates each awards, how many go to non-residents, and the federal research money that arrives. Built from IPEDS, NSF and NCSES.">
+<meta property="og:title" content="Washington: who the graduate programmes are for">
+<meta property="og:description" content="Every degree-granting institution in Washington, the research doctorates each awards, how many go to non-residents, and the federal research money that arrives. Built from IPEDS, NSF and NCSES.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og/concentration.png">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.9rem; margin: 0 0 .7rem; line-height: 1.2; }
+  .page-head p { color: var(--text-muted); max-width: 72ch; line-height: 1.65; font-size: .95rem; margin: 0 0 .6rem; }
+  .kicker { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin: 0 0 .6rem; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin: 1.6rem 0 0; }
+  .stat { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; background: var(--surface); }
+  .stat .n { font-size: 1.7rem; font-weight: 800; color: var(--hl); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: .82rem; line-height: 1.45; margin: .3rem 0 0; }
+  .stat .s { font-size: .72rem; color: var(--text-muted); margin: .45rem 0 0; }
+  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+  section.block { margin-top: 2.8rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  section.block h2 { font-size: 1.2rem; margin: 0 0 .45rem; }
+  .lede { color: var(--text-muted); max-width: 74ch; line-height: 1.6; font-size: .92rem; margin: 0 0 1rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55; max-width: 82ch; margin: .9rem 0 0; }
+  .table-wrap { overflow-x: auto; }
+  table.t { width: 100%; border-collapse: collapse; font-size: .84rem; margin: .6rem 0 0; }
+  table.t th { text-align: left; font-size: .71rem; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--text-muted); font-weight: 600; padding: .4rem .5rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  table.t td { padding: .42rem .5rem; border-bottom: 1px solid var(--border); }
+  table.t td.num, table.t th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.t td.muted { color: var(--text-muted); }
+  table.t td.share { font-weight: 600; color: var(--hl); }
+  table.t th.share-col { color: var(--hl); }
+  table.t td.share, table.t th.share-col {
+    background: color-mix(in srgb, var(--hl) 7%, transparent); }
+  table.t th.sortable { cursor: pointer; }
+  .scale { display: flex; align-items: center; gap: .7rem; margin: 1rem 0 0; flex-wrap: wrap; }
+  .scale .seg { font-size: .8rem; }
+  .barpair { margin: 1rem 0 0; }
+  .barpair .row { display: grid; grid-template-columns: 11rem 1fr auto; gap: .6rem; align-items: center;
+    padding: .3rem 0; font-size: .86rem; }
+  .barpair .lab { color: var(--text-muted); }
+  /* display:block on both. A <span> is inline by default, so width and
+     height are ignored on it -- every fill rendered at zero width inside a
+     full-width track, which made a 2.9% bar and a 47.4% bar look identical. */
+  .barpair .track { display: block; background: rgba(148,163,184,0.14);
+    border-radius: 3px; height: 16px; overflow: hidden; }
+  .barpair .fill { display: block; height: 100%; border-radius: 3px;
+    background: #3987e5; min-width: 2px; }
+  .barpair .fill.nat { background: rgba(148,163,184,0.55); }
+  .barpair .v { font-variant-numeric: tabular-nums; font-weight: 600; }
+  /* The state bar sits directly above its national counterpart, so each pair
+     is one comparison. A gap after the pair keeps the eye from reading all
+     four as a single ranked list. */
+  .barpair .row.pair-end { margin-bottom: .55rem; }
+  @media (max-width: 620px) { .barpair .row { grid-template-columns: 1fr auto; } .barpair .track { display: none; } }
+  .callout { border: 1px solid var(--border); border-left-width: 3px; border-radius: 10px;
+    padding: 1rem 1.1rem; margin: 1rem 0 0; background: var(--surface); }
+  .callout h3 { margin: 0 0 .35rem; font-size: 1rem; }
+  .callout p { margin: 0 0 .5rem; font-size: .88rem; line-height: 1.55; color: var(--text-muted); }
+</style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+</head>
+<body data-page="state" data-state-name="Washington" data-state-abbr="WA">
+<a class="skip-link" href="#institutions">Skip to the institutions</a>
+<main id="main">
+<div class="wrap">
+
+  <div class="page-head">
+    <p class="kicker">State profile &middot; WA</p>
+    <h1 id="wa-graduate-programmes">Washington</h1>
+    <p>Washington has <strong>36</strong> degree-granting
+    institutions in this data. Between them they award
+    <strong>3,183</strong> research doctorates and
+    <strong>15,697</strong> master&rsquo;s degrees over the
+    window, and take <strong>$1.39bn</strong> in federal
+    research and development money.</p>
+    <p>This page counts every institution in the state, including the ones that
+    award no graduate degree at all. Leaving those out would make a state look
+    like its flagship.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">36</div>
+      <p class="l">institutions in the state</p>
+      <p class="s">12 award a research doctorate.
+        8 enrol no graduate students at all.</p></div>
+    <div class="stat"><div class="n">31.6%</div>
+      <p class="l">of research doctorates go to
+        <span data-term="nra">non-residents</span></p>
+      <p class="s">1,006 of
+        3,183. National figure: 38.9%.</p></div>
+    <div class="stat"><div class="n">16.1%</div>
+      <p class="l">of graduate enrolment is non-resident</p>
+      <p class="s">6,147 of
+        38,244 graduate students.</p></div>
+    <div class="stat"><div class="n">$1.39bn</div>
+      <p class="l">federal research and development money</p>
+      <p class="s">Across 24 institutions.
+        $1.07bn in total federal obligations.</p></div>
+  </div>
+
+  <section class="block" id="against-the-country">
+    <h2>Where Washington sits</h2>
+    <p class="lede">The non-resident share of research doctorates, against the
+    same figure for the country. That is <strong>7.3 points below</strong> the national figure of 38.9%. The pattern this site measures nationally is weaker here, not stronger.</p>
+    <div class="barpair">
+      <div class="row"><span class="lab">Washington</span>
+        <span class="track"><span class="fill" style="width:81.2%"></span></span>
+        <span class="v">31.6%</span></div>
+      <div class="row"><span class="lab">United States</span>
+        <span class="track"><span class="fill nat" style="width:100.0%"></span></span>
+        <span class="v">38.9%</span></div>
+    </div>
+    <p class="note">Washington ranks <strong>41</strong> of 52
+    states on that share, and <strong>19</strong> of 56 on the
+    number of research doctorates it awards. Rank 1 is the highest. Only states
+    that award doctorates are ranked.</p>
+  </section>
+
+  
+  <section class="block" id="levels">
+    <h2>Undergraduate and graduate, side by side</h2>
+    <p class="lede">The same institutions at two levels. Undergraduate is the
+    remainder once graduate enrolment is taken out of the total, and both
+    levels carry their own non-resident count.
+    In Washington the graduate share is <strong>10.8 points higher</strong> than the undergraduate share.</p>
+    <div class="barpair">
+      <div class="row"><span class="lab">Undergraduate</span>
+        <span class="track"><span class="fill" style="width:31.0%"></span></span>
+        <span class="v">5.3%</span></div>
+      <div class="row pair-end"><span class="lab">US undergraduate</span>
+        <span class="track"><span class="fill nat" style="width:21.1%"></span></span>
+        <span class="v">3.6%</span></div>
+      <div class="row"><span class="lab">Graduate</span>
+        <span class="track"><span class="fill" style="width:94.2%"></span></span>
+        <span class="v">16.1%</span></div>
+      <div class="row"><span class="lab">US graduate</span>
+        <span class="track"><span class="fill nat" style="width:100.0%"></span></span>
+        <span class="v">17.1%</span></div>
+    </div>
+    <p class="note" style="margin:0 0 .4rem">Click any column heading to sort.
+    Click it again to reverse. The panel under the table narrows what is shown
+    &mdash; everything is shown until you ask for less.</p>
+    <div class="table-wrap"><table class="t" data-sortable data-controls>
+      <thead><tr><th>Institution</th>
+        <th class="num">Undergraduates</th><th class="num">Non-res</th>
+        <th class="num share-col">Share</th>
+        <th class="num">Graduates</th><th class="num">Non-res</th>
+        <th class="num share-col">Share</th>
+        <th class="num">State funding</th><th class="num">Federal R&amp;D</th></tr></thead>
+      <tbody><tr data-has-grad="1"><td data-sort="university of washington-seattle campus">University of Washington-Seattle Campus</td><td class="num" data-sort="39515">39,515</td><td class="num" data-sort="4183">4,183</td><td class="num share" data-sort="10.6">10.6%</td><td class="num" data-sort="16105">16,105</td><td class="num" data-sort="3962">3,962</td><td class="num share" data-sort="24.6">24.6%</td><td class="num" data-sort="604140253">$604.1m</td><td class="num" data-sort="1691302000">$1.69bn</td></tr><tr data-has-grad="1"><td data-sort="washington state university">Washington State University</td><td class="num" data-sort="21923">21,923</td><td class="num" data-sort="639">639</td><td class="num share" data-sort="2.9">2.9%</td><td class="num" data-sort="4567">4,567</td><td class="num" data-sort="800">800</td><td class="num share" data-sort="17.5">17.5%</td><td class="num" data-sort="328001500">$328.0m</td><td class="num" data-sort="403369000">$403.4m</td></tr><tr data-has-grad="1"><td data-sort="western washington university">Western Washington University</td><td class="num" data-sort="13704">13,704</td><td class="num" data-sort="146">146</td><td class="num share" data-sort="1.1">1.1%</td><td class="num" data-sort="947">947</td><td class="num" data-sort="28">28</td><td class="num share" data-sort="3.0">3.0%</td><td class="num" data-sort="118364817">$118.4m</td><td class="num" data-sort="23275000">$23.3m</td></tr><tr data-has-grad="0"><td data-sort="bellevue college">Bellevue College</td><td class="num" data-sort="11472">11,472</td><td class="num" data-sort="795">795</td><td class="num share" data-sort="6.9">6.9%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="64145407">$64.1m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="eastern washington university">Eastern Washington University</td><td class="num" data-sort="7246">7,246</td><td class="num" data-sort="32">32</td><td class="num share" data-sort="0.4">0.4%</td><td class="num" data-sort="3495">3,495</td><td class="num" data-sort="17">17</td><td class="num share" data-sort="0.5">0.5%</td><td class="num" data-sort="86462000">$86.5m</td><td class="num" data-sort="2957000">$3.0m</td></tr><tr data-has-grad="1"><td data-sort="central washington university">Central Washington University</td><td class="num" data-sort="8309">8,309</td><td class="num" data-sort="214">214</td><td class="num share" data-sort="2.6">2.6%</td><td class="num" data-sort="487">487</td><td class="num" data-sort="32">32</td><td class="num share" data-sort="6.6">6.6%</td><td class="num" data-sort="87623999">$87.6m</td><td class="num" data-sort="2757000">$2.8m</td></tr><tr data-has-grad="0"><td data-sort="green river college">Green River College</td><td class="num" data-sort="7361">7,361</td><td class="num" data-sort="685">685</td><td class="num share" data-sort="9.3">9.3%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="45234989">$45.2m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="gonzaga university">Gonzaga University</td><td class="num" data-sort="5163">5,163</td><td class="num" data-sort="262">262</td><td class="num share" data-sort="5.1">5.1%</td><td class="num" data-sort="2143">2,143</td><td class="num" data-sort="150">150</td><td class="num share" data-sort="7.0">7.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="seattle university">Seattle University</td><td class="num" data-sort="4137">4,137</td><td class="num" data-sort="317">317</td><td class="num share" data-sort="7.7">7.7%</td><td class="num" data-sort="3045">3,045</td><td class="num" data-sort="561">561</td><td class="num share" data-sort="18.4">18.4%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="4699000">$4.7m</td></tr><tr data-has-grad="0"><td data-sort="everett community college">Everett Community College</td><td class="num" data-sort="6211">6,211</td><td class="num" data-sort="170">170</td><td class="num share" data-sort="2.7">2.7%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="45887872">$45.9m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="university of washington-bothell campus">University of Washington-Bothell Campus</td><td class="num" data-sort="5248">5,248</td><td class="num" data-sort="156">156</td><td class="num share" data-sort="3.0">3.0%</td><td class="num" data-sort="561">561</td><td class="num" data-sort="139">139</td><td class="num share" data-sort="24.8">24.8%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="5320000">$5.3m</td></tr><tr data-has-grad="0"><td data-sort="highline college">Highline College</td><td class="num" data-sort="5126">5,126</td><td class="num" data-sort="256">256</td><td class="num share" data-sort="5.0">5.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="46904952">$46.9m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="university of washington-tacoma campus">University of Washington-Tacoma Campus</td><td class="num" data-sort="4014">4,014</td><td class="num" data-sort="74">74</td><td class="num share" data-sort="1.8">1.8%</td><td class="num" data-sort="763">763</td><td class="num" data-sort="142">142</td><td class="num share" data-sort="18.6">18.6%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="7973000">$8.0m</td></tr><tr data-has-grad="0"><td data-sort="yakima valley college">Yakima Valley College</td><td class="num" data-sort="3523">3,523</td><td class="num" data-sort="7">7</td><td class="num share" data-sort="0.2">0.2%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="29550260">$29.6m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="0"><td data-sort="whatcom community college">Whatcom Community College</td><td class="num" data-sort="3490">3,490</td><td class="num" data-sort="56">56</td><td class="num share" data-sort="1.6">1.6%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="23172117">$23.2m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="pacific lutheran university">Pacific Lutheran University</td><td class="num" data-sort="2393">2,393</td><td class="num" data-sort="87">87</td><td class="num share" data-sort="3.6">3.6%</td><td class="num" data-sort="344">344</td><td class="num" data-sort="10">10</td><td class="num share" data-sort="2.9">2.9%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="seattle pacific university">Seattle Pacific University</td><td class="num" data-sort="2082">2,082</td><td class="num" data-sort="125">125</td><td class="num share" data-sort="6.0">6.0%</td><td class="num" data-sort="577">577</td><td class="num" data-sort="64">64</td><td class="num share" data-sort="11.1">11.1%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="2414000">$2.4m</td></tr><tr data-has-grad="1"><td data-sort="whitworth university">Whitworth University</td><td class="num" data-sort="1939">1,939</td><td class="num" data-sort="96">96</td><td class="num share" data-sort="5.0">5.0%</td><td class="num" data-sort="406">406</td><td class="num" data-sort="10">10</td><td class="num share" data-sort="2.5">2.5%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="the evergreen state college">The Evergreen State College</td><td class="num" data-sort="2108">2,108</td><td class="num" data-sort="2">2</td><td class="num share" data-sort="0.1">0.1%</td><td class="num" data-sort="212">212</td><td class="num" data-sort="1">1</td><td class="num share" data-sort="0.5">0.5%</td><td class="num" data-sort="44156238">$44.2m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="city university of seattle">City University of Seattle</td><td class="num" data-sort="1180">1,180</td><td class="num" data-sort="25">25</td><td class="num share" data-sort="2.1">2.1%</td><td class="num" data-sort="790">790</td><td class="num" data-sort="90">90</td><td class="num share" data-sort="11.4">11.4%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="university of puget sound">University of Puget Sound</td><td class="num" data-sort="1632">1,632</td><td class="num" data-sort="9">9</td><td class="num share" data-sort="0.6">0.6%</td><td class="num" data-sort="282">282</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="1248000">$1.2m</td></tr><tr data-has-grad="0"><td data-sort="whitman college">Whitman College</td><td class="num" data-sort="1544">1,544</td><td class="num" data-sort="213">213</td><td class="num share" data-sort="13.8">13.8%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num share" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="3891000">$3.9m</td></tr><tr data-has-grad="1"><td data-sort="saint martin&#x27;s university">Saint Martin&#x27;s University</td><td class="num" data-sort="1267">1,267</td><td class="num" data-sort="30">30</td><td class="num share" data-sort="2.4">2.4%</td><td class="num" data-sort="238">238</td><td class="num" data-sort="24">24</td><td class="num share" data-sort="10.1">10.1%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="walla walla university">Walla Walla University</td><td class="num" data-sort="1266">1,266</td><td class="num" data-sort="106">106</td><td class="num share" data-sort="8.4">8.4%</td><td class="num" data-sort="131">131</td><td class="num" data-sort="4">4</td><td class="num share" data-sort="3.1">3.1%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="northwest university-center for online and extended education">Northwest University-Center for Online and Extended Education</td><td class="num" data-sort="1187">1,187</td><td class="num" data-sort="4">4</td><td class="num share" data-sort="0.3">0.3%</td><td class="num" data-sort="156">156</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="digipen institute of technology">DigiPen Institute of Technology</td><td class="num" data-sort="1042">1,042</td><td class="num" data-sort="112">112</td><td class="num share" data-sort="10.7">10.7%</td><td class="num" data-sort="58">58</td><td class="num" data-sort="21">21</td><td class="num share" data-sort="36.2">36.2%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="northwest university">Northwest University</td><td class="num" data-sort="679">679</td><td class="num" data-sort="61">61</td><td class="num share" data-sort="9.0">9.0%</td><td class="num" data-sort="320">320</td><td class="num" data-sort="55">55</td><td class="num share" data-sort="17.2">17.2%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="heritage university">Heritage University</td><td class="num" data-sort="783">783</td><td class="num" data-sort="3">3</td><td class="num share" data-sort="0.4">0.4%</td><td class="num" data-sort="52">52</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="antioch university-seattle">Antioch University-Seattle</td><td class="num" data-sort="81">81</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="719">719</td><td class="num" data-sort="17">17</td><td class="num share" data-sort="2.4">2.4%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="bastyr university">Bastyr University</td><td class="num" data-sort="58">58</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="702">702</td><td class="num" data-sort="16">16</td><td class="num share" data-sort="2.3">2.3%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="0"><td data-sort="northwest indian college">Northwest Indian College</td><td class="num" data-sort="696">696</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num share" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="6988000">$7.0m</td></tr><tr data-has-grad="1"><td data-sort="pacific northwest university of health sciences">Pacific Northwest University of Health Sciences</td><td class="num" data-sort="0">0</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="649">649</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="faith international university">Faith International University</td><td class="num" data-sort="196">196</td><td class="num" data-sort="2">2</td><td class="num share" data-sort="1.0">1.0%</td><td class="num" data-sort="174">174</td><td class="num" data-sort="2">2</td><td class="num share" data-sort="1.1">1.1%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="the seattle school of theology &amp; psychology">The Seattle School of Theology &amp; Psychology</td><td class="num" data-sort="0">0</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="257">257</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="seattle film institute">Seattle Film Institute</td><td class="num" data-sort="60">60</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="21">21</td><td class="num" data-sort="2">2</td><td class="num share" data-sort="9.5">9.5%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="seattle institute of east asian medicine">Seattle Institute of East Asian Medicine</td><td class="num" data-sort="0">0</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="43">43</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr></tbody></table></div>
+    <p class="lede">The two levels diverge most at <strong>University of Washington-Bothell Campus</strong>: <strong>3.0%</strong> of its 5,248 undergraduates and <strong>24.8%</strong> of its 561 graduate students. These are different admissions systems with different applicant pools, different money and different reasons to say yes, and a single state figure hides both.</p>
+    <p class="note">8,867 of 166,635 undergraduates and 6,147 of
+    38,244 graduate students.
+    IPEDS reports no graduate enrolment for 8 of these institutions; their rows show a dash rather than a zero, because the file not carrying a number is not the same as the number being none.</p>
+  </section>
+
+
+
+  
+  <section class="block" id="blend">
+    <h2>What the state figure is an average of</h2>
+    <p class="lede">The largest graduate enrolments in Washington, each with its
+    own non-resident share. Nothing here is excluded from the figures above.
+    The point is to show what they are made of.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Graduate students</th>
+        <th class="num">Share of the state</th>
+        <th class="num">Non-resident</th></tr></thead>
+      <tbody><tr><td>University of Washington-Seattle Campus</td><td class="num">16,105</td><td class="num muted">42.1%</td><td class="num share">24.6%</td></tr><tr><td>Washington State University</td><td class="num">4,567</td><td class="num muted">11.9%</td><td class="num share">17.5%</td></tr><tr><td>Eastern Washington University</td><td class="num">3,495</td><td class="num muted">9.1%</td><td class="num share">0.5%</td></tr><tr><td>Seattle University</td><td class="num">3,045</td><td class="num muted">8.0%</td><td class="num share">18.4%</td></tr><tr><td>Gonzaga University</td><td class="num">2,143</td><td class="num muted">5.6%</td><td class="num share">7.0%</td></tr><tr><td>Western Washington University</td><td class="num">947</td><td class="num muted">2.5%</td><td class="num share">3.0%</td></tr></tbody></table></div>
+    <div class="callout"><h3>One institution is moving this figure</h3><p><strong>University of Washington-Seattle Campus</strong> holds <strong>42.1%</strong> of the graduate enrolment in Washington and is <strong>24.6%</strong> non-resident. Take it out and the rest of the state is <strong>9.9%</strong>, against 16.1% with it in. A state average is not a description of its universities when one of them is most of the state.</p></div>
+  </section>
+
+
+  
+  <section class="block" id="training">
+    <h2>Practical training, and the other student visas</h2>
+    <p class="lede">A student visa does not end at graduation. Optional
+    Practical Training lets a graduate work on the same visa, and a STEM degree
+    adds a further twenty-four months. It applies at both levels &mdash; a
+    foreign undergraduate can take OPT as readily as a doctoral graduate
+    &mdash; which is why the undergraduate share above is not the end of the
+    story.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">OPT authorisations</th>
+        <th class="num">National rank</th>
+        <th class="num">STEM OPT authorisations</th><th class="num">National rank</th>
+        <th class="num">Students employed</th></tr></thead>
+      <tbody><tr><td>University of Washington-Seattle Campus</td><td class="num">1,405</td><td class="num muted">24</td><td class="num">656</td><td class="num muted">21</td><td class="num">2,181</td></tr></tbody></table></div>
+    <p class="note"><strong>Do not add these two columns together.</strong> A
+    graduate who holds post-completion OPT and then a STEM extension in the
+    same year appears in both, and the sum counts that person twice. They are
+    authorisations, not people. Figures are for 2024, from SEVP&rsquo;s
+    top-100 and top-200 school lists &mdash; an institution outside those lists
+    has no published figure, which is a fact about the list and never a zero.</p>
+    <p class="note"><strong>J-1 physicians.</strong> Washington is not in the published top twelve states for J-1 physicians in graduate medical education, which is the only state breakdown ECFMG publishes. That is an absence from a short list, not a zero.</p>
+  </section>
+
+
+  
+  <section class="block" id="residency">
+    <h2>In-state against out-of-state</h2>
+    <p class="lede">Public four-year institutions, FY2024. Every foreign
+    student pays the out-of-state rate, so this is the price attached to the
+    non-resident column everywhere else on this page.</p>
+    <p class="lede">An out-of-state student in Washington is worth <strong>1.0&times;</strong> an in-state one to the institution. They are <strong>24.8%</strong> of the students and <strong>24.8%</strong> of the tuition revenue.</p>
+    <div class="table-wrap"><table class="t">
+      <thead><tr><th>Measure</th><th class="num">In-state</th>
+        <th class="num">Out-of-state</th></tr></thead>
+      <tbody><tr><td>Share of students (FTE)</td><td class="num">75.2%</td><td class="num">24.8%</td></tr><tr><td>Net tuition and fees collected per student</td><td class="num">$13,316</td><td class="num share">$13,316</td></tr><tr><td>Share of tuition revenue</td><td class="num">75.2%</td><td class="num share">24.8%</td></tr></tbody></table></div>
+    <p class="note"><strong>Out-of-state is not the same as foreign.</strong>
+    SHEEO counts international students and domestic students from other states
+    in one column. This shows what a non-resident pays, never how many of them
+    are foreign. Figures are <strong>net</strong> tuition and fee revenue per
+    full-time-equivalent student &mdash; what the institution actually
+    collected after its own aid, not the published price. Public four-year
+    institutions only; medical FTE excluded.
+    SHEEO records that Washington estimated part of this breakout for this year.</p>
+  </section>
+
+
+  <section class="block" id="institutions">
+    <h2>Every institution</h2>
+    <p class="lede">Largest first by total enrolment. A dash means the
+    institution awards none of that degree, or that no federal research money
+    was matched to it.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th>City</th><th>Control</th>
+        <th class="num">Enrolled</th><th class="num">Graduate</th>
+        <th class="num">Master&rsquo;s</th><th class="num">Non-res</th>
+        <th class="num">Doctorates</th><th class="num">Non-res</th>
+        <th class="num">Federal R&amp;D</th></tr></thead>
+      <tbody><tr><td>University of Washington-Seattle Campus</td><td class="muted">Seattle</td><td class="muted">public</td><td class="num" data-sort="55620">55,620</td><td class="num" data-sort="16105">16,105</td><td class="num">9,565</td><td class="num share">3,692</td><td class="num">3,395</td><td class="num share">1,023</td><td class="num" data-sort="1691302000">$1.69bn</td></tr><tr><td>Washington State University</td><td class="muted">Pullman</td><td class="muted">public</td><td class="num" data-sort="26490">26,490</td><td class="num" data-sort="4567">4,567</td><td class="num">1,087</td><td class="num share">393</td><td class="num">1,354</td><td class="num share">530</td><td class="num" data-sort="403369000">$403.4m</td></tr><tr><td>Western Washington University</td><td class="muted">Bellingham</td><td class="muted">public</td><td class="num" data-sort="14651">14,651</td><td class="num" data-sort="947">947</td><td class="num">327</td><td class="num share">13</td><td class="num">18</td><td class="num share">0</td><td class="num" data-sort="23275000">$23.3m</td></tr><tr><td>Bellevue College</td><td class="muted">Bellevue</td><td class="muted">public</td><td class="num" data-sort="11472">11,472</td><td class="num" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Eastern Washington University</td><td class="muted">Cheney</td><td class="muted">public</td><td class="num" data-sort="10741">10,741</td><td class="num" data-sort="3495">3,495</td><td class="num">432</td><td class="num share">6</td><td class="num">1</td><td class="num share">0</td><td class="num" data-sort="2957000">$3.0m</td></tr><tr><td>Central Washington University</td><td class="muted">Ellensburg</td><td class="muted">public</td><td class="num" data-sort="8796">8,796</td><td class="num" data-sort="487">487</td><td class="num">481</td><td class="num share">39</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="2757000">$2.8m</td></tr><tr><td>Green River College</td><td class="muted">Auburn</td><td class="muted">public</td><td class="num" data-sort="7361">7,361</td><td class="num" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Gonzaga University</td><td class="muted">Spokane</td><td class="muted">private nonprofit</td><td class="num" data-sort="7306">7,306</td><td class="num" data-sort="2143">2,143</td><td class="num">103</td><td class="num share">9</td><td class="num">65</td><td class="num share">7</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Seattle University</td><td class="muted">Seattle</td><td class="muted">private nonprofit</td><td class="num" data-sort="7182">7,182</td><td class="num" data-sort="3045">3,045</td><td class="num">850</td><td class="num share">389</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="4699000">$4.7m</td></tr><tr><td>Everett Community College</td><td class="muted">Everett</td><td class="muted">public</td><td class="num" data-sort="6211">6,211</td><td class="num" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>University of Washington-Bothell Campus</td><td class="muted">Bothell</td><td class="muted">public</td><td class="num" data-sort="5809">5,809</td><td class="num" data-sort="561">561</td><td class="num">402</td><td class="num share">184</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="5320000">$5.3m</td></tr><tr><td>Highline College</td><td class="muted">Des Moines</td><td class="muted">public</td><td class="num" data-sort="5126">5,126</td><td class="num" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>University of Washington-Tacoma Campus</td><td class="muted">Tacoma</td><td class="muted">public</td><td class="num" data-sort="4777">4,777</td><td class="num" data-sort="763">763</td><td class="num">765</td><td class="num share">280</td><td class="num">3</td><td class="num share">2</td><td class="num" data-sort="7973000">$8.0m</td></tr><tr><td>Yakima Valley College</td><td class="muted">Yakima</td><td class="muted">public</td><td class="num" data-sort="3523">3,523</td><td class="num" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Whatcom Community College</td><td class="muted">Bellingham</td><td class="muted">public</td><td class="num" data-sort="3490">3,490</td><td class="num" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Pacific Lutheran University</td><td class="muted">Tacoma</td><td class="muted">private nonprofit</td><td class="num" data-sort="2737">2,737</td><td class="num" data-sort="344">344</td><td class="num">10</td><td class="num share">1</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Seattle Pacific University</td><td class="muted">Seattle</td><td class="muted">private nonprofit</td><td class="num" data-sort="2659">2,659</td><td class="num" data-sort="577">577</td><td class="num">210</td><td class="num share">50</td><td class="num">274</td><td class="num share">14</td><td class="num" data-sort="2414000">$2.4m</td></tr><tr><td>Whitworth University</td><td class="muted">Spokane</td><td class="muted">private nonprofit</td><td class="num" data-sort="2345">2,345</td><td class="num" data-sort="406">406</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>The Evergreen State College</td><td class="muted">Olympia</td><td class="muted">public</td><td class="num" data-sort="2320">2,320</td><td class="num" data-sort="212">212</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>City University of Seattle</td><td class="muted">Seattle</td><td class="muted">private nonprofit</td><td class="num" data-sort="1970">1,970</td><td class="num" data-sort="790">790</td><td class="num">242</td><td class="num share">94</td><td class="num">99</td><td class="num share">2</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>University of Puget Sound</td><td class="muted">Tacoma</td><td class="muted">private nonprofit</td><td class="num" data-sort="1914">1,914</td><td class="num" data-sort="282">282</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="1248000">$1.2m</td></tr><tr><td>Whitman College</td><td class="muted">Walla Walla</td><td class="muted">private nonprofit</td><td class="num" data-sort="1544">1,544</td><td class="num" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="3891000">$3.9m</td></tr><tr><td>Saint Martin&#x27;s University</td><td class="muted">Lacey</td><td class="muted">private nonprofit</td><td class="num" data-sort="1505">1,505</td><td class="num" data-sort="238">238</td><td class="num">116</td><td class="num share">17</td><td class="num">16</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Walla Walla University</td><td class="muted">College Place</td><td class="muted">private nonprofit</td><td class="num" data-sort="1397">1,397</td><td class="num" data-sort="131">131</td><td class="num">20</td><td class="num share">2</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Northwest University-Center for Online and Extended Education</td><td class="muted">Kirkland</td><td class="muted">private nonprofit</td><td class="num" data-sort="1343">1,343</td><td class="num" data-sort="156">156</td><td class="num">60</td><td class="num share">2</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>DigiPen Institute of Technology</td><td class="muted">Redmond</td><td class="muted">private for-profit</td><td class="num" data-sort="1100">1,100</td><td class="num" data-sort="58">58</td><td class="num">72</td><td class="num share">41</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Northwest University</td><td class="muted">Kirkland</td><td class="muted">private nonprofit</td><td class="num" data-sort="999">999</td><td class="num" data-sort="320">320</td><td class="num">106</td><td class="num share">7</td><td class="num">75</td><td class="num share">4</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Heritage University</td><td class="muted">Toppenish</td><td class="muted">private nonprofit</td><td class="num" data-sort="835">835</td><td class="num" data-sort="52">52</td><td class="num">32</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Antioch University-Seattle</td><td class="muted">Seattle</td><td class="muted">private nonprofit</td><td class="num" data-sort="800">800</td><td class="num" data-sort="719">719</td><td class="num">75</td><td class="num share">4</td><td class="num">40</td><td class="num share">1</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Bastyr University</td><td class="muted">Kenmore</td><td class="muted">private nonprofit</td><td class="num" data-sort="760">760</td><td class="num" data-sort="702">702</td><td class="num">296</td><td class="num share">1</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Northwest Indian College</td><td class="muted">Bellingham</td><td class="muted">public</td><td class="num" data-sort="696">696</td><td class="num" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="6988000">$7.0m</td></tr><tr><td>Pacific Northwest University of Health Sciences</td><td class="muted">Yakima</td><td class="muted">private nonprofit</td><td class="num" data-sort="649">649</td><td class="num" data-sort="649">649</td><td class="num">128</td><td class="num share">1</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Faith International University</td><td class="muted">Tacoma</td><td class="muted">private nonprofit</td><td class="num" data-sort="370">370</td><td class="num" data-sort="174">174</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num">46</td><td class="num share">9</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>The Seattle School of Theology &amp; Psychology</td><td class="muted">Seattle</td><td class="muted">private nonprofit</td><td class="num" data-sort="257">257</td><td class="num" data-sort="257">257</td><td class="num">318</td><td class="num share">2</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Seattle Film Institute</td><td class="muted">Seattle</td><td class="muted">private for-profit</td><td class="num" data-sort="81">81</td><td class="num" data-sort="21">21</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Seattle Institute of East Asian Medicine</td><td class="muted">Seattle</td><td class="muted">private nonprofit</td><td class="num" data-sort="43">43</td><td class="num" data-sort="43">43</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr></tbody></table></div>
+    <p class="note">Degrees are pooled over
+    2021&ndash;2025. Enrolment
+    and federal money are the most recent year in the file. &ldquo;Non-res&rdquo;
+    means a student here on a temporary visa, almost always F-1 or J-1. A green
+    card holder is not counted in it.</p>
+  </section>
+
+  <section class="block" id="concentration">
+    <h2>How few institutions this is</h2>
+    <p class="lede">Of the 36 institutions in
+    Washington, <strong>12</strong> award a research doctorate at
+    all, and the largest two award 88.2% of them.
+    A state&rsquo;s graduate pipeline is a much smaller thing than its list of
+    colleges.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Research doctorates</th>
+        <th class="num">Non-resident</th><th class="num share-col">Share</th>
+        <th class="num">Share of the state&rsquo;s doctorates</th></tr></thead>
+      <tbody><tr><td>University of Washington-Seattle Campus</td><td class="num">3,395</td><td class="num">1,023</td><td class="num share">30.1%</td><td class="num muted">63.0%</td></tr><tr><td>Washington State University</td><td class="num">1,354</td><td class="num">530</td><td class="num share">39.1%</td><td class="num muted">25.1%</td></tr><tr><td>Seattle Pacific University</td><td class="num">274</td><td class="num">14</td><td class="num share">5.1%</td><td class="num muted">5.1%</td></tr><tr><td>City University of Seattle</td><td class="num">99</td><td class="num">2</td><td class="num share">2.0%</td><td class="num muted">1.8%</td></tr><tr><td>Northwest University</td><td class="num">75</td><td class="num">4</td><td class="num share">5.3%</td><td class="num muted">1.4%</td></tr><tr><td>Gonzaga University</td><td class="num">65</td><td class="num">7</td><td class="num share">10.8%</td><td class="num muted">1.2%</td></tr><tr><td>Faith International University</td><td class="num">46</td><td class="num">9</td><td class="num share">19.6%</td><td class="num muted">0.9%</td></tr><tr><td>Antioch University-Seattle</td><td class="num">40</td><td class="num">1</td><td class="num share">2.5%</td><td class="num muted">0.7%</td></tr><tr><td>Western Washington University</td><td class="num">18</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">0.3%</td></tr><tr><td>Saint Martin&#x27;s University</td><td class="num">16</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">0.3%</td></tr><tr><td>University of Washington-Tacoma Campus</td><td class="num">3</td><td class="num">2</td><td class="num share">66.7%</td><td class="num muted">0.1%</td></tr><tr><td>Eastern Washington University</td><td class="num">1</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">0.0%</td></tr></tbody></table></div>
+  </section>
+  <section class="block" id="survey">
+    <h2>The foreign share of graduate students, where the survey reaches</h2>
+    <p class="lede">The NSF Survey of Graduate Students and Postdoctorates asks
+    institutions directly, and it covers 9 of the
+    36 institutions in Washington. It is a different
+    measure from the degree counts above: enrolled students rather than degrees
+    awarded.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Doctoral students foreign</th>
+        <th class="num">Master&rsquo;s students foreign</th></tr></thead>
+      <tbody><tr><td>Washington State University</td><td class="num share">45.4%</td><td class="num">30.6%</td></tr><tr><td>University of Washington-Seattle Campus</td><td class="num share">32.9%</td><td class="num">46.0%</td></tr><tr><td>Seattle Pacific University</td><td class="num share">5.1%</td><td class="num">0.0%</td></tr><tr><td>Western Washington University</td><td class="num share">&mdash;%</td><td class="num">6.4%</td></tr><tr><td>Eastern Washington University</td><td class="num share">&mdash;%</td><td class="num">1.8%</td></tr><tr><td>Central Washington University</td><td class="num share">&mdash;%</td><td class="num">14.4%</td></tr><tr><td>Seattle University</td><td class="num share">&mdash;%</td><td class="num">40.8%</td></tr><tr><td>Saint Martin&#x27;s University</td><td class="num share">&mdash;%</td><td class="num">20.0%</td></tr><tr><td>Walla Walla University</td><td class="num share">&mdash;%</td><td class="num">100.0%</td></tr></tbody></table></div>
+    <div class="callout">
+      <h3>Washington State University</h3>
+      <p>The highest foreign share of doctoral students in the state, at
+      <strong>45.4%</strong>. It is not the largest institution here
+      and it is not the one with the most federal money. Size and share are
+      different questions, and a state page that ranked only by size would not
+      show this.</p>
+    </div>
+  </section>
+  <section class="block" id="state-money">
+    <h2>What the state itself puts in</h2>
+    <p class="lede">State appropriations per full-time-equivalent student, from
+    the SHEEO finance survey, against the change in the foreign share of
+    graduate enrolment over the same window.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Measure</th><th class="num">First year</th>
+        <th class="num">Last year</th><th class="num">Change</th></tr></thead>
+      <tbody>
+        <tr><td>State appropriations per FTE student</td>
+          <td class="num">$8,669</td>
+          <td class="num">$12,449</td>
+          <td class="num share">+43.6%</td></tr>
+        <tr><td>Foreign share of graduate enrolment</td>
+          <td class="num">11.5%</td>
+          <td class="num">18.9%</td>
+          <td class="num share">+7.4 pts</td></tr>
+      </tbody></table></div>
+    <p class="note">These two rows move for their own reasons. Nothing here
+    shows that one caused the other, and the page does not say it did.</p>
+  </section>
+  <section class="block" id="departments">
+    <h2>Department by department</h2>
+    <p class="lede">The dissertation corpus reaches
+    2 institutions in this state,
+    covering 61 departments.
+    <strong>11</strong> of them are majority non-resident.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th>Department</th>
+        <th class="num">Doctorates</th><th class="num">Non-resident</th>
+        <th class="num share-col">Share</th></tr></thead>
+      <tbody><tr><td class="muted">Washington State</td><td>Electrical and Electronics Engineering</td><td class="num">101</td><td class="num">88</td><td class="num share">87.1%</td></tr><tr><td class="muted">Washington State</td><td>Agricultural Engineering</td><td class="num">105</td><td class="num">91</td><td class="num share">86.7%</td></tr><tr><td class="muted">Washington State</td><td>Plant Pathology/Phytopathology</td><td class="num">41</td><td class="num">31</td><td class="num share">75.6%</td></tr><tr><td class="muted">Washington State</td><td>Civil Engineering, General</td><td class="num">46</td><td class="num">33</td><td class="num share">71.7%</td></tr><tr><td class="muted">Washington State</td><td>Mechanical Engineering</td><td class="num">93</td><td class="num">65</td><td class="num share">69.9%</td></tr><tr><td class="muted">Washington State</td><td>Computer Science</td><td class="num">67</td><td class="num">45</td><td class="num share">67.2%</td></tr><tr><td class="muted">Washington State</td><td>Materials Engineering</td><td class="num">73</td><td class="num">46</td><td class="num share">63.0%</td></tr><tr><td class="muted">Washington State</td><td>Engineering Science</td><td class="num">39</td><td class="num">20</td><td class="num share">51.3%</td></tr><tr><td class="muted">Washington State</td><td>Chemical Engineering</td><td class="num">71</td><td class="num">36</td><td class="num share">50.7%</td></tr><tr><td class="muted">Washington State</td><td>Applied Mathematics, General</td><td class="num">57</td><td class="num">26</td><td class="num share">45.6%</td></tr><tr><td class="muted">Washington State</td><td>Educational Psychology</td><td class="num">16</td><td class="num">7</td><td class="num share">43.8%</td></tr><tr><td class="muted">Washington State</td><td>Physics, General</td><td class="num">57</td><td class="num">23</td><td class="num share">40.4%</td></tr><tr><td class="muted">Washington State</td><td>Plant Molecular Biology</td><td class="num">61</td><td class="num">23</td><td class="num share">37.7%</td></tr><tr><td class="muted">Washington State</td><td>Geology/Earth Science, General</td><td class="num">15</td><td class="num">5</td><td class="num share">33.3%</td></tr><tr><td class="muted">Washington State</td><td>Chemistry, General</td><td class="num">99</td><td class="num">25</td><td class="num share">25.3%</td></tr><tr><td class="muted">Washington State</td><td>Neuroscience</td><td class="num">30</td><td class="num">6</td><td class="num share">20.0%</td></tr><tr><td class="muted">Washington State</td><td>Entomology</td><td class="num">28</td><td class="num">5</td><td class="num share">17.9%</td></tr><tr><td class="muted">Washington State</td><td>Biology/Biological Sciences, General</td><td class="num">19</td><td class="num">2</td><td class="num share">10.5%</td></tr><tr><td class="muted">Washington State</td><td>Botany/Plant Biology</td><td class="num">15</td><td class="num">1</td><td class="num share">6.7%</td></tr><tr><td class="muted">Washington State</td><td>Multi-/Interdisciplinary Studies, General</td><td class="num">15</td><td class="num">1</td><td class="num share">6.7%</td></tr><tr><td class="muted">Washington State</td><td>Psychology, General</td><td class="num">80</td><td class="num">3</td><td class="num share">3.8%</td></tr><tr><td class="muted">Washington State</td><td>Biochemistry and Molecular Biology</td><td class="num">56</td><td class="num">1</td><td class="num share">1.8%</td></tr><tr><td class="muted">Washington State</td><td>Zoology/Animal Biology</td><td class="num">16</td><td class="num">0</td><td class="num share">0.0%</td></tr><tr><td class="muted">Washington State</td><td>Counseling Psychology</td><td class="num">37</td><td class="num">0</td><td class="num share">0.0%</td></tr><tr><td class="muted">UW Seattle</td><td>Industrial Engineering</td><td class="num">39</td><td class="num">27</td><td class="num share">69.2%</td></tr><tr><td class="muted">UW Seattle</td><td>Electrical and Electronics Engineering</td><td class="num">207</td><td class="num">128</td><td class="num share">61.8%</td></tr><tr><td class="muted">UW Seattle</td><td>Mechanical Engineering</td><td class="num">144</td><td class="num">70</td><td class="num share">48.6%</td></tr><tr><td class="muted">UW Seattle</td><td>Applied Mathematics, General</td><td class="num">61</td><td class="num">28</td><td class="num share">45.9%</td></tr><tr><td class="muted">UW Seattle</td><td>Civil Engineering, General</td><td class="num">112</td><td class="num">51</td><td class="num share">45.5%</td></tr><tr><td class="muted">UW Seattle</td><td>Computer and Information Sciences, General</td><td class="num">239</td><td class="num">104</td><td class="num share">43.5%</td></tr><tr><td class="muted">UW Seattle</td><td>Materials Engineering</td><td class="num">62</td><td class="num">27</td><td class="num share">43.5%</td></tr><tr><td class="muted">UW Seattle</td><td>Biostatistics</td><td class="num">85</td><td class="num">37</td><td class="num share">43.5%</td></tr><tr><td class="muted">UW Seattle</td><td>Mathematics, General</td><td class="num">112</td><td class="num">46</td><td class="num share">41.1%</td></tr><tr><td class="muted">UW Seattle</td><td>Nanotechnology</td><td class="num">26</td><td class="num">10</td><td class="num share">38.5%</td></tr><tr><td class="muted">UW Seattle</td><td>Statistics, General</td><td class="num">56</td><td class="num">21</td><td class="num share">37.5%</td></tr><tr><td class="muted">UW Seattle</td><td>Aerospace, Aeronautical, and Astronautical/Space Engineering, General</td><td class="num">68</td><td class="num">23</td><td class="num share">33.8%</td></tr><tr><td class="muted">UW Seattle</td><td>Atmospheric Sciences and Meteorology, General</td><td class="num">72</td><td class="num">20</td><td class="num share">27.8%</td></tr><tr><td class="muted">UW Seattle</td><td>Bioengineering and Biomedical Engineering</td><td class="num">144</td><td class="num">39</td><td class="num share">27.1%</td></tr><tr><td class="muted">UW Seattle</td><td>Information Technology</td><td class="num">37</td><td class="num">9</td><td class="num share">24.3%</td></tr><tr><td class="muted">UW Seattle</td><td>Information Science/Studies</td><td class="num">56</td><td class="num">12</td><td class="num share">21.4%</td></tr><tr><td class="muted">UW Seattle</td><td>Chemical Engineering</td><td class="num">100</td><td class="num">21</td><td class="num share">21.0%</td></tr><tr><td class="muted">UW Seattle</td><td>Biochemistry</td><td class="num">65</td><td class="num">13</td><td class="num share">20.0%</td></tr><tr><td class="muted">UW Seattle</td><td>Physics, General</td><td class="num">162</td><td class="num">29</td><td class="num share">17.9%</td></tr><tr><td class="muted">UW Seattle</td><td>Research and Experimental Psychology, Other</td><td class="num">37</td><td class="num">6</td><td class="num share">16.2%</td></tr><tr><td class="muted">UW Seattle</td><td>Geology/Earth Science, General</td><td class="num">62</td><td class="num">10</td><td class="num share">16.1%</td></tr><tr><td class="muted">UW Seattle</td><td>Epidemiology</td><td class="num">132</td><td class="num">21</td><td class="num share">15.9%</td></tr><tr><td class="muted">UW Seattle</td><td>Chemistry, General</td><td class="num">247</td><td class="num">39</td><td class="num share">15.8%</td></tr><tr><td class="muted">UW Seattle</td><td>Biology/Biological Sciences, General</td><td class="num">113</td><td class="num">15</td><td class="num share">13.3%</td></tr><tr><td class="muted">UW Seattle</td><td>Oceanography, Chemical and Physical</td><td class="num">75</td><td class="num">9</td><td class="num share">12.0%</td></tr><tr><td class="muted">UW Seattle</td><td>Astronomy</td><td class="num">34</td><td class="num">3</td><td class="num share">8.8%</td></tr><tr><td class="muted">UW Seattle</td><td>School Psychology</td><td class="num">25</td><td class="num">2</td><td class="num share">8.0%</td></tr><tr><td class="muted">UW Seattle</td><td>Cell/Cellular and Molecular Biology</td><td class="num">169</td><td class="num">9</td><td class="num share">5.3%</td></tr><tr><td class="muted">UW Seattle</td><td>Microbiology, General</td><td class="num">39</td><td class="num">2</td><td class="num share">5.1%</td></tr><tr><td class="muted">UW Seattle</td><td>Immunology</td><td class="num">39</td><td class="num">2</td><td class="num share">5.1%</td></tr><tr><td class="muted">UW Seattle</td><td>Psychology, General</td><td class="num">22</td><td class="num">1</td><td class="num share">4.5%</td></tr><tr><td class="muted">UW Seattle</td><td>Genetics, Other</td><td class="num">91</td><td class="num">4</td><td class="num share">4.4%</td></tr><tr><td class="muted">UW Seattle</td><td>Pharmacology</td><td class="num">48</td><td class="num">2</td><td class="num share">4.2%</td></tr><tr><td class="muted">UW Seattle</td><td>Educational Psychology</td><td class="num">32</td><td class="num">1</td><td class="num share">3.1%</td></tr><tr><td class="muted">UW Seattle</td><td>Pathology/Experimental Pathology</td><td class="num">42</td><td class="num">1</td><td class="num share">2.4%</td></tr><tr><td class="muted">UW Seattle</td><td>Neuroscience</td><td class="num">54</td><td class="num">1</td><td class="num share">1.9%</td></tr><tr><td class="muted">UW Seattle</td><td>Clinical Psychology</td><td class="num">55</td><td class="num">0</td><td class="num share">0.0%</td></tr></tbody></table></div>
+    <p class="note">From the dissertation corpus, which is built from what
+    universities publish about their own graduates. It covers the institutions
+    on this site, not every institution in the state, so it is a floor.</p>
+  </section>
+  <section class="block" id="not-published">
+    <h2>What is not published for a state this size</h2>
+    <p class="lede">Two of the measures this site uses elsewhere do not exist
+    at this scale, and the reason is the same in both cases: the agency
+    publishes a ranked extract rather than the whole file.</p>
+    <ul class="lede">
+      <li><strong>Practical training is not published here.</strong> SEVP
+      releases the top 100 and top 200 schools for OPT and STEM OPT, not every
+      school. An institution outside those lists has no published figure at
+      all. Its absence is a fact about the list, not about the institution, and
+      it must never be read as a zero.</li>
+      <li><strong>Student visa counts are not published by state.</strong> DHS
+      reports SEVIS records nationally and names a few states per region in its
+      commentary. For most states it publishes a percentage change and no
+      count, so the number of foreign students physically in a state cannot be
+      read off the federal release.</li>
+      <li><strong>Enrolment is the measure that does exist.</strong> IPEDS asks
+      every institution directly, which is why this page is built from it. It
+      counts students enrolled, not visas issued, and the two are different
+      questions.</li>
+    </ul>
+  </section>
+
+  <section class="block" id="method">
+    <h2>Method and limits</h2>
+    <ul class="lede">
+      <li><strong>Non-resident means here on a temporary visa.</strong> IPEDS
+      defines it as a person &ldquo;who is not a citizen or national of the
+      United States and who is in this country on a visa or temporary basis and
+      does not have the right to remain indefinitely.&rdquo; A green card holder
+      is therefore never counted here. Neither is a refugee or an asylee. Those
+      students are reported in the race and ethnicity categories alongside
+      citizens. For students the category is overwhelmingly F-1 and J-1.</li>
+      <li><strong>It is not ethnicity and not country of origin.</strong> A
+      US-born citizen of any background is never non-resident. The status is
+      recorded when the student enrols, for the enrolment figures, and when the
+      degree is awarded, for the degree counts. These files cannot be split any
+      other way.</li>
+      <li><strong>Degrees are pooled</strong> over
+      2021&ndash;2025, because a
+      single year at a small institution moves on one student.</li>
+      <li><strong>Enrolment and awards are different measures</strong> and will
+      not agree. One counts people on a given day; the other counts degrees
+      conferred over five years.</li>
+      <li><strong>Federal money is matched to a campus</strong>, and a system
+      that reports centrally can carry money its branches spend.</li>
+      <li><strong>This page shows composition, not displacement.</strong> It
+      records who received the degrees. It does not show that anyone was kept
+      out, and nothing here should be read that way.</li>
+    </ul>
+    <p class="note">Built by <code>scripts/build_state_pages.py</code> from
+    <a href="/data/institution_profiles.json">institution_profiles.json</a>,
+    <a href="/data/state_funding_and_enrolment.json">state_funding_and_enrolment.json</a>
+    and <a href="/data/university_distribution.json">university_distribution.json</a>.
+    Compare the country on <a href="/overview">the national overview</a>.</p>
+  </section>
+
+</div>
+</main>
+<script src="/analytics-beacon.js" defer></script>
+<script src="/states.js" defer></script>
+<script src="/anchors.js" defer></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

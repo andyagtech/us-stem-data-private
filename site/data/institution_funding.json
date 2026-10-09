@@ -1,0 +1,7659 @@
+{
+  "source": "IPEDS Finance, GASB form (F1A), fiscal year 2024",
+  "source_url": "https://nces.ed.gov/ipeds/use-the-data",
+  "fiscal_year": "2024",
+  "variables": {
+    "state_appropriations": "F1B11",
+    "federal_appropriations": "F1B10"
+  },
+  "scope": "PUBLIC institutions only. Private institutions file the FASB form, which has no state-appropriations line, so an institution absent here is almost always private and a dash is the correct display. Never write a zero.",
+  "institutions_reporting": 1911,
+  "with_state_appropriations": 1671,
+  "state_appropriations_total": 97150708858,
+  "institutions": {
+    "100654": {
+      "state_appropriations": 75401110,
+      "federal_appropriations": 3190075
+    },
+    "100663": {
+      "state_appropriations": 375199643,
+      "federal_appropriations": 0
+    },
+    "100706": {
+      "state_appropriations": 71328381,
+      "federal_appropriations": 0
+    },
+    "100724": {
+      "state_appropriations": 71819002,
+      "federal_appropriations": 0
+    },
+    "100733": {
+      "state_appropriations": 133638715,
+      "federal_appropriations": 0
+    },
+    "100751": {
+      "state_appropriations": 229905984,
+      "federal_appropriations": 0
+    },
+    "100760": {
+      "state_appropriations": 10900013,
+      "federal_appropriations": 0
+    },
+    "100812": {
+      "state_appropriations": 33720686,
+      "federal_appropriations": 0
+    },
+    "100830": {
+      "state_appropriations": 42543470,
+      "federal_appropriations": 0
+    },
+    "100858": {
+      "state_appropriations": 391067312,
+      "federal_appropriations": 0
+    },
+    "101028": {
+      "state_appropriations": 9557423,
+      "federal_appropriations": 0
+    },
+    "101143": {
+      "state_appropriations": 12722037,
+      "federal_appropriations": 0
+    },
+    "101161": {
+      "state_appropriations": 35386419,
+      "federal_appropriations": 0
+    },
+    "101240": {
+      "state_appropriations": 27380565,
+      "federal_appropriations": 0
+    },
+    "101286": {
+      "state_appropriations": 20891059,
+      "federal_appropriations": 0
+    },
+    "101295": {
+      "state_appropriations": 31256624,
+      "federal_appropriations": 0
+    },
+    "101301": {
+      "state_appropriations": 14264208,
+      "federal_appropriations": 0
+    },
+    "101462": {
+      "state_appropriations": 7027475,
+      "federal_appropriations": 0
+    },
+    "101471": {
+      "state_appropriations": 23679347,
+      "federal_appropriations": 0
+    },
+    "101480": {
+      "state_appropriations": 67978224,
+      "federal_appropriations": 0
+    },
+    "101505": {
+      "state_appropriations": 32099521,
+      "federal_appropriations": 0
+    },
+    "101514": {
+      "state_appropriations": 37382779,
+      "federal_appropriations": 0
+    },
+    "101569": {
+      "state_appropriations": 18272551,
+      "federal_appropriations": 0
+    },
+    "101587": {
+      "state_appropriations": 46205588,
+      "federal_appropriations": 0
+    },
+    "101602": {
+      "state_appropriations": 19625882,
+      "federal_appropriations": 0
+    },
+    "101648": {
+      "state_appropriations": 12827267,
+      "federal_appropriations": 0
+    },
+    "101709": {
+      "state_appropriations": 28843970,
+      "federal_appropriations": 0
+    },
+    "101736": {
+      "state_appropriations": 16909173,
+      "federal_appropriations": 0
+    },
+    "101879": {
+      "state_appropriations": 76573878,
+      "federal_appropriations": 0
+    },
+    "101897": {
+      "state_appropriations": 13158043,
+      "federal_appropriations": 0
+    },
+    "101994": {
+      "state_appropriations": 5933786,
+      "federal_appropriations": 0
+    },
+    "102030": {
+      "state_appropriations": 18596418,
+      "federal_appropriations": 0
+    },
+    "102067": {
+      "state_appropriations": 27189202,
+      "federal_appropriations": 0
+    },
+    "102076": {
+      "state_appropriations": 12643140,
+      "federal_appropriations": 0
+    },
+    "102094": {
+      "state_appropriations": 187908000,
+      "federal_appropriations": 0
+    },
+    "102313": {
+      "state_appropriations": 13111694,
+      "federal_appropriations": 0
+    },
+    "102368": {
+      "state_appropriations": 90870578,
+      "federal_appropriations": 0
+    },
+    "102429": {
+      "state_appropriations": 22023757,
+      "federal_appropriations": 0
+    },
+    "102553": {
+      "state_appropriations": 121337155,
+      "federal_appropriations": 0
+    },
+    "102614": {
+      "state_appropriations": 167109823,
+      "federal_appropriations": 0
+    },
+    "102632": {
+      "state_appropriations": 25270760,
+      "federal_appropriations": 0
+    },
+    "102711": {
+      "state_appropriations": 5491735,
+      "federal_appropriations": 0
+    },
+    "103529": {
+      "state_appropriations": 17920178,
+      "federal_appropriations": 0
+    },
+    "104151": {
+      "state_appropriations": 423778000,
+      "federal_appropriations": 0
+    },
+    "104160": {
+      "state_appropriations": 14067997,
+      "federal_appropriations": 0
+    },
+    "104179": {
+      "state_appropriations": 421108000,
+      "federal_appropriations": 0
+    },
+    "104346": {
+      "state_appropriations": 4858000,
+      "federal_appropriations": 0
+    },
+    "104425": {
+      "state_appropriations": 24406992,
+      "federal_appropriations": 0
+    },
+    "104577": {
+      "state_appropriations": 23598461,
+      "federal_appropriations": 0
+    },
+    "104708": {
+      "state_appropriations": 4853189,
+      "federal_appropriations": 0
+    },
+    "105136": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "105145": {
+      "state_appropriations": 1960129,
+      "federal_appropriations": 0
+    },
+    "105154": {
+      "state_appropriations": 5780958,
+      "federal_appropriations": 0
+    },
+    "105206": {
+      "state_appropriations": 1844733,
+      "federal_appropriations": 0
+    },
+    "105297": {
+      "state_appropriations": 0,
+      "federal_appropriations": 15120245
+    },
+    "105330": {
+      "state_appropriations": 144555054,
+      "federal_appropriations": 0
+    },
+    "105349": {
+      "state_appropriations": 15666643,
+      "federal_appropriations": 0
+    },
+    "105428": {
+      "state_appropriations": 3547729,
+      "federal_appropriations": 0
+    },
+    "105525": {
+      "state_appropriations": 10882155,
+      "federal_appropriations": 0
+    },
+    "105668": {
+      "state_appropriations": 6317474,
+      "federal_appropriations": 0
+    },
+    "105747": {
+      "state_appropriations": 2302957,
+      "federal_appropriations": 0
+    },
+    "105792": {
+      "state_appropriations": 1424902,
+      "federal_appropriations": 0
+    },
+    "106148": {
+      "state_appropriations": 7906721,
+      "federal_appropriations": 0
+    },
+    "106245": {
+      "state_appropriations": 70379167,
+      "federal_appropriations": 0
+    },
+    "106263": {
+      "state_appropriations": 74115000,
+      "federal_appropriations": 0
+    },
+    "106397": {
+      "state_appropriations": 235548000,
+      "federal_appropriations": 0
+    },
+    "106412": {
+      "state_appropriations": 29127350,
+      "federal_appropriations": 0
+    },
+    "106449": {
+      "state_appropriations": 14470529,
+      "federal_appropriations": 0
+    },
+    "106458": {
+      "state_appropriations": 72779636,
+      "federal_appropriations": 0
+    },
+    "106467": {
+      "state_appropriations": 43171669,
+      "federal_appropriations": 0
+    },
+    "106485": {
+      "state_appropriations": 20437403,
+      "federal_appropriations": 0
+    },
+    "106625": {
+      "state_appropriations": 8200821,
+      "federal_appropriations": 0
+    },
+    "106704": {
+      "state_appropriations": 64413283,
+      "federal_appropriations": 0
+    },
+    "106795": {
+      "state_appropriations": 5133874,
+      "federal_appropriations": 0
+    },
+    "106883": {
+      "state_appropriations": 10794690,
+      "federal_appropriations": 0
+    },
+    "106980": {
+      "state_appropriations": 11702867,
+      "federal_appropriations": 0
+    },
+    "106999": {
+      "state_appropriations": 5444197,
+      "federal_appropriations": 0
+    },
+    "107071": {
+      "state_appropriations": 22575600,
+      "federal_appropriations": 0
+    },
+    "107318": {
+      "state_appropriations": 7856755,
+      "federal_appropriations": 0
+    },
+    "107327": {
+      "state_appropriations": 10861246,
+      "federal_appropriations": 0
+    },
+    "107460": {
+      "state_appropriations": 8895535,
+      "federal_appropriations": 0
+    },
+    "107488": {
+      "state_appropriations": 4188032,
+      "federal_appropriations": 0
+    },
+    "107521": {
+      "state_appropriations": 4537746,
+      "federal_appropriations": 0
+    },
+    "107549": {
+      "state_appropriations": 4683832,
+      "federal_appropriations": 0
+    },
+    "107585": {
+      "state_appropriations": 6484510,
+      "federal_appropriations": 0
+    },
+    "107619": {
+      "state_appropriations": 10814196,
+      "federal_appropriations": 0
+    },
+    "107637": {
+      "state_appropriations": 7330157,
+      "federal_appropriations": 0
+    },
+    "107664": {
+      "state_appropriations": 16999570,
+      "federal_appropriations": 0
+    },
+    "107725": {
+      "state_appropriations": 6708548,
+      "federal_appropriations": 0
+    },
+    "107743": {
+      "state_appropriations": 3801482,
+      "federal_appropriations": 0
+    },
+    "107974": {
+      "state_appropriations": 7587527,
+      "federal_appropriations": 0
+    },
+    "107983": {
+      "state_appropriations": 18940768,
+      "federal_appropriations": 0
+    },
+    "107992": {
+      "state_appropriations": 8032033,
+      "federal_appropriations": 0
+    },
+    "108056": {
+      "state_appropriations": 4441431,
+      "federal_appropriations": 0
+    },
+    "108092": {
+      "state_appropriations": 26635265,
+      "federal_appropriations": 0
+    },
+    "108667": {
+      "state_appropriations": 8812461,
+      "federal_appropriations": 0
+    },
+    "108807": {
+      "state_appropriations": 52579032,
+      "federal_appropriations": 770023
+    },
+    "109208": {
+      "state_appropriations": 92437880,
+      "federal_appropriations": 0
+    },
+    "109350": {
+      "state_appropriations": 92014142,
+      "federal_appropriations": 0
+    },
+    "109819": {
+      "state_appropriations": 106091980,
+      "federal_appropriations": 0
+    },
+    "109907": {
+      "state_appropriations": 27274900,
+      "federal_appropriations": 0
+    },
+    "110246": {
+      "state_appropriations": 62279735,
+      "federal_appropriations": 0
+    },
+    "110334": {
+      "state_appropriations": 36858377,
+      "federal_appropriations": 0
+    },
+    "110398": {
+      "state_appropriations": 27279943,
+      "federal_appropriations": 0
+    },
+    "110422": {
+      "state_appropriations": 215095567,
+      "federal_appropriations": 0
+    },
+    "110486": {
+      "state_appropriations": 36972382,
+      "federal_appropriations": 0
+    },
+    "110495": {
+      "state_appropriations": 117479719,
+      "federal_appropriations": 0
+    },
+    "110501": {
+      "state_appropriations": 351942871,
+      "federal_appropriations": 0
+    },
+    "110510": {
+      "state_appropriations": 112438111,
+      "federal_appropriations": 0
+    },
+    "110529": {
+      "state_appropriations": 243741932,
+      "federal_appropriations": 0
+    },
+    "110538": {
+      "state_appropriations": 185608771,
+      "federal_appropriations": 0
+    },
+    "110547": {
+      "state_appropriations": 169616880,
+      "federal_appropriations": 0
+    },
+    "110556": {
+      "state_appropriations": 228817657,
+      "federal_appropriations": 0
+    },
+    "110565": {
+      "state_appropriations": 248411869,
+      "federal_appropriations": 0
+    },
+    "110574": {
+      "state_appropriations": 149087208,
+      "federal_appropriations": 0
+    },
+    "110583": {
+      "state_appropriations": 289564176,
+      "federal_appropriations": 0
+    },
+    "110592": {
+      "state_appropriations": 244997570,
+      "federal_appropriations": 0
+    },
+    "110608": {
+      "state_appropriations": 301436849,
+      "federal_appropriations": 0
+    },
+    "110617": {
+      "state_appropriations": 279668955,
+      "federal_appropriations": 0
+    },
+    "110635": {
+      "state_appropriations": 540926000,
+      "federal_appropriations": 0
+    },
+    "110644": {
+      "state_appropriations": 540731000,
+      "federal_appropriations": 0
+    },
+    "110653": {
+      "state_appropriations": 411320000,
+      "federal_appropriations": 0
+    },
+    "110662": {
+      "state_appropriations": 670471000,
+      "federal_appropriations": 0
+    },
+    "110671": {
+      "state_appropriations": 417108000,
+      "federal_appropriations": 0
+    },
+    "110680": {
+      "state_appropriations": 572102000,
+      "federal_appropriations": 0
+    },
+    "110699": {
+      "state_appropriations": 271721000,
+      "federal_appropriations": 0
+    },
+    "110705": {
+      "state_appropriations": 297043000,
+      "federal_appropriations": 0
+    },
+    "110714": {
+      "state_appropriations": 279562000,
+      "federal_appropriations": 0
+    },
+    "111188": {
+      "state_appropriations": 53145401,
+      "federal_appropriations": 0
+    },
+    "111434": {
+      "state_appropriations": 2937935,
+      "federal_appropriations": 0
+    },
+    "111461": {
+      "state_appropriations": 102297622,
+      "federal_appropriations": 0
+    },
+    "111887": {
+      "state_appropriations": 103760398,
+      "federal_appropriations": 0
+    },
+    "111896": {
+      "state_appropriations": 18060807,
+      "federal_appropriations": 0
+    },
+    "111920": {
+      "state_appropriations": 43315849,
+      "federal_appropriations": 0
+    },
+    "111939": {
+      "state_appropriations": 89785596,
+      "federal_appropriations": 0
+    },
+    "112172": {
+      "state_appropriations": 81530734,
+      "federal_appropriations": 0
+    },
+    "112190": {
+      "state_appropriations": 111168277,
+      "federal_appropriations": 0
+    },
+    "112367": {
+      "state_appropriations": 1501693,
+      "federal_appropriations": 0
+    },
+    "112376": {
+      "state_appropriations": 10684040,
+      "federal_appropriations": 0
+    },
+    "112385": {
+      "state_appropriations": 7084352,
+      "federal_appropriations": 0
+    },
+    "112561": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "112686": {
+      "state_appropriations": 35127433,
+      "federal_appropriations": 0
+    },
+    "112817": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "112826": {
+      "state_appropriations": 12814106,
+      "federal_appropriations": 0
+    },
+    "113096": {
+      "state_appropriations": 51656462,
+      "federal_appropriations": 0
+    },
+    "113111": {
+      "state_appropriations": 24040211,
+      "federal_appropriations": 0
+    },
+    "113193": {
+      "state_appropriations": 21010654,
+      "federal_appropriations": 0
+    },
+    "113218": {
+      "state_appropriations": 23561624,
+      "federal_appropriations": 0
+    },
+    "113236": {
+      "state_appropriations": 55002516,
+      "federal_appropriations": 0
+    },
+    "113333": {
+      "state_appropriations": 22178034,
+      "federal_appropriations": 0
+    },
+    "113573": {
+      "state_appropriations": 25577075,
+      "federal_appropriations": 0
+    },
+    "113634": {
+      "state_appropriations": 37307314,
+      "federal_appropriations": 0
+    },
+    "113856": {
+      "state_appropriations": 106137428,
+      "federal_appropriations": 0
+    },
+    "113980": {
+      "state_appropriations": 101607095,
+      "federal_appropriations": 0
+    },
+    "114266": {
+      "state_appropriations": 8468330,
+      "federal_appropriations": 0
+    },
+    "114433": {
+      "state_appropriations": 12590878,
+      "federal_appropriations": 0
+    },
+    "114716": {
+      "state_appropriations": 15247398,
+      "federal_appropriations": 0
+    },
+    "114789": {
+      "state_appropriations": 102216625,
+      "federal_appropriations": 0
+    },
+    "114831": {
+      "state_appropriations": 8778805,
+      "federal_appropriations": 0
+    },
+    "114859": {
+      "state_appropriations": 72910312,
+      "federal_appropriations": 0
+    },
+    "114938": {
+      "state_appropriations": 17522107,
+      "federal_appropriations": 0
+    },
+    "115001": {
+      "state_appropriations": 86551125,
+      "federal_appropriations": 0
+    },
+    "115126": {
+      "state_appropriations": 10704296,
+      "federal_appropriations": 0
+    },
+    "115287": {
+      "state_appropriations": 4523219,
+      "federal_appropriations": 0
+    },
+    "115296": {
+      "state_appropriations": 47620019,
+      "federal_appropriations": 0
+    },
+    "115393": {
+      "state_appropriations": 34710172,
+      "federal_appropriations": 0
+    },
+    "115755": {
+      "state_appropriations": 119979711,
+      "federal_appropriations": 0
+    },
+    "115861": {
+      "state_appropriations": 57433259,
+      "federal_appropriations": 0
+    },
+    "116439": {
+      "state_appropriations": 1639884,
+      "federal_appropriations": 0
+    },
+    "117052": {
+      "state_appropriations": 35939599,
+      "federal_appropriations": 0
+    },
+    "117195": {
+      "state_appropriations": 16138913,
+      "federal_appropriations": 0
+    },
+    "117247": {
+      "state_appropriations": 18928398,
+      "federal_appropriations": 0
+    },
+    "117274": {
+      "state_appropriations": 16291350,
+      "federal_appropriations": 0
+    },
+    "117645": {
+      "state_appropriations": 125088221,
+      "federal_appropriations": 0
+    },
+    "117681": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "117690": {
+      "state_appropriations": 33684845,
+      "federal_appropriations": 0
+    },
+    "117706": {
+      "state_appropriations": 73410497,
+      "federal_appropriations": 0
+    },
+    "117715": {
+      "state_appropriations": 25427474,
+      "federal_appropriations": 0
+    },
+    "117724": {
+      "state_appropriations": 61577620,
+      "federal_appropriations": 0
+    },
+    "117733": {
+      "state_appropriations": 67157036,
+      "federal_appropriations": 0
+    },
+    "117788": {
+      "state_appropriations": 77389994,
+      "federal_appropriations": 0
+    },
+    "117803": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "117867": {
+      "state_appropriations": 39307247,
+      "federal_appropriations": 0
+    },
+    "117894": {
+      "state_appropriations": 18896907,
+      "federal_appropriations": 0
+    },
+    "117900": {
+      "state_appropriations": 27187612,
+      "federal_appropriations": 0
+    },
+    "118347": {
+      "state_appropriations": 2347517,
+      "federal_appropriations": 0
+    },
+    "118684": {
+      "state_appropriations": 20514025,
+      "federal_appropriations": 0
+    },
+    "118718": {
+      "state_appropriations": 70042395,
+      "federal_appropriations": 0
+    },
+    "118772": {
+      "state_appropriations": 12160904,
+      "federal_appropriations": 0
+    },
+    "118912": {
+      "state_appropriations": 6323238,
+      "federal_appropriations": 0
+    },
+    "118930": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "118976": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "119067": {
+      "state_appropriations": 17047336,
+      "federal_appropriations": 0
+    },
+    "119137": {
+      "state_appropriations": 52521464,
+      "federal_appropriations": 0
+    },
+    "119164": {
+      "state_appropriations": 186662904,
+      "federal_appropriations": 0
+    },
+    "119216": {
+      "state_appropriations": 64157717,
+      "federal_appropriations": 0
+    },
+    "119331": {
+      "state_appropriations": 6053150,
+      "federal_appropriations": 0
+    },
+    "120023": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "120290": {
+      "state_appropriations": 26586864,
+      "federal_appropriations": 0
+    },
+    "120342": {
+      "state_appropriations": 16938072,
+      "federal_appropriations": 0
+    },
+    "120421": {
+      "state_appropriations": 28190033,
+      "federal_appropriations": 0
+    },
+    "120953": {
+      "state_appropriations": 33107228,
+      "federal_appropriations": 0
+    },
+    "120971": {
+      "state_appropriations": 34602529,
+      "federal_appropriations": 0
+    },
+    "121044": {
+      "state_appropriations": 95604418,
+      "federal_appropriations": 0
+    },
+    "121178": {
+      "state_appropriations": 12910667,
+      "federal_appropriations": 0
+    },
+    "121363": {
+      "state_appropriations": 16778328,
+      "federal_appropriations": 0
+    },
+    "121619": {
+      "state_appropriations": 64142502,
+      "federal_appropriations": 0
+    },
+    "121707": {
+      "state_appropriations": 32069684,
+      "federal_appropriations": 0
+    },
+    "121886": {
+      "state_appropriations": 95921451,
+      "federal_appropriations": 0
+    },
+    "121901": {
+      "state_appropriations": 98406659,
+      "federal_appropriations": 0
+    },
+    "122180": {
+      "state_appropriations": 65250268,
+      "federal_appropriations": 0
+    },
+    "122205": {
+      "state_appropriations": 2518823,
+      "federal_appropriations": 0
+    },
+    "122320": {
+      "state_appropriations": 171610507,
+      "federal_appropriations": 0
+    },
+    "122339": {
+      "state_appropriations": 34049313,
+      "federal_appropriations": 0
+    },
+    "122375": {
+      "state_appropriations": 44962581,
+      "federal_appropriations": 0
+    },
+    "122384": {
+      "state_appropriations": 29121158,
+      "federal_appropriations": 0
+    },
+    "122409": {
+      "state_appropriations": 255278549,
+      "federal_appropriations": 0
+    },
+    "122597": {
+      "state_appropriations": 150219030,
+      "federal_appropriations": 0
+    },
+    "122658": {
+      "state_appropriations": 69086622,
+      "federal_appropriations": 0
+    },
+    "122737": {
+      "state_appropriations": 7258569,
+      "federal_appropriations": 0
+    },
+    "122746": {
+      "state_appropriations": 8468330,
+      "federal_appropriations": 0
+    },
+    "122755": {
+      "state_appropriations": 277608832,
+      "federal_appropriations": 0
+    },
+    "122782": {
+      "state_appropriations": 3382711,
+      "federal_appropriations": 0
+    },
+    "122791": {
+      "state_appropriations": 4523730,
+      "federal_appropriations": 0
+    },
+    "122889": {
+      "state_appropriations": 55005694,
+      "federal_appropriations": 0
+    },
+    "122977": {
+      "state_appropriations": 118319011,
+      "federal_appropriations": 0
+    },
+    "123013": {
+      "state_appropriations": 45110394,
+      "federal_appropriations": 0
+    },
+    "123217": {
+      "state_appropriations": 73180907,
+      "federal_appropriations": 0
+    },
+    "123299": {
+      "state_appropriations": 37020535,
+      "federal_appropriations": 0
+    },
+    "123341": {
+      "state_appropriations": 1409132,
+      "federal_appropriations": 0
+    },
+    "123484": {
+      "state_appropriations": 15483743,
+      "federal_appropriations": 130388
+    },
+    "123493": {
+      "state_appropriations": 25717,
+      "federal_appropriations": 203951
+    },
+    "123509": {
+      "state_appropriations": 4316412,
+      "federal_appropriations": 0
+    },
+    "123527": {
+      "state_appropriations": 48080421,
+      "federal_appropriations": 0
+    },
+    "123563": {
+      "state_appropriations": 35452872,
+      "federal_appropriations": 0
+    },
+    "123572": {
+      "state_appropriations": 106240151,
+      "federal_appropriations": 0
+    },
+    "123800": {
+      "state_appropriations": 87903132,
+      "federal_appropriations": 0
+    },
+    "123925": {
+      "state_appropriations": 50356120,
+      "federal_appropriations": 0
+    },
+    "124113": {
+      "state_appropriations": 29657332,
+      "federal_appropriations": 0
+    },
+    "124557": {
+      "state_appropriations": 449588000,
+      "federal_appropriations": 0
+    },
+    "125019": {
+      "state_appropriations": 10530891,
+      "federal_appropriations": 0
+    },
+    "125028": {
+      "state_appropriations": 43111530,
+      "federal_appropriations": 0
+    },
+    "125091": {
+      "state_appropriations": 76210910,
+      "federal_appropriations": 0
+    },
+    "125170": {
+      "state_appropriations": 11740906,
+      "federal_appropriations": 0
+    },
+    "125222": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "125462": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "125471": {
+      "state_appropriations": 43157576,
+      "federal_appropriations": 0
+    },
+    "126100": {
+      "state_appropriations": 81333824,
+      "federal_appropriations": 0
+    },
+    "126119": {
+      "state_appropriations": 20225803,
+      "federal_appropriations": 0
+    },
+    "126182": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "126207": {
+      "state_appropriations": 16665297,
+      "federal_appropriations": 0
+    },
+    "126289": {
+      "state_appropriations": 4018322,
+      "federal_appropriations": 0
+    },
+    "126562": {
+      "state_appropriations": 25028945,
+      "federal_appropriations": 0
+    },
+    "126580": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "126614": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "126711": {
+      "state_appropriations": 11930298,
+      "federal_appropriations": 0
+    },
+    "126748": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "126775": {
+      "state_appropriations": 3907032,
+      "federal_appropriations": 0
+    },
+    "126818": {
+      "state_appropriations": 18987357,
+      "federal_appropriations": 0
+    },
+    "126863": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "126915": {
+      "state_appropriations": 2470490,
+      "federal_appropriations": 0
+    },
+    "126942": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "127158": {
+      "state_appropriations": 16008916,
+      "federal_appropriations": 0
+    },
+    "127185": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "127200": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "127389": {
+      "state_appropriations": 2312380,
+      "federal_appropriations": 0
+    },
+    "127556": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "127565": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "127617": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "127732": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "127741": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "127778": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "127820": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "127884": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "127909": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "128106": {
+      "state_appropriations": 3367403,
+      "federal_appropriations": 0
+    },
+    "128151": {
+      "state_appropriations": 3784186,
+      "federal_appropriations": 0
+    },
+    "128258": {
+      "state_appropriations": 3478069,
+      "federal_appropriations": 0
+    },
+    "128300": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "128328": {
+      "state_appropriations": 0,
+      "federal_appropriations": 683719491
+    },
+    "128391": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "128771": {
+      "state_appropriations": 59987856,
+      "federal_appropriations": 0
+    },
+    "128780": {
+      "state_appropriations": 4811223,
+      "federal_appropriations": 0
+    },
+    "129020": {
+      "state_appropriations": 407839963,
+      "federal_appropriations": 0
+    },
+    "129215": {
+      "state_appropriations": 36289706,
+      "federal_appropriations": 0
+    },
+    "129367": {
+      "state_appropriations": 200773337,
+      "federal_appropriations": 0
+    },
+    "130493": {
+      "state_appropriations": 58245452,
+      "federal_appropriations": 0
+    },
+    "130624": {
+      "state_appropriations": 0,
+      "federal_appropriations": 122198771
+    },
+    "130776": {
+      "state_appropriations": 38923537,
+      "federal_appropriations": 0
+    },
+    "130882": {
+      "state_appropriations": 13441667,
+      "federal_appropriations": 0
+    },
+    "130907": {
+      "state_appropriations": 84702534,
+      "federal_appropriations": 0
+    },
+    "130934": {
+      "state_appropriations": 46642867,
+      "federal_appropriations": 0
+    },
+    "131399": {
+      "state_appropriations": 101463185,
+      "federal_appropriations": 0
+    },
+    "132374": {
+      "state_appropriations": 1000097,
+      "federal_appropriations": 0
+    },
+    "132675": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "132693": {
+      "state_appropriations": 57644681,
+      "federal_appropriations": 0
+    },
+    "132709": {
+      "state_appropriations": 116114845,
+      "federal_appropriations": 0
+    },
+    "132851": {
+      "state_appropriations": 43690511,
+      "federal_appropriations": 0
+    },
+    "132903": {
+      "state_appropriations": 482492685,
+      "federal_appropriations": 0
+    },
+    "132976": {
+      "state_appropriations": 2243283,
+      "federal_appropriations": 0
+    },
+    "133021": {
+      "state_appropriations": 16623274,
+      "federal_appropriations": 0
+    },
+    "133155": {
+      "state_appropriations": 6877927,
+      "federal_appropriations": 0
+    },
+    "133386": {
+      "state_appropriations": 66293533,
+      "federal_appropriations": 0
+    },
+    "133508": {
+      "state_appropriations": 60314548,
+      "federal_appropriations": 0
+    },
+    "133650": {
+      "state_appropriations": 126582734,
+      "federal_appropriations": 0
+    },
+    "133669": {
+      "state_appropriations": 264385982,
+      "federal_appropriations": 0
+    },
+    "133702": {
+      "state_appropriations": 93638642,
+      "federal_appropriations": 0
+    },
+    "133951": {
+      "state_appropriations": 424483021,
+      "federal_appropriations": 0
+    },
+    "133960": {
+      "state_appropriations": 11743609,
+      "federal_appropriations": 0
+    },
+    "134097": {
+      "state_appropriations": 737215982,
+      "federal_appropriations": 0
+    },
+    "134130": {
+      "state_appropriations": 1128759000,
+      "federal_appropriations": 0
+    },
+    "134291": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "134307": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "134343": {
+      "state_appropriations": 40160387,
+      "federal_appropriations": 0
+    },
+    "134495": {
+      "state_appropriations": 88185338,
+      "federal_appropriations": 0
+    },
+    "134608": {
+      "state_appropriations": 64761369,
+      "federal_appropriations": 0
+    },
+    "135160": {
+      "state_appropriations": 20568697,
+      "federal_appropriations": 0
+    },
+    "135179": {
+      "state_appropriations": 12829479,
+      "federal_appropriations": 0
+    },
+    "135188": {
+      "state_appropriations": 25721522,
+      "federal_appropriations": 0
+    },
+    "135267": {
+      "state_appropriations": 5801050,
+      "federal_appropriations": 0
+    },
+    "135276": {
+      "state_appropriations": 6958470,
+      "federal_appropriations": 0
+    },
+    "135294": {
+      "state_appropriations": 10107524,
+      "federal_appropriations": 0
+    },
+    "135391": {
+      "state_appropriations": 38573776,
+      "federal_appropriations": 0
+    },
+    "135407": {
+      "state_appropriations": 10821358,
+      "federal_appropriations": 0
+    },
+    "135522": {
+      "state_appropriations": 4187797,
+      "federal_appropriations": 0
+    },
+    "135647": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "135717": {
+      "state_appropriations": 208579514,
+      "federal_appropriations": 0
+    },
+    "135735": {
+      "state_appropriations": 14019761,
+      "federal_appropriations": 0
+    },
+    "136145": {
+      "state_appropriations": 12695225,
+      "federal_appropriations": 0
+    },
+    "136172": {
+      "state_appropriations": 170088964,
+      "federal_appropriations": 0
+    },
+    "136233": {
+      "state_appropriations": 31895177,
+      "federal_appropriations": 0
+    },
+    "136303": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "136358": {
+      "state_appropriations": 84280507,
+      "federal_appropriations": 0
+    },
+    "136400": {
+      "state_appropriations": 53507044,
+      "federal_appropriations": 0
+    },
+    "136473": {
+      "state_appropriations": 69174064,
+      "federal_appropriations": 0
+    },
+    "136491": {
+      "state_appropriations": 11833483,
+      "federal_appropriations": 0
+    },
+    "136516": {
+      "state_appropriations": 51555607,
+      "federal_appropriations": 0
+    },
+    "136659": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "136765": {
+      "state_appropriations": 3295200,
+      "federal_appropriations": 0
+    },
+    "136826": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "137023": {
+      "state_appropriations": 6483842,
+      "federal_appropriations": 0
+    },
+    "137078": {
+      "state_appropriations": 97959035,
+      "federal_appropriations": 0
+    },
+    "137087": {
+      "state_appropriations": 14868715,
+      "federal_appropriations": 0
+    },
+    "137096": {
+      "state_appropriations": 57350120,
+      "federal_appropriations": 0
+    },
+    "137120": {
+      "state_appropriations": 10766634,
+      "federal_appropriations": 0
+    },
+    "137209": {
+      "state_appropriations": 61050974,
+      "federal_appropriations": 0
+    },
+    "137245": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "137281": {
+      "state_appropriations": 36920723,
+      "federal_appropriations": 0
+    },
+    "137315": {
+      "state_appropriations": 29681756,
+      "federal_appropriations": 0
+    },
+    "137351": {
+      "state_appropriations": 613220660,
+      "federal_appropriations": 0
+    },
+    "137713": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "137759": {
+      "state_appropriations": 44891169,
+      "federal_appropriations": 0
+    },
+    "137856": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "137865": {
+      "state_appropriations": 9824777,
+      "federal_appropriations": 0
+    },
+    "138187": {
+      "state_appropriations": 130849636,
+      "federal_appropriations": 0
+    },
+    "138284": {
+      "state_appropriations": 2840913,
+      "federal_appropriations": 0
+    },
+    "138354": {
+      "state_appropriations": 135471937,
+      "federal_appropriations": 0
+    },
+    "138372": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "138479": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "138488": {
+      "state_appropriations": 6654241,
+      "federal_appropriations": 0
+    },
+    "138497": {
+      "state_appropriations": 3275271,
+      "federal_appropriations": 0
+    },
+    "138558": {
+      "state_appropriations": 26788684,
+      "federal_appropriations": 0
+    },
+    "138682": {
+      "state_appropriations": 16066069,
+      "federal_appropriations": 0
+    },
+    "138716": {
+      "state_appropriations": 38271805,
+      "federal_appropriations": 0
+    },
+    "138840": {
+      "state_appropriations": 16968642,
+      "federal_appropriations": 0
+    },
+    "138901": {
+      "state_appropriations": 10213322,
+      "federal_appropriations": 0
+    },
+    "138956": {
+      "state_appropriations": 16398363,
+      "federal_appropriations": 0
+    },
+    "139250": {
+      "state_appropriations": 20505910,
+      "federal_appropriations": 0
+    },
+    "139278": {
+      "state_appropriations": 21622291,
+      "federal_appropriations": 0
+    },
+    "139311": {
+      "state_appropriations": 37249104,
+      "federal_appropriations": 0
+    },
+    "139357": {
+      "state_appropriations": 13612192,
+      "federal_appropriations": 0
+    },
+    "139366": {
+      "state_appropriations": 52894379,
+      "federal_appropriations": 0
+    },
+    "139384": {
+      "state_appropriations": 20525715,
+      "federal_appropriations": 0
+    },
+    "139463": {
+      "state_appropriations": 21159497,
+      "federal_appropriations": 0
+    },
+    "139621": {
+      "state_appropriations": 13304499,
+      "federal_appropriations": 0
+    },
+    "139700": {
+      "state_appropriations": 24939316,
+      "federal_appropriations": 0
+    },
+    "139719": {
+      "state_appropriations": 31397766,
+      "federal_appropriations": 5897390
+    },
+    "139746": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "139755": {
+      "state_appropriations": 530870251,
+      "federal_appropriations": 0
+    },
+    "139764": {
+      "state_appropriations": 21574105,
+      "federal_appropriations": 0
+    },
+    "139861": {
+      "state_appropriations": 54776570,
+      "federal_appropriations": 0
+    },
+    "139931": {
+      "state_appropriations": 170924393,
+      "federal_appropriations": 0
+    },
+    "139940": {
+      "state_appropriations": 277257440,
+      "federal_appropriations": 0
+    },
+    "139959": {
+      "state_appropriations": 666354113,
+      "federal_appropriations": 0
+    },
+    "139968": {
+      "state_appropriations": 15107559,
+      "federal_appropriations": 0
+    },
+    "139986": {
+      "state_appropriations": 15871603,
+      "federal_appropriations": 0
+    },
+    "140012": {
+      "state_appropriations": 21218283,
+      "federal_appropriations": 0
+    },
+    "140243": {
+      "state_appropriations": 14740917,
+      "federal_appropriations": 0
+    },
+    "140331": {
+      "state_appropriations": 27166020,
+      "federal_appropriations": 0
+    },
+    "140678": {
+      "state_appropriations": 11895253,
+      "federal_appropriations": 0
+    },
+    "140942": {
+      "state_appropriations": 16287728,
+      "federal_appropriations": 0
+    },
+    "140960": {
+      "state_appropriations": 24713177,
+      "federal_appropriations": 0
+    },
+    "141006": {
+      "state_appropriations": 10794763,
+      "federal_appropriations": 0
+    },
+    "141255": {
+      "state_appropriations": 16495560,
+      "federal_appropriations": 0
+    },
+    "141264": {
+      "state_appropriations": 70069086,
+      "federal_appropriations": 0
+    },
+    "141334": {
+      "state_appropriations": 86123589,
+      "federal_appropriations": 0
+    },
+    "141565": {
+      "state_appropriations": 46644894,
+      "federal_appropriations": 0
+    },
+    "141574": {
+      "state_appropriations": 313607724,
+      "federal_appropriations": 0
+    },
+    "141680": {
+      "state_appropriations": 25320183,
+      "federal_appropriations": 0
+    },
+    "141796": {
+      "state_appropriations": 35889383,
+      "federal_appropriations": 0
+    },
+    "141802": {
+      "state_appropriations": 12510701,
+      "federal_appropriations": 0
+    },
+    "141811": {
+      "state_appropriations": 34291175,
+      "federal_appropriations": 0
+    },
+    "141839": {
+      "state_appropriations": 21075296,
+      "federal_appropriations": 0
+    },
+    "141963": {
+      "state_appropriations": 68065575,
+      "federal_appropriations": 0
+    },
+    "141981": {
+      "state_appropriations": 21846548,
+      "federal_appropriations": 0
+    },
+    "141990": {
+      "state_appropriations": 14683883,
+      "federal_appropriations": 0
+    },
+    "142115": {
+      "state_appropriations": 135242151,
+      "federal_appropriations": 0
+    },
+    "142179": {
+      "state_appropriations": 14293320,
+      "federal_appropriations": 0
+    },
+    "142276": {
+      "state_appropriations": 102163876,
+      "federal_appropriations": 0
+    },
+    "142285": {
+      "state_appropriations": 171763917,
+      "federal_appropriations": 5987659
+    },
+    "142328": {
+      "state_appropriations": 30979950,
+      "federal_appropriations": 0
+    },
+    "142443": {
+      "state_appropriations": 21742067,
+      "federal_appropriations": 0
+    },
+    "142559": {
+      "state_appropriations": 26948472,
+      "federal_appropriations": 0
+    },
+    "143215": {
+      "state_appropriations": 30451977,
+      "federal_appropriations": 0
+    },
+    "143279": {
+      "state_appropriations": 9441237,
+      "federal_appropriations": 0
+    },
+    "143613": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "144005": {
+      "state_appropriations": 42650800,
+      "federal_appropriations": 0
+    },
+    "144157": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "144166": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "144175": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "144184": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "144193": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "144209": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "144218": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "144500": {
+      "state_appropriations": 48776261,
+      "federal_appropriations": 0
+    },
+    "144564": {
+      "state_appropriations": 3967764,
+      "federal_appropriations": 0
+    },
+    "144865": {
+      "state_appropriations": 67426056,
+      "federal_appropriations": 0
+    },
+    "144892": {
+      "state_appropriations": 47047300,
+      "federal_appropriations": 0
+    },
+    "144944": {
+      "state_appropriations": 1249918,
+      "federal_appropriations": 0
+    },
+    "145336": {
+      "state_appropriations": 26058100,
+      "federal_appropriations": 0
+    },
+    "145521": {
+      "state_appropriations": 1633335,
+      "federal_appropriations": 2783040
+    },
+    "145600": {
+      "state_appropriations": 245087136,
+      "federal_appropriations": 0
+    },
+    "145637": {
+      "state_appropriations": 305500394,
+      "federal_appropriations": 0
+    },
+    "145682": {
+      "state_appropriations": 11480122,
+      "federal_appropriations": 9249300
+    },
+    "145707": {
+      "state_appropriations": 21625537,
+      "federal_appropriations": 1775107
+    },
+    "145813": {
+      "state_appropriations": 78242400,
+      "federal_appropriations": 0
+    },
+    "145831": {
+      "state_appropriations": 10410544,
+      "federal_appropriations": 0
+    },
+    "146205": {
+      "state_appropriations": 6464643,
+      "federal_appropriations": 0
+    },
+    "146278": {
+      "state_appropriations": 1020554,
+      "federal_appropriations": 0
+    },
+    "146296": {
+      "state_appropriations": 4363686,
+      "federal_appropriations": 0
+    },
+    "146348": {
+      "state_appropriations": 4539357,
+      "federal_appropriations": 0
+    },
+    "146366": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "146418": {
+      "state_appropriations": 8147460,
+      "federal_appropriations": 0
+    },
+    "146472": {
+      "state_appropriations": 33138208,
+      "federal_appropriations": 0
+    },
+    "146506": {
+      "state_appropriations": 885463,
+      "federal_appropriations": 0
+    },
+    "146603": {
+      "state_appropriations": 2014079,
+      "federal_appropriations": 0
+    },
+    "146685": {
+      "state_appropriations": 7392369,
+      "federal_appropriations": 0
+    },
+    "147004": {
+      "state_appropriations": 18637761,
+      "federal_appropriations": 0
+    },
+    "147378": {
+      "state_appropriations": 15197633,
+      "federal_appropriations": 0
+    },
+    "147411": {
+      "state_appropriations": 20004842,
+      "federal_appropriations": 0
+    },
+    "147703": {
+      "state_appropriations": 98670300,
+      "federal_appropriations": 0
+    },
+    "147776": {
+      "state_appropriations": 39959500,
+      "federal_appropriations": 0
+    },
+    "147800": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "147916": {
+      "state_appropriations": 5336602,
+      "federal_appropriations": 0
+    },
+    "148007": {
+      "state_appropriations": 7459188,
+      "federal_appropriations": 0
+    },
+    "148256": {
+      "state_appropriations": 10650823,
+      "federal_appropriations": 0
+    },
+    "148292": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "148380": {
+      "state_appropriations": 7806553,
+      "federal_appropriations": 0
+    },
+    "148654": {
+      "state_appropriations": 27218775,
+      "federal_appropriations": 0
+    },
+    "148672": {
+      "state_appropriations": 3789190,
+      "federal_appropriations": 0
+    },
+    "148821": {
+      "state_appropriations": 9230634,
+      "federal_appropriations": 0
+    },
+    "148937": {
+      "state_appropriations": 6060973,
+      "federal_appropriations": 0
+    },
+    "148991": {
+      "state_appropriations": 4547545,
+      "federal_appropriations": 0
+    },
+    "149222": {
+      "state_appropriations": 147296461,
+      "federal_appropriations": 0
+    },
+    "149231": {
+      "state_appropriations": 71370609,
+      "federal_appropriations": 0
+    },
+    "149240": {
+      "state_appropriations": 3609685,
+      "federal_appropriations": 0
+    },
+    "149365": {
+      "state_appropriations": 9821924,
+      "federal_appropriations": 0
+    },
+    "149532": {
+      "state_appropriations": 11126622,
+      "federal_appropriations": 0
+    },
+    "149587": {
+      "state_appropriations": 90372736,
+      "federal_appropriations": 0
+    },
+    "149727": {
+      "state_appropriations": 19351092,
+      "federal_appropriations": 11140
+    },
+    "149772": {
+      "state_appropriations": 55722200,
+      "federal_appropriations": 0
+    },
+    "149842": {
+      "state_appropriations": 32486721,
+      "federal_appropriations": 0
+    },
+    "150136": {
+      "state_appropriations": 144212067,
+      "federal_appropriations": 0
+    },
+    "150987": {
+      "state_appropriations": 300717333,
+      "federal_appropriations": 0
+    },
+    "151102": {
+      "state_appropriations": 51725001,
+      "federal_appropriations": 0
+    },
+    "151111": {
+      "state_appropriations": 286626068,
+      "federal_appropriations": 0
+    },
+    "151306": {
+      "state_appropriations": 67044723,
+      "federal_appropriations": 0
+    },
+    "151324": {
+      "state_appropriations": 89438984,
+      "federal_appropriations": 0
+    },
+    "151333": {
+      "state_appropriations": 17216977,
+      "federal_appropriations": 0
+    },
+    "151342": {
+      "state_appropriations": 27738322,
+      "federal_appropriations": 0
+    },
+    "151351": {
+      "state_appropriations": 240598444,
+      "federal_appropriations": 0
+    },
+    "151360": {
+      "state_appropriations": 23402929,
+      "federal_appropriations": 0
+    },
+    "151379": {
+      "state_appropriations": 22113906,
+      "federal_appropriations": 0
+    },
+    "151388": {
+      "state_appropriations": 15577625,
+      "federal_appropriations": 0
+    },
+    "152637": {
+      "state_appropriations": 63794150,
+      "federal_appropriations": 0
+    },
+    "153214": {
+      "state_appropriations": 49510863,
+      "federal_appropriations": 0
+    },
+    "153296": {
+      "state_appropriations": 4388937,
+      "federal_appropriations": 0
+    },
+    "153311": {
+      "state_appropriations": 22946538,
+      "federal_appropriations": 0
+    },
+    "153445": {
+      "state_appropriations": 20861148,
+      "federal_appropriations": 0
+    },
+    "153472": {
+      "state_appropriations": 19449549,
+      "federal_appropriations": 0
+    },
+    "153524": {
+      "state_appropriations": 19717113,
+      "federal_appropriations": 0
+    },
+    "153533": {
+      "state_appropriations": 12895507,
+      "federal_appropriations": 0
+    },
+    "153603": {
+      "state_appropriations": 234653974,
+      "federal_appropriations": 0
+    },
+    "153630": {
+      "state_appropriations": 18447668,
+      "federal_appropriations": 0
+    },
+    "153658": {
+      "state_appropriations": 234526000,
+      "federal_appropriations": 0
+    },
+    "153737": {
+      "state_appropriations": 47751319,
+      "federal_appropriations": 0
+    },
+    "153922": {
+      "state_appropriations": 7160898,
+      "federal_appropriations": 0
+    },
+    "154059": {
+      "state_appropriations": 14127076,
+      "federal_appropriations": 0
+    },
+    "154095": {
+      "state_appropriations": 103895942,
+      "federal_appropriations": 0
+    },
+    "154110": {
+      "state_appropriations": 14883024,
+      "federal_appropriations": 0
+    },
+    "154129": {
+      "state_appropriations": 7748637,
+      "federal_appropriations": 0
+    },
+    "154378": {
+      "state_appropriations": 9582888,
+      "federal_appropriations": 0
+    },
+    "154396": {
+      "state_appropriations": 5279888,
+      "federal_appropriations": 0
+    },
+    "154572": {
+      "state_appropriations": 17020767,
+      "federal_appropriations": 0
+    },
+    "154642": {
+      "state_appropriations": 6298220,
+      "federal_appropriations": 0
+    },
+    "154697": {
+      "state_appropriations": 14135376,
+      "federal_appropriations": 0
+    },
+    "154800": {
+      "state_appropriations": 23228109,
+      "federal_appropriations": 0
+    },
+    "154907": {
+      "state_appropriations": 4231683,
+      "federal_appropriations": 0
+    },
+    "154925": {
+      "state_appropriations": 2742668,
+      "federal_appropriations": 0
+    },
+    "154934": {
+      "state_appropriations": 3282492,
+      "federal_appropriations": 0
+    },
+    "154952": {
+      "state_appropriations": 8081489,
+      "federal_appropriations": 0
+    },
+    "154998": {
+      "state_appropriations": 4310867,
+      "federal_appropriations": 0
+    },
+    "155025": {
+      "state_appropriations": 50866296,
+      "federal_appropriations": 0
+    },
+    "155052": {
+      "state_appropriations": 5569562,
+      "federal_appropriations": 0
+    },
+    "155061": {
+      "state_appropriations": 46076008,
+      "federal_appropriations": 0
+    },
+    "155098": {
+      "state_appropriations": 4868526,
+      "federal_appropriations": 0
+    },
+    "155104": {
+      "state_appropriations": 6293423,
+      "federal_appropriations": 0
+    },
+    "155140": {
+      "state_appropriations": 0,
+      "federal_appropriations": 23894033
+    },
+    "155186": {
+      "state_appropriations": 3958591,
+      "federal_appropriations": 0
+    },
+    "155195": {
+      "state_appropriations": 15475120,
+      "federal_appropriations": 0
+    },
+    "155201": {
+      "state_appropriations": 1450383,
+      "federal_appropriations": 0
+    },
+    "155210": {
+      "state_appropriations": 40852233,
+      "federal_appropriations": 0
+    },
+    "155292": {
+      "state_appropriations": 13594341,
+      "federal_appropriations": 0
+    },
+    "155317": {
+      "state_appropriations": 305434379,
+      "federal_appropriations": 0
+    },
+    "155399": {
+      "state_appropriations": 234404056,
+      "federal_appropriations": 0
+    },
+    "155423": {
+      "state_appropriations": 8538900,
+      "federal_appropriations": 0
+    },
+    "155450": {
+      "state_appropriations": 3492456,
+      "federal_appropriations": 0
+    },
+    "155487": {
+      "state_appropriations": 2793728,
+      "federal_appropriations": 0
+    },
+    "155566": {
+      "state_appropriations": 4986092,
+      "federal_appropriations": 0
+    },
+    "155593": {
+      "state_appropriations": 6070965,
+      "federal_appropriations": 0
+    },
+    "155618": {
+      "state_appropriations": 3747888,
+      "federal_appropriations": 0
+    },
+    "155681": {
+      "state_appropriations": 49394496,
+      "federal_appropriations": 0
+    },
+    "155715": {
+      "state_appropriations": 3773582,
+      "federal_appropriations": 0
+    },
+    "155830": {
+      "state_appropriations": 3750053,
+      "federal_appropriations": 0
+    },
+    "155858": {
+      "state_appropriations": 5404161,
+      "federal_appropriations": 0
+    },
+    "156082": {
+      "state_appropriations": 17491334,
+      "federal_appropriations": 0
+    },
+    "156107": {
+      "state_appropriations": 14864890,
+      "federal_appropriations": 0
+    },
+    "156125": {
+      "state_appropriations": 109524605,
+      "federal_appropriations": 0
+    },
+    "156231": {
+      "state_appropriations": 9750800,
+      "federal_appropriations": 0
+    },
+    "156338": {
+      "state_appropriations": 11427252,
+      "federal_appropriations": 0
+    },
+    "156392": {
+      "state_appropriations": 22370600,
+      "federal_appropriations": 0
+    },
+    "156620": {
+      "state_appropriations": 76660200,
+      "federal_appropriations": 0
+    },
+    "156648": {
+      "state_appropriations": 15072361,
+      "federal_appropriations": 0
+    },
+    "156790": {
+      "state_appropriations": 11429533,
+      "federal_appropriations": 0
+    },
+    "156851": {
+      "state_appropriations": 4594000,
+      "federal_appropriations": 0
+    },
+    "156860": {
+      "state_appropriations": 7225400,
+      "federal_appropriations": 0
+    },
+    "156921": {
+      "state_appropriations": 25040100,
+      "federal_appropriations": 0
+    },
+    "157058": {
+      "state_appropriations": 30011705,
+      "federal_appropriations": 0
+    },
+    "157085": {
+      "state_appropriations": 319669300,
+      "federal_appropriations": 0
+    },
+    "157289": {
+      "state_appropriations": 146373000,
+      "federal_appropriations": 0
+    },
+    "157304": {
+      "state_appropriations": 9435700,
+      "federal_appropriations": 0
+    },
+    "157331": {
+      "state_appropriations": 9707400,
+      "federal_appropriations": 0
+    },
+    "157386": {
+      "state_appropriations": 49762400,
+      "federal_appropriations": 0
+    },
+    "157401": {
+      "state_appropriations": 54802100,
+      "federal_appropriations": 0
+    },
+    "157438": {
+      "state_appropriations": 11059200,
+      "federal_appropriations": 0
+    },
+    "157447": {
+      "state_appropriations": 64931000,
+      "federal_appropriations": 0
+    },
+    "157483": {
+      "state_appropriations": 12596200,
+      "federal_appropriations": 0
+    },
+    "157553": {
+      "state_appropriations": 10094800,
+      "federal_appropriations": 0
+    },
+    "157711": {
+      "state_appropriations": 14675000,
+      "federal_appropriations": 0
+    },
+    "157739": {
+      "state_appropriations": 9643796,
+      "federal_appropriations": 0
+    },
+    "157854": {
+      "state_appropriations": 694558,
+      "federal_appropriations": 0
+    },
+    "157951": {
+      "state_appropriations": 83449700,
+      "federal_appropriations": 0
+    },
+    "158088": {
+      "state_appropriations": 6325039,
+      "federal_appropriations": 0
+    },
+    "158431": {
+      "state_appropriations": 17183918,
+      "federal_appropriations": 0
+    },
+    "158662": {
+      "state_appropriations": 37146777,
+      "federal_appropriations": 0
+    },
+    "158884": {
+      "state_appropriations": 5743993,
+      "federal_appropriations": 0
+    },
+    "159009": {
+      "state_appropriations": 19711994,
+      "federal_appropriations": 0
+    },
+    "159373": {
+      "state_appropriations": 99310073,
+      "federal_appropriations": 0
+    },
+    "159382": {
+      "state_appropriations": 8635781,
+      "federal_appropriations": 0
+    },
+    "159391": {
+      "state_appropriations": 326659725,
+      "federal_appropriations": 0
+    },
+    "159407": {
+      "state_appropriations": 6440936,
+      "federal_appropriations": 0
+    },
+    "159416": {
+      "state_appropriations": 14935240,
+      "federal_appropriations": 0
+    },
+    "159647": {
+      "state_appropriations": 39709351,
+      "federal_appropriations": 0
+    },
+    "159717": {
+      "state_appropriations": 27058100,
+      "federal_appropriations": 0
+    },
+    "159939": {
+      "state_appropriations": 34159792,
+      "federal_appropriations": 0
+    },
+    "159966": {
+      "state_appropriations": 23005581,
+      "federal_appropriations": 0
+    },
+    "159993": {
+      "state_appropriations": 36014980,
+      "federal_appropriations": 0
+    },
+    "160010": {
+      "state_appropriations": 5702329,
+      "federal_appropriations": 0
+    },
+    "160038": {
+      "state_appropriations": 30181635,
+      "federal_appropriations": 0
+    },
+    "160481": {
+      "state_appropriations": 5926157,
+      "federal_appropriations": 0
+    },
+    "160533": {
+      "state_appropriations": 5465886,
+      "federal_appropriations": 0
+    },
+    "160579": {
+      "state_appropriations": 12901603,
+      "federal_appropriations": 0
+    },
+    "160612": {
+      "state_appropriations": 40115835,
+      "federal_appropriations": 0
+    },
+    "160621": {
+      "state_appropriations": 41416897,
+      "federal_appropriations": 0
+    },
+    "160630": {
+      "state_appropriations": 10537499,
+      "federal_appropriations": 0
+    },
+    "160649": {
+      "state_appropriations": 8353115,
+      "federal_appropriations": 0
+    },
+    "160658": {
+      "state_appropriations": 95256683,
+      "federal_appropriations": 0
+    },
+    "160667": {
+      "state_appropriations": 10116250,
+      "federal_appropriations": 0
+    },
+    "161077": {
+      "state_appropriations": 10911719,
+      "federal_appropriations": 0
+    },
+    "161138": {
+      "state_appropriations": 11366087,
+      "federal_appropriations": 0
+    },
+    "161192": {
+      "state_appropriations": 8620196,
+      "federal_appropriations": 0
+    },
+    "161217": {
+      "state_appropriations": 25634000,
+      "federal_appropriations": 0
+    },
+    "161226": {
+      "state_appropriations": 15986000,
+      "federal_appropriations": 0
+    },
+    "161235": {
+      "state_appropriations": 9167000,
+      "federal_appropriations": 0
+    },
+    "161253": {
+      "state_appropriations": 120820000,
+      "federal_appropriations": 0
+    },
+    "161280": {
+      "state_appropriations": 17523000,
+      "federal_appropriations": 0
+    },
+    "161299": {
+      "state_appropriations": 15449801,
+      "federal_appropriations": 2468494
+    },
+    "161341": {
+      "state_appropriations": 9519000,
+      "federal_appropriations": 0
+    },
+    "161484": {
+      "state_appropriations": 10277865,
+      "federal_appropriations": 0
+    },
+    "161545": {
+      "state_appropriations": 18662822,
+      "federal_appropriations": 0
+    },
+    "161554": {
+      "state_appropriations": 62522000,
+      "federal_appropriations": 0
+    },
+    "161581": {
+      "state_appropriations": 6908310,
+      "federal_appropriations": 0
+    },
+    "161688": {
+      "state_appropriations": 11519349,
+      "federal_appropriations": 0
+    },
+    "161767": {
+      "state_appropriations": 44056806,
+      "federal_appropriations": 0
+    },
+    "161864": {
+      "state_appropriations": 45824713,
+      "federal_appropriations": 0
+    },
+    "161873": {
+      "state_appropriations": 61965120,
+      "federal_appropriations": 0
+    },
+    "162007": {
+      "state_appropriations": 85206502,
+      "federal_appropriations": 0
+    },
+    "162104": {
+      "state_appropriations": 9552444,
+      "federal_appropriations": 0
+    },
+    "162122": {
+      "state_appropriations": 21416280,
+      "federal_appropriations": 0
+    },
+    "162168": {
+      "state_appropriations": 11172892,
+      "federal_appropriations": 0
+    },
+    "162283": {
+      "state_appropriations": 70217241,
+      "federal_appropriations": 0
+    },
+    "162557": {
+      "state_appropriations": 21453614,
+      "federal_appropriations": 0
+    },
+    "162584": {
+      "state_appropriations": 60266591,
+      "federal_appropriations": 0
+    },
+    "162609": {
+      "state_appropriations": 6235020,
+      "federal_appropriations": 0
+    },
+    "162690": {
+      "state_appropriations": 16184916,
+      "federal_appropriations": 0
+    },
+    "162706": {
+      "state_appropriations": 18477776,
+      "federal_appropriations": 0
+    },
+    "162779": {
+      "state_appropriations": 37831384,
+      "federal_appropriations": 0
+    },
+    "163204": {
+      "state_appropriations": 66393724,
+      "federal_appropriations": 0
+    },
+    "163259": {
+      "state_appropriations": 365328367,
+      "federal_appropriations": 0
+    },
+    "163268": {
+      "state_appropriations": 209731929,
+      "federal_appropriations": 0
+    },
+    "163286": {
+      "state_appropriations": 866793287,
+      "federal_appropriations": 0
+    },
+    "163338": {
+      "state_appropriations": 74787740,
+      "federal_appropriations": 0
+    },
+    "163426": {
+      "state_appropriations": 71092972,
+      "federal_appropriations": 0
+    },
+    "163453": {
+      "state_appropriations": 190813591,
+      "federal_appropriations": 0
+    },
+    "163657": {
+      "state_appropriations": 45246968,
+      "federal_appropriations": 0
+    },
+    "163851": {
+      "state_appropriations": 91823737,
+      "federal_appropriations": 0
+    },
+    "163912": {
+      "state_appropriations": 40732752,
+      "federal_appropriations": 0
+    },
+    "164076": {
+      "state_appropriations": 203642110,
+      "federal_appropriations": 0
+    },
+    "164146": {
+      "state_appropriations": 26528492,
+      "federal_appropriations": 0
+    },
+    "164155": {
+      "state_appropriations": 0,
+      "federal_appropriations": 521789930
+    },
+    "164313": {
+      "state_appropriations": 13715936,
+      "federal_appropriations": 0
+    },
+    "164535": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "164775": {
+      "state_appropriations": 21544717,
+      "federal_appropriations": 0
+    },
+    "165024": {
+      "state_appropriations": 95591577,
+      "federal_appropriations": 0
+    },
+    "165033": {
+      "state_appropriations": 42648014,
+      "federal_appropriations": 0
+    },
+    "165112": {
+      "state_appropriations": 59723686,
+      "federal_appropriations": 0
+    },
+    "165194": {
+      "state_appropriations": 24380879,
+      "federal_appropriations": 0
+    },
+    "165608": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "165820": {
+      "state_appropriations": 58875784,
+      "federal_appropriations": 0
+    },
+    "165866": {
+      "state_appropriations": 59394011,
+      "federal_appropriations": 0
+    },
+    "165981": {
+      "state_appropriations": 20114478,
+      "federal_appropriations": 0
+    },
+    "166133": {
+      "state_appropriations": 39878110,
+      "federal_appropriations": 0
+    },
+    "166513": {
+      "state_appropriations": 184665000,
+      "federal_appropriations": 0
+    },
+    "166629": {
+      "state_appropriations": 556821606,
+      "federal_appropriations": 6341661
+    },
+    "166638": {
+      "state_appropriations": 210820000,
+      "federal_appropriations": 0
+    },
+    "166647": {
+      "state_appropriations": 31314223,
+      "federal_appropriations": 0
+    },
+    "166665": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "166674": {
+      "state_appropriations": 39677928,
+      "federal_appropriations": 0
+    },
+    "166692": {
+      "state_appropriations": 33206619,
+      "federal_appropriations": 0
+    },
+    "166708": {
+      "state_appropriations": 74390278,
+      "federal_appropriations": 0
+    },
+    "166823": {
+      "state_appropriations": 40349549,
+      "federal_appropriations": 0
+    },
+    "166887": {
+      "state_appropriations": 45145940,
+      "federal_appropriations": 0
+    },
+    "166957": {
+      "state_appropriations": 29476065,
+      "federal_appropriations": 0
+    },
+    "167288": {
+      "state_appropriations": 31648758,
+      "federal_appropriations": 61727
+    },
+    "167312": {
+      "state_appropriations": 44410977,
+      "federal_appropriations": 0
+    },
+    "167376": {
+      "state_appropriations": 36643094,
+      "federal_appropriations": 0
+    },
+    "167525": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "167534": {
+      "state_appropriations": 44148758,
+      "federal_appropriations": 0
+    },
+    "167631": {
+      "state_appropriations": 26708495,
+      "federal_appropriations": 0
+    },
+    "167729": {
+      "state_appropriations": 89565045,
+      "federal_appropriations": 0
+    },
+    "167871": {
+      "state_appropriations": 878882,
+      "federal_appropriations": 0
+    },
+    "167905": {
+      "state_appropriations": 44643457,
+      "federal_appropriations": 0
+    },
+    "167987": {
+      "state_appropriations": 124323000,
+      "federal_appropriations": 0
+    },
+    "168263": {
+      "state_appropriations": 55470355,
+      "federal_appropriations": 0
+    },
+    "168430": {
+      "state_appropriations": 55212761,
+      "federal_appropriations": 0
+    },
+    "168607": {
+      "state_appropriations": 6896290,
+      "federal_appropriations": 0
+    },
+    "168883": {
+      "state_appropriations": 7268041,
+      "federal_appropriations": 0
+    },
+    "169248": {
+      "state_appropriations": 154877696,
+      "federal_appropriations": 0
+    },
+    "169275": {
+      "state_appropriations": 20367471,
+      "federal_appropriations": 0
+    },
+    "169521": {
+      "state_appropriations": 29888769,
+      "federal_appropriations": 0
+    },
+    "169798": {
+      "state_appropriations": 108942650,
+      "federal_appropriations": 0
+    },
+    "169910": {
+      "state_appropriations": 92455001,
+      "federal_appropriations": 0
+    },
+    "169974": {
+      "state_appropriations": 4456345,
+      "federal_appropriations": 0
+    },
+    "169992": {
+      "state_appropriations": 5531561,
+      "federal_appropriations": 0
+    },
+    "170055": {
+      "state_appropriations": 40823571,
+      "federal_appropriations": 0
+    },
+    "170082": {
+      "state_appropriations": 97661500,
+      "federal_appropriations": 0
+    },
+    "170240": {
+      "state_appropriations": 45956131,
+      "federal_appropriations": 0
+    },
+    "170444": {
+      "state_appropriations": 14503759,
+      "federal_appropriations": 0
+    },
+    "170541": {
+      "state_appropriations": 23995417,
+      "federal_appropriations": 0
+    },
+    "170550": {
+      "state_appropriations": 18070352,
+      "federal_appropriations": 0
+    },
+    "170587": {
+      "state_appropriations": 4351742,
+      "federal_appropriations": 0
+    },
+    "170620": {
+      "state_appropriations": 9204362,
+      "federal_appropriations": 0
+    },
+    "170639": {
+      "state_appropriations": 21571345,
+      "federal_appropriations": 0
+    },
+    "170657": {
+      "state_appropriations": 39478637,
+      "federal_appropriations": 0
+    },
+    "170790": {
+      "state_appropriations": 41735637,
+      "federal_appropriations": 0
+    },
+    "170976": {
+      "state_appropriations": 356569000,
+      "federal_appropriations": 0
+    },
+    "171100": {
+      "state_appropriations": 319679700,
+      "federal_appropriations": 0
+    },
+    "171128": {
+      "state_appropriations": 82521477,
+      "federal_appropriations": 0
+    },
+    "171137": {
+      "state_appropriations": 31233000,
+      "federal_appropriations": 0
+    },
+    "171146": {
+      "state_appropriations": 26405000,
+      "federal_appropriations": 0
+    },
+    "171155": {
+      "state_appropriations": 6360029,
+      "federal_appropriations": 0
+    },
+    "171225": {
+      "state_appropriations": 9432302,
+      "federal_appropriations": 0
+    },
+    "171234": {
+      "state_appropriations": 4956977,
+      "federal_appropriations": 0
+    },
+    "171304": {
+      "state_appropriations": 15066979,
+      "federal_appropriations": 0
+    },
+    "171395": {
+      "state_appropriations": 4294094,
+      "federal_appropriations": 0
+    },
+    "171456": {
+      "state_appropriations": 72715283,
+      "federal_appropriations": 0
+    },
+    "171483": {
+      "state_appropriations": 17005917,
+      "federal_appropriations": 0
+    },
+    "171535": {
+      "state_appropriations": 50252644,
+      "federal_appropriations": 3943194
+    },
+    "171571": {
+      "state_appropriations": 72288800,
+      "federal_appropriations": 0
+    },
+    "172051": {
+      "state_appropriations": 33997700,
+      "federal_appropriations": 0
+    },
+    "172200": {
+      "state_appropriations": 32000093,
+      "federal_appropriations": 0
+    },
+    "172291": {
+      "state_appropriations": 8254108,
+      "federal_appropriations": 0
+    },
+    "172307": {
+      "state_appropriations": 9715987,
+      "federal_appropriations": 0
+    },
+    "172422": {
+      "state_appropriations": 0,
+      "federal_appropriations": 11971744
+    },
+    "172617": {
+      "state_appropriations": 30062447,
+      "federal_appropriations": 0
+    },
+    "172635": {
+      "state_appropriations": 29670737,
+      "federal_appropriations": 0
+    },
+    "172644": {
+      "state_appropriations": 224393000,
+      "federal_appropriations": 0
+    },
+    "172671": {
+      "state_appropriations": 3750994,
+      "federal_appropriations": 0
+    },
+    "172699": {
+      "state_appropriations": 167561493,
+      "federal_appropriations": 0
+    },
+    "172918": {
+      "state_appropriations": 15509000,
+      "federal_appropriations": 0
+    },
+    "172954": {
+      "state_appropriations": 13370000,
+      "federal_appropriations": 0
+    },
+    "172963": {
+      "state_appropriations": 30377000,
+      "federal_appropriations": 0
+    },
+    "173063": {
+      "state_appropriations": 17173000,
+      "federal_appropriations": 0
+    },
+    "173115": {
+      "state_appropriations": 6021000,
+      "federal_appropriations": 0
+    },
+    "173124": {
+      "state_appropriations": 31921000,
+      "federal_appropriations": 0
+    },
+    "173203": {
+      "state_appropriations": 20547000,
+      "federal_appropriations": 0
+    },
+    "173416": {
+      "state_appropriations": 17679000,
+      "federal_appropriations": 0
+    },
+    "173461": {
+      "state_appropriations": 22880000,
+      "federal_appropriations": 0
+    },
+    "173559": {
+      "state_appropriations": 28456000,
+      "federal_appropriations": 0
+    },
+    "173638": {
+      "state_appropriations": 19608000,
+      "federal_appropriations": 0
+    },
+    "173708": {
+      "state_appropriations": 29747000,
+      "federal_appropriations": 0
+    },
+    "173735": {
+      "state_appropriations": 28219000,
+      "federal_appropriations": 0
+    },
+    "173799": {
+      "state_appropriations": 19266000,
+      "federal_appropriations": 0
+    },
+    "173911": {
+      "state_appropriations": 19229000,
+      "federal_appropriations": 0
+    },
+    "173920": {
+      "state_appropriations": 79624000,
+      "federal_appropriations": 0
+    },
+    "174020": {
+      "state_appropriations": 44649000,
+      "federal_appropriations": 0
+    },
+    "174066": {
+      "state_appropriations": 672023325,
+      "federal_appropriations": 20227543
+    },
+    "174075": {
+      "state_appropriations": 15500238,
+      "federal_appropriations": 0
+    },
+    "174136": {
+      "state_appropriations": 33025000,
+      "federal_appropriations": 0
+    },
+    "174233": {
+      "state_appropriations": 71327679,
+      "federal_appropriations": 0
+    },
+    "174251": {
+      "state_appropriations": 27888891,
+      "federal_appropriations": 0
+    },
+    "174358": {
+      "state_appropriations": 38151000,
+      "federal_appropriations": 0
+    },
+    "174376": {
+      "state_appropriations": 26965000,
+      "federal_appropriations": 0
+    },
+    "174428": {
+      "state_appropriations": 40508000,
+      "federal_appropriations": 0
+    },
+    "174473": {
+      "state_appropriations": 17845000,
+      "federal_appropriations": 0
+    },
+    "174570": {
+      "state_appropriations": 8224000,
+      "federal_appropriations": 0
+    },
+    "174738": {
+      "state_appropriations": 25390000,
+      "federal_appropriations": 0
+    },
+    "174756": {
+      "state_appropriations": 22199000,
+      "federal_appropriations": 0
+    },
+    "174783": {
+      "state_appropriations": 73315000,
+      "federal_appropriations": 0
+    },
+    "175041": {
+      "state_appropriations": 29792000,
+      "federal_appropriations": 0
+    },
+    "175078": {
+      "state_appropriations": 26660000,
+      "federal_appropriations": 0
+    },
+    "175236": {
+      "state_appropriations": 21513000,
+      "federal_appropriations": 0
+    },
+    "175263": {
+      "state_appropriations": 11863000,
+      "federal_appropriations": 0
+    },
+    "175272": {
+      "state_appropriations": 50586000,
+      "federal_appropriations": 0
+    },
+    "175315": {
+      "state_appropriations": 38872000,
+      "federal_appropriations": 0
+    },
+    "175342": {
+      "state_appropriations": 31131080,
+      "federal_appropriations": 0
+    },
+    "175519": {
+      "state_appropriations": 10046131,
+      "federal_appropriations": 0
+    },
+    "175573": {
+      "state_appropriations": 13006683,
+      "federal_appropriations": 0
+    },
+    "175616": {
+      "state_appropriations": 26421136,
+      "federal_appropriations": 0
+    },
+    "175643": {
+      "state_appropriations": 9709790,
+      "federal_appropriations": 0
+    },
+    "175652": {
+      "state_appropriations": 15657577,
+      "federal_appropriations": 0
+    },
+    "175786": {
+      "state_appropriations": 47415429,
+      "federal_appropriations": 0
+    },
+    "175810": {
+      "state_appropriations": 22435142,
+      "federal_appropriations": 0
+    },
+    "175829": {
+      "state_appropriations": 20592877,
+      "federal_appropriations": 0
+    },
+    "175856": {
+      "state_appropriations": 50069962,
+      "federal_appropriations": 0
+    },
+    "175883": {
+      "state_appropriations": 18600156,
+      "federal_appropriations": 0
+    },
+    "175935": {
+      "state_appropriations": 13985758,
+      "federal_appropriations": 0
+    },
+    "175999": {
+      "state_appropriations": 61970573,
+      "federal_appropriations": 0
+    },
+    "176008": {
+      "state_appropriations": 15506997,
+      "federal_appropriations": 0
+    },
+    "176017": {
+      "state_appropriations": 305714505,
+      "federal_appropriations": 0
+    },
+    "176035": {
+      "state_appropriations": 18488214,
+      "federal_appropriations": 0
+    },
+    "176044": {
+      "state_appropriations": 17177446,
+      "federal_appropriations": 0
+    },
+    "176071": {
+      "state_appropriations": 31358300,
+      "federal_appropriations": 0
+    },
+    "176080": {
+      "state_appropriations": 245317631,
+      "federal_appropriations": 14525612
+    },
+    "176169": {
+      "state_appropriations": 15986593,
+      "federal_appropriations": 0
+    },
+    "176178": {
+      "state_appropriations": 27297887,
+      "federal_appropriations": 0
+    },
+    "176239": {
+      "state_appropriations": 32324081,
+      "federal_appropriations": 0
+    },
+    "176354": {
+      "state_appropriations": 8055749,
+      "federal_appropriations": 0
+    },
+    "176372": {
+      "state_appropriations": 109425621,
+      "federal_appropriations": 0
+    },
+    "176798": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "176965": {
+      "state_appropriations": 62778484,
+      "federal_appropriations": 0
+    },
+    "176983": {
+      "state_appropriations": 1363437,
+      "federal_appropriations": 0
+    },
+    "177135": {
+      "state_appropriations": 8246207,
+      "federal_appropriations": 0
+    },
+    "177250": {
+      "state_appropriations": 5500312,
+      "federal_appropriations": 0
+    },
+    "177436": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "177472": {
+      "state_appropriations": 21742277,
+      "federal_appropriations": 0
+    },
+    "177551": {
+      "state_appropriations": 13652492,
+      "federal_appropriations": 0
+    },
+    "177676": {
+      "state_appropriations": 8905796,
+      "federal_appropriations": 0
+    },
+    "177940": {
+      "state_appropriations": 31264096,
+      "federal_appropriations": 8913993
+    },
+    "177977": {
+      "state_appropriations": 8784797,
+      "federal_appropriations": 0
+    },
+    "177995": {
+      "state_appropriations": 32225501,
+      "federal_appropriations": 0
+    },
+    "178217": {
+      "state_appropriations": 15139770,
+      "federal_appropriations": 0
+    },
+    "178341": {
+      "state_appropriations": 29449478,
+      "federal_appropriations": 0
+    },
+    "178387": {
+      "state_appropriations": 25237222,
+      "federal_appropriations": 0
+    },
+    "178396": {
+      "state_appropriations": 255920760,
+      "federal_appropriations": 19565625
+    },
+    "178402": {
+      "state_appropriations": 88463459,
+      "federal_appropriations": 0
+    },
+    "178411": {
+      "state_appropriations": 60120534,
+      "federal_appropriations": 0
+    },
+    "178420": {
+      "state_appropriations": 68654225,
+      "federal_appropriations": 0
+    },
+    "178439": {
+      "state_appropriations": 7817824,
+      "federal_appropriations": 9387836
+    },
+    "178448": {
+      "state_appropriations": 9255805,
+      "federal_appropriations": 0
+    },
+    "178615": {
+      "state_appropriations": 47260412,
+      "federal_appropriations": 0
+    },
+    "178624": {
+      "state_appropriations": 35378236,
+      "federal_appropriations": 0
+    },
+    "179308": {
+      "state_appropriations": 80208504,
+      "federal_appropriations": 0
+    },
+    "179344": {
+      "state_appropriations": 7515900,
+      "federal_appropriations": 0
+    },
+    "179539": {
+      "state_appropriations": 8982443,
+      "federal_appropriations": 0
+    },
+    "179557": {
+      "state_appropriations": 52605747,
+      "federal_appropriations": 0
+    },
+    "179566": {
+      "state_appropriations": 99121028,
+      "federal_appropriations": 0
+    },
+    "179645": {
+      "state_appropriations": 6612052,
+      "federal_appropriations": 0
+    },
+    "179715": {
+      "state_appropriations": 3717673,
+      "federal_appropriations": 0
+    },
+    "180151": {
+      "state_appropriations": 2220552,
+      "federal_appropriations": 0
+    },
+    "180160": {
+      "state_appropriations": 0,
+      "federal_appropriations": 203000
+    },
+    "180179": {
+      "state_appropriations": 26867597,
+      "federal_appropriations": 0
+    },
+    "180197": {
+      "state_appropriations": 10320989,
+      "federal_appropriations": 0
+    },
+    "180203": {
+      "state_appropriations": 29692,
+      "federal_appropriations": 631234
+    },
+    "180212": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "180249": {
+      "state_appropriations": 8321446,
+      "federal_appropriations": 0
+    },
+    "180276": {
+      "state_appropriations": 6263953,
+      "federal_appropriations": 0
+    },
+    "180328": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "180373": {
+      "state_appropriations": 3513079,
+      "federal_appropriations": 0
+    },
+    "180416": {
+      "state_appropriations": 22867165,
+      "federal_appropriations": 0
+    },
+    "180461": {
+      "state_appropriations": 122068930,
+      "federal_appropriations": 0
+    },
+    "180489": {
+      "state_appropriations": 79207331,
+      "federal_appropriations": 0
+    },
+    "180522": {
+      "state_appropriations": 11277425,
+      "federal_appropriations": 0
+    },
+    "180692": {
+      "state_appropriations": 9396774,
+      "federal_appropriations": 0
+    },
+    "180902": {
+      "state_appropriations": 11169059,
+      "federal_appropriations": 0
+    },
+    "180948": {
+      "state_appropriations": 23016886,
+      "federal_appropriations": 0
+    },
+    "181215": {
+      "state_appropriations": 50700292,
+      "federal_appropriations": 0
+    },
+    "181303": {
+      "state_appropriations": 31165360,
+      "federal_appropriations": 0
+    },
+    "181312": {
+      "state_appropriations": 9908349,
+      "federal_appropriations": 0
+    },
+    "181394": {
+      "state_appropriations": 84443515,
+      "federal_appropriations": 0
+    },
+    "181419": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "181428": {
+      "state_appropriations": 174367495,
+      "federal_appropriations": 0
+    },
+    "181464": {
+      "state_appropriations": 311040222,
+      "federal_appropriations": 0
+    },
+    "181491": {
+      "state_appropriations": 15692766,
+      "federal_appropriations": 0
+    },
+    "181534": {
+      "state_appropriations": 13442600,
+      "federal_appropriations": 0
+    },
+    "181640": {
+      "state_appropriations": 30296422,
+      "federal_appropriations": 0
+    },
+    "181747": {
+      "state_appropriations": 43378566,
+      "federal_appropriations": 0
+    },
+    "181765": {
+      "state_appropriations": 3919164,
+      "federal_appropriations": 0
+    },
+    "181783": {
+      "state_appropriations": 29352911,
+      "federal_appropriations": 0
+    },
+    "181817": {
+      "state_appropriations": 13322852,
+      "federal_appropriations": 0
+    },
+    "182005": {
+      "state_appropriations": 119722000,
+      "federal_appropriations": 0
+    },
+    "182281": {
+      "state_appropriations": 317550000,
+      "federal_appropriations": 0
+    },
+    "182290": {
+      "state_appropriations": 230961400,
+      "federal_appropriations": 0
+    },
+    "182306": {
+      "state_appropriations": 17373000,
+      "federal_appropriations": 0
+    },
+    "182500": {
+      "state_appropriations": 40540000,
+      "federal_appropriations": 0
+    },
+    "182519": {
+      "state_appropriations": 27804000,
+      "federal_appropriations": 0
+    },
+    "182564": {
+      "state_appropriations": 16476000,
+      "federal_appropriations": 0
+    },
+    "182829": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "183044": {
+      "state_appropriations": 66048504,
+      "federal_appropriations": 0
+    },
+    "183062": {
+      "state_appropriations": 15681720,
+      "federal_appropriations": 0
+    },
+    "183071": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "183080": {
+      "state_appropriations": 16387540,
+      "federal_appropriations": 0
+    },
+    "183099": {
+      "state_appropriations": 13299779,
+      "federal_appropriations": 0
+    },
+    "183105": {
+      "state_appropriations": 6997521,
+      "federal_appropriations": 0
+    },
+    "183114": {
+      "state_appropriations": 6997397,
+      "federal_appropriations": 0
+    },
+    "183123": {
+      "state_appropriations": 8148801,
+      "federal_appropriations": 0
+    },
+    "183132": {
+      "state_appropriations": 10798978,
+      "federal_appropriations": 0
+    },
+    "183141": {
+      "state_appropriations": 9630227,
+      "federal_appropriations": 0
+    },
+    "183150": {
+      "state_appropriations": 8881020,
+      "federal_appropriations": 0
+    },
+    "183257": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "183327": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "183655": {
+      "state_appropriations": 7667366,
+      "federal_appropriations": 0
+    },
+    "183743": {
+      "state_appropriations": 15047294,
+      "federal_appropriations": 0
+    },
+    "183822": {
+      "state_appropriations": 3786000,
+      "federal_appropriations": 0
+    },
+    "183859": {
+      "state_appropriations": 11773290,
+      "federal_appropriations": 7668978
+    },
+    "183877": {
+      "state_appropriations": 10206132,
+      "federal_appropriations": 0
+    },
+    "183938": {
+      "state_appropriations": 11796661,
+      "federal_appropriations": 0
+    },
+    "183983": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "184180": {
+      "state_appropriations": 8335188,
+      "federal_appropriations": 0
+    },
+    "184205": {
+      "state_appropriations": 6315602,
+      "federal_appropriations": 0
+    },
+    "184481": {
+      "state_appropriations": 10956800,
+      "federal_appropriations": 0
+    },
+    "184782": {
+      "state_appropriations": 266885404,
+      "federal_appropriations": 0
+    },
+    "184791": {
+      "state_appropriations": 7530902,
+      "federal_appropriations": 0
+    },
+    "184995": {
+      "state_appropriations": 11234416,
+      "federal_appropriations": 0
+    },
+    "185129": {
+      "state_appropriations": 61217343,
+      "federal_appropriations": 0
+    },
+    "185262": {
+      "state_appropriations": 122847550,
+      "federal_appropriations": 0
+    },
+    "185509": {
+      "state_appropriations": 7967611,
+      "federal_appropriations": 0
+    },
+    "185536": {
+      "state_appropriations": 13069757,
+      "federal_appropriations": 0
+    },
+    "185590": {
+      "state_appropriations": 118160000,
+      "federal_appropriations": 0
+    },
+    "185828": {
+      "state_appropriations": 161333000,
+      "federal_appropriations": 0
+    },
+    "185873": {
+      "state_appropriations": 13552207,
+      "federal_appropriations": 0
+    },
+    "186034": {
+      "state_appropriations": 7553075,
+      "federal_appropriations": 0
+    },
+    "186201": {
+      "state_appropriations": 71480000,
+      "federal_appropriations": 0
+    },
+    "186371": {
+      "state_appropriations": 65591547,
+      "federal_appropriations": 0
+    },
+    "186380": {
+      "state_appropriations": 921759236,
+      "federal_appropriations": 6997062
+    },
+    "186399": {
+      "state_appropriations": 122780685,
+      "federal_appropriations": 0
+    },
+    "186469": {
+      "state_appropriations": 3023219,
+      "federal_appropriations": 0
+    },
+    "186645": {
+      "state_appropriations": 8509512,
+      "federal_appropriations": 0
+    },
+    "186876": {
+      "state_appropriations": 75583695,
+      "federal_appropriations": 0
+    },
+    "187046": {
+      "state_appropriations": 14280000,
+      "federal_appropriations": 0
+    },
+    "187134": {
+      "state_appropriations": 58848000,
+      "federal_appropriations": 0
+    },
+    "187198": {
+      "state_appropriations": 12615111,
+      "federal_appropriations": 0
+    },
+    "187444": {
+      "state_appropriations": 74102923,
+      "federal_appropriations": 0
+    },
+    "187532": {
+      "state_appropriations": 78535458,
+      "federal_appropriations": 0
+    },
+    "187596": {
+      "state_appropriations": 4107717,
+      "federal_appropriations": 0
+    },
+    "187620": {
+      "state_appropriations": 28406007,
+      "federal_appropriations": 0
+    },
+    "187639": {
+      "state_appropriations": 13579994,
+      "federal_appropriations": 0
+    },
+    "187648": {
+      "state_appropriations": 46545500,
+      "federal_appropriations": 0
+    },
+    "187666": {
+      "state_appropriations": 14997700,
+      "federal_appropriations": 0
+    },
+    "187745": {
+      "state_appropriations": 0,
+      "federal_appropriations": 13482000
+    },
+    "187897": {
+      "state_appropriations": 42324100,
+      "federal_appropriations": 0
+    },
+    "187903": {
+      "state_appropriations": 9138399,
+      "federal_appropriations": 0
+    },
+    "187912": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "187958": {
+      "state_appropriations": 11495921,
+      "federal_appropriations": 0
+    },
+    "187967": {
+      "state_appropriations": 52352674,
+      "federal_appropriations": 0
+    },
+    "187976": {
+      "state_appropriations": 2659683,
+      "federal_appropriations": 0
+    },
+    "187985": {
+      "state_appropriations": 438540790,
+      "federal_appropriations": 0
+    },
+    "187994": {
+      "state_appropriations": 8796385,
+      "federal_appropriations": 0
+    },
+    "188003": {
+      "state_appropriations": 5234800,
+      "federal_appropriations": 0
+    },
+    "188021": {
+      "state_appropriations": 4267000,
+      "federal_appropriations": 0
+    },
+    "188030": {
+      "state_appropriations": 246676976,
+      "federal_appropriations": 0
+    },
+    "188049": {
+      "state_appropriations": 7622099,
+      "federal_appropriations": 0
+    },
+    "188058": {
+      "state_appropriations": 16177300,
+      "federal_appropriations": 0
+    },
+    "188100": {
+      "state_appropriations": 33328522,
+      "federal_appropriations": 0
+    },
+    "188137": {
+      "state_appropriations": 20052839,
+      "federal_appropriations": 0
+    },
+    "188216": {
+      "state_appropriations": 0,
+      "federal_appropriations": 14896301
+    },
+    "188225": {
+      "state_appropriations": 5774739,
+      "federal_appropriations": 0
+    },
+    "188261": {
+      "state_appropriations": 4871500,
+      "federal_appropriations": 0
+    },
+    "188304": {
+      "state_appropriations": 32125000,
+      "federal_appropriations": 0
+    },
+    "188438": {
+      "state_appropriations": 7944542,
+      "federal_appropriations": 0
+    },
+    "189547": {
+      "state_appropriations": 13016962,
+      "federal_appropriations": 0
+    },
+    "189839": {
+      "state_appropriations": 7329843,
+      "federal_appropriations": 0
+    },
+    "190035": {
+      "state_appropriations": 215933188,
+      "federal_appropriations": 0
+    },
+    "190053": {
+      "state_appropriations": 2343324,
+      "federal_appropriations": 0
+    },
+    "190169": {
+      "state_appropriations": 2829326,
+      "federal_appropriations": 0
+    },
+    "190442": {
+      "state_appropriations": 12277420,
+      "federal_appropriations": 0
+    },
+    "190512": {
+      "state_appropriations": 122000244,
+      "federal_appropriations": 0
+    },
+    "190521": {
+      "state_appropriations": 73725811,
+      "federal_appropriations": 0
+    },
+    "190530": {
+      "state_appropriations": 23301954,
+      "federal_appropriations": 0
+    },
+    "190549": {
+      "state_appropriations": 126910069,
+      "federal_appropriations": 0
+    },
+    "190558": {
+      "state_appropriations": 93560313,
+      "federal_appropriations": 0
+    },
+    "190567": {
+      "state_appropriations": 192025394,
+      "federal_appropriations": 0
+    },
+    "190576": {
+      "state_appropriations": 266067797,
+      "federal_appropriations": 0
+    },
+    "190585": {
+      "state_appropriations": 18442198,
+      "federal_appropriations": 0
+    },
+    "190594": {
+      "state_appropriations": 152343637,
+      "federal_appropriations": 0
+    },
+    "190600": {
+      "state_appropriations": 92964820,
+      "federal_appropriations": 0
+    },
+    "190619": {
+      "state_appropriations": 46511511,
+      "federal_appropriations": 0
+    },
+    "190628": {
+      "state_appropriations": 54966076,
+      "federal_appropriations": 0
+    },
+    "190637": {
+      "state_appropriations": 107613174,
+      "federal_appropriations": 0
+    },
+    "190646": {
+      "state_appropriations": 65268267,
+      "federal_appropriations": 0
+    },
+    "190655": {
+      "state_appropriations": 102968977,
+      "federal_appropriations": 0
+    },
+    "190664": {
+      "state_appropriations": 115510517,
+      "federal_appropriations": 0
+    },
+    "190673": {
+      "state_appropriations": 35267458,
+      "federal_appropriations": 0
+    },
+    "190682": {
+      "state_appropriations": 30327542,
+      "federal_appropriations": 0
+    },
+    "190691": {
+      "state_appropriations": 74627798,
+      "federal_appropriations": 0
+    },
+    "190840": {
+      "state_appropriations": 16749655,
+      "federal_appropriations": 0
+    },
+    "191083": {
+      "state_appropriations": 28025123,
+      "federal_appropriations": 0
+    },
+    "191126": {
+      "state_appropriations": 27770443,
+      "federal_appropriations": 0
+    },
+    "191199": {
+      "state_appropriations": 11930021,
+      "federal_appropriations": 0
+    },
+    "191302": {
+      "state_appropriations": 4233212,
+      "federal_appropriations": 0
+    },
+    "191339": {
+      "state_appropriations": 9552172,
+      "federal_appropriations": 0
+    },
+    "191612": {
+      "state_appropriations": 5352826,
+      "federal_appropriations": 0
+    },
+    "191719": {
+      "state_appropriations": 21850512,
+      "federal_appropriations": 0
+    },
+    "191986": {
+      "state_appropriations": 8019682,
+      "federal_appropriations": 0
+    },
+    "192022": {
+      "state_appropriations": 6678271,
+      "federal_appropriations": 0
+    },
+    "193283": {
+      "state_appropriations": 12679878,
+      "federal_appropriations": 0
+    },
+    "193326": {
+      "state_appropriations": 29921874,
+      "federal_appropriations": 0
+    },
+    "193478": {
+      "state_appropriations": 37818353,
+      "federal_appropriations": 0
+    },
+    "193946": {
+      "state_appropriations": 10428918,
+      "federal_appropriations": 0
+    },
+    "194028": {
+      "state_appropriations": 3939962,
+      "federal_appropriations": 0
+    },
+    "194222": {
+      "state_appropriations": 17348946,
+      "federal_appropriations": 0
+    },
+    "194240": {
+      "state_appropriations": 12726658,
+      "federal_appropriations": 0
+    },
+    "194259": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "195058": {
+      "state_appropriations": 15733993,
+      "federal_appropriations": 0
+    },
+    "195322": {
+      "state_appropriations": 8129854,
+      "federal_appropriations": 0
+    },
+    "195827": {
+      "state_appropriations": 147983041,
+      "federal_appropriations": 0
+    },
+    "195988": {
+      "state_appropriations": 3124223,
+      "federal_appropriations": 5520833
+    },
+    "196006": {
+      "state_appropriations": 51909739,
+      "federal_appropriations": 0
+    },
+    "196015": {
+      "state_appropriations": 45306724,
+      "federal_appropriations": 0
+    },
+    "196024": {
+      "state_appropriations": 42670045,
+      "federal_appropriations": 0
+    },
+    "196033": {
+      "state_appropriations": 47317593,
+      "federal_appropriations": 0
+    },
+    "196042": {
+      "state_appropriations": 118313086,
+      "federal_appropriations": 0
+    },
+    "196051": {
+      "state_appropriations": 50425927,
+      "federal_appropriations": 0
+    },
+    "196060": {
+      "state_appropriations": 283082439,
+      "federal_appropriations": 0
+    },
+    "196079": {
+      "state_appropriations": 286674906,
+      "federal_appropriations": 0
+    },
+    "196088": {
+      "state_appropriations": 609659646,
+      "federal_appropriations": 0
+    },
+    "196097": {
+      "state_appropriations": 671361043,
+      "federal_appropriations": 0
+    },
+    "196103": {
+      "state_appropriations": 63586837,
+      "federal_appropriations": 0
+    },
+    "196112": {
+      "state_appropriations": 47746792,
+      "federal_appropriations": 0
+    },
+    "196121": {
+      "state_appropriations": 115475558,
+      "federal_appropriations": 0
+    },
+    "196130": {
+      "state_appropriations": 134820637,
+      "federal_appropriations": 0
+    },
+    "196149": {
+      "state_appropriations": 105262475,
+      "federal_appropriations": 0
+    },
+    "196158": {
+      "state_appropriations": 70269010,
+      "federal_appropriations": 0
+    },
+    "196167": {
+      "state_appropriations": 78115753,
+      "federal_appropriations": 0
+    },
+    "196176": {
+      "state_appropriations": 106279559,
+      "federal_appropriations": 0
+    },
+    "196185": {
+      "state_appropriations": 90946181,
+      "federal_appropriations": 0
+    },
+    "196194": {
+      "state_appropriations": 115179401,
+      "federal_appropriations": 0
+    },
+    "196200": {
+      "state_appropriations": 70731467,
+      "federal_appropriations": 0
+    },
+    "196219": {
+      "state_appropriations": 85251422,
+      "federal_appropriations": 0
+    },
+    "196228": {
+      "state_appropriations": 41658310,
+      "federal_appropriations": 0
+    },
+    "196237": {
+      "state_appropriations": 70021737,
+      "federal_appropriations": 0
+    },
+    "196246": {
+      "state_appropriations": 78007229,
+      "federal_appropriations": 0
+    },
+    "196255": {
+      "state_appropriations": 148031707,
+      "federal_appropriations": 0
+    },
+    "196264": {
+      "state_appropriations": 69557908,
+      "federal_appropriations": 0
+    },
+    "196291": {
+      "state_appropriations": 49636013,
+      "federal_appropriations": 0
+    },
+    "196307": {
+      "state_appropriations": 202917806,
+      "federal_appropriations": 0
+    },
+    "196565": {
+      "state_appropriations": 9762800,
+      "federal_appropriations": 0
+    },
+    "196699": {
+      "state_appropriations": 6160167,
+      "federal_appropriations": 0
+    },
+    "197027": {
+      "state_appropriations": 0,
+      "federal_appropriations": 184729000
+    },
+    "197036": {
+      "state_appropriations": 0,
+      "federal_appropriations": 524884093
+    },
+    "197294": {
+      "state_appropriations": 30413994,
+      "federal_appropriations": 0
+    },
+    "197814": {
+      "state_appropriations": 16355532,
+      "federal_appropriations": 0
+    },
+    "197850": {
+      "state_appropriations": 21045948,
+      "federal_appropriations": 0
+    },
+    "197869": {
+      "state_appropriations": 201805226,
+      "federal_appropriations": 0
+    },
+    "197887": {
+      "state_appropriations": 33781251,
+      "federal_appropriations": 0
+    },
+    "197966": {
+      "state_appropriations": 13641375,
+      "federal_appropriations": 0
+    },
+    "198011": {
+      "state_appropriations": 10235748,
+      "federal_appropriations": 0
+    },
+    "198039": {
+      "state_appropriations": 16382608,
+      "federal_appropriations": 0
+    },
+    "198084": {
+      "state_appropriations": 13479535,
+      "federal_appropriations": 0
+    },
+    "198118": {
+      "state_appropriations": 26061327,
+      "federal_appropriations": 0
+    },
+    "198154": {
+      "state_appropriations": 48913271,
+      "federal_appropriations": 0
+    },
+    "198206": {
+      "state_appropriations": 12452408,
+      "federal_appropriations": 0
+    },
+    "198233": {
+      "state_appropriations": 28704621,
+      "federal_appropriations": 0
+    },
+    "198251": {
+      "state_appropriations": 33251077,
+      "federal_appropriations": 0
+    },
+    "198260": {
+      "state_appropriations": 83537580,
+      "federal_appropriations": 0
+    },
+    "198321": {
+      "state_appropriations": 20966191,
+      "federal_appropriations": 0
+    },
+    "198330": {
+      "state_appropriations": 22359717,
+      "federal_appropriations": 0
+    },
+    "198367": {
+      "state_appropriations": 19713674,
+      "federal_appropriations": 0
+    },
+    "198376": {
+      "state_appropriations": 25417133,
+      "federal_appropriations": 0
+    },
+    "198455": {
+      "state_appropriations": 27418419,
+      "federal_appropriations": 0
+    },
+    "198464": {
+      "state_appropriations": 368692677,
+      "federal_appropriations": 0
+    },
+    "198491": {
+      "state_appropriations": 13100744,
+      "federal_appropriations": 0
+    },
+    "198507": {
+      "state_appropriations": 50079022,
+      "federal_appropriations": 0
+    },
+    "198534": {
+      "state_appropriations": 66482924,
+      "federal_appropriations": 0
+    },
+    "198543": {
+      "state_appropriations": 86194239,
+      "federal_appropriations": 0
+    },
+    "198552": {
+      "state_appropriations": 44116064,
+      "federal_appropriations": 0
+    },
+    "198570": {
+      "state_appropriations": 31403339,
+      "federal_appropriations": 0
+    },
+    "198622": {
+      "state_appropriations": 59908872,
+      "federal_appropriations": 0
+    },
+    "198640": {
+      "state_appropriations": 8486608,
+      "federal_appropriations": 0
+    },
+    "198668": {
+      "state_appropriations": 9160910,
+      "federal_appropriations": 0
+    },
+    "198710": {
+      "state_appropriations": 13195287,
+      "federal_appropriations": 0
+    },
+    "198729": {
+      "state_appropriations": 12112317,
+      "federal_appropriations": 0
+    },
+    "198774": {
+      "state_appropriations": 24923485,
+      "federal_appropriations": 0
+    },
+    "198817": {
+      "state_appropriations": 22639241,
+      "federal_appropriations": 0
+    },
+    "198905": {
+      "state_appropriations": 7739869,
+      "federal_appropriations": 0
+    },
+    "198914": {
+      "state_appropriations": 8485589,
+      "federal_appropriations": 0
+    },
+    "198923": {
+      "state_appropriations": 10455308,
+      "federal_appropriations": 2341659
+    },
+    "198987": {
+      "state_appropriations": 17696592,
+      "federal_appropriations": 0
+    },
+    "199023": {
+      "state_appropriations": 8312756,
+      "federal_appropriations": 0
+    },
+    "199087": {
+      "state_appropriations": 17213464,
+      "federal_appropriations": 0
+    },
+    "199102": {
+      "state_appropriations": 163967574,
+      "federal_appropriations": 0
+    },
+    "199111": {
+      "state_appropriations": 55388703,
+      "federal_appropriations": 0
+    },
+    "199120": {
+      "state_appropriations": 702555956,
+      "federal_appropriations": 0
+    },
+    "199139": {
+      "state_appropriations": 325369553,
+      "federal_appropriations": 0
+    },
+    "199148": {
+      "state_appropriations": 208723967,
+      "federal_appropriations": 0
+    },
+    "199157": {
+      "state_appropriations": 97620306,
+      "federal_appropriations": 0
+    },
+    "199175": {
+      "state_appropriations": 561487439,
+      "federal_appropriations": 0
+    },
+    "199184": {
+      "state_appropriations": 41602528,
+      "federal_appropriations": 0
+    },
+    "199193": {
+      "state_appropriations": 658859310,
+      "federal_appropriations": 0
+    },
+    "199218": {
+      "state_appropriations": 208553275,
+      "federal_appropriations": 0
+    },
+    "199263": {
+      "state_appropriations": 6132256,
+      "federal_appropriations": 0
+    },
+    "199281": {
+      "state_appropriations": 101709590,
+      "federal_appropriations": 0
+    },
+    "199324": {
+      "state_appropriations": 11531267,
+      "federal_appropriations": 0
+    },
+    "199333": {
+      "state_appropriations": 37141141,
+      "federal_appropriations": 0
+    },
+    "199421": {
+      "state_appropriations": 18248806,
+      "federal_appropriations": 0
+    },
+    "199449": {
+      "state_appropriations": 17888697,
+      "federal_appropriations": 0
+    },
+    "199467": {
+      "state_appropriations": 6353702,
+      "federal_appropriations": 0
+    },
+    "199476": {
+      "state_appropriations": 20351510,
+      "federal_appropriations": 0
+    },
+    "199485": {
+      "state_appropriations": 11408927,
+      "federal_appropriations": 0
+    },
+    "199494": {
+      "state_appropriations": 42305113,
+      "federal_appropriations": 0
+    },
+    "199625": {
+      "state_appropriations": 14221663,
+      "federal_appropriations": 0
+    },
+    "199634": {
+      "state_appropriations": 22853681,
+      "federal_appropriations": 0
+    },
+    "199722": {
+      "state_appropriations": 12228091,
+      "federal_appropriations": 0
+    },
+    "199731": {
+      "state_appropriations": 15064696,
+      "federal_appropriations": 0
+    },
+    "199740": {
+      "state_appropriations": 17633359,
+      "federal_appropriations": 0
+    },
+    "199768": {
+      "state_appropriations": 20548354,
+      "federal_appropriations": 0
+    },
+    "199786": {
+      "state_appropriations": 24574084,
+      "federal_appropriations": 0
+    },
+    "199795": {
+      "state_appropriations": 8434217,
+      "federal_appropriations": 0
+    },
+    "199838": {
+      "state_appropriations": 17664952,
+      "federal_appropriations": 0
+    },
+    "199856": {
+      "state_appropriations": 112917726,
+      "federal_appropriations": 0
+    },
+    "199892": {
+      "state_appropriations": 19423128,
+      "federal_appropriations": 0
+    },
+    "199908": {
+      "state_appropriations": 12853598,
+      "federal_appropriations": 0
+    },
+    "199926": {
+      "state_appropriations": 19240104,
+      "federal_appropriations": 0
+    },
+    "199953": {
+      "state_appropriations": 11661491,
+      "federal_appropriations": 0
+    },
+    "199999": {
+      "state_appropriations": 73669726,
+      "federal_appropriations": 0
+    },
+    "200004": {
+      "state_appropriations": 164838490,
+      "federal_appropriations": 0
+    },
+    "200022": {
+      "state_appropriations": 18147474,
+      "federal_appropriations": 0
+    },
+    "200059": {
+      "state_appropriations": 11662795,
+      "federal_appropriations": 0
+    },
+    "200086": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "200192": {
+      "state_appropriations": 7390105,
+      "federal_appropriations": 0
+    },
+    "200208": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "200226": {
+      "state_appropriations": 11350362,
+      "federal_appropriations": 0
+    },
+    "200253": {
+      "state_appropriations": 23560222,
+      "federal_appropriations": 0
+    },
+    "200280": {
+      "state_appropriations": 134211217,
+      "federal_appropriations": 0
+    },
+    "200305": {
+      "state_appropriations": 18660218,
+      "federal_appropriations": 0
+    },
+    "200314": {
+      "state_appropriations": 5441126,
+      "federal_appropriations": 0
+    },
+    "200332": {
+      "state_appropriations": 144193704,
+      "federal_appropriations": 7515704
+    },
+    "200341": {
+      "state_appropriations": 6112261,
+      "federal_appropriations": 0
+    },
+    "200466": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "200572": {
+      "state_appropriations": 13431681,
+      "federal_appropriations": 0
+    },
+    "200800": {
+      "state_appropriations": 82785094,
+      "federal_appropriations": 0
+    },
+    "201034": {
+      "state_appropriations": 772149,
+      "federal_appropriations": 700
+    },
+    "201098": {
+      "state_appropriations": 190241,
+      "federal_appropriations": 0
+    },
+    "201131": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "201159": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "201283": {
+      "state_appropriations": 3428713,
+      "federal_appropriations": 0
+    },
+    "201432": {
+      "state_appropriations": 4505505,
+      "federal_appropriations": 0
+    },
+    "201441": {
+      "state_appropriations": 85046477,
+      "federal_appropriations": 0
+    },
+    "201478": {
+      "state_appropriations": 1604342,
+      "federal_appropriations": 0
+    },
+    "201496": {
+      "state_appropriations": 1391902,
+      "federal_appropriations": 0
+    },
+    "201539": {
+      "state_appropriations": 150585,
+      "federal_appropriations": 455865
+    },
+    "201672": {
+      "state_appropriations": 11129492,
+      "federal_appropriations": 0
+    },
+    "201690": {
+      "state_appropriations": 15718780,
+      "federal_appropriations": 0
+    },
+    "201803": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "201885": {
+      "state_appropriations": 233083221,
+      "federal_appropriations": 0
+    },
+    "201928": {
+      "state_appropriations": 29579005,
+      "federal_appropriations": 0
+    },
+    "201946": {
+      "state_appropriations": 11372963,
+      "federal_appropriations": 0
+    },
+    "201955": {
+      "state_appropriations": 13180247,
+      "federal_appropriations": 0
+    },
+    "201973": {
+      "state_appropriations": 16843246,
+      "federal_appropriations": 0
+    },
+    "202134": {
+      "state_appropriations": 80353668,
+      "federal_appropriations": 0
+    },
+    "202152": {
+      "state_appropriations": 606612,
+      "federal_appropriations": 0
+    },
+    "202222": {
+      "state_appropriations": 78173193,
+      "federal_appropriations": 0
+    },
+    "202356": {
+      "state_appropriations": 61338772,
+      "federal_appropriations": 0
+    },
+    "202648": {
+      "state_appropriations": 12396676,
+      "federal_appropriations": 0
+    },
+    "202657": {
+      "state_appropriations": 1256000,
+      "federal_appropriations": 0
+    },
+    "202949": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "202985": {
+      "state_appropriations": 265273,
+      "federal_appropriations": 0
+    },
+    "203030": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "203155": {
+      "state_appropriations": 10691487,
+      "federal_appropriations": 0
+    },
+    "203447": {
+      "state_appropriations": 4847587,
+      "federal_appropriations": 0
+    },
+    "203456": {
+      "state_appropriations": 2464547,
+      "federal_appropriations": 0
+    },
+    "203465": {
+      "state_appropriations": 9970633,
+      "federal_appropriations": 0
+    },
+    "203474": {
+      "state_appropriations": 5411965,
+      "federal_appropriations": 0
+    },
+    "203483": {
+      "state_appropriations": 5659552,
+      "federal_appropriations": 0
+    },
+    "203492": {
+      "state_appropriations": 4512508,
+      "federal_appropriations": 0
+    },
+    "203517": {
+      "state_appropriations": 119916447,
+      "federal_appropriations": 0
+    },
+    "203526": {
+      "state_appropriations": 4232886,
+      "federal_appropriations": 0
+    },
+    "203599": {
+      "state_appropriations": 17874244,
+      "federal_appropriations": 0
+    },
+    "203614": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "203678": {
+      "state_appropriations": 10531192,
+      "federal_appropriations": 0
+    },
+    "203748": {
+      "state_appropriations": 30055671,
+      "federal_appropriations": 0
+    },
+    "203881": {
+      "state_appropriations": 7936698,
+      "federal_appropriations": 0
+    },
+    "203942": {
+      "state_appropriations": 297616,
+      "federal_appropriations": 0
+    },
+    "204006": {
+      "state_appropriations": 8289895,
+      "federal_appropriations": 0
+    },
+    "204015": {
+      "state_appropriations": 4982145,
+      "federal_appropriations": 0
+    },
+    "204024": {
+      "state_appropriations": 75742801,
+      "federal_appropriations": 0
+    },
+    "204158": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "204255": {
+      "state_appropriations": 6769344,
+      "federal_appropriations": 0
+    },
+    "204422": {
+      "state_appropriations": 9333830,
+      "federal_appropriations": 0
+    },
+    "204440": {
+      "state_appropriations": 14399147,
+      "federal_appropriations": 0
+    },
+    "204459": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "204477": {
+      "state_appropriations": 29236471,
+      "federal_appropriations": 0
+    },
+    "204662": {
+      "state_appropriations": 3161307,
+      "federal_appropriations": 0
+    },
+    "204671": {
+      "state_appropriations": 3575754,
+      "federal_appropriations": 0
+    },
+    "204680": {
+      "state_appropriations": 4600794,
+      "federal_appropriations": 0
+    },
+    "204699": {
+      "state_appropriations": 4349251,
+      "federal_appropriations": 0
+    },
+    "204705": {
+      "state_appropriations": 8347458,
+      "federal_appropriations": 0
+    },
+    "204796": {
+      "state_appropriations": 504501695,
+      "federal_appropriations": 0
+    },
+    "204802": {
+      "state_appropriations": 1729385,
+      "federal_appropriations": 0
+    },
+    "204820": {
+      "state_appropriations": 4150524,
+      "federal_appropriations": 0
+    },
+    "204839": {
+      "state_appropriations": 3804647,
+      "federal_appropriations": 0
+    },
+    "204848": {
+      "state_appropriations": 3631709,
+      "federal_appropriations": 0
+    },
+    "204857": {
+      "state_appropriations": 164049311,
+      "federal_appropriations": 0
+    },
+    "204866": {
+      "state_appropriations": 3977586,
+      "federal_appropriations": 0
+    },
+    "204945": {
+      "state_appropriations": 26270974,
+      "federal_appropriations": 0
+    },
+    "204981": {
+      "state_appropriations": 375525,
+      "federal_appropriations": 0
+    },
+    "205443": {
+      "state_appropriations": 22584385,
+      "federal_appropriations": 0
+    },
+    "205470": {
+      "state_appropriations": 57401606,
+      "federal_appropriations": 0
+    },
+    "205841": {
+      "state_appropriations": 31938799,
+      "federal_appropriations": 0
+    },
+    "205966": {
+      "state_appropriations": 7293254,
+      "federal_appropriations": 0
+    },
+    "206011": {
+      "state_appropriations": 6094021,
+      "federal_appropriations": 0
+    },
+    "206084": {
+      "state_appropriations": 109902152,
+      "federal_appropriations": 0
+    },
+    "206172": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "206181": {
+      "state_appropriations": 502741,
+      "federal_appropriations": 0
+    },
+    "206321": {
+      "state_appropriations": 440271,
+      "federal_appropriations": 0
+    },
+    "206446": {
+      "state_appropriations": 7343255,
+      "federal_appropriations": 0
+    },
+    "206604": {
+      "state_appropriations": 75993511,
+      "federal_appropriations": 0
+    },
+    "206613": {
+      "state_appropriations": 3097419,
+      "federal_appropriations": 0
+    },
+    "206695": {
+      "state_appropriations": 48856576,
+      "federal_appropriations": 0
+    },
+    "206905": {
+      "state_appropriations": 1777619,
+      "federal_appropriations": 30465
+    },
+    "206914": {
+      "state_appropriations": 18606836,
+      "federal_appropriations": 0
+    },
+    "206923": {
+      "state_appropriations": 6522117,
+      "federal_appropriations": 0
+    },
+    "206941": {
+      "state_appropriations": 52251007,
+      "federal_appropriations": 0
+    },
+    "206996": {
+      "state_appropriations": 7106118,
+      "federal_appropriations": 0
+    },
+    "207041": {
+      "state_appropriations": 16046980,
+      "federal_appropriations": 0
+    },
+    "207050": {
+      "state_appropriations": 6025810,
+      "federal_appropriations": 0
+    },
+    "207069": {
+      "state_appropriations": 5851240,
+      "federal_appropriations": 0
+    },
+    "207209": {
+      "state_appropriations": 19532382,
+      "federal_appropriations": 0
+    },
+    "207236": {
+      "state_appropriations": 7439205,
+      "federal_appropriations": 0
+    },
+    "207263": {
+      "state_appropriations": 33464808,
+      "federal_appropriations": 0
+    },
+    "207281": {
+      "state_appropriations": 10765730,
+      "federal_appropriations": 0
+    },
+    "207290": {
+      "state_appropriations": 8069168,
+      "federal_appropriations": 0
+    },
+    "207306": {
+      "state_appropriations": 10037720,
+      "federal_appropriations": 0
+    },
+    "207315": {
+      "state_appropriations": 18884406,
+      "federal_appropriations": 0
+    },
+    "207342": {
+      "state_appropriations": 84073000,
+      "federal_appropriations": 0
+    },
+    "207351": {
+      "state_appropriations": 6874004,
+      "federal_appropriations": 0
+    },
+    "207388": {
+      "state_appropriations": 199124706,
+      "federal_appropriations": 0
+    },
+    "207397": {
+      "state_appropriations": 14686566,
+      "federal_appropriations": 0
+    },
+    "207449": {
+      "state_appropriations": 31817986,
+      "federal_appropriations": 0
+    },
+    "207500": {
+      "state_appropriations": 143562000,
+      "federal_appropriations": 0
+    },
+    "207564": {
+      "state_appropriations": 14241121,
+      "federal_appropriations": 0
+    },
+    "207661": {
+      "state_appropriations": 15503407,
+      "federal_appropriations": 0
+    },
+    "207670": {
+      "state_appropriations": 19876787,
+      "federal_appropriations": 0
+    },
+    "207722": {
+      "state_appropriations": 7088974,
+      "federal_appropriations": 0
+    },
+    "207740": {
+      "state_appropriations": 6024465,
+      "federal_appropriations": 0
+    },
+    "207847": {
+      "state_appropriations": 18623946,
+      "federal_appropriations": 0
+    },
+    "207865": {
+      "state_appropriations": 22526067,
+      "federal_appropriations": 0
+    },
+    "207935": {
+      "state_appropriations": 37419995,
+      "federal_appropriations": 0
+    },
+    "208035": {
+      "state_appropriations": 5719818,
+      "federal_appropriations": 0
+    },
+    "208053": {
+      "state_appropriations": 2251393,
+      "federal_appropriations": 0
+    },
+    "208275": {
+      "state_appropriations": 5380286,
+      "federal_appropriations": 0
+    },
+    "208318": {
+      "state_appropriations": 2562967,
+      "federal_appropriations": 0
+    },
+    "208390": {
+      "state_appropriations": 50354213,
+      "federal_appropriations": 0
+    },
+    "208406": {
+      "state_appropriations": 27446646,
+      "federal_appropriations": 0
+    },
+    "208415": {
+      "state_appropriations": 4106512,
+      "federal_appropriations": 233990
+    },
+    "208646": {
+      "state_appropriations": 26386883,
+      "federal_appropriations": 0
+    },
+    "209038": {
+      "state_appropriations": 31452208,
+      "federal_appropriations": 0
+    },
+    "209074": {
+      "state_appropriations": 33627952,
+      "federal_appropriations": 0
+    },
+    "209250": {
+      "state_appropriations": 49291000,
+      "federal_appropriations": 0
+    },
+    "209490": {
+      "state_appropriations": 72886000,
+      "federal_appropriations": 0
+    },
+    "209506": {
+      "state_appropriations": 38265940,
+      "federal_appropriations": 0
+    },
+    "209542": {
+      "state_appropriations": 306016086,
+      "federal_appropriations": 0
+    },
+    "209551": {
+      "state_appropriations": 98029037,
+      "federal_appropriations": 0
+    },
+    "209746": {
+      "state_appropriations": 159309918,
+      "federal_appropriations": 0
+    },
+    "209807": {
+      "state_appropriations": 130944270,
+      "federal_appropriations": 0
+    },
+    "209940": {
+      "state_appropriations": 13169951,
+      "federal_appropriations": 0
+    },
+    "210146": {
+      "state_appropriations": 30385271,
+      "federal_appropriations": 0
+    },
+    "210155": {
+      "state_appropriations": 9255725,
+      "federal_appropriations": 0
+    },
+    "210234": {
+      "state_appropriations": 12505526,
+      "federal_appropriations": 0
+    },
+    "210270": {
+      "state_appropriations": 18902160,
+      "federal_appropriations": 0
+    },
+    "210429": {
+      "state_appropriations": 35976864,
+      "federal_appropriations": 0
+    },
+    "210605": {
+      "state_appropriations": 43176454,
+      "federal_appropriations": 0
+    },
+    "211079": {
+      "state_appropriations": 7289001,
+      "federal_appropriations": 0
+    },
+    "211307": {
+      "state_appropriations": 21596608,
+      "federal_appropriations": 0
+    },
+    "211343": {
+      "state_appropriations": 10312991,
+      "federal_appropriations": 0
+    },
+    "211608": {
+      "state_appropriations": 20772066,
+      "federal_appropriations": 1207725
+    },
+    "211927": {
+      "state_appropriations": 22940561,
+      "federal_appropriations": 0
+    },
+    "212115": {
+      "state_appropriations": 41655600,
+      "federal_appropriations": 3147430
+    },
+    "212878": {
+      "state_appropriations": 38978761,
+      "federal_appropriations": 0
+    },
+    "213020": {
+      "state_appropriations": 59388623,
+      "federal_appropriations": 6843881
+    },
+    "213349": {
+      "state_appropriations": 50295930,
+      "federal_appropriations": 4814969
+    },
+    "213525": {
+      "state_appropriations": 15781080,
+      "federal_appropriations": 0
+    },
+    "213659": {
+      "state_appropriations": 13165064,
+      "federal_appropriations": 0
+    },
+    "214041": {
+      "state_appropriations": 44730780,
+      "federal_appropriations": 4356897
+    },
+    "214111": {
+      "state_appropriations": 21357027,
+      "federal_appropriations": 4418139
+    },
+    "214379": {
+      "state_appropriations": 18147100,
+      "federal_appropriations": 0
+    },
+    "214661": {
+      "state_appropriations": 5098781,
+      "federal_appropriations": 0
+    },
+    "215239": {
+      "state_appropriations": 34343287,
+      "federal_appropriations": 0
+    },
+    "215585": {
+      "state_appropriations": 9691599,
+      "federal_appropriations": 0
+    },
+    "215886": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "216010": {
+      "state_appropriations": 41146102,
+      "federal_appropriations": 3297421
+    },
+    "216038": {
+      "state_appropriations": 54858813,
+      "federal_appropriations": 2975761
+    },
+    "216296": {
+      "state_appropriations": 19838000,
+      "federal_appropriations": 0
+    },
+    "216764": {
+      "state_appropriations": 89800850,
+      "federal_appropriations": 7603752
+    },
+    "216825": {
+      "state_appropriations": 13163995,
+      "federal_appropriations": 0
+    },
+    "217420": {
+      "state_appropriations": 69430266,
+      "federal_appropriations": 0
+    },
+    "217475": {
+      "state_appropriations": 60077682,
+      "federal_appropriations": 0
+    },
+    "217484": {
+      "state_appropriations": 112812387,
+      "federal_appropriations": 0
+    },
+    "217615": {
+      "state_appropriations": 6681678,
+      "federal_appropriations": 0
+    },
+    "217712": {
+      "state_appropriations": 7131381,
+      "federal_appropriations": 0
+    },
+    "217819": {
+      "state_appropriations": 51072610,
+      "federal_appropriations": 0
+    },
+    "217837": {
+      "state_appropriations": 6033478,
+      "federal_appropriations": 0
+    },
+    "217864": {
+      "state_appropriations": 22179480,
+      "federal_appropriations": 0
+    },
+    "217882": {
+      "state_appropriations": 240691223,
+      "federal_appropriations": 12309547
+    },
+    "217989": {
+      "state_appropriations": 3029822,
+      "federal_appropriations": 0
+    },
+    "218025": {
+      "state_appropriations": 15341282,
+      "federal_appropriations": 0
+    },
+    "218061": {
+      "state_appropriations": 32997895,
+      "federal_appropriations": 0
+    },
+    "218113": {
+      "state_appropriations": 27683618,
+      "federal_appropriations": 0
+    },
+    "218140": {
+      "state_appropriations": 19309759,
+      "federal_appropriations": 0
+    },
+    "218229": {
+      "state_appropriations": 21283050,
+      "federal_appropriations": 0
+    },
+    "218335": {
+      "state_appropriations": 164925090,
+      "federal_appropriations": 0
+    },
+    "218353": {
+      "state_appropriations": 29536900,
+      "federal_appropriations": 0
+    },
+    "218487": {
+      "state_appropriations": 7654171,
+      "federal_appropriations": 0
+    },
+    "218520": {
+      "state_appropriations": 13269320,
+      "federal_appropriations": 0
+    },
+    "218645": {
+      "state_appropriations": 23332548,
+      "federal_appropriations": 0
+    },
+    "218654": {
+      "state_appropriations": 14524366,
+      "federal_appropriations": 0
+    },
+    "218663": {
+      "state_appropriations": 330156238,
+      "federal_appropriations": 0
+    },
+    "218672": {
+      "state_appropriations": 9734075,
+      "federal_appropriations": 0
+    },
+    "218681": {
+      "state_appropriations": 5493414,
+      "federal_appropriations": 0
+    },
+    "218690": {
+      "state_appropriations": 7718740,
+      "federal_appropriations": 0
+    },
+    "218706": {
+      "state_appropriations": 5545270,
+      "federal_appropriations": 0
+    },
+    "218724": {
+      "state_appropriations": 32495119,
+      "federal_appropriations": 0
+    },
+    "218733": {
+      "state_appropriations": 97228269,
+      "federal_appropriations": 0
+    },
+    "218742": {
+      "state_appropriations": 31626768,
+      "federal_appropriations": 0
+    },
+    "218830": {
+      "state_appropriations": 19442227,
+      "federal_appropriations": 0
+    },
+    "218858": {
+      "state_appropriations": 9077837,
+      "federal_appropriations": 0
+    },
+    "218885": {
+      "state_appropriations": 16747065,
+      "federal_appropriations": 0
+    },
+    "218894": {
+      "state_appropriations": 31068901,
+      "federal_appropriations": 0
+    },
+    "218955": {
+      "state_appropriations": 3449760,
+      "federal_appropriations": 0
+    },
+    "218964": {
+      "state_appropriations": 34076296,
+      "federal_appropriations": 0
+    },
+    "218991": {
+      "state_appropriations": 12081165,
+      "federal_appropriations": 0
+    },
+    "219046": {
+      "state_appropriations": 16479512,
+      "federal_appropriations": 0
+    },
+    "219082": {
+      "state_appropriations": 20711294,
+      "federal_appropriations": 0
+    },
+    "219143": {
+      "state_appropriations": 15708649,
+      "federal_appropriations": 0
+    },
+    "219189": {
+      "state_appropriations": 6869070,
+      "federal_appropriations": 0
+    },
+    "219259": {
+      "state_appropriations": 22215213,
+      "federal_appropriations": 0
+    },
+    "219277": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "219347": {
+      "state_appropriations": 25820237,
+      "federal_appropriations": 0
+    },
+    "219356": {
+      "state_appropriations": 102291454,
+      "federal_appropriations": 9780070
+    },
+    "219408": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "219426": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "219471": {
+      "state_appropriations": 87022890,
+      "federal_appropriations": 0
+    },
+    "219480": {
+      "state_appropriations": 6093923,
+      "federal_appropriations": 0
+    },
+    "219596": {
+      "state_appropriations": 2428619,
+      "federal_appropriations": 0
+    },
+    "219602": {
+      "state_appropriations": 79478895,
+      "federal_appropriations": 0
+    },
+    "219824": {
+      "state_appropriations": 43174942,
+      "federal_appropriations": 0
+    },
+    "219879": {
+      "state_appropriations": 17138141,
+      "federal_appropriations": 0
+    },
+    "219888": {
+      "state_appropriations": 24488086,
+      "federal_appropriations": 0
+    },
+    "219994": {
+      "state_appropriations": 5681068,
+      "federal_appropriations": 0
+    },
+    "220057": {
+      "state_appropriations": 15255873,
+      "federal_appropriations": 0
+    },
+    "220075": {
+      "state_appropriations": 167588219,
+      "federal_appropriations": 0
+    },
+    "220127": {
+      "state_appropriations": 3971658,
+      "federal_appropriations": 0
+    },
+    "220251": {
+      "state_appropriations": 2464775,
+      "federal_appropriations": 0
+    },
+    "220279": {
+      "state_appropriations": 3105213,
+      "federal_appropriations": 0
+    },
+    "220321": {
+      "state_appropriations": 3373961,
+      "federal_appropriations": 0
+    },
+    "220394": {
+      "state_appropriations": 2128199,
+      "federal_appropriations": 0
+    },
+    "220400": {
+      "state_appropriations": 20120894,
+      "federal_appropriations": 0
+    },
+    "220640": {
+      "state_appropriations": 4096183,
+      "federal_appropriations": 0
+    },
+    "220701": {
+      "state_appropriations": 6176356,
+      "federal_appropriations": 0
+    },
+    "220756": {
+      "state_appropriations": 1823054,
+      "federal_appropriations": 0
+    },
+    "220853": {
+      "state_appropriations": 7144517,
+      "federal_appropriations": 0
+    },
+    "220862": {
+      "state_appropriations": 183039417,
+      "federal_appropriations": 0
+    },
+    "220978": {
+      "state_appropriations": 147716616,
+      "federal_appropriations": 0
+    },
+    "221050": {
+      "state_appropriations": 5973789,
+      "federal_appropriations": 0
+    },
+    "221096": {
+      "state_appropriations": 28458912,
+      "federal_appropriations": 0
+    },
+    "221102": {
+      "state_appropriations": 5398560,
+      "federal_appropriations": 0
+    },
+    "221184": {
+      "state_appropriations": 30385555,
+      "federal_appropriations": 0
+    },
+    "221236": {
+      "state_appropriations": 6361687,
+      "federal_appropriations": 0
+    },
+    "221281": {
+      "state_appropriations": 2687710,
+      "federal_appropriations": 0
+    },
+    "221333": {
+      "state_appropriations": 3296498,
+      "federal_appropriations": 0
+    },
+    "221397": {
+      "state_appropriations": 31693900,
+      "federal_appropriations": 0
+    },
+    "221430": {
+      "state_appropriations": 3084830,
+      "federal_appropriations": 0
+    },
+    "221485": {
+      "state_appropriations": 38536966,
+      "federal_appropriations": 0
+    },
+    "221494": {
+      "state_appropriations": 3865671,
+      "federal_appropriations": 0
+    },
+    "221582": {
+      "state_appropriations": 2325667,
+      "federal_appropriations": 0
+    },
+    "221591": {
+      "state_appropriations": 3310479,
+      "federal_appropriations": 0
+    },
+    "221607": {
+      "state_appropriations": 2151349,
+      "federal_appropriations": 0
+    },
+    "221616": {
+      "state_appropriations": 6528305,
+      "federal_appropriations": 0
+    },
+    "221625": {
+      "state_appropriations": 5842759,
+      "federal_appropriations": 0
+    },
+    "221643": {
+      "state_appropriations": 48222444,
+      "federal_appropriations": 0
+    },
+    "221740": {
+      "state_appropriations": 83651015,
+      "federal_appropriations": 0
+    },
+    "221759": {
+      "state_appropriations": 500925044,
+      "federal_appropriations": 15071189
+    },
+    "221768": {
+      "state_appropriations": 49151441,
+      "federal_appropriations": 0
+    },
+    "221838": {
+      "state_appropriations": 70817031,
+      "federal_appropriations": 0
+    },
+    "221847": {
+      "state_appropriations": 114197278,
+      "federal_appropriations": 0
+    },
+    "221908": {
+      "state_appropriations": 30120306,
+      "federal_appropriations": 0
+    },
+    "222053": {
+      "state_appropriations": 38404536,
+      "federal_appropriations": 0
+    },
+    "222062": {
+      "state_appropriations": 36337880,
+      "federal_appropriations": 0
+    },
+    "222497": {
+      "state_appropriations": 1760567,
+      "federal_appropriations": 0
+    },
+    "222567": {
+      "state_appropriations": 16075135,
+      "federal_appropriations": 0
+    },
+    "222576": {
+      "state_appropriations": 24637886,
+      "federal_appropriations": 0
+    },
+    "222822": {
+      "state_appropriations": 11229117,
+      "federal_appropriations": 0
+    },
+    "222831": {
+      "state_appropriations": 44783182,
+      "federal_appropriations": 0
+    },
+    "222992": {
+      "state_appropriations": 85255198,
+      "federal_appropriations": 0
+    },
+    "223320": {
+      "state_appropriations": 12012305,
+      "federal_appropriations": 0
+    },
+    "223427": {
+      "state_appropriations": 40802154,
+      "federal_appropriations": 0
+    },
+    "223506": {
+      "state_appropriations": 9823133,
+      "federal_appropriations": 0
+    },
+    "223816": {
+      "state_appropriations": 20852569,
+      "federal_appropriations": 0
+    },
+    "223898": {
+      "state_appropriations": 11245096,
+      "federal_appropriations": 0
+    },
+    "223922": {
+      "state_appropriations": 6200668,
+      "federal_appropriations": 0
+    },
+    "224110": {
+      "state_appropriations": 18481282,
+      "federal_appropriations": 0
+    },
+    "224147": {
+      "state_appropriations": 84625900,
+      "federal_appropriations": 0
+    },
+    "224350": {
+      "state_appropriations": 30886454,
+      "federal_appropriations": 0
+    },
+    "224545": {
+      "state_appropriations": 36649545,
+      "federal_appropriations": 0
+    },
+    "224554": {
+      "state_appropriations": 67102666,
+      "federal_appropriations": 0
+    },
+    "224615": {
+      "state_appropriations": 143460479,
+      "federal_appropriations": 0
+    },
+    "224642": {
+      "state_appropriations": 52476641,
+      "federal_appropriations": 0
+    },
+    "224891": {
+      "state_appropriations": 6472527,
+      "federal_appropriations": 0
+    },
+    "224961": {
+      "state_appropriations": 6316166,
+      "federal_appropriations": 0
+    },
+    "225070": {
+      "state_appropriations": 10917604,
+      "federal_appropriations": 0
+    },
+    "225308": {
+      "state_appropriations": 18174864,
+      "federal_appropriations": 0
+    },
+    "225371": {
+      "state_appropriations": 12480613,
+      "federal_appropriations": 0
+    },
+    "225414": {
+      "state_appropriations": 41083187,
+      "federal_appropriations": 0
+    },
+    "225423": {
+      "state_appropriations": 89909976,
+      "federal_appropriations": 0
+    },
+    "225432": {
+      "state_appropriations": 36582168,
+      "federal_appropriations": 0
+    },
+    "225502": {
+      "state_appropriations": 20400886,
+      "federal_appropriations": 0
+    },
+    "225511": {
+      "state_appropriations": 248720424,
+      "federal_appropriations": 0
+    },
+    "225520": {
+      "state_appropriations": 13200501,
+      "federal_appropriations": 0
+    },
+    "226019": {
+      "state_appropriations": 18460927,
+      "federal_appropriations": 0
+    },
+    "226091": {
+      "state_appropriations": 102475451,
+      "federal_appropriations": 0
+    },
+    "226107": {
+      "state_appropriations": 20662139,
+      "federal_appropriations": 0
+    },
+    "226116": {
+      "state_appropriations": 22679140,
+      "federal_appropriations": 0
+    },
+    "226134": {
+      "state_appropriations": 24906685,
+      "federal_appropriations": 0
+    },
+    "226152": {
+      "state_appropriations": 52849197,
+      "federal_appropriations": 0
+    },
+    "226204": {
+      "state_appropriations": 23385819,
+      "federal_appropriations": 0
+    },
+    "226408": {
+      "state_appropriations": 11883298,
+      "federal_appropriations": 0
+    },
+    "226578": {
+      "state_appropriations": 18580138,
+      "federal_appropriations": 0
+    },
+    "226806": {
+      "state_appropriations": 12803313,
+      "federal_appropriations": 0
+    },
+    "226833": {
+      "state_appropriations": 32669586,
+      "federal_appropriations": 0
+    },
+    "227146": {
+      "state_appropriations": 20694889,
+      "federal_appropriations": 0
+    },
+    "227182": {
+      "state_appropriations": 118561062,
+      "federal_appropriations": 0
+    },
+    "227216": {
+      "state_appropriations": 179159290,
+      "federal_appropriations": 0
+    },
+    "227225": {
+      "state_appropriations": 9030076,
+      "federal_appropriations": 0
+    },
+    "227304": {
+      "state_appropriations": 19264836,
+      "federal_appropriations": 0
+    },
+    "227368": {
+      "state_appropriations": 201819023,
+      "federal_appropriations": 0
+    },
+    "227377": {
+      "state_appropriations": 18385520,
+      "federal_appropriations": 0
+    },
+    "227386": {
+      "state_appropriations": 8211783,
+      "federal_appropriations": 0
+    },
+    "227401": {
+      "state_appropriations": 12695293,
+      "federal_appropriations": 0
+    },
+    "227526": {
+      "state_appropriations": 75200362,
+      "federal_appropriations": 5575116
+    },
+    "227687": {
+      "state_appropriations": 8178732,
+      "federal_appropriations": 0
+    },
+    "227854": {
+      "state_appropriations": 21710528,
+      "federal_appropriations": 0
+    },
+    "227881": {
+      "state_appropriations": 111644834,
+      "federal_appropriations": 0
+    },
+    "227924": {
+      "state_appropriations": 31470862,
+      "federal_appropriations": 0
+    },
+    "227979": {
+      "state_appropriations": 77606723,
+      "federal_appropriations": 0
+    },
+    "228158": {
+      "state_appropriations": 23893905,
+      "federal_appropriations": 0
+    },
+    "228316": {
+      "state_appropriations": 19249352,
+      "federal_appropriations": 0
+    },
+    "228431": {
+      "state_appropriations": 78466724,
+      "federal_appropriations": 0
+    },
+    "228459": {
+      "state_appropriations": 208549614,
+      "federal_appropriations": 0
+    },
+    "228501": {
+      "state_appropriations": 25489209,
+      "federal_appropriations": 0
+    },
+    "228529": {
+      "state_appropriations": 79362106,
+      "federal_appropriations": 0
+    },
+    "228547": {
+      "state_appropriations": 95774505,
+      "federal_appropriations": 0
+    },
+    "228608": {
+      "state_appropriations": 11881788,
+      "federal_appropriations": 0
+    },
+    "228635": {
+      "state_appropriations": 234334567,
+      "federal_appropriations": 0
+    },
+    "228644": {
+      "state_appropriations": 207960269,
+      "federal_appropriations": 0
+    },
+    "228653": {
+      "state_appropriations": 410657738,
+      "federal_appropriations": 0
+    },
+    "228699": {
+      "state_appropriations": 9908847,
+      "federal_appropriations": 0
+    },
+    "228705": {
+      "state_appropriations": 53510999,
+      "federal_appropriations": 0
+    },
+    "228723": {
+      "state_appropriations": 1226189915,
+      "federal_appropriations": 28551163
+    },
+    "228732": {
+      "state_appropriations": 5328017,
+      "federal_appropriations": 0
+    },
+    "228769": {
+      "state_appropriations": 187560730,
+      "federal_appropriations": 0
+    },
+    "228778": {
+      "state_appropriations": 420755427,
+      "federal_appropriations": 0
+    },
+    "228787": {
+      "state_appropriations": 188862748,
+      "federal_appropriations": 0
+    },
+    "228796": {
+      "state_appropriations": 141836488,
+      "federal_appropriations": 0
+    },
+    "228802": {
+      "state_appropriations": 122071561,
+      "federal_appropriations": 0
+    },
+    "228909": {
+      "state_appropriations": 131747183,
+      "federal_appropriations": 0
+    },
+    "229018": {
+      "state_appropriations": 45275696,
+      "federal_appropriations": 0
+    },
+    "229027": {
+      "state_appropriations": 187120681,
+      "federal_appropriations": 0
+    },
+    "229063": {
+      "state_appropriations": 55384388,
+      "federal_appropriations": 0
+    },
+    "229090": {
+      "state_appropriations": 31027380,
+      "federal_appropriations": 0
+    },
+    "229115": {
+      "state_appropriations": 275704348,
+      "federal_appropriations": 0
+    },
+    "229179": {
+      "state_appropriations": 103381578,
+      "federal_appropriations": 0
+    },
+    "229300": {
+      "state_appropriations": 271513880,
+      "federal_appropriations": 0
+    },
+    "229337": {
+      "state_appropriations": 179632800,
+      "federal_appropriations": 0
+    },
+    "229355": {
+      "state_appropriations": 28555584,
+      "federal_appropriations": 0
+    },
+    "229407": {
+      "state_appropriations": 60372706,
+      "federal_appropriations": 0
+    },
+    "229504": {
+      "state_appropriations": 9571158,
+      "federal_appropriations": 0
+    },
+    "229540": {
+      "state_appropriations": 7325707,
+      "federal_appropriations": 0
+    },
+    "229799": {
+      "state_appropriations": 12794559,
+      "federal_appropriations": 0
+    },
+    "229814": {
+      "state_appropriations": 52634367,
+      "federal_appropriations": 0
+    },
+    "229832": {
+      "state_appropriations": 5776077,
+      "federal_appropriations": 0
+    },
+    "229841": {
+      "state_appropriations": 12465212,
+      "federal_appropriations": 0
+    },
+    "230010": {
+      "state_appropriations": 16438012,
+      "federal_appropriations": 0
+    },
+    "230162": {
+      "state_appropriations": 27674500,
+      "federal_appropriations": 0
+    },
+    "230171": {
+      "state_appropriations": 69064842,
+      "federal_appropriations": 0
+    },
+    "230490": {
+      "state_appropriations": 24535300,
+      "federal_appropriations": 0
+    },
+    "230597": {
+      "state_appropriations": 47529117,
+      "federal_appropriations": 0
+    },
+    "230603": {
+      "state_appropriations": 77450284,
+      "federal_appropriations": 0
+    },
+    "230676": {
+      "state_appropriations": 13528900,
+      "federal_appropriations": 0
+    },
+    "230728": {
+      "state_appropriations": 331431953,
+      "federal_appropriations": 0
+    },
+    "230737": {
+      "state_appropriations": 200314645,
+      "federal_appropriations": 0
+    },
+    "230746": {
+      "state_appropriations": 151677974,
+      "federal_appropriations": 0
+    },
+    "230764": {
+      "state_appropriations": 499623000,
+      "federal_appropriations": 0
+    },
+    "230782": {
+      "state_appropriations": 151128400,
+      "federal_appropriations": 0
+    },
+    "230861": {
+      "state_appropriations": 13581114,
+      "federal_appropriations": 0
+    },
+    "231156": {
+      "state_appropriations": 21174805,
+      "federal_appropriations": 0
+    },
+    "231165": {
+      "state_appropriations": 32945634,
+      "federal_appropriations": 0
+    },
+    "231174": {
+      "state_appropriations": 57391000,
+      "federal_appropriations": 0
+    },
+    "231536": {
+      "state_appropriations": 16988011,
+      "federal_appropriations": 0
+    },
+    "231624": {
+      "state_appropriations": 111322026,
+      "federal_appropriations": 0
+    },
+    "231688": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "231697": {
+      "state_appropriations": 16895744,
+      "federal_appropriations": 0
+    },
+    "231712": {
+      "state_appropriations": 60807755,
+      "federal_appropriations": 0
+    },
+    "231873": {
+      "state_appropriations": 7068463,
+      "federal_appropriations": 0
+    },
+    "231882": {
+      "state_appropriations": 15076596,
+      "federal_appropriations": 0
+    },
+    "232052": {
+      "state_appropriations": 5421432,
+      "federal_appropriations": 0
+    },
+    "232186": {
+      "state_appropriations": 245206155,
+      "federal_appropriations": 0
+    },
+    "232195": {
+      "state_appropriations": 34405628,
+      "federal_appropriations": 0
+    },
+    "232414": {
+      "state_appropriations": 34240577,
+      "federal_appropriations": 0
+    },
+    "232423": {
+      "state_appropriations": 166158504,
+      "federal_appropriations": 0
+    },
+    "232450": {
+      "state_appropriations": 33254978,
+      "federal_appropriations": 0
+    },
+    "232566": {
+      "state_appropriations": 55708717,
+      "federal_appropriations": 0
+    },
+    "232575": {
+      "state_appropriations": 25747614,
+      "federal_appropriations": 0
+    },
+    "232681": {
+      "state_appropriations": 55203897,
+      "federal_appropriations": 0
+    },
+    "232788": {
+      "state_appropriations": 13239758,
+      "federal_appropriations": 0
+    },
+    "232867": {
+      "state_appropriations": 20557045,
+      "federal_appropriations": 0
+    },
+    "232937": {
+      "state_appropriations": 118754263,
+      "federal_appropriations": 0
+    },
+    "232946": {
+      "state_appropriations": 179144845,
+      "federal_appropriations": 0
+    },
+    "232982": {
+      "state_appropriations": 270916060,
+      "federal_appropriations": 0
+    },
+    "233019": {
+      "state_appropriations": 13034063,
+      "federal_appropriations": 0
+    },
+    "233037": {
+      "state_appropriations": 7605882,
+      "federal_appropriations": 0
+    },
+    "233116": {
+      "state_appropriations": 23136580,
+      "federal_appropriations": 0
+    },
+    "233277": {
+      "state_appropriations": 109521755,
+      "federal_appropriations": 0
+    },
+    "233310": {
+      "state_appropriations": 13232003,
+      "federal_appropriations": 0
+    },
+    "233338": {
+      "state_appropriations": 16331930,
+      "federal_appropriations": 0
+    },
+    "233639": {
+      "state_appropriations": 17198745,
+      "federal_appropriations": 0
+    },
+    "233648": {
+      "state_appropriations": 15017240,
+      "federal_appropriations": 0
+    },
+    "233754": {
+      "state_appropriations": 31386064,
+      "federal_appropriations": 0
+    },
+    "233772": {
+      "state_appropriations": 75269725,
+      "federal_appropriations": 0
+    },
+    "233897": {
+      "state_appropriations": 36809406,
+      "federal_appropriations": 0
+    },
+    "233903": {
+      "state_appropriations": 12694129,
+      "federal_appropriations": 0
+    },
+    "233921": {
+      "state_appropriations": 403155578,
+      "federal_appropriations": 0
+    },
+    "233949": {
+      "state_appropriations": 30739895,
+      "federal_appropriations": 0
+    },
+    "234030": {
+      "state_appropriations": 377376357,
+      "federal_appropriations": 0
+    },
+    "234076": {
+      "state_appropriations": 281040444,
+      "federal_appropriations": 0
+    },
+    "234085": {
+      "state_appropriations": 28647895,
+      "federal_appropriations": 0
+    },
+    "234155": {
+      "state_appropriations": 105626884,
+      "federal_appropriations": 0
+    },
+    "234377": {
+      "state_appropriations": 12936737,
+      "federal_appropriations": 0
+    },
+    "234669": {
+      "state_appropriations": 64145407,
+      "federal_appropriations": 0
+    },
+    "234696": {
+      "state_appropriations": 21461955,
+      "federal_appropriations": 0
+    },
+    "234711": {
+      "state_appropriations": 15636667,
+      "federal_appropriations": 0
+    },
+    "234827": {
+      "state_appropriations": 87623999,
+      "federal_appropriations": 0
+    },
+    "234845": {
+      "state_appropriations": 20152943,
+      "federal_appropriations": 0
+    },
+    "234933": {
+      "state_appropriations": 51192855,
+      "federal_appropriations": 0
+    },
+    "234951": {
+      "state_appropriations": 32633980,
+      "federal_appropriations": 0
+    },
+    "234979": {
+      "state_appropriations": 33022117,
+      "federal_appropriations": 0
+    },
+    "235097": {
+      "state_appropriations": 86462000,
+      "federal_appropriations": 0
+    },
+    "235103": {
+      "state_appropriations": 41942762,
+      "federal_appropriations": 0
+    },
+    "235149": {
+      "state_appropriations": 45887872,
+      "federal_appropriations": 0
+    },
+    "235167": {
+      "state_appropriations": 44156238,
+      "federal_appropriations": 0
+    },
+    "235237": {
+      "state_appropriations": 45956738,
+      "federal_appropriations": 0
+    },
+    "235334": {
+      "state_appropriations": 16664338,
+      "federal_appropriations": 0
+    },
+    "235343": {
+      "state_appropriations": 45234989,
+      "federal_appropriations": 0
+    },
+    "235431": {
+      "state_appropriations": 46904952,
+      "federal_appropriations": 0
+    },
+    "235671": {
+      "state_appropriations": 29453236,
+      "federal_appropriations": 0
+    },
+    "235699": {
+      "state_appropriations": 27316828,
+      "federal_appropriations": 0
+    },
+    "235750": {
+      "state_appropriations": 23769975,
+      "federal_appropriations": 0
+    },
+    "236072": {
+      "state_appropriations": 32993778,
+      "federal_appropriations": 0
+    },
+    "236188": {
+      "state_appropriations": 40357506,
+      "federal_appropriations": 0
+    },
+    "236258": {
+      "state_appropriations": 17477716,
+      "federal_appropriations": 0
+    },
+    "236382": {
+      "state_appropriations": 32334171,
+      "federal_appropriations": 0
+    },
+    "236504": {
+      "state_appropriations": 35916726,
+      "federal_appropriations": 0
+    },
+    "236513": {
+      "state_appropriations": 42248252,
+      "federal_appropriations": 0
+    },
+    "236610": {
+      "state_appropriations": 38477601,
+      "federal_appropriations": 0
+    },
+    "236638": {
+      "state_appropriations": 31653529,
+      "federal_appropriations": 0
+    },
+    "236656": {
+      "state_appropriations": 28292584,
+      "federal_appropriations": 0
+    },
+    "236692": {
+      "state_appropriations": 57460009,
+      "federal_appropriations": 0
+    },
+    "236708": {
+      "state_appropriations": 29600611,
+      "federal_appropriations": 0
+    },
+    "236753": {
+      "state_appropriations": 40330062,
+      "federal_appropriations": 0
+    },
+    "236887": {
+      "state_appropriations": 27155867,
+      "federal_appropriations": 0
+    },
+    "236939": {
+      "state_appropriations": 328001500,
+      "federal_appropriations": 9883925
+    },
+    "236948": {
+      "state_appropriations": 604140253,
+      "federal_appropriations": 0
+    },
+    "236975": {
+      "state_appropriations": 23954929,
+      "federal_appropriations": 0
+    },
+    "237011": {
+      "state_appropriations": 118364817,
+      "federal_appropriations": 0
+    },
+    "237039": {
+      "state_appropriations": 23172117,
+      "federal_appropriations": 0
+    },
+    "237109": {
+      "state_appropriations": 29550260,
+      "federal_appropriations": 0
+    },
+    "237172": {
+      "state_appropriations": 166476,
+      "federal_appropriations": 0
+    },
+    "237215": {
+      "state_appropriations": 6855771,
+      "federal_appropriations": 0
+    },
+    "237242": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "237330": {
+      "state_appropriations": 11170362,
+      "federal_appropriations": 0
+    },
+    "237367": {
+      "state_appropriations": 21590441,
+      "federal_appropriations": 0
+    },
+    "237385": {
+      "state_appropriations": 7071783,
+      "federal_appropriations": 0
+    },
+    "237473": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "237491": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "237525": {
+      "state_appropriations": 116417617,
+      "federal_appropriations": 0
+    },
+    "237543": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "237561": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "237686": {
+      "state_appropriations": 11667332,
+      "federal_appropriations": 0
+    },
+    "237729": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "237792": {
+      "state_appropriations": 14136730,
+      "federal_appropriations": 0
+    },
+    "237817": {
+      "state_appropriations": 9351138,
+      "federal_appropriations": 0
+    },
+    "237844": {
+      "state_appropriations": 401823,
+      "federal_appropriations": 60000
+    },
+    "237880": {
+      "state_appropriations": 38758298,
+      "federal_appropriations": 0
+    },
+    "237899": {
+      "state_appropriations": 16919207,
+      "federal_appropriations": 0
+    },
+    "237932": {
+      "state_appropriations": 9964386,
+      "federal_appropriations": 0
+    },
+    "238014": {
+      "state_appropriations": 8181031,
+      "federal_appropriations": 0
+    },
+    "238032": {
+      "state_appropriations": 255967694,
+      "federal_appropriations": 0
+    },
+    "238263": {
+      "state_appropriations": 81023120,
+      "federal_appropriations": 0
+    },
+    "238397": {
+      "state_appropriations": 14667293,
+      "federal_appropriations": 0
+    },
+    "238722": {
+      "state_appropriations": 43919374,
+      "federal_appropriations": 0
+    },
+    "238759": {
+      "state_appropriations": 43491609,
+      "federal_appropriations": 0
+    },
+    "239008": {
+      "state_appropriations": 16003579,
+      "federal_appropriations": 0
+    },
+    "239220": {
+      "state_appropriations": 17129737,
+      "federal_appropriations": 0
+    },
+    "239248": {
+      "state_appropriations": 84787638,
+      "federal_appropriations": 0
+    },
+    "239372": {
+      "state_appropriations": 27556791,
+      "federal_appropriations": 0
+    },
+    "239442": {
+      "state_appropriations": 18041977,
+      "federal_appropriations": 0
+    },
+    "239460": {
+      "state_appropriations": 22290947,
+      "federal_appropriations": 0
+    },
+    "239488": {
+      "state_appropriations": 48839408,
+      "federal_appropriations": 0
+    },
+    "239910": {
+      "state_appropriations": 9112571,
+      "federal_appropriations": 0
+    },
+    "240116": {
+      "state_appropriations": 29577362,
+      "federal_appropriations": 0
+    },
+    "240125": {
+      "state_appropriations": 52571776,
+      "federal_appropriations": 0
+    },
+    "240170": {
+      "state_appropriations": 23782403,
+      "federal_appropriations": 0
+    },
+    "240189": {
+      "state_appropriations": 38267942,
+      "federal_appropriations": 0
+    },
+    "240198": {
+      "state_appropriations": 32964525,
+      "federal_appropriations": 0
+    },
+    "240268": {
+      "state_appropriations": 44871767,
+      "federal_appropriations": 0
+    },
+    "240277": {
+      "state_appropriations": 33835709,
+      "federal_appropriations": 0
+    },
+    "240329": {
+      "state_appropriations": 35441327,
+      "federal_appropriations": 0
+    },
+    "240365": {
+      "state_appropriations": 48357440,
+      "federal_appropriations": 0
+    },
+    "240374": {
+      "state_appropriations": 26652225,
+      "federal_appropriations": 0
+    },
+    "240417": {
+      "state_appropriations": 32520066,
+      "federal_appropriations": 0
+    },
+    "240426": {
+      "state_appropriations": 22568644,
+      "federal_appropriations": 0
+    },
+    "240435": {
+      "state_appropriations": 56274192,
+      "federal_appropriations": 0
+    },
+    "240444": {
+      "state_appropriations": 538756484,
+      "federal_appropriations": 22565551
+    },
+    "240453": {
+      "state_appropriations": 151276792,
+      "federal_appropriations": 0
+    },
+    "240462": {
+      "state_appropriations": 35561358,
+      "federal_appropriations": 0
+    },
+    "240471": {
+      "state_appropriations": 26887796,
+      "federal_appropriations": 0
+    },
+    "240480": {
+      "state_appropriations": 43774754,
+      "federal_appropriations": 0
+    },
+    "240505": {
+      "state_appropriations": 26210158,
+      "federal_appropriations": 0
+    },
+    "240514": {
+      "state_appropriations": 10834779,
+      "federal_appropriations": 0
+    },
+    "240596": {
+      "state_appropriations": 11804117,
+      "federal_appropriations": 0
+    },
+    "240620": {
+      "state_appropriations": 24514641,
+      "federal_appropriations": 0
+    },
+    "240657": {
+      "state_appropriations": 15624894,
+      "federal_appropriations": 0
+    },
+    "240666": {
+      "state_appropriations": 20024077,
+      "federal_appropriations": 0
+    },
+    "240693": {
+      "state_appropriations": 12862640,
+      "federal_appropriations": 0
+    },
+    "240727": {
+      "state_appropriations": 230341000,
+      "federal_appropriations": 6067000
+    },
+    "240736": {
+      "state_appropriations": 2414127,
+      "federal_appropriations": 0
+    },
+    "240745": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "240754": {
+      "state_appropriations": 36579215,
+      "federal_appropriations": 0
+    },
+    "240790": {
+      "state_appropriations": 4044445,
+      "federal_appropriations": 0
+    },
+    "241720": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "241766": {
+      "state_appropriations": 7956054,
+      "federal_appropriations": 0
+    },
+    "241951": {
+      "state_appropriations": 2901577,
+      "federal_appropriations": 0
+    },
+    "242042": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "242556": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "242583": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "243106": {
+      "state_appropriations": 13538076,
+      "federal_appropriations": 0
+    },
+    "243115": {
+      "state_appropriations": 16624560,
+      "federal_appropriations": 0
+    },
+    "243133": {
+      "state_appropriations": 18059935,
+      "federal_appropriations": 0
+    },
+    "243142": {
+      "state_appropriations": 11834219,
+      "federal_appropriations": 0
+    },
+    "243151": {
+      "state_appropriations": 17539967,
+      "federal_appropriations": 0
+    },
+    "243160": {
+      "state_appropriations": 218131080,
+      "federal_appropriations": 0
+    },
+    "243179": {
+      "state_appropriations": 21686903,
+      "federal_appropriations": 0
+    },
+    "243188": {
+      "state_appropriations": 9876868,
+      "federal_appropriations": 0
+    },
+    "243197": {
+      "state_appropriations": 93639751,
+      "federal_appropriations": 0
+    },
+    "243203": {
+      "state_appropriations": 93725748,
+      "federal_appropriations": 0
+    },
+    "243212": {
+      "state_appropriations": 10312192,
+      "federal_appropriations": 0
+    },
+    "243221": {
+      "state_appropriations": 117395295,
+      "federal_appropriations": 0
+    },
+    "243638": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "243647": {
+      "state_appropriations": 3055594,
+      "federal_appropriations": 0
+    },
+    "243665": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "243780": {
+      "state_appropriations": 335325542,
+      "federal_appropriations": 18415042
+    },
+    "244437": {
+      "state_appropriations": 66436453,
+      "federal_appropriations": 0
+    },
+    "244446": {
+      "state_appropriations": 15433647,
+      "federal_appropriations": 0
+    },
+    "245625": {
+      "state_appropriations": 3313344,
+      "federal_appropriations": 0
+    },
+    "245999": {
+      "state_appropriations": 4833438,
+      "federal_appropriations": 0
+    },
+    "246017": {
+      "state_appropriations": 8148713,
+      "federal_appropriations": 0
+    },
+    "246071": {
+      "state_appropriations": 0,
+      "federal_appropriations": 35172
+    },
+    "246354": {
+      "state_appropriations": 17206077,
+      "federal_appropriations": 0
+    },
+    "246813": {
+      "state_appropriations": 15254154,
+      "federal_appropriations": 0
+    },
+    "247083": {
+      "state_appropriations": 4372588,
+      "federal_appropriations": 0
+    },
+    "247603": {
+      "state_appropriations": 3894377,
+      "federal_appropriations": 0
+    },
+    "247737": {
+      "state_appropriations": 6637400,
+      "federal_appropriations": 7522368
+    },
+    "247834": {
+      "state_appropriations": 65897755,
+      "federal_appropriations": 0
+    },
+    "247940": {
+      "state_appropriations": 10243600,
+      "federal_appropriations": 0
+    },
+    "248606": {
+      "state_appropriations": 839093,
+      "federal_appropriations": 0
+    },
+    "248624": {
+      "state_appropriations": 885105,
+      "federal_appropriations": 0
+    },
+    "248633": {
+      "state_appropriations": 150535,
+      "federal_appropriations": 0
+    },
+    "248925": {
+      "state_appropriations": 6120731,
+      "federal_appropriations": 0
+    },
+    "250993": {
+      "state_appropriations": 572482,
+      "federal_appropriations": 0
+    },
+    "251260": {
+      "state_appropriations": 23272417,
+      "federal_appropriations": 0
+    },
+    "260363": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "260372": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "261773": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "262031": {
+      "state_appropriations": 13028675,
+      "federal_appropriations": 0
+    },
+    "262086": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "262129": {
+      "state_appropriations": 66585987,
+      "federal_appropriations": 0
+    },
+    "363165": {
+      "state_appropriations": 4064200,
+      "federal_appropriations": 0
+    },
+    "363633": {
+      "state_appropriations": 8173800,
+      "federal_appropriations": 0
+    },
+    "364016": {
+      "state_appropriations": 2076341,
+      "federal_appropriations": 0
+    },
+    "364025": {
+      "state_appropriations": 4718899,
+      "federal_appropriations": 0
+    },
+    "364548": {
+      "state_appropriations": 6877343,
+      "federal_appropriations": 0
+    },
+    "364575": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "364627": {
+      "state_appropriations": 2363356,
+      "federal_appropriations": 43652
+    },
+    "364636": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "364946": {
+      "state_appropriations": 5488447,
+      "federal_appropriations": 0
+    },
+    "364964": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "365198": {
+      "state_appropriations": 2766067,
+      "federal_appropriations": 348896
+    },
+    "365213": {
+      "state_appropriations": 4264795,
+      "federal_appropriations": 0
+    },
+    "365240": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "365374": {
+      "state_appropriations": 3972743,
+      "federal_appropriations": 0
+    },
+    "365383": {
+      "state_appropriations": 302926,
+      "federal_appropriations": 0
+    },
+    "365480": {
+      "state_appropriations": 3928312,
+      "federal_appropriations": 0
+    },
+    "365763": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "366340": {
+      "state_appropriations": 44717,
+      "federal_appropriations": 358678
+    },
+    "366395": {
+      "state_appropriations": 49934730,
+      "federal_appropriations": 0
+    },
+    "366401": {
+      "state_appropriations": 29865176,
+      "federal_appropriations": 0
+    },
+    "366465": {
+      "state_appropriations": 10047189,
+      "federal_appropriations": 0
+    },
+    "366623": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "366711": {
+      "state_appropriations": 48658655,
+      "federal_appropriations": 0
+    },
+    "367459": {
+      "state_appropriations": 13365121,
+      "federal_appropriations": 0
+    },
+    "367875": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "367972": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "368364": {
+      "state_appropriations": 2907066,
+      "federal_appropriations": 380262
+    },
+    "368407": {
+      "state_appropriations": 79199,
+      "federal_appropriations": 0
+    },
+    "368647": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "368911": {
+      "state_appropriations": 10318954,
+      "federal_appropriations": 0
+    },
+    "369419": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "369668": {
+      "state_appropriations": 513389,
+      "federal_appropriations": 0
+    },
+    "371690": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "372082": {
+      "state_appropriations": 2598778,
+      "federal_appropriations": 0
+    },
+    "373711": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "374592": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "375373": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "375407": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "375568": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "375656": {
+      "state_appropriations": 1636796,
+      "federal_appropriations": 0
+    },
+    "375683": {
+      "state_appropriations": 3847892,
+      "federal_appropriations": 0
+    },
+    "375726": {
+      "state_appropriations": 9154267,
+      "federal_appropriations": 0
+    },
+    "375966": {
+      "state_appropriations": 403063,
+      "federal_appropriations": 0
+    },
+    "376695": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "377485": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "379621": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "380359": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "380368": {
+      "state_appropriations": 8029000,
+      "federal_appropriations": 0
+    },
+    "380377": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "382258": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "382416": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "383084": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "383190": {
+      "state_appropriations": 17737281,
+      "federal_appropriations": 0
+    },
+    "383312": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "383330": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "383367": {
+      "state_appropriations": 362436,
+      "federal_appropriations": 0
+    },
+    "383525": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "383996": {
+      "state_appropriations": 2957700,
+      "federal_appropriations": 0
+    },
+    "384333": {
+      "state_appropriations": 3362433,
+      "federal_appropriations": 0
+    },
+    "384342": {
+      "state_appropriations": 14352621,
+      "federal_appropriations": 0
+    },
+    "389860": {
+      "state_appropriations": 784949,
+      "federal_appropriations": 0
+    },
+    "390905": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "395362": {
+      "state_appropriations": 15974398,
+      "federal_appropriations": 0
+    },
+    "399212": {
+      "state_appropriations": 31770681,
+      "federal_appropriations": 0
+    },
+    "404426": {
+      "state_appropriations": 3246000,
+      "federal_appropriations": 0
+    },
+    "404480": {
+      "state_appropriations": 28332313,
+      "federal_appropriations": 0
+    },
+    "405872": {
+      "state_appropriations": 13855920,
+      "federal_appropriations": 0
+    },
+    "406325": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "406361": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "406422": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "407461": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "407489": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "407513": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "407522": {
+      "state_appropriations": 45325,
+      "federal_appropriations": 0
+    },
+    "407577": {
+      "state_appropriations": 1232750,
+      "federal_appropriations": 250945
+    },
+    "407832": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "409120": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "409315": {
+      "state_appropriations": 63580283,
+      "federal_appropriations": 0
+    },
+    "409379": {
+      "state_appropriations": 75398489,
+      "federal_appropriations": 0
+    },
+    "409537": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "409591": {
+      "state_appropriations": 168076,
+      "federal_appropriations": 190
+    },
+    "409698": {
+      "state_appropriations": 114090632,
+      "federal_appropriations": 0
+    },
+    "412535": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "413176": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "413626": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "414911": {
+      "state_appropriations": 3392773,
+      "federal_appropriations": 0
+    },
+    "416801": {
+      "state_appropriations": 3340086,
+      "federal_appropriations": 0
+    },
+    "417105": {
+      "state_appropriations": 7619003,
+      "federal_appropriations": 0
+    },
+    "417123": {
+      "state_appropriations": 5264432,
+      "federal_appropriations": 0
+    },
+    "417442": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "417628": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "417637": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "417646": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "417655": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "417682": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "417716": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "417831": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "417868": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "417886": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "417910": {
+      "state_appropriations": 620947,
+      "federal_appropriations": 0
+    },
+    "417983": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "417992": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "418001": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "418010": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "418029": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "418038": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "418065": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "418083": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "418205": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "418223": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "418250": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "418278": {
+      "state_appropriations": 132894,
+      "federal_appropriations": 0
+    },
+    "418296": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "418302": {
+      "state_appropriations": 1925267,
+      "federal_appropriations": 0
+    },
+    "418320": {
+      "state_appropriations": 3279980,
+      "federal_appropriations": 0
+    },
+    "418348": {
+      "state_appropriations": 2104605,
+      "federal_appropriations": 0
+    },
+    "418357": {
+      "state_appropriations": 2959046,
+      "federal_appropriations": 50331
+    },
+    "418409": {
+      "state_appropriations": 623303,
+      "federal_appropriations": 88948
+    },
+    "418427": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "418445": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "418454": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "418481": {
+      "state_appropriations": 133243,
+      "federal_appropriations": 0
+    },
+    "418515": {
+      "state_appropriations": 257191,
+      "federal_appropriations": 0
+    },
+    "418524": {
+      "state_appropriations": 226302,
+      "federal_appropriations": 0
+    },
+    "418533": {
+      "state_appropriations": 330814,
+      "federal_appropriations": 0
+    },
+    "418560": {
+      "state_appropriations": 281630,
+      "federal_appropriations": 0
+    },
+    "418588": {
+      "state_appropriations": 70962,
+      "federal_appropriations": 0
+    },
+    "418612": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "419031": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "419095": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "419226": {
+      "state_appropriations": 6459711,
+      "federal_appropriations": 0
+    },
+    "419420": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "420398": {
+      "state_appropriations": 28255611,
+      "federal_appropriations": 0
+    },
+    "420431": {
+      "state_appropriations": 10810600,
+      "federal_appropriations": 0
+    },
+    "420440": {
+      "state_appropriations": 6565499,
+      "federal_appropriations": 0
+    },
+    "420468": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "420538": {
+      "state_appropriations": 4713262,
+      "federal_appropriations": 0
+    },
+    "420556": {
+      "state_appropriations": 6014759,
+      "federal_appropriations": 0
+    },
+    "420723": {
+      "state_appropriations": 5146965,
+      "federal_appropriations": 0
+    },
+    "420802": {
+      "state_appropriations": 98807100,
+      "federal_appropriations": 0
+    },
+    "421717": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "423652": {
+      "state_appropriations": 5031461,
+      "federal_appropriations": 0
+    },
+    "427991": {
+      "state_appropriations": 71355,
+      "federal_appropriations": 0
+    },
+    "428019": {
+      "state_appropriations": 1713976,
+      "federal_appropriations": 0
+    },
+    "428392": {
+      "state_appropriations": 21162436,
+      "federal_appropriations": 0
+    },
+    "428426": {
+      "state_appropriations": 8013404,
+      "federal_appropriations": 0
+    },
+    "428453": {
+      "state_appropriations": 40482000,
+      "federal_appropriations": 0
+    },
+    "430795": {
+      "state_appropriations": 1196182,
+      "federal_appropriations": 1251017
+    },
+    "430883": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "430908": {
+      "state_appropriations": 920692,
+      "federal_appropriations": 0
+    },
+    "430971": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "431017": {
+      "state_appropriations": 2212286,
+      "federal_appropriations": 0
+    },
+    "431105": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "431196": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "431266": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "431275": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "431558": {
+      "state_appropriations": 5477593,
+      "federal_appropriations": 0
+    },
+    "431716": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "432144": {
+      "state_appropriations": 293870,
+      "federal_appropriations": 0
+    },
+    "433040": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "433068": {
+      "state_appropriations": 2750275,
+      "federal_appropriations": 0
+    },
+    "433138": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "433174": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "433660": {
+      "state_appropriations": 153136878,
+      "federal_appropriations": 0
+    },
+    "434061": {
+      "state_appropriations": 18115049,
+      "federal_appropriations": 0
+    },
+    "434584": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "434672": {
+      "state_appropriations": 71703077,
+      "federal_appropriations": 0
+    },
+    "435000": {
+      "state_appropriations": 91138486,
+      "federal_appropriations": 0
+    },
+    "436304": {
+      "state_appropriations": 6991437,
+      "federal_appropriations": 0
+    },
+    "437103": {
+      "state_appropriations": 19603870,
+      "federal_appropriations": 0
+    },
+    "438665": {
+      "state_appropriations": 23215860,
+      "federal_appropriations": 0
+    },
+    "438708": {
+      "state_appropriations": 2439509,
+      "federal_appropriations": 0
+    },
+    "439154": {
+      "state_appropriations": 2994864,
+      "federal_appropriations": 0
+    },
+    "439190": {
+      "state_appropriations": 12303769,
+      "federal_appropriations": 0
+    },
+    "439622": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "440402": {
+      "state_appropriations": 7968540,
+      "federal_appropriations": 0
+    },
+    "440730": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "440916": {
+      "state_appropriations": 7152923,
+      "federal_appropriations": 0
+    },
+    "441070": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "441210": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "441414": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "441593": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "441672": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "441760": {
+      "state_appropriations": 30169729,
+      "federal_appropriations": 0
+    },
+    "441900": {
+      "state_appropriations": 34007000,
+      "federal_appropriations": 0
+    },
+    "441937": {
+      "state_appropriations": 111261637,
+      "federal_appropriations": 0
+    },
+    "442569": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "442781": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "443492": {
+      "state_appropriations": 8675954,
+      "federal_appropriations": 0
+    },
+    "443711": {
+      "state_appropriations": 8052089,
+      "federal_appropriations": 0
+    },
+    "444219": {
+      "state_appropriations": 35343895,
+      "federal_appropriations": 0
+    },
+    "444954": {
+      "state_appropriations": 6941552,
+      "federal_appropriations": 0
+    },
+    "445188": {
+      "state_appropriations": 263071000,
+      "federal_appropriations": 0
+    },
+    "446093": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "446206": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "446349": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "446774": {
+      "state_appropriations": 8746343,
+      "federal_appropriations": 0
+    },
+    "446978": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "447582": {
+      "state_appropriations": 6697814,
+      "federal_appropriations": 0
+    },
+    "447689": {
+      "state_appropriations": 67899103,
+      "federal_appropriations": 0
+    },
+    "448248": {
+      "state_appropriations": 28011000,
+      "federal_appropriations": 0
+    },
+    "448336": {
+      "state_appropriations": 2871417,
+      "federal_appropriations": 0
+    },
+    "448594": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "448637": {
+      "state_appropriations": 49317713,
+      "federal_appropriations": 0
+    },
+    "449357": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "449816": {
+      "state_appropriations": 9214300,
+      "federal_appropriations": 0
+    },
+    "451583": {
+      "state_appropriations": 20534200,
+      "federal_appropriations": 0
+    },
+    "452106": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "455114": {
+      "state_appropriations": 31524862,
+      "federal_appropriations": 0
+    },
+    "455512": {
+      "state_appropriations": 10890817,
+      "federal_appropriations": 0
+    },
+    "456959": {
+      "state_appropriations": 10017472,
+      "federal_appropriations": 0
+    },
+    "457378": {
+      "state_appropriations": 1617739,
+      "federal_appropriations": 0
+    },
+    "457387": {
+      "state_appropriations": 3811049,
+      "federal_appropriations": 0
+    },
+    "457615": {
+      "state_appropriations": 73562,
+      "federal_appropriations": 0
+    },
+    "457624": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "457873": {
+      "state_appropriations": 454588,
+      "federal_appropriations": 0
+    },
+    "457943": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "457989": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "459329": {
+      "state_appropriations": 1463923,
+      "federal_appropriations": 0
+    },
+    "459408": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "459949": {
+      "state_appropriations": 42199196,
+      "federal_appropriations": 0
+    },
+    "460394": {
+      "state_appropriations": 42380470,
+      "federal_appropriations": 0
+    },
+    "460464": {
+      "state_appropriations": 41910936,
+      "federal_appropriations": 0
+    },
+    "461087": {
+      "state_appropriations": 259,
+      "federal_appropriations": 0
+    },
+    "461245": {
+      "state_appropriations": 1179264,
+      "federal_appropriations": 0
+    },
+    "461306": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "461315": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "475565": {
+      "state_appropriations": 5636560,
+      "federal_appropriations": 0
+    },
+    "475723": {
+      "state_appropriations": 8567000,
+      "federal_appropriations": 0
+    },
+    "476975": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "480967": {
+      "state_appropriations": 4151861,
+      "federal_appropriations": 0
+    },
+    "481021": {
+      "state_appropriations": 232041,
+      "federal_appropriations": 0
+    },
+    "481049": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "481182": {
+      "state_appropriations": 94552,
+      "federal_appropriations": 0
+    },
+    "481191": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "482149": {
+      "state_appropriations": 354375297,
+      "federal_appropriations": 0
+    },
+    "482158": {
+      "state_appropriations": 57308062,
+      "federal_appropriations": 0
+    },
+    "482680": {
+      "state_appropriations": 109030492,
+      "federal_appropriations": 0
+    },
+    "482699": {
+      "state_appropriations": 14599260,
+      "federal_appropriations": 0
+    },
+    "482936": {
+      "state_appropriations": 66433473,
+      "federal_appropriations": 0
+    },
+    "483036": {
+      "state_appropriations": 25461001,
+      "federal_appropriations": 0
+    },
+    "483045": {
+      "state_appropriations": 30678800,
+      "federal_appropriations": 0
+    },
+    "483212": {
+      "state_appropriations": 11307128,
+      "federal_appropriations": 0
+    },
+    "484233": {
+      "state_appropriations": 54485,
+      "federal_appropriations": 0
+    },
+    "484473": {
+      "state_appropriations": 5571000,
+      "federal_appropriations": 0
+    },
+    "484905": {
+      "state_appropriations": 46534565,
+      "federal_appropriations": 0
+    },
+    "484932": {
+      "state_appropriations": 9004136,
+      "federal_appropriations": 0
+    },
+    "485111": {
+      "state_appropriations": 9481126,
+      "federal_appropriations": 0
+    },
+    "485342": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "485458": {
+      "state_appropriations": 15704538,
+      "federal_appropriations": 0
+    },
+    "486150": {
+      "state_appropriations": 1771697,
+      "federal_appropriations": 0
+    },
+    "486202": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "486406": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "486840": {
+      "state_appropriations": 250090056,
+      "federal_appropriations": 0
+    },
+    "486877": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "486886": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "487010": {
+      "state_appropriations": 228166614,
+      "federal_appropriations": 0
+    },
+    "487162": {
+      "state_appropriations": 21290113,
+      "federal_appropriations": 0
+    },
+    "487320": {
+      "state_appropriations": 174336533,
+      "federal_appropriations": 0
+    },
+    "487773": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "488730": {
+      "state_appropriations": 9014288,
+      "federal_appropriations": 0
+    },
+    "488800": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "488891": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "488934": {
+      "state_appropriations": 8919792,
+      "federal_appropriations": 0
+    },
+    "489201": {
+      "state_appropriations": 30236489,
+      "federal_appropriations": 0
+    },
+    "489779": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "490090": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "490805": {
+      "state_appropriations": 55709950,
+      "federal_appropriations": 0
+    },
+    "491464": {
+      "state_appropriations": 14462864,
+      "federal_appropriations": 1172696
+    },
+    "491473": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "491783": {
+      "state_appropriations": 657252,
+      "federal_appropriations": 0
+    },
+    "491844": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "492263": {
+      "state_appropriations": 27489689,
+      "federal_appropriations": 0
+    },
+    "492306": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "492315": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "492324": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "492689": {
+      "state_appropriations": 91309678,
+      "federal_appropriations": 0
+    },
+    "494959": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "495013": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "496645": {
+      "state_appropriations": 0,
+      "federal_appropriations": 0
+    },
+    "497046": {
+      "state_appropriations": 19067558,
+      "federal_appropriations": 0
+    },
+    "498012": {
+      "state_appropriations": 1834147,
+      "federal_appropriations": 19889
+    },
+    "498386": {
+      "state_appropriations": 652362,
+      "federal_appropriations": 0
+    },
+    "498562": {
+      "state_appropriations": 88426567,
+      "federal_appropriations": 6613678
+    },
+    "498571": {
+      "state_appropriations": 151752241,
+      "federal_appropriations": 7177829
+    },
+    "498739": {
+      "state_appropriations": 131715,
+      "federal_appropriations": 0
+    }
+  }
+}

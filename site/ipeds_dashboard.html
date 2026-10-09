@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IPEDS STEM PhD Dashboard</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="/style.css">
 <style>
   :root {
     --bg: #0f172a; --surface: #1e293b; --border: #334155;
@@ -14,7 +15,7 @@
     --teal: #2dd4bf; --indigo: #818cf8;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  body { font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
   .header { background: linear-gradient(135deg, #1e3a5f, var(--bg)); padding: 2rem; text-align: center; border-bottom: 1px solid var(--border); }
   .header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem; }
   .header .subtitle { color: var(--text-muted); font-size: 0.95rem; }
@@ -590,5 +591,6 @@ filterInstitutions();
 </script>
 <script src="/sidebar.js"></script>
 <script src="/anchors.js" defer></script>
+<script src="/analytics-beacon.js" defer></script>
 </body>
 </html>

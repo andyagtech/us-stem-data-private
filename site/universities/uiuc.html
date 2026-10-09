@@ -10,6 +10,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <title>UIUC — PhD Demographics</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="/style.css">
 <style>
   :root {
     --bg: #0f172a; --surface: #1e293b; --surface2: var(--border);
@@ -18,7 +19,7 @@
     --green: #4ade80; --blue: #60a5fa;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); display: flex; min-height: 100vh; }
+  body { font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); display: flex; min-height: 100vh; }
 
   .sidebar { width: 220px; background: var(--surface); border-right: 1px solid var(--surface2); padding: 16px 0; position: fixed; top: 0; left: 0; bottom: 0; overflow-y: auto; z-index: 20; }
   /* Share anchor buttons */
@@ -50,7 +51,7 @@
   .sidebar-group.collapsed .sidebar-group-content { display: none; }
   .nav-page { font-size: 0.82rem; padding: 6px 16px; }
 
-  .main { margin-left: 220px; flex: 1; padding: 24px 32px; max-width: 1200px; }
+  .main { margin-left: 0; flex: 1; padding: 24px 32px; max-width: 1200px; }
   h1 { font-size: 1.4rem; margin-bottom: 4px; }
   .subtitle { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 12px; }
   h2 { font-size: 1.2rem; margin-bottom: 4px; }
@@ -450,57 +451,6 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 <a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:0;z-index:999;background:var(--accent);color:var(--bg);padding:8px 16px;font-size:0.85rem;text-decoration:none;" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">Skip to content</a>
 
 <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="Open navigation menu">☰</button>
-<nav class="sidebar" id="sidebar" aria-label="University navigation">
-  <h3>PhD Demographics</h3>
-  <div class="sidebar-group" id="sg-national">
-    <div class="sidebar-section" onclick="toggleSidebarGroup('sg-national')"><span class="chevron">▼</span> National</div>
-    <div class="sidebar-group-content">
-      <a href="javascript:void(0)" class="nav-item nav-page" onclick="showNational();">National Charts</a>
-      <a href="/ipeds_dashboard.html" class="nav-item nav-page">IPEDS PhD Dashboard</a>
-      <a href="/immigration.html" class="nav-item nav-page">Immigration Pipeline</a>
-      <a href="/pipeline.html" class="nav-item nav-page">Pipeline Analysis</a>
-    </div>
-  </div>
-  <div class="sidebar-group" id="sg-universities">
-    <div class="sidebar-section" onclick="toggleSidebarGroup('sg-universities')"><span class="chevron">▼</span> Universities (106)</div>
-    <div class="sidebar-group-content">
-      <a href="/universities/missouri_st.html" class="nav-item" data-key="missouri_st"><span>Missouri S&T</span><span><span class="nav-nra">74.3%</span><span class="opt-dot"></span></span></a><a href="/universities/njit.html" class="nav-item" data-key="njit"><span>NJIT</span><span><span class="nav-nra">70.7%</span><span class="opt-dot"></span></span></a><a href="/universities/mtu.html" class="nav-item" data-key="mtu"><span>Michigan Tech</span><span><span class="nav-nra">66.7%</span><span class="opt-dot"></span></span></a><a href="/universities/utdallas.html" class="nav-item" data-key="utdallas"><span>UT Dallas</span><span><span class="nav-nra">66.1%</span><span class="opt-dot"></span></span></a><a href="/universities/utarlington.html" class="nav-item" data-key="utarlington"><span>UT Arlington</span><span><span class="nav-nra">65.5%</span><span class="opt-dot"></span></span></a><a href="/universities/sdsu.html" class="nav-item" data-key="sdsu"><span>SD State</span><span><span class="nav-nra">64.5%</span><span class="opt-dot"></span></span></a><a href="/universities/uhouston.html" class="nav-item" data-key="uhouston"><span>U Houston</span><span><span class="nav-nra">64.5%</span><span class="opt-dot"></span></span></a><a href="/universities/smu.html" class="nav-item" data-key="smu"><span>SMU</span><span><span class="nav-nra">61.3%</span><span class="opt-dot"></span></span></a><a href="/universities/purdue.html" class="nav-item" data-key="purdue"><span>Purdue</span><span><span class="nav-nra">60.3%</span><span class="opt-dot"></span></span></a><a href="/universities/stony_brook.html" class="nav-item" data-key="stony_brook"><span>Stony Brook</span><span><span class="nav-nra">58.8%</span><span class="opt-dot"></span></span></a><a href="/universities/kstate.html" class="nav-item" data-key="kstate"><span>Kansas State</span><span><span class="nav-nra">58.3%</span><span class="opt-dot"></span></span></a><a href="/universities/ttu.html" class="nav-item" data-key="ttu"><span>Texas Tech</span><span><span class="nav-nra">57.4%</span><span class="opt-dot"></span></span></a><a href="/universities/rit.html" class="nav-item" data-key="rit"><span>RIT</span><span><span class="nav-nra">57.1%</span><span class="opt-dot"></span></span></a><a href="/universities/siu.html" class="nav-item" data-key="siu"><span>Southern Illinois</span><span><span class="nav-nra">57.1%</span><span class="opt-dot"></span></span></a><a href="/universities/binghamton.html" class="nav-item" data-key="binghamton"><span>Binghamton</span><span><span class="nav-nra">56.9%</span><span class="opt-dot"></span></span></a><a href="/universities/iowa_state.html" class="nav-item" data-key="iowa_state"><span>Iowa State</span><span><span class="nav-nra">56.0%</span><span class="opt-dot"></span></span></a><a href="/universities/cmu.html" class="nav-item" data-key="cmu"><span>Carnegie Mellon</span><span><span class="nav-nra">55.9%</span><span class="opt-dot"></span></span></a><a href="/universities/clemson.html" class="nav-item" data-key="clemson"><span>Clemson</span><span><span class="nav-nra">55.2%</span><span class="opt-dot"></span></span></a><a href="/universities/ubuffalo.html" class="nav-item" data-key="ubuffalo"><span>U Buffalo</span><span><span class="nav-nra">54.4%</span><span class="opt-dot"></span></span></a><a href="/universities/la_tech.html" class="nav-item" data-key="la_tech"><span>Louisiana Tech</span><span><span class="nav-nra">54.3%</span><span class="opt-dot"></span></span></a><a href="/universities/ucf.html" class="nav-item" data-key="ucf"><span>UCF</span><span><span class="nav-nra">53.8%</span><span class="opt-dot"></span></span></a><a href="/universities/vt.html" class="nav-item" data-key="vt"><span>Virginia Tech</span><span><span class="nav-nra">53.6%</span><span class="opt-dot"></span></span></a><a href="/universities/gatech.html" class="nav-item" data-key="gatech"><span>Georgia Tech</span><span><span class="nav-nra">52.4%</span><span class="opt-dot"></span></span></a><a href="/universities/lsu.html" class="nav-item" data-key="lsu"><span>LSU</span><span><span class="nav-nra">52.3%</span><span class="opt-dot"></span></span></a><a href="/universities/uiuc.html" class="nav-item" data-key="uiuc"><span>UIUC</span><span><span class="nav-nra">52.1%</span><span class="opt-dot"></span></span></a><a href="/universities/syracuse.html" class="nav-item" data-key="syracuse"><span>Syracuse</span><span><span class="nav-nra">51.6%</span><span class="opt-dot"></span></span></a><a href="/universities/rice.html" class="nav-item" data-key="rice"><span>Rice</span><span><span class="nav-nra">51.3%</span><span class="opt-dot"></span></span></a><a href="/universities/penn_state.html" class="nav-item" data-key="penn_state"><span>Penn State</span><span><span class="nav-nra">50.8%</span><span class="opt-dot"></span></span></a><a href="/universities/uarkansas.html" class="nav-item" data-key="uarkansas"><span>U Arkansas</span><span><span class="nav-nra">50.5%</span><span class="opt-dot"></span></span></a><a href="/universities/umissouri.html" class="nav-item" data-key="umissouri"><span>U Missouri</span><span><span class="nav-nra">50.2%</span><span class="opt-dot"></span></span></a><a href="/universities/uconn.html" class="nav-item" data-key="uconn"><span>UConn</span><span><span class="nav-nra">49.7%</span><span class="opt-dot"></span></span></a><a href="/universities/umass.html" class="nav-item" data-key="umass"><span>UMass Amherst</span><span><span class="nav-nra">49.3%</span><span class="opt-dot"></span></span></a><a href="/universities/msstate.html" class="nav-item" data-key="msstate"><span>Mississippi State</span><span><span class="nav-nra">49.2%</span><span class="opt-dot"></span></span></a><a href="/universities/unl.html" class="nav-item" data-key="unl"><span>U Nebraska-Lincoln</span><span><span class="nav-nra">49.1%</span><span class="opt-dot"></span></span></a><a href="/universities/msu.html" class="nav-item" data-key="msu"><span>Michigan State</span><span><span class="nav-nra">49.0%</span><span class="opt-dot"></span></span></a><a href="/universities/rpi.html" class="nav-item" data-key="rpi"><span>RPI</span><span><span class="nav-nra">48.7%</span><span class="opt-dot"></span></span></a><a href="/universities/wsu.html" class="nav-item" data-key="wsu"><span>Washington State</span><span><span class="nav-nra">47.2%</span><span class="opt-dot"></span></span></a><a href="/universities/usc_columbia.html" class="nav-item" data-key="usc_columbia"><span>U South Carolina</span><span><span class="nav-nra">47.0%</span><span class="opt-dot"></span></span></a><a href="/universities/osu.html" class="nav-item" data-key="osu"><span>Ohio State</span><span><span class="nav-nra">46.9%</span><span class="opt-dot"></span></span></a><a href="/universities/utaustin.html" class="nav-item" data-key="utaustin"><span>UT Austin</span><span><span class="nav-nra">46.4%</span><span class="opt-dot"></span></span></a><a href="/universities/udel.html" class="nav-item" data-key="udel"><span>U Delaware</span><span><span class="nav-nra">46.3%</span><span class="opt-dot"></span></span></a><a href="/universities/umd.html" class="nav-item" data-key="umd"><span>U Maryland</span><span><span class="nav-nra">45.2%</span><span class="opt-dot"></span></span></a><a href="/universities/uf.html" class="nav-item" data-key="uf"><span>U Florida</span><span><span class="nav-nra">45.2%</span><span class="opt-dot"></span></span></a><a href="/universities/ncstate.html" class="nav-item" data-key="ncstate"><span>NC State</span><span><span class="nav-nra">43.9%</span><span class="opt-dot"></span></span></a><a href="/universities/mit.html" class="nav-item" data-key="mit"><span>MIT</span><span><span class="nav-nra">43.8%</span><span class="opt-dot"></span></span></a><a href="/universities/uky.html" class="nav-item" data-key="uky"><span>U Kentucky</span><span><span class="nav-nra">43.5%</span><span class="opt-dot"></span></span></a><a href="/universities/ulouisville.html" class="nav-item" data-key="ulouisville"><span>U Louisville</span><span><span class="nav-nra">43.2%</span><span class="opt-dot"></span></span></a><a href="/universities/wvu.html" class="nav-item" data-key="wvu"><span>West Virginia U</span><span><span class="nav-nra">42.8%</span><span class="opt-dot"></span></span></a><a href="/universities/unh.html" class="nav-item" data-key="unh"><span>U New Hampshire</span><span><span class="nav-nra">42.6%</span><span class="opt-dot"></span></span></a><a href="/universities/columbia.html" class="nav-item" data-key="columbia"><span>Columbia</span><span><span class="nav-nra">42.5%</span><span class="opt-dot"></span></span></a><a href="/universities/usf.html" class="nav-item" data-key="usf"><span>U South Florida</span><span><span class="nav-nra">41.5%</span><span class="opt-dot"></span></span></a><a href="/universities/unt.html" class="nav-item" data-key="unt"><span>U North Texas</span><span><span class="nav-nra">41.4%</span><span class="opt-dot"></span></span></a><a href="/universities/cornell.html" class="nav-item" data-key="cornell"><span>Cornell</span><span><span class="nav-nra">41.3%</span><span class="opt-dot"></span></span></a><a href="/universities/caltech.html" class="nav-item" data-key="caltech"><span>Caltech</span><span><span class="nav-nra">41.2%</span><span class="opt-dot"></span></span></a><a href="/universities/wayne_state.html" class="nav-item" data-key="wayne_state"><span>Wayne State</span><span><span class="nav-nra">40.2%</span><span class="opt-dot"></span></span></a><a href="/universities/mines.html" class="nav-item" data-key="mines"><span>CO School of Mines</span><span><span class="nav-nra">39.8%</span><span class="opt-dot"></span></span></a><a href="/universities/ukansas.html" class="nav-item" data-key="ukansas"><span>U Kansas</span><span><span class="nav-nra">39.2%</span><span class="opt-dot"></span></span></a><a href="/universities/umn.html" class="nav-item" data-key="umn"><span>U Minnesota</span><span><span class="nav-nra">38.8%</span><span class="opt-dot"></span></span></a><a href="/universities/marquette.html" class="nav-item" data-key="marquette"><span>Marquette</span><span><span class="nav-nra">38.6%</span><span class="opt-dot"></span></span></a><a href="/universities/ucriverside.html" class="nav-item" data-key="ucriverside"><span>UC Riverside</span><span><span class="nav-nra">38.6%</span><span class="opt-dot"></span></span></a><a href="/universities/cuny.html" class="nav-item" data-key="cuny"><span>CUNY Grad Center</span><span><span class="nav-nra">38.5%</span><span class="opt-dot"></span></span></a><a href="/universities/northwestern.html" class="nav-item" data-key="northwestern"><span>Northwestern</span><span><span class="nav-nra">37.9%</span><span class="opt-dot"></span></span></a><a href="/universities/und.html" class="nav-item" data-key="und"><span>U North Dakota</span><span><span class="nav-nra">37.8%</span><span class="opt-dot"></span></span></a><a href="/universities/washu.html" class="nav-item" data-key="washu"><span>Wash U St Louis</span><span><span class="nav-nra">37.7%</span><span class="opt-dot"></span></span></a><a href="/universities/ucmerced.html" class="nav-item" data-key="ucmerced"><span>UC Merced</span><span><span class="nav-nra">37.4%</span><span class="opt-dot"></span></span></a><a href="/universities/duke.html" class="nav-item" data-key="duke"><span>Duke</span><span><span class="nav-nra">37.3%</span><span class="opt-dot"></span></span></a><a href="/universities/ucla.html" class="nav-item" data-key="ucla"><span>UCLA</span><span><span class="nav-nra">37.3%</span><span class="opt-dot"></span></span></a><a href="/universities/utk.html" class="nav-item" data-key="utk"><span>U Tennessee</span><span><span class="nav-nra">37.3%</span><span class="opt-dot"></span></span></a><a href="/universities/uutah.html" class="nav-item" data-key="uutah"><span>U Utah</span><span><span class="nav-nra">37.1%</span><span class="opt-dot"></span></span></a><a href="/universities/ucsd.html" class="nav-item" data-key="ucsd"><span>UC San Diego</span><span><span class="nav-nra">36.6%</span><span class="opt-dot"></span></span></a><a href="/universities/uwmadison.html" class="nav-item" data-key="uwmadison"><span>UW Madison</span><span><span class="nav-nra">36.6%</span><span class="opt-dot"></span></span></a><a href="/universities/uarizona.html" class="nav-item" data-key="uarizona"><span>U Arizona</span><span><span class="nav-nra">36.3%</span><span class="opt-dot"></span></span></a><a href="/universities/stanford.html" class="nav-item" data-key="stanford"><span>Stanford</span><span><span class="nav-nra">35.5%</span><span class="opt-dot"></span></span></a><a href="/universities/temple.html" class="nav-item" data-key="temple"><span>Temple</span><span><span class="nav-nra">35.4%</span><span class="opt-dot"></span></span></a><a href="/universities/uva.html" class="nav-item" data-key="uva"><span>U Virginia</span><span><span class="nav-nra">35.2%</span><span class="opt-dot"></span></span></a><a href="/universities/dartmouth.html" class="nav-item" data-key="dartmouth"><span>Dartmouth</span><span><span class="nav-nra">34.4%</span><span class="opt-dot"></span></span></a><a href="/universities/bu.html" class="nav-item" data-key="bu"><span>Boston U</span><span><span class="nav-nra">34.2%</span><span class="opt-dot"></span></span></a><a href="/universities/unm.html" class="nav-item" data-key="unm"><span>U New Mexico</span><span><span class="nav-nra">34.0%</span><span class="opt-dot"></span></span></a><a href="/universities/yale.html" class="nav-item" data-key="yale"><span>Yale</span><span><span class="nav-nra">33.2%</span><span class="opt-dot"></span></span></a><a href="/universities/pdx.html" class="nav-item" data-key="pdx"><span>Portland State</span><span><span class="nav-nra">33.2%</span><span class="opt-dot"></span></span></a><a href="/universities/ucirvine.html" class="nav-item" data-key="ucirvine"><span>UC Irvine</span><span><span class="nav-nra">33.2%</span><span class="opt-dot"></span></span></a><a href="/universities/harvard.html" class="nav-item" data-key="harvard"><span>Harvard</span><span><span class="nav-nra">33.0%</span><span class="opt-dot"></span></span></a><a href="/universities/olemiss.html" class="nav-item" data-key="olemiss"><span>Ole Miss</span><span><span class="nav-nra">32.6%</span><span class="opt-dot"></span></span></a><a href="/universities/gmu.html" class="nav-item" data-key="gmu"><span>George Mason</span><span><span class="nav-nra">32.6%</span><span class="opt-dot"></span></span></a><a href="/universities/unlv.html" class="nav-item" data-key="unlv"><span>UNLV</span><span><span class="nav-nra">32.3%</span><span class="opt-dot"></span></span></a><a href="/universities/upenn.html" class="nav-item" data-key="upenn"><span>U Penn</span><span><span class="nav-nra">31.6%</span><span class="opt-dot"></span></span></a><a href="/universities/umemphis.html" class="nav-item" data-key="umemphis"><span>U Memphis</span><span><span class="nav-nra">31.6%</span><span class="opt-dot"></span></span></a><a href="/universities/ucsb.html" class="nav-item" data-key="ucsb"><span>UC Santa Barbara</span><span><span class="nav-nra">29.8%</span><span class="opt-dot"></span></span></a><a href="/universities/boise_state.html" class="nav-item" data-key="boise_state"><span>Boise State</span><span><span class="nav-nra">29.7%</span><span class="opt-dot"></span></span></a><a href="/universities/ucdavis.html" class="nav-item" data-key="ucdavis"><span>UC Davis</span><span><span class="nav-nra">29.4%</span><span class="opt-dot"></span></span></a><a href="/universities/ucberkeley.html" class="nav-item" data-key="ucberkeley"><span>UC Berkeley</span><span><span class="nav-nra">29.3%</span><span class="opt-dot"></span></span></a><a href="/universities/udenver.html" class="nav-item" data-key="udenver"><span>U Denver</span><span><span class="nav-nra">27.0%</span><span class="opt-dot"></span></span></a><a href="/universities/byu.html" class="nav-item" data-key="byu"><span>BYU</span><span><span class="nav-nra">26.4%</span><span class="opt-dot"></span></span></a><a href="/universities/uw_seattle.html" class="nav-item" data-key="uw_seattle"><span>UW Seattle</span><span><span class="nav-nra">26.2%</span><span class="opt-dot"></span></span></a><a href="/universities/usd.html" class="nav-item" data-key="usd"><span>U South Dakota</span><span><span class="nav-nra">25.8%</span><span class="opt-dot"></span></span></a><a href="/universities/cu_boulder.html" class="nav-item" data-key="cu_boulder"><span>CU Boulder</span><span><span class="nav-nra">23.4%</span><span class="opt-dot"></span></span></a><a href="/universities/niu.html" class="nav-item" data-key="niu"><span>Northern Illinois</span><span><span class="nav-nra">20.5%</span><span class="opt-dot"></span></span></a><a href="/universities/ucsc.html" class="nav-item" data-key="ucsc"><span>UC Santa Cruz</span><span><span class="nav-nra">19.7%</span><span class="opt-dot"></span></span></a><a href="/universities/nau.html" class="nav-item" data-key="nau"><span>Northern Arizona</span><span><span class="nav-nra">16.6%</span><span class="opt-dot"></span></span></a><a href="/universities/montana_state.html" class="nav-item" data-key="montana_state"><span>Montana State U</span><span><span class="nav-nra">15.3%</span><span class="opt-dot"></span></span></a><a href="/universities/utah_state.html" class="nav-item" data-key="utah_state"><span>Utah State</span><span><span class="nav-nra">14.9%</span><span class="opt-dot"></span></span></a><a href="/universities/umt.html" class="nav-item" data-key="umt"><span>U Montana</span><span><span class="nav-nra">14.7%</span><span class="opt-dot"></span></span></a><a href="/universities/uoregon.html" class="nav-item" data-key="uoregon"><span>U Oregon</span><span><span class="nav-nra">10.4%</span><span class="opt-dot"></span></span></a><a href="/universities/usm.html" class="nav-item" data-key="usm"><span>U Southern Miss</span><span><span class="nav-nra">10.2%</span><span class="opt-dot"></span></span></a><a href="/universities/ucsf.html" class="nav-item" data-key="ucsf"><span>UCSF</span><span><span class="nav-nra">9.3%</span><span class="opt-dot"></span></span></a><a href="/universities/northern_colorado.html" class="nav-item" data-key="northern_colorado"><span>U Northern Colorado</span><span><span class="nav-nra">8.1%</span><span class="opt-dot"></span></span></a>
-    </div>
-  </div>
-  <div class="sidebar-group" id="sg-international">
-    <div class="sidebar-section" onclick="toggleSidebarGroup('sg-international')"><span class="chevron">▼</span> International</div>
-    <div class="sidebar-group-content">
-      <a href="/india.html" class="nav-item nav-page">India (Outbound)</a>
-      <a href="/china.html" class="nav-item nav-page">China (Outbound)</a>
-      <a href="/canada.html" class="nav-item nav-page">Canada</a>
-      <a href="/uk.html" class="nav-item nav-page">United Kingdom</a>
-      <a href="/eu.html" class="nav-item nav-page">EU &amp; Germany</a>
-      <a href="/mexico.html" class="nav-item nav-page">Mexico</a>
-      <a href="/vwp.html" class="nav-item nav-page">Visa Waiver Program</a>
-    </div>
-  </div>
-  <div class="sidebar-group" id="sg-reference">
-    <div class="sidebar-section" onclick="toggleSidebarGroup('sg-reference')"><span class="chevron">▼</span> Reference</div>
-    <div class="sidebar-group-content">
-      <a href="/query.html" class="nav-item nav-page">Data Query (SQL)</a>
-      <a href="/data_sources.html" class="nav-item nav-page">Data Sources &amp; Methodology</a>
-      <a href="implementation.html" class="nav-item nav-page">Implementation</a>
-      <a href="/catalog.json" class="nav-item nav-page">Data Catalog (JSON)</a>
-      <a href="/llms.txt" class="nav-item nav-page">WebMCP Integration</a>
-    </div>
-  </div>
-  <div class="sidebar-group" id="sg-about">
-    <div class="sidebar-section" onclick="toggleSidebarGroup('sg-about')"><span class="chevron">▼</span> About</div>
-    <div class="sidebar-group-content">
-      <a href="about.html" class="nav-item nav-page">About this Project</a>
-      <a href="submit.html" class="nav-item nav-page">Tip Line</a>
-      <a href="https://andy-barr.com" target="_blank" rel="noopener" class="nav-item nav-page">Personal Webpage</a>
-      <a href="https://buymeacoffee.com/andybarr" target="_blank" rel="noopener" class="nav-item nav-page">Support this Page</a>
-    </div>
-  </div>
-</nav>
-<div class="sidebar-overlay" onclick="toggleSidebar()" role="presentation"></div>
-
 <main class="main" id="main-content">
   <header class="top-nav" role="banner">
     <a href="/index.html" class="top-nav-btn">Education Index</a>
@@ -510,7 +460,6 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
   <h1>Thesis &amp; Dissertation Lists — High NRA Universities</h1>
   <p class="subtitle" style="font-size:0.78rem;color:var(--text-muted);margin-top:-2px;">NRA = Non-Resident Alien. Universities ranked by NRA share of STEM doctoral completions (IPEDS).</p>
   <p class="subtitle">Every name links to the university's institutional repository for direct verification. 509,072 total records across 106 schools.</p>
-  <div style="background:rgba(251,191,36,0.12);border:1px solid rgba(251,191,36,0.3);border-radius:8px;padding:8px 14px;margin:10px 0 4px;font-size:0.82rem;color:var(--yellow);">Data scraping still in progress. Record counts may change as new data is collected.</div>
 
   <div id="info-section">
     <!-- National stats hero cards -->
@@ -6778,8 +6727,9 @@ function renderUni(uni) {
   return html;
 }
 
-function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('open');
+function toggleSidebar(){ /* the shared sidebar owns this now */ }
+function __retiredToggleSidebar() {
+  document.getElementById('sidebar')?.classList.toggle('open');
 }
 
 function toggleSidebarGroup(id) {
@@ -6818,7 +6768,7 @@ function showUni(key, skipHash) {
   // meaningful. Until this runs they are inert and are styled as such.
   document.body.classList.remove('no-uni');
   // Close mobile sidebar if open
-  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebar')?.classList.remove('open');
   currentKey = key;
   // Picking a university from the sidebar addresses the university itself;
   // a deep link sets currentAnchor first and passes skipHash.
@@ -7667,7 +7617,7 @@ function updateOldToggle() {
 
 function showNational() {
   resetView();
-  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebar')?.classList.remove('open');
 }
 
 function resetView() {
@@ -8353,6 +8303,7 @@ const _origShowUni = showUni;
 
 })();
 </script>
+<script src="/sidebar.js"></script>
 <script src="/chat-widget.js"></script>
 
 <script>
@@ -8379,5 +8330,6 @@ const _origShowUni = showUni;
 })();
 </script>
 
+<script src="/analytics-beacon.js" defer></script>
 </body>
 </html>

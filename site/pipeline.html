@@ -7,10 +7,11 @@
 <title>Immigration Pipeline Analysis — PhD Demographics</title>
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="/style.css">
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --surface2: var(--border); --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8; --red: #f87171; --green: #4ade80; --orange: #fb923c; --purple: #a78bfa; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); }
+  body { font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); }
   .page { max-width: 1200px; margin: 0 auto; padding: 24px 32px; }
   h1 { font-size: 1.4rem; margin-bottom: 4px; }
   h2 { font-size: 1.1rem; margin: 24px 0 12px; color: var(--accent); }
@@ -121,7 +122,7 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
   <div class="charts">
     <div class="chart-box wide" id="eb-chart-section">
       <h3>PhD Production vs EB Green Cards Issued (Top 15 Countries)</h3>
-      <p class="desc">China gets 19.7K EB visas but many are EB-5 investor visas (9.5K), not employment-based. India's EB wait times exceed 10 years.</p>
+      <p class="desc">India's employment-based wait times exceed ten years. No dataset here holds employment-based green cards by country, so this page does not chart them. For the queue, see <a href="/visa-schools#queue">the wait-time series</a>.</p>
       <canvas id="eb-chart" style="max-height:350px;"></canvas>
       <p class="source">Sources: NSF SED (PhDs, 2024), State Dept Table V (EB visas, FY2024)</p>
     </div>
@@ -154,23 +155,25 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 
 <script>
 // A: Pipeline by Country (top 10)
-const pLabels = ['India','China','S. Korea','Brazil','Canada','Nepal','Vietnam','Bangladesh','Nigeria','Iran'];
-const pSevis = [350237,229463,42160,40216,36961,34853,34016,26650,22816,14440];
-const pF1 = [86067,82654,14786,7431,242,13184,18454,6089,3694,4780];
-const pPhd = [2649,6756,1061,308,374,306,183,593,304,500];
-const pH1b = [150647,31735,2289,1801,80,780,832,371,1120,191];
-const pEB = [16808,19727,8109,11646,4251,1788,2393,2200,2683,2311];
+const PF = {"_comment":"The student-to-work funnel by country, for /pipeline.\n\nWHY THIS EXISTS. /pipeline.html carried its whole funnel as hardcoded JS\narrays, and they had drifted. The OPT series, indexed to 2010, ended at 341\nwhere the data gives 381 -- the page understated the growth it exists to show,\nby a tenth, for however long the arrays had been stale. Two of its five bars,\nSEVIS enrolment and employment-based green cards by country, matched no\npublished dataset at all.\n\nSo this builds what can be sourced and says nothing about what cannot:\n\n  * F-1 issuances by country          visa_issuances.json (State Dept)\n  * doctorate recipients by country   doctorate_origins.json (NSF SED)\n  * H-1B issuances by country         visa_issuances.json (State Dept)\n  * OPT, STEM OPT, CPT and issuance series, indexed   visa_substitution.json\n\nSEVIS enrolment by country and employment-based green cards by country are NOT\nincluded. No dataset here holds either, and inventing a bar is worse than\nleaving the funnel with three stages. The absence is noted on the page.\n\nA NOTE ON WHAT THE FUNNEL IS NOT. These are three different measures of three\ndifferent populations in one year, not a cohort followed through time. A\nstudent who was issued an F-1 in 2016 and earned a doctorate in 2024 appears in\none column of one year and another column of another. The funnel shows relative\nscale at a moment. It does not show a rate of progression, and must never be\nread as one.","year":"2024","sources":{"doctorates":"NSF NCSES, Survey of Earned Doctorates 2024, tables 7-8 and 5-5","issuances":"US Department of State, Nonimmigrant Visa Detail Tables, FY1997-2024"},"not_published":["SEVIS enrolment by country: no dataset here holds it.","Employment-based green cards by country: no dataset here holds it."],"by_country":[{"country":"China","doctorates":6756,"doctorate_share_of_visa_holders_pct":35.9,"f1_issued":82654,"h1b_issued":31735},{"country":"India","doctorates":2649,"doctorate_share_of_visa_holders_pct":14.1,"f1_issued":86067,"h1b_issued":150647},{"country":"South Korea","doctorates":1061,"doctorate_share_of_visa_holders_pct":5.6,"f1_issued":14786,"h1b_issued":2289},{"country":"Bangladesh","doctorates":593,"doctorate_share_of_visa_holders_pct":3.2,"f1_issued":6089,"h1b_issued":371},{"country":"Saudi Arabia","doctorates":502,"doctorate_share_of_visa_holders_pct":2.7,"f1_issued":4301,"h1b_issued":181},{"country":"Iran","doctorates":500,"doctorate_share_of_visa_holders_pct":2.7,"f1_issued":2144,"h1b_issued":65},{"country":"Taiwan","doctorates":419,"doctorate_share_of_visa_holders_pct":2.2,"f1_issued":null,"h1b_issued":null},{"country":"Canada","doctorates":374,"doctorate_share_of_visa_holders_pct":2.0,"f1_issued":242,"h1b_issued":80},{"country":"Turkey","doctorates":353,"doctorate_share_of_visa_holders_pct":1.9,"f1_issued":3209,"h1b_issued":736},{"country":"Brazil","doctorates":308,"doctorate_share_of_visa_holders_pct":1.6,"f1_issued":7431,"h1b_issued":1801}],"indexed":{"base_year":2010,"years":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"series":{"opt":{"label":"OPT","values":[100,110,123,133,152,194,269,299,285,272,240,226,230,314,381]},"stem_opt":{"label":"STEM OPT","values":[100,144,170,201,229,294,447,689,744,771,683,658,693,663,1019]},"cpt":{"label":"CPT","values":[100,111,119,133,161,194,213,231,264,203,170,159,226,228,227]},"f1":{"label":"F-1 issued","values":[100,116,126,139,155,167,122,102,94,95,29,93,107,116,104]},"h1b":{"label":"H-1B issued","values":[100,110,115,131,137,147,153,153,153,160,106,52,175,226,187]}}},"f1_divergence":{"years":["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"],"series":{"China":[113772,153026,189402,217593,244927,274460,148016,112817,98904,105775,14436,90310,61894,85950,82654],"India":[25783,25649,23446,36141,56653,74831,62537,44741,42694,43714,15323,80451,115115,130730,86067]}}};
+// Every series below comes from PF, inlined from data/pipeline/pipeline_funnel.json
+// by scripts/inline_dashboard_data.py. These were hardcoded arrays and they had
+// drifted: the OPT index ended at 341 where the data gives 381, and the F-1
+// divergence showed China at 40,526 in 2021 against a real 90,310.
+const pRows = PF.by_country;
+const pLabels = pRows.map(function (r) { return r.country; });
+const pF1 = pRows.map(function (r) { return r.f1_issued; });
+const pPhd = pRows.map(function (r) { return r.doctorates; });
+const pH1b = pRows.map(function (r) { return r.h1b_issued; });
 
 new Chart(document.getElementById('pipeline-chart'), {
   type: 'bar',
   data: {
     labels: pLabels,
     datasets: [
-      { label: 'SEVIS Students', data: pSevis, backgroundColor: 'rgba(56,189,248,0.7)' },
-      { label: 'F-1 Visas (FY24)', data: pF1, backgroundColor: 'rgba(74,222,128,0.7)' },
-      { label: 'PhDs (2024)', data: pPhd, backgroundColor: 'rgba(251,146,60,0.7)' },
-      { label: 'H-1B Visas (FY24)', data: pH1b, backgroundColor: 'rgba(167,139,250,0.7)' },
-      { label: 'EB Green Cards (FY24)', data: pEB, backgroundColor: 'rgba(248,113,113,0.7)' },
+      { label: 'F-1 visas issued', data: pF1, backgroundColor: 'rgba(74,222,128,0.7)' },
+      { label: 'Doctorates awarded', data: pPhd, backgroundColor: 'rgba(251,146,60,0.7)' },
+      { label: 'H-1B visas issued', data: pH1b, backgroundColor: 'rgba(167,139,250,0.7)' },
     ]
   },
   options: {
@@ -183,9 +186,9 @@ new Chart(document.getElementById('pipeline-chart'), {
 });
 
 // B: F-1 divergence
-const dYears = [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
-const chinaF1 = [113772,153026,189402,217593,244927,274460,148016,112817,105904,107367,7068,40526,56957,68195,82654];
-const indiaF1 = [25783,25649,23446,36141,56653,74831,62537,44741,53570,56823,10032,37281,56260,131118,86067];
+const dYears = PF.f1_divergence.years;
+const chinaF1 = PF.f1_divergence.series.China;
+const indiaF1 = PF.f1_divergence.series.India;
 new Chart(document.getElementById('f1-diverge-chart'), {
   type: 'line', data: { labels: dYears, datasets: [
     { label: 'China', data: chinaF1, borderColor: '#ef4444', tension: 0.3, pointRadius: 2, borderWidth: 2 },
@@ -261,8 +264,8 @@ new Chart(document.getElementById('eb-chart'), {
 
 // E: National pipeline indexed
 const iYears = [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
-const stemOpt = [100,144,170,201,229,294,447,689,744,771,683,658,693,663,1020];
-const opt = [100,110,122,132,152,194,255,275,256,246,222,202,210,299,341];
+const stemOpt = PF.indexed.series.stem_opt.values;
+const opt = PF.indexed.series.opt.values;
 const h1bPet = [100,108,125,121,135,160,181,103,null,117,230,181,208,182,188];
 const f1Iss = [100,116,126,139,155,167,123,102,94,101,29,93,107,116,104];
 const cpt = [100,111,119,133,161,194,213,231,264,213,169,159,226,228,227];
@@ -325,5 +328,6 @@ new Chart(document.getElementById('heatmap-chart'), {
 </script>
 <script src="/sidebar.js"></script>
 <script src="/anchors.js" defer></script>
+<script src="/analytics-beacon.js" defer></script>
 </body>
 </html>

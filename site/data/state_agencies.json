@@ -1,0 +1,4586 @@
+{
+ "source": "USCIS H-1B Employer Data Hub",
+ "source_url": "https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub",
+ "window": "FY2009-FY2023",
+ "files_read": 15,
+ "totals": {
+  "initial_approvals": 362,
+  "continuing_approvals": 794,
+  "denials": 24,
+  "states": 44,
+  "agencies": 189,
+  "name_variants": 251
+ },
+ "caveats": [
+  "Initial and continuing approvals are never added. A continuing approval is the same person renewed; adding them counts one worker once a year for as long as they stay.",
+  "Employer names are truncated at about 34 characters in the older files, so one agency can appear several ways. Variants are grouped when one name is a prefix of another, and every raw name as filed is published beside the group.",
+  "An agency is identified from the employer name on the form. One that files under a name without its state in it is not counted, so these figures are a floor.",
+  "Public universities, counties, cities and school districts are excluded. A public university is a state institution too; it is measured elsewhere on this site.",
+  "Sponsoring an H-1B is lawful, and nothing here says otherwise."
+ ],
+ "states": [
+  {
+   "lca_only": [],
+   "state": "CA",
+   "initial": 150,
+   "continuing": 326,
+   "denied": 7,
+   "agencies": 12,
+   "name_variants": 23,
+   "detail": [
+    {
+     "name": "CALIFORNIA DEPT OF TRANSPORTATION",
+     "initial": 120,
+     "continuing": 269,
+     "denied": 6,
+     "years": [
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+     ],
+     "cities": [
+      "Sacramento"
+     ],
+     "filed_as": [
+      "CALIFORNIA DEPT OF TRANSPORTATION",
+      "CALIFORNIA DEPARTMENT OF TRANSPORT",
+      "CALIFORNIA DEPARTMENT OF TRANSP"
+     ]
+    },
+    {
+     "name": "CALIFORNIA DEPARTMENT OF CORRECTIONS & REHABILITATION",
+     "initial": 19,
+     "continuing": 46,
+     "denied": 0,
+     "years": [
+      2009,
+      2013,
+      2016,
+      2018,
+      2020,
+      2022,
+      2023
+     ],
+     "cities": [
+      "Elk Grove",
+      "Sacramento"
+     ],
+     "filed_as": [
+      "CALIFORNIA DEPARTMENT OF CORRECTIONS & REHABILITATION",
+      "CALIFORNIA DEPARTMENT OF CORRECTIONS AND REHABILITATION",
+      "CALIFORNIA DEPT CORRECTIONS & REHA",
+      "CALIFORNIA DEPT OF CORRECTIONS & R",
+      "CALIFORNIA DEPT OF CORRECTIONS AND",
+      "CALIFORNIA DEPARTMENT OF CORRECTIO"
+     ]
+    },
+    {
+     "name": "CALIFORNIA DEPT OF PUBLIC HEALTH",
+     "initial": 1,
+     "continuing": 3,
+     "denied": 1,
+     "years": [
+      2009,
+      2010,
+      2013,
+      2020,
+      2022
+     ],
+     "cities": [
+      "Richmond",
+      "Sacramento"
+     ],
+     "filed_as": [
+      "CALIFORNIA DEPT OF PUBLIC HEALTH",
+      "CALIFORNIA DEPARTMENT OF PUBLIC HEALTH",
+      "CALIFORNIA DEPARTMENT OF PUBLIC HE"
+     ]
+    },
+    {
+     "name": "CALIFORNIA DEPT OF STATE HOSPITALS",
+     "initial": 2,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2014,
+      2015
+     ],
+     "cities": [
+      "Napa",
+      "Sacramento",
+      "Stockton"
+     ],
+     "filed_as": [
+      "CALIFORNIA DEPT OF STATE HOSPITALS"
+     ]
+    },
+    {
+     "name": "CALIFORNIA DEPT OF PESTICIDE REGUL",
+     "initial": 2,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2012,
+      2014
+     ],
+     "cities": [
+      "Sacramento"
+     ],
+     "filed_as": [
+      "CALIFORNIA DEPT OF PESTICIDE REGUL"
+     ]
+    },
+    {
+     "name": "CALIFORNIA DEPT OF WATER RESOURCES",
+     "initial": 1,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2014,
+      2018
+     ],
+     "cities": [
+      "Sacramento"
+     ],
+     "filed_as": [
+      "CALIFORNIA DEPT OF WATER RESOURCES",
+      "CALIFORNIA DEPARTMENT OF WATER RES"
+     ]
+    },
+    {
+     "name": "CALIFORNIA DEPT OF REHABILITATION",
+     "initial": 1,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2010,
+      2013
+     ],
+     "cities": [
+      "Sacramento",
+      "San Francisco"
+     ],
+     "filed_as": [
+      "CALIFORNIA DEPT OF REHABILITATION"
+     ]
+    },
+    {
+     "name": "CALIFORNIA DEPT OF PUBLIC HLTH",
+     "initial": 1,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2011,
+      2014
+     ],
+     "cities": [
+      "Richmond",
+      "Sacramento"
+     ],
+     "filed_as": [
+      "CALIFORNIA DEPT OF PUBLIC HLTH"
+     ]
+    },
+    {
+     "name": "CALIFORNIA DEPT OF EDUCATION",
+     "initial": 2,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2009
+     ],
+     "cities": [
+      "Sacramento"
+     ],
+     "filed_as": [
+      "CALIFORNIA DEPT OF EDUCATION",
+      "CALIFORNIA DEPARTMENT OF EDUCATION"
+     ]
+    },
+    {
+     "name": "CALIFORNIA DEPT OF MENTAL HEALTH",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2012
+     ],
+     "cities": [
+      "Coalinga"
+     ],
+     "filed_as": [
+      "CALIFORNIA DEPT OF MENTAL HEALTH"
+     ]
+    },
+    {
+     "name": "CALIFORNIA DEPT OF PUBLC HEALTH",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2010
+     ],
+     "cities": [
+      "Richmond"
+     ],
+     "filed_as": [
+      "CALIFORNIA DEPT OF PUBLC HEALTH"
+     ]
+    },
+    {
+     "name": "CALIFORNIA DEPARTMENT OF STATE HOS",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2014
+     ],
+     "cities": [
+      "Sacramento"
+     ],
+     "filed_as": [
+      "CALIFORNIA DEPARTMENT OF STATE HOS"
+     ],
+     "unidentified": true
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "VA",
+   "initial": 42,
+   "continuing": 95,
+   "denied": 0,
+   "agencies": 6,
+   "name_variants": 8,
+   "detail": [
+    {
+     "name": "VIRGINIA DEPT OF TRANSPORTATION",
+     "initial": 39,
+     "continuing": 78,
+     "denied": 0,
+     "years": [
+      2009,
+      2010,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+     ],
+     "cities": [
+      "Richmond"
+     ],
+     "filed_as": [
+      "VIRGINIA DEPT OF TRANSPORTATION",
+      "VIRGINIA DEPARTMENT OF TRANSPORTATION",
+      "VIRGINIA DEPARTMENT OF TRANSPORTAT"
+     ]
+    },
+    {
+     "name": "VIRGINIA DEPARTMENT OF EDUCATION",
+     "initial": 0,
+     "continuing": 12,
+     "denied": 0,
+     "years": [
+      2016,
+      2018,
+      2019,
+      2022
+     ],
+     "cities": [
+      "Richmond"
+     ],
+     "filed_as": [
+      "VIRGINIA DEPARTMENT OF EDUCATION"
+     ]
+    },
+    {
+     "name": "VIRGINIA DEPARTMENT OF TAXATION",
+     "initial": 1,
+     "continuing": 3,
+     "denied": 0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "cities": [
+      "Richmond"
+     ],
+     "filed_as": [
+      "VIRGINIA DEPARTMENT OF TAXATION"
+     ]
+    },
+    {
+     "name": "VIRGINIA DEPARTMENT OF ENERGY",
+     "initial": 2,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2022
+     ],
+     "cities": [
+      "Richmond"
+     ],
+     "filed_as": [
+      "VIRGINIA DEPARTMENT OF ENERGY"
+     ]
+    },
+    {
+     "name": "VIRGINIA DEPT OF FORENSIC SCIENCE",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2009
+     ],
+     "cities": [
+      "Richmond"
+     ],
+     "filed_as": [
+      "VIRGINIA DEPT OF FORENSIC SCIENCE"
+     ]
+    },
+    {
+     "name": "VIRGINIA DEPT OF HOUSING & COMMUNI",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2015
+     ],
+     "cities": [
+      "Richmond"
+     ],
+     "filed_as": [
+      "VIRGINIA DEPT OF HOUSING & COMMUNI"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "WA",
+   "initial": 23,
+   "continuing": 78,
+   "denied": 4,
+   "agencies": 20,
+   "name_variants": 29,
+   "detail": [
+    {
+     "name": "STATE OF WASHINGTON DEPARTMENT OF",
+     "initial": 4,
+     "continuing": 12,
+     "denied": 0,
+     "years": [
+      2013,
+      2016,
+      2018,
+      2019,
+      2020,
+      2021
+     ],
+     "cities": [
+      "Lacey",
+      "Lakewood",
+      "Olympia"
+     ],
+     "filed_as": [
+      "STATE OF WASHINGTON DEPARTMENT OF"
+     ],
+     "unidentified": true
+    },
+    {
+     "name": "STATE OF WASHINGTON DEPT OF SOCIAL AND HEALTH SVCS",
+     "initial": 4,
+     "continuing": 10,
+     "denied": 2,
+     "years": [
+      2013,
+      2014,
+      2016,
+      2017,
+      2018,
+      2022
+     ],
+     "cities": [
+      "Lacey",
+      "Lakewood",
+      "Olympia",
+      "Shoreline",
+      "Tacoma"
+     ],
+     "filed_as": [
+      "STATE OF WASHINGTON DEPT OF SOCIAL AND HEALTH SVCS",
+      "WASHINGTON STATE DEPT OF SOCIAL &",
+      "STATE OF WASHINGTON DEPT OF SOCIAL",
+      "WASHINGTON STATE DEPT OF SOCIAL"
+     ]
+    },
+    {
+     "name": "WASHINGTON STATE DEPT OF ECOLOGY",
+     "initial": 2,
+     "continuing": 12,
+     "denied": 0,
+     "years": [
+      2009,
+      2011,
+      2013,
+      2015,
+      2019,
+      2021,
+      2022,
+      2023
+     ],
+     "cities": [
+      "Lacey",
+      "Olympia"
+     ],
+     "filed_as": [
+      "WASHINGTON STATE DEPT OF ECOLOGY",
+      "STATE OF WASHINGTON DEPARTMENT OF ECOLOGY",
+      "STATE OF WASHINGTON DEPT OF ECOLOG"
+     ]
+    },
+    {
+     "name": "WASHINGTON STATE PATROL",
+     "initial": 3,
+     "continuing": 10,
+     "denied": 0,
+     "years": [
+      2009,
+      2011,
+      2012,
+      2013,
+      2020,
+      2021
+     ],
+     "cities": [
+      "Olympia"
+     ],
+     "filed_as": [
+      "WASHINGTON STATE PATROL"
+     ]
+    },
+    {
+     "name": "WASHINGTON STATE BOARD FOR COMMUNITY AND TECHNICAL COLLEGES",
+     "initial": 1,
+     "continuing": 9,
+     "denied": 0,
+     "years": [
+      2009,
+      2010,
+      2020,
+      2021,
+      2022,
+      2023
+     ],
+     "cities": [
+      "Olympia"
+     ],
+     "filed_as": [
+      "WASHINGTON STATE BOARD FOR COMMUNITY AND TECHNICAL COLLEGES",
+      "WASHINGTON STATE BOARD FOR COMMUNI"
+     ]
+    },
+    {
+     "name": "WASHINGTON STATE BOARD FOR CMTY",
+     "initial": 0,
+     "continuing": 5,
+     "denied": 1,
+     "years": [
+      2018
+     ],
+     "cities": [
+      "Olympia"
+     ],
+     "filed_as": [
+      "WASHINGTON STATE BOARD FOR CMTY"
+     ]
+    },
+    {
+     "name": "WASHINGTON STATE DEPT OF TRANSPORT",
+     "initial": 3,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2010,
+      2019,
+      2020
+     ],
+     "cities": [
+      "Olympia"
+     ],
+     "filed_as": [
+      "WASHINGTON STATE DEPT OF TRANSPORT",
+      "STATE OF WASHINGTON DEPT OF TRANSP"
+     ]
+    },
+    {
+     "name": "WASHINGTON STATE OFFICE FINANCIAL",
+     "initial": 1,
+     "continuing": 4,
+     "denied": 0,
+     "years": [
+      2019,
+      2021,
+      2022
+     ],
+     "cities": [
+      "Olympia"
+     ],
+     "filed_as": [
+      "WASHINGTON STATE OFFICE FINANCIAL",
+      "WASHINGTON STATE OFFICE OF FINANCI"
+     ]
+    },
+    {
+     "name": "WASHINGTON STATE DEPT OF LICENSING",
+     "initial": 1,
+     "continuing": 3,
+     "denied": 0,
+     "years": [
+      2012,
+      2015,
+      2017
+     ],
+     "cities": [
+      "Olympia"
+     ],
+     "filed_as": [
+      "WASHINGTON STATE DEPT OF LICENSING",
+      "STATE OF WASHINGTON DEPT OF LICENS"
+     ]
+    },
+    {
+     "name": "WASHINGTON STATE DEPT OF NATURAL R",
+     "initial": 0,
+     "continuing": 3,
+     "denied": 0,
+     "years": [
+      2009,
+      2012
+     ],
+     "cities": [
+      "Olympia"
+     ],
+     "filed_as": [
+      "WASHINGTON STATE DEPT OF NATURAL R"
+     ]
+    },
+    {
+     "name": "WASHINGTON STATE DEPARTMENT OF SOC",
+     "initial": 1,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2019
+     ],
+     "cities": [
+      "Olympia"
+     ],
+     "filed_as": [
+      "WASHINGTON STATE DEPARTMENT OF SOC"
+     ],
+     "unidentified": true
+    },
+    {
+     "name": "STATE OF WASHINGTON OFFICE OF THE",
+     "initial": 0,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2009,
+      2021
+     ],
+     "cities": [
+      "Olympia"
+     ],
+     "filed_as": [
+      "STATE OF WASHINGTON OFFICE OF THE"
+     ],
+     "unidentified": true
+    },
+    {
+     "name": "STATE OF WASHINGTON INSUR COMMISSI",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2010
+     ],
+     "cities": [
+      "Tumwater"
+     ],
+     "filed_as": [
+      "STATE OF WASHINGTON INSUR COMMISSI"
+     ]
+    },
+    {
+     "name": "WASHINGTON STATE BOARD OF INDUSTRI",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2010
+     ],
+     "cities": [
+      "Olympia"
+     ],
+     "filed_as": [
+      "WASHINGTON STATE BOARD OF INDUSTRI"
+     ]
+    },
+    {
+     "name": "WASHINGTON STATE DEPT OF FIN INSTS",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2020
+     ],
+     "cities": [
+      "Tumwater"
+     ],
+     "filed_as": [
+      "WASHINGTON STATE DEPT OF FIN INSTS"
+     ]
+    },
+    {
+     "name": "WASHINGTON STATE DEPT OF CHILDREN",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 1,
+     "years": [
+      2022
+     ],
+     "cities": [
+      "Olympia"
+     ],
+     "filed_as": [
+      "WASHINGTON STATE DEPT OF CHILDREN"
+     ]
+    },
+    {
+     "name": "WASHINGTON STATE DEPARTMENT OF COMMERCE",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2023
+     ],
+     "cities": [
+      "Olympia"
+     ],
+     "filed_as": [
+      "WASHINGTON STATE DEPARTMENT OF COMMERCE"
+     ]
+    },
+    {
+     "name": "STATE OF WASHINGTON DEPT OF REVENU",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2010
+     ],
+     "cities": [
+      "Tumwater"
+     ],
+     "filed_as": [
+      "STATE OF WASHINGTON DEPT OF REVENU"
+     ]
+    },
+    {
+     "name": "STATE OF WASHINGTON DEPT OF LABOR",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2019
+     ],
+     "cities": [
+      "Tumwater"
+     ],
+     "filed_as": [
+      "STATE OF WASHINGTON DEPT OF LABOR"
+     ]
+    },
+    {
+     "name": "WASHINGTON STATE DEPARTMENT OF HEA",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2021
+     ],
+     "cities": [
+      "Olympia"
+     ],
+     "filed_as": [
+      "WASHINGTON STATE DEPARTMENT OF HEA"
+     ],
+     "unidentified": true
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "LA",
+   "initial": 19,
+   "continuing": 36,
+   "denied": 2,
+   "agencies": 9,
+   "name_variants": 14,
+   "detail": [
+    {
+     "name": "LOUISIANA DEPARTMENT OF EDUCATION",
+     "initial": 12,
+     "continuing": 6,
+     "denied": 1,
+     "years": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2023
+     ],
+     "cities": [
+      "Baton Rouge"
+     ],
+     "filed_as": [
+      "LOUISIANA DEPARTMENT OF EDUCATION"
+     ]
+    },
+    {
+     "name": "LOUISIANA BOARD OF REGENTS LOUISIA",
+     "initial": 1,
+     "continuing": 10,
+     "denied": 0,
+     "years": [
+      2009,
+      2012,
+      2015,
+      2016,
+      2018,
+      2020,
+      2021
+     ],
+     "cities": [
+      "Baton Rouge",
+      "Chauvin"
+     ],
+     "filed_as": [
+      "LOUISIANA BOARD OF REGENTS LOUISIA",
+      "LOUISIANA BOARD OF REGENTS"
+     ]
+    },
+    {
+     "name": "LOUISIANA DEPT OF HEALTH & HOSPITA",
+     "initial": 1,
+     "continuing": 6,
+     "denied": 0,
+     "years": [
+      2009,
+      2012,
+      2015,
+      2016,
+      2018
+     ],
+     "cities": [
+      "Baton Rouge"
+     ],
+     "filed_as": [
+      "LOUISIANA DEPT OF HEALTH & HOSPITA",
+      "LOUISIANA DEPT OF HEALTH AND HOSPI",
+      "LOUISIANA DEPT OF HEALTH & HOSP",
+      "LOUISIANA DEPARTMENT OF HEALTH & H"
+     ]
+    },
+    {
+     "name": "LOUISIANA DEPT OF HEALTH AND HOSPS",
+     "initial": 1,
+     "continuing": 5,
+     "denied": 0,
+     "years": [
+      2012,
+      2014
+     ],
+     "cities": [
+      "Baton Rouge"
+     ],
+     "filed_as": [
+      "LOUISIANA DEPT OF HEALTH AND HOSPS"
+     ]
+    },
+    {
+     "name": "LOUISIANA DEPT OF WILDLIFE & FISHE",
+     "initial": 3,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2009,
+      2015,
+      2018,
+      2020
+     ],
+     "cities": [
+      "Baton Rouge"
+     ],
+     "filed_as": [
+      "LOUISIANA DEPT OF WILDLIFE & FISHE",
+      "LOUISIANA DEPT OF WILDLIFE AND FIS"
+     ]
+    },
+    {
+     "name": "LOUISIANA STATE DIVISION OF ADMIN",
+     "initial": 0,
+     "continuing": 4,
+     "denied": 0,
+     "years": [
+      2014,
+      2016
+     ],
+     "cities": [
+      "Baton Rouge"
+     ],
+     "filed_as": [
+      "LOUISIANA STATE DIVISION OF ADMIN"
+     ]
+    },
+    {
+     "name": "LOUISIANA DEPT OF HLTH AND HOSP",
+     "initial": 1,
+     "continuing": 2,
+     "denied": 1,
+     "years": [
+      2013
+     ],
+     "cities": [
+      "Baton Rouge"
+     ],
+     "filed_as": [
+      "LOUISIANA DEPT OF HLTH AND HOSP"
+     ]
+    },
+    {
+     "name": "LOUISIANA OFFICE OF PUBLIC HEALTH",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2012
+     ],
+     "cities": [
+      "New Orleans"
+     ],
+     "filed_as": [
+      "LOUISIANA OFFICE OF PUBLIC HEALTH"
+     ]
+    },
+    {
+     "name": "STATE OF LOUISIANA DIVISION OF ADM",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2018
+     ],
+     "cities": [
+      "Baton Rouge"
+     ],
+     "filed_as": [
+      "STATE OF LOUISIANA DIVISION OF ADM"
+     ],
+     "unidentified": true
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "AZ",
+   "initial": 14,
+   "continuing": 39,
+   "denied": 1,
+   "agencies": 10,
+   "name_variants": 13,
+   "detail": [
+    {
+     "name": "ARIZONA DEPT OF TRANSPORTATION",
+     "initial": 7,
+     "continuing": 20,
+     "denied": 0,
+     "years": [
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015
+     ],
+     "cities": [
+      "Phoenix"
+     ],
+     "filed_as": [
+      "ARIZONA DEPT OF TRANSPORTATION",
+      "ARIZONA DEPARTMENT OF TRANSPORTATI",
+      "ARIZONA DEPARTMENT OF TRANSPORTAT"
+     ]
+    },
+    {
+     "name": "ARIZONA DEPARTMENT OF HEALTH SVCS",
+     "initial": 1,
+     "continuing": 5,
+     "denied": 1,
+     "years": [
+      2011,
+      2014
+     ],
+     "cities": [
+      "Phoenix"
+     ],
+     "filed_as": [
+      "ARIZONA DEPARTMENT OF HEALTH SVCS",
+      "ARIZONA DEPT OF HEALTH SVCS"
+     ]
+    },
+    {
+     "name": "ARIZONA DEPARTMENT OF EDUCATION",
+     "initial": 1,
+     "continuing": 5,
+     "denied": 0,
+     "years": [
+      2016
+     ],
+     "cities": [
+      "Phoenix"
+     ],
+     "filed_as": [
+      "ARIZONA DEPARTMENT OF EDUCATION"
+     ]
+    },
+    {
+     "name": "STATE OF ARIZONA DEPT OF",
+     "initial": 3,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2018
+     ],
+     "cities": [
+      "Phoenix"
+     ],
+     "filed_as": [
+      "STATE OF ARIZONA DEPT OF"
+     ],
+     "unidentified": true
+    },
+    {
+     "name": "ARIZONA DEPT OF ECONOMIC SECURITY",
+     "initial": 1,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2009,
+      2011
+     ],
+     "cities": [
+      "Apache Junction",
+      "Phoenix"
+     ],
+     "filed_as": [
+      "ARIZONA DEPT OF ECONOMIC SECURITY"
+     ]
+    },
+    {
+     "name": "STATE OF ARIZONA DEPT OF ED",
+     "initial": 0,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2015
+     ],
+     "cities": [
+      "Phoenix"
+     ],
+     "filed_as": [
+      "STATE OF ARIZONA DEPT OF ED"
+     ],
+     "unidentified": true
+    },
+    {
+     "name": "ARIZONA OFFICE OF ECONOMIC OPPORTUNITY",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2023
+     ],
+     "cities": [
+      "Phoenix"
+     ],
+     "filed_as": [
+      "ARIZONA OFFICE OF ECONOMIC OPPORTUNITY"
+     ]
+    },
+    {
+     "name": "ARIZONA DEPT OF ENVIRONMENT QUALIT",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2009
+     ],
+     "cities": [
+      "Phoenix"
+     ],
+     "filed_as": [
+      "ARIZONA DEPT OF ENVIRONMENT QUALIT"
+     ]
+    },
+    {
+     "name": "STATE OF ARIZONA DEPT OF ADMINISTR",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2009
+     ],
+     "cities": [
+      "Phoenix"
+     ],
+     "filed_as": [
+      "STATE OF ARIZONA DEPT OF ADMINISTR"
+     ]
+    },
+    {
+     "name": "STATE OF ARIZONA DEPARTMENT OF ED",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2009
+     ],
+     "cities": [
+      "Phoenix"
+     ],
+     "filed_as": [
+      "STATE OF ARIZONA DEPARTMENT OF ED"
+     ],
+     "unidentified": true
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "AR",
+   "initial": 15,
+   "continuing": 23,
+   "denied": 0,
+   "agencies": 8,
+   "name_variants": 11,
+   "detail": [
+    {
+     "name": "ARKANSAS DEPT OF FINANCE & ADMIN",
+     "initial": 6,
+     "continuing": 12,
+     "denied": 0,
+     "years": [
+      2009,
+      2012,
+      2014,
+      2018,
+      2021
+     ],
+     "cities": [
+      "Little Rock",
+      "North Little Rock"
+     ],
+     "filed_as": [
+      "ARKANSAS DEPT OF FINANCE & ADMIN",
+      "ARKANSAS DEPT OF FINANCE AND ADMIN"
+     ]
+    },
+    {
+     "name": "ARKANSAS DEPARTMENT OF HEALTH",
+     "initial": 2,
+     "continuing": 7,
+     "denied": 0,
+     "years": [
+      2009,
+      2011,
+      2012,
+      2016,
+      2019
+     ],
+     "cities": [
+      "Little Rock"
+     ],
+     "filed_as": [
+      "ARKANSAS DEPARTMENT OF HEALTH",
+      "ARKANSAS DEPT OF HEALTH"
+     ]
+    },
+    {
+     "name": "STATE OF ARKANSAS DEPARTMENT OF PU",
+     "initial": 2,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2020
+     ],
+     "cities": [
+      "Little Rock",
+      "N Little Rock"
+     ],
+     "filed_as": [
+      "STATE OF ARKANSAS DEPARTMENT OF PU"
+     ],
+     "unidentified": true
+    },
+    {
+     "name": "ARKANSAS DEPT OF HUMAN SERVICES",
+     "initial": 2,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2009,
+      2011
+     ],
+     "cities": [
+      "Little Rock"
+     ],
+     "filed_as": [
+      "ARKANSAS DEPT OF HUMAN SERVICES",
+      "ARKANSAS DEPT HUMAN SERVICE"
+     ]
+    },
+    {
+     "name": "ARKANSAS DEPT OF TRANSFORMATION &",
+     "initial": 2,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2021
+     ],
+     "cities": [
+      "Little Rock",
+      "North Little Rock"
+     ],
+     "filed_as": [
+      "ARKANSAS DEPT OF TRANSFORMATION &"
+     ]
+    },
+    {
+     "name": "ARKANSAS DEPARTMENT OF EDUCATION",
+     "initial": 0,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2015,
+      2018
+     ],
+     "cities": [
+      "Little Rock"
+     ],
+     "filed_as": [
+      "ARKANSAS DEPARTMENT OF EDUCATION"
+     ]
+    },
+    {
+     "name": "ARKANSAS DEPT OF INFO SYSTEMS",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2012
+     ],
+     "cities": [
+      "Little Rock"
+     ],
+     "filed_as": [
+      "ARKANSAS DEPT OF INFO SYSTEMS"
+     ]
+    },
+    {
+     "name": "ARKANSAS DEPT OF HLTH",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2013
+     ],
+     "cities": [
+      "Little Rock"
+     ],
+     "filed_as": [
+      "ARKANSAS DEPT OF HLTH"
+     ],
+     "unidentified": true
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "GA",
+   "initial": 14,
+   "continuing": 19,
+   "denied": 0,
+   "agencies": 11,
+   "name_variants": 15,
+   "detail": [
+    {
+     "name": "GEORGIA DEPT OF NATURAL RESOURCES",
+     "initial": 6,
+     "continuing": 7,
+     "denied": 0,
+     "years": [
+      2010,
+      2011,
+      2013,
+      2016,
+      2017,
+      2018,
+      2021,
+      2022
+     ],
+     "cities": [
+      "Atlanta"
+     ],
+     "filed_as": [
+      "GEORGIA DEPT OF NATURAL RESOURCES",
+      "GEORGIA DEPT OF NATURAL RESOURCES-",
+      "GEORGIA DEPARTMENT OF NATURAL RESO"
+     ]
+    },
+    {
+     "name": "GEORGIA DEPT OF BEHAVIORAL HEALTH & DEVELOPMENTAL DISABILITIES",
+     "initial": 5,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2017,
+      2019,
+      2022
+     ],
+     "cities": [
+      "Atlanta"
+     ],
+     "filed_as": [
+      "GEORGIA DEPT OF BEHAVIORAL HEALTH & DEVELOPMENTAL DISABILITIES",
+      "GEORGIA DEPT OF BEHAVIORAL HEALTH",
+      "GEORGIA DEPARTMENT OF BEHAVIORAL H"
+     ]
+    },
+    {
+     "name": "GEORGIA STATE BOARD OF WORKERS COM",
+     "initial": 1,
+     "continuing": 3,
+     "denied": 0,
+     "years": [
+      2017,
+      2018,
+      2020
+     ],
+     "cities": [
+      "Atlanta"
+     ],
+     "filed_as": [
+      "GEORGIA STATE BOARD OF WORKERS COM"
+     ]
+    },
+    {
+     "name": "GEORGIA DEPT OF BEHAVIORAL HLTH DE",
+     "initial": 0,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2020
+     ],
+     "cities": [
+      "Atlanta"
+     ],
+     "filed_as": [
+      "GEORGIA DEPT OF BEHAVIORAL HLTH DE"
+     ]
+    },
+    {
+     "name": "GEORGIA DEPARTMENT OF NATURAL RSC",
+     "initial": 1,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2019
+     ],
+     "cities": [
+      "Atlanta"
+     ],
+     "filed_as": [
+      "GEORGIA DEPARTMENT OF NATURAL RSC"
+     ]
+    },
+    {
+     "name": "GEORGIA DEPT OF ECONOMIC DEVELOPME",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2011
+     ],
+     "cities": [
+      "Atlanta"
+     ],
+     "filed_as": [
+      "GEORGIA DEPT OF ECONOMIC DEVELOPME"
+     ]
+    },
+    {
+     "name": "GEORGIA DEPT OF EARLY CARE & LEARN",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2015
+     ],
+     "cities": [
+      "Atlanta"
+     ],
+     "filed_as": [
+      "GEORGIA DEPT OF EARLY CARE & LEARN"
+     ]
+    },
+    {
+     "name": "STATE OF GEORGIA OFFICE OF PLANNING AND BUDGET",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2022
+     ],
+     "cities": [
+      "Atlanta"
+     ],
+     "filed_as": [
+      "STATE OF GEORGIA OFFICE OF PLANNING AND BUDGET"
+     ]
+    },
+    {
+     "name": "GEORGIA BUREAU OF INVESTIGATION",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2011
+     ],
+     "cities": [
+      "Decatur"
+     ],
+     "filed_as": [
+      "GEORGIA BUREAU OF INVESTIGATION"
+     ]
+    },
+    {
+     "name": "GEORGIA DEPT OF PUBLIC HEALTH",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2016
+     ],
+     "cities": [
+      "Atlanta"
+     ],
+     "filed_as": [
+      "GEORGIA DEPT OF PUBLIC HEALTH"
+     ]
+    },
+    {
+     "name": "STATE OF GEORGIA DEPT OF AGRICULTU",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2015
+     ],
+     "cities": [
+      "Atlanta"
+     ],
+     "filed_as": [
+      "STATE OF GEORGIA DEPT OF AGRICULTU"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "FL",
+   "initial": 8,
+   "continuing": 17,
+   "denied": 0,
+   "agencies": 10,
+   "name_variants": 16,
+   "detail": [
+    {
+     "name": "FLORIDA DEPT OF HEALTH SUMTER COUN",
+     "initial": 5,
+     "continuing": 8,
+     "denied": 0,
+     "years": [
+      2009,
+      2010,
+      2012,
+      2013,
+      2017,
+      2020
+     ],
+     "cities": [
+      "Bushnell",
+      "Tallahassee"
+     ],
+     "filed_as": [
+      "FLORIDA DEPT OF HEALTH SUMTER COUN",
+      "FLORIDA DEPT OF HEALTH DIVISION",
+      "FLORIDA DEPT OF HEALTH BUREAU OF",
+      "FLORIDA DEPT OF HEALTH DIVISION OF",
+      "FLORIDA DEPARTMENT OF HEALTH",
+      "FLORIDA DEPT OF HEALTH"
+     ]
+    },
+    {
+     "name": "FLORIDA DEPT FINANCIAL SERVICES",
+     "initial": 0,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2009,
+      2010
+     ],
+     "cities": [
+      "Tallahassee"
+     ],
+     "filed_as": [
+      "FLORIDA DEPT FINANCIAL SERVICES",
+      "FLORIDA DEPT OF FINANCIAL SERVICES"
+     ]
+    },
+    {
+     "name": "FLORIDA DEPT OF HEALTH IN VOLUSIA",
+     "initial": 1,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2016,
+      2019
+     ],
+     "cities": [
+      "Daytona Beach"
+     ],
+     "filed_as": [
+      "FLORIDA DEPT OF HEALTH IN VOLUSIA"
+     ]
+    },
+    {
+     "name": "FLORIDA DEPT OF ED",
+     "initial": 1,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2011
+     ],
+     "cities": [
+      "Tallahassee"
+     ],
+     "filed_as": [
+      "FLORIDA DEPT OF ED"
+     ],
+     "unidentified": true
+    },
+    {
+     "name": "FLORIDA DEPT OF HLTH MIAMI DADE CO",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2011
+     ],
+     "cities": [
+      "Miami"
+     ],
+     "filed_as": [
+      "FLORIDA DEPT OF HLTH MIAMI DADE CO"
+     ]
+    },
+    {
+     "name": "FLORIDA DEPT OF HLTH CHRONIC DISEA",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2016
+     ],
+     "cities": [
+      "Tallahassee"
+     ],
+     "filed_as": [
+      "FLORIDA DEPT OF HLTH CHRONIC DISEA"
+     ]
+    },
+    {
+     "name": "FLORIDA DEPT OF LAW ENFORCEMENT",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2010
+     ],
+     "cities": [
+      "Tampa"
+     ],
+     "filed_as": [
+      "FLORIDA DEPT OF LAW ENFORCEMENT"
+     ]
+    },
+    {
+     "name": "FLORIDA DEPARTMENT OF HEALTH DIV O",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2018
+     ],
+     "cities": [
+      "Tallahassee"
+     ],
+     "filed_as": [
+      "FLORIDA DEPARTMENT OF HEALTH DIV O"
+     ]
+    },
+    {
+     "name": "FLORIDA DEPARTMENT OF EDUCATION",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2009
+     ],
+     "cities": [
+      "Tallahassee"
+     ],
+     "filed_as": [
+      "FLORIDA DEPARTMENT OF EDUCATION"
+     ]
+    },
+    {
+     "name": "FLORIDA DEPT OF HEALTH BUREAU OF L",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2013
+     ],
+     "cities": [
+      "Jacksonville"
+     ],
+     "filed_as": [
+      "FLORIDA DEPT OF HEALTH BUREAU OF L"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "MS",
+   "initial": 14,
+   "continuing": 10,
+   "denied": 0,
+   "agencies": 5,
+   "name_variants": 6,
+   "detail": [
+    {
+     "name": "MISSISSIPPI STATE DEPT OF HEALTH",
+     "initial": 10,
+     "continuing": 6,
+     "denied": 0,
+     "years": [
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2021,
+      2022,
+      2023
+     ],
+     "cities": [
+      "Jackson"
+     ],
+     "filed_as": [
+      "MISSISSIPPI STATE DEPT OF HEALTH",
+      "MISSISSIPPI STATE DEPARTMENT OF HEALTH"
+     ]
+    },
+    {
+     "name": "MISSISSIPPI DEPT OF TRANSPORTATION",
+     "initial": 2,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2009,
+      2010,
+      2012
+     ],
+     "cities": [
+      "Jackson"
+     ],
+     "filed_as": [
+      "MISSISSIPPI DEPT OF TRANSPORTATION"
+     ]
+    },
+    {
+     "name": "MISSISSIPPI STATE DEPT OF HLTH",
+     "initial": 0,
+     "continuing": 3,
+     "denied": 0,
+     "years": [
+      2013,
+      2018
+     ],
+     "cities": [
+      "Jackson"
+     ],
+     "filed_as": [
+      "MISSISSIPPI STATE DEPT OF HLTH"
+     ],
+     "unidentified": true
+    },
+    {
+     "name": "MISSISSIPPI DEPT OF HUMAN SERVICES",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2020
+     ],
+     "cities": [
+      "Jackson"
+     ],
+     "filed_as": [
+      "MISSISSIPPI DEPT OF HUMAN SERVICES"
+     ]
+    },
+    {
+     "name": "MISSISSIPPI DEPT OF ARCHIVES AND",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2021
+     ],
+     "cities": [
+      "Jackson"
+     ],
+     "filed_as": [
+      "MISSISSIPPI DEPT OF ARCHIVES AND"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "NE",
+   "initial": 8,
+   "continuing": 14,
+   "denied": 1,
+   "agencies": 7,
+   "name_variants": 10,
+   "detail": [
+    {
+     "name": "NEBRASKA DEPT OF LABOR",
+     "initial": 1,
+     "continuing": 6,
+     "denied": 1,
+     "years": [
+      2012,
+      2014,
+      2017,
+      2019
+     ],
+     "cities": [
+      "Lincoln"
+     ],
+     "filed_as": [
+      "NEBRASKA DEPT OF LABOR",
+      "NEBRASKA DEPARTMENT OF LABOR"
+     ]
+    },
+    {
+     "name": "NEBRASKA DEPT OF EDUCATION",
+     "initial": 3,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2015,
+      2017,
+      2018
+     ],
+     "cities": [
+      "Lincoln"
+     ],
+     "filed_as": [
+      "NEBRASKA DEPT OF EDUCATION",
+      "NEBRASKA DEPARTMENT OF EDUCATION"
+     ]
+    },
+    {
+     "name": "NEBRASKA DEPT OF HLTH & HUMAN SVCS",
+     "initial": 0,
+     "continuing": 4,
+     "denied": 0,
+     "years": [
+      2016
+     ],
+     "cities": [
+      "Lincoln"
+     ],
+     "filed_as": [
+      "NEBRASKA DEPT OF HLTH & HUMAN SVCS"
+     ]
+    },
+    {
+     "name": "NEBRASKA DEPT OF NATURAL RESOURCES",
+     "initial": 1,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2009,
+      2014
+     ],
+     "cities": [
+      "Lincoln"
+     ],
+     "filed_as": [
+      "NEBRASKA DEPT OF NATURAL RESOURCES",
+      "STATE OF NEBRASKA DEPT OF NATURAL"
+     ]
+    },
+    {
+     "name": "NEBRASKA DEPT OF AGRICULTURE",
+     "initial": 2,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2009
+     ],
+     "cities": [
+      "Lincoln"
+     ],
+     "filed_as": [
+      "NEBRASKA DEPT OF AGRICULTURE"
+     ]
+    },
+    {
+     "name": "STATE OF NEBRASKA DEPT OF INSUR",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2014
+     ],
+     "cities": [
+      "Lincoln"
+     ],
+     "filed_as": [
+      "STATE OF NEBRASKA DEPT OF INSUR"
+     ]
+    },
+    {
+     "name": "STATE OF NEBRASKA DEPARTMENT",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2018
+     ],
+     "cities": [
+      "Lincoln"
+     ],
+     "filed_as": [
+      "STATE OF NEBRASKA DEPARTMENT"
+     ],
+     "unidentified": true
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "SC",
+   "initial": 4,
+   "continuing": 16,
+   "denied": 1,
+   "agencies": 5,
+   "name_variants": 5,
+   "detail": [
+    {
+     "name": "SOUTH CAROLINA DEPARTMENT OF ED",
+     "initial": 2,
+     "continuing": 8,
+     "denied": 0,
+     "years": [
+      2017,
+      2020,
+      2021
+     ],
+     "cities": [
+      "Charleston",
+      "Columbia"
+     ],
+     "filed_as": [
+      "SOUTH CAROLINA DEPARTMENT OF ED"
+     ],
+     "unidentified": true
+    },
+    {
+     "name": "SOUTH CAROLINA DEPT OF COMMERCE",
+     "initial": 1,
+     "continuing": 4,
+     "denied": 1,
+     "years": [
+      2009
+     ],
+     "cities": [
+      "Columbia"
+     ],
+     "filed_as": [
+      "SOUTH CAROLINA DEPT OF COMMERCE"
+     ]
+    },
+    {
+     "name": "SOUTH CAROLINA DEPT OF MENTAL HLTH",
+     "initial": 0,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2011,
+      2021
+     ],
+     "cities": [
+      "Columbia"
+     ],
+     "filed_as": [
+      "SOUTH CAROLINA DEPT OF MENTAL HLTH"
+     ]
+    },
+    {
+     "name": "SOUTH CAROLINA DEPT OF INSURANCE",
+     "initial": 1,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2012
+     ],
+     "cities": [
+      "Columbia"
+     ],
+     "filed_as": [
+      "SOUTH CAROLINA DEPT OF INSURANCE"
+     ]
+    },
+    {
+     "name": "SOUTH CAROLINA DEPARTMENT OF EDUCATION",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2023
+     ],
+     "cities": [
+      "Columbia"
+     ],
+     "filed_as": [
+      "SOUTH CAROLINA DEPARTMENT OF EDUCATION"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "OK",
+   "initial": 3,
+   "continuing": 13,
+   "denied": 0,
+   "agencies": 7,
+   "name_variants": 11,
+   "detail": [
+    {
+     "name": "OKLAHOMA DEPT OF MENTAL HEALTH & S",
+     "initial": 0,
+     "continuing": 6,
+     "denied": 0,
+     "years": [
+      2009,
+      2010,
+      2015,
+      2018
+     ],
+     "cities": [
+      "Oklahoma City"
+     ],
+     "filed_as": [
+      "OKLAHOMA DEPT OF MENTAL HEALTH & S",
+      "OKLAHOMA DEPT OF MENTAL HEALTH &",
+      "OKLAHOMA DEPT OF MENTAL HEALTH AND"
+     ]
+    },
+    {
+     "name": "OKLAHOMA STATE DEPARTMENT OF HLTH",
+     "initial": 1,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2009
+     ],
+     "cities": [
+      "Oklahoma City"
+     ],
+     "filed_as": [
+      "OKLAHOMA STATE DEPARTMENT OF HLTH"
+     ],
+     "unidentified": true
+    },
+    {
+     "name": "OKLAHOMA DEPT OF ENVIRONMENTAL QUA",
+     "initial": 1,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2009,
+      2018
+     ],
+     "cities": [
+      "Oklahoma City"
+     ],
+     "filed_as": [
+      "OKLAHOMA DEPT OF ENVIRONMENTAL QUA",
+      "OKLAHOMA DEPT OF ENVIRONMENTAL"
+     ]
+    },
+    {
+     "name": "OKLAHOMA DEPT OF HUMAN SVCS",
+     "initial": 1,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2010,
+      2012
+     ],
+     "cities": [
+      "Oklahoma City"
+     ],
+     "filed_as": [
+      "OKLAHOMA DEPT OF HUMAN SVCS",
+      "OKLAHOMA DEPARTMENT OF HUMAN SVCS"
+     ]
+    },
+    {
+     "name": "OKLAHOMA DEPT OF CORRECTIONS",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2010
+     ],
+     "cities": [
+      "Oklahoma City"
+     ],
+     "filed_as": [
+      "OKLAHOMA DEPT OF CORRECTIONS"
+     ]
+    },
+    {
+     "name": "OKLAHOMA DEPT OF REHAB SVCS",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2010
+     ],
+     "cities": [
+      "Oklahoma City"
+     ],
+     "filed_as": [
+      "OKLAHOMA DEPT OF REHAB SVCS"
+     ]
+    },
+    {
+     "name": "OKLAHOMA DEPT OF HR",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2009
+     ],
+     "cities": [
+      "Oklahoma City"
+     ],
+     "filed_as": [
+      "OKLAHOMA DEPT OF HR"
+     ],
+     "unidentified": true
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "IA",
+   "initial": 4,
+   "continuing": 10,
+   "denied": 0,
+   "agencies": 3,
+   "name_variants": 6,
+   "detail": [
+    {
+     "name": "IOWA DEPARTMENT OF REVENUE",
+     "initial": 2,
+     "continuing": 7,
+     "denied": 0,
+     "years": [
+      2011,
+      2013,
+      2014,
+      2016,
+      2017,
+      2018,
+      2019,
+      2021,
+      2022
+     ],
+     "cities": [
+      "Des Moines"
+     ],
+     "filed_as": [
+      "IOWA DEPARTMENT OF REVENUE",
+      "IOWA DEPT OF REVENUE"
+     ]
+    },
+    {
+     "name": "IOWA DEPT OF NATURAL RESOURCES",
+     "initial": 1,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2009,
+      2013,
+      2022
+     ],
+     "cities": [
+      "Des Moines"
+     ],
+     "filed_as": [
+      "IOWA DEPT OF NATURAL RESOURCES",
+      "IOWA DEPARTMENT OF NATURAL RESOURCES"
+     ]
+    },
+    {
+     "name": "STATE OF IOWA DEPT OF JUSTICE",
+     "initial": 1,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2020,
+      2023
+     ],
+     "cities": [
+      "Des Moines"
+     ],
+     "filed_as": [
+      "STATE OF IOWA DEPT OF JUSTICE",
+      "STATE OF IOWA DEPARTMENT OF JUSTICE"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "NY",
+   "initial": 6,
+   "continuing": 5,
+   "denied": 0,
+   "agencies": 4,
+   "name_variants": 4,
+   "detail": [
+    {
+     "name": "NEW YORK STATE OFFICE OF MENTAL HE",
+     "initial": 3,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2018
+     ],
+     "cities": [
+      "Orangeburg",
+      "Staten Island"
+     ],
+     "filed_as": [
+      "NEW YORK STATE OFFICE OF MENTAL HE"
+     ]
+    },
+    {
+     "name": "NEW YORK STATE DEPT OF HEALTH",
+     "initial": 2,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2009,
+      2014,
+      2017
+     ],
+     "cities": [
+      "Albany"
+     ],
+     "filed_as": [
+      "NEW YORK STATE DEPT OF HEALTH"
+     ]
+    },
+    {
+     "name": "NEW YORK STATE OFFICE INFO TECH",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2017
+     ],
+     "cities": [
+      "Albany"
+     ],
+     "filed_as": [
+      "NEW YORK STATE OFFICE INFO TECH"
+     ]
+    },
+    {
+     "name": "NEW YORK STATE DEPARTMENT OF HLTH",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2015
+     ],
+     "cities": [
+      "Albany"
+     ],
+     "filed_as": [
+      "NEW YORK STATE DEPARTMENT OF HLTH"
+     ],
+     "unidentified": true
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "TX",
+   "initial": 3,
+   "continuing": 8,
+   "denied": 1,
+   "agencies": 2,
+   "name_variants": 2,
+   "detail": [
+    {
+     "name": "TEXAS DEPT OF STATE HEALTH SVCS",
+     "initial": 3,
+     "continuing": 3,
+     "denied": 1,
+     "years": [
+      2010,
+      2011,
+      2015,
+      2017
+     ],
+     "cities": [
+      "Austin",
+      "Big Spring"
+     ],
+     "filed_as": [
+      "TEXAS DEPT OF STATE HEALTH SVCS"
+     ]
+    },
+    {
+     "name": "TEXAS DEPARTMENT OF INSURANCE",
+     "initial": 0,
+     "continuing": 5,
+     "denied": 0,
+     "years": [
+      2009,
+      2012,
+      2013,
+      2014,
+      2023
+     ],
+     "cities": [
+      "Austin"
+     ],
+     "filed_as": [
+      "TEXAS DEPARTMENT OF INSURANCE"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "MO",
+   "initial": 2,
+   "continuing": 8,
+   "denied": 1,
+   "agencies": 2,
+   "name_variants": 3,
+   "detail": [
+    {
+     "name": "MISSOURI DEPT OF NATURAL RESOURCES",
+     "initial": 2,
+     "continuing": 4,
+     "denied": 1,
+     "years": [
+      2009,
+      2012,
+      2013
+     ],
+     "cities": [
+      "Jefferson City"
+     ],
+     "filed_as": [
+      "MISSOURI DEPT OF NATURAL RESOURCES"
+     ]
+    },
+    {
+     "name": "MISSOURI DEPT OF ECONOMIC DEVELOPM",
+     "initial": 0,
+     "continuing": 4,
+     "denied": 0,
+     "years": [
+      2009,
+      2011,
+      2015
+     ],
+     "cities": [
+      "Jefferson City"
+     ],
+     "filed_as": [
+      "MISSOURI DEPT OF ECONOMIC DEVELOPM",
+      "MISSOURI DEPARTMENT OF ECONOMIC DE"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "OH",
+   "initial": 4,
+   "continuing": 5,
+   "denied": 0,
+   "agencies": 3,
+   "name_variants": 5,
+   "detail": [
+    {
+     "name": "OHIO DEPT OF MENTAL HEALTH & ADDIC",
+     "initial": 1,
+     "continuing": 4,
+     "denied": 0,
+     "years": [
+      2013,
+      2021,
+      2022
+     ],
+     "cities": [
+      "Columbus"
+     ],
+     "filed_as": [
+      "OHIO DEPT OF MENTAL HEALTH & ADDIC",
+      "OHIO DEPARTMENT OF MENTAL HEALTH A",
+      "OHIO DEPT OF MENTAL HEALTH"
+     ]
+    },
+    {
+     "name": "OHIO DEPT OF MENTAL HLTH & ADDICTI",
+     "initial": 1,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2014,
+      2020
+     ],
+     "cities": [
+      "Columbus"
+     ],
+     "filed_as": [
+      "OHIO DEPT OF MENTAL HLTH & ADDICTI"
+     ]
+    },
+    {
+     "name": "STATE OF OHIO DEPT OF ADMIN SVCS",
+     "initial": 2,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2020
+     ],
+     "cities": [
+      "Columbus"
+     ],
+     "filed_as": [
+      "STATE OF OHIO DEPT OF ADMIN SVCS"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "NV",
+   "initial": 2,
+   "continuing": 6,
+   "denied": 0,
+   "agencies": 3,
+   "name_variants": 4,
+   "detail": [
+    {
+     "name": "NEVADA DEPT OF TRANSPORTATION",
+     "initial": 1,
+     "continuing": 5,
+     "denied": 0,
+     "years": [
+      2009,
+      2012,
+      2015,
+      2018,
+      2021
+     ],
+     "cities": [
+      "Carson City"
+     ],
+     "filed_as": [
+      "NEVADA DEPT OF TRANSPORTATION",
+      "NEVADA DEPARTMENT OF TRANSPORTATIO"
+     ]
+    },
+    {
+     "name": "NEVADA DEPT OF BUSINESS & INDUSTRY",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2019
+     ],
+     "cities": [
+      "Carson City"
+     ],
+     "filed_as": [
+      "NEVADA DEPT OF BUSINESS & INDUSTRY"
+     ]
+    },
+    {
+     "name": "STATE OF NEVADA DEPT OF EMPLOYMENT",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2018
+     ],
+     "cities": [
+      "Carson City"
+     ],
+     "filed_as": [
+      "STATE OF NEVADA DEPT OF EMPLOYMENT"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "KS",
+   "initial": 4,
+   "continuing": 3,
+   "denied": 0,
+   "agencies": 3,
+   "name_variants": 3,
+   "detail": [
+    {
+     "name": "STATE OF KANSAS DEPT OF REVENUE",
+     "initial": 2,
+     "continuing": 3,
+     "denied": 0,
+     "years": [
+      2009,
+      2010,
+      2014,
+      2015,
+      2018
+     ],
+     "cities": [
+      "Topeka"
+     ],
+     "filed_as": [
+      "STATE OF KANSAS DEPT OF REVENUE"
+     ]
+    },
+    {
+     "name": "KANSAS DEPT OF HEALTH & ENVIRONMEN",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2010
+     ],
+     "cities": [
+      "Topeka"
+     ],
+     "filed_as": [
+      "KANSAS DEPT OF HEALTH & ENVIRONMEN"
+     ]
+    },
+    {
+     "name": "KANSAS DEPARTMENT OF LABOR",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2010
+     ],
+     "cities": [
+      "Topeka"
+     ],
+     "filed_as": [
+      "KANSAS DEPARTMENT OF LABOR"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "CO",
+   "initial": 2,
+   "continuing": 5,
+   "denied": 0,
+   "agencies": 4,
+   "name_variants": 5,
+   "detail": [
+    {
+     "name": "COLORADO DEPT OF CORRECTIONS",
+     "initial": 2,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2009,
+      2010,
+      2012,
+      2014
+     ],
+     "cities": [
+      "Colorado Springs"
+     ],
+     "filed_as": [
+      "COLORADO DEPT OF CORRECTIONS",
+      "COLORADO DEPARTMENT OF CORRECTIONS"
+     ]
+    },
+    {
+     "name": "COLORADO DEPT OF PUBLIC HEALTH & ENVIRONMENT CDPHE",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2023
+     ],
+     "cities": [
+      "Denver"
+     ],
+     "filed_as": [
+      "COLORADO DEPT OF PUBLIC HEALTH & ENVIRONMENT CDPHE"
+     ]
+    },
+    {
+     "name": "COLORADO DEPT OF EDUCATION",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2013
+     ],
+     "cities": [
+      "Denver"
+     ],
+     "filed_as": [
+      "COLORADO DEPT OF EDUCATION"
+     ]
+    },
+    {
+     "name": "STATE OF COLORADO DEPARTMENT OF CO",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2016
+     ],
+     "cities": [
+      "Colorado Springs"
+     ],
+     "filed_as": [
+      "STATE OF COLORADO DEPARTMENT OF CO"
+     ],
+     "unidentified": true
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "KY",
+   "initial": 1,
+   "continuing": 6,
+   "denied": 0,
+   "agencies": 2,
+   "name_variants": 2,
+   "detail": [
+    {
+     "name": "KENTUCKY DEPARTMENT OF AGRICULTURE",
+     "initial": 1,
+     "continuing": 5,
+     "denied": 0,
+     "years": [
+      2010,
+      2011,
+      2014
+     ],
+     "cities": [
+      "Frankfort"
+     ],
+     "filed_as": [
+      "KENTUCKY DEPARTMENT OF AGRICULTURE"
+     ]
+    },
+    {
+     "name": "KENTUCKY DEPARTMENT OF EDUCATION",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2019
+     ],
+     "cities": [
+      "Frankfort"
+     ],
+     "filed_as": [
+      "KENTUCKY DEPARTMENT OF EDUCATION"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "TN",
+   "initial": 1,
+   "continuing": 6,
+   "denied": 0,
+   "agencies": 4,
+   "name_variants": 5,
+   "detail": [
+    {
+     "name": "STATE OF TENNESSEE DEPT OF EDUC",
+     "initial": 1,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2020
+     ],
+     "cities": [
+      "Nashville"
+     ],
+     "filed_as": [
+      "STATE OF TENNESSEE DEPT OF EDUC"
+     ],
+     "unidentified": true
+    },
+    {
+     "name": "TENNESSEE DEPT OF CHILDRENS SVCS",
+     "initial": 0,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2014,
+      2017
+     ],
+     "cities": [
+      "Nashville"
+     ],
+     "filed_as": [
+      "TENNESSEE DEPT OF CHILDRENS SVCS",
+      "TENNESSEE DEPARTMENT OF CHILDRENS"
+     ]
+    },
+    {
+     "name": "TENNESSEE DEPT OF CHILDREN'S SVCS",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2011
+     ],
+     "cities": [
+      "Nashville"
+     ],
+     "filed_as": [
+      "TENNESSEE DEPT OF CHILDREN'S SVCS"
+     ]
+    },
+    {
+     "name": "TENNESSEE DEPT OF LABOR AND WORKFO",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2013
+     ],
+     "cities": [
+      "Nashville"
+     ],
+     "filed_as": [
+      "TENNESSEE DEPT OF LABOR AND WORKFO"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "CT",
+   "initial": 3,
+   "continuing": 3,
+   "denied": 0,
+   "agencies": 3,
+   "name_variants": 3,
+   "detail": [
+    {
+     "name": "CONNECTICUT DEPT OF MENTAL HEALTH",
+     "initial": 2,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2017,
+      2018
+     ],
+     "cities": [
+      "Middletown"
+     ],
+     "filed_as": [
+      "CONNECTICUT DEPT OF MENTAL HEALTH"
+     ]
+    },
+    {
+     "name": "CONNECTICUT DEPT OF MENTAL HLTH &",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2016
+     ],
+     "cities": [
+      "Hartford"
+     ],
+     "filed_as": [
+      "CONNECTICUT DEPT OF MENTAL HLTH &"
+     ]
+    },
+    {
+     "name": "CONNECTICUT STATE DEPT OF ED",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2009
+     ],
+     "cities": [
+      "Hartford"
+     ],
+     "filed_as": [
+      "CONNECTICUT STATE DEPT OF ED"
+     ],
+     "unidentified": true
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "AK",
+   "initial": 2,
+   "continuing": 4,
+   "denied": 0,
+   "agencies": 4,
+   "name_variants": 5,
+   "detail": [
+    {
+     "name": "ALASKA DEPT OF TRANSPORTATION & PF",
+     "initial": 2,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2010,
+      2014
+     ],
+     "cities": [
+      "Juneau"
+     ],
+     "filed_as": [
+      "ALASKA DEPT OF TRANSPORTATION & PF",
+      "STATE OF ALASKA DEPT OF TRANSPORTA"
+     ]
+    },
+    {
+     "name": "STATE OF ALASKA DEPT OF FISH AND G",
+     "initial": 0,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2013,
+      2019
+     ],
+     "cities": [
+      "Anchorage"
+     ],
+     "filed_as": [
+      "STATE OF ALASKA DEPT OF FISH AND G"
+     ]
+    },
+    {
+     "name": "ALASKA DEPT OF TRANSPORTATION & PU",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2013
+     ],
+     "cities": [
+      "Juneau"
+     ],
+     "filed_as": [
+      "ALASKA DEPT OF TRANSPORTATION & PU"
+     ]
+    },
+    {
+     "name": "STATE OF ALASKA DEPARTMENT OF FISH",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2014
+     ],
+     "cities": [
+      "Anchorage"
+     ],
+     "filed_as": [
+      "STATE OF ALASKA DEPARTMENT OF FISH"
+     ],
+     "unidentified": true
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "NM",
+   "initial": 0,
+   "continuing": 6,
+   "denied": 0,
+   "agencies": 4,
+   "name_variants": 4,
+   "detail": [
+    {
+     "name": "NEW MEXICO DEPT OF CORRECTIONS",
+     "initial": 0,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2011
+     ],
+     "cities": [
+      "Santa Fe"
+     ],
+     "filed_as": [
+      "NEW MEXICO DEPT OF CORRECTIONS"
+     ]
+    },
+    {
+     "name": "STATE OF NEW MEXICO OFFICE OF THE",
+     "initial": 0,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2022
+     ],
+     "cities": [
+      "Santa Fe"
+     ],
+     "filed_as": [
+      "STATE OF NEW MEXICO OFFICE OF THE"
+     ],
+     "unidentified": true
+    },
+    {
+     "name": "NEW MEXICO COMMISSION FOR THE BLIN",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2015
+     ],
+     "cities": [
+      "Santa Fe"
+     ],
+     "filed_as": [
+      "NEW MEXICO COMMISSION FOR THE BLIN"
+     ]
+    },
+    {
+     "name": "NEW MEXICO DEPT OF TAXATION & REVE",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2017
+     ],
+     "cities": [
+      "Santa Fe"
+     ],
+     "filed_as": [
+      "NEW MEXICO DEPT OF TAXATION & REVE"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "MN",
+   "initial": 2,
+   "continuing": 3,
+   "denied": 0,
+   "agencies": 4,
+   "name_variants": 4,
+   "detail": [
+    {
+     "name": "MINNESOTA DEPT OF HUMAN SVCS",
+     "initial": 0,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2012,
+      2014
+     ],
+     "cities": [
+      "St Paul",
+      "St Pauls"
+     ],
+     "filed_as": [
+      "MINNESOTA DEPT OF HUMAN SVCS"
+     ]
+    },
+    {
+     "name": "MINNESOTA DEPT OF HR SVCS STATE OP",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2010
+     ],
+     "cities": [
+      "Anoka"
+     ],
+     "filed_as": [
+      "MINNESOTA DEPT OF HR SVCS STATE OP"
+     ]
+    },
+    {
+     "name": "MINNESOTA DEPT OF HR SOS",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2009
+     ],
+     "cities": [
+      "Saint Paul"
+     ],
+     "filed_as": [
+      "MINNESOTA DEPT OF HR SOS"
+     ]
+    },
+    {
+     "name": "MINNESOTA DEPT OF HEALTH",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2009
+     ],
+     "cities": [
+      "Saint Paul"
+     ],
+     "filed_as": [
+      "MINNESOTA DEPT OF HEALTH"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "MD",
+   "initial": 2,
+   "continuing": 3,
+   "denied": 1,
+   "agencies": 4,
+   "name_variants": 4,
+   "detail": [
+    {
+     "name": "MARYLAND DEPT OF HOUSING & COMMUNI",
+     "initial": 0,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2014,
+      2016
+     ],
+     "cities": [
+      "Crownsville",
+      "Lanham"
+     ],
+     "filed_as": [
+      "MARYLAND DEPT OF HOUSING & COMMUNI"
+     ]
+    },
+    {
+     "name": "MARYLAND DEPT OF HEALTH & MENTAL H",
+     "initial": 1,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2015,
+      2017
+     ],
+     "cities": [
+      "Baltimore"
+     ],
+     "filed_as": [
+      "MARYLAND DEPT OF HEALTH & MENTAL H"
+     ]
+    },
+    {
+     "name": "MARYLAND DEPT OF PLANNING",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2010
+     ],
+     "cities": [
+      "Baltimore"
+     ],
+     "filed_as": [
+      "MARYLAND DEPT OF PLANNING"
+     ]
+    },
+    {
+     "name": "STATE OF MARYLAND OFFICE GOVERNOR",
+     "initial": 0,
+     "continuing": 0,
+     "denied": 1,
+     "years": [
+      2019
+     ],
+     "cities": [
+      "Annapolis"
+     ],
+     "filed_as": [
+      "STATE OF MARYLAND OFFICE GOVERNOR"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "ND",
+   "initial": 1,
+   "continuing": 4,
+   "denied": 0,
+   "agencies": 2,
+   "name_variants": 3,
+   "detail": [
+    {
+     "name": "NORTH DAKOTA DEPT OF HUMAN SVCS",
+     "initial": 1,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2013,
+      2015,
+      2020
+     ],
+     "cities": [
+      "Bismarck"
+     ],
+     "filed_as": [
+      "NORTH DAKOTA DEPT OF HUMAN SVCS"
+     ]
+    },
+    {
+     "name": "NORTH DAKOTA DEPT OF HUMAN SERVICE",
+     "initial": 0,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2011,
+      2012
+     ],
+     "cities": [
+      "Bismarck"
+     ],
+     "filed_as": [
+      "NORTH DAKOTA DEPT OF HUMAN SERVICE",
+      "NORTH DAKOTA DEPARTMENT OF HUMAN S"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "MA",
+   "initial": 0,
+   "continuing": 4,
+   "denied": 0,
+   "agencies": 1,
+   "name_variants": 1,
+   "detail": [
+    {
+     "name": "MASSACHUSETTS DEPT OF REVENUE",
+     "initial": 0,
+     "continuing": 4,
+     "denied": 0,
+     "years": [
+      2009,
+      2010
+     ],
+     "cities": [
+      "Boston",
+      "Chelsea"
+     ],
+     "filed_as": [
+      "MASSACHUSETTS DEPT OF REVENUE"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "MI",
+   "initial": 3,
+   "continuing": 1,
+   "denied": 1,
+   "agencies": 5,
+   "name_variants": 5,
+   "detail": [
+    {
+     "name": "MICHIGAN COMMISSION FOR THE BLIND",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2011
+     ],
+     "cities": [
+      "Detroit"
+     ],
+     "filed_as": [
+      "MICHIGAN COMMISSION FOR THE BLIND"
+     ]
+    },
+    {
+     "name": "MICHIGAN DEPT OF HLTH & HUMAN SVCS",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2017
+     ],
+     "cities": [
+      "Northville"
+     ],
+     "filed_as": [
+      "MICHIGAN DEPT OF HLTH & HUMAN SVCS"
+     ]
+    },
+    {
+     "name": "MICHIGAN DEPT OF HEALTH & HUMAN SE",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2020
+     ],
+     "cities": [
+      "Northville"
+     ],
+     "filed_as": [
+      "MICHIGAN DEPT OF HEALTH & HUMAN SE"
+     ]
+    },
+    {
+     "name": "MICHIGAN DEPARTMENT OF EDUCATION",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2011
+     ],
+     "cities": [
+      "Lansing"
+     ],
+     "filed_as": [
+      "MICHIGAN DEPARTMENT OF EDUCATION"
+     ]
+    },
+    {
+     "name": "MICHIGAN STATE POLICE",
+     "initial": 0,
+     "continuing": 0,
+     "denied": 1,
+     "years": [
+      2016
+     ],
+     "cities": [
+      "Farmington Hills"
+     ],
+     "filed_as": [
+      "MICHIGAN STATE POLICE"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "OR",
+   "initial": 1,
+   "continuing": 2,
+   "denied": 1,
+   "agencies": 3,
+   "name_variants": 3,
+   "detail": [
+    {
+     "name": "STATE OF OREGON DEPT OF H R",
+     "initial": 1,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2009
+     ],
+     "cities": [
+      "Salem"
+     ],
+     "filed_as": [
+      "STATE OF OREGON DEPT OF H R"
+     ],
+     "unidentified": true
+    },
+    {
+     "name": "OREGON DEPT OF FISH & WILDLIFE",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2009
+     ],
+     "cities": [
+      "Salem"
+     ],
+     "filed_as": [
+      "OREGON DEPT OF FISH & WILDLIFE"
+     ]
+    },
+    {
+     "name": "STATE OF OREGON DEPT OF HUMAN SVCS",
+     "initial": 0,
+     "continuing": 0,
+     "denied": 1,
+     "years": [
+      2012
+     ],
+     "cities": [
+      "Salem"
+     ],
+     "filed_as": [
+      "STATE OF OREGON DEPT OF HUMAN SVCS"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "WI",
+   "initial": 1,
+   "continuing": 2,
+   "denied": 0,
+   "agencies": 2,
+   "name_variants": 2,
+   "detail": [
+    {
+     "name": "WISCONSIN DEPARTMENT OF REVENUE",
+     "initial": 0,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2011
+     ],
+     "cities": [
+      "Madison"
+     ],
+     "filed_as": [
+      "WISCONSIN DEPARTMENT OF REVENUE"
+     ]
+    },
+    {
+     "name": "WISCONSIN DEPT OF HEALTH SVCS",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2020
+     ],
+     "cities": [
+      "Madison"
+     ],
+     "filed_as": [
+      "WISCONSIN DEPT OF HEALTH SVCS"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "UT",
+   "initial": 1,
+   "continuing": 2,
+   "denied": 2,
+   "agencies": 4,
+   "name_variants": 4,
+   "detail": [
+    {
+     "name": "UTAH DEPT OF ENVIRONMENTAL QUALITY",
+     "initial": 1,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2011,
+      2014
+     ],
+     "cities": [
+      "Salt Lake City"
+     ],
+     "filed_as": [
+      "UTAH DEPT OF ENVIRONMENTAL QUALITY"
+     ]
+    },
+    {
+     "name": "UTAH DIVISION OF WATER RESOURCES",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2018
+     ],
+     "cities": [
+      "Salt Lake City"
+     ],
+     "filed_as": [
+      "UTAH DIVISION OF WATER RESOURCES"
+     ]
+    },
+    {
+     "name": "UTAH DEPT OF HEALTH FAMILY HEALTH",
+     "initial": 0,
+     "continuing": 0,
+     "denied": 1,
+     "years": [
+      2013
+     ],
+     "cities": [
+      "Salt Lake City"
+     ],
+     "filed_as": [
+      "UTAH DEPT OF HEALTH FAMILY HEALTH"
+     ]
+    },
+    {
+     "name": "UTAH STATE OFFICE OF EDUCATION",
+     "initial": 0,
+     "continuing": 0,
+     "denied": 1,
+     "years": [
+      2013
+     ],
+     "cities": [
+      "Salt Lake City"
+     ],
+     "filed_as": [
+      "UTAH STATE OFFICE OF EDUCATION"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "NH",
+   "initial": 0,
+   "continuing": 3,
+   "denied": 0,
+   "agencies": 1,
+   "name_variants": 1,
+   "detail": [
+    {
+     "name": "NEW HAMPSHIRE DEPT OF HEALTH & HUM",
+     "initial": 0,
+     "continuing": 3,
+     "denied": 0,
+     "years": [
+      2013,
+      2018,
+      2020
+     ],
+     "cities": [
+      "Concord"
+     ],
+     "filed_as": [
+      "NEW HAMPSHIRE DEPT OF HEALTH & HUM"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "NC",
+   "initial": 1,
+   "continuing": 1,
+   "denied": 0,
+   "agencies": 2,
+   "name_variants": 2,
+   "detail": [
+    {
+     "name": "NORTH CAROLINA DEPT OF HEALTH AND",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2009
+     ],
+     "cities": [
+      "Raleigh"
+     ],
+     "filed_as": [
+      "NORTH CAROLINA DEPT OF HEALTH AND"
+     ]
+    },
+    {
+     "name": "NORTH CAROLINA DEPARTMENT PUBLIC",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2020
+     ],
+     "cities": [
+      "Raleigh"
+     ],
+     "filed_as": [
+      "NORTH CAROLINA DEPARTMENT PUBLIC"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "WV",
+   "initial": 1,
+   "continuing": 1,
+   "denied": 0,
+   "agencies": 2,
+   "name_variants": 2,
+   "detail": [
+    {
+     "name": "WEST VIRGINIA DIVISION PERSONNEL",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2021
+     ],
+     "cities": [
+      "Charleston"
+     ],
+     "filed_as": [
+      "WEST VIRGINIA DIVISION PERSONNEL"
+     ]
+    },
+    {
+     "name": "WEST VIRGINIA DEPARTMENT OF",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2010
+     ],
+     "cities": [
+      "Charleston"
+     ],
+     "filed_as": [
+      "WEST VIRGINIA DEPARTMENT OF"
+     ],
+     "unidentified": true
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "AL",
+   "initial": 0,
+   "continuing": 2,
+   "denied": 0,
+   "agencies": 1,
+   "name_variants": 1,
+   "detail": [
+    {
+     "name": "ALABAMA DEPT OF CORRECTIONS",
+     "initial": 0,
+     "continuing": 2,
+     "denied": 0,
+     "years": [
+      2011,
+      2017
+     ],
+     "cities": [
+      "Montgomery"
+     ],
+     "filed_as": [
+      "ALABAMA DEPT OF CORRECTIONS"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "ME",
+   "initial": 0,
+   "continuing": 1,
+   "denied": 0,
+   "agencies": 1,
+   "name_variants": 1,
+   "detail": [
+    {
+     "name": "MAINE DEPT OF HEALTH & HUMAN SVCS",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2009
+     ],
+     "cities": [
+      "Augusta"
+     ],
+     "filed_as": [
+      "MAINE DEPT OF HEALTH & HUMAN SVCS"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "MT",
+   "initial": 0,
+   "continuing": 1,
+   "denied": 0,
+   "agencies": 1,
+   "name_variants": 1,
+   "detail": [
+    {
+     "name": "MONTANA DEPARTMENT OF LABOR & INDU",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2009
+     ],
+     "cities": [
+      "Helena"
+     ],
+     "filed_as": [
+      "MONTANA DEPARTMENT OF LABOR & INDU"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "IN",
+   "initial": 0,
+   "continuing": 1,
+   "denied": 0,
+   "agencies": 1,
+   "name_variants": 1,
+   "detail": [
+    {
+     "name": "INDIANA DEPT OF TRANSPORTATION",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2011
+     ],
+     "cities": [
+      "West Lafayette"
+     ],
+     "filed_as": [
+      "INDIANA DEPT OF TRANSPORTATION"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "HI",
+   "initial": 0,
+   "continuing": 1,
+   "denied": 0,
+   "agencies": 1,
+   "name_variants": 1,
+   "detail": [
+    {
+     "name": "HAWAII STATE DEPT OF HEALTH",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2011
+     ],
+     "cities": [
+      "Honolulu"
+     ],
+     "filed_as": [
+      "HAWAII STATE DEPT OF HEALTH"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "WY",
+   "initial": 1,
+   "continuing": 0,
+   "denied": 0,
+   "agencies": 1,
+   "name_variants": 1,
+   "detail": [
+    {
+     "name": "STATE OF WYOMING DEPT OF HEALTH",
+     "initial": 1,
+     "continuing": 0,
+     "denied": 0,
+     "years": [
+      2016
+     ],
+     "cities": [
+      "Evanston"
+     ],
+     "filed_as": [
+      "STATE OF WYOMING DEPT OF HEALTH"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "NJ",
+   "initial": 0,
+   "continuing": 1,
+   "denied": 0,
+   "agencies": 1,
+   "name_variants": 1,
+   "detail": [
+    {
+     "name": "NEW JERSEY DEPARTMENT OF HEALTH OF",
+     "initial": 0,
+     "continuing": 1,
+     "denied": 0,
+     "years": [
+      2019
+     ],
+     "cities": [
+      "Trenton"
+     ],
+     "filed_as": [
+      "NEW JERSEY DEPARTMENT OF HEALTH OF"
+     ]
+    }
+   ]
+  },
+  {
+   "lca_only": [],
+   "state": "ID",
+   "initial": 0,
+   "continuing": 0,
+   "denied": 1,
+   "agencies": 1,
+   "name_variants": 1,
+   "detail": [
+    {
+     "name": "IDAHO STATE DEPT OF EDUCATION",
+     "initial": 0,
+     "continuing": 0,
+     "denied": 1,
+     "years": [
+      2014
+     ],
+     "cities": [
+      "Boise"
+     ],
+     "filed_as": [
+      "IDAHO STATE DEPT OF EDUCATION"
+     ]
+    }
+   ]
+  }
+ ],
+ "national_origin": {
+  "source": "US Department of State, Nonimmigrant Visa Detail Tables, FY1997-2024",
+  "source_url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-statistics/nonimmigrant-visa-statistics.html",
+  "year": "2024",
+  "total_issuances": 219659,
+  "countries": 181,
+  "not_linkable": "No public file connects a visa holder's nationality to an employer. The LCA records the job, not the person; the Data Hub records the employer, not the person. These shares are national and say nothing about any agency on this page.",
+  "by_country": [
+   {
+    "country": "India",
+    "issuances": 150647,
+    "share_pct": 68.58
+   },
+   {
+    "country": "China - mainland",
+    "issuances": 31735,
+    "share_pct": 14.45
+   },
+   {
+    "country": "Philippines",
+    "issuances": 3562,
+    "share_pct": 1.62
+   },
+   {
+    "country": "Korea, South",
+    "issuances": 2289,
+    "share_pct": 1.04
+   },
+   {
+    "country": "Mexico",
+    "issuances": 1954,
+    "share_pct": 0.89
+   },
+   {
+    "country": "Taiwan",
+    "issuances": 1830,
+    "share_pct": 0.83
+   },
+   {
+    "country": "Brazil",
+    "issuances": 1801,
+    "share_pct": 0.82
+   },
+   {
+    "country": "Pakistan",
+    "issuances": 1664,
+    "share_pct": 0.76
+   },
+   {
+    "country": "Great Britain and Northern Ireland",
+    "issuances": 1462,
+    "share_pct": 0.67
+   },
+   {
+    "country": "France",
+    "issuances": 974,
+    "share_pct": 0.44
+   },
+   {
+    "country": "Colombia",
+    "issuances": 959,
+    "share_pct": 0.44
+   },
+   {
+    "country": "Nigeria",
+    "issuances": 880,
+    "share_pct": 0.4
+   },
+   {
+    "country": "Spain",
+    "issuances": 861,
+    "share_pct": 0.39
+   },
+   {
+    "country": "Vietnam",
+    "issuances": 832,
+    "share_pct": 0.38
+   },
+   {
+    "country": "Italy",
+    "issuances": 798,
+    "share_pct": 0.36
+   },
+   {
+    "country": "Nepal",
+    "issuances": 780,
+    "share_pct": 0.36
+   },
+   {
+    "country": "Germany",
+    "issuances": 771,
+    "share_pct": 0.35
+   },
+   {
+    "country": "Turkey",
+    "issuances": 736,
+    "share_pct": 0.34
+   },
+   {
+    "country": "Greece",
+    "issuances": 665,
+    "share_pct": 0.3
+   },
+   {
+    "country": "Japan",
+    "issuances": 613,
+    "share_pct": 0.28
+   },
+   {
+    "country": "Australia",
+    "issuances": 509,
+    "share_pct": 0.23
+   },
+   {
+    "country": "Ghana",
+    "issuances": 497,
+    "share_pct": 0.23
+   },
+   {
+    "country": "Chile",
+    "issuances": 488,
+    "share_pct": 0.22
+   },
+   {
+    "country": "Jamaica",
+    "issuances": 478,
+    "share_pct": 0.22
+   },
+   {
+    "country": "Singapore",
+    "issuances": 477,
+    "share_pct": 0.22
+   },
+   {
+    "country": "Indonesia",
+    "issuances": 431,
+    "share_pct": 0.2
+   },
+   {
+    "country": "Malaysia",
+    "issuances": 408,
+    "share_pct": 0.19
+   },
+   {
+    "country": "Thailand",
+    "issuances": 387,
+    "share_pct": 0.18
+   },
+   {
+    "country": "Jordan",
+    "issuances": 383,
+    "share_pct": 0.17
+   },
+   {
+    "country": "Bangladesh",
+    "issuances": 371,
+    "share_pct": 0.17
+   },
+   {
+    "country": "Egypt",
+    "issuances": 363,
+    "share_pct": 0.17
+   },
+   {
+    "country": "Ireland",
+    "issuances": 348,
+    "share_pct": 0.16
+   },
+   {
+    "country": "Peru",
+    "issuances": 335,
+    "share_pct": 0.15
+   },
+   {
+    "country": "Argentina",
+    "issuances": 325,
+    "share_pct": 0.15
+   },
+   {
+    "country": "Hong Kong S.A.R.",
+    "issuances": 322,
+    "share_pct": 0.15
+   },
+   {
+    "country": "Kenya",
+    "issuances": 319,
+    "share_pct": 0.15
+   },
+   {
+    "country": "Ecuador",
+    "issuances": 299,
+    "share_pct": 0.14
+   },
+   {
+    "country": "Russia",
+    "issuances": 283,
+    "share_pct": 0.13
+   },
+   {
+    "country": "Israel",
+    "issuances": 255,
+    "share_pct": 0.12
+   },
+   {
+    "country": "Lebanon",
+    "issuances": 234,
+    "share_pct": 0.11
+   },
+   {
+    "country": "South Africa",
+    "issuances": 208,
+    "share_pct": 0.09
+   },
+   {
+    "country": "Netherlands",
+    "issuances": 199,
+    "share_pct": 0.09
+   },
+   {
+    "country": "Poland",
+    "issuances": 195,
+    "share_pct": 0.09
+   },
+   {
+    "country": "Dominican Republic",
+    "issuances": 194,
+    "share_pct": 0.09
+   },
+   {
+    "country": "Venezuela",
+    "issuances": 189,
+    "share_pct": 0.09
+   },
+   {
+    "country": "Portugal",
+    "issuances": 185,
+    "share_pct": 0.08
+   },
+   {
+    "country": "Sri Lanka",
+    "issuances": 182,
+    "share_pct": 0.08
+   },
+   {
+    "country": "Saudi Arabia",
+    "issuances": 181,
+    "share_pct": 0.08
+   },
+   {
+    "country": "New Zealand",
+    "issuances": 166,
+    "share_pct": 0.08
+   },
+   {
+    "country": "Bahamas, The",
+    "issuances": 160,
+    "share_pct": 0.07
+   },
+   {
+    "country": "Serbia",
+    "issuances": 147,
+    "share_pct": 0.07
+   },
+   {
+    "country": "Honduras",
+    "issuances": 145,
+    "share_pct": 0.07
+   },
+   {
+    "country": "Kazakhstan",
+    "issuances": 138,
+    "share_pct": 0.06
+   },
+   {
+    "country": "Costa Rica",
+    "issuances": 136,
+    "share_pct": 0.06
+   },
+   {
+    "country": "Trinidad and Tobago",
+    "issuances": 133,
+    "share_pct": 0.06
+   },
+   {
+    "country": "Ukraine",
+    "issuances": 132,
+    "share_pct": 0.06
+   },
+   {
+    "country": "Zimbabwe",
+    "issuances": 132,
+    "share_pct": 0.06
+   },
+   {
+    "country": "Belgium",
+    "issuances": 125,
+    "share_pct": 0.06
+   },
+   {
+    "country": "Ethiopia",
+    "issuances": 119,
+    "share_pct": 0.05
+   },
+   {
+    "country": "Sweden",
+    "issuances": 119,
+    "share_pct": 0.05
+   },
+   {
+    "country": "Switzerland",
+    "issuances": 103,
+    "share_pct": 0.05
+   },
+   {
+    "country": "Romania",
+    "issuances": 102,
+    "share_pct": 0.05
+   },
+   {
+    "country": "El Salvador",
+    "issuances": 101,
+    "share_pct": 0.05
+   },
+   {
+    "country": "Austria",
+    "issuances": 94,
+    "share_pct": 0.04
+   },
+   {
+    "country": "Canada",
+    "issuances": 80,
+    "share_pct": 0.04
+   },
+   {
+    "country": "Hungary",
+    "issuances": 80,
+    "share_pct": 0.04
+   },
+   {
+    "country": "Morocco",
+    "issuances": 78,
+    "share_pct": 0.04
+   },
+   {
+    "country": "Guatemala",
+    "issuances": 77,
+    "share_pct": 0.04
+   },
+   {
+    "country": "Cameroon",
+    "issuances": 75,
+    "share_pct": 0.03
+   },
+   {
+    "country": "Panama",
+    "issuances": 69,
+    "share_pct": 0.03
+   },
+   {
+    "country": "Czech Republic",
+    "issuances": 66,
+    "share_pct": 0.03
+   },
+   {
+    "country": "Iran",
+    "issuances": 65,
+    "share_pct": 0.03
+   },
+   {
+    "country": "Rwanda",
+    "issuances": 64,
+    "share_pct": 0.03
+   },
+   {
+    "country": "Azerbaijan",
+    "issuances": 63,
+    "share_pct": 0.03
+   },
+   {
+    "country": "Uganda",
+    "issuances": 62,
+    "share_pct": 0.03
+   },
+   {
+    "country": "Bolivia",
+    "issuances": 61,
+    "share_pct": 0.03
+   },
+   {
+    "country": "Sudan",
+    "issuances": 54,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Bulgaria",
+    "issuances": 51,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Mongolia",
+    "issuances": 50,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Norway",
+    "issuances": 50,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Belarus",
+    "issuances": 49,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Croatia",
+    "issuances": 48,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Denmark",
+    "issuances": 47,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Georgia",
+    "issuances": 47,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Uruguay",
+    "issuances": 46,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Tanzania",
+    "issuances": 45,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Finland",
+    "issuances": 43,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Tunisia",
+    "issuances": 41,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Burma",
+    "issuances": 40,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Syria",
+    "issuances": 39,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Albania",
+    "issuances": 37,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Armenia",
+    "issuances": 36,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Palestinian Authority Travel Document",
+    "issuances": 36,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Uzbekistan",
+    "issuances": 36,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Kyrgyzstan",
+    "issuances": 35,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Lithuania",
+    "issuances": 34,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Senegal",
+    "issuances": 34,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Slovakia",
+    "issuances": 34,
+    "share_pct": 0.02
+   },
+   {
+    "country": "Cote d'Ivoire",
+    "issuances": 32,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Nicaragua",
+    "issuances": 32,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Turkmenistan",
+    "issuances": 32,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Iraq",
+    "issuances": 30,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Paraguay",
+    "issuances": 30,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Grenada",
+    "issuances": 29,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Guyana",
+    "issuances": 28,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Libya",
+    "issuances": 28,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Cyprus",
+    "issuances": 27,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Macau S.A.R.",
+    "issuances": 27,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Congo, Democratic Republic of the",
+    "issuances": 25,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Montenegro",
+    "issuances": 25,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Kuwait",
+    "issuances": 24,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Barbados",
+    "issuances": 23,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Mauritius",
+    "issuances": 23,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Belize",
+    "issuances": 22,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Algeria",
+    "issuances": 21,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Bosnia-Herzegovina",
+    "issuances": 21,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Dominica",
+    "issuances": 21,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Kosovo",
+    "issuances": 21,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Latvia",
+    "issuances": 21,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Cambodia",
+    "issuances": 19,
+    "share_pct": 0.01
+   },
+   {
+    "country": "North Macedonia",
+    "issuances": 19,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Saint Lucia",
+    "issuances": 19,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Slovenia",
+    "issuances": 19,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Botswana",
+    "issuances": 18,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Yemen",
+    "issuances": 18,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Zambia",
+    "issuances": 18,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Estonia",
+    "issuances": 17,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Madagascar",
+    "issuances": 17,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Saint Kitts and Nevis",
+    "issuances": 17,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Oman",
+    "issuances": 15,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Bahrain",
+    "issuances": 14,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Malawi",
+    "issuances": 14,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Antigua and Barbuda",
+    "issuances": 13,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Haiti",
+    "issuances": 13,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Iceland",
+    "issuances": 12,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Burkina Faso",
+    "issuances": 11,
+    "share_pct": 0.01
+   },
+   {
+    "country": "Moldova",
+    "issuances": 10,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Afghanistan",
+    "issuances": 9,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Angola",
+    "issuances": 8,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Mali",
+    "issuances": 8,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Bhutan",
+    "issuances": 7,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Mozambique",
+    "issuances": 7,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Benin",
+    "issuances": 6,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Luxembourg",
+    "issuances": 6,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Malta",
+    "issuances": 6,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Namibia",
+    "issuances": 6,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Niger",
+    "issuances": 6,
+    "share_pct": 0.0
+   },
+   {
+    "country": "No Nationality",
+    "issuances": 6,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Tajikistan",
+    "issuances": 6,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Liberia",
+    "issuances": 5,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Burundi",
+    "issuances": 4,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Eswatini",
+    "issuances": 4,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Gabon",
+    "issuances": 4,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Gambia, The",
+    "issuances": 4,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Suriname",
+    "issuances": 4,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Togo",
+    "issuances": 4,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Brunei",
+    "issuances": 3,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Cuba",
+    "issuances": 3,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Fiji",
+    "issuances": 3,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Guinea-Bissau",
+    "issuances": 3,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Andorra",
+    "issuances": 2,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Chad",
+    "issuances": 2,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Congo, Republic of the",
+    "issuances": 2,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Equatorial Guinea",
+    "issuances": 2,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Laos",
+    "issuances": 2,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Lesotho",
+    "issuances": 2,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Liechtenstein",
+    "issuances": 2,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Sierra Leone",
+    "issuances": 2,
+    "share_pct": 0.0
+   },
+   {
+    "country": "South Sudan",
+    "issuances": 2,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Cabo Verde",
+    "issuances": 1,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Guinea",
+    "issuances": 1,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Maldives",
+    "issuances": 1,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Mauritania",
+    "issuances": 1,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Monaco",
+    "issuances": 1,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Papua New Guinea",
+    "issuances": 1,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Qatar",
+    "issuances": 1,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Saint Vincent and the Grenadines",
+    "issuances": 1,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Seychelles",
+    "issuances": 1,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Solomon Islands",
+    "issuances": 1,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Somalia",
+    "issuances": 1,
+    "share_pct": 0.0
+   },
+   {
+    "country": "Tonga",
+    "issuances": 1,
+    "share_pct": 0.0
+   }
+  ]
+ }
+}

@@ -454,7 +454,7 @@ def generate_html(dashboard_data: dict, output_path: str):
     --teal: #2dd4bf; --indigo: #818cf8;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  body { font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
   .header { background: linear-gradient(135deg, #1e3a5f, #0f172a); padding: 2rem; text-align: center; border-bottom: 1px solid var(--border); }
   .header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem; }
   .header .subtitle { color: var(--text-muted); font-size: 0.95rem; }

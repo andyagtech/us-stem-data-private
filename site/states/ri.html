@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rhode Island: who the graduate programmes are for</title>
+<meta name="description" content="Every degree-granting institution in Rhode Island, the research doctorates each awards, how many go to non-residents, and the federal research money that arrives. Built from IPEDS, NSF and NCSES.">
+<meta property="og:title" content="Rhode Island: who the graduate programmes are for">
+<meta property="og:description" content="Every degree-granting institution in Rhode Island, the research doctorates each awards, how many go to non-residents, and the federal research money that arrives. Built from IPEDS, NSF and NCSES.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og/concentration.png">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.9rem; margin: 0 0 .7rem; line-height: 1.2; }
+  .page-head p { color: var(--text-muted); max-width: 72ch; line-height: 1.65; font-size: .95rem; margin: 0 0 .6rem; }
+  .kicker { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin: 0 0 .6rem; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin: 1.6rem 0 0; }
+  .stat { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; background: var(--surface); }
+  .stat .n { font-size: 1.7rem; font-weight: 800; color: var(--hl); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: .82rem; line-height: 1.45; margin: .3rem 0 0; }
+  .stat .s { font-size: .72rem; color: var(--text-muted); margin: .45rem 0 0; }
+  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+  section.block { margin-top: 2.8rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  section.block h2 { font-size: 1.2rem; margin: 0 0 .45rem; }
+  .lede { color: var(--text-muted); max-width: 74ch; line-height: 1.6; font-size: .92rem; margin: 0 0 1rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55; max-width: 82ch; margin: .9rem 0 0; }
+  .table-wrap { overflow-x: auto; }
+  table.t { width: 100%; border-collapse: collapse; font-size: .84rem; margin: .6rem 0 0; }
+  table.t th { text-align: left; font-size: .71rem; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--text-muted); font-weight: 600; padding: .4rem .5rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  table.t td { padding: .42rem .5rem; border-bottom: 1px solid var(--border); }
+  table.t td.num, table.t th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.t td.muted { color: var(--text-muted); }
+  table.t td.share { font-weight: 600; color: var(--hl); }
+  table.t th.share-col { color: var(--hl); }
+  table.t td.share, table.t th.share-col {
+    background: color-mix(in srgb, var(--hl) 7%, transparent); }
+  table.t th.sortable { cursor: pointer; }
+  .scale { display: flex; align-items: center; gap: .7rem; margin: 1rem 0 0; flex-wrap: wrap; }
+  .scale .seg { font-size: .8rem; }
+  .barpair { margin: 1rem 0 0; }
+  .barpair .row { display: grid; grid-template-columns: 11rem 1fr auto; gap: .6rem; align-items: center;
+    padding: .3rem 0; font-size: .86rem; }
+  .barpair .lab { color: var(--text-muted); }
+  /* display:block on both. A <span> is inline by default, so width and
+     height are ignored on it -- every fill rendered at zero width inside a
+     full-width track, which made a 2.9% bar and a 47.4% bar look identical. */
+  .barpair .track { display: block; background: rgba(148,163,184,0.14);
+    border-radius: 3px; height: 16px; overflow: hidden; }
+  .barpair .fill { display: block; height: 100%; border-radius: 3px;
+    background: #3987e5; min-width: 2px; }
+  .barpair .fill.nat { background: rgba(148,163,184,0.55); }
+  .barpair .v { font-variant-numeric: tabular-nums; font-weight: 600; }
+  /* The state bar sits directly above its national counterpart, so each pair
+     is one comparison. A gap after the pair keeps the eye from reading all
+     four as a single ranked list. */
+  .barpair .row.pair-end { margin-bottom: .55rem; }
+  @media (max-width: 620px) { .barpair .row { grid-template-columns: 1fr auto; } .barpair .track { display: none; } }
+  .callout { border: 1px solid var(--border); border-left-width: 3px; border-radius: 10px;
+    padding: 1rem 1.1rem; margin: 1rem 0 0; background: var(--surface); }
+  .callout h3 { margin: 0 0 .35rem; font-size: 1rem; }
+  .callout p { margin: 0 0 .5rem; font-size: .88rem; line-height: 1.55; color: var(--text-muted); }
+</style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+</head>
+<body data-page="state" data-state-name="Rhode Island" data-state-abbr="RI">
+<a class="skip-link" href="#institutions">Skip to the institutions</a>
+<main id="main">
+<div class="wrap">
+
+  <div class="page-head">
+    <p class="kicker">State profile &middot; RI</p>
+    <h1 id="ri-graduate-programmes">Rhode Island</h1>
+    <p>Rhode Island has <strong>12</strong> degree-granting
+    institutions in this data. Between them they award
+    <strong>1,078</strong> research doctorates and
+    <strong>4,392</strong> master&rsquo;s degrees over the
+    window, and take <strong>$373.1m</strong> in federal
+    research and development money.</p>
+    <p>This page counts every institution in the state, including the ones that
+    award no graduate degree at all. Leaving those out would make a state look
+    like its flagship.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">12</div>
+      <p class="l">institutions in the state</p>
+      <p class="s">6 award a research doctorate.
+        0 enrol no graduate students at all.</p></div>
+    <div class="stat"><div class="n">38.6%</div>
+      <p class="l">of research doctorates go to
+        <span data-term="nra">non-residents</span></p>
+      <p class="s">416 of
+        1,078. National figure: 38.9%.</p></div>
+    <div class="stat"><div class="n">16.7%</div>
+      <p class="l">of graduate enrolment is non-resident</p>
+      <p class="s">1,901 of
+        11,377 graduate students.</p></div>
+    <div class="stat"><div class="n">$373.1m</div>
+      <p class="l">federal research and development money</p>
+      <p class="s">Across 7 institutions.
+        $290.6m in total federal obligations.</p></div>
+  </div>
+
+  <section class="block" id="against-the-country">
+    <h2>Where Rhode Island sits</h2>
+    <p class="lede">The non-resident share of research doctorates, against the
+    same figure for the country. That is level with the national figure of 38.9%.</p>
+    <div class="barpair">
+      <div class="row"><span class="lab">Rhode Island</span>
+        <span class="track"><span class="fill" style="width:99.2%"></span></span>
+        <span class="v">38.6%</span></div>
+      <div class="row"><span class="lab">United States</span>
+        <span class="track"><span class="fill nat" style="width:100.0%"></span></span>
+        <span class="v">38.9%</span></div>
+    </div>
+    <p class="note">Rhode Island ranks <strong>30</strong> of 52
+    states on that share, and <strong>37</strong> of 56 on the
+    number of research doctorates it awards. Rank 1 is the highest. Only states
+    that award doctorates are ranked.</p>
+  </section>
+
+  
+  <section class="block" id="levels">
+    <h2>Undergraduate and graduate, side by side</h2>
+    <p class="lede">The same institutions at two levels. Undergraduate is the
+    remainder once graduate enrolment is taken out of the total, and both
+    levels carry their own non-resident count.
+    In Rhode Island the graduate share is <strong>11.9 points higher</strong> than the undergraduate share.</p>
+    <div class="barpair">
+      <div class="row"><span class="lab">Undergraduate</span>
+        <span class="track"><span class="fill" style="width:28.1%"></span></span>
+        <span class="v">4.8%</span></div>
+      <div class="row pair-end"><span class="lab">US undergraduate</span>
+        <span class="track"><span class="fill nat" style="width:21.1%"></span></span>
+        <span class="v">3.6%</span></div>
+      <div class="row"><span class="lab">Graduate</span>
+        <span class="track"><span class="fill" style="width:97.7%"></span></span>
+        <span class="v">16.7%</span></div>
+      <div class="row"><span class="lab">US graduate</span>
+        <span class="track"><span class="fill nat" style="width:100.0%"></span></span>
+        <span class="v">17.1%</span></div>
+    </div>
+    <p class="note" style="margin:0 0 .4rem">Click any column heading to sort.
+    Click it again to reverse. The panel under the table narrows what is shown
+    &mdash; everything is shown until you ask for less.</p>
+    <div class="table-wrap"><table class="t" data-sortable data-controls>
+      <thead><tr><th>Institution</th>
+        <th class="num">Undergraduates</th><th class="num">Non-res</th>
+        <th class="num share-col">Share</th>
+        <th class="num">Graduates</th><th class="num">Non-res</th>
+        <th class="num share-col">Share</th>
+        <th class="num">State funding</th><th class="num">Federal R&amp;D</th></tr></thead>
+      <tbody><tr data-has-grad="1"><td data-sort="university of rhode island">University of Rhode Island</td><td class="num" data-sort="14670">14,670</td><td class="num" data-sort="172">172</td><td class="num share" data-sort="1.2">1.2%</td><td class="num" data-sort="2681">2,681</td><td class="num" data-sort="282">282</td><td class="num share" data-sort="10.5">10.5%</td><td class="num" data-sort="112812387">$112.8m</td><td class="num" data-sort="137462000">$137.5m</td></tr><tr data-has-grad="1"><td data-sort="brown university">Brown University</td><td class="num" data-sort="7741">7,741</td><td class="num" data-sort="1022">1,022</td><td class="num share" data-sort="13.2">13.2%</td><td class="num" data-sort="3775">3,775</td><td class="num" data-sort="1255">1,255</td><td class="num share" data-sort="33.2">33.2%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="374504000">$374.5m</td></tr><tr data-has-grad="1"><td data-sort="rhode island college">Rhode Island College</td><td class="num" data-sort="4785">4,785</td><td class="num" data-sort="11">11</td><td class="num share" data-sort="0.2">0.2%</td><td class="num" data-sort="982">982</td><td class="num" data-sort="1">1</td><td class="num share" data-sort="0.1">0.1%</td><td class="num" data-sort="69430266">$69.4m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="providence college">Providence College</td><td class="num" data-sort="4191">4,191</td><td class="num" data-sort="63">63</td><td class="num share" data-sort="1.5">1.5%</td><td class="num" data-sort="444">444</td><td class="num" data-sort="23">23</td><td class="num share" data-sort="5.2">5.2%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="5924000">$5.9m</td></tr><tr data-has-grad="1"><td data-sort="johnson &amp; wales university-providence">Johnson &amp; Wales University-Providence</td><td class="num" data-sort="3952">3,952</td><td class="num" data-sort="142">142</td><td class="num share" data-sort="3.6">3.6%</td><td class="num" data-sort="420">420</td><td class="num" data-sort="49">49</td><td class="num share" data-sort="11.7">11.7%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="roger williams university">Roger Williams University</td><td class="num" data-sort="4050">4,050</td><td class="num" data-sort="45">45</td><td class="num share" data-sort="1.1">1.1%</td><td class="num" data-sort="294">294</td><td class="num" data-sort="7">7</td><td class="num share" data-sort="2.4">2.4%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="3679000">$3.7m</td></tr><tr data-has-grad="1"><td data-sort="bryant university">Bryant University</td><td class="num" data-sort="3240">3,240</td><td class="num" data-sort="176">176</td><td class="num share" data-sort="5.4">5.4%</td><td class="num" data-sort="352">352</td><td class="num" data-sort="34">34</td><td class="num share" data-sort="9.7">9.7%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="459000">$459,000</td></tr><tr data-has-grad="1"><td data-sort="salve regina university">Salve Regina University</td><td class="num" data-sort="2117">2,117</td><td class="num" data-sort="70">70</td><td class="num share" data-sort="3.3">3.3%</td><td class="num" data-sort="719">719</td><td class="num" data-sort="5">5</td><td class="num share" data-sort="0.7">0.7%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="johnson &amp; wales university-online">Johnson &amp; Wales University-Online</td><td class="num" data-sort="1990">1,990</td><td class="num" data-sort="15">15</td><td class="num share" data-sort="0.8">0.8%</td><td class="num" data-sort="607">607</td><td class="num" data-sort="4">4</td><td class="num share" data-sort="0.7">0.7%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="rhode island school of design">Rhode Island School of Design</td><td class="num" data-sort="2092">2,092</td><td class="num" data-sort="701">701</td><td class="num share" data-sort="33.5">33.5%</td><td class="num" data-sort="448">448</td><td class="num" data-sort="229">229</td><td class="num share" data-sort="51.1">51.1%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="5130000">$5.1m</td></tr><tr data-has-grad="1"><td data-sort="new england institute of technology">New England Institute of Technology</td><td class="num" data-sort="1712">1,712</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="138">138</td><td class="num" data-sort="5">5</td><td class="num share" data-sort="3.6">3.6%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="roger williams university school of law">Roger Williams University School of Law</td><td class="num" data-sort="0">0</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="517">517</td><td class="num" data-sort="7">7</td><td class="num share" data-sort="1.4">1.4%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr></tbody></table></div>
+    <p class="lede">The two levels diverge most at <strong>Brown University</strong>: <strong>13.2%</strong> of its 7,741 undergraduates and <strong>33.2%</strong> of its 3,775 graduate students. These are different admissions systems with different applicant pools, different money and different reasons to say yes, and a single state figure hides both.</p>
+    <p class="note">2,417 of 50,540 undergraduates and 1,901 of
+    11,377 graduate students.
+    </p>
+  </section>
+
+
+
+  
+  <section class="block" id="blend">
+    <h2>What the state figure is an average of</h2>
+    <p class="lede">The largest graduate enrolments in Rhode Island, each with its
+    own non-resident share. Nothing here is excluded from the figures above.
+    The point is to show what they are made of.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Graduate students</th>
+        <th class="num">Share of the state</th>
+        <th class="num">Non-resident</th></tr></thead>
+      <tbody><tr><td>Brown University</td><td class="num">3,775</td><td class="num muted">33.2%</td><td class="num share">33.2%</td></tr><tr><td>University of Rhode Island</td><td class="num">2,681</td><td class="num muted">23.6%</td><td class="num share">10.5%</td></tr><tr><td>Rhode Island College</td><td class="num">982</td><td class="num muted">8.6%</td><td class="num share">0.1%</td></tr><tr><td>Salve Regina University</td><td class="num">719</td><td class="num muted">6.3%</td><td class="num share">0.7%</td></tr><tr><td>Johnson &amp; Wales University-Online</td><td class="num">607</td><td class="num muted">5.3%</td><td class="num share">0.7%</td></tr><tr><td>Roger Williams University School of Law</td><td class="num">517</td><td class="num muted">4.5%</td><td class="num share">1.4%</td></tr></tbody></table></div>
+    <div class="callout"><h3>One institution is moving this figure</h3><p><strong>Brown University</strong> holds <strong>33.2%</strong> of the graduate enrolment in Rhode Island and is <strong>33.2%</strong> non-resident. Take it out and the rest of the state is <strong>8.5%</strong>, against 16.7% with it in. A state average is not a description of its universities when one of them is most of the state.</p></div>
+  </section>
+
+
+  
+  <section class="block" id="training">
+    <h2>Practical training, and the other student visas</h2>
+    <p class="lede">A student visa does not end at graduation. Optional
+    Practical Training lets a graduate work on the same visa, and a STEM degree
+    adds a further twenty-four months. It applies at both levels, so the
+    undergraduate share above is not the end of the story.</p>
+    <p class="lede"><strong>No institution in Rhode Island appears in
+    SEVP&rsquo;s published lists</strong>, which cover the top 100 and top 200
+    schools for OPT and STEM OPT. There is therefore no published practical
+    training figure for this state. That is a fact about what the agency
+    releases, not a statement that no one here is on OPT.</p>
+    <p class="note"><strong>J-1 physicians.</strong> Rhode Island is not in the published top twelve states for J-1 physicians in graduate medical education, which is the only state breakdown ECFMG publishes. That is an absence from a short list, not a zero.</p>
+  </section>
+
+
+  
+  <section class="block" id="residency">
+    <h2>In-state against out-of-state</h2>
+    <p class="lede">Public four-year institutions, FY2024. Every foreign
+    student pays the out-of-state rate, so this is the price attached to the
+    non-resident column everywhere else on this page.</p>
+    <p class="lede">An out-of-state student in Rhode Island is worth <strong>2.16&times;</strong> an in-state one to the institution. They are <strong>44.0%</strong> of the students and <strong>59.2%</strong> of the tuition revenue.</p>
+    <div class="table-wrap"><table class="t">
+      <thead><tr><th>Measure</th><th class="num">In-state</th>
+        <th class="num">Out-of-state</th></tr></thead>
+      <tbody><tr><td>Share of students (FTE)</td><td class="num">56.0%</td><td class="num">44.0%</td></tr><tr><td>Net tuition and fees collected per student</td><td class="num">$8,679</td><td class="num share">$18,721</td></tr><tr><td>Share of tuition revenue</td><td class="num">34.9%</td><td class="num share">59.2%</td></tr></tbody></table></div>
+    <p class="note"><strong>Out-of-state is not the same as foreign.</strong>
+    SHEEO counts international students and domestic students from other states
+    in one column. This shows what a non-resident pays, never how many of them
+    are foreign. Figures are <strong>net</strong> tuition and fee revenue per
+    full-time-equivalent student &mdash; what the institution actually
+    collected after its own aid, not the published price. Public four-year
+    institutions only; medical FTE excluded.
+    </p>
+  </section>
+
+
+  <section class="block" id="institutions">
+    <h2>Every institution</h2>
+    <p class="lede">Largest first by total enrolment. A dash means the
+    institution awards none of that degree, or that no federal research money
+    was matched to it.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th>City</th><th>Control</th>
+        <th class="num">Enrolled</th><th class="num">Graduate</th>
+        <th class="num">Master&rsquo;s</th><th class="num">Non-res</th>
+        <th class="num">Doctorates</th><th class="num">Non-res</th>
+        <th class="num">Federal R&amp;D</th></tr></thead>
+      <tbody><tr><td>University of Rhode Island</td><td class="muted">Kingston</td><td class="muted">public</td><td class="num" data-sort="17351">17,351</td><td class="num" data-sort="2681">2,681</td><td class="num">710</td><td class="num share">118</td><td class="num">485</td><td class="num share">139</td><td class="num" data-sort="137462000">$137.5m</td></tr><tr><td>Brown University</td><td class="muted">Providence</td><td class="muted">private nonprofit</td><td class="num" data-sort="11516">11,516</td><td class="num" data-sort="3775">3,775</td><td class="num">2,682</td><td class="num share">1,432</td><td class="num">1,198</td><td class="num share">483</td><td class="num" data-sort="374504000">$374.5m</td></tr><tr><td>Rhode Island College</td><td class="muted">Providence</td><td class="muted">public</td><td class="num" data-sort="5767">5,767</td><td class="num" data-sort="982">982</td><td class="num">92</td><td class="num share">0</td><td class="num">25</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Providence College</td><td class="muted">Providence</td><td class="muted">private nonprofit</td><td class="num" data-sort="4635">4,635</td><td class="num" data-sort="444">444</td><td class="num">34</td><td class="num share">9</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="5924000">$5.9m</td></tr><tr><td>Johnson &amp; Wales University-Providence</td><td class="muted">Providence</td><td class="muted">private nonprofit</td><td class="num" data-sort="4372">4,372</td><td class="num" data-sort="420">420</td><td class="num">76</td><td class="num share">51</td><td class="num">68</td><td class="num share">1</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Roger Williams University</td><td class="muted">Bristol</td><td class="muted">private nonprofit</td><td class="num" data-sort="4344">4,344</td><td class="num" data-sort="294">294</td><td class="num">159</td><td class="num share">4</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="3679000">$3.7m</td></tr><tr><td>Bryant University</td><td class="muted">Smithfield</td><td class="muted">private nonprofit</td><td class="num" data-sort="3592">3,592</td><td class="num" data-sort="352">352</td><td class="num">26</td><td class="num share">14</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="459000">$459,000</td></tr><tr><td>Salve Regina University</td><td class="muted">Newport</td><td class="muted">private nonprofit</td><td class="num" data-sort="2836">2,836</td><td class="num" data-sort="719">719</td><td class="num">154</td><td class="num share">3</td><td class="num">74</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Johnson &amp; Wales University-Online</td><td class="muted">Providence</td><td class="muted">private nonprofit</td><td class="num" data-sort="2597">2,597</td><td class="num" data-sort="607">607</td><td class="num">85</td><td class="num share">0</td><td class="num">47</td><td class="num share">2</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Rhode Island School of Design</td><td class="muted">Providence</td><td class="muted">private nonprofit</td><td class="num" data-sort="2540">2,540</td><td class="num" data-sort="448">448</td><td class="num">332</td><td class="num share">200</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="5130000">$5.1m</td></tr><tr><td>New England Institute of Technology</td><td class="muted">East Greenwich</td><td class="muted">private nonprofit</td><td class="num" data-sort="1850">1,850</td><td class="num" data-sort="138">138</td><td class="num">42</td><td class="num share">8</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Roger Williams University School of Law</td><td class="muted">Bristol</td><td class="muted">private nonprofit</td><td class="num" data-sort="517">517</td><td class="num" data-sort="517">517</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr></tbody></table></div>
+    <p class="note">Degrees are pooled over
+    2021&ndash;2025. Enrolment
+    and federal money are the most recent year in the file. &ldquo;Non-res&rdquo;
+    means a student here on a temporary visa, almost always F-1 or J-1. A green
+    card holder is not counted in it.</p>
+  </section>
+
+  <section class="block" id="concentration">
+    <h2>How few institutions this is</h2>
+    <p class="lede">Of the 12 institutions in
+    Rhode Island, <strong>6</strong> award a research doctorate at
+    all, and the largest two award 88.7% of them.
+    A state&rsquo;s graduate pipeline is a much smaller thing than its list of
+    colleges.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Research doctorates</th>
+        <th class="num">Non-resident</th><th class="num share-col">Share</th>
+        <th class="num">Share of the state&rsquo;s doctorates</th></tr></thead>
+      <tbody><tr><td>Brown University</td><td class="num">1,198</td><td class="num">483</td><td class="num share">40.3%</td><td class="num muted">63.2%</td></tr><tr><td>University of Rhode Island</td><td class="num">485</td><td class="num">139</td><td class="num share">28.7%</td><td class="num muted">25.6%</td></tr><tr><td>Salve Regina University</td><td class="num">74</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">3.9%</td></tr><tr><td>Johnson &amp; Wales University-Providence</td><td class="num">68</td><td class="num">1</td><td class="num share">1.5%</td><td class="num muted">3.6%</td></tr><tr><td>Johnson &amp; Wales University-Online</td><td class="num">47</td><td class="num">2</td><td class="num share">4.3%</td><td class="num muted">2.5%</td></tr><tr><td>Rhode Island College</td><td class="num">25</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">1.3%</td></tr></tbody></table></div>
+  </section>
+  <section class="block" id="survey">
+    <h2>The foreign share of graduate students, where the survey reaches</h2>
+    <p class="lede">The NSF Survey of Graduate Students and Postdoctorates asks
+    institutions directly, and it covers 4 of the
+    12 institutions in Rhode Island. It is a different
+    measure from the degree counts above: enrolled students rather than degrees
+    awarded.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Doctoral students foreign</th>
+        <th class="num">Master&rsquo;s students foreign</th></tr></thead>
+      <tbody><tr><td>University of Rhode Island</td><td class="num share">39.9%</td><td class="num">12.5%</td></tr><tr><td>Brown University</td><td class="num share">39.0%</td><td class="num">48.6%</td></tr><tr><td>Rhode Island College</td><td class="num share">&mdash;%</td><td class="num">0.0%</td></tr><tr><td>Roger Williams University</td><td class="num share">&mdash;%</td><td class="num">1.9%</td></tr></tbody></table></div>
+    <div class="callout">
+      <h3>University of Rhode Island</h3>
+      <p>The highest foreign share of doctoral students in the state, at
+      <strong>39.9%</strong>. It is not the largest institution here
+      and it is not the one with the most federal money. Size and share are
+      different questions, and a state page that ranked only by size would not
+      show this.</p>
+    </div>
+  </section>
+  <section class="block" id="state-money">
+    <h2>What the state itself puts in</h2>
+    <p class="lede">State appropriations per full-time-equivalent student, from
+    the SHEEO finance survey, against the change in the foreign share of
+    graduate enrolment over the same window.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Measure</th><th class="num">First year</th>
+        <th class="num">Last year</th><th class="num">Change</th></tr></thead>
+      <tbody>
+        <tr><td>State appropriations per FTE student</td>
+          <td class="num">$6,584</td>
+          <td class="num">$8,341</td>
+          <td class="num share">+26.7%</td></tr>
+        <tr><td>Foreign share of graduate enrolment</td>
+          <td class="num">5.0%</td>
+          <td class="num">7.7%</td>
+          <td class="num share">+2.7 pts</td></tr>
+      </tbody></table></div>
+    <p class="note">These two rows move for their own reasons. Nothing here
+    shows that one caused the other, and the page does not say it did.</p>
+  </section>
+  <section class="block" id="not-published">
+    <h2>What is not published for a state this size</h2>
+    <p class="lede">Two of the measures this site uses elsewhere do not exist
+    at this scale, and the reason is the same in both cases: the agency
+    publishes a ranked extract rather than the whole file.</p>
+    <ul class="lede">
+      <li><strong>Practical training is not published here.</strong> SEVP
+      releases the top 100 and top 200 schools for OPT and STEM OPT, not every
+      school. An institution outside those lists has no published figure at
+      all. Its absence is a fact about the list, not about the institution, and
+      it must never be read as a zero.</li>
+      <li><strong>Student visa counts are not published by state.</strong> DHS
+      reports SEVIS records nationally and names a few states per region in its
+      commentary. For most states it publishes a percentage change and no
+      count, so the number of foreign students physically in a state cannot be
+      read off the federal release.</li>
+      <li><strong>Enrolment is the measure that does exist.</strong> IPEDS asks
+      every institution directly, which is why this page is built from it. It
+      counts students enrolled, not visas issued, and the two are different
+      questions.</li>
+    </ul>
+  </section>
+
+  <section class="block" id="method">
+    <h2>Method and limits</h2>
+    <ul class="lede">
+      <li><strong>Non-resident means here on a temporary visa.</strong> IPEDS
+      defines it as a person &ldquo;who is not a citizen or national of the
+      United States and who is in this country on a visa or temporary basis and
+      does not have the right to remain indefinitely.&rdquo; A green card holder
+      is therefore never counted here. Neither is a refugee or an asylee. Those
+      students are reported in the race and ethnicity categories alongside
+      citizens. For students the category is overwhelmingly F-1 and J-1.</li>
+      <li><strong>It is not ethnicity and not country of origin.</strong> A
+      US-born citizen of any background is never non-resident. The status is
+      recorded when the student enrols, for the enrolment figures, and when the
+      degree is awarded, for the degree counts. These files cannot be split any
+      other way.</li>
+      <li><strong>Degrees are pooled</strong> over
+      2021&ndash;2025, because a
+      single year at a small institution moves on one student.</li>
+      <li><strong>Enrolment and awards are different measures</strong> and will
+      not agree. One counts people on a given day; the other counts degrees
+      conferred over five years.</li>
+      <li><strong>Federal money is matched to a campus</strong>, and a system
+      that reports centrally can carry money its branches spend.</li>
+      <li><strong>This page shows composition, not displacement.</strong> It
+      records who received the degrees. It does not show that anyone was kept
+      out, and nothing here should be read that way.</li>
+    </ul>
+    <p class="note">Built by <code>scripts/build_state_pages.py</code> from
+    <a href="/data/institution_profiles.json">institution_profiles.json</a>,
+    <a href="/data/state_funding_and_enrolment.json">state_funding_and_enrolment.json</a>
+    and <a href="/data/university_distribution.json">university_distribution.json</a>.
+    Compare the country on <a href="/overview">the national overview</a>.</p>
+  </section>
+
+</div>
+</main>
+<script src="/analytics-beacon.js" defer></script>
+<script src="/states.js" defer></script>
+<script src="/anchors.js" defer></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

@@ -77,6 +77,108 @@
       txt(def.positions_not_people || '');
   }
 
+
+  /* ----------------------------------------------------------- thresholds */
+  /* The reader sets the four cuts and the count follows. The point is not
+     interactivity for its own sake: the 50% thresholds are a convention, and a
+     reader who cannot move them cannot tell a robust cut from an arbitrary
+     one. The distribution strip underneath answers that directly -- a cut
+     through a crowded band is fragile, a cut through an empty one is not. */
+  function renderThresholds(d) {
+    var cands = d.threshold_candidates || [];
+    var dist = d.threshold_distribution || {};
+    if (!cands.length) return;
+    var host = $('thresholds');
+    host.hidden = false;
+
+    var nat = d.national || {};
+    var DEFAULTS = { filings: 50, dependent: 50, secondary: 50, naics: true };
+    var el = {
+      filings: $('in-filings'), dependent: $('in-dependent'),
+      secondary: $('in-secondary'), naics: $('in-naics')
+    };
+
+    function bands(field, cut, hostId, label) {
+      var b = dist[field] || {};
+      // Sorted by the band's lower bound, not by insertion order. The JSON
+      // happens to list "100" first, so the axis read 100, 0, 10, 20 ... 90
+      // and the distribution it was drawing was unreadable.
+      var keys = Object.keys(b).sort(function (x, y) {
+        return parseInt(x, 10) - parseInt(y, 10);
+      });
+      var max = keys.reduce(function (m, k) { return Math.max(m, b[k]); }, 0) || 1;
+      var inBand = cut >= 100 ? '100' : (Math.floor(cut / 10) * 10) + '-' +
+                   (Math.floor(cut / 10) * 10 + 9);
+      $(hostId).innerHTML = '<span class="cap">' + label + '</span>' +
+        '<span class="row">' +
+        keys.map(function (k) {
+          var h = Math.round(100 * b[k] / max);
+          return '<span class="b' + (k === inBand ? ' on' : '') +
+            '" style="height:' + Math.max(h, 3) + '%" title="' + k + '%: ' +
+            b[k].toLocaleString('en-US') + ' firms"><span class="t">' +
+            (k === '100' ? '100' : k.split('-')[0]) + '</span></span>';
+        }).join('') + '</span>';
+    }
+
+    function apply() {
+      var f = +el.filings.value, dep = +el.dependent.value,
+          sec = +el.secondary.value, sup = el.naics.checked;
+      $('out-filings').textContent = f.toLocaleString('en-US');
+      $('out-dependent').textContent = dep + '%';
+      $('out-secondary').textContent = sec + '%';
+
+      var hit = cands.filter(function (r) {
+        if (r.filings < f) return false;
+        if (sup && !r.kind) return false;
+        if ((r.dependent_pct || 0) < dep) return false;
+        if ((r.secondary_pct || 0) < sec) return false;
+        return true;
+      });
+      var fil = hit.reduce(function (a, r) { return a + r.filings; }, 0);
+      var pos = hit.reduce(function (a, r) { return a + r.positions; }, 0);
+      var shareF = nat.certified_filings ? 100 * fil / nat.certified_filings : 0;
+      var shareP = nat.positions ? 100 * pos / nat.positions : 0;
+
+      $('tout').innerHTML = [
+        [hit.length.toLocaleString('en-US'), 'firms meet this test'],
+        [shareF.toFixed(1) + '%', 'of all certified applications, ' +
+          fil.toLocaleString('en-US') + ' of them'],
+        [shareP.toFixed(1) + '%', 'of all positions, ' +
+          pos.toLocaleString('en-US') + ' of them']
+      ].map(function (r) {
+        return '<div><p class="n">' + r[0] + '</p><p class="l">' + r[1] + '</p></div>';
+      }).join('');
+
+      bands('dependent_pct', dep, 'dist-dependent', 'Share H-1B dependent');
+      bands('secondary_pct', sec, 'dist-secondary', 'Share placed at a client');
+
+      var isDefault = f === DEFAULTS.filings && dep === DEFAULTS.dependent &&
+        sec === DEFAULTS.secondary && el.naics.checked === DEFAULTS.naics;
+      $('tnote').innerHTML =
+        (isDefault ? 'These are the site&rsquo;s own thresholds. ' :
+          'You have moved the thresholds; the site&rsquo;s own test is ' +
+          DEFAULTS.filings + ' applications, ' + DEFAULTS.dependent +
+          '% dependent, ' + DEFAULTS.secondary + '% placed, supply industry only. ') +
+        'The pool is every employer with at least ' +
+        (dist.candidate_floor_filings || 25) + ' certified applications &mdash; ' +
+        (dist.candidates || cands.length).toLocaleString('en-US') + ' firms. ' +
+        'Moving a cut changes who is counted, never what any employer reported.';
+    }
+
+    ['filings', 'dependent', 'secondary'].forEach(function (k) {
+      el[k].addEventListener('input', apply);
+    });
+    el.naics.addEventListener('change', apply);
+    $('treset').addEventListener('click', function () {
+      el.filings.value = DEFAULTS.filings;
+      el.dependent.value = DEFAULTS.dependent;
+      el.secondary.value = DEFAULTS.secondary;
+      el.naics.checked = DEFAULTS.naics;
+      apply();
+    });
+    apply();
+  }
+
   /* ---------------------------------------------------------------- table */
   var COLS = [
     { k: 'employer', t: 'Employer', num: false },
@@ -343,6 +445,7 @@
     var d = res[0], staff = res[1];
     renderStats(d, staff);
     renderTest(d);
+    renderThresholds(d);
     renderTable(d);
     renderGaps(d);
     renderTrend(d);

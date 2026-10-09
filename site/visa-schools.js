@@ -313,17 +313,17 @@
            '%</strong>. F-1 issuance fell ' + Math.abs(w.h1b_tightening_fy2015_2019.f1_issuance_change_pct) +
            '%, while STEM OPT rose <strong>' + w.h1b_tightening_fy2015_2019.stem_opt_change_pct +
            '%</strong> and CPT reached ' + n(w.h1b_tightening_fy2015_2019.cpt_2018) + ' in 2018.' },
-      { h: 'Entry suspended, FY2019&ndash;2021',
+      { h: 'The pandemic, FY2019&ndash;2021 &mdash; an event, not a trend',
         p: 'H-1B issuance fell <strong>' + Math.abs(w.entry_suspension_fy2019_2021.h1b_issuance_change_pct) +
            '%</strong> and L-1 ' + Math.abs(w.entry_suspension_fy2019_2021.l1_issuance_change_pct) +
            '%. OPT plus STEM OPT, which need no visa, fell only ' +
            Math.abs(w.entry_suspension_fy2019_2021.opt_plus_stem_opt_change_pct) + '% — ' +
-           n(w.entry_suspension_fy2019_2021.opt_plus_stem_opt_2021) + ' people still working.' },
+           n(w.entry_suspension_fy2019_2021.opt_plus_stem_opt_2021) + ' authorisations in 2021. Consulates were shut for much of that period, which is why issuance fell so far. This window is recorded because it happened, not as evidence of anything: one closed year carries no trend. The long comparison above is the one to read. These are also authorisations rather than people, and the two series overlap by design.' },
       { h: 'FY2023&ndash;2024',
         p: 'H-1B issuance fell <strong>' + Math.abs(w.fy2023_2024.h1b_issuance_change_pct) +
            '%</strong>. In the same year STEM OPT rose <strong>' + w.fy2023_2024.stem_opt_change_pct +
            '%</strong>, OPT rose ' + w.fy2023_2024.opt_change_pct + '%, and O-1 issuance hit ' +
-           n(w.fy2023_2024.o1_2024) + (w.fy2023_2024.o1_record ? ', its highest on record' : '') + '.' }
+           n(w.fy2023_2024.o1_2024) + (w.fy2023_2024.o1_record ? ', the highest in this series, which starts in 2007' : '') + '.' }
     ].map(function (c) { return '<div class="window"><h3>' + c.h + '</h3><p>' + c.p + '</p></div>'; }).join('');
 
     var head = '<thead><tr><th>Year</th>' + SERIES.map(function (s) {
@@ -336,11 +336,42 @@
         '<td class="num">' + (dr[y] == null ? '—' : dr[y] + '%') + '</td></tr>';
     }).join('') + '</tbody>';
 
+    // The levels comparison: no lag to argue about and nothing inferred.
+    var rs = visaData.route_scale || {};
+    if (rs.years && rs.years.length && $('route-scale')) {
+      var show = rs.years.filter(function (r) {
+        return ['2007', '2014', '2017', '2019', '2021', '2024'].indexOf(r.year) >= 0;
+      });
+      $('route-scale').innerHTML =
+        '<thead><tr><th>Fiscal year</th>' +
+        '<th class="num">Students holding OPT</th>' +
+        '<th class="num">H-1B visas issued</th>' +
+        '<th class="num">Student route as a multiple</th></tr></thead><tbody>' +
+        show.map(function (r) {
+          var big = r.ratio > 1;
+          return '<tr><td>' + esc(r.year) + '</td>' +
+            '<td class="num">' + n(r.student_work) + '</td>' +
+            '<td class="num">' + n(r.h1b_issued) + '</td>' +
+            '<td class="num"' + (big ? ' style="font-weight:700;color:var(--hl)"' : '') +
+            '>' + r.ratio.toFixed(2) + '\u00d7</td></tr>';
+        }).join('') + '</tbody>';
+      var sr = visaData.stem_opt_rule || {};
+      $('route-scale-note').innerHTML =
+        'In ' + esc(rs.first.year) + ' the student route was ' +
+        rs.first.ratio.toFixed(2) + ' times the size of the H-1B inflow. In ' +
+        esc(rs.latest.year) + ' it was <strong>' + rs.latest.ratio.toFixed(2) +
+        '</strong> times, having been larger in ' + rs.years_student_route_larger +
+        ' of ' + rs.years_counted + ' years. ' + esc(rs.note) +
+        (sr.change_pct_2015_2019 ? ' The STEM extension grew <strong>' +
+          sr.change_pct_2015_2019 + '%</strong> between 2015 and 2019.<sup>*</sup> ' +
+          '<span class="muted">* ' + esc(sr.note) + '</span>' : '');
+    }
+
     var oc = visaData.opt_cost || {};
     if (oc.employer_share_pct) {
       $('opt-cost-lede').innerHTML =
-        'Two things make an OPT graduate cheaper than the American graduate beside them. ' +
-        'Federal law writes both. ' + esc(oc.rule);
+        'Three things make an OPT graduate cheaper and less mobile than the American ' +
+        'Federal law writes the first two. ' + esc(oc.rule);
       var empl = Math.round(1000 * oc.employer_share_pct);       // 7.65% of $100,000
       var both = Math.round(1000 * oc.total_payroll_tax_pct);    // 15.3% of $100,000
       $('opt-cost').innerHTML = [

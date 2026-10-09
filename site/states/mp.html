@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Northern Mariana Islands: who the graduate programmes are for</title>
+<meta name="description" content="Every degree-granting institution in Northern Mariana Islands, the research doctorates each awards, how many go to non-residents, and the federal research money that arrives. Built from IPEDS, NSF and NCSES.">
+<meta property="og:title" content="Northern Mariana Islands: who the graduate programmes are for">
+<meta property="og:description" content="Every degree-granting institution in Northern Mariana Islands, the research doctorates each awards, how many go to non-residents, and the federal research money that arrives. Built from IPEDS, NSF and NCSES.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og/concentration.png">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.9rem; margin: 0 0 .7rem; line-height: 1.2; }
+  .page-head p { color: var(--text-muted); max-width: 72ch; line-height: 1.65; font-size: .95rem; margin: 0 0 .6rem; }
+  .kicker { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin: 0 0 .6rem; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin: 1.6rem 0 0; }
+  .stat { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; background: var(--surface); }
+  .stat .n { font-size: 1.7rem; font-weight: 800; color: var(--hl); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: .82rem; line-height: 1.45; margin: .3rem 0 0; }
+  .stat .s { font-size: .72rem; color: var(--text-muted); margin: .45rem 0 0; }
+  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+  section.block { margin-top: 2.8rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  section.block h2 { font-size: 1.2rem; margin: 0 0 .45rem; }
+  .lede { color: var(--text-muted); max-width: 74ch; line-height: 1.6; font-size: .92rem; margin: 0 0 1rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55; max-width: 82ch; margin: .9rem 0 0; }
+  .table-wrap { overflow-x: auto; }
+  table.t { width: 100%; border-collapse: collapse; font-size: .84rem; margin: .6rem 0 0; }
+  table.t th { text-align: left; font-size: .71rem; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--text-muted); font-weight: 600; padding: .4rem .5rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  table.t td { padding: .42rem .5rem; border-bottom: 1px solid var(--border); }
+  table.t td.num, table.t th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.t td.muted { color: var(--text-muted); }
+  table.t td.share { font-weight: 600; color: var(--hl); }
+  table.t th.share-col { color: var(--hl); }
+  table.t td.share, table.t th.share-col {
+    background: color-mix(in srgb, var(--hl) 7%, transparent); }
+  table.t th.sortable { cursor: pointer; }
+  .scale { display: flex; align-items: center; gap: .7rem; margin: 1rem 0 0; flex-wrap: wrap; }
+  .scale .seg { font-size: .8rem; }
+  .barpair { margin: 1rem 0 0; }
+  .barpair .row { display: grid; grid-template-columns: 11rem 1fr auto; gap: .6rem; align-items: center;
+    padding: .3rem 0; font-size: .86rem; }
+  .barpair .lab { color: var(--text-muted); }
+  /* display:block on both. A <span> is inline by default, so width and
+     height are ignored on it -- every fill rendered at zero width inside a
+     full-width track, which made a 2.9% bar and a 47.4% bar look identical. */
+  .barpair .track { display: block; background: rgba(148,163,184,0.14);
+    border-radius: 3px; height: 16px; overflow: hidden; }
+  .barpair .fill { display: block; height: 100%; border-radius: 3px;
+    background: #3987e5; min-width: 2px; }
+  .barpair .fill.nat { background: rgba(148,163,184,0.55); }
+  .barpair .v { font-variant-numeric: tabular-nums; font-weight: 600; }
+  /* The state bar sits directly above its national counterpart, so each pair
+     is one comparison. A gap after the pair keeps the eye from reading all
+     four as a single ranked list. */
+  .barpair .row.pair-end { margin-bottom: .55rem; }
+  @media (max-width: 620px) { .barpair .row { grid-template-columns: 1fr auto; } .barpair .track { display: none; } }
+  .callout { border: 1px solid var(--border); border-left-width: 3px; border-radius: 10px;
+    padding: 1rem 1.1rem; margin: 1rem 0 0; background: var(--surface); }
+  .callout h3 { margin: 0 0 .35rem; font-size: 1rem; }
+  .callout p { margin: 0 0 .5rem; font-size: .88rem; line-height: 1.55; color: var(--text-muted); }
+</style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+</head>
+<body data-page="state" data-state-name="Northern Mariana Islands" data-state-abbr="MP">
+<a class="skip-link" href="#institutions">Skip to the institutions</a>
+<main id="main">
+<div class="wrap">
+
+  <div class="page-head">
+    <p class="kicker">State profile &middot; MP</p>
+    <h1 id="mp-graduate-programmes">Northern Mariana Islands</h1>
+    <p>Northern Mariana Islands has <strong>1</strong> degree-granting
+    institutions in this data. Between them they award
+    <strong>0</strong> research doctorates and
+    <strong>0</strong> master&rsquo;s degrees over the
+    window, and take <strong>$0</strong> in federal
+    research and development money.</p>
+    <p>This page counts every institution in the state, including the ones that
+    award no graduate degree at all. Leaving those out would make a state look
+    like its flagship.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">1</div>
+      <p class="l">institutions in the state</p>
+      <p class="s">0 award a research doctorate.
+        1 enrol no graduate students at all.</p></div>
+    <div class="stat"><div class="n">n/a</div>
+      <p class="l">of research doctorates go to
+        <span data-term="nra">non-residents</span></p>
+      <p class="s">0 of
+        0. National figure: 38.9%.</p></div>
+    <div class="stat"><div class="n">None%</div>
+      <p class="l">of graduate enrolment is non-resident</p>
+      <p class="s">0 of
+        0 graduate students.</p></div>
+    <div class="stat"><div class="n">$0</div>
+      <p class="l">federal research and development money</p>
+      <p class="s">Across 1 institutions.
+        $13.5m in total federal obligations.</p></div>
+  </div>
+
+  <section class="block" id="against-the-country">
+    <h2>Where Northern Mariana Islands sits</h2>
+    <p class="lede">The non-resident share of research doctorates, against the
+    same figure for the country. This state awards too few research doctorates for a share to mean anything.</p>
+    <div class="barpair">
+      <div class="row"><span class="lab">Northern Mariana Islands</span>
+        <span class="track"><span class="fill" style="width:0.0%"></span></span>
+        <span class="v">n/a</span></div>
+      <div class="row"><span class="lab">United States</span>
+        <span class="track"><span class="fill nat" style="width:100.0%"></span></span>
+        <span class="v">38.9%</span></div>
+    </div>
+    <p class="note">Northern Mariana Islands ranks <strong>0</strong> of 52
+    states on that share, and <strong>56</strong> of 56 on the
+    number of research doctorates it awards. Rank 1 is the highest. Only states
+    that award doctorates are ranked.</p>
+  </section>
+
+  
+  <section class="block" id="levels">
+    <h2>Undergraduate and graduate, side by side</h2>
+    <p class="lede">The same institutions at two levels. Undergraduate is the
+    remainder once graduate enrolment is taken out of the total, and both
+    levels carry their own non-resident count.
+    In Northern Mariana Islands the undergraduate share is the higher of the two.</p>
+    <div class="barpair">
+      <div class="row"><span class="lab">Undergraduate</span>
+        <span class="track"><span class="fill" style="width:49.1%"></span></span>
+        <span class="v">8.4%</span></div>
+      <div class="row pair-end"><span class="lab">US undergraduate</span>
+        <span class="track"><span class="fill nat" style="width:21.1%"></span></span>
+        <span class="v">3.6%</span></div>
+      <div class="row"><span class="lab">Graduate</span>
+        <span class="track"><span class="fill" style="width:0.0%"></span></span>
+        <span class="v">None%</span></div>
+      <div class="row"><span class="lab">US graduate</span>
+        <span class="track"><span class="fill nat" style="width:100.0%"></span></span>
+        <span class="v">17.1%</span></div>
+    </div>
+    <p class="note" style="margin:0 0 .4rem">Click any column heading to sort.
+    Click it again to reverse. The panel under the table narrows what is shown
+    &mdash; everything is shown until you ask for less.</p>
+    <div class="table-wrap"><table class="t" data-sortable data-controls>
+      <thead><tr><th>Institution</th>
+        <th class="num">Undergraduates</th><th class="num">Non-res</th>
+        <th class="num share-col">Share</th>
+        <th class="num">Graduates</th><th class="num">Non-res</th>
+        <th class="num share-col">Share</th>
+        <th class="num">State funding</th><th class="num">Federal R&amp;D</th></tr></thead>
+      <tbody><tr data-has-grad="0"><td data-sort="northern marianas college">Northern Marianas College</td><td class="num" data-sort="1253">1,253</td><td class="num" data-sort="105">105</td><td class="num share" data-sort="8.4">8.4%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="4044445">$4.0m</td><td class="num muted" data-sort="-1">&mdash;</td></tr></tbody></table></div>
+    
+    <p class="note">105 of 1,253 undergraduates and 0 of
+    0 graduate students.
+    IPEDS reports no graduate enrolment for 1 of these institutions; their rows show a dash rather than a zero, because the file not carrying a number is not the same as the number being none.</p>
+  </section>
+
+
+
+  
+
+  
+  <section class="block" id="training">
+    <h2>Practical training, and the other student visas</h2>
+    <p class="lede">A student visa does not end at graduation. Optional
+    Practical Training lets a graduate work on the same visa, and a STEM degree
+    adds a further twenty-four months. It applies at both levels, so the
+    undergraduate share above is not the end of the story.</p>
+    <p class="lede"><strong>No institution in Northern Mariana Islands appears in
+    SEVP&rsquo;s published lists</strong>, which cover the top 100 and top 200
+    schools for OPT and STEM OPT. There is therefore no published practical
+    training figure for this state. That is a fact about what the agency
+    releases, not a statement that no one here is on OPT.</p>
+    <p class="note"><strong>J-1 physicians.</strong> Northern Mariana Islands is not in the published top twelve states for J-1 physicians in graduate medical education, which is the only state breakdown ECFMG publishes. That is an absence from a short list, not a zero.</p>
+  </section>
+
+
+  
+
+  <section class="block" id="institutions">
+    <h2>Every institution</h2>
+    <p class="lede">Largest first by total enrolment. A dash means the
+    institution awards none of that degree, or that no federal research money
+    was matched to it.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th>City</th><th>Control</th>
+        <th class="num">Enrolled</th><th class="num">Graduate</th>
+        <th class="num">Master&rsquo;s</th><th class="num">Non-res</th>
+        <th class="num">Doctorates</th><th class="num">Non-res</th>
+        <th class="num">Federal R&amp;D</th></tr></thead>
+      <tbody><tr><td>Northern Marianas College</td><td class="muted">Saipan</td><td class="muted">public</td><td class="num" data-sort="1253">1,253</td><td class="num" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr></tbody></table></div>
+    <p class="note">Degrees are pooled over
+    2021&ndash;2025. Enrolment
+    and federal money are the most recent year in the file. &ldquo;Non-res&rdquo;
+    means a student here on a temporary visa, almost always F-1 or J-1. A green
+    card holder is not counted in it.</p>
+  </section>
+
+  <section class="block" id="concentration">
+    <h2>How few institutions this is</h2>
+    <p class="lede">Of the 1 institutions in
+    Northern Mariana Islands, <strong>0</strong> award a research doctorate at
+    all.
+    A state&rsquo;s graduate pipeline is a much smaller thing than its list of
+    colleges.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Research doctorates</th>
+        <th class="num">Non-resident</th><th class="num share-col">Share</th>
+        <th class="num">Share of the state&rsquo;s doctorates</th></tr></thead>
+      <tbody></tbody></table></div>
+  </section>
+  <section class="block" id="not-published">
+    <h2>What is not published for a state this size</h2>
+    <p class="lede">Two of the measures this site uses elsewhere do not exist
+    at this scale, and the reason is the same in both cases: the agency
+    publishes a ranked extract rather than the whole file.</p>
+    <ul class="lede">
+      <li><strong>Practical training is not published here.</strong> SEVP
+      releases the top 100 and top 200 schools for OPT and STEM OPT, not every
+      school. An institution outside those lists has no published figure at
+      all. Its absence is a fact about the list, not about the institution, and
+      it must never be read as a zero.</li>
+      <li><strong>Student visa counts are not published by state.</strong> DHS
+      reports SEVIS records nationally and names a few states per region in its
+      commentary. For most states it publishes a percentage change and no
+      count, so the number of foreign students physically in a state cannot be
+      read off the federal release.</li>
+      <li><strong>Enrolment is the measure that does exist.</strong> IPEDS asks
+      every institution directly, which is why this page is built from it. It
+      counts students enrolled, not visas issued, and the two are different
+      questions.</li>
+    </ul>
+  </section>
+
+  <section class="block" id="method">
+    <h2>Method and limits</h2>
+    <ul class="lede">
+      <li><strong>Non-resident means here on a temporary visa.</strong> IPEDS
+      defines it as a person &ldquo;who is not a citizen or national of the
+      United States and who is in this country on a visa or temporary basis and
+      does not have the right to remain indefinitely.&rdquo; A green card holder
+      is therefore never counted here. Neither is a refugee or an asylee. Those
+      students are reported in the race and ethnicity categories alongside
+      citizens. For students the category is overwhelmingly F-1 and J-1.</li>
+      <li><strong>It is not ethnicity and not country of origin.</strong> A
+      US-born citizen of any background is never non-resident. The status is
+      recorded when the student enrols, for the enrolment figures, and when the
+      degree is awarded, for the degree counts. These files cannot be split any
+      other way.</li>
+      <li><strong>Degrees are pooled</strong> over
+      2021&ndash;2025, because a
+      single year at a small institution moves on one student.</li>
+      <li><strong>Enrolment and awards are different measures</strong> and will
+      not agree. One counts people on a given day; the other counts degrees
+      conferred over five years.</li>
+      <li><strong>Federal money is matched to a campus</strong>, and a system
+      that reports centrally can carry money its branches spend.</li>
+      <li><strong>This page shows composition, not displacement.</strong> It
+      records who received the degrees. It does not show that anyone was kept
+      out, and nothing here should be read that way.</li>
+    </ul>
+    <p class="note">Built by <code>scripts/build_state_pages.py</code> from
+    <a href="/data/institution_profiles.json">institution_profiles.json</a>,
+    <a href="/data/state_funding_and_enrolment.json">state_funding_and_enrolment.json</a>
+    and <a href="/data/university_distribution.json">university_distribution.json</a>.
+    Compare the country on <a href="/overview">the national overview</a>.</p>
+  </section>
+
+</div>
+</main>
+<script src="/analytics-beacon.js" defer></script>
+<script src="/states.js" defer></script>
+<script src="/anchors.js" defer></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

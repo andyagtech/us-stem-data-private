@@ -38,6 +38,13 @@
     data.sid = sid;
     data.page = PAGE;
     data.path = location.pathname + location.hash;
+    // TWO SITES SHARE ONE BUCKET. h1b.andy-barr.com and
+    // phd-demographics.andy-barr.com are aliases on the same CloudFront
+    // distribution, so every page is reachable from both and the path alone
+    // cannot say which site a reader was on. Without the host, a visit to
+    // /public-sector-visas from the H-1B explorer and one from the pipeline
+    // site are the same row.
+    data.host = location.hostname;
     try {
       var body = JSON.stringify(data);
       if (navigator.sendBeacon) navigator.sendBeacon(API, body);

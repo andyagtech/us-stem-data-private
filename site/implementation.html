@@ -7,6 +7,7 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <title>Implementation — PhD Demographics</title>
+<link rel="stylesheet" href="/style.css">
 <style>
 :root {
   --bg: #0f172a; --surface: #1e293b; --surface2: var(--border);
@@ -16,7 +17,7 @@
   --teal: #2dd4bf; --yellow: #facc15;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
+body { font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
 
 /* Layout: content center-left, diagram pinned right */
 .page-wrap { display: flex; max-width: 1440px; margin: 0 auto; min-height: 100vh; justify-content: center; }
@@ -288,8 +289,8 @@ state = pipeline(initial_state)  # PipelineState flows through</pre>
       <div class="card-title">Parallel Processing Tracks</div>
       <p style="margin:0.4rem 0;font-size:0.82rem;color:var(--text-muted);">Every step from here forward produces two independent outputs. A record classified into "Computer Science" flows through the STEM track; a record in "Education" flows through the non-STEM track.</p>
       <ul>
-        <li><strong>STEM</strong> &rarr; <code>data/processed/stem/{key}.json</code> &rarr; <code>site/data/stem/{key}.json</code> &rarr; <code>site/stem.html</code></li>
-        <li><strong>Non-STEM</strong> &rarr; <code>data/processed/nonstem/{key}.json</code> &rarr; <code>site/data/nonstem/{key}.json</code> &rarr; <code>site/non_stem.html</code></li>
+        <li><strong>STEM</strong> &rarr; <code>data/processed/stem/{key}.json</code> &rarr; <code>site/data/stem/{key}.json</code> &rarr; <code>site/stem</code></li>
+        <li><strong>Non-STEM</strong> &rarr; <code>data/processed/nonstem/{key}.json</code> &rarr; <code>site/data/nonstem/{key}.json</code> &rarr; <code>site/non_stem</code></li>
       </ul>
     </div>
 
@@ -851,5 +852,6 @@ python -m pipeline status</pre>
 </script>
 <script src="/sidebar.js"></script>
 <script src="/anchors.js" defer></script>
+<script src="/analytics-beacon.js" defer></script>
 </body>
 </html>

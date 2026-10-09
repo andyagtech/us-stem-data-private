@@ -11,30 +11,35 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 :root{
-  --paper:#F3F4F2; --panel:#FFFFFF; --ink:#171A18; --ink2:#4B524C; --ink3:#7E857F;
-  --rule:#DBDED9; --rule2:#C6CAC4;
-  --c1:#A32B3C; --c2:#0891B2; --c3:#A8761A; --c4:#4C5FC7; --c5:#9C5A2E;
-  --nra:#A32B3C; --base:#8A918B; --fill:rgba(163,43,60,.10);
-  --shadow:0 1px 2px rgba(23,26,24,.05),0 8px 24px rgba(23,26,24,.06);
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --paper:#141614; --panel:#1C1F1C; --ink:#ECEEEA; --ink2:#AEB5AF; --ink3:#7C837D;
-    --rule:#2C302C; --rule2:#3C413C;
-    --c1:#DE5C6B; --c2:#2AA3C4; --c3:#B58A2C; --c4:#7285E0; --c5:#C57A42;
-    --nra:#DE5C6B; --base:#79807A; --fill:rgba(222,92,107,.13);
-    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
-  }
-}
-:root[data-theme="dark"]{
-  --paper:#141614; --panel:#1C1F1C; --ink:#ECEEEA; --ink2:#AEB5AF; --ink3:#7C837D;
-  --rule:#2C302C; --rule2:#3C413C;
-  --c1:#DE5C6B; --c2:#2AA3C4; --c3:#B58A2C; --c4:#7285E0; --c5:#C57A42;
-  --nra:#DE5C6B; --base:#79807A; --fill:rgba(222,92,107,.13);
-  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  /* UNIFIED WITH THE SITE. This deck used to carry its own complete palette
+     and its own serif -- a warm grey paper, a different red, Public Sans --
+     so a reader moving here from any other page saw a different product.
+     The local token names are kept because the rest of this file's CSS is
+     written against them; what changed is that they now resolve to the
+     shared tokens in style.css, which already handle light, dark and an
+     explicit choice. One theme, defined once.
+
+     Only the categorical series colours stay local: they are chart hues with
+     no equivalent in the site tokens, and they are chosen to sit beside the
+     shared accent rather than to compete with it. */
+  --paper: var(--bg);
+  --panel: var(--surface);
+  --ink: var(--text);
+  --ink2: var(--text-muted);
+  --ink3: var(--text-muted);
+  --rule: var(--border);
+  --rule2: var(--border);
+  --nra: var(--hl);
+  --c1: var(--hl);
+  --c2: var(--accent);
+  --c3:#A8761A; --c4:#4C5FC7; --c5:#9C5A2E;
+  --base: var(--text-muted);
+  --fill: color-mix(in srgb, var(--hl) 12%, transparent);
+  --shadow: 0 1px 2px rgba(0,0,0,.08), 0 8px 24px rgba(0,0,0,.08);
 }
 
 *{box-sizing:border-box;}
@@ -61,11 +66,11 @@ body{
 }
 .eyebrow .tag{color:var(--nra);}
 h1{
-  font-family:"Newsreader",Georgia,serif; font-weight:500; font-size:clamp(2.1rem,5.4vw,4.1rem);
+  font-family:"Public Sans",Georgia,serif; font-weight:500; font-size:clamp(2.1rem,5.4vw,4.1rem);
   line-height:1.04; letter-spacing:-.018em; margin:0; text-wrap:balance; max-width:19ch;
 }
 h2{
-  font-family:"Newsreader",Georgia,serif; font-weight:500; font-size:clamp(1.6rem,3.3vw,2.65rem);
+  font-family:"Public Sans",Georgia,serif; font-weight:500; font-size:clamp(1.6rem,3.3vw,2.65rem);
   line-height:1.1; letter-spacing:-.014em; margin:0; text-wrap:balance; max-width:24ch;
 }
 .lede{font-size:clamp(1rem,1.35vw,1.2rem); color:var(--ink2); max-width:62ch; margin:0;}

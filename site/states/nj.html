@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New Jersey: who the graduate programmes are for</title>
+<meta name="description" content="Every degree-granting institution in New Jersey, the research doctorates each awards, how many go to non-residents, and the federal research money that arrives. Built from IPEDS, NSF and NCSES.">
+<meta property="og:title" content="New Jersey: who the graduate programmes are for">
+<meta property="og:description" content="Every degree-granting institution in New Jersey, the research doctorates each awards, how many go to non-residents, and the federal research money that arrives. Built from IPEDS, NSF and NCSES.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og/concentration.png">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.9rem; margin: 0 0 .7rem; line-height: 1.2; }
+  .page-head p { color: var(--text-muted); max-width: 72ch; line-height: 1.65; font-size: .95rem; margin: 0 0 .6rem; }
+  .kicker { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin: 0 0 .6rem; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin: 1.6rem 0 0; }
+  .stat { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; background: var(--surface); }
+  .stat .n { font-size: 1.7rem; font-weight: 800; color: var(--hl); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: .82rem; line-height: 1.45; margin: .3rem 0 0; }
+  .stat .s { font-size: .72rem; color: var(--text-muted); margin: .45rem 0 0; }
+  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+  section.block { margin-top: 2.8rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  section.block h2 { font-size: 1.2rem; margin: 0 0 .45rem; }
+  .lede { color: var(--text-muted); max-width: 74ch; line-height: 1.6; font-size: .92rem; margin: 0 0 1rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55; max-width: 82ch; margin: .9rem 0 0; }
+  .table-wrap { overflow-x: auto; }
+  table.t { width: 100%; border-collapse: collapse; font-size: .84rem; margin: .6rem 0 0; }
+  table.t th { text-align: left; font-size: .71rem; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--text-muted); font-weight: 600; padding: .4rem .5rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  table.t td { padding: .42rem .5rem; border-bottom: 1px solid var(--border); }
+  table.t td.num, table.t th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.t td.muted { color: var(--text-muted); }
+  table.t td.share { font-weight: 600; color: var(--hl); }
+  table.t th.share-col { color: var(--hl); }
+  table.t td.share, table.t th.share-col {
+    background: color-mix(in srgb, var(--hl) 7%, transparent); }
+  table.t th.sortable { cursor: pointer; }
+  .scale { display: flex; align-items: center; gap: .7rem; margin: 1rem 0 0; flex-wrap: wrap; }
+  .scale .seg { font-size: .8rem; }
+  .barpair { margin: 1rem 0 0; }
+  .barpair .row { display: grid; grid-template-columns: 11rem 1fr auto; gap: .6rem; align-items: center;
+    padding: .3rem 0; font-size: .86rem; }
+  .barpair .lab { color: var(--text-muted); }
+  /* display:block on both. A <span> is inline by default, so width and
+     height are ignored on it -- every fill rendered at zero width inside a
+     full-width track, which made a 2.9% bar and a 47.4% bar look identical. */
+  .barpair .track { display: block; background: rgba(148,163,184,0.14);
+    border-radius: 3px; height: 16px; overflow: hidden; }
+  .barpair .fill { display: block; height: 100%; border-radius: 3px;
+    background: #3987e5; min-width: 2px; }
+  .barpair .fill.nat { background: rgba(148,163,184,0.55); }
+  .barpair .v { font-variant-numeric: tabular-nums; font-weight: 600; }
+  /* The state bar sits directly above its national counterpart, so each pair
+     is one comparison. A gap after the pair keeps the eye from reading all
+     four as a single ranked list. */
+  .barpair .row.pair-end { margin-bottom: .55rem; }
+  @media (max-width: 620px) { .barpair .row { grid-template-columns: 1fr auto; } .barpair .track { display: none; } }
+  .callout { border: 1px solid var(--border); border-left-width: 3px; border-radius: 10px;
+    padding: 1rem 1.1rem; margin: 1rem 0 0; background: var(--surface); }
+  .callout h3 { margin: 0 0 .35rem; font-size: 1rem; }
+  .callout p { margin: 0 0 .5rem; font-size: .88rem; line-height: 1.55; color: var(--text-muted); }
+</style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+</head>
+<body data-page="state" data-state-name="New Jersey" data-state-abbr="NJ">
+<a class="skip-link" href="#institutions">Skip to the institutions</a>
+<main id="main">
+<div class="wrap">
+
+  <div class="page-head">
+    <p class="kicker">State profile &middot; NJ</p>
+    <h1 id="nj-graduate-programmes">New Jersey</h1>
+    <p>New Jersey has <strong>40</strong> degree-granting
+    institutions in this data. Between them they award
+    <strong>4,023</strong> research doctorates and
+    <strong>29,297</strong> master&rsquo;s degrees over the
+    window, and take <strong>$865.2m</strong> in federal
+    research and development money.</p>
+    <p>This page counts every institution in the state, including the ones that
+    award no graduate degree at all. Leaving those out would make a state look
+    like its flagship.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">40</div>
+      <p class="l">institutions in the state</p>
+      <p class="s">23 award a research doctorate.
+        2 enrol no graduate students at all.</p></div>
+    <div class="stat"><div class="n">45.3%</div>
+      <p class="l">of research doctorates go to
+        <span data-term="nra">non-residents</span></p>
+      <p class="s">1,822 of
+        4,023. National figure: 38.9%.</p></div>
+    <div class="stat"><div class="n">19.7%</div>
+      <p class="l">of graduate enrolment is non-resident</p>
+      <p class="s">13,579 of
+        68,759 graduate students.</p></div>
+    <div class="stat"><div class="n">$865.2m</div>
+      <p class="l">federal research and development money</p>
+      <p class="s">Across 18 institutions.
+        $611.3m in total federal obligations.</p></div>
+  </div>
+
+  <section class="block" id="against-the-country">
+    <h2>Where New Jersey sits</h2>
+    <p class="lede">The non-resident share of research doctorates, against the
+    same figure for the country. That is <strong>6.4 points above</strong> the national figure of 38.9%.</p>
+    <div class="barpair">
+      <div class="row"><span class="lab">New Jersey</span>
+        <span class="track"><span class="fill" style="width:100.0%"></span></span>
+        <span class="v">45.3%</span></div>
+      <div class="row"><span class="lab">United States</span>
+        <span class="track"><span class="fill nat" style="width:85.9%"></span></span>
+        <span class="v">38.9%</span></div>
+    </div>
+    <p class="note">New Jersey ranks <strong>8</strong> of 52
+    states on that share, and <strong>18</strong> of 56 on the
+    number of research doctorates it awards. Rank 1 is the highest. Only states
+    that award doctorates are ranked.</p>
+  </section>
+
+  
+  <section class="block" id="levels">
+    <h2>Undergraduate and graduate, side by side</h2>
+    <p class="lede">The same institutions at two levels. Undergraduate is the
+    remainder once graduate enrolment is taken out of the total, and both
+    levels carry their own non-resident count.
+    In New Jersey the graduate share is <strong>15.9 points higher</strong> than the undergraduate share.</p>
+    <div class="barpair">
+      <div class="row"><span class="lab">Undergraduate</span>
+        <span class="track"><span class="fill" style="width:19.3%"></span></span>
+        <span class="v">3.8%</span></div>
+      <div class="row pair-end"><span class="lab">US undergraduate</span>
+        <span class="track"><span class="fill nat" style="width:18.3%"></span></span>
+        <span class="v">3.6%</span></div>
+      <div class="row"><span class="lab">Graduate</span>
+        <span class="track"><span class="fill" style="width:100.0%"></span></span>
+        <span class="v">19.7%</span></div>
+      <div class="row"><span class="lab">US graduate</span>
+        <span class="track"><span class="fill nat" style="width:86.8%"></span></span>
+        <span class="v">17.1%</span></div>
+    </div>
+    <p class="note" style="margin:0 0 .4rem">Click any column heading to sort.
+    Click it again to reverse. The panel under the table narrows what is shown
+    &mdash; everything is shown until you ask for less.</p>
+    <div class="table-wrap"><table class="t" data-sortable data-controls>
+      <thead><tr><th>Institution</th>
+        <th class="num">Undergraduates</th><th class="num">Non-res</th>
+        <th class="num share-col">Share</th>
+        <th class="num">Graduates</th><th class="num">Non-res</th>
+        <th class="num share-col">Share</th>
+        <th class="num">State funding</th><th class="num">Federal R&amp;D</th></tr></thead>
+      <tbody><tr data-has-grad="1"><td data-sort="rutgers university-new brunswick">Rutgers University-New Brunswick</td><td class="num" data-sort="36588">36,588</td><td class="num" data-sort="2521">2,521</td><td class="num share" data-sort="6.9">6.9%</td><td class="num" data-sort="14029">14,029</td><td class="num" data-sort="2475">2,475</td><td class="num share" data-sort="17.6">17.6%</td><td class="num" data-sort="921759236">$921.8m</td><td class="num" data-sort="836800000">$836.8m</td></tr><tr data-has-grad="1"><td data-sort="montclair state university">Montclair State University</td><td class="num" data-sort="18062">18,062</td><td class="num" data-sort="224">224</td><td class="num share" data-sort="1.2">1.2%</td><td class="num" data-sort="4508">4,508</td><td class="num" data-sort="575">575</td><td class="num share" data-sort="12.8">12.8%</td><td class="num" data-sort="118160000">$118.2m</td><td class="num" data-sort="43798000">$43.8m</td></tr><tr data-has-grad="1"><td data-sort="rowan university">Rowan University</td><td class="num" data-sort="14869">14,869</td><td class="num" data-sort="276">276</td><td class="num share" data-sort="1.9">1.9%</td><td class="num" data-sort="4791">4,791</td><td class="num" data-sort="874">874</td><td class="num share" data-sort="18.2">18.2%</td><td class="num" data-sort="266885404">$266.9m</td><td class="num" data-sort="63984000">$64.0m</td></tr><tr data-has-grad="1"><td data-sort="kean university">Kean University</td><td class="num" data-sort="11234">11,234</td><td class="num" data-sort="682">682</td><td class="num share" data-sort="6.1">6.1%</td><td class="num" data-sort="2118">2,118</td><td class="num" data-sort="59">59</td><td class="num share" data-sort="2.8">2.8%</td><td class="num" data-sort="122847550">$122.8m</td><td class="num" data-sort="9479000">$9.5m</td></tr><tr data-has-grad="1"><td data-sort="new jersey institute of technology">New Jersey Institute of Technology</td><td class="num" data-sort="9523">9,523</td><td class="num" data-sort="456">456</td><td class="num share" data-sort="4.8">4.8%</td><td class="num" data-sort="3484">3,484</td><td class="num" data-sort="2112">2,112</td><td class="num share" data-sort="60.6">60.6%</td><td class="num" data-sort="161333000">$161.3m</td><td class="num" data-sort="171741000">$171.7m</td></tr><tr data-has-grad="1"><td data-sort="rutgers university-newark">Rutgers University-Newark</td><td class="num" data-sort="7417">7,417</td><td class="num" data-sort="148">148</td><td class="num share" data-sort="2.0">2.0%</td><td class="num" data-sort="3392">3,392</td><td class="num" data-sort="716">716</td><td class="num share" data-sort="21.1">21.1%</td><td class="num" data-sort="122780685">$122.8m</td><td class="num" data-sort="26222000">$26.2m</td></tr><tr data-has-grad="1"><td data-sort="seton hall university">Seton Hall University</td><td class="num" data-sort="6061">6,061</td><td class="num" data-sort="100">100</td><td class="num share" data-sort="1.6">1.6%</td><td class="num" data-sort="3433">3,433</td><td class="num" data-sort="124">124</td><td class="num share" data-sort="3.6">3.6%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="9477000">$9.5m</td></tr><tr data-has-grad="1"><td data-sort="william paterson university of new jersey">William Paterson University of New Jersey</td><td class="num" data-sort="6546">6,546</td><td class="num" data-sort="143">143</td><td class="num share" data-sort="2.2">2.2%</td><td class="num" data-sort="2880">2,880</td><td class="num" data-sort="34">34</td><td class="num share" data-sort="1.2">1.2%</td><td class="num" data-sort="74102923">$74.1m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="princeton university">Princeton University</td><td class="num" data-sort="5671">5,671</td><td class="num" data-sort="706">706</td><td class="num share" data-sort="12.4">12.4%</td><td class="num" data-sort="3251">3,251</td><td class="num" data-sort="1412">1,412</td><td class="num share" data-sort="43.4">43.4%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="558624000">$558.6m</td></tr><tr data-has-grad="1"><td data-sort="stevens institute of technology">Stevens Institute of Technology</td><td class="num" data-sort="4092">4,092</td><td class="num" data-sort="133">133</td><td class="num share" data-sort="3.3">3.3%</td><td class="num" data-sort="4750">4,750</td><td class="num" data-sort="3092">3,092</td><td class="num share" data-sort="65.1">65.1%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="70736000">$70.7m</td></tr><tr data-has-grad="1"><td data-sort="beth medrash govoha">Beth Medrash Govoha</td><td class="num" data-sort="3532">3,532</td><td class="num" data-sort="72">72</td><td class="num share" data-sort="2.0">2.0%</td><td class="num" data-sort="5292">5,292</td><td class="num" data-sort="40">40</td><td class="num share" data-sort="0.8">0.8%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="stockton university">Stockton University</td><td class="num" data-sort="7812">7,812</td><td class="num" data-sort="54">54</td><td class="num share" data-sort="0.7">0.7%</td><td class="num" data-sort="976">976</td><td class="num" data-sort="17">17</td><td class="num share" data-sort="1.7">1.7%</td><td class="num" data-sort="75583695">$75.6m</td><td class="num" data-sort="2253000">$2.3m</td></tr><tr data-has-grad="1"><td data-sort="the college of new jersey">The College of New Jersey</td><td class="num" data-sort="7073">7,073</td><td class="num" data-sort="50">50</td><td class="num share" data-sort="0.7">0.7%</td><td class="num" data-sort="579">579</td><td class="num" data-sort="2">2</td><td class="num share" data-sort="0.3">0.3%</td><td class="num" data-sort="58848000">$58.8m</td><td class="num" data-sort="2857000">$2.9m</td></tr><tr data-has-grad="1"><td data-sort="fairleigh dickinson university-metropolitan campus">Fairleigh Dickinson University-Metropolitan Campus</td><td class="num" data-sort="5440">5,440</td><td class="num" data-sort="308">308</td><td class="num share" data-sort="5.7">5.7%</td><td class="num" data-sort="2167">2,167</td><td class="num" data-sort="267">267</td><td class="num share" data-sort="12.3">12.3%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="thomas edison state university">Thomas Edison State University</td><td class="num" data-sort="6773">6,773</td><td class="num" data-sort="71">71</td><td class="num share" data-sort="1.0">1.0%</td><td class="num" data-sort="814">814</td><td class="num" data-sort="5">5</td><td class="num share" data-sort="0.6">0.6%</td><td class="num" data-sort="14280000">$14.3m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="0"><td data-sort="mercer county community college">Mercer County Community College</td><td class="num" data-sort="6219">6,219</td><td class="num" data-sort="393">393</td><td class="num share" data-sort="6.3">6.3%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="7967611">$8.0m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="new jersey city university">New Jersey City University</td><td class="num" data-sort="4209">4,209</td><td class="num" data-sort="79">79</td><td class="num share" data-sort="1.9">1.9%</td><td class="num" data-sort="1624">1,624</td><td class="num" data-sort="43">43</td><td class="num share" data-sort="2.6">2.6%</td><td class="num" data-sort="61217343">$61.2m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="rutgers university-camden">Rutgers University-Camden</td><td class="num" data-sort="3922">3,922</td><td class="num" data-sort="69">69</td><td class="num share" data-sort="1.8">1.8%</td><td class="num" data-sort="1854">1,854</td><td class="num" data-sort="168">168</td><td class="num share" data-sort="9.1">9.1%</td><td class="num" data-sort="65591547">$65.6m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="ramapo college of new jersey">Ramapo College of New Jersey</td><td class="num" data-sort="5013">5,013</td><td class="num" data-sort="49">49</td><td class="num share" data-sort="1.0">1.0%</td><td class="num" data-sort="508">508</td><td class="num" data-sort="6">6</td><td class="num share" data-sort="1.2">1.2%</td><td class="num" data-sort="71480000">$71.5m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="0"><td data-sort="passaic county community college">Passaic County Community College</td><td class="num" data-sort="5165">5,165</td><td class="num" data-sort="4">4</td><td class="num share" data-sort="0.1">0.1%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="7553075">$7.6m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="monmouth university">Monmouth University</td><td class="num" data-sort="3842">3,842</td><td class="num" data-sort="61">61</td><td class="num share" data-sort="1.6">1.6%</td><td class="num" data-sort="1139">1,139</td><td class="num" data-sort="36">36</td><td class="num share" data-sort="3.2">3.2%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="4340000">$4.3m</td></tr><tr data-has-grad="1"><td data-sort="rider university">Rider University</td><td class="num" data-sort="3244">3,244</td><td class="num" data-sort="126">126</td><td class="num share" data-sort="3.9">3.9%</td><td class="num" data-sort="839">839</td><td class="num" data-sort="36">36</td><td class="num share" data-sort="4.3">4.3%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="saint peter&#x27;s university">Saint Peter&#x27;s University</td><td class="num" data-sort="2101">2,101</td><td class="num" data-sort="128">128</td><td class="num share" data-sort="6.1">6.1%</td><td class="num" data-sort="1572">1,572</td><td class="num" data-sort="1055">1,055</td><td class="num share" data-sort="67.1">67.1%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="fairleigh dickinson university-florham campus">Fairleigh Dickinson University-Florham Campus</td><td class="num" data-sort="1997">1,997</td><td class="num" data-sort="11">11</td><td class="num share" data-sort="0.6">0.6%</td><td class="num" data-sort="781">781</td><td class="num" data-sort="104">104</td><td class="num share" data-sort="13.3">13.3%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="felician university">Felician University</td><td class="num" data-sort="1833">1,833</td><td class="num" data-sort="104">104</td><td class="num share" data-sort="5.7">5.7%</td><td class="num" data-sort="403">403</td><td class="num" data-sort="17">17</td><td class="num share" data-sort="4.2">4.2%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="drew university">Drew University</td><td class="num" data-sort="1624">1,624</td><td class="num" data-sort="247">247</td><td class="num share" data-sort="15.2">15.2%</td><td class="num" data-sort="602">602</td><td class="num" data-sort="188">188</td><td class="num share" data-sort="31.2">31.2%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="berkeley college-woodland park">Berkeley College-Woodland Park</td><td class="num" data-sort="1900">1,900</td><td class="num" data-sort="11">11</td><td class="num share" data-sort="0.6">0.6%</td><td class="num" data-sort="107">107</td><td class="num" data-sort="4">4</td><td class="num share" data-sort="3.7">3.7%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="georgian court university">Georgian Court University</td><td class="num" data-sort="1478">1,478</td><td class="num" data-sort="42">42</td><td class="num share" data-sort="2.8">2.8%</td><td class="num" data-sort="432">432</td><td class="num" data-sort="7">7</td><td class="num share" data-sort="1.6">1.6%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="caldwell university">Caldwell University</td><td class="num" data-sort="1448">1,448</td><td class="num" data-sort="240">240</td><td class="num share" data-sort="16.6">16.6%</td><td class="num" data-sort="416">416</td><td class="num" data-sort="9">9</td><td class="num share" data-sort="2.2">2.2%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="centenary university">Centenary University</td><td class="num" data-sort="951">951</td><td class="num" data-sort="1">1</td><td class="num share" data-sort="0.1">0.1%</td><td class="num" data-sort="502">502</td><td class="num" data-sort="61">61</td><td class="num share" data-sort="12.2">12.2%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="saint elizabeth university">Saint Elizabeth University</td><td class="num" data-sort="670">670</td><td class="num" data-sort="7">7</td><td class="num share" data-sort="1.0">1.0%</td><td class="num" data-sort="339">339</td><td class="num" data-sort="4">4</td><td class="num share" data-sort="1.2">1.2%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="bloomfield college of montclair state university">Bloomfield College of Montclair State University</td><td class="num" data-sort="904">904</td><td class="num" data-sort="31">31</td><td class="num share" data-sort="3.4">3.4%</td><td class="num" data-sort="6">6</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="3786000">$3.8m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="strayer university-new jersey">Strayer University-New Jersey</td><td class="num" data-sort="538">538</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="64">64</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="hackensack meridian school of medicine">Hackensack Meridian School of Medicine</td><td class="num" data-sort="0">0</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="567">567</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="pillar college">Pillar College</td><td class="num" data-sort="489">489</td><td class="num" data-sort="40">40</td><td class="num share" data-sort="8.2">8.2%</td><td class="num" data-sort="65">65</td><td class="num" data-sort="7">7</td><td class="num share" data-sort="10.8">10.8%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="princeton theological seminary">Princeton Theological Seminary</td><td class="num" data-sort="0">0</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="287">287</td><td class="num" data-sort="25">25</td><td class="num share" data-sort="8.7">8.7%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="rabbinical college of america">Rabbinical College of America</td><td class="num" data-sort="197">197</td><td class="num" data-sort="35">35</td><td class="num share" data-sort="17.8">17.8%</td><td class="num" data-sort="9">9</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="new brunswick theological seminary">New Brunswick Theological Seminary</td><td class="num" data-sort="0">0</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="131">131</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="devry university-new jersey">DeVry University-New Jersey</td><td class="num" data-sort="68">68</td><td class="num" data-sort="2">2</td><td class="num share" data-sort="2.9">2.9%</td><td class="num" data-sort="6">6</td><td class="num" data-sort="5">5</td><td class="num share" data-sort="83.3">83.3%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="eastern school of acupuncture and traditional medicine">Eastern School of Acupuncture and Traditional Medicine</td><td class="num" data-sort="8">8</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="42">42</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr></tbody></table></div>
+    <p class="lede">The two levels diverge most at <strong>Stevens Institute of Technology</strong>: <strong>3.3%</strong> of its 4,092 undergraduates and <strong>65.1%</strong> of its 4,750 graduate students. These are different admissions systems with different applicant pools, different money and different reasons to say yes, and a single state figure hides both.</p>
+    <p class="note">7,624 of 198,513 undergraduates and 13,579 of
+    68,759 graduate students.
+    IPEDS reports no graduate enrolment for 2 of these institutions; their rows show a dash rather than a zero, because the file not carrying a number is not the same as the number being none.</p>
+  </section>
+
+
+
+  
+  <section class="block" id="blend">
+    <h2>What the state figure is an average of</h2>
+    <p class="lede">The largest graduate enrolments in New Jersey, each with its
+    own non-resident share. Nothing here is excluded from the figures above.
+    The point is to show what they are made of.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Graduate students</th>
+        <th class="num">Share of the state</th>
+        <th class="num">Non-resident</th></tr></thead>
+      <tbody><tr><td>Rutgers University-New Brunswick</td><td class="num">14,029</td><td class="num muted">20.4%</td><td class="num share">17.6%</td></tr><tr><td>Beth Medrash Govoha</td><td class="num">5,292</td><td class="num muted">7.7%</td><td class="num share">0.8%</td></tr><tr><td>Rowan University</td><td class="num">4,791</td><td class="num muted">7.0%</td><td class="num share">18.2%</td></tr><tr><td>Stevens Institute of Technology</td><td class="num">4,750</td><td class="num muted">6.9%</td><td class="num share">65.1%</td></tr><tr><td>Montclair State University</td><td class="num">4,508</td><td class="num muted">6.6%</td><td class="num share">12.8%</td></tr><tr><td>New Jersey Institute of Technology</td><td class="num">3,484</td><td class="num muted">5.1%</td><td class="num share">60.6%</td></tr></tbody></table></div>
+    <p class="note">No single institution decides this figure. The largest, Rutgers University-New Brunswick, holds 20.4% of the state&rsquo;s graduate enrolment, and removing it moves the state share from 19.7% to 20.3%.</p>
+  </section>
+
+
+  
+  <section class="block" id="training">
+    <h2>Practical training, and the other student visas</h2>
+    <p class="lede">A student visa does not end at graduation. Optional
+    Practical Training lets a graduate work on the same visa, and a STEM degree
+    adds a further twenty-four months. It applies at both levels &mdash; a
+    foreign undergraduate can take OPT as readily as a doctoral graduate
+    &mdash; which is why the undergraduate share above is not the end of the
+    story.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">OPT authorisations</th>
+        <th class="num">National rank</th>
+        <th class="num">STEM OPT authorisations</th><th class="num">National rank</th>
+        <th class="num">Students employed</th></tr></thead>
+      <tbody><tr><td>New Jersey Institute of Technology</td><td class="num">866</td><td class="num muted">49</td><td class="num">496</td><td class="num muted">49</td><td class="num">1,417</td></tr></tbody></table></div>
+    <p class="note"><strong>Do not add these two columns together.</strong> A
+    graduate who holds post-completion OPT and then a STEM extension in the
+    same year appears in both, and the sum counts that person twice. They are
+    authorisations, not people. Figures are for 2024, from SEVP&rsquo;s
+    top-100 and top-200 school lists &mdash; an institution outside those lists
+    has no published figure, which is a fact about the list and never a zero.</p>
+    <p class="note"><strong>J-1 physicians.</strong> New Jersey hosted <strong>784</strong> J-1 physicians in graduate medical education in 2025. That list is published for the top twelve states only, so a state missing from it has no published figure.</p>
+  </section>
+
+
+  
+  <section class="block" id="residency">
+    <h2>In-state against out-of-state</h2>
+    <p class="lede">Public four-year institutions, FY2024. Every foreign
+    student pays the out-of-state rate, so this is the price attached to the
+    non-resident column everywhere else on this page.</p>
+    <p class="lede">An out-of-state student in New Jersey is worth <strong>1.59&times;</strong> an in-state one to the institution. They are <strong>10.0%</strong> of the students and <strong>15.0%</strong> of the tuition revenue.</p>
+    <div class="table-wrap"><table class="t">
+      <thead><tr><th>Measure</th><th class="num">In-state</th>
+        <th class="num">Out-of-state</th></tr></thead>
+      <tbody><tr><td>Share of students (FTE)</td><td class="num">90.0%</td><td class="num">10.0%</td></tr><tr><td>Net tuition and fees collected per student</td><td class="num">$10,095</td><td class="num share">$16,033</td></tr><tr><td>Share of tuition revenue</td><td class="num">85.0%</td><td class="num share">15.0%</td></tr></tbody></table></div>
+    <p class="note"><strong>Out-of-state is not the same as foreign.</strong>
+    SHEEO counts international students and domestic students from other states
+    in one column. This shows what a non-resident pays, never how many of them
+    are foreign. Figures are <strong>net</strong> tuition and fee revenue per
+    full-time-equivalent student &mdash; what the institution actually
+    collected after its own aid, not the published price. Public four-year
+    institutions only; medical FTE excluded.
+    </p>
+  </section>
+
+
+  <section class="block" id="institutions">
+    <h2>Every institution</h2>
+    <p class="lede">Largest first by total enrolment. A dash means the
+    institution awards none of that degree, or that no federal research money
+    was matched to it.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th>City</th><th>Control</th>
+        <th class="num">Enrolled</th><th class="num">Graduate</th>
+        <th class="num">Master&rsquo;s</th><th class="num">Non-res</th>
+        <th class="num">Doctorates</th><th class="num">Non-res</th>
+        <th class="num">Federal R&amp;D</th></tr></thead>
+      <tbody><tr><td>Rutgers University-New Brunswick</td><td class="muted">New Brunswick</td><td class="muted">public</td><td class="num" data-sort="50617">50,617</td><td class="num" data-sort="14029">14,029</td><td class="num">6,202</td><td class="num share">1,898</td><td class="num">3,528</td><td class="num share">843</td><td class="num" data-sort="836800000">$836.8m</td></tr><tr><td>Montclair State University</td><td class="muted">Montclair</td><td class="muted">public</td><td class="num" data-sort="22570">22,570</td><td class="num" data-sort="4508">4,508</td><td class="num">1,630</td><td class="num share">170</td><td class="num">179</td><td class="num share">12</td><td class="num" data-sort="43798000">$43.8m</td></tr><tr><td>Rowan University</td><td class="muted">Glassboro</td><td class="muted">public</td><td class="num" data-sort="19660">19,660</td><td class="num" data-sort="4791">4,791</td><td class="num">1,536</td><td class="num share">716</td><td class="num">281</td><td class="num share">57</td><td class="num" data-sort="63984000">$64.0m</td></tr><tr><td>Kean University</td><td class="muted">Union</td><td class="muted">public</td><td class="num" data-sort="13352">13,352</td><td class="num" data-sort="2118">2,118</td><td class="num">593</td><td class="num share">33</td><td class="num">136</td><td class="num share">4</td><td class="num" data-sort="9479000">$9.5m</td></tr><tr><td>New Jersey Institute of Technology</td><td class="muted">Newark</td><td class="muted">public</td><td class="num" data-sort="13007">13,007</td><td class="num" data-sort="3484">3,484</td><td class="num">4,674</td><td class="num share">2,652</td><td class="num">435</td><td class="num share">311</td><td class="num" data-sort="171741000">$171.7m</td></tr><tr><td>Rutgers University-Newark</td><td class="muted">Newark</td><td class="muted">public</td><td class="num" data-sort="10809">10,809</td><td class="num" data-sort="3392">3,392</td><td class="num">628</td><td class="num share">486</td><td class="num">407</td><td class="num share">187</td><td class="num" data-sort="26222000">$26.2m</td></tr><tr><td>Seton Hall University</td><td class="muted">South Orange</td><td class="muted">private nonprofit</td><td class="num" data-sort="9494">9,494</td><td class="num" data-sort="3433">3,433</td><td class="num">249</td><td class="num share">19</td><td class="num">272</td><td class="num share">23</td><td class="num" data-sort="9477000">$9.5m</td></tr><tr><td>William Paterson University of New Jersey</td><td class="muted">Wayne</td><td class="muted">public</td><td class="num" data-sort="9426">9,426</td><td class="num" data-sort="2880">2,880</td><td class="num">250</td><td class="num share">4</td><td class="num">17</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Princeton University</td><td class="muted">Princeton</td><td class="muted">private nonprofit</td><td class="num" data-sort="8922">8,922</td><td class="num" data-sort="3251">3,251</td><td class="num">1,835</td><td class="num share">821</td><td class="num">2,051</td><td class="num share">863</td><td class="num" data-sort="558624000">$558.6m</td></tr><tr><td>Stevens Institute of Technology</td><td class="muted">Hoboken</td><td class="muted">private nonprofit</td><td class="num" data-sort="8842">8,842</td><td class="num" data-sort="4750">4,750</td><td class="num">7,285</td><td class="num share">4,622</td><td class="num">344</td><td class="num share">254</td><td class="num" data-sort="70736000">$70.7m</td></tr><tr><td>Beth Medrash Govoha</td><td class="muted">Lakewood</td><td class="muted">private nonprofit</td><td class="num" data-sort="8824">8,824</td><td class="num" data-sort="5292">5,292</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Stockton University</td><td class="muted">Galloway</td><td class="muted">public</td><td class="num" data-sort="8788">8,788</td><td class="num" data-sort="976">976</td><td class="num">89</td><td class="num share">3</td><td class="num">72</td><td class="num share">1</td><td class="num" data-sort="2253000">$2.3m</td></tr><tr><td>The College of New Jersey</td><td class="muted">Ewing</td><td class="muted">public</td><td class="num" data-sort="7652">7,652</td><td class="num" data-sort="579">579</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="2857000">$2.9m</td></tr><tr><td>Fairleigh Dickinson University-Metropolitan Campus</td><td class="muted">Teaneck</td><td class="muted">private nonprofit</td><td class="num" data-sort="7607">7,607</td><td class="num" data-sort="2167">2,167</td><td class="num">761</td><td class="num share">322</td><td class="num">48</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Thomas Edison State University</td><td class="muted">Trenton</td><td class="muted">public</td><td class="num" data-sort="7587">7,587</td><td class="num" data-sort="814">814</td><td class="num">262</td><td class="num share">4</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Mercer County Community College</td><td class="muted">West Windsor</td><td class="muted">public</td><td class="num" data-sort="6219">6,219</td><td class="num" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>New Jersey City University</td><td class="muted">Jersey City</td><td class="muted">public</td><td class="num" data-sort="5833">5,833</td><td class="num" data-sort="1624">1,624</td><td class="num">84</td><td class="num share">4</td><td class="num">118</td><td class="num share">13</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Rutgers University-Camden</td><td class="muted">Camden</td><td class="muted">public</td><td class="num" data-sort="5776">5,776</td><td class="num" data-sort="1854">1,854</td><td class="num">286</td><td class="num share">112</td><td class="num">126</td><td class="num share">15</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Ramapo College of New Jersey</td><td class="muted">Mahwah</td><td class="muted">public</td><td class="num" data-sort="5521">5,521</td><td class="num" data-sort="508">508</td><td class="num">32</td><td class="num share">5</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Passaic County Community College</td><td class="muted">Paterson</td><td class="muted">public</td><td class="num" data-sort="5165">5,165</td><td class="num" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Monmouth University</td><td class="muted">West Long Branch</td><td class="muted">private nonprofit</td><td class="num" data-sort="4981">4,981</td><td class="num" data-sort="1139">1,139</td><td class="num">119</td><td class="num share">48</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="4340000">$4.3m</td></tr><tr><td>Rider University</td><td class="muted">Lawrenceville</td><td class="muted">private nonprofit</td><td class="num" data-sort="4083">4,083</td><td class="num" data-sort="839">839</td><td class="num">190</td><td class="num share">22</td><td class="num">64</td><td class="num share">1</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Saint Peter&#x27;s University</td><td class="muted">Jersey City</td><td class="muted">private nonprofit</td><td class="num" data-sort="3673">3,673</td><td class="num" data-sort="1572">1,572</td><td class="num">1,347</td><td class="num share">1,179</td><td class="num">183</td><td class="num share">3</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Fairleigh Dickinson University-Florham Campus</td><td class="muted">Madison</td><td class="muted">private nonprofit</td><td class="num" data-sort="2778">2,778</td><td class="num" data-sort="781">781</td><td class="num">372</td><td class="num share">184</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Felician University</td><td class="muted">Lodi</td><td class="muted">private nonprofit</td><td class="num" data-sort="2236">2,236</td><td class="num" data-sort="403">403</td><td class="num">100</td><td class="num share">13</td><td class="num">8</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Drew University</td><td class="muted">Madison</td><td class="muted">private nonprofit</td><td class="num" data-sort="2226">2,226</td><td class="num" data-sort="602">602</td><td class="num">67</td><td class="num share">20</td><td class="num">266</td><td class="num share">59</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Berkeley College-Woodland Park</td><td class="muted">Woodland Park</td><td class="muted">private for-profit</td><td class="num" data-sort="2007">2,007</td><td class="num" data-sort="107">107</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Georgian Court University</td><td class="muted">Lakewood</td><td class="muted">private nonprofit</td><td class="num" data-sort="1910">1,910</td><td class="num" data-sort="432">432</td><td class="num">146</td><td class="num share">1</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Caldwell University</td><td class="muted">Caldwell</td><td class="muted">private nonprofit</td><td class="num" data-sort="1864">1,864</td><td class="num" data-sort="416">416</td><td class="num">201</td><td class="num share">1</td><td class="num">47</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Centenary University</td><td class="muted">Hackettstown</td><td class="muted">private nonprofit</td><td class="num" data-sort="1453">1,453</td><td class="num" data-sort="502">502</td><td class="num">142</td><td class="num share">18</td><td class="num">61</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Saint Elizabeth University</td><td class="muted">Morristown</td><td class="muted">private nonprofit</td><td class="num" data-sort="1009">1,009</td><td class="num" data-sort="339">339</td><td class="num">69</td><td class="num share">3</td><td class="num">92</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Bloomfield College of Montclair State University</td><td class="muted">Bloomfield</td><td class="muted">public</td><td class="num" data-sort="910">910</td><td class="num" data-sort="6">6</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Strayer University-New Jersey</td><td class="muted">Piscataway</td><td class="muted">private for-profit</td><td class="num" data-sort="602">602</td><td class="num" data-sort="64">64</td><td class="num">9</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Hackensack Meridian School of Medicine</td><td class="muted">Nutley</td><td class="muted">private nonprofit</td><td class="num" data-sort="567">567</td><td class="num" data-sort="567">567</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Pillar College</td><td class="muted">Newark</td><td class="muted">private nonprofit</td><td class="num" data-sort="554">554</td><td class="num" data-sort="65">65</td><td class="num">139</td><td class="num share">3</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Princeton Theological Seminary</td><td class="muted">Princeton</td><td class="muted">private nonprofit</td><td class="num" data-sort="287">287</td><td class="num" data-sort="287">287</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num">45</td><td class="num share">6</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Rabbinical College of America</td><td class="muted">Morristown</td><td class="muted">private nonprofit</td><td class="num" data-sort="206">206</td><td class="num" data-sort="9">9</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>New Brunswick Theological Seminary</td><td class="muted">New Brunswick</td><td class="muted">private nonprofit</td><td class="num" data-sort="131">131</td><td class="num" data-sort="131">131</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num">52</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>DeVry University-New Jersey</td><td class="muted">Iselin</td><td class="muted">private for-profit</td><td class="num" data-sort="74">74</td><td class="num" data-sort="6">6</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Eastern School of Acupuncture and Traditional Medicine</td><td class="muted">Bloomfield</td><td class="muted">private for-profit</td><td class="num" data-sort="50">50</td><td class="num" data-sort="42">42</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr></tbody></table></div>
+    <p class="note">Degrees are pooled over
+    2021&ndash;2025. Enrolment
+    and federal money are the most recent year in the file. &ldquo;Non-res&rdquo;
+    means a student here on a temporary visa, almost always F-1 or J-1. A green
+    card holder is not counted in it.</p>
+  </section>
+
+  <section class="block" id="concentration">
+    <h2>How few institutions this is</h2>
+    <p class="lede">Of the 40 institutions in
+    New Jersey, <strong>23</strong> award a research doctorate at
+    all, and the largest two award 63.2% of them.
+    A state&rsquo;s graduate pipeline is a much smaller thing than its list of
+    colleges.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Research doctorates</th>
+        <th class="num">Non-resident</th><th class="num share-col">Share</th>
+        <th class="num">Share of the state&rsquo;s doctorates</th></tr></thead>
+      <tbody><tr><td>Rutgers University-New Brunswick</td><td class="num">3,528</td><td class="num">843</td><td class="num share">23.9%</td><td class="num muted">39.9%</td></tr><tr><td>Princeton University</td><td class="num">2,051</td><td class="num">863</td><td class="num share">42.1%</td><td class="num muted">23.2%</td></tr><tr><td>New Jersey Institute of Technology</td><td class="num">435</td><td class="num">311</td><td class="num share">71.5%</td><td class="num muted">4.9%</td></tr><tr><td>Rutgers University-Newark</td><td class="num">407</td><td class="num">187</td><td class="num share">45.9%</td><td class="num muted">4.6%</td></tr><tr><td>Stevens Institute of Technology</td><td class="num">344</td><td class="num">254</td><td class="num share">73.8%</td><td class="num muted">3.9%</td></tr><tr><td>Rowan University</td><td class="num">281</td><td class="num">57</td><td class="num share">20.3%</td><td class="num muted">3.2%</td></tr><tr><td>Seton Hall University</td><td class="num">272</td><td class="num">23</td><td class="num share">8.5%</td><td class="num muted">3.1%</td></tr><tr><td>Drew University</td><td class="num">266</td><td class="num">59</td><td class="num share">22.2%</td><td class="num muted">3.0%</td></tr><tr><td>Saint Peter&#x27;s University</td><td class="num">183</td><td class="num">3</td><td class="num share">1.6%</td><td class="num muted">2.1%</td></tr><tr><td>Montclair State University</td><td class="num">179</td><td class="num">12</td><td class="num share">6.7%</td><td class="num muted">2.0%</td></tr><tr><td>Kean University</td><td class="num">136</td><td class="num">4</td><td class="num share">2.9%</td><td class="num muted">1.5%</td></tr><tr><td>Rutgers University-Camden</td><td class="num">126</td><td class="num">15</td><td class="num share">11.9%</td><td class="num muted">1.4%</td></tr><tr><td>New Jersey City University</td><td class="num">118</td><td class="num">13</td><td class="num share">11.0%</td><td class="num muted">1.3%</td></tr><tr><td>Saint Elizabeth University</td><td class="num">92</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">1.0%</td></tr><tr><td>Stockton University</td><td class="num">72</td><td class="num">1</td><td class="num share">1.4%</td><td class="num muted">0.8%</td></tr><tr><td>Rider University</td><td class="num">64</td><td class="num">1</td><td class="num share">1.6%</td><td class="num muted">0.7%</td></tr><tr><td>Centenary University</td><td class="num">61</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">0.7%</td></tr><tr><td>New Brunswick Theological Seminary</td><td class="num">52</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">0.6%</td></tr><tr><td>Fairleigh Dickinson University-Metropolitan Campus</td><td class="num">48</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">0.5%</td></tr><tr><td>Caldwell University</td><td class="num">47</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">0.5%</td></tr><tr><td>Princeton Theological Seminary</td><td class="num">45</td><td class="num">6</td><td class="num share">13.3%</td><td class="num muted">0.5%</td></tr><tr><td>William Paterson University of New Jersey</td><td class="num">17</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">0.2%</td></tr><tr><td>Felician University</td><td class="num">8</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">0.1%</td></tr></tbody></table></div>
+  </section>
+  <section class="block" id="survey">
+    <h2>The foreign share of graduate students, where the survey reaches</h2>
+    <p class="lede">The NSF Survey of Graduate Students and Postdoctorates asks
+    institutions directly, and it covers 15 of the
+    40 institutions in New Jersey. It is a different
+    measure from the degree counts above: enrolled students rather than degrees
+    awarded.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Doctoral students foreign</th>
+        <th class="num">Master&rsquo;s students foreign</th></tr></thead>
+      <tbody><tr><td>Stevens Institute of Technology</td><td class="num share">81.8%</td><td class="num">82.7%</td></tr><tr><td>New Jersey Institute of Technology</td><td class="num share">78.3%</td><td class="num">80.2%</td></tr><tr><td>Rutgers University-New Brunswick</td><td class="num share">50.0%</td><td class="num">58.6%</td></tr><tr><td>Princeton University</td><td class="num share">46.6%</td><td class="num">45.0%</td></tr><tr><td>Rutgers University-Newark</td><td class="num share">44.1%</td><td class="num">13.8%</td></tr><tr><td>Rowan University</td><td class="num share">39.3%</td><td class="num">80.8%</td></tr><tr><td>Rutgers University-Camden</td><td class="num share">38.2%</td><td class="num">53.3%</td></tr><tr><td>Montclair State University</td><td class="num share">22.3%</td><td class="num">14.3%</td></tr><tr><td>Seton Hall University</td><td class="num share">9.8%</td><td class="num">6.6%</td></tr><tr><td>Kean University</td><td class="num share">&mdash;%</td><td class="num">5.2%</td></tr><tr><td>William Paterson University of New Jersey</td><td class="num share">&mdash;%</td><td class="num">2.2%</td></tr><tr><td>Stockton University</td><td class="num share">&mdash;%</td><td class="num">19.8%</td></tr><tr><td>Fairleigh Dickinson University-Metropolitan Campus</td><td class="num share">&mdash;%</td><td class="num">68.9%</td></tr><tr><td>New Jersey City University</td><td class="num share">&mdash;%</td><td class="num">10.9%</td></tr><tr><td>Monmouth University</td><td class="num share">&mdash;%</td><td class="num">9.2%</td></tr></tbody></table></div>
+    <div class="callout">
+      <h3>Stevens Institute of Technology</h3>
+      <p>The highest foreign share of doctoral students in the state, at
+      <strong>81.8%</strong>. It is not the largest institution here
+      and it is not the one with the most federal money. Size and share are
+      different questions, and a state page that ranked only by size would not
+      show this.</p>
+    </div>
+  </section>
+  <section class="block" id="state-money">
+    <h2>What the state itself puts in</h2>
+    <p class="lede">State appropriations per full-time-equivalent student, from
+    the SHEEO finance survey, against the change in the foreign share of
+    graduate enrolment over the same window.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Measure</th><th class="num">First year</th>
+        <th class="num">Last year</th><th class="num">Change</th></tr></thead>
+      <tbody>
+        <tr><td>State appropriations per FTE student</td>
+          <td class="num">$11,987</td>
+          <td class="num">$11,310</td>
+          <td class="num share">-5.6%</td></tr>
+        <tr><td>Foreign share of graduate enrolment</td>
+          <td class="num">12.4%</td>
+          <td class="num">17.0%</td>
+          <td class="num share">+4.6 pts</td></tr>
+      </tbody></table></div>
+    <p class="note">These two rows move for their own reasons. Nothing here
+    shows that one caused the other, and the page does not say it did.</p>
+  </section>
+  <section class="block" id="departments">
+    <h2>Department by department</h2>
+    <p class="lede">The dissertation corpus reaches
+    1 institution in this state,
+    covering 12 departments.
+    <strong>11</strong> of them are majority non-resident.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th>Department</th>
+        <th class="num">Doctorates</th><th class="num">Non-resident</th>
+        <th class="num share-col">Share</th></tr></thead>
+      <tbody><tr><td class="muted">NJIT</td><td>Chemistry, General</td><td class="num">26</td><td class="num">23</td><td class="num share">88.5%</td></tr><tr><td class="muted">NJIT</td><td>Mechanical Engineering</td><td class="num">26</td><td class="num">22</td><td class="num share">84.6%</td></tr><tr><td class="muted">NJIT</td><td>Physics, General</td><td class="num">24</td><td class="num">20</td><td class="num share">83.3%</td></tr><tr><td class="muted">NJIT</td><td>Computer and Information Sciences, General</td><td class="num">71</td><td class="num">58</td><td class="num share">81.7%</td></tr><tr><td class="muted">NJIT</td><td>Electrical and Electronics Engineering</td><td class="num">76</td><td class="num">62</td><td class="num share">81.6%</td></tr><tr><td class="muted">NJIT</td><td>Transportation and Highway Engineering</td><td class="num">21</td><td class="num">16</td><td class="num share">76.2%</td></tr><tr><td class="muted">NJIT</td><td>Chemical Engineering</td><td class="num">49</td><td class="num">33</td><td class="num share">67.3%</td></tr><tr><td class="muted">NJIT</td><td>Information Science/Studies</td><td class="num">22</td><td class="num">14</td><td class="num share">63.6%</td></tr><tr><td class="muted">NJIT</td><td>Materials Engineering</td><td class="num">34</td><td class="num">21</td><td class="num share">61.8%</td></tr><tr><td class="muted">NJIT</td><td>Mathematics, General</td><td class="num">55</td><td class="num">33</td><td class="num share">60.0%</td></tr><tr><td class="muted">NJIT</td><td>Civil Engineering, General</td><td class="num">21</td><td class="num">12</td><td class="num share">57.1%</td></tr><tr><td class="muted">NJIT</td><td>Bioengineering and Biomedical Engineering</td><td class="num">49</td><td class="num">22</td><td class="num share">44.9%</td></tr></tbody></table></div>
+    <p class="note">From the dissertation corpus, which is built from what
+    universities publish about their own graduates. It covers the institutions
+    on this site, not every institution in the state, so it is a floor.</p>
+  </section>
+  <section class="block" id="not-published">
+    <h2>What is not published for a state this size</h2>
+    <p class="lede">Two of the measures this site uses elsewhere do not exist
+    at this scale, and the reason is the same in both cases: the agency
+    publishes a ranked extract rather than the whole file.</p>
+    <ul class="lede">
+      <li><strong>Practical training is not published here.</strong> SEVP
+      releases the top 100 and top 200 schools for OPT and STEM OPT, not every
+      school. An institution outside those lists has no published figure at
+      all. Its absence is a fact about the list, not about the institution, and
+      it must never be read as a zero.</li>
+      <li><strong>Student visa counts are not published by state.</strong> DHS
+      reports SEVIS records nationally and names a few states per region in its
+      commentary. For most states it publishes a percentage change and no
+      count, so the number of foreign students physically in a state cannot be
+      read off the federal release.</li>
+      <li><strong>Enrolment is the measure that does exist.</strong> IPEDS asks
+      every institution directly, which is why this page is built from it. It
+      counts students enrolled, not visas issued, and the two are different
+      questions.</li>
+    </ul>
+  </section>
+
+  <section class="block" id="method">
+    <h2>Method and limits</h2>
+    <ul class="lede">
+      <li><strong>Non-resident means here on a temporary visa.</strong> IPEDS
+      defines it as a person &ldquo;who is not a citizen or national of the
+      United States and who is in this country on a visa or temporary basis and
+      does not have the right to remain indefinitely.&rdquo; A green card holder
+      is therefore never counted here. Neither is a refugee or an asylee. Those
+      students are reported in the race and ethnicity categories alongside
+      citizens. For students the category is overwhelmingly F-1 and J-1.</li>
+      <li><strong>It is not ethnicity and not country of origin.</strong> A
+      US-born citizen of any background is never non-resident. The status is
+      recorded when the student enrols, for the enrolment figures, and when the
+      degree is awarded, for the degree counts. These files cannot be split any
+      other way.</li>
+      <li><strong>Degrees are pooled</strong> over
+      2021&ndash;2025, because a
+      single year at a small institution moves on one student.</li>
+      <li><strong>Enrolment and awards are different measures</strong> and will
+      not agree. One counts people on a given day; the other counts degrees
+      conferred over five years.</li>
+      <li><strong>Federal money is matched to a campus</strong>, and a system
+      that reports centrally can carry money its branches spend.</li>
+      <li><strong>This page shows composition, not displacement.</strong> It
+      records who received the degrees. It does not show that anyone was kept
+      out, and nothing here should be read that way.</li>
+    </ul>
+    <p class="note">Built by <code>scripts/build_state_pages.py</code> from
+    <a href="/data/institution_profiles.json">institution_profiles.json</a>,
+    <a href="/data/state_funding_and_enrolment.json">state_funding_and_enrolment.json</a>
+    and <a href="/data/university_distribution.json">university_distribution.json</a>.
+    Compare the country on <a href="/overview">the national overview</a>.</p>
+  </section>
+
+</div>
+</main>
+<script src="/analytics-beacon.js" defer></script>
+<script src="/states.js" defer></script>
+<script src="/anchors.js" defer></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

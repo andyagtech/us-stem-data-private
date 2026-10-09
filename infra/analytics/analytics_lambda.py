@@ -66,6 +66,13 @@ ANALYTICS_PASSWORD = os.environ["ANALYTICS_PASSWORD"]   # required, no default
 # label the dashboard filters on.
 SITES = {
     "phd-demographics.andy-barr.com": "phd-demographics",
+    # h1b.andy-barr.com is a SEPARATE SITE that happens to share a bucket and
+    # a CloudFront distribution with the pipeline site. Without these two
+    # lines its traffic fell through to DEFAULT_SITE and was recorded as
+    # phd-demographics -- not missing, which someone would notice, but
+    # silently merged into another site's numbers, which nobody would.
+    "h1b.andy-barr.com": "h1b",
+    "h-1b.andy-barr.com": "h1b",
     "seattle-radicalism.andy-barr.com": "seattle-radicalism",
     "localhost": "local",
     "127.0.0.1": "local",
@@ -223,6 +230,11 @@ def handle_collect(event):
         "ip": ip,
         "user_agent": ua,
         "screen": str(body.get("screen", ""))[:20],
+        # The hostname the page was actually served under, as the browser saw
+        # it. `site` is this mapped through SITES and defaults when unknown;
+        # `host` is the raw truth, so a host nobody has mapped yet shows up
+        # as itself instead of disappearing into the default.
+        "host": str(body.get("host", ""))[:120],
         "click_target": str(body.get("target", ""))[:100],
         "uni_key": str(body.get("uni", ""))[:50],
         "message": str(body.get("message", ""))[:200],

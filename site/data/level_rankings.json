@@ -688,6 +688,7 @@
     }
    ],
    "institutions_eligible": 567,
+   "institutions_majority_nra": 121,
    "programmes": [
     {
      "key": "14.0999",
@@ -1934,6 +1935,7 @@
     }
    ],
    "institutions_eligible": 317,
+   "institutions_majority_nra": 56,
    "programmes": [
     {
      "key": "14.2501",

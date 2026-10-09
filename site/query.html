@@ -6,6 +6,7 @@
 <title>Data Query — PhD Demographics</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style.css">
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface2: #232733;
@@ -321,6 +322,14 @@ const exampleQueries = document.getElementById('exampleQueries');
 const KNOWN_EXPORTS = [
   { file: 'stem_records.parquet',     label: 'STEM Records (509K)' },
   { file: 'nonstem_records.parquet',  label: 'Non-STEM Records (199K)' },
+  // The labor-visa tables. h1b_perm_public is the only one of the four that
+  // carries a nationality: no H-1B file records one below the national
+  // total, so the green-card filings are the only public place a country
+  // sits against an employer.
+  { file: 'h1b_perm_public.parquet',  label: 'Public-sector green cards (43K)' },
+  { file: 'h1b_industry.parquet',     label: 'H-1B by industry (4.8K NAICS)' },
+  { file: 'h1b_occupation.parquet',   label: 'H-1B by occupation (1K SOC)' },
+  { file: 'h1b_employers.parquet',    label: 'H-1B employers (39K)' },
 ];
 const CANDIDATE_BASES = ['data/exports/', '/data/exports/'];
 let EXPORTS_BASE = null;
@@ -657,6 +666,35 @@ const TABLE_QUERIES = {
     { label: 'MIT records', sql: `SELECT department, year, name, title\nFROM stem_records\nWHERE university = 'mit'\nORDER BY year DESC, department\nLIMIT 100` },
     { label: 'CS departments', sql: `SELECT university, COUNT(*) AS records\nFROM stem_records\nWHERE department LIKE '%Computer%'\nGROUP BY university\nORDER BY records DESC` },
     { label: 'STEM + Non-STEM', sql: `SELECT 'STEM' AS category, COUNT(*) AS total FROM stem_records\nUNION ALL\nSELECT 'Non-STEM', COUNT(*) FROM nonstem_records` },
+  ],
+  'h1b_perm_public': [
+    { label: 'Preview', sql: `SELECT *\nFROM h1b_perm_public\nLIMIT 100` },
+    { label: 'Who the public sector sponsors, by country', sql: `SELECT citizenship, COUNT(*) AS filings\nFROM h1b_perm_public\nWHERE citizenship <> ''\nGROUP BY citizenship\nORDER BY filings DESC\nLIMIT 25` },
+    { label: 'Every state-agency filing, with nationality', sql: `SELECT fiscal_year, state, employer, job_title, citizenship, birth_country, wage\nFROM h1b_perm_public\nWHERE sector = 'state_agencies'\nORDER BY fiscal_year DESC, state` },
+    { label: 'Citizenship differs from country of birth', sql: `SELECT citizenship, birth_country, COUNT(*) AS filings\nFROM h1b_perm_public\nWHERE birth_country <> '' AND citizenship <> ''\n  AND lower(citizenship) <> lower(birth_country)\nGROUP BY citizenship, birth_country\nORDER BY filings DESC\nLIMIT 30` },
+    { label: 'Sponsored while on a tourist visa', sql: `SELECT fiscal_year, sector, employer, job_title, citizenship, visa_held\nFROM h1b_perm_public\nWHERE visa_held IN ('B-1','B-2','F-2','J-2','M-1','TPS','PAROLEE','EWI')\nORDER BY fiscal_year DESC` },
+    { label: 'Which states sponsor most', sql: `SELECT state, COUNT(*) AS filings, COUNT(DISTINCT employer) AS employers,\n       median(wage) AS median_wage\nFROM h1b_perm_public\nWHERE state <> ''\nGROUP BY state\nORDER BY filings DESC` },
+    { label: 'Top employers in one sector', sql: `SELECT employer, COUNT(*) AS filings, median(wage) AS median_wage\nFROM h1b_perm_public\nWHERE sector = 'school_districts'\nGROUP BY employer\nORDER BY filings DESC\nLIMIT 40` },
+    { label: 'One role, one country', sql: `SELECT employer, job_title, citizenship, COUNT(*) AS filings\nFROM h1b_perm_public\nWHERE employer LIKE '%DALLAS INDEPENDENT%'\nGROUP BY employer, job_title, citizenship\nORDER BY filings DESC` },
+  ],
+  'h1b_industry': [
+    { label: 'Preview', sql: `SELECT *\nFROM h1b_industry\nLIMIT 100` },
+    { label: 'Biggest filing industries', sql: `SELECT naics, filings, employers, median_wage, top_title\nFROM h1b_industry\nORDER BY filings DESC\nLIMIT 40` },
+    { label: 'Gas stations on a speciality-occupation visa', sql: `SELECT naics, filings, employers, median_wage, top_title, top_employer\nFROM h1b_industry\nWHERE naics IN ('447110','447190','457110','457120','445131')` },
+    { label: 'Schools and colleges', sql: `SELECT naics, filings, employers, median_wage, top_title\nFROM h1b_industry\nWHERE naics LIKE '611%'\nORDER BY filings DESC` },
+    { label: 'Lowest-paying industries at volume', sql: `SELECT naics, filings, median_wage, top_title, top_employer\nFROM h1b_industry\nWHERE filings >= 500 AND median_wage IS NOT NULL\nORDER BY median_wage ASC\nLIMIT 30` },
+    { label: 'Most concentrated at the cheap wage levels', sql: `SELECT naics, filings, low_level_pct, median_wage, top_employer\nFROM h1b_industry\nWHERE filings >= 1000\nORDER BY low_level_pct DESC\nLIMIT 30` },
+  ],
+  'h1b_occupation': [
+    { label: 'Preview', sql: `SELECT *\nFROM h1b_occupation\nLIMIT 100` },
+    { label: 'Lowest-paid occupations', sql: `SELECT soc, soc_title, filings, employers, median_wage\nFROM h1b_occupation\nWHERE filings >= 100 AND median_wage IS NOT NULL\nORDER BY median_wage ASC\nLIMIT 30` },
+    { label: 'Jobs nobody expects on H-1B', sql: `SELECT soc, soc_title, filings, employers, median_wage, top_employer\nFROM h1b_occupation\nWHERE soc LIKE '35-%' OR soc LIKE '37-%' OR soc LIKE '39-%' OR soc LIKE '45-%'\nORDER BY filings DESC` },
+    { label: 'Teaching occupations', sql: `SELECT soc, soc_title, filings, employers, median_wage\nFROM h1b_occupation\nWHERE soc LIKE '25-%'\nORDER BY filings DESC` },
+  ],
+  'h1b_employers': [
+    { label: 'Preview', sql: `SELECT *\nFROM h1b_employers\nLIMIT 100` },
+    { label: 'Biggest filers', sql: `SELECT employer, employer_filings, median_wage, low_level_pct\nFROM h1b_employers\nORDER BY employer_filings DESC\nLIMIT 50` },
+    { label: 'Volume filers paying at the bottom', sql: `SELECT employer, employer_filings, median_wage, low_level_pct\nFROM h1b_employers\nWHERE employer_filings >= 500\nORDER BY low_level_pct DESC\nLIMIT 40` },
   ],
   'nonstem_records': [
     { label: 'Preview', sql: `SELECT *\nFROM nonstem_records\nLIMIT 100` },

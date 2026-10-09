@@ -68,6 +68,31 @@
 </style>
   <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
   <script defer src="/theme.js"></script>
+<style id="conclusion-style">
+  /* The conclusion closes the page, so it is separated from the evidence
+     above it and from whatever the template puts below. An earlier version
+     had neither margin and collided with the next heading. */
+  .conclusion { border-top: 3px solid var(--hl); margin: 3.5rem 0 2.5rem;
+    padding: 1.6rem 0 0; clear: both; }
+  .conclusion h2 { font-size: 1.35rem; margin: 0 0 .5rem; }
+  .conclusion .cx-lede { font-size: 1.18rem; line-height: 1.55; font-weight: 600;
+    max-width: 60ch; margin: 0 0 1.1rem; }
+  .conclusion .cx-body p { font-size: 1rem; line-height: 1.7; max-width: 68ch;
+    margin: 0 0 .9rem; }
+  .conclusion .cx-body p:last-child { margin-bottom: 0; }
+  .cx-onward { margin: 1.8rem 0 0; padding: 1.1rem 0 0; border-top: 1px solid var(--border); }
+  .cx-onward-head { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--text-muted); margin: 0 0 .7rem; }
+  .cx-next-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: .7rem; }
+  .cx-next { display: block; text-decoration: none; color: inherit;
+    border: 1px solid var(--border); border-radius: 10px; padding: .75rem .9rem;
+    background: var(--surface); }
+  .cx-next:hover { border-color: var(--hl); }
+  .cx-label { display: block; font-weight: 650; font-size: .92rem; color: var(--hl); }
+  .cx-why { display: block; font-size: .8rem; line-height: 1.45; color: var(--text-muted);
+    margin-top: .2rem; }
+</style>
 </head>
 <body data-page="institutions">
 <a class="skip-link" href="#table" data-track="anchor.table">Skip to the table</a>
@@ -146,6 +171,39 @@
   <p class="note" id="prov"></p>
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- conclusion:begin -->
+<section class="conclusion" id="what-this-means">
+  <h2>What this adds up to</h2>
+  <p class="cx-lede">An American applying to their own state university now applies to a program where they are the minority admitted.</p>
+  <div class="cx-body">
+    <p>The master's degree is where the money is, and it is where Americans have lost the most ground. At <!--auto:data:level_rankings.levels.masters.institutions_majority_nra|n-->121<!--/auto--> institutions, most of the master's degrees awarded go to people who are not Americans.</p>
+    <p>These are not marginal places. They include public universities built by state legislatures, funded by state taxpayers, and founded to educate the people of those states. An American applying to a program at their own state university now applies to a program where they are the minority admitted.</p>
+    <p>Nothing in the law requires this and no one voted for it. It is the accumulated result of institutions following the money, with nobody counting the result until now.</p>
+  </div>
+  <div class="cx-onward">
+    <p class="cx-onward-head">Where to look next</p>
+    <div class="cx-next-row">
+    <a class="cx-next" href="/overview"><span class="cx-label">The national picture</span><span class="cx-why">What the averages hide.</span></a>
+    <a class="cx-next" href="/visa-schools"><span class="cx-label">The clearest cases</span><span class="cx-why">Where graduate enrollment is almost entirely foreign.</span></a>
+    </div>
+  </div>
+</section>
+<!-- conclusion:end -->
+
 </main>
 <script src="/institutions.js" defer></script>
 <script src="/analytics-beacon.js" defer></script>

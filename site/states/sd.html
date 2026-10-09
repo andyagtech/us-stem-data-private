@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>South Dakota: who the graduate programmes are for</title>
+<meta name="description" content="Every degree-granting institution in South Dakota, the research doctorates each awards, how many go to non-residents, and the federal research money that arrives. Built from IPEDS, NSF and NCSES.">
+<meta property="og:title" content="South Dakota: who the graduate programmes are for">
+<meta property="og:description" content="Every degree-granting institution in South Dakota, the research doctorates each awards, how many go to non-residents, and the federal research money that arrives. Built from IPEDS, NSF and NCSES.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og/concentration.png">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.9rem; margin: 0 0 .7rem; line-height: 1.2; }
+  .page-head p { color: var(--text-muted); max-width: 72ch; line-height: 1.65; font-size: .95rem; margin: 0 0 .6rem; }
+  .kicker { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin: 0 0 .6rem; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin: 1.6rem 0 0; }
+  .stat { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; background: var(--surface); }
+  .stat .n { font-size: 1.7rem; font-weight: 800; color: var(--hl); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: .82rem; line-height: 1.45; margin: .3rem 0 0; }
+  .stat .s { font-size: .72rem; color: var(--text-muted); margin: .45rem 0 0; }
+  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+  section.block { margin-top: 2.8rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  section.block h2 { font-size: 1.2rem; margin: 0 0 .45rem; }
+  .lede { color: var(--text-muted); max-width: 74ch; line-height: 1.6; font-size: .92rem; margin: 0 0 1rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55; max-width: 82ch; margin: .9rem 0 0; }
+  .table-wrap { overflow-x: auto; }
+  table.t { width: 100%; border-collapse: collapse; font-size: .84rem; margin: .6rem 0 0; }
+  table.t th { text-align: left; font-size: .71rem; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--text-muted); font-weight: 600; padding: .4rem .5rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  table.t td { padding: .42rem .5rem; border-bottom: 1px solid var(--border); }
+  table.t td.num, table.t th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.t td.muted { color: var(--text-muted); }
+  table.t td.share { font-weight: 600; color: var(--hl); }
+  table.t th.share-col { color: var(--hl); }
+  table.t td.share, table.t th.share-col {
+    background: color-mix(in srgb, var(--hl) 7%, transparent); }
+  table.t th.sortable { cursor: pointer; }
+  .scale { display: flex; align-items: center; gap: .7rem; margin: 1rem 0 0; flex-wrap: wrap; }
+  .scale .seg { font-size: .8rem; }
+  .barpair { margin: 1rem 0 0; }
+  .barpair .row { display: grid; grid-template-columns: 11rem 1fr auto; gap: .6rem; align-items: center;
+    padding: .3rem 0; font-size: .86rem; }
+  .barpair .lab { color: var(--text-muted); }
+  /* display:block on both. A <span> is inline by default, so width and
+     height are ignored on it -- every fill rendered at zero width inside a
+     full-width track, which made a 2.9% bar and a 47.4% bar look identical. */
+  .barpair .track { display: block; background: rgba(148,163,184,0.14);
+    border-radius: 3px; height: 16px; overflow: hidden; }
+  .barpair .fill { display: block; height: 100%; border-radius: 3px;
+    background: #3987e5; min-width: 2px; }
+  .barpair .fill.nat { background: rgba(148,163,184,0.55); }
+  .barpair .v { font-variant-numeric: tabular-nums; font-weight: 600; }
+  /* The state bar sits directly above its national counterpart, so each pair
+     is one comparison. A gap after the pair keeps the eye from reading all
+     four as a single ranked list. */
+  .barpair .row.pair-end { margin-bottom: .55rem; }
+  @media (max-width: 620px) { .barpair .row { grid-template-columns: 1fr auto; } .barpair .track { display: none; } }
+  .callout { border: 1px solid var(--border); border-left-width: 3px; border-radius: 10px;
+    padding: 1rem 1.1rem; margin: 1rem 0 0; background: var(--surface); }
+  .callout h3 { margin: 0 0 .35rem; font-size: 1rem; }
+  .callout p { margin: 0 0 .5rem; font-size: .88rem; line-height: 1.55; color: var(--text-muted); }
+</style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+</head>
+<body data-page="state" data-state-name="South Dakota" data-state-abbr="SD">
+<a class="skip-link" href="#institutions">Skip to the institutions</a>
+<main id="main">
+<div class="wrap">
+
+  <div class="page-head">
+    <p class="kicker">State profile &middot; SD</p>
+    <h1 id="sd-graduate-programmes">South Dakota</h1>
+    <p>South Dakota has <strong>16</strong> degree-granting
+    institutions in this data. Between them they award
+    <strong>424</strong> research doctorates and
+    <strong>2,752</strong> master&rsquo;s degrees over the
+    window, and take <strong>$72.9m</strong> in federal
+    research and development money.</p>
+    <p>This page counts every institution in the state, including the ones that
+    award no graduate degree at all. Leaving those out would make a state look
+    like its flagship.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">16</div>
+      <p class="l">institutions in the state</p>
+      <p class="s">8 award a research doctorate.
+        1 enrol no graduate students at all.</p></div>
+    <div class="stat"><div class="n">38.9%</div>
+      <p class="l">of research doctorates go to
+        <span data-term="nra">non-residents</span></p>
+      <p class="s">165 of
+        424. National figure: 38.9%.</p></div>
+    <div class="stat"><div class="n">12.6%</div>
+      <p class="l">of graduate enrolment is non-resident</p>
+      <p class="s">1,049 of
+        8,343 graduate students.</p></div>
+    <div class="stat"><div class="n">$72.9m</div>
+      <p class="l">federal research and development money</p>
+      <p class="s">Across 8 institutions.
+        $56.4m in total federal obligations.</p></div>
+  </div>
+
+  <section class="block" id="against-the-country">
+    <h2>Where South Dakota sits</h2>
+    <p class="lede">The non-resident share of research doctorates, against the
+    same figure for the country. That is level with the national figure of 38.9%.</p>
+    <div class="barpair">
+      <div class="row"><span class="lab">South Dakota</span>
+        <span class="track"><span class="fill" style="width:100.0%"></span></span>
+        <span class="v">38.9%</span></div>
+      <div class="row"><span class="lab">United States</span>
+        <span class="track"><span class="fill nat" style="width:100.0%"></span></span>
+        <span class="v">38.9%</span></div>
+    </div>
+    <p class="note">South Dakota ranks <strong>29</strong> of 52
+    states on that share, and <strong>47</strong> of 56 on the
+    number of research doctorates it awards. Rank 1 is the highest. Only states
+    that award doctorates are ranked.</p>
+  </section>
+
+  
+  <section class="block" id="levels">
+    <h2>Undergraduate and graduate, side by side</h2>
+    <p class="lede">The same institutions at two levels. Undergraduate is the
+    remainder once graduate enrolment is taken out of the total, and both
+    levels carry their own non-resident count.
+    In South Dakota the graduate share is <strong>9.8 points higher</strong> than the undergraduate share.</p>
+    <div class="barpair">
+      <div class="row"><span class="lab">Undergraduate</span>
+        <span class="track"><span class="fill" style="width:16.4%"></span></span>
+        <span class="v">2.8%</span></div>
+      <div class="row pair-end"><span class="lab">US undergraduate</span>
+        <span class="track"><span class="fill nat" style="width:21.1%"></span></span>
+        <span class="v">3.6%</span></div>
+      <div class="row"><span class="lab">Graduate</span>
+        <span class="track"><span class="fill" style="width:73.7%"></span></span>
+        <span class="v">12.6%</span></div>
+      <div class="row"><span class="lab">US graduate</span>
+        <span class="track"><span class="fill nat" style="width:100.0%"></span></span>
+        <span class="v">17.1%</span></div>
+    </div>
+    <p class="note" style="margin:0 0 .4rem">Click any column heading to sort.
+    Click it again to reverse. The panel under the table narrows what is shown
+    &mdash; everything is shown until you ask for less.</p>
+    <div class="table-wrap"><table class="t" data-sortable data-controls>
+      <thead><tr><th>Institution</th>
+        <th class="num">Undergraduates</th><th class="num">Non-res</th>
+        <th class="num share-col">Share</th>
+        <th class="num">Graduates</th><th class="num">Non-res</th>
+        <th class="num share-col">Share</th>
+        <th class="num">State funding</th><th class="num">Federal R&amp;D</th></tr></thead>
+      <tbody><tr data-has-grad="1"><td data-sort="south dakota state university">South Dakota State University</td><td class="num" data-sort="10177">10,177</td><td class="num" data-sort="307">307</td><td class="num share" data-sort="3.0">3.0%</td><td class="num" data-sort="1321">1,321</td><td class="num" data-sort="395">395</td><td class="num share" data-sort="29.9">29.9%</td><td class="num" data-sort="102291454">$102.3m</td><td class="num" data-sort="82246000">$82.2m</td></tr><tr data-has-grad="1"><td data-sort="university of south dakota">University of South Dakota</td><td class="num" data-sort="7095">7,095</td><td class="num" data-sort="221">221</td><td class="num share" data-sort="3.1">3.1%</td><td class="num" data-sort="2773">2,773</td><td class="num" data-sort="385">385</td><td class="num share" data-sort="13.9">13.9%</td><td class="num" data-sort="87022890">$87.0m</td><td class="num" data-sort="27908000">$27.9m</td></tr><tr data-has-grad="1"><td data-sort="northern state university">Northern State University</td><td class="num" data-sort="2932">2,932</td><td class="num" data-sort="59">59</td><td class="num share" data-sort="2.0">2.0%</td><td class="num" data-sort="589">589</td><td class="num" data-sort="7">7</td><td class="num share" data-sort="1.2">1.2%</td><td class="num" data-sort="22215213">$22.2m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="dakota state university">Dakota State University</td><td class="num" data-sort="2950">2,950</td><td class="num" data-sort="87">87</td><td class="num share" data-sort="2.9">2.9%</td><td class="num" data-sort="558">558</td><td class="num" data-sort="125">125</td><td class="num share" data-sort="22.4">22.4%</td><td class="num" data-sort="20711294">$20.7m</td><td class="num" data-sort="5652000">$5.7m</td></tr><tr data-has-grad="1"><td data-sort="black hills state university">Black Hills State University</td><td class="num" data-sort="3279">3,279</td><td class="num" data-sort="51">51</td><td class="num share" data-sort="1.6">1.6%</td><td class="num" data-sort="196">196</td><td class="num" data-sort="4">4</td><td class="num share" data-sort="2.0">2.0%</td><td class="num" data-sort="16479512">$16.5m</td><td class="num" data-sort="2646000">$2.6m</td></tr><tr data-has-grad="1"><td data-sort="south dakota school of mines and technology">South Dakota School of Mines and Technology</td><td class="num" data-sort="2170">2,170</td><td class="num" data-sort="31">31</td><td class="num share" data-sort="1.4">1.4%</td><td class="num" data-sort="322">322</td><td class="num" data-sort="97">97</td><td class="num share" data-sort="30.1">30.1%</td><td class="num" data-sort="25820237">$25.8m</td><td class="num" data-sort="23941000">$23.9m</td></tr><tr data-has-grad="1"><td data-sort="augustana university">Augustana University</td><td class="num" data-sort="1871">1,871</td><td class="num" data-sort="201">201</td><td class="num share" data-sort="10.7">10.7%</td><td class="num" data-sort="287">287</td><td class="num" data-sort="8">8</td><td class="num share" data-sort="2.8">2.8%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="university of sioux falls">University of Sioux Falls</td><td class="num" data-sort="1276">1,276</td><td class="num" data-sort="7">7</td><td class="num share" data-sort="0.5">0.5%</td><td class="num" data-sort="233">233</td><td class="num" data-sort="4">4</td><td class="num share" data-sort="1.7">1.7%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="mount marty university">Mount Marty University</td><td class="num" data-sort="1096">1,096</td><td class="num" data-sort="40">40</td><td class="num share" data-sort="3.6">3.6%</td><td class="num" data-sort="218">218</td><td class="num" data-sort="5">5</td><td class="num share" data-sort="2.3">2.3%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="oglala lakota college">Oglala Lakota College</td><td class="num" data-sort="1180">1,180</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="49">49</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="kairos university">Kairos University</td><td class="num" data-sort="36">36</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="1069">1,069</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="national american university-rapid city">National American University-Rapid City</td><td class="num" data-sort="836">836</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="190">190</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="dakota wesleyan university">Dakota Wesleyan University</td><td class="num" data-sort="767">767</td><td class="num" data-sort="16">16</td><td class="num share" data-sort="2.1">2.1%</td><td class="num" data-sort="119">119</td><td class="num" data-sort="1">1</td><td class="num share" data-sort="0.8">0.8%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="sinte gleska university">Sinte Gleska University</td><td class="num" data-sort="607">607</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="76">76</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="california intercontinental university">California Intercontinental University</td><td class="num" data-sort="141">141</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="343">343</td><td class="num" data-sort="18">18</td><td class="num share" data-sort="5.2">5.2%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="0"><td data-sort="sisseton wahpeton college">Sisseton Wahpeton College</td><td class="num" data-sort="215">215</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num share" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr></tbody></table></div>
+    <p class="lede">The two levels diverge most at <strong>South Dakota School of Mines and Technology</strong>: <strong>1.4%</strong> of its 2,170 undergraduates and <strong>30.1%</strong> of its 322 graduate students. These are different admissions systems with different applicant pools, different money and different reasons to say yes, and a single state figure hides both.</p>
+    <p class="note">1,020 of 36,628 undergraduates and 1,049 of
+    8,343 graduate students.
+    IPEDS reports no graduate enrolment for 1 of these institutions; their rows show a dash rather than a zero, because the file not carrying a number is not the same as the number being none.</p>
+  </section>
+
+
+
+  
+  <section class="block" id="blend">
+    <h2>What the state figure is an average of</h2>
+    <p class="lede">The largest graduate enrolments in South Dakota, each with its
+    own non-resident share. Nothing here is excluded from the figures above.
+    The point is to show what they are made of.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Graduate students</th>
+        <th class="num">Share of the state</th>
+        <th class="num">Non-resident</th></tr></thead>
+      <tbody><tr><td>University of South Dakota</td><td class="num">2,773</td><td class="num muted">33.2%</td><td class="num share">13.9%</td></tr><tr><td>South Dakota State University</td><td class="num">1,321</td><td class="num muted">15.8%</td><td class="num share">29.9%</td></tr><tr><td>Kairos University</td><td class="num">1,069</td><td class="num muted">12.8%</td><td class="num share">0.0%</td></tr><tr><td>Northern State University</td><td class="num">589</td><td class="num muted">7.1%</td><td class="num share">1.2%</td></tr><tr><td>Dakota State University</td><td class="num">558</td><td class="num muted">6.7%</td><td class="num share">22.4%</td></tr><tr><td>California Intercontinental University</td><td class="num">343</td><td class="num muted">4.1%</td><td class="num share">5.2%</td></tr></tbody></table></div>
+    <p class="note">No single institution decides this figure. The largest, University of South Dakota, holds 33.2% of the state&rsquo;s graduate enrolment, and removing it moves the state share from 12.6% to 11.9%.</p>
+  </section>
+
+
+  
+  <section class="block" id="training">
+    <h2>Practical training, and the other student visas</h2>
+    <p class="lede">A student visa does not end at graduation. Optional
+    Practical Training lets a graduate work on the same visa, and a STEM degree
+    adds a further twenty-four months. It applies at both levels, so the
+    undergraduate share above is not the end of the story.</p>
+    <p class="lede"><strong>No institution in South Dakota appears in
+    SEVP&rsquo;s published lists</strong>, which cover the top 100 and top 200
+    schools for OPT and STEM OPT. There is therefore no published practical
+    training figure for this state. That is a fact about what the agency
+    releases, not a statement that no one here is on OPT.</p>
+    <p class="note"><strong>J-1 physicians.</strong> South Dakota is not in the published top twelve states for J-1 physicians in graduate medical education, which is the only state breakdown ECFMG publishes. That is an absence from a short list, not a zero.</p>
+  </section>
+
+
+  
+  <section class="block" id="residency">
+    <h2>In-state against out-of-state</h2>
+    <p class="lede">Public four-year institutions, FY2024. Every foreign
+    student pays the out-of-state rate, so this is the price attached to the
+    non-resident column everywhere else on this page.</p>
+    <p class="lede">An out-of-state student in South Dakota is worth <strong>1.22&times;</strong> an in-state one to the institution. They are <strong>43.0%</strong> of the students and <strong>47.9%</strong> of the tuition revenue.</p>
+    <div class="table-wrap"><table class="t">
+      <thead><tr><th>Measure</th><th class="num">In-state</th>
+        <th class="num">Out-of-state</th></tr></thead>
+      <tbody><tr><td>Share of students (FTE)</td><td class="num">57.0%</td><td class="num">43.0%</td></tr><tr><td>Net tuition and fees collected per student</td><td class="num">$8,512</td><td class="num share">$10,364</td></tr><tr><td>Share of tuition revenue</td><td class="num">52.1%</td><td class="num share">47.9%</td></tr></tbody></table></div>
+    <p class="note"><strong>Out-of-state is not the same as foreign.</strong>
+    SHEEO counts international students and domestic students from other states
+    in one column. This shows what a non-resident pays, never how many of them
+    are foreign. Figures are <strong>net</strong> tuition and fee revenue per
+    full-time-equivalent student &mdash; what the institution actually
+    collected after its own aid, not the published price. Public four-year
+    institutions only; medical FTE excluded.
+    </p>
+  </section>
+
+
+  <section class="block" id="institutions">
+    <h2>Every institution</h2>
+    <p class="lede">Largest first by total enrolment. A dash means the
+    institution awards none of that degree, or that no federal research money
+    was matched to it.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th>City</th><th>Control</th>
+        <th class="num">Enrolled</th><th class="num">Graduate</th>
+        <th class="num">Master&rsquo;s</th><th class="num">Non-res</th>
+        <th class="num">Doctorates</th><th class="num">Non-res</th>
+        <th class="num">Federal R&amp;D</th></tr></thead>
+      <tbody><tr><td>South Dakota State University</td><td class="muted">Brookings</td><td class="muted">public</td><td class="num" data-sort="11498">11,498</td><td class="num" data-sort="1321">1,321</td><td class="num">732</td><td class="num share">248</td><td class="num">235</td><td class="num share">159</td><td class="num" data-sort="82246000">$82.2m</td></tr><tr><td>University of South Dakota</td><td class="muted">Vermillion</td><td class="muted">public</td><td class="num" data-sort="9868">9,868</td><td class="num" data-sort="2773">2,773</td><td class="num">701</td><td class="num share">406</td><td class="num">282</td><td class="num share">37</td><td class="num" data-sort="27908000">$27.9m</td></tr><tr><td>Northern State University</td><td class="muted">Aberdeen</td><td class="muted">public</td><td class="num" data-sort="3521">3,521</td><td class="num" data-sort="589">589</td><td class="num">30</td><td class="num share">1</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Dakota State University</td><td class="muted">Madison</td><td class="muted">public</td><td class="num" data-sort="3508">3,508</td><td class="num" data-sort="558">558</td><td class="num">560</td><td class="num share">170</td><td class="num">103</td><td class="num share">3</td><td class="num" data-sort="5652000">$5.7m</td></tr><tr><td>Black Hills State University</td><td class="muted">Spearfish</td><td class="muted">public</td><td class="num" data-sort="3475">3,475</td><td class="num" data-sort="196">196</td><td class="num">43</td><td class="num share">1</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="2646000">$2.6m</td></tr><tr><td>South Dakota School of Mines and Technology</td><td class="muted">Rapid City</td><td class="muted">public</td><td class="num" data-sort="2492">2,492</td><td class="num" data-sort="322">322</td><td class="num">591</td><td class="num share">124</td><td class="num">88</td><td class="num share">48</td><td class="num" data-sort="23941000">$23.9m</td></tr><tr><td>Augustana University</td><td class="muted">Sioux Falls</td><td class="muted">private nonprofit</td><td class="num" data-sort="2158">2,158</td><td class="num" data-sort="287">287</td><td class="num">38</td><td class="num share">1</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>University of Sioux Falls</td><td class="muted">Sioux Falls</td><td class="muted">private nonprofit</td><td class="num" data-sort="1509">1,509</td><td class="num" data-sort="233">233</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num">19</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Mount Marty University</td><td class="muted">Yankton</td><td class="muted">private nonprofit</td><td class="num" data-sort="1314">1,314</td><td class="num" data-sort="218">218</td><td class="num">36</td><td class="num share">1</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Oglala Lakota College</td><td class="muted">Kyle</td><td class="muted">public</td><td class="num" data-sort="1229">1,229</td><td class="num" data-sort="49">49</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Kairos University</td><td class="muted">Sioux Falls</td><td class="muted">private nonprofit</td><td class="num" data-sort="1105">1,105</td><td class="num" data-sort="1069">1,069</td><td class="num">21</td><td class="num share">0</td><td class="num">39</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>National American University-Rapid City</td><td class="muted">Rapid City</td><td class="muted">private for-profit</td><td class="num" data-sort="1026">1,026</td><td class="num" data-sort="190">190</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num">76</td><td class="num share">2</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Dakota Wesleyan University</td><td class="muted">Mitchell</td><td class="muted">private nonprofit</td><td class="num" data-sort="886">886</td><td class="num" data-sort="119">119</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Sinte Gleska University</td><td class="muted">Mission</td><td class="muted">public</td><td class="num" data-sort="683">683</td><td class="num" data-sort="76">76</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>California Intercontinental University</td><td class="muted">Sioux Falls</td><td class="muted">private for-profit</td><td class="num" data-sort="484">484</td><td class="num" data-sort="343">343</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num">226</td><td class="num share">46</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Sisseton Wahpeton College</td><td class="muted">Sisseton</td><td class="muted">public</td><td class="num" data-sort="215">215</td><td class="num" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr></tbody></table></div>
+    <p class="note">Degrees are pooled over
+    2021&ndash;2025. Enrolment
+    and federal money are the most recent year in the file. &ldquo;Non-res&rdquo;
+    means a student here on a temporary visa, almost always F-1 or J-1. A green
+    card holder is not counted in it.</p>
+  </section>
+
+  <section class="block" id="concentration">
+    <h2>How few institutions this is</h2>
+    <p class="lede">Of the 16 institutions in
+    South Dakota, <strong>8</strong> award a research doctorate at
+    all, and the largest two award 48.4% of them.
+    A state&rsquo;s graduate pipeline is a much smaller thing than its list of
+    colleges.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Research doctorates</th>
+        <th class="num">Non-resident</th><th class="num share-col">Share</th>
+        <th class="num">Share of the state&rsquo;s doctorates</th></tr></thead>
+      <tbody><tr><td>University of South Dakota</td><td class="num">282</td><td class="num">37</td><td class="num share">13.1%</td><td class="num muted">26.4%</td></tr><tr><td>South Dakota State University</td><td class="num">235</td><td class="num">159</td><td class="num share">67.7%</td><td class="num muted">22.0%</td></tr><tr><td>California Intercontinental University</td><td class="num">226</td><td class="num">46</td><td class="num share">20.4%</td><td class="num muted">21.2%</td></tr><tr><td>Dakota State University</td><td class="num">103</td><td class="num">3</td><td class="num share">2.9%</td><td class="num muted">9.6%</td></tr><tr><td>South Dakota School of Mines and Technology</td><td class="num">88</td><td class="num">48</td><td class="num share">54.5%</td><td class="num muted">8.2%</td></tr><tr><td>National American University-Rapid City</td><td class="num">76</td><td class="num">2</td><td class="num share">2.6%</td><td class="num muted">7.1%</td></tr><tr><td>Kairos University</td><td class="num">39</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">3.7%</td></tr><tr><td>University of Sioux Falls</td><td class="num">19</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">1.8%</td></tr></tbody></table></div>
+  </section>
+  <section class="block" id="survey">
+    <h2>The foreign share of graduate students, where the survey reaches</h2>
+    <p class="lede">The NSF Survey of Graduate Students and Postdoctorates asks
+    institutions directly, and it covers 5 of the
+    16 institutions in South Dakota. It is a different
+    measure from the degree counts above: enrolled students rather than degrees
+    awarded.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Doctoral students foreign</th>
+        <th class="num">Master&rsquo;s students foreign</th></tr></thead>
+      <tbody><tr><td>South Dakota State University</td><td class="num share">82.6%</td><td class="num">46.9%</td></tr><tr><td>South Dakota School of Mines and Technology</td><td class="num share">59.0%</td><td class="num">18.6%</td></tr><tr><td>University of South Dakota</td><td class="num share">29.6%</td><td class="num">55.1%</td></tr><tr><td>Dakota State University</td><td class="num share">10.5%</td><td class="num">24.6%</td></tr><tr><td>Black Hills State University</td><td class="num share">&mdash;%</td><td class="num">57.1%</td></tr></tbody></table></div>
+    <div class="callout">
+      <h3>South Dakota State University</h3>
+      <p>The highest foreign share of doctoral students in the state, at
+      <strong>82.6%</strong>. It is not the largest institution here
+      and it is not the one with the most federal money. Size and share are
+      different questions, and a state page that ranked only by size would not
+      show this.</p>
+    </div>
+  </section>
+  <section class="block" id="state-money">
+    <h2>What the state itself puts in</h2>
+    <p class="lede">State appropriations per full-time-equivalent student, from
+    the SHEEO finance survey, against the change in the foreign share of
+    graduate enrolment over the same window.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Measure</th><th class="num">First year</th>
+        <th class="num">Last year</th><th class="num">Change</th></tr></thead>
+      <tbody>
+        <tr><td>State appropriations per FTE student</td>
+          <td class="num">$7,066</td>
+          <td class="num">$9,066</td>
+          <td class="num share">+28.3%</td></tr>
+        <tr><td>Foreign share of graduate enrolment</td>
+          <td class="num">8.0%</td>
+          <td class="num">17.2%</td>
+          <td class="num share">+9.2 pts</td></tr>
+      </tbody></table></div>
+    <p class="note">These two rows move for their own reasons. Nothing here
+    shows that one caused the other, and the page does not say it did.</p>
+  </section>
+  <section class="block" id="departments">
+    <h2>Department by department</h2>
+    <p class="lede">The dissertation corpus reaches
+    2 institutions in this state,
+    covering 11 departments.
+    <strong>7</strong> of them are majority non-resident.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th>Department</th>
+        <th class="num">Doctorates</th><th class="num">Non-resident</th>
+        <th class="num share-col">Share</th></tr></thead>
+      <tbody><tr><td class="muted">SD State</td><td>Agricultural Engineering</td><td class="num">19</td><td class="num">17</td><td class="num share">89.5%</td></tr><tr><td class="muted">SD State</td><td>Electrical and Electronics Engineering</td><td class="num">29</td><td class="num">24</td><td class="num share">82.8%</td></tr><tr><td class="muted">SD State</td><td>Biochemistry</td><td class="num">18</td><td class="num">13</td><td class="num share">72.2%</td></tr><tr><td class="muted">SD State</td><td>Chemistry, General</td><td class="num">43</td><td class="num">29</td><td class="num share">67.4%</td></tr><tr><td class="muted">SD State</td><td>Microbiology, General</td><td class="num">21</td><td class="num">12</td><td class="num share">57.1%</td></tr><tr><td class="muted">SD State</td><td>Biology/Biological Sciences, General</td><td class="num">36</td><td class="num">19</td><td class="num share">52.8%</td></tr><tr><td class="muted">SD State</td><td>Computational Mathematics</td><td class="num">19</td><td class="num">5</td><td class="num share">26.3%</td></tr><tr><td class="muted">U South Dakota</td><td>Materials Chemistry</td><td class="num">31</td><td class="num">21</td><td class="num share">67.7%</td></tr><tr><td class="muted">U South Dakota</td><td>Biomedical Sciences, General</td><td class="num">28</td><td class="num">13</td><td class="num share">46.4%</td></tr><tr><td class="muted">U South Dakota</td><td>Counseling Psychology</td><td class="num">47</td><td class="num">4</td><td class="num share">8.5%</td></tr><tr><td class="muted">U South Dakota</td><td>Psychology, General</td><td class="num">57</td><td class="num">2</td><td class="num share">3.5%</td></tr></tbody></table></div>
+    <p class="note">From the dissertation corpus, which is built from what
+    universities publish about their own graduates. It covers the institutions
+    on this site, not every institution in the state, so it is a floor.</p>
+  </section>
+  <section class="block" id="not-published">
+    <h2>What is not published for a state this size</h2>
+    <p class="lede">Two of the measures this site uses elsewhere do not exist
+    at this scale, and the reason is the same in both cases: the agency
+    publishes a ranked extract rather than the whole file.</p>
+    <ul class="lede">
+      <li><strong>Practical training is not published here.</strong> SEVP
+      releases the top 100 and top 200 schools for OPT and STEM OPT, not every
+      school. An institution outside those lists has no published figure at
+      all. Its absence is a fact about the list, not about the institution, and
+      it must never be read as a zero.</li>
+      <li><strong>Student visa counts are not published by state.</strong> DHS
+      reports SEVIS records nationally and names a few states per region in its
+      commentary. For most states it publishes a percentage change and no
+      count, so the number of foreign students physically in a state cannot be
+      read off the federal release.</li>
+      <li><strong>Enrolment is the measure that does exist.</strong> IPEDS asks
+      every institution directly, which is why this page is built from it. It
+      counts students enrolled, not visas issued, and the two are different
+      questions.</li>
+    </ul>
+  </section>
+
+  <section class="block" id="method">
+    <h2>Method and limits</h2>
+    <ul class="lede">
+      <li><strong>Non-resident means here on a temporary visa.</strong> IPEDS
+      defines it as a person &ldquo;who is not a citizen or national of the
+      United States and who is in this country on a visa or temporary basis and
+      does not have the right to remain indefinitely.&rdquo; A green card holder
+      is therefore never counted here. Neither is a refugee or an asylee. Those
+      students are reported in the race and ethnicity categories alongside
+      citizens. For students the category is overwhelmingly F-1 and J-1.</li>
+      <li><strong>It is not ethnicity and not country of origin.</strong> A
+      US-born citizen of any background is never non-resident. The status is
+      recorded when the student enrols, for the enrolment figures, and when the
+      degree is awarded, for the degree counts. These files cannot be split any
+      other way.</li>
+      <li><strong>Degrees are pooled</strong> over
+      2021&ndash;2025, because a
+      single year at a small institution moves on one student.</li>
+      <li><strong>Enrolment and awards are different measures</strong> and will
+      not agree. One counts people on a given day; the other counts degrees
+      conferred over five years.</li>
+      <li><strong>Federal money is matched to a campus</strong>, and a system
+      that reports centrally can carry money its branches spend.</li>
+      <li><strong>This page shows composition, not displacement.</strong> It
+      records who received the degrees. It does not show that anyone was kept
+      out, and nothing here should be read that way.</li>
+    </ul>
+    <p class="note">Built by <code>scripts/build_state_pages.py</code> from
+    <a href="/data/institution_profiles.json">institution_profiles.json</a>,
+    <a href="/data/state_funding_and_enrolment.json">state_funding_and_enrolment.json</a>
+    and <a href="/data/university_distribution.json">university_distribution.json</a>.
+    Compare the country on <a href="/overview">the national overview</a>.</p>
+  </section>
+
+</div>
+</main>
+<script src="/analytics-beacon.js" defer></script>
+<script src="/states.js" defer></script>
+<script src="/anchors.js" defer></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

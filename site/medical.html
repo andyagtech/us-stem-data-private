@@ -7,10 +7,11 @@
 <title>Medical Immigration Pipeline — PhD Demographics</title>
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="/style.css">
 <style>
   :root { --bg: #0f172a; --surface: #1e293b; --surface2: var(--border); --text: #e2e8f0; --text-muted: #94a3b8; --accent: #38bdf8; --red: #f87171; --green: #4ade80; --orange: #fb923c; --purple: #a78bfa; --yellow: #facc15; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); }
+  body { font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); }
   .page { max-width: 1200px; margin: 0 auto; padding: 24px 32px; }
   h1 { font-size: 1.4rem; margin-bottom: 4px; }
   h2 { font-size: 1.1rem; margin: 24px 0 12px; color: var(--accent); }
@@ -77,7 +78,7 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
   <div class="subtitle">US MD-granting medical schools: enrollment growth, DACA students, and the limited domestic pipeline. Source: AAMC FACTS.</div>
 
   <div class="info-box">
-    <strong>The medical school bottleneck.</strong> US MD programs admit ~23,000 new students per year — barely 40% of the ~55,000 who apply. While total enrollment has grown ~52% since 1980 (from 65,969 to 100,723), graduate output is still capped at ~21,000 per year. Combined with the residency-slot bottleneck, this creates one of the most constrained physician pipelines in the developed world. International medical graduates (IMGs) fill the gap — about 25% of practicing US physicians earned their MDs abroad.
+    <strong>The medical school bottleneck.</strong> US MD programs admit <!--auto:data:medical_dashboard.history.matriculants.45|n-->23,440<!--/auto--> new students per year. That is <!--auto:medical_acceptance_rate-->43%<!--/auto--> of the <!--auto:data:medical_dashboard.history.applicants.45|n-->54,699<!--/auto--> who apply. Total enrollment has grown <!--auto:medical_enrollment_growth-->53%<!--/auto--> since 1980, from <!--auto:data:medical_dashboard.history.enrollment.0|n-->65,969<!--/auto--> to <!--auto:data:medical_dashboard.history.enrollment.45|n-->100,723<!--/auto-->. Graduate output is still about <!--auto:medical_graduates_latest-->21,599<!--/auto--> a year. Combined with the residency-slot bottleneck, this creates one of the most constrained physician pipelines in the developed world. International medical graduates (IMGs) fill the gap — about 25% of practicing US physicians earned their MDs abroad.
   </div>
 
   <div class="stats" id="hero-stats"></div>
@@ -106,7 +107,7 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 
     <div class="chart-box wide" id="origins-section">
       <h3>Asian-Origin Male Matriculants, 2025-2026 (by self-reported ethnic origin)</h3>
-      <p class="desc">AAMC tracks self-reported origin within the broad "Asian" category. Indian, Chinese, and Korean students dominate — Indian alone is over 1,000 male matriculants in a single year.</p>
+      <p class="desc">AAMC tracks self-reported origin within the broad "Asian" category. Indian, Chinese, and Korean students dominate — Indian alone is <!--auto:data:medical_dashboard.race_2025.asian_origins_men_matriculants_2025.Indian|n-->5,007<!--/auto--> male matriculants in a single year, against <!--auto:data:medical_dashboard.race_2025.asian_origins_men_matriculants_2025.Chinese|n-->2,018<!--/auto--> Chinese and <!--auto:data:medical_dashboard.race_2025.asian_origins_men_matriculants_2025.Korean|n-->1,177<!--/auto--> Korean.</p>
       <canvas id="origins-chart"></canvas>
       <p class="source">Source: <a href="https://www.aamc.org/data-reports/students-residents/data/facts-applicants-and-matriculants-data" target="_blank">AAMC FACTS Table A-12</a> · Note: This is "men only" because that's the column AAMC publishes by ethnic origin; the women side has the same shape.</p>
     </div>
@@ -160,8 +161,8 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
     <p style="margin-bottom: 8px;"><strong>Three structural facts about US physician supply:</strong></p>
     <ol style="margin-left: 22px;">
       <li><strong>Seat scarcity:</strong> ~23,000 MD seats per year, ~6,400 DO seats. Combined US-trained output of ~30,000/year against a population of 340M.</li>
-      <li><strong>Residency cap (Match):</strong> Even US graduates compete for residency slots. About 40,000 NRMP positions annually — nearly half are filled by international medical graduates (IMGs) and US graduates of foreign schools.</li>
-      <li><strong>J-1 / H-1B physicians:</strong> Foreign-born physicians on J-1 visas serve a significant share of underserved-area care under Conrad 30 waivers. EVSP J-1 sponsorship data shows ~12,000 active foreign physicians on J-1 in any given year.</li>
+      <li><strong>Residency cap (Match):</strong> Even US graduates compete for residency slots. <!--auto:data:medical_dashboard.nrmp_2026.pgy1_positions_offered|n-->41,126<!--/auto--> PGY-1 positions were offered in the <!--auto:data:medical_dashboard.nrmp_2026.year|raw-->2026<!--/auto--> Match. International medical graduates took <!--auto:data:medical_dashboard.nrmp_2026.imgs_matched|n-->9,682<!--/auto--> of them, <!--auto:data:medical_dashboard.nrmp_2026.img_share_pct|pct1-->23.5%<!--/auto--> of the total.</li>
+      <li><strong>J-1 / H-1B physicians:</strong> Foreign-born physicians on J-1 visas serve a significant share of underserved-area care under Conrad 30 waivers. Intealth publishes the ten largest source countries, which together account for <!--auto:medical_j1_top10_total-->12,419<!--/auto--> physicians on J-1 in <!--auto:data:medical_dashboard.evsp_j1.as_of|raw-->2025 calendar year<!--/auto-->. The full total is not published, so that figure is a floor.</li>
     </ol>
     <p style="margin-top: 10px;">The medical immigration pathway is therefore very different from the STEM PhD pathway: tightly capped at the front (admissions), tightly capped in the middle (residency), and heavily reliant on foreign-born physicians (especially Indian and Pakistani) at the back end of the labor market.</p>
   </div>
@@ -426,5 +427,6 @@ new Chart(document.getElementById('daca-chart'), {
 </script>
 <script src="/sidebar.js"></script>
 <script src="/anchors.js" defer></script>
+<script src="/analytics-beacon.js" defer></script>
 </body>
 </html>

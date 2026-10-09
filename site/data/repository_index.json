@@ -1,0 +1,858 @@
+{
+ "source": "data/dept_links.json, the repository search URLs used by the harvest",
+ "institutions": 106,
+ "with_repository": 99,
+ "without_repository": 7,
+ "indirect_resolvers": 27,
+ "note": "The repository is the host the harvest's own search URLs share. A handle or DOI host is a resolver that forwards to the institution's archive, and is marked as such.",
+ "repositories": [
+  {
+   "key": "binghamton",
+   "name": "Binghamton",
+   "repository": "orb.binghamton.edu",
+   "url": "https://orb.binghamton.edu/",
+   "indirect": false,
+   "departments_searched": 45
+  },
+  {
+   "key": "boise_state",
+   "name": "Boise State",
+   "repository": "scholarworks.boisestate.edu",
+   "url": "https://scholarworks.boisestate.edu/",
+   "indirect": false,
+   "departments_searched": 43
+  },
+  {
+   "key": "bu",
+   "name": "Boston U",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 231
+  },
+  {
+   "key": "byu",
+   "name": "BYU",
+   "repository": "scholarsarchive.byu.edu",
+   "url": "https://scholarsarchive.byu.edu/",
+   "indirect": false,
+   "departments_searched": 44
+  },
+  {
+   "key": "caltech",
+   "name": "Caltech",
+   "repository": "resolver.caltech.edu",
+   "url": "https://resolver.caltech.edu/",
+   "indirect": true,
+   "departments_searched": 5
+  },
+  {
+   "key": "clemson",
+   "name": "Clemson",
+   "repository": "open.clemson.edu",
+   "url": "https://open.clemson.edu/",
+   "indirect": false,
+   "departments_searched": 48
+  },
+  {
+   "key": "cmu",
+   "name": "Carnegie Mellon",
+   "repository": "",
+   "url": "",
+   "indirect": false,
+   "departments_searched": 0
+  },
+  {
+   "key": "columbia",
+   "name": "Columbia",
+   "repository": "doi.org",
+   "url": "https://doi.org/",
+   "indirect": true,
+   "departments_searched": 48
+  },
+  {
+   "key": "cornell",
+   "name": "Cornell",
+   "repository": "dissertations.umi.com",
+   "url": "https://dissertations.umi.com/",
+   "indirect": false,
+   "departments_searched": 131
+  },
+  {
+   "key": "cu_boulder",
+   "name": "CU Boulder",
+   "repository": "",
+   "url": "",
+   "indirect": false,
+   "departments_searched": 0
+  },
+  {
+   "key": "cuny",
+   "name": "CUNY Grad Center",
+   "repository": "academicworks.cuny.edu",
+   "url": "https://academicworks.cuny.edu/",
+   "indirect": false,
+   "departments_searched": 44
+  },
+  {
+   "key": "dartmouth",
+   "name": "Dartmouth",
+   "repository": "digitalcommons.dartmouth.edu",
+   "url": "https://digitalcommons.dartmouth.edu/",
+   "indirect": false,
+   "departments_searched": 34
+  },
+  {
+   "key": "duke",
+   "name": "Duke",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 47
+  },
+  {
+   "key": "gatech",
+   "name": "Georgia Tech",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 43
+  },
+  {
+   "key": "gmu",
+   "name": "George Mason",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 47
+  },
+  {
+   "key": "harvard",
+   "name": "Harvard",
+   "repository": "nrs.harvard.edu",
+   "url": "https://nrs.harvard.edu/",
+   "indirect": false,
+   "departments_searched": 68
+  },
+  {
+   "key": "iowa_state",
+   "name": "Iowa State",
+   "repository": "dr.lib.iastate.edu",
+   "url": "https://dr.lib.iastate.edu/",
+   "indirect": false,
+   "departments_searched": 50
+  },
+  {
+   "key": "kstate",
+   "name": "Kansas State",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 48
+  },
+  {
+   "key": "la_tech",
+   "name": "Louisiana Tech",
+   "repository": "digitalcommons.latech.edu",
+   "url": "https://digitalcommons.latech.edu/",
+   "indirect": false,
+   "departments_searched": 37
+  },
+  {
+   "key": "lsu",
+   "name": "LSU",
+   "repository": "repository.lsu.edu",
+   "url": "https://repository.lsu.edu/",
+   "indirect": false,
+   "departments_searched": 48
+  },
+  {
+   "key": "marquette",
+   "name": "Marquette",
+   "repository": "epublications.marquette.edu",
+   "url": "https://epublications.marquette.edu/",
+   "indirect": false,
+   "departments_searched": 41
+  },
+  {
+   "key": "mines",
+   "name": "CO School of Mines",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 98
+  },
+  {
+   "key": "missouri_st",
+   "name": "Missouri S&T",
+   "repository": "scholarsmine.mst.edu",
+   "url": "https://scholarsmine.mst.edu/",
+   "indirect": false,
+   "departments_searched": 30
+  },
+  {
+   "key": "mit",
+   "name": "MIT",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 49
+  },
+  {
+   "key": "montana_state",
+   "name": "Montana State U",
+   "repository": "",
+   "url": "",
+   "indirect": false,
+   "departments_searched": 0
+  },
+  {
+   "key": "msstate",
+   "name": "Mississippi State",
+   "repository": "scholarsjunction.msstate.edu",
+   "url": "https://scholarsjunction.msstate.edu/",
+   "indirect": false,
+   "departments_searched": 73
+  },
+  {
+   "key": "msu",
+   "name": "Michigan State",
+   "repository": "doi.org",
+   "url": "https://doi.org/",
+   "indirect": true,
+   "departments_searched": 47
+  },
+  {
+   "key": "mtu",
+   "name": "Michigan Tech",
+   "repository": "digitalcommons.mtu.edu",
+   "url": "https://digitalcommons.mtu.edu/",
+   "indirect": false,
+   "departments_searched": 38
+  },
+  {
+   "key": "nau",
+   "name": "Northern Arizona",
+   "repository": "openknowledge.nau.edu",
+   "url": "https://openknowledge.nau.edu/",
+   "indirect": false,
+   "departments_searched": 33
+  },
+  {
+   "key": "ncstate",
+   "name": "NC State",
+   "repository": "www.lib.ncsu.edu",
+   "url": "https://www.lib.ncsu.edu/",
+   "indirect": false,
+   "departments_searched": 126
+  },
+  {
+   "key": "niu",
+   "name": "Northern Illinois",
+   "repository": "huskiecommons.lib.niu.edu",
+   "url": "https://huskiecommons.lib.niu.edu/",
+   "indirect": false,
+   "departments_searched": 48
+  },
+  {
+   "key": "njit",
+   "name": "NJIT",
+   "repository": "digitalcommons.njit.edu",
+   "url": "https://digitalcommons.njit.edu/",
+   "indirect": false,
+   "departments_searched": 35
+  },
+  {
+   "key": "northern_colorado",
+   "name": "U Northern Colorado",
+   "repository": "digscholarship.unco.edu",
+   "url": "https://digscholarship.unco.edu/",
+   "indirect": false,
+   "departments_searched": 13
+  },
+  {
+   "key": "northwestern",
+   "name": "Northwestern",
+   "repository": "arch.library.northwestern.edu",
+   "url": "https://arch.library.northwestern.edu/",
+   "indirect": false,
+   "departments_searched": 46
+  },
+  {
+   "key": "olemiss",
+   "name": "Ole Miss",
+   "repository": "egrove.olemiss.edu",
+   "url": "https://egrove.olemiss.edu/",
+   "indirect": false,
+   "departments_searched": 46
+  },
+  {
+   "key": "osu",
+   "name": "Ohio State",
+   "repository": "",
+   "url": "",
+   "indirect": false,
+   "departments_searched": 0
+  },
+  {
+   "key": "pdx",
+   "name": "Portland State",
+   "repository": "",
+   "url": "",
+   "indirect": false,
+   "departments_searched": 0
+  },
+  {
+   "key": "penn_state",
+   "name": "Penn State",
+   "repository": "etda.libraries.psu.edu",
+   "url": "https://etda.libraries.psu.edu/",
+   "indirect": false,
+   "departments_searched": 1
+  },
+  {
+   "key": "purdue",
+   "name": "Purdue",
+   "repository": "docs.lib.purdue.edu",
+   "url": "https://docs.lib.purdue.edu/",
+   "indirect": false,
+   "departments_searched": 50
+  },
+  {
+   "key": "rice",
+   "name": "Rice",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 103
+  },
+  {
+   "key": "rit",
+   "name": "RIT",
+   "repository": "repository.rit.edu",
+   "url": "https://repository.rit.edu/",
+   "indirect": false,
+   "departments_searched": 37
+  },
+  {
+   "key": "rpi",
+   "name": "RPI",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 84
+  },
+  {
+   "key": "sdsu",
+   "name": "SD State",
+   "repository": "openprairie.sdstate.edu",
+   "url": "https://openprairie.sdstate.edu/",
+   "indirect": false,
+   "departments_searched": 38
+  },
+  {
+   "key": "siu",
+   "name": "Southern Illinois",
+   "repository": "opensiuc.lib.siu.edu",
+   "url": "https://opensiuc.lib.siu.edu/",
+   "indirect": false,
+   "departments_searched": 39
+  },
+  {
+   "key": "smu",
+   "name": "SMU",
+   "repository": "scholar.smu.edu",
+   "url": "https://scholar.smu.edu/",
+   "indirect": false,
+   "departments_searched": 33
+  },
+  {
+   "key": "stanford",
+   "name": "Stanford",
+   "repository": "purl.stanford.edu",
+   "url": "https://purl.stanford.edu/",
+   "indirect": false,
+   "departments_searched": 183
+  },
+  {
+   "key": "stony_brook",
+   "name": "Stony Brook",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 37
+  },
+  {
+   "key": "syracuse",
+   "name": "Syracuse",
+   "repository": "surface.syr.edu",
+   "url": "https://surface.syr.edu/",
+   "indirect": false,
+   "departments_searched": 42
+  },
+  {
+   "key": "temple",
+   "name": "Temple",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 102
+  },
+  {
+   "key": "ttu",
+   "name": "Texas Tech",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 39
+  },
+  {
+   "key": "uarizona",
+   "name": "U Arizona",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 46
+  },
+  {
+   "key": "uarkansas",
+   "name": "U Arkansas",
+   "repository": "scholarworks.uark.edu",
+   "url": "https://scholarworks.uark.edu/",
+   "indirect": false,
+   "departments_searched": 49
+  },
+  {
+   "key": "ubuffalo",
+   "name": "U Buffalo",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 57
+  },
+  {
+   "key": "ucberkeley",
+   "name": "UC Berkeley",
+   "repository": "escholarship.org",
+   "url": "https://escholarship.org/",
+   "indirect": false,
+   "departments_searched": 48
+  },
+  {
+   "key": "ucdavis",
+   "name": "UC Davis",
+   "repository": "escholarship.org",
+   "url": "https://escholarship.org/",
+   "indirect": false,
+   "departments_searched": 49
+  },
+  {
+   "key": "ucf",
+   "name": "UCF",
+   "repository": "stars.library.ucf.edu",
+   "url": "https://stars.library.ucf.edu/",
+   "indirect": false,
+   "departments_searched": 47
+  },
+  {
+   "key": "ucirvine",
+   "name": "UC Irvine",
+   "repository": "escholarship.org",
+   "url": "https://escholarship.org/",
+   "indirect": false,
+   "departments_searched": 50
+  },
+  {
+   "key": "ucla",
+   "name": "UCLA",
+   "repository": "escholarship.org",
+   "url": "https://escholarship.org/",
+   "indirect": false,
+   "departments_searched": 50
+  },
+  {
+   "key": "ucmerced",
+   "name": "UC Merced",
+   "repository": "escholarship.org",
+   "url": "https://escholarship.org/",
+   "indirect": false,
+   "departments_searched": 42
+  },
+  {
+   "key": "uconn",
+   "name": "UConn",
+   "repository": "",
+   "url": "",
+   "indirect": false,
+   "departments_searched": 0
+  },
+  {
+   "key": "ucriverside",
+   "name": "UC Riverside",
+   "repository": "escholarship.org",
+   "url": "https://escholarship.org/",
+   "indirect": false,
+   "departments_searched": 46
+  },
+  {
+   "key": "ucsb",
+   "name": "UC Santa Barbara",
+   "repository": "escholarship.org",
+   "url": "https://escholarship.org/",
+   "indirect": false,
+   "departments_searched": 45
+  },
+  {
+   "key": "ucsc",
+   "name": "UC Santa Cruz",
+   "repository": "escholarship.org",
+   "url": "https://escholarship.org/",
+   "indirect": false,
+   "departments_searched": 42
+  },
+  {
+   "key": "ucsd",
+   "name": "UC San Diego",
+   "repository": "escholarship.org",
+   "url": "https://escholarship.org/",
+   "indirect": false,
+   "departments_searched": 47
+  },
+  {
+   "key": "ucsf",
+   "name": "UCSF",
+   "repository": "escholarship.org",
+   "url": "https://escholarship.org/",
+   "indirect": false,
+   "departments_searched": 37
+  },
+  {
+   "key": "udel",
+   "name": "U Delaware",
+   "repository": "udspace.udel.edu",
+   "url": "https://udspace.udel.edu/",
+   "indirect": false,
+   "departments_searched": 123
+  },
+  {
+   "key": "udenver",
+   "name": "U Denver",
+   "repository": "digitalcommons.du.edu",
+   "url": "https://digitalcommons.du.edu/",
+   "indirect": false,
+   "departments_searched": 38
+  },
+  {
+   "key": "uf",
+   "name": "U Florida",
+   "repository": "ufdc.ufl.edu",
+   "url": "https://ufdc.ufl.edu/",
+   "indirect": false,
+   "departments_searched": 118
+  },
+  {
+   "key": "uhouston",
+   "name": "U Houston",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 48
+  },
+  {
+   "key": "uiuc",
+   "name": "UIUC",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 48
+  },
+  {
+   "key": "ukansas",
+   "name": "U Kansas",
+   "repository": "dissertations.umi.com",
+   "url": "https://dissertations.umi.com/",
+   "indirect": false,
+   "departments_searched": 48
+  },
+  {
+   "key": "uky",
+   "name": "U Kentucky",
+   "repository": "",
+   "url": "",
+   "indirect": false,
+   "departments_searched": 0
+  },
+  {
+   "key": "ulouisville",
+   "name": "U Louisville",
+   "repository": "ir.library.louisville.edu",
+   "url": "https://ir.library.louisville.edu/",
+   "indirect": false,
+   "departments_searched": 50
+  },
+  {
+   "key": "umass",
+   "name": "UMass Amherst",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 49
+  },
+  {
+   "key": "umd",
+   "name": "U Maryland",
+   "repository": "doi.org",
+   "url": "https://doi.org/",
+   "indirect": true,
+   "departments_searched": 75
+  },
+  {
+   "key": "umemphis",
+   "name": "U Memphis",
+   "repository": "digitalcommons.memphis.edu",
+   "url": "https://digitalcommons.memphis.edu/",
+   "indirect": false,
+   "departments_searched": 39
+  },
+  {
+   "key": "umissouri",
+   "name": "U Missouri",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 49
+  },
+  {
+   "key": "umn",
+   "name": "U Minnesota",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 48
+  },
+  {
+   "key": "umt",
+   "name": "U Montana",
+   "repository": "scholarworks.umt.edu",
+   "url": "https://scholarworks.umt.edu/",
+   "indirect": false,
+   "departments_searched": 43
+  },
+  {
+   "key": "und",
+   "name": "U North Dakota",
+   "repository": "commons.und.edu",
+   "url": "https://commons.und.edu/",
+   "indirect": false,
+   "departments_searched": 42
+  },
+  {
+   "key": "unh",
+   "name": "U New Hampshire",
+   "repository": "scholars.unh.edu",
+   "url": "https://scholars.unh.edu/",
+   "indirect": false,
+   "departments_searched": 45
+  },
+  {
+   "key": "unl",
+   "name": "U Nebraska-Lincoln",
+   "repository": "digitalcommons.unl.edu",
+   "url": "https://digitalcommons.unl.edu/",
+   "indirect": false,
+   "departments_searched": 46
+  },
+  {
+   "key": "unlv",
+   "name": "UNLV",
+   "repository": "oasis.library.unlv.edu",
+   "url": "https://oasis.library.unlv.edu/",
+   "indirect": false,
+   "departments_searched": 46
+  },
+  {
+   "key": "unm",
+   "name": "U New Mexico",
+   "repository": "digitalrepository.unm.edu",
+   "url": "https://digitalrepository.unm.edu/",
+   "indirect": false,
+   "departments_searched": 36
+  },
+  {
+   "key": "unt",
+   "name": "U North Texas",
+   "repository": "digital.library.unt.edu",
+   "url": "https://digital.library.unt.edu/",
+   "indirect": false,
+   "departments_searched": 44
+  },
+  {
+   "key": "uoregon",
+   "name": "U Oregon",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 38
+  },
+  {
+   "key": "upenn",
+   "name": "U Penn",
+   "repository": "repository.upenn.edu",
+   "url": "https://repository.upenn.edu/",
+   "indirect": false,
+   "departments_searched": 115
+  },
+  {
+   "key": "usc_columbia",
+   "name": "U South Carolina",
+   "repository": "scholarcommons.sc.edu",
+   "url": "https://scholarcommons.sc.edu/",
+   "indirect": false,
+   "departments_searched": 46
+  },
+  {
+   "key": "usd",
+   "name": "U South Dakota",
+   "repository": "red.library.usd.edu",
+   "url": "https://red.library.usd.edu/",
+   "indirect": false,
+   "departments_searched": 34
+  },
+  {
+   "key": "usf",
+   "name": "U South Florida",
+   "repository": "digitalcommons.usf.edu",
+   "url": "https://digitalcommons.usf.edu/",
+   "indirect": false,
+   "departments_searched": 47
+  },
+  {
+   "key": "usm",
+   "name": "U Southern Miss",
+   "repository": "aquila.usm.edu",
+   "url": "https://aquila.usm.edu/",
+   "indirect": false,
+   "departments_searched": 42
+  },
+  {
+   "key": "utah_state",
+   "name": "Utah State",
+   "repository": "digitalcommons.usu.edu",
+   "url": "https://digitalcommons.usu.edu/",
+   "indirect": false,
+   "departments_searched": 40
+  },
+  {
+   "key": "utarlington",
+   "name": "UT Arlington",
+   "repository": "mavmatrix.uta.edu",
+   "url": "https://mavmatrix.uta.edu/",
+   "indirect": false,
+   "departments_searched": 47
+  },
+  {
+   "key": "utaustin",
+   "name": "UT Austin",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 131
+  },
+  {
+   "key": "utdallas",
+   "name": "UT Dallas",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 44
+  },
+  {
+   "key": "utk",
+   "name": "U Tennessee",
+   "repository": "uot-trace-repo.eks.prod.4science.cloud",
+   "url": "https://uot-trace-repo.eks.prod.4science.cloud/",
+   "indirect": false,
+   "departments_searched": 50
+  },
+  {
+   "key": "uutah",
+   "name": "U Utah",
+   "repository": "collections.lib.utah.edu",
+   "url": "https://collections.lib.utah.edu/",
+   "indirect": false,
+   "departments_searched": 47
+  },
+  {
+   "key": "uva",
+   "name": "U Virginia",
+   "repository": "libraetd.lib.virginia.edu",
+   "url": "https://libraetd.lib.virginia.edu/",
+   "indirect": false,
+   "departments_searched": 80
+  },
+  {
+   "key": "uw_seattle",
+   "name": "UW Seattle",
+   "repository": "digital.lib.washington.edu",
+   "url": "https://digital.lib.washington.edu/",
+   "indirect": false,
+   "departments_searched": 94
+  },
+  {
+   "key": "uwmadison",
+   "name": "UW Madison",
+   "repository": "digital.library.wisc.edu",
+   "url": "https://digital.library.wisc.edu/",
+   "indirect": false,
+   "departments_searched": 32
+  },
+  {
+   "key": "vt",
+   "name": "Virginia Tech",
+   "repository": "hdl.handle.net",
+   "url": "https://hdl.handle.net/",
+   "indirect": true,
+   "departments_searched": 65
+  },
+  {
+   "key": "washu",
+   "name": "Wash U St Louis",
+   "repository": "openscholarship.wustl.edu",
+   "url": "https://openscholarship.wustl.edu/",
+   "indirect": false,
+   "departments_searched": 44
+  },
+  {
+   "key": "wayne_state",
+   "name": "Wayne State",
+   "repository": "digitalcommons.wayne.edu",
+   "url": "https://digitalcommons.wayne.edu/",
+   "indirect": false,
+   "departments_searched": 46
+  },
+  {
+   "key": "wsu",
+   "name": "Washington State",
+   "repository": "rex.libraries.wsu.edu",
+   "url": "https://rex.libraries.wsu.edu/",
+   "indirect": false,
+   "departments_searched": 34
+  },
+  {
+   "key": "wvu",
+   "name": "West Virginia U",
+   "repository": "researchrepository.wvu.edu",
+   "url": "https://researchrepository.wvu.edu/",
+   "indirect": false,
+   "departments_searched": 49
+  },
+  {
+   "key": "yale",
+   "name": "Yale",
+   "repository": "elischolar.library.yale.edu",
+   "url": "https://elischolar.library.yale.edu/",
+   "indirect": false,
+   "departments_searched": 43
+  }
+ ]
+}

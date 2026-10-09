@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The states</title>
+<meta name="description" content="Per-state profiles: every degree-granting institution, the research doctorates it awards, how many go to non-residents, and the federal research money that arrives.">
+<meta property="og:title" content="The states">
+<meta property="og:description" content="Per-state profiles: every degree-granting institution, the research doctorates it awards, how many go to non-residents, and the federal research money that arrives.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og/concentration.png">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.9rem; margin: 0 0 .7rem; line-height: 1.2; }
+  .page-head p { color: var(--text-muted); max-width: 72ch; line-height: 1.65; font-size: .95rem; margin: 0 0 .6rem; }
+  .kicker { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin: 0 0 .6rem; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin: 1.6rem 0 0; }
+  .stat { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; background: var(--surface); }
+  .stat .n { font-size: 1.7rem; font-weight: 800; color: var(--hl); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: .82rem; line-height: 1.45; margin: .3rem 0 0; }
+  .stat .s { font-size: .72rem; color: var(--text-muted); margin: .45rem 0 0; }
+  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+  section.block { margin-top: 2.8rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  section.block h2 { font-size: 1.2rem; margin: 0 0 .45rem; }
+  .lede { color: var(--text-muted); max-width: 74ch; line-height: 1.6; font-size: .92rem; margin: 0 0 1rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55; max-width: 82ch; margin: .9rem 0 0; }
+  .table-wrap { overflow-x: auto; }
+  table.t { width: 100%; border-collapse: collapse; font-size: .84rem; margin: .6rem 0 0; }
+  table.t th { text-align: left; font-size: .71rem; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--text-muted); font-weight: 600; padding: .4rem .5rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  table.t td { padding: .42rem .5rem; border-bottom: 1px solid var(--border); }
+  table.t td.num, table.t th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.t td.muted { color: var(--text-muted); }
+  table.t td.share { font-weight: 600; color: var(--hl); }
+  table.t th.share-col { color: var(--hl); }
+  table.t td.share, table.t th.share-col {
+    background: color-mix(in srgb, var(--hl) 7%, transparent); }
+  table.t th.sortable { cursor: pointer; }
+  .scale { display: flex; align-items: center; gap: .7rem; margin: 1rem 0 0; flex-wrap: wrap; }
+  .scale .seg { font-size: .8rem; }
+  .barpair { margin: 1rem 0 0; }
+  .barpair .row { display: grid; grid-template-columns: 11rem 1fr auto; gap: .6rem; align-items: center;
+    padding: .3rem 0; font-size: .86rem; }
+  .barpair .lab { color: var(--text-muted); }
+  /* display:block on both. A <span> is inline by default, so width and
+     height are ignored on it -- every fill rendered at zero width inside a
+     full-width track, which made a 2.9% bar and a 47.4% bar look identical. */
+  .barpair .track { display: block; background: rgba(148,163,184,0.14);
+    border-radius: 3px; height: 16px; overflow: hidden; }
+  .barpair .fill { display: block; height: 100%; border-radius: 3px;
+    background: #3987e5; min-width: 2px; }
+  .barpair .fill.nat { background: rgba(148,163,184,0.55); }
+  .barpair .v { font-variant-numeric: tabular-nums; font-weight: 600; }
+  /* The state bar sits directly above its national counterpart, so each pair
+     is one comparison. A gap after the pair keeps the eye from reading all
+     four as a single ranked list. */
+  .barpair .row.pair-end { margin-bottom: .55rem; }
+  @media (max-width: 620px) { .barpair .row { grid-template-columns: 1fr auto; } .barpair .track { display: none; } }
+  .callout { border: 1px solid var(--border); border-left-width: 3px; border-radius: 10px;
+    padding: 1rem 1.1rem; margin: 1rem 0 0; background: var(--surface); }
+  .callout h3 { margin: 0 0 .35rem; font-size: 1rem; }
+  .callout p { margin: 0 0 .5rem; font-size: .88rem; line-height: 1.55; color: var(--text-muted); }
+</style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+</head>
+<body data-page="state">
+<a class="skip-link" href="#institutions">Skip to the institutions</a>
+<main id="main">
+<div class="wrap">
+
+  <div class="page-head">
+    <p class="kicker">State profiles</p>
+    <h1 id="the-states">The states</h1>
+    <p>One page per state, built from the same national files as the rest of
+    this site. Each counts every degree-granting institution in the state,
+    including the ones awarding no graduate degree at all.</p>
+    <p><strong>52</strong> of 52 states are published so
+    far. The national non-resident share of research doctorates is
+    <strong>38.9%</strong>; rank 1 is the highest.</p>
+  </div>
+
+  <section class="block" id="published">
+    <h2>Published so far</h2>
+    <p class="note" style="margin:0 0 .4rem">Click any column heading to sort.
+    Click it again to reverse.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>State</th><th class="num">Institutions</th>
+        <th class="num">Research doctorates</th>
+        <th class="num share-col">Non-resident share</th><th class="num">Rank</th>
+        <th class="num">Federal R&amp;D</th></tr></thead>
+      <tbody><tr><td data-sort="alabama"><a href="/states/al">Alabama</a></td><td class="num" data-sort="35">35</td><td class="num" data-sort="2437">2,437</td><td class="num share" data-sort="42.0">42.0%</td><td class="num muted" data-sort="20">20 of 52</td><td class="num" data-sort="955043000">$955.0m</td></tr><tr><td data-sort="alaska"><a href="/states/ak">Alaska</a></td><td class="num" data-sort="5">5</td><td class="num" data-sort="144">144</td><td class="num share" data-sort="16.0">16.0%</td><td class="num muted" data-sort="51">51 of 52</td><td class="num" data-sort="185797000">$185.8m</td></tr><tr><td data-sort="arizona"><a href="/states/az">Arizona</a></td><td class="num" data-sort="29">29</td><td class="num" data-sort="4343">4,343</td><td class="num share" data-sort="29.5">29.5%</td><td class="num muted" data-sort="44">44 of 52</td><td class="num" data-sort="934916000">$934.9m</td></tr><tr><td data-sort="arkansas"><a href="/states/ar">Arkansas</a></td><td class="num" data-sort="29">29</td><td class="num" data-sort="862">862</td><td class="num share" data-sort="46.6">46.6%</td><td class="num muted" data-sort="5">5 of 52</td><td class="num" data-sort="214813000">$214.8m</td></tr><tr><td data-sort="california"><a href="/states/ca">California</a></td><td class="num" data-sort="222">222</td><td class="num" data-sort="25091">25,091</td><td class="num share" data-sort="33.1">33.1%</td><td class="num muted" data-sort="38">38 of 52</td><td class="num" data-sort="7501875000">$7.50bn</td></tr><tr><td data-sort="colorado"><a href="/states/co">Colorado</a></td><td class="num" data-sort="32">32</td><td class="num" data-sort="4186">4,186</td><td class="num share" data-sort="23.0">23.0%</td><td class="num muted" data-sort="48">48 of 52</td><td class="num" data-sort="1560887000">$1.56bn</td></tr><tr><td data-sort="connecticut"><a href="/states/ct">Connecticut</a></td><td class="num" data-sort="22">22</td><td class="num" data-sort="2347">2,347</td><td class="num share" data-sort="42.8">42.8%</td><td class="num muted" data-sort="16">16 of 52</td><td class="num" data-sort="1111681000">$1.11bn</td></tr><tr><td data-sort="delaware"><a href="/states/de">Delaware</a></td><td class="num" data-sort="5">5</td><td class="num" data-sort="940">940</td><td class="num share" data-sort="46.0">46.0%</td><td class="num muted" data-sort="7">7 of 52</td><td class="num" data-sort="257880000">$257.9m</td></tr><tr><td data-sort="district of columbia"><a href="/states/dc">District of Columbia</a></td><td class="num" data-sort="17">17</td><td class="num" data-sort="1372">1,372</td><td class="num share" data-sort="31.9">31.9%</td><td class="num muted" data-sort="39">39 of 52</td><td class="num" data-sort="454114000">$454.1m</td></tr><tr><td data-sort="florida"><a href="/states/fl">Florida</a></td><td class="num" data-sort="87">87</td><td class="num" data-sort="7756">7,756</td><td class="num share" data-sort="42.3">42.3%</td><td class="num muted" data-sort="18">18 of 52</td><td class="num" data-sort="1874391000">$1.87bn</td></tr><tr><td data-sort="georgia"><a href="/states/ga">Georgia</a></td><td class="num" data-sort="55">55</td><td class="num" data-sort="5553">5,553</td><td class="num share" data-sort="42.5">42.5%</td><td class="num muted" data-sort="17">17 of 52</td><td class="num" data-sort="2500066000">$2.50bn</td></tr><tr><td data-sort="hawaii"><a href="/states/hi">Hawaii</a></td><td class="num" data-sort="9">9</td><td class="num" data-sort="422">422</td><td class="num share" data-sort="30.1">30.1%</td><td class="num muted" data-sort="43">43 of 52</td><td class="num" data-sort="261557000">$261.6m</td></tr><tr><td data-sort="idaho"><a href="/states/id">Idaho</a></td><td class="num" data-sort="10">10</td><td class="num" data-sort="481">481</td><td class="num share" data-sort="34.1">34.1%</td><td class="num muted" data-sort="36">36 of 52</td><td class="num" data-sort="109249000">$109.2m</td></tr><tr><td data-sort="illinois"><a href="/states/il">Illinois</a></td><td class="num" data-sort="91">91</td><td class="num" data-sort="8333">8,333</td><td class="num share" data-sort="44.2">44.2%</td><td class="num muted" data-sort="13">13 of 52</td><td class="num" data-sort="2301107000">$2.30bn</td></tr><tr><td data-sort="indiana"><a href="/states/in">Indiana</a></td><td class="num" data-sort="52">52</td><td class="num" data-sort="5493">5,493</td><td class="num share" data-sort="51.1">51.1%</td><td class="num muted" data-sort="1">1 of 52</td><td class="num" data-sort="1108105000">$1.11bn</td></tr><tr><td data-sort="iowa"><a href="/states/ia">Iowa</a></td><td class="num" data-sort="35">35</td><td class="num" data-sort="2168">2,168</td><td class="num share" data-sort="44.3">44.3%</td><td class="num muted" data-sort="12">12 of 52</td><td class="num" data-sort="559432000">$559.4m</td></tr><tr><td data-sort="kansas"><a href="/states/ks">Kansas</a></td><td class="num" data-sort="32">32</td><td class="num" data-sort="1456">1,456</td><td class="num share" data-sort="46.4">46.4%</td><td class="num muted" data-sort="6">6 of 52</td><td class="num" data-sort="513015000">$513.0m</td></tr><tr><td data-sort="kentucky"><a href="/states/ky">Kentucky</a></td><td class="num" data-sort="35">35</td><td class="num" data-sort="1822">1,822</td><td class="num share" data-sort="35.1">35.1%</td><td class="num muted" data-sort="34">34 of 52</td><td class="num" data-sort="382074000">$382.1m</td></tr><tr><td data-sort="louisiana"><a href="/states/la">Louisiana</a></td><td class="num" data-sort="28">28</td><td class="num" data-sort="1841">1,841</td><td class="num share" data-sort="42.1">42.1%</td><td class="num muted" data-sort="19">19 of 52</td><td class="num" data-sort="484841000">$484.8m</td></tr><tr><td data-sort="maine"><a href="/states/me">Maine</a></td><td class="num" data-sort="21">21</td><td class="num" data-sort="232">232</td><td class="num share" data-sort="34.1">34.1%</td><td class="num muted" data-sort="35">35 of 52</td><td class="num" data-sort="116561000">$116.6m</td></tr><tr><td data-sort="maryland"><a href="/states/md">Maryland</a></td><td class="num" data-sort="34">34</td><td class="num" data-sort="4853">4,853</td><td class="num share" data-sort="39.7">39.7%</td><td class="num muted" data-sort="26">26 of 52</td><td class="num" data-sort="4709950000">$4.71bn</td></tr><tr><td data-sort="massachusetts"><a href="/states/ma">Massachusetts</a></td><td class="num" data-sort="81">81</td><td class="num" data-sort="10627">10,627</td><td class="num share" data-sort="41.7">41.7%</td><td class="num muted" data-sort="21">21 of 52</td><td class="num" data-sort="2727419000">$2.73bn</td></tr><tr><td data-sort="michigan"><a href="/states/mi">Michigan</a></td><td class="num" data-sort="54">54</td><td class="num" data-sort="6511">6,511</td><td class="num share" data-sort="40.9">40.9%</td><td class="num muted" data-sort="23">23 of 52</td><td class="num" data-sort="1916478000">$1.92bn</td></tr><tr><td data-sort="minnesota"><a href="/states/mn">Minnesota</a></td><td class="num" data-sort="48">48</td><td class="num" data-sort="4836">4,836</td><td class="num share" data-sort="19.5">19.5%</td><td class="num muted" data-sort="49">49 of 52</td><td class="num" data-sort="764415000">$764.4m</td></tr><tr><td data-sort="mississippi"><a href="/states/ms">Mississippi</a></td><td class="num" data-sort="19">19</td><td class="num" data-sort="1155">1,155</td><td class="num share" data-sort="33.6">33.6%</td><td class="num muted" data-sort="37">37 of 52</td><td class="num" data-sort="351392000">$351.4m</td></tr><tr><td data-sort="missouri"><a href="/states/mo">Missouri</a></td><td class="num" data-sort="60">60</td><td class="num" data-sort="2879">2,879</td><td class="num share" data-sort="47.4">47.4%</td><td class="num muted" data-sort="4">4 of 52</td><td class="num" data-sort="1180493000">$1.18bn</td></tr><tr><td data-sort="montana"><a href="/states/mt">Montana</a></td><td class="num" data-sort="15">15</td><td class="num" data-sort="431">431</td><td class="num share" data-sort="17.4">17.4%</td><td class="num muted" data-sort="50">50 of 52</td><td class="num" data-sort="262989000">$263.0m</td></tr><tr><td data-sort="nebraska"><a href="/states/ne">Nebraska</a></td><td class="num" data-sort="24">24</td><td class="num" data-sort="1128">1,128</td><td class="num share" data-sort="39.5">39.5%</td><td class="num muted" data-sort="27">27 of 52</td><td class="num" data-sort="340824000">$340.8m</td></tr><tr><td data-sort="nevada"><a href="/states/nv">Nevada</a></td><td class="num" data-sort="10">10</td><td class="num" data-sort="843">843</td><td class="num share" data-sort="37.1">37.1%</td><td class="num muted" data-sort="32">32 of 52</td><td class="num" data-sort="137462000">$137.5m</td></tr><tr><td data-sort="new hampshire"><a href="/states/nh">New Hampshire</a></td><td class="num" data-sort="16">16</td><td class="num" data-sort="761">761</td><td class="num share" data-sort="39.2">39.2%</td><td class="num muted" data-sort="28">28 of 52</td><td class="num" data-sort="339205000">$339.2m</td></tr><tr><td data-sort="new jersey"><a href="/states/nj">New Jersey</a></td><td class="num" data-sort="40">40</td><td class="num" data-sort="4023">4,023</td><td class="num share" data-sort="45.3">45.3%</td><td class="num muted" data-sort="8">8 of 52</td><td class="num" data-sort="865190000">$865.2m</td></tr><tr><td data-sort="new mexico"><a href="/states/nm">New Mexico</a></td><td class="num" data-sort="18">18</td><td class="num" data-sort="804">804</td><td class="num share" data-sort="40.2">40.2%</td><td class="num muted" data-sort="25">25 of 52</td><td class="num" data-sort="367579000">$367.6m</td></tr><tr><td data-sort="new york"><a href="/states/ny">New York</a></td><td class="num" data-sort="181">181</td><td class="num" data-sort="14105">14,105</td><td class="num share" data-sort="40.3">40.3%</td><td class="num muted" data-sort="24">24 of 52</td><td class="num" data-sort="5202906000">$5.20bn</td></tr><tr><td data-sort="north carolina"><a href="/states/nc">North Carolina</a></td><td class="num" data-sort="67">67</td><td class="num" data-sort="6382">6,382</td><td class="num share" data-sort="38.2">38.2%</td><td class="num muted" data-sort="31">31 of 52</td><td class="num" data-sort="2735572000">$2.74bn</td></tr><tr><td data-sort="north dakota"><a href="/states/nd">North Dakota</a></td><td class="num" data-sort="13">13</td><td class="num" data-sort="562">562</td><td class="num share" data-sort="50.7">50.7%</td><td class="num muted" data-sort="2">2 of 52</td><td class="num" data-sort="142839000">$142.8m</td></tr><tr><td data-sort="ohio"><a href="/states/oh">Ohio</a></td><td class="num" data-sort="85">85</td><td class="num" data-sort="5924">5,924</td><td class="num share" data-sort="45.2">45.2%</td><td class="num muted" data-sort="9">9 of 52</td><td class="num" data-sort="2134309000">$2.13bn</td></tr><tr><td data-sort="oklahoma"><a href="/states/ok">Oklahoma</a></td><td class="num" data-sort="29">29</td><td class="num" data-sort="1463">1,463</td><td class="num share" data-sort="43.5">43.5%</td><td class="num muted" data-sort="15">15 of 52</td><td class="num" data-sort="328557000">$328.6m</td></tr><tr><td data-sort="oregon"><a href="/states/or">Oregon</a></td><td class="num" data-sort="30">30</td><td class="num" data-sort="1884">1,884</td><td class="num share" data-sort="24.7">24.7%</td><td class="num muted" data-sort="47">47 of 52</td><td class="num" data-sort="782145000">$782.1m</td></tr><tr><td data-sort="pennsylvania"><a href="/states/pa">Pennsylvania</a></td><td class="num" data-sort="126">126</td><td class="num" data-sort="8720">8,720</td><td class="num share" data-sort="43.5">43.5%</td><td class="num muted" data-sort="14">14 of 52</td><td class="num" data-sort="3592476000">$3.59bn</td></tr><tr><td data-sort="puerto rico"><a href="/states/pr">Puerto Rico</a></td><td class="num" data-sort="54">54</td><td class="num" data-sort="1252">1,252</td><td class="num share" data-sort="4.0">4.0%</td><td class="num muted" data-sort="52">52 of 52</td><td class="num" data-sort="87251000">$87.3m</td></tr><tr><td data-sort="rhode island"><a href="/states/ri">Rhode Island</a></td><td class="num" data-sort="12">12</td><td class="num" data-sort="1078">1,078</td><td class="num share" data-sort="38.6">38.6%</td><td class="num muted" data-sort="30">30 of 52</td><td class="num" data-sort="373129000">$373.1m</td></tr><tr><td data-sort="south carolina"><a href="/states/sc">South Carolina</a></td><td class="num" data-sort="36">36</td><td class="num" data-sort="1656">1,656</td><td class="num share" data-sort="44.4">44.4%</td><td class="num muted" data-sort="10">10 of 52</td><td class="num" data-sort="514549000">$514.5m</td></tr><tr><td data-sort="south dakota"><a href="/states/sd">South Dakota</a></td><td class="num" data-sort="16">16</td><td class="num" data-sort="424">424</td><td class="num share" data-sort="38.9">38.9%</td><td class="num muted" data-sort="29">29 of 52</td><td class="num" data-sort="72931000">$72.9m</td></tr><tr><td data-sort="tennessee"><a href="/states/tn">Tennessee</a></td><td class="num" data-sort="53">53</td><td class="num" data-sort="3171">3,171</td><td class="num share" data-sort="30.1">30.1%</td><td class="num muted" data-sort="42">42 of 52</td><td class="num" data-sort="1168923000">$1.17bn</td></tr><tr><td data-sort="texas"><a href="/states/tx">Texas</a></td><td class="num" data-sort="120">120</td><td class="num" data-sort="14263">14,263</td><td class="num share" data-sort="49.8">49.8%</td><td class="num muted" data-sort="3">3 of 52</td><td class="num" data-sort="3903363000">$3.90bn</td></tr><tr><td data-sort="utah"><a href="/states/ut">Utah</a></td><td class="num" data-sort="16">16</td><td class="num" data-sort="1994">1,994</td><td class="num share" data-sort="27.6">27.6%</td><td class="num muted" data-sort="45">45 of 52</td><td class="num" data-sort="852693000">$852.7m</td></tr><tr><td data-sort="vermont"><a href="/states/vt">Vermont</a></td><td class="num" data-sort="11">11</td><td class="num" data-sort="263">263</td><td class="num share" data-sort="25.5">25.5%</td><td class="num muted" data-sort="46">46 of 52</td><td class="num" data-sort="143347000">$143.3m</td></tr><tr><td data-sort="virginia"><a href="/states/va">Virginia</a></td><td class="num" data-sort="60">60</td><td class="num" data-sort="6275">6,275</td><td class="num share" data-sort="31.7">31.7%</td><td class="num muted" data-sort="40">40 of 52</td><td class="num" data-sort="1189076000">$1.19bn</td></tr><tr><td data-sort="washington"><a href="/states/wa">Washington</a></td><td class="num" data-sort="36">36</td><td class="num" data-sort="3183">3,183</td><td class="num share" data-sort="31.6">31.6%</td><td class="num muted" data-sort="41">41 of 52</td><td class="num" data-sort="1387837000">$1.39bn</td></tr><tr><td data-sort="west virginia"><a href="/states/wv">West Virginia</a></td><td class="num" data-sort="22">22</td><td class="num" data-sort="626">626</td><td class="num share" data-sort="41.2">41.2%</td><td class="num muted" data-sort="22">22 of 52</td><td class="num" data-sort="155365000">$155.4m</td></tr><tr><td data-sort="wisconsin"><a href="/states/wi">Wisconsin</a></td><td class="num" data-sort="46">46</td><td class="num" data-sort="3133">3,133</td><td class="num share" data-sort="36.0">36.0%</td><td class="num muted" data-sort="33">33 of 52</td><td class="num" data-sort="1148040000">$1.15bn</td></tr><tr><td data-sort="wyoming"><a href="/states/wy">Wyoming</a></td><td class="num" data-sort="3">3</td><td class="num" data-sort="324">324</td><td class="num share" data-sort="44.4">44.4%</td><td class="num muted" data-sort="11">11 of 52</td><td class="num" data-sort="73731000">$73.7m</td></tr></tbody></table></div>
+    <p class="note">Degrees pooled over
+    2021&ndash;2025. A state
+    page is published when someone decides to publish it, not as a side effect
+    of a rebuild, so this list grows deliberately.</p>
+  </section>
+
+  <section class="block" id="reading">
+    <h2>Reading these pages</h2>
+    <ul class="lede">
+      <li><strong>A state average is a weighted average.</strong> In several
+      states one very large institution decides it. Every state page shows what
+      its figure is made of, and recomputes it without the largest institution.</li>
+      <li><strong>Enrolment and degrees are different measures</strong> and
+      will not agree. One counts people on a day; the other counts degrees over
+      five years.</li>
+      <li><strong>Non-resident means here on a temporary visa</strong>,
+      almost always F-1 or J-1. A green card holder is never counted in it, and
+      nor is a refugee or an asylee. It is not ethnicity and not country of
+      origin.</li>
+      <li><strong>Composition, not displacement.</strong> These pages record
+      who received the degrees. They do not show that anyone was kept out.</li>
+    </ul>
+  </section>
+
+</div>
+</main>
+<script src="/states.js" defer></script>
+<script src="/analytics-beacon.js" defer></script>
+<script src="/states.js" defer></script>
+<script src="/anchors.js" defer></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

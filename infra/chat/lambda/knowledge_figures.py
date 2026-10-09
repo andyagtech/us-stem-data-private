@@ -146,6 +146,19 @@ def _industry(slug, field):
     return get
 
 
+def _route(field, sub=None):
+    """The student-work route against H-1B issuance. The levels comparison the
+    visa-schools page leads with, so it is held to the same re-derivation as
+    every other quoted figure."""
+    def get():
+        d = _load("visa_substitution.json")
+        if d is None:
+            return None
+        rs = d["route_scale"]
+        return rs[field][sub] if sub else rs[field]
+    return get
+
+
 def _grid(cip, field):
     """A programme in the grid-capacity dataset, found by CIP."""
     def get():
@@ -237,17 +250,17 @@ FIGURES = {
         (20, _uni("purdue", "majority_non_resident"), 0),
     "Purdue departments": (27, _uni("purdue", "departments"), 0),
     # --- the body shops (37-the-body-shops.md) ------------------------------
-    "Certified applications read": (2236477, _shops("national", "certified_filings"), 0),
+    "Certified applications read": (2073792, _shops("national", "certified_filings"), 0),
     "Placed at another company's site": (20.1, _shops("national", "secondary_pct"), 0.05),
-    "Filed at wage level I-II": (60.6, _shops("national", "low_level_pct"), 0.05),
-    "Firms meeting the body-shop test": (1203, _shops("body_shop_totals", "employers"), 0),
+    "Filed at wage level I-II": (61.2, _shops("national", "low_level_pct"), 0.05),
+    "Firms meeting the body-shop test": (1106, _shops("body_shop_totals", "employers"), 0),
     "Body-shop share of applications":
-        (12.5, _shops("body_shop_totals", "share_of_filings_pct"), 0.05),
+        (12.2, _shops("body_shop_totals", "share_of_filings_pct"), 0.05),
     "Placed developer median": (105997, _dev("placed_median_wage"), 0),
-    "Direct developer median": (146893, _dev("direct_median_wage"), 0),
-    "Developer wage gap": (27.8, _dev("gap_pct"), 0.05),
-    "Placed developers at level I-II": (85.7, _dev("placed_low_level_pct"), 0.05),
-    "Direct developers at level I-II": (52.9, _dev("direct_low_level_pct"), 0.05),
+    "Direct developer median": (145116, _dev("direct_median_wage"), 0),
+    "Developer wage gap": (27.0, _dev("gap_pct"), 0.05),
+    "Placed developers at level I-II": (86.0, _dev("placed_low_level_pct"), 0.05),
+    "Direct developers at level I-II": (53.8, _dev("direct_low_level_pct"), 0.05),
     "H-1B employers in the hub": (368825, _hub("employers"), 0),
     "H-1B initial approvals 2009-2023": (1675026, _hub("initial_approvals"), 0),
     "Employers with five or fewer": (340672, _hub("employers_with_5_or_fewer"), 0),
@@ -264,6 +277,14 @@ FIGURES = {
     "Aerospace doctorates": (2911, _industry("aerospace", "doctorates"), 0),
     "Aerospace non-residents": (1239, _industry("aerospace", "nra"), 0),
     "Petroleum institutions": (16, _industry("petroleum", "institutions"), 0),
+
+    # --- the student route against the work visa ---------------------------
+    "Student route ratio, first year": (0.16, _route("first", "ratio"), 0.005),
+    "Student route ratio, latest": (1.23, _route("latest", "ratio"), 0.005),
+    "Student route ratio, peak": (2.67, _route("peak", "ratio"), 0.005),
+    "Student route, latest students": (269323, _route("latest", "student_work"), 0),
+    "H-1B issued, latest": (219659, _route("latest", "h1b_issued"), 0),
+    "Years the student route was larger": (6, _route("years_student_route_larger"), 0),
 
     # --- the grid workforce (38-critical-industries.md) --------------------
     "Power plant credentials": (62, _grid("15.1702", "latest_awards"), 0),

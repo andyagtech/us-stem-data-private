@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Moved to /presentation.html</title>
+<title>Moved to /presentation</title>
 <link rel="canonical" href="https://phd-demographics.andy-barr.com/presentation.html">
 <meta name="robots" content="noindex">
 <!-- The deck lived here from 18 August 2026 and the URL was shared, so this
      stays as a redirect rather than becoming a 404. The hash is carried over
      so a link to a particular slide still lands on that slide. -->
-<meta http-equiv="refresh" content="0; url=/presentation.html">
-<script>location.replace('/presentation.html' + location.hash);</script>
+<meta http-equiv="refresh" content="0; url=/presentation">
+<script>location.replace('/presentation' + location.hash);</script>
+<link rel="stylesheet" href="/style.css">
 <style>
   :root{color-scheme:light dark}
   body{margin:0;padding:48px 20px;background:#fff;color:#111827;
@@ -20,13 +21,17 @@
   a{color:#1d4ed8}
   @media (prefers-color-scheme:dark){a{color:#7dd3fc}}
 </style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 </head>
 <body>
 <div class="box">
-  <h1>This deck has moved</h1>
+  <h1 id="this-deck-has-moved">This deck has moved</h1>
   <p>The Concentration Effect is now at
-  <a href="/presentation">/presentation.html</a>. You should be sent there
+  <a href="/presentation">/presentation</a>. You should be sent there
   automatically.</p>
 </div>
+<script src="/anchors.js" defer></script>
+<script src="/analytics-beacon.js" defer></script>
 </body>
 </html>

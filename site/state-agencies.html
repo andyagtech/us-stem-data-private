@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>H-1B workers in state government</title>
+<meta name="description" content="Which arms of state government sponsor H-1B workers, and for what. From the USCIS Employer Data Hub and the Department of Labor disclosure files, agency by agency.">
+<meta property="og:title" content="H-1B workers in state government">
+<meta property="og:description" content="State agencies — patrols, corrections, licensing, ecology — sponsor H-1B workers. Counted from federal data, agency by agency.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og/concentration.png">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.9rem; margin: 0 0 .7rem; line-height: 1.2; max-width: 24ch; }
+  .page-head p { color: var(--text-muted); max-width: 72ch; line-height: 1.65; font-size: .95rem; margin: 0 0 .6rem; }
+  .kicker { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin: 0 0 .6rem; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin: 1.6rem 0 0; }
+  .stat { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; background: var(--surface); }
+  .stat .n { font-size: 1.7rem; font-weight: 800; color: var(--hl); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: .82rem; line-height: 1.45; margin: .3rem 0 0; }
+  .stat .s { font-size: .72rem; color: var(--text-muted); margin: .45rem 0 0; }
+  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+  section.block { margin-top: 2.8rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  section.block h2 { font-size: 1.2rem; margin: 0 0 .45rem; }
+  .lede { color: var(--text-muted); max-width: 74ch; line-height: 1.6; font-size: .92rem; margin: 0 0 1rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55; max-width: 82ch; margin: .9rem 0 0; }
+  .table-wrap { overflow-x: auto; }
+  .callout { border: 1px solid var(--border); border-left-width: 3px; border-radius: 10px;
+    padding: 1rem 1.1rem; margin: 1.6rem 0 0; background: var(--surface); }
+  .callout h3 { margin: 0 0 .35rem; font-size: 1rem; }
+  .callout p { margin: 0 0 .5rem; font-size: .88rem; line-height: 1.55; color: var(--text-muted); }
+  .callout p:last-child { margin-bottom: 0; }
+
+  table.t { width: 100%; border-collapse: collapse; font-size: .85rem; margin: .6rem 0 0; }
+  table.t th { text-align: left; font-size: .71rem; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--text-muted); font-weight: 600; padding: .4rem .5rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  table.t td { padding: .45rem .5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.t td.num, table.t th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.t td.muted { color: var(--text-muted); }
+  table.t th.share-col, table.t td.share { color: var(--hl); font-weight: 600;
+    background: color-mix(in srgb, var(--hl) 7%, transparent); }
+  .picker { display: flex; flex-wrap: wrap; gap: .4rem; margin: 1rem 0 0; }
+  .picker button { font: inherit; font-size: .78rem; padding: .25rem .7rem; border-radius: 999px;
+    border: 1px solid var(--border); background: transparent; color: var(--text-muted); cursor: pointer; }
+  .picker button.on { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .agency { border: 1px solid var(--border); border-radius: 10px; padding: .85rem 1rem; margin: 0 0 .7rem; }
+  .agency h3 { margin: 0 0 .3rem; font-size: .96rem; }
+  .agency .meta { font-size: .78rem; color: var(--text-muted); margin: 0 0 .4rem; }
+  .agency .alias { font-size: .72rem; color: var(--text-muted); margin: .35rem 0 0; line-height: 1.5; }
+  .agency .jobs { font-size: .82rem; margin: .5rem 0 0; line-height: 1.55; }
+  .pill { display: inline-block; font-size: .7rem; padding: .1rem .5rem; border-radius: 999px;
+    border: 1px solid var(--border); color: var(--text-muted); margin: 0 .25rem .25rem 0; }
+  .loading { color: var(--text-muted); font-size: .88rem; }
+  .warnbox { border: 1px solid var(--border); border-left: 3px solid var(--hl);
+    border-radius: 10px; padding: .9rem 1.05rem; margin: 0 0 1.1rem; background: var(--surface); }
+  .warnbox p { margin: 0 0 .6rem; font-size: .88rem; line-height: 1.6; color: var(--text-muted); }
+  .warnbox p:last-child { margin-bottom: 0; }
+</style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+</head>
+<body data-page="state-agencies">
+<a class="skip-link" href="#states">Skip to the states</a>
+<main id="main">
+<div class="wrap">
+
+  <div class="page-head">
+    <p class="kicker">H-1B &middot; state government</p>
+    <h1 id="h-1b-workers-in-state-government">H-1B workers in state government</h1>
+    <p>The rest of this site asks who the universities admit and who the
+    companies hire. This asks something narrower. Which arms of state
+    government sponsor H-1B workers, and for what.</p>
+    <p>A state agency is not a firm bidding for scarce talent. It is a public
+    body, funded by the taxpayers of one state, choosing to sponsor a foreign
+    worker for a job in its own department. <strong>Nothing here says that is
+    wrong.</strong> Agencies hire engineers, actuaries, epidemiologists and
+    statisticians, and the H-1B is a lawful way to do it. The point is that it
+    is countable.</p>
+  </div>
+
+  <div class="stats" id="totals"></div>
+
+  <section class="block" id="states">
+    <h2 id="every-state">Every state</h2>
+    <p class="lede">Approvals from the USCIS Employer Data Hub. <strong>Initial
+    and continuing are never added together</strong> &mdash; a continuing
+    approval is the same person renewed, and summing them counts one worker
+    once a year for as long as they stay.</p>
+    <p class="note" style="margin:0 0 .4rem">Click any column heading to sort.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>State</th><th class="num share-col">Initial</th>
+        <th class="num">Continuing</th><th class="num">Denied</th>
+        <th class="num">Agencies</th><th class="num">Names as filed</th></tr></thead>
+      <tbody id="state-rows"><tr><td class="loading">Loading&hellip;</td></tr></tbody>
+    </table></div>
+  </section>
+
+  <section class="block" id="agencies">
+    <h2 id="agency-by-agency">Agency by agency</h2>
+    <p class="lede">Pick a state. Each entry is one agency, with every spelling
+    of its name that appears on a filing &mdash; the older federal files cut
+    the employer name at about 34 characters, so one department can appear four
+    different ways.</p>
+    <div class="picker" id="picker"></div>
+    <div id="agency-list"><p class="loading">Loading&hellip;</p></div>
+  </section>
+
+  <section class="block" id="origin">
+    <h2 id="where-h-1b-workers-come-from-nationally">Where H-1B workers come from &mdash; nationally</h2>
+    <div class="warnbox">
+      <p><strong>This is not agency-level, and it cannot be made
+      agency-level.</strong> The Labor Department's disclosure file carries 98
+      columns and the only ones naming a country are the employer's, its
+      contact's and its attorney's. The USCIS Data Hub has none at all. An LCA
+      records a <em>job</em> &mdash; an occupation, a wage, a worksite &mdash;
+      and is often filed before a particular worker is identified. The document
+      that names a beneficiary and their nationality is the I-129 petition, and
+      USCIS does not publish at that level.</p>
+      <p>So nothing below tells you where the engineers at any transport
+      department or the psychiatrists at any prison were born. These are
+      nationwide visa issuances across every employer in the country. The split
+      is lopsided enough that it is tempting to carry it across to an agency on
+      this page. The data does not support that, and neither does this site.</p>
+    </div>
+    <p class="lede" id="origin-lede"></p>
+    <p class="note" style="margin:0 0 .4rem">Click any column heading to sort.
+    Every country that issued at least one H-1B visa is listed.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Country</th><th class="num share-col">Visas issued</th>
+        <th class="num">Share of all H-1B visas</th></tr></thead>
+      <tbody id="origin-rows"><tr><td class="loading">Loading&hellip;</td></tr></tbody>
+    </table></div>
+    <p class="note" id="origin-note"></p>
+  </section>
+
+  <div class="callout">
+    <h3 id="the-other-half-of-this">The other half of this</h3>
+    <p>This page counts H-1B, the temporary work visa. It can tell you how
+    many and which agencies. It cannot tell you who: the H-1B files record a
+    nationality nationally and never against an employer.</p>
+    <p>The permanent-residence filings can. Every state-agency PERM case is
+    published whole, with the worker's citizenship, country of birth, the
+    visa held at the time, the wage and the federal file it came from. There
+    are far fewer of them, because most H-1B workers never file.</p>
+    <p><a href="/public-sector-visas#state_agencies">Who the public sector sponsors</a></p>
+  </div>
+
+  <section class="block" id="method">
+    <h2 id="method-and-limits">Method and limits</h2>
+    <ul class="lede" id="caveats"></ul>
+    <p class="note">Built by <code>scripts/build_state_agencies.py</code> into
+    <a href="/data/state_agencies.json">/data/state_agencies.json</a>.</p>
+  </section>
+
+</div>
+</main>
+<script src="/state-agencies.js" defer></script>
+<script src="/states.js" defer></script>
+<script src="/anchors.js" defer></script>
+<script src="/analytics-beacon.js" defer></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

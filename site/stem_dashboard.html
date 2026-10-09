@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>STEM PhD Name Classification Dashboard</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="/style.css">
 <style>
   :root {
     --bg: #f8fafc; --bg2: #ffffff; --bg3: #f1f5f9;
@@ -14,7 +15,7 @@
     --chi-color: #ef4444; --ind-color: #f59e0b; --kor-color: #8b5cf6; --viet-color: #22c55e;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); }
+  body { font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); }
   
   .header { background: linear-gradient(135deg, #1e3a5f 0%, var(--accent2) 100%); color: white; padding: 20px 32px; }
   .header h1 { font-size: 22px; font-weight: 700; }
@@ -840,5 +841,6 @@ window.addEventListener('hashchange', detailFromHash);
 </script>
 <script src="/sidebar.js"></script>
 <script src="/anchors.js" defer></script>
+<script src="/analytics-beacon.js" defer></script>
 </body>
 </html>

@@ -1935,6 +1935,41 @@
     else location.href = stop.page + (stop.anchor ? '#' + stop.anchor : '');
   }
 
+  function tourBack() {
+    if (!tourOn() || !window.PhdTour.retreat) return;
+    var stop = window.PhdTour.retreat();
+    if (!stop) return;                      // already at the first stop
+    var st = window.PhdTour.state() || { i: 0 };
+    if (window.PhdTour.samePage(stop)) showStop(stop, st.i);
+    else location.href = stop.page + (stop.anchor ? '#' + stop.anchor : '');
+  }
+
+  /* ARROWS MOVE THE TOUR. Right and Up go forward, Left and Down go back,
+   * so either hand works and either mental model does: "next/previous" and
+   * "down the page/up the page" both land on something sensible.
+   *
+   * Ignored while the reader is typing, or the question box would lose its
+   * arrow keys mid-sentence. */
+  document.addEventListener('keydown', function (e) {
+    if (!tourOn() || !window.PhdTour.state || !window.PhdTour.state()) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    // The panel autofocuses the question box, so arrows would otherwise
+    // always land in it and never reach the tour. An EMPTY box is not being
+    // edited: the reader is watching, and the arrows are theirs. Once there
+    // is text, the caret keys go back to belonging to the box.
+    var t = e.target;
+    if (t && t.isContentEditable) return;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA')
+        && (t.value || '').length > 0) return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+      e.preventDefault(); tourNext();
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+      e.preventDefault(); tourBack();
+    } else if (e.key === 'Escape') {
+      window.PhdTour.clear();
+    }
+  });
+
   /* The "?" path. Distinct from tourStart in two ways that matter: it clears
    * any half-finished tour first, so pressing "?" always means "from the
    * beginning" rather than "resume"; and it opens the panel itself, because
@@ -1948,6 +1983,52 @@
    * dependency rather than depending on another script having done it, so the
    * "?" is never a button that does nothing.
    */
+  /* ANY PAGE CAN START THE TOUR.
+   *
+   * The "?" button is in the corner and a reader has to know what it does.
+   * A link in the body of a page, at the point where someone has just read
+   * something and wants the guided version, converts far better -- so an
+   * element carrying data-start-tour starts it, wherever it sits.
+   *
+   * Delegated from the document, because the pages that carry such a link
+   * are generated and the widget has no way to know about them. It is also
+   * exposed as window.PhdChat.startTour for anything that needs to call it
+   * directly. The link stays a real anchor to /overview#the-clearest-cases,
+   * so with no JavaScript it still goes somewhere sensible rather than
+   * nowhere.
+   */
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest && e.target.closest('[data-start-tour]');
+    if (!t) return;
+    e.preventDefault();
+    // The attribute's value picks a track: empty is the whole argument,
+    // "step2" is just the master's. The track has to be set before the
+    // tour starts, and tour.js may not be loaded yet, so it is set inside
+    // ensureTour's callback rather than here.
+    var track = t.getAttribute('data-start-tour') || 'full';
+    ensureTour(function (ok) {
+      if (ok && window.PhdTour.setTrack) window.PhdTour.setTrack(track);
+      tourRestart();
+    });
+  });
+  // A ?tour= parameter starts that tour on arrival. Checked once, on load,
+  // after the tour file is available.
+  ensureTour(function (ok) {
+    if (!ok || !window.PhdTourAutostart) return;
+    var want = window.PhdTourAutostart();
+    if (!want) return;
+    window.PhdTour.setTrack(want);
+    tourRestart();
+  });
+
+  window.PhdChat = window.PhdChat || {};
+  window.PhdChat.startTour = function (track) {
+    ensureTour(function (ok) {
+      if (ok && window.PhdTour.setTrack) window.PhdTour.setTrack(track || 'full');
+      tourRestart();
+    });
+  };
+
   function ensureTour(cb) {
     if (tourOn()) { cb(true); return; }
     if (tourLoading) { tourLoading.push(cb); return; }

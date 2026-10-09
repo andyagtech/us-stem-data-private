@@ -90,9 +90,73 @@
   .note code, .caveats code { overflow-wrap: anywhere; }
   .loading { color: var(--text-muted); font-size: .85rem; }
   a { color: var(--accent); }
+  .thresholds { border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.2rem;
+    margin: 1.4rem 0 0; background: var(--surface); }
+  .thresholds h3 { margin: 0 0 .4rem; font-size: 1rem; }
+  .tgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .9rem 1.4rem;
+    margin: 1rem 0 0; }
+  .tgrid .tcheck { grid-column: 1 / -1; display: flex; align-items: center; gap: .45rem;
+    font-size: .84rem; color: var(--text-muted); cursor: pointer; }
+  @media (max-width: 760px) { .tgrid { grid-template-columns: 1fr; } }
+  .tctl { display: block; }
+  .tlab { display: block; font-size: .76rem; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--text-muted); margin: 0 0 .35rem; }
+  .tlab output { float: right; text-transform: none; letter-spacing: 0; font-weight: 700;
+    color: var(--hl); font-variant-numeric: tabular-nums; }
+  .tctl input[type=range] { width: 100%; accent-color: var(--accent); }
+  .tout { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem;
+    margin: 1.2rem 0 0; }
+  @media (max-width: 620px) { .tout { grid-template-columns: 1fr; } }
+  .tout div { border: 1px solid var(--border); border-radius: 10px; padding: .7rem .85rem; }
+  .tout .n { font-size: 1.5rem; font-weight: 800; color: var(--hl); line-height: 1.1;
+    font-variant-numeric: tabular-nums; }
+  .tout .l { font-size: .8rem; color: var(--text-muted); margin: .25rem 0 0; line-height: 1.4; }
+  .tdist { margin: 1.3rem 0 0; }
+  /* The caption used to be a flex item with flex:0 0 100% inside a row that
+     never wrapped, so it took the whole width and crushed every bar into a
+     few pixels at the right edge -- which rendered as a smear of overlapping
+     tick labels rather than a chart. The caption is a block now and only the
+     bars are in the flex row. */
+  .tbars { display: block; margin: .5rem 0 1.6rem; }
+  .tbars .row { display: flex; align-items: flex-end; gap: 3px; height: 54px; }
+  .tbars .b { flex: 1 1 0; min-width: 0; background: rgba(148,163,184,0.3);
+    border-radius: 2px 2px 0 0; position: relative; min-height: 2px; }
+  .tbars .b.on { background: var(--hl); }
+  .tbars .b .t { position: absolute; bottom: -1.15rem; left: 0; right: 0; text-align: center;
+    font-size: .6rem; color: var(--text-muted); }
+  .tbars .cap { display: block; font-size: .74rem; color: var(--text-muted);
+    margin: 0 0 .35rem; }
+  .treset { font: inherit; font-size: .78rem; margin: .9rem 0 0; padding: .3rem .8rem;
+    border-radius: 999px; border: 1px solid var(--border); background: transparent;
+    color: var(--text-muted); cursor: pointer; }
 </style>
   <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
   <script defer src="/theme.js"></script>
+<style id="conclusion-style">
+  /* The conclusion closes the page, so it is separated from the evidence
+     above it and from whatever the template puts below. An earlier version
+     had neither margin and collided with the next heading. */
+  .conclusion { border-top: 3px solid var(--hl); margin: 3.5rem 0 2.5rem;
+    padding: 1.6rem 0 0; clear: both; }
+  .conclusion h2 { font-size: 1.35rem; margin: 0 0 .5rem; }
+  .conclusion .cx-lede { font-size: 1.18rem; line-height: 1.55; font-weight: 600;
+    max-width: 60ch; margin: 0 0 1.1rem; }
+  .conclusion .cx-body p { font-size: 1rem; line-height: 1.7; max-width: 68ch;
+    margin: 0 0 .9rem; }
+  .conclusion .cx-body p:last-child { margin-bottom: 0; }
+  .cx-onward { margin: 1.8rem 0 0; padding: 1.1rem 0 0; border-top: 1px solid var(--border); }
+  .cx-onward-head { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--text-muted); margin: 0 0 .7rem; }
+  .cx-next-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: .7rem; }
+  .cx-next { display: block; text-decoration: none; color: inherit;
+    border: 1px solid var(--border); border-radius: 10px; padding: .75rem .9rem;
+    background: var(--surface); }
+  .cx-next:hover { border-color: var(--hl); }
+  .cx-label { display: block; font-weight: 650; font-size: .92rem; color: var(--hl); }
+  .cx-why { display: block; font-size: .8rem; line-height: 1.45; color: var(--text-muted);
+    margin-top: .2rem; }
+</style>
 </head>
 <body data-page="bodyshops">
 <main id="main">
@@ -113,16 +177,58 @@
   </header>
 
   <section class="block" id="test">
-    <h2>What counts as a body shop here</h2>
+    <h2 id="what-counts-as-a-body-shop-here">What counts as a body shop here</h2>
     <p class="lede">&ldquo;Body shop&rdquo; is trade slang, not a legal category. It is used
       here as a test with four parts, and every part is the employer&rsquo;s own answer on
       its own certified application.</p>
     <div class="windows" id="test-cards"></div>
     <p class="note" id="test-note"></p>
+
+    <div class="thresholds" id="thresholds" hidden>
+      <h3 id="move-the-thresholds-yourself">Move the thresholds yourself</h3>
+      <p class="lede">The four parts above are a judgement, and the 50% cuts are
+        a convention &mdash; &ldquo;more than half&rdquo; &mdash; not something
+        the data proposes. Set them where you think they belong and the count
+        below follows.</p>
+
+      <div class="tgrid">
+        <label class="tctl">
+          <span class="tlab">Minimum certified applications
+            <output id="out-filings">50</output></span>
+          <input type="range" id="in-filings" min="25" max="500" step="5" value="50">
+        </label>
+        <label class="tctl">
+          <span class="tlab">At least this share H-1B dependent
+            <output id="out-dependent">50%</output></span>
+          <input type="range" id="in-dependent" min="0" max="100" step="1" value="50">
+        </label>
+        <label class="tctl">
+          <span class="tlab">At least this share placed at a client
+            <output id="out-secondary">50%</output></span>
+          <input type="range" id="in-secondary" min="0" max="100" step="1" value="50">
+        </label>
+        <label class="tctl tcheck">
+          <input type="checkbox" id="in-naics" checked>
+          <span>Only supply-industry employers (NAICS 5613 or 5415)</span>
+        </label>
+      </div>
+
+      <div class="tout" id="tout" aria-live="polite"></div>
+
+      <div class="tdist">
+        <p class="tlab">Where firms actually sit, in ten-point bands. The marked
+          band holds the cut.</p>
+        <div class="tbars" id="dist-dependent"></div>
+        <div class="tbars" id="dist-secondary"></div>
+      </div>
+
+      <p class="note" id="tnote"></p>
+      <button type="button" class="treset" id="treset">Back to the site&rsquo;s test</button>
+    </div>
   </section>
 
   <section class="block" id="firms">
-    <h2>The firms that meet the test</h2>
+    <h2 id="the-firms-that-meet-the-test">The firms that meet the test</h2>
     <p class="lede" id="firms-lede"></p>
     <div class="controls">
       <input type="search" id="q" placeholder="Search employer" aria-label="Search employer">
@@ -144,7 +250,7 @@
   </section>
 
   <section class="block" id="wages">
-    <h2>Same job title, two prices</h2>
+    <h2 id="same-job-title-two-prices">Same job title, two prices</h2>
     <p class="lede" id="wages-lede"></p>
     <div id="gap-rows"></div>
     <div class="key">
@@ -155,7 +261,7 @@
   </section>
 
   <section class="block" id="trend">
-    <h2>Four years of filings</h2>
+    <h2 id="four-years-of-filings">Four years of filings</h2>
     <p class="lede" id="trend-lede"></p>
     <div class="table-wrap">
       <table class="mini" id="trend-table"></table>
@@ -164,7 +270,7 @@
   </section>
 
   <section class="block" id="barred">
-    <h2>Who has actually been barred</h2>
+    <h2 id="who-has-actually-been-barred">Who has actually been barred</h2>
     <p class="lede" id="barred-lede"></p>
     <div class="table-wrap">
       <table class="mini" id="barred-table"></table>
@@ -173,21 +279,54 @@
   </section>
 
   <section class="block" id="unpublished">
-    <h2>What no agency publishes</h2>
+    <h2 id="what-no-agency-publishes">What no agency publishes</h2>
     <p class="lede" id="unpub-lede"></p>
     <div class="windows" id="unpub-cards"></div>
     <p class="note" id="unpub-note"></p>
   </section>
 
   <section class="block" id="concentration">
-    <h2>How concentrated the programme is</h2>
+    <h2 id="how-concentrated-the-programme-is">How concentrated the programme is</h2>
     <p class="lede" id="conc-lede"></p>
     <div class="windows" id="conc-cards"></div>
     <p class="note" id="conc-note"></p>
   </section>
 
-  <section class="block" id="method">
-    <h2>Method and limits</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- conclusion:begin -->
+<section class="conclusion" id="what-this-means">
+  <h2>What this adds up to</h2>
+  <p class="cx-lede">An American graduate is not competing on merit against an equal. They are competing against a cheaper worker who cannot leave.</p>
+  <div class="cx-body">
+    <p>This is the other end of the pipeline. <!--auto:data:visa_bodyshops.body_shop_totals.employers|n-->1,106<!--/auto--> firms filed <!--auto:data:visa_bodyshops.body_shop_totals.filings|n-->252,806<!--/auto--> certified applications, <!--auto:data:visa_bodyshops.body_shop_totals.share_of_filings_pct|pct1-->12.2%<!--/auto--> of every certified H-1B application in these years. Their business is supplying people to other companies, by their own answers on their own forms.</p>
+    <p>The wage data says what the arrangement is worth. Of <!--auto:data:local_wage_comparison.filings_priced|n-->565,966<!--/auto--> certified applications priced against the local market, <!--auto:data:local_wage_comparison.below_local_median_pct|pct1-->78.7%<!--/auto--> were below the median wage for that occupation in that place. A worker whose right to remain is tied to an employer is a worker who does not negotiate, and the discount is the point.</p>
+    <p>An American graduate competing for these jobs is not competing on merit against an equal. They are competing against a cheaper worker who cannot leave, supplied at volume by firms built for the purpose.</p>
+  </div>
+  <div class="cx-onward">
+    <p class="cx-onward-head">Where to look next</p>
+    <div class="cx-next-row">
+    <a class="cx-next" href="/visa-schools"><span class="cx-label">Where the workers come from</span><span class="cx-why">The graduate programs that produce them.</span></a>
+    <a class="cx-next" href="/public-sector-visas"><span class="cx-label">The public payroll</span><span class="cx-why">Where taxpayers fund the sponsorship directly.</span></a>
+    </div>
+  </div>
+</section>
+<!-- conclusion:end -->
+
+<section class="block" id="method">
+    <h2 id="method-and-limits">Method and limits</h2>
     <ul class="caveats" id="caveats"></ul>
     <p class="note">Built by <code>scripts/build_visa_bodyshops.py</code> and
       <code>scripts/build_visa_staffing.py</code>. Source files:
@@ -201,5 +340,7 @@
 </main>
 <script src="/sidebar.js" defer></script>
 <script src="/bodyshops.js" defer></script>
+<script src="/anchors.js" defer></script>
+<script src="/analytics-beacon.js" defer></script>
 </body>
 </html>

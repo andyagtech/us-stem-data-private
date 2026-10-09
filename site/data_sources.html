@@ -9,6 +9,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Data Sources &amp; Methodology — USDS China</title>
+<link rel="stylesheet" href="/style.css">
 <style>
   :root {
     --bg: #0f172a; --surface: #1e293b; --border: #334155;
@@ -17,7 +18,7 @@
     --danger: #ef4444; --orange: #fb923c;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+  body { font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
   .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 
   /* Navigation */
@@ -254,6 +255,8 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
         (<code>scripts/build_concentration_cases.py</code>).</li>
       <li><code>/data/critical_industries.json</code> &mdash; Five industries the country cannot offshore -- mining, petroleum, aerospace, battery technology and nuclear…
         (<code>scripts/build_critical_industries.py</code>).</li>
+      <li><code>/data/data_asks.json</code> &mdash; The Data Asks page: what the federal government holds or once published that would answer a question this site cannot.
+        (<code>scripts/build_data_asks.py</code>).</li>
       <li><code>/data/distribution.json</code> &mdash; National department histogram by non-resident share, 2010/2015/2020/2025, at 4-digit CIP.
         (<code>scripts/build_distribution.py</code>).</li>
       <li><code>/data/doctorate_origins.json</code> &mdash; The 40 largest countries of origin of temporary-visa doctorate recipients, and parental education by citizenship.
@@ -266,6 +269,8 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
         (<code>scripts/build_employer_profiles.py</code>).</li>
       <li><code>/data/enrolment_and_funding.json</code> &mdash; Temporary-visa share of graduate enrolment joined to federal R&amp;D expenditure -- whether the public money and the foreign enrolment sit in the same institutions.
         (<code>scripts/join_enrolment_and_funding.py</code>).</li>
+      <li><code>/data/eor_market.json</code> &mdash; The employment route that needs no visa: which employer-of-record vendors reference each other, how many country pages each publishes, and the pages whose own address names the H-1B.
+        (<code>scripts/build_eor_market.py</code>).</li>
       <li><code>/data/expansion_phases.json</code> &mdash; Non-resident graduate degrees and visa issuances on one time axis, in named windows -- when each part of the pipeline expanded, and in what order.
         (<code>scripts/build_expansion_phases.py</code>).</li>
       <li><code>/data/fica_exposure.json</code> &mdash; The employer-side payroll-tax differential on OPT employment, as a rate and as a labelled scenario grid.
@@ -284,10 +289,16 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
         (<code>scripts/build_gss_institution_ranking.py</code>).</li>
       <li><code>/data/h1b_approvals.json</code> &mdash; H-1B petitions approved and denied by employer, FY2009-2023 -- what USCIS actually granted, between what employers asked for and what enforcement later found.
         (<code>scripts/build_h1b_approvals.py</code>).</li>
+      <li><code>/data/h1b_by_industry.json</code> &mdash; Certified LCAs by six-digit NAICS. Six digits separates a staffing firm from a law firm; the USCIS hub's two cannot.
+        (<code>scripts/build_h1b_by_industry.py</code>).</li>
+      <li><code>/data/h1b_by_occupation.json</code> &mdash; Certified LCAs by SOC occupation: the custodial, food-service and personal-care roles as well as the professorships.
+        (<code>scripts/build_h1b_by_occupation.py</code>).</li>
       <li><code>/data/h1b_enforcement.json</code> &mdash; H-1B wage violations found by the Department of Labor, 2000-2026: cases, back wages, employees and employers.
         (<code>scripts/build_h1b_enforcement.py</code>).</li>
       <li><code>/data/humanitarian_admissions.json</code> &mdash; Refugee arrivals 1980-2023 and asylum grants by nationality -- the humanitarian route, for scale against the study and work routes.
         (<code>scripts/build_humanitarian_admissions.py</code>).</li>
+      <li><code>/data/institution_funding.json</code> &mdash; State and federal appropriations received by each public institution, so a campus's non-resident share can sit beside the public money going into it.
+        (<code>scripts/build_institution_funding.py</code>).</li>
       <li><code>/data/institution_profiles.json</code> &mdash; One row per institution on a single UNITID key -- core-STEM master's and doctorates with their non-resident shares, graduate enrolment, federal R&amp;D and obligations, tuition…
         (<code>scripts/build_institution_profiles.py</code>).</li>
       <li><code>/data/lca_wage_levels.json</code> &mdash; Prevailing-wage level promised on certified H-1B filings, by employer, FY2019 and FY2023 -- what was promised, beside what enforcement later found.
@@ -310,10 +321,24 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
         (<code>scripts/build_occupational_wages.py</code>).</li>
       <li><code>/data/origin_vs_residence.json</code> &mdash; Permanent residents by country of last residence against country of birth -- which countries are waypoints rather than sources.
         (<code>scripts/build_origin_vs_residence.py</code>).</li>
+      <li><code>/data/postdoc_citizenship.json</code> &mdash; Postdoctoral appointees by citizenship and by federal support, per institution, including the nine universities named in the 2026-10-08 J-1 investigation.
+        (<code>scripts/build_postdoc_citizenship.py</code>).</li>
+      <li><code>/data/public_employer_perm.json</code> &mdash; Every certified permanent-residence filing by a university, a school district or a state agency, with the worker's citizenship, birth country and the visa held when the employer filed.
+        (<code>scripts/build_public_employer_perm.py</code>).</li>
       <li><code>/data/repo_datasets.json</code> &mdash; Publishes eighteen analysis files that their own builders write beside their inputs rather than into site/data/.
         (<code>scripts/publish_repo_datasets.py</code>).</li>
+      <li><code>/data/security_cases.json</code> &mdash; The government's own list of China-related prosecutions, parsed from the archived DOJ page, with each defendant's role read from DOJ's own headline…
+        (<code>scripts/build_security_cases.py</code>).</li>
+      <li><code>/data/state_agencies.json</code> &mdash; H-1B filings by agencies of state government.
+        (<code>scripts/build_state_agencies.py</code>).</li>
+      <li><code>/data/state_agencies.json</code> &mdash; Which arms of state government sponsor H-1B workers, and for what: approvals by agency and state, with the job titles and wages from the employer's own certified applications.
+        (<code>scripts/build_state_agencies.py</code>).</li>
       <li><code>/data/state_funding_and_enrolment.json</code> &mdash; State appropriations per FTE against the non-resident share of graduate enrolment at public institutions, by state, 2010-2023 -- a test of why the tuition finding exists.
         (<code>scripts/build_state_funding_and_enrolment.py</code>).</li>
+      <li><code>/data/state_residency.json</code> &mdash; In-state against out-of-state at public four-year institutions in each state: the split of full-time-equivalent enrolment…
+        (<code>scripts/build_state_residency.py</code>).</li>
+      <li><code>/data/states_index.json</code> &mdash; The state list the sidebar expands under All State Profiles.
+        (<code>scripts/build_states_index.py</code>).</li>
       <li><code>/data/stay_rates.json</code> &mdash; Where temporary-visa S&amp;E doctorate recipients actually live years after graduating: 73% of the 2017-19 cohort were still in the US in 2023.
         (<code>scripts/build_stay_rates.py</code>).</li>
       <li><code>/data/stem_earnings.json</code> &mdash; Median earnings and debt one year after completion, by 4-digit CIP and credential level -- the only federal source that prices a STEM degree by field AND level.
@@ -1073,19 +1098,19 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
     separated by a double hyphen, narrowing from left to right:</p>
     <table>
       <tr><th>Fragment</th><th>What it addresses</th></tr>
-      <tr><td><code>stem.html#missouri_st</code></td><td>a university</td></tr>
-      <tr><td><code>stem.html#missouri_st--chemistry</code></td><td>a department within it</td></tr>
-      <tr><td><code>stem.html#missouri_st--chemistry--2024</code></td><td>one year of that department</td></tr>
-      <tr><td><code>stem.html#missouri_st--2024</code></td><td>that year's master's theses</td></tr>
-      <tr><td><code>stem.html#missouri_st--funding</code></td><td>the funding panel, opened</td></tr>
-      <tr><td><code>stem.html#missouri_st--enrollment</code></td><td>the enrollment panel, opened</td></tr>
-      <tr><td><code>stem.html#missouri_st--h1b</code></td><td>the H-1B and OPT panel, opened</td></tr>
-      <tr><td><code>stem.html#nat-visas</code></td><td>a national chart</td></tr>
-      <tr><td><code>china.html#return-chart-section</code></td><td>a named section on any other page</td></tr>
+      <tr><td><code>stem#missouri_st</code></td><td>a university</td></tr>
+      <tr><td><code>stem#missouri_st--chemistry</code></td><td>a department within it</td></tr>
+      <tr><td><code>stem#missouri_st--chemistry--2024</code></td><td>one year of that department</td></tr>
+      <tr><td><code>stem#missouri_st--2024</code></td><td>that year's master's theses</td></tr>
+      <tr><td><code>stem#missouri_st--funding</code></td><td>the funding panel, opened</td></tr>
+      <tr><td><code>stem#missouri_st--enrollment</code></td><td>the enrollment panel, opened</td></tr>
+      <tr><td><code>stem#missouri_st--h1b</code></td><td>the H-1B and OPT panel, opened</td></tr>
+      <tr><td><code>stem#nat-visas</code></td><td>a national chart</td></tr>
+      <tr><td><code>china#return-chart-section</code></td><td>a named section on any other page</td></tr>
     </table>
     <p style="margin-top:1rem;">The university token is the same one used
     throughout the site: in the sidebar links, in
-    <code>/universities/&lt;key&gt;.html</code>, and in
+    <code>/universities/&lt;key&gt;</code>, and in
     <code>/data/stem/&lt;key&gt;.json</code>. The department token is the
     department name in lower case with every run of non-alphanumeric characters
     replaced by a single hyphen — <em>Computer Science</em> becomes
@@ -1102,7 +1127,7 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
     <h3>Carrying panel state</h3>
     <p>Which data panels are open travels after the anchor, so a link can
     reproduce a whole view rather than just a scroll position:</p>
-    <p><code>stem.html#missouri_st--chemistry?funding=1&amp;h1b=1&amp;ms=1</code></p>
+    <p><code>stem#missouri_st--chemistry?funding=1&amp;h1b=1&amp;ms=1</code></p>
     <p>The flags are <code>funding</code>, <code>enrollment</code>,
     <code>h1b</code> (H-1B and OPT) and <code>ms</code> (show master's theses).
     Each is <code>=1</code> to open. Naming a panel directly — for example
@@ -1111,11 +1136,11 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 
   <div id="link-other-pages" class="card">
     <h3>Other pages</h3>
-    <p><code>immigration.html#mit</code> lands on that university's card.
-    <code>department_reports.html#missouri_st--trend-chart</code> selects a
-    university and a tab. <code>query.html#stem_records</code> loads the SQL
+    <p><code>immigration#mit</code> lands on that university's card.
+    <code>department_reports#missouri_st--trend-chart</code> selects a
+    university and a tab. <code>query#stem_records</code> loads the SQL
     workspace with that table selected.
-    <code>ipeds_dashboard.html#panel-states</code> opens a dashboard tab.
+    <code>ipeds_dashboard#panel-states</code> opens a dashboard tab.
     Machine-readable equivalents are listed in
     <a href="catalog.json" data-track="a.catalog-json">catalog.json</a> and
     <a href="llms.txt" data-track="a.llms-txt">llms.txt</a>.</p>

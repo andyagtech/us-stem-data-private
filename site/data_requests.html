@@ -3,238 +3,601 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Eight Federal Data Requests</title>
-<meta name="description" content="Eight aggregate extracts of federal data -- seven of them already collected -- that would settle what the published record cannot: H-1B cap status, L-1 and O-1 by employer, F-1 students by school, and more.">
-<meta property="og:title" content="Eight Federal Data Requests">
-<meta property="og:description" content="Eight aggregate extracts of federal data -- seven of them already collected -- that would settle what the published record cannot: H-1B cap status, L-1 and O-1 by employer, F-1 students by school, and more.">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<title>Data Asks</title>
+<meta name="description" content="31 datasets the federal government holds or once published that would answer a question this site cannot. Each names the analysis it blocks.">
+<meta property="og:title" content="Data Asks">
+<meta property="og:description" content="31 datasets the federal government holds or once published that would answer a question this site cannot. Each names the analysis it blocks.">
+<link rel="stylesheet" href="/style.css">
 <style>
-:root{
-  --paper:#ffffff; --panel:#f5f6f8; --ink:#111827; --ink2:#374151; --ink3:#5b6472;
-  --rule:#dde1e6; --rule2:#c5cbd3; --link:#1d4ed8; --linkline:#93b4f5;
-  --ok:#166534; --ok-bg:#e7f3eb; --new:#8a3b0b; --new-bg:#fbeee4;
-  --bg:var(--paper); --surface:var(--panel); --border:var(--rule);
-  --text:var(--ink); --text-muted:var(--ink3); --accent:var(--link);
-  color-scheme:light;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --paper:#121418; --panel:#1a1d23; --ink:#e8eaee; --ink2:#c3c8d0; --ink3:#949cab;
-    --rule:#2b3038; --rule2:#3a414b; --link:#93b4ff; --linkline:#3d5694;
-    --ok:#86d3a0; --ok-bg:#16291e; --new:#f0b58c; --new-bg:#33220f;
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --paper:#121418; --panel:#1a1d23; --ink:#e8eaee; --ink2:#c3c8d0; --ink3:#949cab;
-  --rule:#2b3038; --rule2:#3a414b; --link:#93b4ff; --linkline:#3d5694;
-  --ok:#86d3a0; --ok-bg:#16291e; --new:#f0b58c; --new-bg:#33220f;
-  color-scheme:dark;
-}
-*{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);
-  font:400 15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  padding-inline:20px;-webkit-font-smoothing:antialiased}
-.wrap{font:400 17px/1.62 Charter,"Bitstream Charter","Iowan Old Style",Georgia,serif}
-.wrap{max-width:760px;margin:0 auto;padding-block:52px 88px}
-.wrap .sans,.wrap h1,.wrap h2,.wrap h3,.meta dt,.wrap th,.chip,.spec dt,.eyebrow,.wrap footer{
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
-.wrap a{color:var(--link);text-decoration:none;border-bottom:1px solid var(--linkline)}
-.wrap a:focus-visible{outline:2px solid var(--link);outline-offset:2px}
-.wrap p{margin:0 0 14px;max-width:68ch}
-.eyebrow{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--ink3);margin:0 0 10px}
-h1{font-size:30px;line-height:1.15;margin:0 0 22px;letter-spacing:-.01em;text-wrap:balance}
-h2{font-size:19px;line-height:1.3;margin:0 0 4px;text-wrap:balance}
-h3{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--ink3);margin:40px 0 12px}
-.meta{display:grid;grid-template-columns:max-content 1fr;gap:6px 22px;margin:0 0 26px;
-  padding:16px 0;border-block:2px solid var(--ink)}
-.meta dt{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--ink3);padding-top:4px}
-.meta dd{margin:0}
-.scroll{overflow-x:auto;margin:0 0 8px}
-.wrap table{width:100%;border-collapse:collapse;font-size:15px}
-th{text-align:left;font-size:11.5px;font-weight:700;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--ink3);padding:9px 10px;border-bottom:1px solid var(--rule2)}
-td{padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
-td.n{font-family:"Helvetica Neue",Arial,sans-serif;font-variant-numeric:tabular-nums;
-  color:var(--ink3);width:2.2em}
-.chip{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.03em;
-  padding:3px 8px;border-radius:3px;white-space:nowrap}
-.chip.ok{color:var(--ok);background:var(--ok-bg)}
-.chip.new{color:var(--new);background:var(--new-bg)}
-.req{padding:26px 0 8px;border-top:1px solid var(--rule)}
-.req:first-of-type{border-top:0}
-.req-head{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;margin:0 0 10px}
-.req-num{font-family:"Helvetica Neue",Arial,sans-serif;font-weight:700;font-size:14px;
-  color:var(--ink3);font-variant-numeric:tabular-nums}
-.spec{display:grid;grid-template-columns:9.5em 1fr;gap:8px 18px;margin:12px 0 10px;
-  padding:14px 16px;background:var(--panel);border:1px solid var(--rule)}
-.spec dt{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--ink3);padding-top:3px}
-.spec dd{margin:0;font-size:15.5px;line-height:1.55;color:var(--ink2)}
-.spec dd strong{color:var(--ink)}
-code{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:.86em;
-  background:var(--panel);border:1px solid var(--rule);padding:0 4px;border-radius:3px}
-.note{font-size:15.5px;color:var(--ink2);border-left:3px solid var(--rule2);padding:2px 0 2px 16px;margin:18px 0}
-footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink3)}
-@media (max-width:560px){
-  .spec,.meta{grid-template-columns:1fr}
-  .spec dt{padding-top:6px}
-  h1{font-size:25px}
-}
+  .wrap { max-width: 1020px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.9rem; margin: 0 0 .7rem; line-height: 1.2; }
+  .page-head p { color: var(--text-muted); max-width: 72ch; line-height: 1.65; font-size: .95rem; margin: 0 0 .6rem; }
+  .kicker { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin: 0 0 .6rem; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin: 1.6rem 0 0; }
+  .stat { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; background: var(--surface); }
+  .stat .n { font-size: 1.7rem; font-weight: 800; color: var(--hl); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: .82rem; line-height: 1.45; margin: .3rem 0 0; }
+  .stat .s { font-size: .72rem; color: var(--text-muted); margin: .45rem 0 0; }
+  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+  section.block { margin-top: 2.8rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  section.block h2 { font-size: 1.2rem; margin: 0 0 .45rem; }
+  .lede { color: var(--text-muted); max-width: 74ch; line-height: 1.6; font-size: .92rem; margin: 0 0 1rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55; max-width: 82ch; margin: .9rem 0 0; }
+
+  .ask { border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.2rem;
+    margin: 1rem 0 0; background: var(--surface); }
+  .ask h3 { margin: 0 0 .1rem; font-size: 1.02rem; line-height: 1.35; }
+  .ask .agency { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--text-muted); margin: 0 0 .5rem; }
+  .ask dl { margin: .7rem 0 0; display: grid; grid-template-columns: 9.5rem 1fr; gap: .35rem .9rem; }
+  .ask dt { font-size: .72rem; text-transform: uppercase; letter-spacing: .05em;
+    color: var(--text-muted); padding-top: .15rem; }
+  .ask dd { margin: 0; font-size: .89rem; line-height: 1.6; }
+  @media (max-width: 620px) { .ask dl { grid-template-columns: 1fr; gap: .1rem; }
+    .ask dd { margin-bottom: .6rem; } }
+
+  /* The effort badge is the axis that decides the conversation, so it is the
+     one piece of colour on the card. Status colour, not a series colour. */
+  .badge { display: inline-block; font-size: .7rem; font-weight: 600; letter-spacing: .03em;
+    padding: .18rem .55rem; border-radius: 999px; border: 1px solid; white-space: nowrap; }
+  .badge.restore   { color: #b4530a; border-color: #b4530a40; background: #b4530a14; }
+  .badge.collected { color: #1d7a4c; border-color: #1d7a4c40; background: #1d7a4c14; }
+  .badge.aggregate { color: #2f6ab5; border-color: #2f6ab540; background: #2f6ab514; }
+  .badge.new       { color: #8a3b6b; border-color: #8a3b6b40; background: #8a3b6b14; }
+
+  .ev { margin: .75rem 0 0; padding-top: .6rem; border-top: 1px dashed var(--border); }
+  .ev .row { display: flex; gap: .6rem; align-items: baseline; font-size: .82rem; padding: .12rem 0; }
+  .ev .v { font-weight: 700; font-variant-numeric: tabular-nums; color: var(--hl);
+    min-width: 8.5rem; text-align: right; }
+  .ev .k { color: var(--text-muted); }
+  .ev .src { font-size: .7rem; color: var(--text-muted); margin: .4rem 0 0; }
+
+  .legend { display: grid; gap: .6rem; margin: 1rem 0 0; }
+  .legend .row { display: grid; grid-template-columns: 13rem 1fr; gap: .8rem; align-items: start; font-size: .86rem; }
+  .legend p { margin: 0; color: var(--text-muted); line-height: 1.55; }
+  @media (max-width: 620px) { .legend .row { grid-template-columns: 1fr; gap: .15rem; } }
 </style>
   <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
   <script defer src="/theme.js"></script>
 </head>
-<body data-page="data_requests">
+<body data-page="data-asks">
+<a class="skip-link" href="#asks">Skip to the asks</a>
 <main id="main">
 <div class="wrap">
 
-<p class="eyebrow">Memorandum</p>
-<h1 id="eight-requests-for-federal-data-that-is-already">Eight requests for federal data that is already collected and not published</h1>
+<div class="page-head">
+<p class="kicker">What is collected, and what is released</p>
+<h1>Data Asks</h1>
+<p>Every other page on this site reports what the public record says. This one
+reports where it stops.</p>
+<p>Each ask below names something a federal office holds, or once published,
+that would answer a question this site currently cannot. It says what is
+missing, and it says which analysis is blocked. The figures beside each ask
+are read from this site's own built data when the page is rendered, so an ask
+cannot outlive the evidence for it.</p>
+<p><strong>19 of 31 are not requests for new collection.</strong>
+The agency already has the field on a form it already processes, or published
+it until recently and stopped. Those are disclosure decisions. The rest are
+marked, because a release decision and a budget request are different
+conversations.</p>
+<p>Nothing here asks for anything that identifies a person. Several asks are
+deliberately for a tabulation rather than for record-level data, because the
+tabulation answers the question and the records would not be released.</p>
+</div>
 
-<dl class="meta">
-  <dt>To</dt><dd>The data-release and statistical offices named against each item</dd>
-  <dt>From</dt><dd>PhD Demographics project &middot; <a href="https://phd-demographics.andy-barr.com">phd-demographics.andy-barr.com</a></dd>
-  <dt>Date</dt><dd>11 September 2026</dd>
-  <dt>Subject</dt><dd>Aggregate extracts that would settle questions the published record cannot</dd>
+<div class="stats">
+  <div class="stat"><div class="n">31</div><p class="l">asks</p>
+    <p class="s">across 11 departments and agencies</p></div>
+  <div class="stat"><div class="n">15</div><p class="l">already collected</p>
+    <p class="s">on a form the agency already processes</p></div>
+  <div class="stat"><div class="n">4</div><p class="l">published, then stopped</p>
+    <p class="s">the collection did not change; the release did</p></div>
+  <div class="stat"><div class="n">5</div><p class="l">would need new collection</p>
+    <p class="s">a cost, and a different conversation</p></div>
+</div>
+
+<section class="block" id="no-requirement">
+<h2>Nobody is required to publish any of this</h2>
+<p class="lede">The gap this page describes starts before any federal agency.
+It starts with the fact that a university does not have to tell anyone what it
+awarded, to whom, or on whose money.</p>
+<p>There is no federal rule obliging a university to publish a dissertation or
+a thesis. There is no rule obliging it to list the ones it has awarded. Each
+institution decides for itself, and the decision is often revisited department
+by department. There is no national register of awarded doctorates and no
+federal index of where a dissertation can be read. The largest single
+collection is held by ProQuest, which is a private subscription product.</p>
+<p>So the record on this site was built one institution at a time, because
+there is no list to work from. Of the
+<strong><!--auto:data:repository_index.institutions|n-->106<!--/auto--></strong>
+institutions searched,
+<strong><!--auto:data:repository_index.without_repository|n-->7<!--/auto--></strong>
+publish nothing the harvest could find, and
+<strong><!--auto:data:repository_index.indirect_resolvers|n-->27<!--/auto--></strong>
+more are reachable only through a handle or DOI resolver rather than a
+browsable index. Several that do publish cover only recent years, or only some
+departments.</p>
+<p><strong>Coverage here is a floor, and the absence is not evenly spread.</strong>
+A university that posts less is not a university that awards less. Every
+institution-level figure on this site should be read as the smallest the true
+number can be, and the ranking between two institutions is partly a ranking of
+how much each chose to make public.</p>
+<p>This is the first ask on the page, and it is the one the public most
+obviously already paid for.</p>
+</section>
+
+<section class="block" id="how-to-read">
+<h2>How to read an ask</h2>
+<p class="lede">The badge is the part that decides who you are talking to.</p>
+<div class="legend">
+<div class="row"><span><span class="badge restore">Published before, then stopped</span></span><p>This was public and is not any more. The collection has not changed; only the release has.</p></div><div class="row"><span><span class="badge collected">No new collection</span></span><p>The agency holds this today, on a form or survey it already processes. Publishing it is a disclosure decision.</p></div><div class="row"><span><span class="badge aggregate">A tabulation would do it</span></span><p>The record-level data is sensitive or suppressed, but a tabulation at the agency&#x27;s own thresholds would answer the question without releasing it.</p></div><div class="row"><span><span class="badge new">Needs a new collection</span></span><p>Nobody holds this. It is a real cost and belongs in a different conversation from the rest of this page.</p></div>
+</div>
+</section>
+
+<section class="block" id="asks">
+<h2>The asks</h2>
+<p class="lede">Grouped by the office that holds the data.</p>
+</section>
+<section class="block" id="uscis"><h2>USCIS</h2>
+<article class="ask" id="ask-1">
+<p class="agency">1. USCIS</p>
+<h3>H-1B cap-exempt status by employer</h3>
+<p style="margin:.5rem 0 0"><span class="badge collected">No new collection</span></p>
+<dl>
+<dt>Collected on</dt><dd>Form I-129, which records whether a petition is cap-exempt and on what ground.</dd>
+<dt>Published now</dt><dd>National totals by exemption category in the Report to Congress. The H-1B Employer Data Hub names every employer and carries no cap field.</dd>
+<dt>The request</dt><dd><strong>The Employer Data Hub extract with two added fields, cap-exempt yes or no and the exemption ground, by employer and fiscal year, with approvals and denials.</strong></dd>
+<dt>Would settle</dt><dd>Which employers use the exemption, at what scale, and whether use is concentrated. Today the petitions filed under the affiliated-nonprofit ground cannot be attributed to any organization.</dd>
+
+</dl>
+<div class="ev"><div class="row"><span class="v">2,388</span><span class="k">employers on a cap-exempt list built by inference, not by record</span></div><p class="src">Built at render time from cap_exempt_directory.json:captured_total.</p></div>
+</article>
+
+<article class="ask" id="ask-6">
+<p class="agency">6. USCIS</p>
+<h3>L-1 and O-1 petitions by employer</h3>
+<p style="margin:.5rem 0 0"><span class="badge collected">No new collection</span></p>
+<dl>
+<dt>Collected on</dt><dd>Form I-129, the same form and system that produce the published H-1B Employer Data Hub.</dd>
+<dt>Published now</dt><dd>Nothing by employer. Neither classification requires a labor condition application, so the Labor Department never sees them, and USCIS publishes employer hubs for H-1B, H-2A and H-2B only.</dd>
+<dt>The request</dt><dd><strong>Petitioner name and address for L-1A, L-1B, O-1A and O-1B, aggregated by petitioner and fiscal year, with approvals and denials. The H-1B hub&#x27;s extract, run for four more classifications.</strong></dd>
+<dt>Would settle</dt><dd>Which companies transfer the most staff into the United States without a wage test, and whether O-1 growth sits in the industries most constrained by the H-1B cap.</dd>
+
 </dl>
 
-<p>This project reconstructs the U.S. graduate STEM pipeline — degrees, enrolment,
-funding, work authorisation and permanent residence — entirely from published federal
-data. At eight points the published record stops short. In seven of them the agency
-already collects the information and publishes it only in part, or not at all; in the
-eighth, graduate admissions, no federal collection exists.</p>
+</article>
 
-<p>Each request below names who holds the data, what is published now, and the smallest
-aggregate extract that would answer the question. Every request is for <strong>counts
-only</strong>, at the agency’s own disclosure thresholds — no person-level records. Each
-can be sent as it stands, as an agency data request, a FOIA request or through a
-congressional office.</p>
+<article class="ask" id="ask-10">
+<p class="agency">10. USCIS</p>
+<h3>A stable employer identifier in the H-1B Employer Data Hub</h3>
+<p style="margin:.5rem 0 0"><span class="badge collected">No new collection</span></p>
+<dl>
+<dt>Collected on</dt><dd>Form I-129, which carries the petitioner&#x27;s FEIN.</dd>
+<dt>Published now</dt><dd>The employer name as filed, and nothing else. There is no key that survives a spelling change.</dd>
+<dt>The request</dt><dd><strong>Any stable per-employer identifier alongside the name. A hashed or truncated FEIN would do. The agency need not publish the number itself, only something that is the same across filings by the same body.</strong></dd>
+<dt>Would settle</dt><dd>Counting an employer at all. Cognizant files under eighteen spellings and the largest accounts for 22,287 of 50,994. Every employer total published anywhere, by anyone, is a floor, and the error is largest for exactly the biggest filers.</dd>
 
-<h3 id="the-eight-at-a-glance">The eight at a glance</h3>
-<div class="scroll">
-<table>
-  <tr><th></th><th>Data</th><th>Held by</th><th>Collection</th><th>New collection?</th></tr>
-  <tr><td class="n">1</td><td>H-1B cap-exempt status by employer</td><td>USCIS</td><td>Form I-129</td><td><span class="chip ok">No</span></td></tr>
-  <tr><td class="n">2</td><td>Federal graduate support by citizenship</td><td>NSF NCSES</td><td>GSS, SED</td><td><span class="chip ok">No</span></td></tr>
-  <tr><td class="n">3</td><td>Citizens and permanent residents separated at conferral</td><td>NSF NCSES</td><td>SED</td><td><span class="chip ok">No, for doctorates</span></td></tr>
-  <tr><td class="n">4</td><td>OPT and STEM OPT for every institution</td><td>DHS SEVP</td><td>SEVIS</td><td><span class="chip ok">No</span></td></tr>
-  <tr><td class="n">5</td><td>Graduate applications and admissions</td><td>ED NCES</td><td>IPEDS</td><td><span class="chip new">Yes</span></td></tr>
-  <tr><td class="n">6</td><td>L-1 and O-1 petitions by employer</td><td>USCIS</td><td>Form I-129</td><td><span class="chip ok">No</span></td></tr>
-  <tr><td class="n">7</td><td>F-1 students by institution</td><td>DHS SEVP</td><td>SEVIS</td><td><span class="chip ok">No</span></td></tr>
-  <tr><td class="n">8</td><td>Country of birth for nonimmigrants</td><td>State, DHS</td><td>Visa and admission records</td><td><span class="chip ok">No, for visas</span></td></tr>
-</table>
-</div>
-<p class="sans" style="font-size:13px;color:var(--ink3)">The first seven are the Data Needs pages of the project’s briefing, numbered as there. The eighth comes from the project’s coverage audit.</p>
+</dl>
 
-<h3 id="the-requests">The requests</h3>
+</article>
 
-<section class="req">
-  <div class="req-head"><span class="req-num">1</span><h2 id="h-1b-cap-exempt-status-by-employer">H-1B cap-exempt status by employer</h2><span class="chip ok">No new collection</span></div>
-  <dl class="spec">
-    <dt>Held by</dt><dd>USCIS</dd>
-    <dt>Collected on</dt><dd>Form I-129, which records whether a petition is cap-exempt and on what ground.</dd>
-    <dt>Published now</dt><dd>National totals by exemption category in the Report to Congress. The H-1B Employer Data Hub names every employer but carries no cap field.</dd>
-    <dt>Request</dt><dd><strong>The Employer Data Hub extract with two added fields — cap-exempt (yes/no) and exemption ground</strong> — by employer and fiscal year, with approvals and denials.</dd>
-    <dt>Would settle</dt><dd>Which employers use the exemption, at what scale, and whether use is concentrated. Today the 24,073 petitions filed under the affiliated-nonprofit ground in FY2025 cannot be attributed to any organisation.</dd>
-  </dl>
+<article class="ask" id="ask-11">
+<p class="agency">11. USCIS</p>
+<h3>Name the affiliated nonprofits in the Report to Congress</h3>
+<p style="margin:.5rem 0 0"><span class="badge collected">No new collection</span></p>
+<dl>
+<dt>Collected on</dt><dd>Form I-129.</dd>
+<dt>Published now</dt><dd>A count of petitions from nonprofits related to or affiliated with an institution of higher education. No organization is named.</dd>
+<dt>The request</dt><dd><strong>The same count, broken out by petitioning organization.</strong></dd>
+<dt>Would settle</dt><dd>Sizing the bodies running the cap-exempt route. This site reaches for IRS Form 990 to do it, which gives revenue and headcount but says nothing about cap status, so the two can sit side by side and never join.</dd>
+
+</dl>
+
+</article>
+</section><section class="block" id="department-of-labor"><h2>Department of Labor</h2>
+<article class="ask" id="ask-9">
+<p class="agency">9. Department of Labor, Office of Foreign Labor Certification</p>
+<h3>Restore the worker fields to the PERM disclosure file</h3>
+<p style="margin:.5rem 0 0"><span class="badge restore">Published before, then stopped</span></p>
+<dl>
+<dt>Collected on</dt><dd>Form ETA-9089, on which the employer still answers all three questions.</dd>
+<dt>Published now</dt><dd>Nothing. Country of citizenship, country of birth and class of admission were all published through FY2024 and all three were removed at once in FY2025, when the file went from 155 columns to 137.</dd>
+<dt>The request</dt><dd><strong>The three withdrawn columns, restored to the quarterly disclosure file on the basis used through FY2024.</strong></dd>
+<dt>Would settle</dt><dd>Every question about who fills a sponsored post. This site can say that a Washington state agency sponsored a Hong Kong citizen for permanent residence in FY2021. It cannot say whether that still happens, and no future harvest will tell us, because the field is gone rather than empty.</dd>
+<dt>Note</dt><dd>This is the single most consequential item on the page. The collection did not change. Only the release did.</dd>
+</dl>
+<div class="ev"><div class="row"><span class="v">42,833</span><span class="k">filings the ended series covers</span></div><div class="row"><span class="v">FY2013-FY2024</span><span class="k">window, and it cannot be extended</span></div><p class="src">Built at render time from public_employer_perm.json:public_rows, public_employer_perm.json:window.</p></div>
+</article>
+
+<article class="ask" id="ask-26">
+<p class="agency">26. Department of Labor, Office of Foreign Labor Certification</p>
+<h3>The PERM worker fields, restored</h3>
+<p style="margin:.5rem 0 0"><span class="badge restore">Published before, then stopped</span></p>
+<dl>
+<dt>Collected on</dt><dd>Form ETA-9089, which records the worker&#x27;s citizenship, country of birth, the visa held at the time of filing, and the offered wage.</dd>
+<dt>Published now</dt><dd>Nothing. The FY2025 disclosure file dropped every worker field. The layout went from 155 columns to 137 and the citizenship column is among those removed.</dd>
+<dt>The request</dt><dd><strong>Restore the worker fields to the quarterly disclosure file. They were published without incident for twelve years.</strong></dd>
+<dt>Would settle</dt><dd>Everything this project can say about who the public sector sponsors for permanent residence, it can say only up to FY2024. PERM is the only federal disclosure file that carries a worker&#x27;s citizenship, and as of FY2025 that series has ended.</dd>
+<dt>Note</dt><dd>The Vice President described PERM on 2026-10-08 as the mechanism by which an H-1B holder stays permanently. That is the mechanism whose worker detail stopped being published the same year.</dd>
+</dl>
+<div class="ev"><div class="row"><span class="v">42,833</span><span class="k">certified public-employer filings the series covers, FY2013 to FY2024</span></div><p class="src">Built at render time from public_employer_perm.json:public_rows.</p></div>
+</article>
+
+<article class="ask" id="ask-12">
+<p class="agency">12. Department of Labor, Office of Foreign Labor Certification</p>
+<h3>A six-digit NAICS code on the labor condition application</h3>
+<p style="margin:.5rem 0 0"><span class="badge collected">No new collection</span></p>
+<dl>
+<dt>Collected on</dt><dd>Form ETA-9035, on which the employer reports NAICS.</dd>
+<dt>Published now</dt><dd>Whatever depth the employer chose. The same industry appears at two, four, five and six digits in a single file.</dd>
+<dt>The request</dt><dd><strong>Validation requiring six digits at filing, and the full six-digit code in the disclosure file.</strong></dd>
+<dt>Would settle</dt><dd>Separating a staffing firm from a law firm, which is the whole basis of the body-shop test. A filing coded &#x27;6111&#x27; is a school and cannot be counted as one, because &#x27;6111&#x27; covers several six-digit industries and assigning it would be a guess.</dd>
+
+</dl>
+<div class="ev"><div class="row"><span class="v">8,081,883</span><span class="k">certified applications read</span></div><div class="row"><span class="v">4,783</span><span class="k">distinct NAICS codes, at mixed depths</span></div><p class="src">Built at render time from h1b_by_industry.json:certified_filings, h1b_by_industry.json:distinct_codes.</p></div>
+</article>
+
+<article class="ask" id="ask-13">
+<p class="agency">13. Department of Labor, Office of Foreign Labor Certification</p>
+<h3>A published column schema, and a diff when it changes</h3>
+<p style="margin:.5rem 0 0"><span class="badge collected">No new collection</span></p>
+<dl>
+<dt>Collected on</dt><dd>Not applicable. This is about the release, not the form.</dd>
+<dt>Published now</dt><dd>Files whose column names change between years without notice. H_1B_DEPENDENT became H-1B_DEPENDENT in FY2025. FW_INFO_BIRTH_COUNTRY became FOREIGN_WORKER_BIRTH_COUNTRY in FY2020.</dd>
+<dt>The request</dt><dd><strong>A versioned schema published with each release, and a diff against the previous one.</strong></dd>
+<dt>Would settle</dt><dd>A whole category of silent error. A renamed column read by its old name returns no value, and a missing dependency flag reads as a firm that is never dependent. That is a wrong answer rather than a crash, and no downstream check can catch it reliably.</dd>
+<dt>Note</dt><dd>Not a request for data. It would cost close to nothing and it is the cheapest item here.</dd>
+</dl>
+
+</article>
+
+<article class="ask" id="ask-14">
+<p class="agency">14. Department of Labor, Wage and Hour Division</p>
+<h3>The complete H-1B enforcement case set</h3>
+<p style="margin:.5rem 0 0"><span class="badge aggregate">A tabulation would do it</span></p>
+<dl>
+<dt>Collected on</dt><dd>WHISARD case management.</dd>
+<dt>Published now</dt><dd>An extract carrying the largest cases only.</dd>
+<dt>The request</dt><dd><strong>All concluded H-1B cases with employer, fiscal year, violation type and back wages, at the division&#x27;s usual thresholds.</strong></dd>
+<dt>Would settle</dt><dd>Reading absence. A firm that does not appear may have had no findings or may have had small ones, and the extract cannot distinguish them. Only a handful of employers match between the enforcement file and the wage data, so the crossing is inconclusive.</dd>
+
+</dl>
+<div class="ev"><div class="row"><span class="v">37</span><span class="k">employers matched across both files</span></div><p class="src">Built at render time from employer_profiles.json:with_enforcement.</p></div>
+</article>
+
+<article class="ask" id="ask-27">
+<p class="agency">27. Department of Labor, Wage and Hour Division; Treasury holds the matching payroll record</p>
+<h3>Wages actually paid on an H-1B, not the wage offered</h3>
+<p style="margin:.5rem 0 0"><span class="badge aggregate">A tabulation would do it</span></p>
+<dl>
+<dt>Collected on</dt><dd>The LCA records an offered wage and a prevailing wage. What the worker is actually paid appears on a W-2, which Treasury holds and Labor does not.</dd>
+<dt>Published now</dt><dd>Offered wages, in the disclosure files. No agency publishes what was paid.</dd>
+<dt>The request</dt><dd><strong>A tabulation, built from matched W-2 and LCA records, of median wage actually paid against the prevailing wage for the same occupation, area and year. By employer where the cell clears the threshold, otherwise by occupation and area. No person-level record.</strong></dd>
+<dt>Would settle</dt><dd>Whether the wage gap argued about in public is real and how large it is. Every figure on this site is an offered wage, because that is the only wage published -- and an offer is a ceiling on intent, not evidence of a payment.</dd>
+
+</dl>
+<div class="ev"><div class="row"><span class="v">269,323</span><span class="k">OPT and STEM OPT authorizations in the year the exemption applies to</span></div><p class="src">Built at render time from fica_exposure.json:authorisations.total_records_with_opt.</p></div>
+</article>
+</section><section class="block" id="dhs"><h2>DHS</h2>
+<article class="ask" id="ask-4">
+<p class="agency">4. DHS Student and Exchange Visitor Program</p>
+<h3>OPT and STEM OPT for every institution</h3>
+<p style="margin:.5rem 0 0"><span class="badge collected">No new collection</span></p>
+<dl>
+<dt>Collected on</dt><dd>SEVIS.</dd>
+<dt>Published now</dt><dd>A Top 100 ranking of schools. A school outside it is absent rather than zero, so school totals are a floor and year-to-year movement may only reflect the cutoff moving.</dd>
+<dt>The request</dt><dd><strong>OPT and STEM OPT authorisation counts for every certified school, by calendar year, on the same basis as the published national table.</strong></dd>
+<dt>Would settle</dt><dd>Work-authorisation participation for every institution, not just the hundred largest.</dd>
+
+</dl>
+
+</article>
+
+<article class="ask" id="ask-7">
+<p class="agency">7. DHS Student and Exchange Visitor Program; the State Department for visa issuance</p>
+<h3>F-1 students by institution</h3>
+<p style="margin:.5rem 0 0"><span class="badge collected">No new collection</span></p>
+<dl>
+<dt>Collected on</dt><dd>SEVIS, which records every F-1 student against a certified school.</dd>
+<dt>Published now</dt><dd>State reports issuance by consulate and nationality, never by school. SEVP publishes school-level figures for OPT alone. IPEDS reports non-resident enrolment, a residency category rather than a visa count.</dd>
+<dt>The request</dt><dd><strong>Active F-1 student records by certified school and year, split by education level.</strong></dd>
+<dt>Would settle</dt><dd>Where the student pipeline enters. That is the first stage of everything else on this page.</dd>
+
+</dl>
+
+</article>
+
+<article class="ask" id="ask-28">
+<p class="agency">28. DHS Student and Exchange Visitor Program</p>
+<h3>SEVIS by school, program, level and country of citizenship</h3>
+<p style="margin:.5rem 0 0"><span class="badge collected">No new collection</span></p>
+<dl>
+<dt>Collected on</dt><dd>SEVIS, continuously. Every F-1 and J-1 record carries the school, the program of study, the level and the country of citizenship, and is updated each term.</dd>
+<dt>Published now</dt><dd>Quarterly totals by school and by country, in separate tables that cannot be crossed. The published school table does not carry country; the country table does not carry school.</dd>
+<dt>The request</dt><dd><strong>One table, annually: school, program level, two-digit CIP, country of citizenship, active records. Counts only, at SEVP&#x27;s own suppression threshold.</strong></dd>
+<dt>Would settle</dt><dd>Which programs at which schools draw from which countries. Today the two halves are published separately and the join is exactly the part that would answer the question.</dd>
+
+</dl>
+
+</article>
+
+<article class="ask" id="ask-29">
+<p class="agency">29. DHS Student and Exchange Visitor Program</p>
+<h3>OPT and STEM OPT authorizations by employer</h3>
+<p style="margin:.5rem 0 0"><span class="badge collected">No new collection</span></p>
+<dl>
+<dt>Collected on</dt><dd>Form I-983 for STEM OPT, which names the employer, and the SEVIS record, which carries the authorization and the school.</dd>
+<dt>Published now</dt><dd>National totals. No employer appears in any published OPT table.</dd>
+<dt>The request</dt><dd><strong>Employer, school, year and count of authorizations, for OPT and STEM OPT separately. Counts only.</strong></dd>
+<dt>Would settle</dt><dd>Who employs the graduates of the programs this site measures, in the window before an H-1B is filed. OPT is the largest foreign-worker programme in the country by headcount and it is the one with no employer-level disclosure at all.</dd>
+<dt>Note</dt><dd>An H-1B petition names its employer and is published. The OPT authorization that usually precedes it names its employer on the form and is not.</dd>
+</dl>
+
+</article>
+
+<article class="ask" id="ask-16">
+<p class="agency">16. DHS Office of Immigration Statistics</p>
+<h3>Country of birth crossed against country of residence</h3>
+<p style="margin:.5rem 0 0"><span class="badge aggregate">A tabulation would do it</span></p>
+<dl>
+<dt>Collected on</dt><dd>Admission and adjustment records.</dd>
+<dt>Published now</dt><dd>Yearbook tables 2 and 3, which are separate totals for the same population.</dd>
+<dt>The request</dt><dd><strong>The cross-tabulation of the two, at the usual thresholds.</strong></dd>
+<dt>Would settle</dt><dd>Whether a surplus in one country can be attributed to a particular origin. No individual is traced across the two tables, so however strongly the deficits in one line up with the surpluses in another, the inference cannot be made, and this site does not make it.</dd>
+
+</dl>
+
+</article>
+
+<article class="ask" id="ask-15">
+<p class="agency">15. DHS SEVP holds the authorisations; Treasury holds the payroll</p>
+<h3>A wage measure for OPT employment</h3>
+<p style="margin:.5rem 0 0"><span class="badge new">Needs a new collection</span></p>
+<dl>
+<dt>Collected on</dt><dd>SEVIS records the authorisation. No federal collection records what the job pays.</dd>
+<dt>Published now</dt><dd>Nothing.</dd>
+<dt>The request</dt><dd><strong>Aggregate earnings for OPT-authorised employment, by year and broad field. A tabulation from the employer side of the payroll tax would do it without a new survey.</strong></dd>
+<dt>Would settle</dt><dd>Sizing the payroll-tax differential. OPT employment is exempt from the employer share of FICA, which is a real price difference against an equivalent citizen hire. This site publishes no national total for it, only a per-$100,000 figure and a scenario grid, because the wage base does not exist.</dd>
+
+</dl>
+
+</article>
+</section><section class="block" id="nsf"><h2>NSF</h2>
+<article class="ask" id="ask-2">
+<p class="agency">2. NSF National Center for Science and Engineering Statistics</p>
+<h3>Federal graduate support by citizenship</h3>
+<p style="margin:.5rem 0 0"><span class="badge collected">No new collection</span></p>
+<dl>
+<dt>Collected on</dt><dd>Survey of Graduate Students and Postdoctorates, which records support by mechanism and agency and enrolment by citizenship. Survey of Earned Doctorates, which records primary support by citizenship.</dd>
+<dt>Published now</dt><dd>Support by agency, and enrolment by citizenship, never together. The SED records the assistantship but not which award paid for it.</dd>
+<dt>The request</dt><dd><strong>A tabulation of graduate students with federal support, by citizenship status and by field, from existing returns. If the returns do not link the two, a statement saying so, which would itself settle whether the figure exists.</strong></dd>
+<dt>Would settle</dt><dd>What federal research funding spends per doctoral student by citizenship. It would turn a proxy into a measurement.</dd>
+
+</dl>
+
+</article>
+
+<article class="ask" id="ask-3">
+<p class="agency">3. NSF National Center for Science and Engineering Statistics</p>
+<h3>Citizens and permanent residents separated at conferral</h3>
+<p style="margin:.5rem 0 0"><span class="badge collected">No new collection</span></p>
+<dl>
+<dt>Collected on</dt><dd>Survey of Earned Doctorates, which records citizenship status at conferral in three categories.</dd>
+<dt>Published now</dt><dd>Two categories: citizens and permanent residents combined, and temporary visa holders. The Survey of Doctorate Recipients separates them after graduation but not at the degree.</dd>
+<dt>The request</dt><dd><strong>SED doctorate counts by field and year with US citizens and permanent residents shown separately.</strong></dd>
+<dt>Would settle</dt><dd>The citizen share of US graduate STEM doctorates, which no published source reports.</dd>
+<dt>Note</dt><dd>Master&#x27;s degrees would need a change to IPEDS and are a separate ask, below.</dd>
+</dl>
+
+</article>
+
+<article class="ask" id="ask-17">
+<p class="agency">17. NSF National Center for Science and Engineering Statistics</p>
+<h3>State geography on the Survey of Doctorate Recipients</h3>
+<p style="margin:.5rem 0 0"><span class="badge aggregate">A tabulation would do it</span></p>
+<dl>
+<dt>Collected on</dt><dd>The SDR questionnaire, which records location.</dd>
+<dt>Published now</dt><dd>Nothing below national. State is suppressed in the public-use file for confidentiality.</dd>
+<dt>The request</dt><dd><strong>A state-level tabulation of the core SDR measures with the usual cell suppression. Not the microdata.</strong></dd>
+<dt>Would settle</dt><dd>Every state-level question about the doctoral workforce. This site publishes a page for each of the fifty states and cannot put a single SDR figure on any of them.</dd>
+
+</dl>
+
+</article>
+
+<article class="ask" id="ask-18">
+<p class="agency">18. NSF National Center for Science and Engineering Statistics</p>
+<h3>Hours worked, above the topcode</h3>
+<p style="margin:.5rem 0 0"><span class="badge aggregate">A tabulation would do it</span></p>
+<dl>
+<dt>Collected on</dt><dd>The SDR questionnaire.</dd>
+<dt>Published now</dt><dd>HRSWKP topcoded at more than 40, so 41 hours and 80 hours are a single value.</dd>
+<dt>The request</dt><dd><strong>Either a higher topcode or a banded distribution above forty.</strong></dd>
+<dt>Would settle</dt><dd>The claim people actually make. The argument is about the distance above forty, and the variable collapses exactly the range the argument is about.</dd>
+
+</dl>
+
+</article>
+</section><section class="block" id="national-center-for-education-statistics"><h2>National Center for Education Statistics</h2>
+<article class="ask" id="ask-20">
+<p class="agency">20. National Center for Education Statistics</p>
+<h3>Graduate borrowing in Student Financial Aid</h3>
+<p style="margin:.5rem 0 0"><span class="badge collected">No new collection</span></p>
+<dl>
+<dt>Collected on</dt><dd>The IPEDS Student Financial Aid component, which covers undergraduates.</dd>
+<dt>Published now</dt><dd>Undergraduate Pell and federal loans. Graduate borrowing sits in the Education Department&#x27;s loan systems and not in IPEDS.</dd>
+<dt>The request</dt><dd><strong>Graduate federal loan volume by institution and year in Student Financial Aid, or a crosswalk to the loan data.</strong></dd>
+<dt>Would settle</dt><dd>Putting a federal dollar figure beside a graduate program. A graduate-heavy institution&#x27;s federal money is understated on this site, and the borrowing that funds a terminal master&#x27;s is invisible.</dd>
+
+</dl>
+
+</article>
+
+<article class="ask" id="ask-19">
+<p class="agency">19. National Center for Education Statistics</p>
+<h3>Permanent residents separated from citizens in IPEDS enrolment</h3>
+<p style="margin:.5rem 0 0"><span class="badge new">Needs a new collection</span></p>
+<dl>
+<dt>Collected on</dt><dd>The IPEDS Fall Enrolment component, which collects &#x27;non-resident alien&#x27; as a residency category.</dd>
+<dt>Published now</dt><dd>Two groups, with permanent residents counted as domestic and reported under race and ethnicity.</dd>
+<dt>The request</dt><dd><strong>A permanent-resident category in Fall Enrolment and Completions.</strong></dd>
+<dt>Would settle</dt><dd>Measuring the foreign-born share of a program. Every non-resident share on this site is a floor, and the gap is largest in exactly the fields where the question is asked most.</dd>
+<dt>Note</dt><dd>This is a change to the collection, not only to the release, which is why it is marked as new. The doctorate version of the same question needs no new collection and is above.</dd>
+</dl>
+
+</article>
+</section><section class="block" id="state-department"><h2>State Department</h2>
+<article class="ask" id="ask-8">
+<p class="agency">8. State Department for visa issuance; DHS for admissions</p>
+<h3>Country of birth for nonimmigrant classes</h3>
+<p style="margin:.5rem 0 0"><span class="badge collected">No new collection</span></p>
+<dl>
+<dt>Collected on</dt><dd>The nonimmigrant visa application, which records place of birth alongside nationality.</dd>
+<dt>Published now</dt><dd>Every visa and admission series is by nationality. A naturalised citizen of one country born in another cannot be distinguished from a native-born citizen anywhere in the published data.</dd>
+<dt>The request</dt><dd><strong>Nonimmigrant visa issuances by visa class, fiscal year, nationality and country of birth. For classes admitted without a visa, the equivalent from DHS admission records if they carry birthplace.</strong></dd>
+<dt>Would settle</dt><dd>How far a nationality series reflects the country people actually come from. In the one dataset that publishes both fields, the two disagree often enough to matter, and the largest single citizenship among the mismatches is Canada.</dd>
+
+</dl>
+<div class="ev"><div class="row"><span class="v">2,241</span><span class="k">filings where citizenship and birth country differ, where both are published</span></div><p class="src">Built at render time from public_employer_perm.json:anomaly_totals.citizenship_differs_from_birth_country.</p></div>
+</article>
+</section><section class="block" id="bureau-of-labor-statistics"><h2>Bureau of Labor Statistics</h2>
+<article class="ask" id="ask-21">
+<p class="agency">21. Bureau of Labor Statistics</p>
+<h3>Raise or remove the OEWS wage topcode</h3>
+<p style="margin:.5rem 0 0"><span class="badge aggregate">A tabulation would do it</span></p>
+<dl>
+<dt>Collected on</dt><dd>The OEWS survey.</dd>
+<dt>Published now</dt><dd>Wages topcoded at $239,200 and published as &#x27;#&#x27;, with suppressed cells as &#x27;*&#x27;.</dd>
+<dt>The request</dt><dd><strong>A higher topcode, or the mean above it, for occupations where the topcode binds.</strong></dd>
+<dt>Would settle</dt><dd>Comparing a high-wage occupation against its prevailing wage. A topcoded occupation has no usable 90th percentile, so the comparison this site runs on every certified filing drops out for the occupations where the money is.</dd>
+
+</dl>
+<div class="ev"><div class="row"><span class="v">565,966</span><span class="k">filings priced against the local median</span></div><div class="row"><span class="v">78.7%</span><span class="k">of those, paid below the local median for the occupation</span></div><p class="src">Built at render time from local_wage_comparison.json:filings_priced, local_wage_comparison.json:below_local_median_pct.</p></div>
+</article>
+</section><section class="block" id="department-of-justice"><h2>Department of Justice</h2>
+<article class="ask" id="ask-22">
+<p class="agency">22. Department of Justice, National Security Division</p>
+<h3>Resume the research-security case compilation</h3>
+<p style="margin:.5rem 0 0"><span class="badge restore">Published before, then stopped</span></p>
+<dl>
+<dt>Collected on</dt><dd>Case records.</dd>
+<dt>Published now</dt><dd>Nothing after 19 November 2021. The compilation stopped there and the China Initiative ended on 23 February 2022.</dd>
+<dt>The request</dt><dd><strong>Resumed publication on the previous basis, or a statement that it has been discontinued.</strong></dd>
+<dt>Would settle</dt><dd>Saying anything about the present. This site publishes the register as a frozen record and labels it as one, because the alternative is to let a 2021 snapshot read as a current picture. Cases have been brought since and none is in a public list.</dd>
+
+</dl>
+<div class="ev"><div class="row"><span class="v">58</span><span class="k">entries in the frozen register</span></div><div class="row"><span class="v">7</span><span class="k">of them brought after the list stopped</span></div><p class="src">Built at render time from security_cases.json:totals.entries, security_cases.json:totals.cases_since_list_stopped.</p></div>
+</article>
+</section><section class="block" id="internal-revenue-service"><h2>Internal Revenue Service</h2>
+<article class="ask" id="ask-23">
+<p class="agency">23. Internal Revenue Service, Tax Exempt and Government Entities</p>
+<h3>Restore the Form 990 e-file years that came off irs.gov</h3>
+<p style="margin:.5rem 0 0"><span class="badge restore">Published before, then stopped</span></p>
+<dl>
+<dt>Collected on</dt><dd>Form 990, filed electronically.</dd>
+<dt>Published now</dt><dd>Tax years 2019 onward on irs.gov. The 2009 to 2018 e-file XML sat on an AWS public bucket that stopped updating at the end of 2021, and outside researchers report that filings did not survive the move.</dd>
+<dt>The request</dt><dd><strong>The full e-file XML archive back to the start of electronic filing, hosted by the agency, with an index of what is held.</strong></dd>
+<dt>Would settle</dt><dd>Any long-run analysis of a nonprofit. A sponsoring organization&#x27;s growth over fifteen years is the question worth asking, and the public record of it now depends on third-party mirrors.</dd>
+<dt>Note</dt><dd>The counts of what went missing come from outside researchers, not from the IRS, and the agency has published no reconciliation. A statement of what is held and what is not would itself be useful.</dd>
+</dl>
+
+</article>
+
+<article class="ask" id="ask-31">
+<p class="agency">31. Internal Revenue Service, Tax Exempt and Government Entities</p>
+<h3>Form 990 employee counts that are populated</h3>
+<p style="margin:.5rem 0 0"><span class="badge collected">No new collection</span></p>
+<dl>
+<dt>Collected on</dt><dd>Form 990 Part V, which carries the W-3 employee count.</dd>
+<dt>Published now</dt><dd>The field, frequently as zero even where the filing reports staff elsewhere.</dd>
+<dt>The request</dt><dd><strong>Either a populated field or a documented explanation of when it is left blank.</strong></dd>
+<dt>Would settle</dt><dd>Sizing an organization by people rather than by money. Revenue is the only usable measure of a cap-exempt sponsor today, and revenue is not a count of anything.</dd>
+
+</dl>
+
+</article>
+
+<article class="ask" id="ask-30">
+<p class="agency">30. Internal Revenue Service</p>
+<h3>The payroll tax forgone on F-1 and J-1 employment</h3>
+<p style="margin:.5rem 0 0"><span class="badge aggregate">A tabulation would do it</span></p>
+<dl>
+<dt>Collected on</dt><dd>Employment tax filings. A student on F-1 or J-1 in practical training is exempt from Social Security and Medicare tax, and so is the employer on that wage.</dd>
+<dt>Published now</dt><dd>Nothing. The exemption has no published cost.</dd>
+<dt>The request</dt><dd><strong>An annual estimate of wages paid under the student FICA exemption and the resulting Social Security and Medicare tax forgone, nationally and by state.</strong></dd>
+<dt>Would settle</dt><dd>What the exemption costs. It is a subsidy of roughly 15.3% of payroll that applies only when the worker is foreign, and it is the clearest cash incentive in the system to prefer one. Nobody has published its size.</dd>
+
+</dl>
+<div class="ev"><div class="row"><span class="v">$15,300</span><span class="k">forgone per $100,000 of payroll, employer and employee side together -- the statutory rate, not an estimate</span></div><p class="src">Built at render time from fica_exposure.json:per_100k_payroll.employer_plus_employee.</p></div>
+</article>
+</section><section class="block" id="no-federal-agency"><h2>No federal agency</h2>
+<article class="ask" id="ask-5">
+<p class="agency">5. No federal agency. The natural home is the National Center for Education Statistics.</p>
+<h3>Graduate applications and admissions</h3>
+<p style="margin:.5rem 0 0"><span class="badge new">Needs a new collection</span></p>
+<dl>
+<dt>Collected on</dt><dd>Nothing. The IPEDS Admissions component covers first-time undergraduates only.</dd>
+<dt>Published now</dt><dd>Degrees conferred. No federal collection records who applied to a graduate program, who was admitted, or who was offered funding.</dd>
+<dt>The request</dt><dd><strong>A graduate admissions component in IPEDS: applications, admissions and funded offers by broad field and residency status.</strong></dd>
+<dt>Would settle</dt><dd>Whether domestic applicants are declining, being declined, or not applying. That is the question behind this whole project and the one it cannot answer.</dd>
+
+</dl>
+
+</article>
+</section><section class="block" id="department-of-education"><h2>Department of Education</h2>
+<article class="ask" id="ask-24">
+<p class="agency">24. Department of Education; the National Center for Education Statistics would be the natural keeper of the register</p>
+<h3>A public deposit requirement for federally funded dissertations and theses</h3>
+<p style="margin:.5rem 0 0"><span class="badge new">Needs a new collection</span></p>
+<dl>
+<dt>Collected on</dt><dd>Nothing. No federal rule obliges a university to publish a dissertation or a thesis, or to list the ones it has awarded. Each institution decides, and the decision is revisited department by department.</dd>
+<dt>Published now</dt><dd>Whatever each university chooses to post. There is no federal register of awarded doctorates and no national index of where a dissertation can be read. ProQuest holds the largest collection and it is a private subscription product.</dd>
+<dt>The request</dt><dd><strong>A deposit rule with the grant money: a doctorate or a master&#x27;s thesis completed with any federal support is lodged in a public repository within a year of the award, with the author, the institution, the department, the year and the advisor in a machine-readable record. No paywall. A single federal index of those records.</strong></dd>
+<dt>Would settle</dt><dd>Who is actually being trained, where, in what, and on whose money. This is the foundation under every other ask on this page, and it is the one the public most obviously already paid for.</dd>
+<dt>Note</dt><dd>This is the gap that shaped the whole project. Building the dissertation record meant visiting institutions one at a time, because there is no list. Several publish nothing searchable at all. Coverage here is therefore a floor and the absence is not evenly spread -- a university that posts less is not a university that awards less.</dd>
+</dl>
+<div class="ev"><div class="row"><span class="v">106</span><span class="k">institutions searched for this project</span></div><div class="row"><span class="v">7</span><span class="k">of them with no public repository the harvest could find</span></div><div class="row"><span class="v">27</span><span class="k">reachable only through a handle or DOI resolver, not a browsable index</span></div><p class="src">Built at render time from repository_index.json:institutions, repository_index.json:without_repository, repository_index.json:indirect_resolvers.</p></div>
+</article>
+
+<article class="ask" id="ask-25">
+<p class="agency">25. Department of Education, National Center for Education Statistics</p>
+<h3>Graduate admissions by citizenship, residency and program</h3>
+<p style="margin:.5rem 0 0"><span class="badge new">Needs a new collection</span></p>
+<dl>
+<dt>Collected on</dt><dd>Nothing at this grain. IPEDS collects admissions for undergraduates and enrollment by a coarse nonresident-alien flag. It does not collect graduate admissions by citizenship at all.</dd>
+<dt>Published now</dt><dd>Graduate enrollment by the nonresident flag, at institution level, with no admissions figures beneath it.</dd>
+<dt>The request</dt><dd><strong>Per institution, per program, per year: applications, admissions and matriculations, split by US citizen and permanent resident, in-state, out-of-state, and temporary visa holder. Counts only, at the existing suppression thresholds.</strong></dd>
+<dt>Would settle</dt><dd>Whether an American applicant and a foreign applicant to the same program face the same odds. Nothing published today can answer that, so the argument is conducted entirely on enrollment -- which is an outcome, and cannot separate who applied from who was chosen.</dd>
+
+</dl>
+<div class="ev"><div class="row"><span class="v">408</span><span class="k">institutions where the project can show the enrollment outcome but not the admissions decision behind it</span></div><p class="src">Built at render time from gss_institution_ranking.json:national.doctoral.institutions.</p></div>
+</article>
 </section>
-
-<section class="req">
-  <div class="req-head"><span class="req-num">2</span><h2 id="federal-graduate-support-by-citizenship">Federal graduate support by citizenship</h2><span class="chip ok">No new collection</span></div>
-  <dl class="spec">
-    <dt>Held by</dt><dd>NSF National Center for Science and Engineering Statistics</dd>
-    <dt>Collected on</dt><dd>Survey of Graduate Students and Postdoctorates (support by mechanism and agency; enrolment by citizenship); Survey of Earned Doctorates (primary support by citizenship).</dd>
-    <dt>Published now</dt><dd>Support by agency, and enrolment by citizenship — never together. The SED records the assistantship but not which award paid for it. Federal money reaches doctoral students mainly through research assistantships: 52,428 federally supported, against 1,041 teaching assistantships.</dd>
-    <dt>Request</dt><dd><strong>A tabulation of graduate students with federal support, by citizenship status (citizen or permanent resident; temporary visa) and by field</strong>, from existing returns. If the returns do not link the two, a statement from NCSES saying so, which would itself settle the question of whether the figure exists.</dd>
-    <dt>Would settle</dt><dd>What federal research funding spends per doctoral student by citizenship — turning a proxy into a measurement.</dd>
-  </dl>
+<section class="block" id="method">
+<h2>How this page is built</h2>
+<p class="lede">The asks are declared once, in
+<code>scripts/data_asks.py</code>. Each one names the dataset that demonstrates
+the gap, and the builder reads the figure from that dataset when the page is
+rendered.</p>
+<ul class="note">
+<li>No figure on this page is typed. An ask whose evidence stops resolving
+fails the build, so the page cannot keep making a claim the data no longer
+supports.</li>
+<li>Every gap described here was met while building something else on this
+site. None was looked for.</li>
+<li>An ask is about publication, not about collection, unless it says
+otherwise. Where a field is already on a federal form, the page says so.</li>
+<li>Nothing here is a criticism of the staff who publish these files. Most of
+these gaps are decisions taken years ago for reasons that were good at the
+time, and several would cost almost nothing to revisit.</li>
+</ul>
 </section>
-
-<section class="req">
-  <div class="req-head"><span class="req-num">3</span><h2 id="citizens-and-permanent-residents-separated-at">Citizens and permanent residents separated at conferral</h2><span class="chip ok">No new collection</span></div>
-  <dl class="spec">
-    <dt>Held by</dt><dd>NSF NCSES</dd>
-    <dt>Collected on</dt><dd>Survey of Earned Doctorates, which records citizenship status at conferral in three categories.</dd>
-    <dt>Published now</dt><dd>Two categories: citizens and permanent residents combined, and temporary visa holders. The Survey of Doctorate Recipients separates them after graduation, but not at the degree. IPEDS does not collect the distinction at all; a permanent resident is counted under race and ethnicity.</dd>
-    <dt>Request</dt><dd><strong>SED doctorate counts by field and year with U.S. citizens and permanent residents shown separately.</strong> Master’s degrees would need a change to IPEDS and are not part of this request.</dd>
-    <dt>Would settle</dt><dd>The citizen share of U.S. graduate STEM doctorates, which no published source reports.</dd>
-  </dl>
-</section>
-
-<section class="req">
-  <div class="req-head"><span class="req-num">4</span><h2 id="opt-and-stem-opt-for-every-institution">OPT and STEM OPT for every institution</h2><span class="chip ok">No new collection</span></div>
-  <dl class="spec">
-    <dt>Held by</dt><dd>DHS Student and Exchange Visitor Program</dd>
-    <dt>Collected on</dt><dd>SEVIS.</dd>
-    <dt>Published now</dt><dd>A Top 100 ranking of schools. A school outside it is absent rather than zero, so school totals are a floor and year-to-year movement may only reflect the cutoff. Complete school-level figures are released to school officials for their own institution, or by FOIA.</dd>
-    <dt>Request</dt><dd><strong>OPT and STEM OPT authorisation counts for every certified school, by calendar year</strong>, on the same basis as the published national table.</dd>
-    <dt>Would settle</dt><dd>Work-authorisation participation for every institution, not just the hundred largest.</dd>
-  </dl>
-</section>
-
-<section class="req">
-  <div class="req-head"><span class="req-num">5</span><h2 id="graduate-applications-and-admissions">Graduate applications and admissions</h2><span class="chip new">Needs a new collection</span></div>
-  <dl class="spec">
-    <dt>Held by</dt><dd>No federal agency. The natural home is ED’s National Center for Education Statistics.</dd>
-    <dt>Collected on</dt><dd>Nothing. The IPEDS Admissions component covers first-time undergraduates only.</dd>
-    <dt>Published now</dt><dd>Degrees conferred. No federal collection records who applied to graduate programmes, who was admitted, or who was offered funding.</dd>
-    <dt>Request</dt><dd><strong>A graduate admissions component in IPEDS: applications, admissions and funded offers by broad field and residency status.</strong> This is the one item on this list that asks for something new.</dd>
-    <dt>Would settle</dt><dd>Whether domestic applicants are declining, being declined, or not applying — the question behind the whole project, and the one it cannot answer.</dd>
-  </dl>
-</section>
-
-<section class="req">
-  <div class="req-head"><span class="req-num">6</span><h2 id="l-1-and-o-1-petitions-by-employer">L-1 and O-1 petitions by employer</h2><span class="chip ok">No new collection</span></div>
-  <dl class="spec">
-    <dt>Held by</dt><dd>USCIS</dd>
-    <dt>Collected on</dt><dd>Form I-129, the same form and system that produce the published H-1B Employer Data Hub.</dd>
-    <dt>Published now</dt><dd>Nothing by employer. Neither classification requires a labor condition application, so the Labor Department never sees them, and USCIS publishes employer data hubs for H-1B, H-2A and H-2B only. The closest substitute is the destination state declared on arrival, which is a location, not an employer.</dd>
-    <dt>Request</dt><dd><strong>Petitioner name and address for classifications <code>L-1A</code>, <code>L-1B</code>, <code>O-1A</code> and <code>O-1B</code>, aggregated by petitioner and fiscal year, with approvals and denials</strong> — the H-1B hub’s extract, run for four more classifications.</dd>
-    <dt>Would settle</dt><dd>Which companies transfer the most staff into the United States without a wage test, and whether O-1 growth sits in the industries most constrained by the H-1B cap.</dd>
-  </dl>
-</section>
-
-<section class="req">
-  <div class="req-head"><span class="req-num">7</span><h2 id="f-1-students-by-institution">F-1 students by institution</h2><span class="chip ok">No new collection</span></div>
-  <dl class="spec">
-    <dt>Held by</dt><dd>DHS SEVP; the State Department for visa issuance</dd>
-    <dt>Collected on</dt><dd>SEVIS, which records every F-1 student against a certified school.</dd>
-    <dt>Published now</dt><dd>State reports issuance by consulate and nationality, never by school. SEVP publishes school-level figures for OPT alone. IPEDS reports non-resident enrolment, a residency category rather than a visa count.</dd>
-    <dt>Request</dt><dd><strong>Active F-1 student records by certified school and year, split by education level (bachelor’s, master’s, doctorate)</strong>.</dd>
-    <dt>Would settle</dt><dd>Where the student pipeline enters — the first stage of everything else in this memo.</dd>
-  </dl>
-</section>
-
-<section class="req">
-  <div class="req-head"><span class="req-num">8</span><h2 id="country-of-birth-for-nonimmigrant-classes">Country of birth for nonimmigrant classes</h2><span class="chip ok">No new collection</span></div>
-  <dl class="spec">
-    <dt>Held by</dt><dd>State Department (visa issuance); DHS (admissions)</dd>
-    <dt>Collected on</dt><dd>The nonimmigrant visa application, which records place of birth alongside nationality.</dd>
-    <dt>Published now</dt><dd>Every visa and admission series is by nationality. A naturalised citizen of one country born in another cannot be distinguished from a native-born citizen anywhere in the published data.</dd>
-    <dt>Request</dt><dd><strong>Nonimmigrant visa issuances by visa class, fiscal year, nationality and country of birth.</strong> For classes admitted without a visa — TN status for Canadian citizens is the main case — the equivalent from DHS admission records, if they carry birthplace; which is for DHS to confirm.</dd>
-    <dt>Would settle</dt><dd>How far a nationality series reflects the country people come from, and whether routes such as TN are used by nationals born elsewhere.</dd>
-  </dl>
-</section>
-
-<p class="note">None of these extracts would identify a person. Each asks for counts at the
-agency’s standard suppression thresholds, and where a cell falls below them, the
-suppressed cell is itself a useful answer.</p>
-
-<footer>
-  Every figure in this memo is taken from the project’s published datasets:
-  H-1B cap-exempt filings from USCIS’s FY2025 H-1B petitions report, support by mechanism from the
-  NSF GSS. The site and its sources are at
-  <a href="https://phd-demographics.andy-barr.com/data_sources.html">phd-demographics.andy-barr.com/data_sources.html</a>.
-</footer>
-
 </div>
 </main>
-<script src="/sidebar.js"></script>
-<script src="/anchors.js" defer></script>
 <script src="/analytics-beacon.js" defer></script>
+<script src="/anchors.js" defer></script>
+<script src="/sidebar.js"></script>
+<script src="/states.js"></script>
 </body>
 </html>

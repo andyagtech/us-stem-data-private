@@ -1,0 +1,1097 @@
+{
+  "generated": "2026-10-05",
+  "method": {
+    "what": "Reference edges, country pages and H-1B pages counted from each vendor's own sitemap.xml.",
+    "edge_rule": "An edge exists when a vendor publishes a URL whose own path names another declared company.",
+    "locales_collapsed": true,
+    "companies_declared": 39,
+    "no_federal_count": "An employer-of-record hire produces no LCA, no I-129 and no SEVIS record, because nobody is admitted to the United States."
+  },
+  "totals": {
+    "providers_sought": 9,
+    "providers_read": 8,
+    "providers_unavailable": 1,
+    "urls_read": 79371,
+    "companies_in_network": 32,
+    "eor_companies_in_network": 13,
+    "reference_edges": 54,
+    "h1b_pages": 43,
+    "providers_with_h1b_pages": 7,
+    "countries_max": 289,
+    "h1b_pages_translated_only": 8,
+    "unmatched_comparisons": 444
+  },
+  "providers": [
+    {
+      "key": "deel",
+      "name": "Deel",
+      "host": "www.deel.com",
+      "available": true,
+      "reason": "",
+      "urls": 18561,
+      "unique_paths": 7894,
+      "country_path": "^/hiring/employees/([a-z-]+)/?$",
+      "countries": 115,
+      "references": 11,
+      "references_to": [
+        "ADP",
+        "CloudPay",
+        "Dayforce",
+        "Gusto",
+        "Multiplier",
+        "Okta",
+        "Omnipresent",
+        "Ontop",
+        "Oyster",
+        "Papaya Global",
+        "Rippling"
+      ],
+      "h1b_pages": 18,
+      "h1b_pages_translated_only": 8
+    },
+    {
+      "key": "rippling",
+      "name": "Rippling",
+      "host": "www.rippling.com",
+      "available": true,
+      "reason": "",
+      "urls": 7041,
+      "unique_paths": 4576,
+      "country_path": "^/country-hiring/([a-z-]+)/?$",
+      "countries": 247,
+      "references": 21,
+      "references_to": [
+        "1Password",
+        "ADP",
+        "Auth0",
+        "Brex",
+        "Dayforce",
+        "Deel",
+        "Expensify",
+        "G-P (Globalization Partners)",
+        "Gusto",
+        "Justworks",
+        "NetSuite",
+        "Okta",
+        "Paychex",
+        "Paycom",
+        "Paycor",
+        "Paylocity",
+        "QuickBooks",
+        "Remote",
+        "SAP",
+        "TriNet",
+        "Workday"
+      ],
+      "h1b_pages": 2,
+      "h1b_pages_translated_only": 0
+    },
+    {
+      "key": "remote",
+      "name": "Remote",
+      "host": "remote.com",
+      "available": true,
+      "reason": "",
+      "urls": 42626,
+      "unique_paths": 9916,
+      "country_path": "^/country-explorer/([a-z-]+)(?:/employer-of-record)?/?$",
+      "countries": 289,
+      "references": 9,
+      "references_to": [
+        "Deel",
+        "G-P (Globalization Partners)",
+        "Multiplier",
+        "Oyster",
+        "Papaya Global",
+        "Pebl (formerly Velocity Global)",
+        "RemoFirst",
+        "Rippling",
+        "Safeguard Global"
+      ],
+      "h1b_pages": 0,
+      "h1b_pages_translated_only": 0
+    },
+    {
+      "key": "oyster",
+      "name": "Oyster",
+      "host": "www.oysterhr.com",
+      "available": true,
+      "reason": "",
+      "urls": 1801,
+      "unique_paths": 1435,
+      "country_path": "^/hire-employees/([a-z-]+)/?$",
+      "countries": 56,
+      "references": 3,
+      "references_to": [
+        "ADP",
+        "Multiplier",
+        "Rippling"
+      ],
+      "h1b_pages": 3,
+      "h1b_pages_translated_only": 0
+    },
+    {
+      "key": "pebl",
+      "name": "Pebl (formerly Velocity Global)",
+      "host": "www.velocityglobal.com",
+      "available": true,
+      "reason": "",
+      "urls": 1671,
+      "unique_paths": 1671,
+      "country_path": "^/countries/([a-z-]+)/?$",
+      "countries": 157,
+      "references": 1,
+      "references_to": [
+        "Rippling"
+      ],
+      "h1b_pages": 4,
+      "h1b_pages_translated_only": 0
+    },
+    {
+      "key": "gp",
+      "name": "G-P (Globalization Partners)",
+      "host": "www.g-p.com",
+      "available": true,
+      "reason": "",
+      "urls": 2026,
+      "unique_paths": 2026,
+      "country_path": "^/globalpedia/([a-z-]+)/?$",
+      "countries": 156,
+      "references": 2,
+      "references_to": [
+        "Papaya Global",
+        "RemoFirst"
+      ],
+      "h1b_pages": 7,
+      "h1b_pages_translated_only": 0
+    },
+    {
+      "key": "papaya",
+      "name": "Papaya Global",
+      "host": "www.papayaglobal.com",
+      "available": true,
+      "reason": "",
+      "urls": 2864,
+      "unique_paths": 2828,
+      "country_path": "^/countrypedia/country/([a-z-]+)/?$",
+      "countries": 245,
+      "references": 6,
+      "references_to": [
+        "ADP",
+        "CloudPay",
+        "Dayforce",
+        "Deel",
+        "Remote",
+        "SAP SuccessFactors"
+      ],
+      "h1b_pages": 2,
+      "h1b_pages_translated_only": 0
+    },
+    {
+      "key": "multiplier",
+      "name": "Multiplier",
+      "host": "www.multiplier.com",
+      "country_path": "^/(?:employer-of-record|global-payroll)/([a-z-]+)/?$",
+      "available": false,
+      "reason": "sitemap unreadable (17 bytes)",
+      "urls": 0,
+      "countries": 0,
+      "references": 0,
+      "h1b_pages": 0
+    },
+    {
+      "key": "safeguard",
+      "name": "Safeguard Global",
+      "host": "www.safeguardglobal.com",
+      "available": true,
+      "reason": "",
+      "urls": 2781,
+      "unique_paths": 1921,
+      "country_path": "^/country/([a-z-]+)/[a-z-]+/?$",
+      "countries": 182,
+      "references": 1,
+      "references_to": [
+        "Deel"
+      ],
+      "h1b_pages": 7,
+      "h1b_pages_translated_only": 0
+    }
+  ],
+  "network": [
+    {
+      "company": "Rippling",
+      "kind": "eor",
+      "references_made": 21,
+      "referenced_by": 4,
+      "in_seed": true
+    },
+    {
+      "company": "Deel",
+      "kind": "eor",
+      "references_made": 11,
+      "referenced_by": 4,
+      "in_seed": true
+    },
+    {
+      "company": "ADP",
+      "kind": "us_payroll",
+      "references_made": 0,
+      "referenced_by": 4,
+      "in_seed": false
+    },
+    {
+      "company": "Papaya Global",
+      "kind": "eor",
+      "references_made": 6,
+      "referenced_by": 3,
+      "in_seed": true
+    },
+    {
+      "company": "Dayforce",
+      "kind": "us_payroll",
+      "references_made": 0,
+      "referenced_by": 3,
+      "in_seed": false
+    },
+    {
+      "company": "Multiplier",
+      "kind": "eor",
+      "references_made": 0,
+      "referenced_by": 3,
+      "in_seed": true
+    },
+    {
+      "company": "Remote",
+      "kind": "eor",
+      "references_made": 9,
+      "referenced_by": 2,
+      "in_seed": true
+    },
+    {
+      "company": "Oyster",
+      "kind": "eor",
+      "references_made": 3,
+      "referenced_by": 2,
+      "in_seed": true
+    },
+    {
+      "company": "G-P (Globalization Partners)",
+      "kind": "eor",
+      "references_made": 2,
+      "referenced_by": 2,
+      "in_seed": true
+    },
+    {
+      "company": "CloudPay",
+      "kind": "eor",
+      "references_made": 0,
+      "referenced_by": 2,
+      "in_seed": false
+    },
+    {
+      "company": "Gusto",
+      "kind": "us_payroll",
+      "references_made": 0,
+      "referenced_by": 2,
+      "in_seed": false
+    },
+    {
+      "company": "Okta",
+      "kind": "other_software",
+      "references_made": 0,
+      "referenced_by": 2,
+      "in_seed": false
+    },
+    {
+      "company": "RemoFirst",
+      "kind": "eor",
+      "references_made": 0,
+      "referenced_by": 2,
+      "in_seed": false
+    },
+    {
+      "company": "Pebl (formerly Velocity Global)",
+      "kind": "eor",
+      "references_made": 1,
+      "referenced_by": 1,
+      "in_seed": true
+    },
+    {
+      "company": "Safeguard Global",
+      "kind": "eor",
+      "references_made": 1,
+      "referenced_by": 1,
+      "in_seed": true
+    },
+    {
+      "company": "1Password",
+      "kind": "other_software",
+      "references_made": 0,
+      "referenced_by": 1,
+      "in_seed": false
+    },
+    {
+      "company": "Auth0",
+      "kind": "other_software",
+      "references_made": 0,
+      "referenced_by": 1,
+      "in_seed": false
+    },
+    {
+      "company": "Brex",
+      "kind": "other_software",
+      "references_made": 0,
+      "referenced_by": 1,
+      "in_seed": false
+    },
+    {
+      "company": "Expensify",
+      "kind": "other_software",
+      "references_made": 0,
+      "referenced_by": 1,
+      "in_seed": false
+    },
+    {
+      "company": "Justworks",
+      "kind": "us_payroll",
+      "references_made": 0,
+      "referenced_by": 1,
+      "in_seed": false
+    },
+    {
+      "company": "NetSuite",
+      "kind": "other_software",
+      "references_made": 0,
+      "referenced_by": 1,
+      "in_seed": false
+    },
+    {
+      "company": "Omnipresent",
+      "kind": "eor",
+      "references_made": 0,
+      "referenced_by": 1,
+      "in_seed": false
+    },
+    {
+      "company": "Ontop",
+      "kind": "eor",
+      "references_made": 0,
+      "referenced_by": 1,
+      "in_seed": false
+    },
+    {
+      "company": "Paychex",
+      "kind": "us_payroll",
+      "references_made": 0,
+      "referenced_by": 1,
+      "in_seed": false
+    },
+    {
+      "company": "Paycom",
+      "kind": "us_payroll",
+      "references_made": 0,
+      "referenced_by": 1,
+      "in_seed": false
+    },
+    {
+      "company": "Paycor",
+      "kind": "us_payroll",
+      "references_made": 0,
+      "referenced_by": 1,
+      "in_seed": false
+    },
+    {
+      "company": "Paylocity",
+      "kind": "us_payroll",
+      "references_made": 0,
+      "referenced_by": 1,
+      "in_seed": false
+    },
+    {
+      "company": "QuickBooks",
+      "kind": "us_payroll",
+      "references_made": 0,
+      "referenced_by": 1,
+      "in_seed": false
+    },
+    {
+      "company": "SAP",
+      "kind": "other_software",
+      "references_made": 0,
+      "referenced_by": 1,
+      "in_seed": false
+    },
+    {
+      "company": "SAP SuccessFactors",
+      "kind": "other_software",
+      "references_made": 0,
+      "referenced_by": 1,
+      "in_seed": false
+    },
+    {
+      "company": "TriNet",
+      "kind": "us_payroll",
+      "references_made": 0,
+      "referenced_by": 1,
+      "in_seed": false
+    },
+    {
+      "company": "Workday",
+      "kind": "other_software",
+      "references_made": 0,
+      "referenced_by": 1,
+      "in_seed": false
+    }
+  ],
+  "edges": [
+    {
+      "from": "Deel",
+      "to": "ADP",
+      "url": "https://www.deel.com/deel-vs-competitors/adp/"
+    },
+    {
+      "from": "Deel",
+      "to": "CloudPay",
+      "url": "https://www.deel.com/blog/deel-vs-cloudpay/"
+    },
+    {
+      "from": "Deel",
+      "to": "Dayforce",
+      "url": "https://www.deel.com/blog/deel-global-payroll-services-vs-dayforce/"
+    },
+    {
+      "from": "Deel",
+      "to": "Gusto",
+      "url": "https://www.deel.com/blog/gusto-vs-deel-us-payroll/"
+    },
+    {
+      "from": "Deel",
+      "to": "Multiplier",
+      "url": "https://www.deel.com/deel-vs-competitors/multiplier/"
+    },
+    {
+      "from": "Deel",
+      "to": "Okta",
+      "url": "https://www.deel.com/blog/okta-vs-duo-comparison/"
+    },
+    {
+      "from": "Deel",
+      "to": "Omnipresent",
+      "url": "https://www.deel.com/es/deel-vs-competitors/omnipresent/"
+    },
+    {
+      "from": "Deel",
+      "to": "Ontop",
+      "url": "https://www.deel.com/deel-vs-competitors/ontop/"
+    },
+    {
+      "from": "Deel",
+      "to": "Oyster",
+      "url": "https://www.deel.com/deel-vs-competitors/oyster/"
+    },
+    {
+      "from": "Deel",
+      "to": "Papaya Global",
+      "url": "https://www.deel.com/deel-vs-competitors/papaya-global/"
+    },
+    {
+      "from": "Deel",
+      "to": "Rippling",
+      "url": "https://www.deel.com/deel-vs-competitors/rippling/"
+    },
+    {
+      "from": "G-P (Globalization Partners)",
+      "to": "Papaya Global",
+      "url": "https://www.globalization-partners.com/blog/g-p-vs-papaya-global/"
+    },
+    {
+      "from": "G-P (Globalization Partners)",
+      "to": "RemoFirst",
+      "url": "https://www.globalization-partners.com/blog/gp-vs-remofirst/"
+    },
+    {
+      "from": "Oyster",
+      "to": "ADP",
+      "url": "https://www.oysterhr.com/library/adp-alternatives"
+    },
+    {
+      "from": "Oyster",
+      "to": "Multiplier",
+      "url": "https://www.oysterhr.com/compare/multiplier"
+    },
+    {
+      "from": "Oyster",
+      "to": "Rippling",
+      "url": "https://www.oysterhr.com/library/rippling-alternatives"
+    },
+    {
+      "from": "Papaya Global",
+      "to": "ADP",
+      "url": "https://www.papayaglobal.com/es/comparacion-de-competidores/adp-vs-papaya-global/"
+    },
+    {
+      "from": "Papaya Global",
+      "to": "CloudPay",
+      "url": "https://www.papayaglobal.com/es/comparacion-de-competidores/cloudpay-vs-papaya-global/"
+    },
+    {
+      "from": "Papaya Global",
+      "to": "Dayforce",
+      "url": "https://www.papayaglobal.com/es/comparacion-de-competidores/ceridian-vs-papaya-global/"
+    },
+    {
+      "from": "Papaya Global",
+      "to": "Deel",
+      "url": "https://www.papayaglobal.com/es/comparacion-de-competidores/deel-vs-papaya-global/"
+    },
+    {
+      "from": "Papaya Global",
+      "to": "Remote",
+      "url": "https://www.papayaglobal.com/de/wettbewerbsvergleich/remote-vs-papaya-global/"
+    },
+    {
+      "from": "Papaya Global",
+      "to": "SAP SuccessFactors",
+      "url": "https://www.papayaglobal.com/es/comparacion-de-competidores/sap-success-factors-vs-papaya-global/"
+    },
+    {
+      "from": "Pebl (formerly Velocity Global)",
+      "to": "Rippling",
+      "url": "https://hellopebl.com/resources/blog/rippling-alternatives/"
+    },
+    {
+      "from": "Remote",
+      "to": "Deel",
+      "url": "https://remote.com/blog/payroll/deel-vs-remote"
+    },
+    {
+      "from": "Remote",
+      "to": "G-P (Globalization Partners)",
+      "url": "https://remote.com/blog/eor-peo/gp-vs-remote"
+    },
+    {
+      "from": "Remote",
+      "to": "Multiplier",
+      "url": "https://remote.com/blog/payroll/multiplier-vs-remote"
+    },
+    {
+      "from": "Remote",
+      "to": "Oyster",
+      "url": "https://remote.com/blog/eor-peo/oyster-vs-remote"
+    },
+    {
+      "from": "Remote",
+      "to": "Papaya Global",
+      "url": "https://remote.com/blog/eor-peo/deel-vs-rippling-vs-remote-vs-papaya-global"
+    },
+    {
+      "from": "Remote",
+      "to": "Pebl (formerly Velocity Global)",
+      "url": "https://remote.com/blog/payroll/velocity-global-vs-remote"
+    },
+    {
+      "from": "Remote",
+      "to": "RemoFirst",
+      "url": "https://remote.com/blog/eor-peo/remofirst-vs-remote"
+    },
+    {
+      "from": "Remote",
+      "to": "Rippling",
+      "url": "https://remote.com/blog/payroll/rippling-vs-remote"
+    },
+    {
+      "from": "Remote",
+      "to": "Safeguard Global",
+      "url": "https://remote.com/blog/payroll/safeguard-global-vs-remote"
+    },
+    {
+      "from": "Rippling",
+      "to": "1Password",
+      "url": "https://www.rippling.com/blog/1password-alternative"
+    },
+    {
+      "from": "Rippling",
+      "to": "ADP",
+      "url": "https://www.rippling.com/blog/adp-alternatives"
+    },
+    {
+      "from": "Rippling",
+      "to": "Auth0",
+      "url": "https://www.rippling.com/blog/auth0-alternatives"
+    },
+    {
+      "from": "Rippling",
+      "to": "Brex",
+      "url": "https://www.rippling.com/blog/brex-vs-mercury"
+    },
+    {
+      "from": "Rippling",
+      "to": "Dayforce",
+      "url": "https://www.rippling.com/blog/dayforce-vs-workday"
+    },
+    {
+      "from": "Rippling",
+      "to": "Deel",
+      "url": "https://www.rippling.com/blog/deel-vs-remote"
+    },
+    {
+      "from": "Rippling",
+      "to": "Expensify",
+      "url": "https://www.rippling.com/blog/expensify-vs-concur"
+    },
+    {
+      "from": "Rippling",
+      "to": "G-P (Globalization Partners)",
+      "url": "https://www.rippling.com/fr-CA/comparer/rippling-vs-gp"
+    },
+    {
+      "from": "Rippling",
+      "to": "Gusto",
+      "url": "https://www.rippling.com/blog/gusto-alternatives"
+    },
+    {
+      "from": "Rippling",
+      "to": "Justworks",
+      "url": "https://www.rippling.com/blog/gusto-vs-justworks"
+    },
+    {
+      "from": "Rippling",
+      "to": "NetSuite",
+      "url": "https://www.rippling.com/blog/netsuite-vs-salesforce"
+    },
+    {
+      "from": "Rippling",
+      "to": "Okta",
+      "url": "https://www.rippling.com/blog/auth0-vs-okta"
+    },
+    {
+      "from": "Rippling",
+      "to": "Paychex",
+      "url": "https://www.rippling.com/blog/adp-vs-paychex"
+    },
+    {
+      "from": "Rippling",
+      "to": "Paycom",
+      "url": "https://www.rippling.com/blog/paycom-vs-adp"
+    },
+    {
+      "from": "Rippling",
+      "to": "Paycor",
+      "url": "https://www.rippling.com/blog/rippling-vs-paycor"
+    },
+    {
+      "from": "Rippling",
+      "to": "Paylocity",
+      "url": "https://www.rippling.com/blog/adp-vs-paylocity"
+    },
+    {
+      "from": "Rippling",
+      "to": "QuickBooks",
+      "url": "https://www.rippling.com/blog/adp-vs-quickbooks"
+    },
+    {
+      "from": "Rippling",
+      "to": "Remote",
+      "url": "https://www.rippling.com/blog/deel-vs-remote"
+    },
+    {
+      "from": "Rippling",
+      "to": "SAP",
+      "url": "https://www.rippling.com/blog/netsuite-vs-sap"
+    },
+    {
+      "from": "Rippling",
+      "to": "TriNet",
+      "url": "https://www.rippling.com/blog/adp-vs-trinet"
+    },
+    {
+      "from": "Rippling",
+      "to": "Workday",
+      "url": "https://www.rippling.com/blog/adp-vs-workday"
+    },
+    {
+      "from": "Safeguard Global",
+      "to": "Deel",
+      "url": "https://www.safeguardglobal.com/compare/deel/"
+    }
+  ],
+  "h1b_pages": [
+    {
+      "provider": "Deel",
+      "url": "https://www.deel.com/blog/beyond-the-h-1b-where-global-talent-is-going/",
+      "slug": "beyond-the-h-1b-where-global-talent-is-going"
+    },
+    {
+      "provider": "Deel",
+      "url": "https://www.deel.com/blog/canadas-new-h-1b-open-work-permit-program-and-digital-nomad-visa/",
+      "slug": "canadas-new-h-1b-open-work-permit-program-and-digital-nomad-visa"
+    },
+    {
+      "provider": "Deel",
+      "url": "https://www.deel.com/blog/h-1b-visa-explained/",
+      "slug": "h-1b-visa-explained"
+    },
+    {
+      "provider": "Deel",
+      "url": "https://www.deel.com/blog/h-1b-visa-guide-for-employers/",
+      "slug": "h-1b-visa-guide-for-employers"
+    },
+    {
+      "provider": "Deel",
+      "url": "https://www.deel.com/blog/h-1b-visa-vs-o-1-visa-which-one-is-better/",
+      "slug": "h-1b-visa-vs-o-1-visa-which-one-is-better"
+    },
+    {
+      "provider": "Deel",
+      "url": "https://www.deel.com/blog/h1b-changes/",
+      "slug": "h1b-changes"
+    },
+    {
+      "provider": "Deel",
+      "url": "https://www.deel.com/blog/h1b-faqs-change-of-status-vs-consular-processing/",
+      "slug": "h1b-faqs-change-of-status-vs-consular-processing"
+    },
+    {
+      "provider": "Deel",
+      "url": "https://www.deel.com/blog/laid-off-on-an-h-1b/",
+      "slug": "laid-off-on-an-h-1b"
+    },
+    {
+      "provider": "Deel",
+      "url": "https://www.deel.com/blog/missed-the-h-1b-lottery-get-a-cap-exempt-work-visa/",
+      "slug": "missed-the-h-1b-lottery-get-a-cap-exempt-work-visa"
+    },
+    {
+      "provider": "Deel",
+      "url": "https://www.deel.com/blog/starting-your-own-business-h1b-visa/",
+      "slug": "starting-your-own-business-h1b-visa"
+    },
+    {
+      "provider": "Deel",
+      "url": "https://www.deel.com/blog/travel-while-h1b-pending/",
+      "slug": "travel-while-h1b-pending"
+    },
+    {
+      "provider": "Deel",
+      "url": "https://www.deel.com/blog/trump-admins-h-1b-visa-update-2025/",
+      "slug": "trump-admins-h-1b-visa-update-2025"
+    },
+    {
+      "provider": "Deel",
+      "url": "https://www.deel.com/blog/what-is-the-h-1b1-visa/",
+      "slug": "what-is-the-h-1b1-visa"
+    },
+    {
+      "provider": "Deel",
+      "url": "https://www.deel.com/blog/what-is-the-relationship-between-non-profit-organizations-and-the-h-1b-work-visa/",
+      "slug": "what-is-the-relationship-between-non-profit-organizations-and-the-h-1b-work-visa"
+    },
+    {
+      "provider": "Deel",
+      "url": "https://www.deel.com/events/h1b-lottery-preparation-2027/",
+      "slug": "h1b-lottery-preparation-2027"
+    },
+    {
+      "provider": "Deel",
+      "url": "https://www.deel.com/events/h1b-lottery-success/",
+      "slug": "h1b-lottery-success"
+    },
+    {
+      "provider": "Deel",
+      "url": "https://www.deel.com/events/understanding-h1b-visa-changes/",
+      "slug": "understanding-h1b-visa-changes"
+    },
+    {
+      "provider": "Deel",
+      "url": "https://www.deel.com/resources/guide-to-h-1b-visa-changes/",
+      "slug": "guide-to-h-1b-visa-changes"
+    },
+    {
+      "provider": "Rippling",
+      "url": "https://www.rippling.com/glossary/h1b-visa",
+      "slug": "h1b-visa"
+    },
+    {
+      "provider": "Rippling",
+      "url": "https://www.rippling.com/glossary/h1b1-visa",
+      "slug": "h1b1-visa"
+    },
+    {
+      "provider": "Oyster",
+      "url": "https://www.oysterhr.com/library/do-h-1b-visas-even-matter-if-you-can-hire-employees-in-any-country",
+      "slug": "do-h-1b-visas-even-matter-if-you-can-hire-employees-in-any-country"
+    },
+    {
+      "provider": "Oyster",
+      "url": "https://www.oysterhr.com/library/guide-to-h-1b-visas-for-employers",
+      "slug": "guide-to-h-1b-visas-for-employers"
+    },
+    {
+      "provider": "Oyster",
+      "url": "https://www.oysterhr.com/library/h-1b-visa-changes-what-us-employers-need-to-know",
+      "slug": "h-1b-visa-changes-what-us-employers-need-to-know"
+    },
+    {
+      "provider": "Pebl (formerly Velocity Global)",
+      "url": "https://hellopebl.com/glossary/h1b-visa/",
+      "slug": "h1b-visa"
+    },
+    {
+      "provider": "Pebl (formerly Velocity Global)",
+      "url": "https://hellopebl.com/platform/h1b-visa-alternative/",
+      "slug": "h1b-visa-alternative"
+    },
+    {
+      "provider": "Pebl (formerly Velocity Global)",
+      "url": "https://hellopebl.com/resources/blog/beyond-h1-b-how-eor-unlocks-global-talent-without-100k-price-tag/",
+      "slug": "beyond-h1-b-how-eor-unlocks-global-talent-without-100k-price-tag"
+    },
+    {
+      "provider": "Pebl (formerly Velocity Global)",
+      "url": "https://hellopebl.com/resources/blog/how-to-keep-your-employees-who-miss-the-h-1b-cap-for-fiscal-year-2019/",
+      "slug": "how-to-keep-your-employees-who-miss-the-h-1b-cap-for-fiscal-year-2019"
+    },
+    {
+      "provider": "G-P (Globalization Partners)",
+      "url": "https://www.globalization-partners.com/blog/what-is-an-h1b-visa/",
+      "slug": "what-is-an-h1b-visa"
+    },
+    {
+      "provider": "G-P (Globalization Partners)",
+      "url": "https://www.globalization-partners.com/news/business-insider-h1b-visa-hike-global-teams/",
+      "slug": "business-insider-h1b-visa-hike-global-teams"
+    },
+    {
+      "provider": "G-P (Globalization Partners)",
+      "url": "https://www.globalization-partners.com/news/employer-news-h1b-visa-wake-up-call/",
+      "slug": "employer-news-h1b-visa-wake-up-call"
+    },
+    {
+      "provider": "G-P (Globalization Partners)",
+      "url": "https://www.globalization-partners.com/news/hro-today-overcoming-h1b-challenges/",
+      "slug": "hro-today-overcoming-h1b-challenges"
+    },
+    {
+      "provider": "G-P (Globalization Partners)",
+      "url": "https://www.globalization-partners.com/news/innovative-human-capital-what-the-proposed-h1b-visa-means-for-hr/",
+      "slug": "innovative-human-capital-what-the-proposed-h1b-visa-means-for-hr"
+    },
+    {
+      "provider": "G-P (Globalization Partners)",
+      "url": "https://www.globalization-partners.com/resources/checklist-h1b-eor-comparison/",
+      "slug": "checklist-h1b-eor-comparison"
+    },
+    {
+      "provider": "G-P (Globalization Partners)",
+      "url": "https://www.globalization-partners.com/save-on-h1b-visa-fees-with-eor-lp/",
+      "slug": "save-on-h1b-visa-fees-with-eor-lp"
+    },
+    {
+      "provider": "Papaya Global",
+      "url": "https://www.papayaglobal.com/blog/h-1b-tariffs-an-exclusive-qa-with-bryan-pena/",
+      "slug": "h-1b-tariffs-an-exclusive-qa-with-bryan-pena"
+    },
+    {
+      "provider": "Papaya Global",
+      "url": "https://www.papayaglobal.com/blog/h-1b-visa-denial-and-hiring-overseas/",
+      "slug": "h-1b-visa-denial-and-hiring-overseas"
+    },
+    {
+      "provider": "Safeguard Global",
+      "url": "https://www.safeguardglobal.com/resources/blog/h-1b-wage-rule-2026-dol-proposal/",
+      "slug": "h-1b-wage-rule-2026-dol-proposal"
+    },
+    {
+      "provider": "Safeguard Global",
+      "url": "https://www.safeguardglobal.com/resources/blog/h1b-visa-alternative/",
+      "slug": "h1b-visa-alternative"
+    },
+    {
+      "provider": "Safeguard Global",
+      "url": "https://www.safeguardglobal.com/resources/blog/h1b-visa-changes-2026/",
+      "slug": "h1b-visa-changes-2026"
+    },
+    {
+      "provider": "Safeguard Global",
+      "url": "https://www.safeguardglobal.com/resources/blog/h1b-visa-fees-2025-eor-solution/",
+      "slug": "h1b-visa-fees-2025-eor-solution"
+    },
+    {
+      "provider": "Safeguard Global",
+      "url": "https://www.safeguardglobal.com/resources/blog/strike-against-100000-h1b-visa-fee/",
+      "slug": "strike-against-100000-h1b-visa-fee"
+    },
+    {
+      "provider": "Safeguard Global",
+      "url": "https://www.safeguardglobal.com/resources/blog/us-h1b-perm-eeo-reporting-developments/",
+      "slug": "us-h1b-perm-eeo-reporting-developments"
+    },
+    {
+      "provider": "Safeguard Global",
+      "url": "https://www.safeguardglobal.com/resources/glossary/what-is-an-h1b-visa/",
+      "slug": "what-is-an-h1b-visa"
+    }
+  ],
+  "unmatched_comparisons": [
+    {
+      "slug": "aor vs eor",
+      "count": 3
+    },
+    {
+      "slug": "eor vs peo",
+      "count": 3
+    },
+    {
+      "slug": "independent-contractor vs sole-proprietor",
+      "count": 3
+    },
+    {
+      "slug": "gross vs net-pay",
+      "count": 3
+    },
+    {
+      "slug": "stipend vs salary",
+      "count": 3
+    },
+    {
+      "slug": "aso vs peo",
+      "count": 2
+    },
+    {
+      "slug": "authentication vs authorization",
+      "count": 2
+    },
+    {
+      "slug": "hris vs hrms",
+      "count": 2
+    },
+    {
+      "slug": "iam vs pam",
+      "count": 2
+    },
+    {
+      "slug": "independent-contractor vs employee",
+      "count": 2
+    },
+    {
+      "slug": "mdm vs mam",
+      "count": 2
+    },
+    {
+      "slug": "mfa vs 2fa",
+      "count": 2
+    },
+    {
+      "slug": "pto vs vacation",
+      "count": 2
+    },
+    {
+      "slug": "w2 vs 1099",
+      "count": 2
+    },
+    {
+      "slug": "w9 vs 1099",
+      "count": 2
+    },
+    {
+      "slug": "ztna vs vpn",
+      "count": 2
+    },
+    {
+      "slug": "furlough vs layoff",
+      "count": 2
+    },
+    {
+      "slug": "part-time vs full-time",
+      "count": 2
+    },
+    {
+      "slug": "salary vs hourly",
+      "count": 2
+    },
+    {
+      "slug": "startups-first-principles-996 vs 4-day-work-week",
+      "count": 2
+    },
+    {
+      "slug": "telework vs remote-work",
+      "count": 2
+    },
+    {
+      "slug": "rippling vs brighthr",
+      "count": 2
+    },
+    {
+      "slug": "rippling vs employment-hero",
+      "count": 2
+    },
+    {
+      "slug": "rippling vs hibob",
+      "count": 2
+    },
+    {
+      "slug": "rippling vs personio",
+      "count": 2
+    },
+    {
+      "slug": "legacy vs modern-spend-management-why-its-time-to-upgrade",
+      "count": 2
+    },
+    {
+      "slug": "international-contractor vs employee",
+      "count": 2
+    },
+    {
+      "slug": "1099-nec vs 1099-misc",
+      "count": 2
+    },
+    {
+      "slug": "itin vs ein",
+      "count": 2
+    },
+    {
+      "slug": "h1b-visa",
+      "count": 2
+    },
+    {
+      "slug": "contractors vs employees",
+      "count": 2
+    },
+    {
+      "slug": "employer-of-record vs staffing-agency",
+      "count": 2
+    },
+    {
+      "slug": "ach vs wire-transfer-for-payroll",
+      "count": 1
+    },
+    {
+      "slug": "adjustment-of-status vs consular-processing",
+      "count": 1
+    },
+    {
+      "slug": "agents-vs-copilots vs chatbots",
+      "count": 1
+    },
+    {
+      "slug": "ai-myths vs reality",
+      "count": 1
+    },
+    {
+      "slug": "angestellte vs arbeiter",
+      "count": 1
+    },
+    {
+      "slug": "ats vs crm",
+      "count": 1
+    },
+    {
+      "slug": "autonomo vs relacion-laboral-encubierta",
+      "count": 1
+    },
+    {
+      "slug": "avaliacao vs gestao-de-desempenho",
+      "count": 1
+    }
+  ]
+}

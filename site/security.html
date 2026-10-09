@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The list the government stopped keeping</title>
+<meta name="description" content="The Justice Department published a register of China-related prosecutions for three years and then stopped. This is that list, parsed, with each defendant's role read from DOJ's own headline — and the cases charged since, which no list covers.">
+<meta property="og:title" content="The list the government stopped keeping">
+<meta property="og:description" content="DOJ published a register of China-related prosecutions, then froze it in 2021. A quarter of the prosecutions on it were people in research jobs. Nothing replaced it.">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.9rem; margin: 0 0 .7rem; line-height: 1.2; max-width: 24ch; }
+  .page-head p { color: var(--text-muted); max-width: 70ch; line-height: 1.65; font-size: .95rem; margin: 0 0 .6rem; }
+  .kicker { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin: 0 0 .6rem; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin: 1.6rem 0 0; }
+  .stat { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; background: var(--surface); }
+  .stat .n { font-size: 1.7rem; font-weight: 800; color: var(--hl); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: .82rem; line-height: 1.45; margin: .3rem 0 0; }
+  .stat .s { font-size: .72rem; color: var(--text-muted); margin: .45rem 0 0; }
+  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+
+  section.block { margin-top: 2.8rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  section.block h2 { font-size: 1.2rem; margin: 0 0 .45rem; }
+  .lede { color: var(--text-muted); max-width: 72ch; line-height: 1.6; font-size: .92rem; margin: 0 0 1rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55; max-width: 80ch; margin: .9rem 0 0; }
+
+  .bars { margin: 1rem 0 0; }
+  .bar-row { display: grid; grid-template-columns: minmax(10rem, 15rem) 1fr auto; gap: .6rem;
+    align-items: center; padding: .28rem 0; font-size: .86rem; }
+  .bar-row .lab { color: var(--text-muted); }
+  .bar-track { background: var(--bar); border-radius: 3px; height: 15px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; background: var(--s1); }
+  .bar-fill.alt { background: var(--s2); }
+  .bar-row .v { font-variant-numeric: tabular-nums; font-weight: 600; min-width: 2.4rem; text-align: right; }
+  @media (max-width: 620px) { .bar-row { grid-template-columns: 1fr auto; } .bar-track { display: none; } }
+
+  table.reg { width: 100%; border-collapse: collapse; font-size: .84rem; margin: 1rem 0 0; }
+  table.reg th { text-align: left; font-size: .72rem; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--text-muted); font-weight: 600; padding: .4rem .5rem; border-bottom: 1px solid var(--border); }
+  table.reg td { padding: .5rem .5rem; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.45; }
+  table.reg td.d { white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--text-muted); }
+  .tag { display: inline-block; font-size: .68rem; text-transform: uppercase; letter-spacing: .05em;
+    padding: .12rem .45rem; border-radius: 999px; border: 1px solid var(--border); color: var(--text-muted);
+    white-space: nowrap; }
+  .tag.pipe { border-color: var(--s2); color: var(--s2); }
+  .tag.alleg { border-color: var(--s4); color: var(--s4); }
+  .scroller { overflow-x: auto; }
+
+  .case { border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.1rem; margin: 0 0 .8rem;
+    background: var(--surface); }
+  .case h3 { margin: 0 0 .3rem; font-size: 1rem; line-height: 1.35; }
+  .case .meta { font-size: .78rem; color: var(--text-muted); margin: 0 0 .6rem; }
+  .case blockquote { margin: .6rem 0 0; padding: 0 0 0 .9rem; border-left: 2px solid var(--border);
+    font-size: .86rem; line-height: 1.55; color: var(--text-muted); }
+  .case .cred { font-size: .8rem; margin: .7rem 0 0; line-height: 1.5; }
+  .loading { color: var(--text-muted); font-size: .88rem; }
+</style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+</head>
+<body data-page="security">
+<a class="skip-link" href="#register">Skip to the register</a>
+<main id="main">
+<div class="wrap">
+
+  <div class="page-head">
+    <p class="kicker">Justice Department, National Security Division</p>
+    <h1 id="the-list-the-government-stopped-keeping">The list the government stopped keeping</h1>
+    <p>From 2018 the Justice Department ran the China Initiative and published a
+    register of the prosecutions it brought under it. The page was last updated
+    on <span data-f="updated">&hellip;</span>. The Initiative was ended on
+    23&nbsp;February&nbsp;2022. The register now sits in the archive.</p>
+    <p>Nothing replaced it. No agency publishes a successor list, so after that
+    date these cases can be found one press release at a time and counted by
+    nobody. That is what this page is for. The register below is the
+    government&rsquo;s own, parsed from its own words, and the cases after it
+    are the ones a reader has to already know to look for.</p>
+  </div>
+
+  <div class="stats" id="totals"></div>
+
+  <section class="block" id="roles">
+    <h2 id="who-the-defendants-were">Who the defendants were</h2>
+    <p class="lede">Read from the headline DOJ gave each case, and from nothing
+    else. A headline names the defendant&rsquo;s own job &mdash; &ldquo;MIT
+    Professor&rdquo;, &ldquo;Hospital Researcher&rdquo;, &ldquo;Former GE
+    Engineer&rdquo;. A summary names victims and recipients just as readily,
+    which is why the summary is not used here.</p>
+    <div class="bars" id="role-bars"><p class="loading">Loading&hellip;</p></div>
+    <p class="note">Unclassified means DOJ&rsquo;s headline stated no job at
+    all, usually because it named a nationality instead. It is not a finding
+    about the person.</p>
+  </section>
+
+  <section class="block" id="kinds">
+    <h2 id="what-the-cases-were-about">What the cases were about</h2>
+    <p class="lede">One category each, in priority order, from DOJ&rsquo;s own
+    headline and summary. Where a defendant held a research post, that is the
+    category, because the chair the person sat in is the more specific fact.</p>
+    <div class="bars" id="cat-bars"><p class="loading">Loading&hellip;</p></div>
+    <p class="note" id="notpros"></p>
+  </section>
+
+  <section class="block" id="register">
+    <h2 id="every-entry-on-the-list">Every entry on the list</h2>
+    <p class="lede">In the order DOJ published them, newest first. Each links to
+    the release it came from. <strong>Charged</strong> marks an entry DOJ
+    announced as an accusation and nothing more.</p>
+    <div class="scroller"><table class="reg" id="reg-table"></table></div>
+    <p class="note">The outcomes here are the ones DOJ stated on the page, as of
+    the page&rsquo;s own last-updated date. The courts did not stop in November
+    2021 and several of these cases moved afterwards. That movement is not on
+    this page, because no official source compiles it either.</p>
+  </section>
+
+  <section class="block" id="since">
+    <h2 id="after-the-list-stopped">After the list stopped</h2>
+    <p class="lede">These are not from a list. There is no list. Each one is a
+    single press release, and each quoted phrase below is checked against the
+    cached release every time this page is rebuilt &mdash; if a word moves, the
+    build fails.</p>
+    <div id="since-cards"><p class="loading">Loading&hellip;</p></div>
+  </section>
+
+  <section class="block" id="limits">
+    <h2 id="what-this-cannot-tell-you">What this cannot tell you</h2>
+    <p class="lede">Four limits, and they travel with every number above.</p>
+    <ul class="lede">
+      <li><strong>A charge is an allegation.</strong> Nothing on this page says
+      any person named on it is guilty of anything. Roughly half the entries
+      were announced as accusations, and an accusation is where many of them
+      stop being documented.</li>
+      <li><strong>There is no denominator.</strong> The United States graduates
+      tens of thousands of research doctorates a year and hosts hundreds of
+      thousands of students and scholars. A few dozen cases over four years is
+      not a rate, and dividing one by the other would invent one.</li>
+      <li><strong>The list was never complete.</strong> DOJ called these
+      examples. It published no criteria for inclusion and no count of what it
+      left out.</li>
+      <li><strong>It stops in 2021.</strong> The frozen list cannot show a
+      trend, and the cases since cannot be counted, because nobody enumerates
+      them. The absence is the finding.</li>
+    </ul>
+    <p class="note">Source: the archived DOJ National Security Division page and
+    the individual US Attorney and Office of Public Affairs releases linked
+    above. Built by <code>scripts/build_security_cases.py</code> into
+    <a href="/data/security_cases.json">/data/security_cases.json</a>.</p>
+  </section>
+
+</div>
+</main>
+<script src="/security.js" defer></script>
+<script src="/anchors.js" defer></script>
+<script src="/analytics-beacon.js" defer></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

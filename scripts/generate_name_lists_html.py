@@ -151,7 +151,7 @@ def build_html(all_data, mode='stem'):
     --green: #4ade80; --blue: #60a5fa;
   }}
   * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-  body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); display: flex; min-height: 100vh; }}
+  body {{ font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); display: flex; min-height: 100vh; }}
 
   .sidebar {{ width: 220px; background: var(--surface); border-right: 1px solid var(--surface2); padding: 16px 0; position: fixed; top: 0; left: 0; bottom: 0; overflow-y: auto; z-index: 20; }}
   /* Share anchor buttons */
@@ -183,7 +183,7 @@ def build_html(all_data, mode='stem'):
   .sidebar-group.collapsed .sidebar-group-content {{ display: none; }}
   .nav-page {{ font-size: 0.82rem; padding: 6px 16px; }}
 
-  .main {{ margin-left: 220px; flex: 1; padding: 24px 32px; max-width: 1200px; }}
+  .main {{ margin-left: 0; flex: 1; padding: 24px 32px; max-width: 1200px; }}
   h1 {{ font-size: 1.4rem; margin-bottom: 4px; }}
   .subtitle {{ color: var(--text-muted); font-size: 0.85rem; margin-bottom: 12px; }}
   h2 {{ font-size: 1.2rem; margin-bottom: 4px; }}
@@ -430,56 +430,11 @@ def build_html(all_data, mode='stem'):
 <a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:0;z-index:999;background:var(--accent);color:#0f172a;padding:8px 16px;font-size:0.85rem;text-decoration:none;" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">Skip to content</a>
 
 <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="Open navigation menu">\u2630</button>
-<nav class="sidebar" id="sidebar" aria-label="University navigation">
-  <h3>STEM Demographics</h3>
-  <div class="sidebar-group" id="sg-national">
-    <div class="sidebar-section" onclick="toggleSidebarGroup('sg-national')"><span class="chevron">\u25BC</span> National</div>
-    <div class="sidebar-group-content">
-      <a href="javascript:void(0)" class="nav-item nav-page" onclick="showNational();">National Charts</a>
-      <a href="ipeds_dashboard" class="nav-item nav-page">IPEDS PhD Dashboard</a>
-      <a href="immigration" class="nav-item nav-page">Immigration Pipeline</a>
-      <a href="pipeline" class="nav-item nav-page">Pipeline Analysis</a>
-    </div>
-  </div>
-  <div class="sidebar-group" id="sg-universities">
-    <div class="sidebar-section" onclick="toggleSidebarGroup('sg-universities')"><span class="chevron">\u25BC</span> Universities ({len(all_data)})</div>
-    <div class="sidebar-group-content">
-      {"".join(nav_items)}
-    </div>
-  </div>
-  <div class="sidebar-group" id="sg-international">
-    <div class="sidebar-section" onclick="toggleSidebarGroup('sg-international')"><span class="chevron">\u25BC</span> International</div>
-    <div class="sidebar-group-content">
-      <a href="india" class="nav-item nav-page">India (Outbound)</a>
-      <a href="china" class="nav-item nav-page">China (Outbound)</a>
-      <a href="canada" class="nav-item nav-page">Canada</a>
-      <a href="uk" class="nav-item nav-page">United Kingdom</a>
-      <a href="eu" class="nav-item nav-page">EU &amp; Germany</a>
-      <a href="mexico" class="nav-item nav-page">Mexico</a>
-      <a href="vwp" class="nav-item nav-page">Visa Waiver Program</a>
-    </div>
-  </div>
-  <div class="sidebar-group" id="sg-reference">
-    <div class="sidebar-section" onclick="toggleSidebarGroup('sg-reference')"><span class="chevron">\u25BC</span> Reference</div>
-    <div class="sidebar-group-content">
-      <a href="query" class="nav-item nav-page">Data Query (SQL)</a>
-      <a href="data_sources" class="nav-item nav-page">Data Sources &amp; Methodology</a>
-      <a href="implementation" class="nav-item nav-page">Implementation</a>
-      <a href="/catalog.json" class="nav-item nav-page">Data Catalog (JSON)</a>
-      <a href="llms.txt" class="nav-item nav-page">WebMCP Integration</a>
-    </div>
-  </div>
-  <div class="sidebar-group" id="sg-about">
-    <div class="sidebar-section" onclick="toggleSidebarGroup('sg-about')"><span class="chevron">\u25BC</span> About</div>
-    <div class="sidebar-group-content">
-      <a href="about" class="nav-item nav-page">About this Project</a>
-      <a href="submit" class="nav-item nav-page">Tip Line</a>
-      <a href="https://andy-barr.com" target="_blank" rel="noopener" class="nav-item nav-page">Personal Webpage</a>
-      <a href="https://buymeacoffee.com/andybarr" target="_blank" rel="noopener" class="nav-item nav-page">Support this Page</a>
-    </div>
-  </div>
-</nav>
-<div class="sidebar-overlay" onclick="toggleSidebar()" role="presentation"></div>
+<!-- The navigation is sidebar.js, shared with every other page on the
+     site. These pages used to bake in their own 21 KB copy, which
+     diverged from the shared one and meant a reader arriving on a
+     university page -- the most likely landing page from a shared
+     link -- saw a different site. 2.1 MB of duplicated markup. -->
 
 <main class="main" id="main-content">
   <header class="top-nav" role="banner">
@@ -1236,7 +1191,7 @@ function renderUni(uni) {{
 }}
 
 function toggleSidebar() {{
-  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sidebar')?.classList.toggle('open');
 }}
 
 function toggleSidebarGroup(id) {{
@@ -1275,7 +1230,7 @@ function showUni(key, skipHash) {{
   // meaningful. Until this runs they are inert and are styled as such.
   document.body.classList.remove('no-uni');
   // Close mobile sidebar if open
-  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebar')?.classList.remove('open');
   currentKey = key;
   // Picking a university from the sidebar addresses the university itself;
   // a deep link sets currentAnchor first and passes skipHash.
@@ -2124,7 +2079,7 @@ function updateOldToggle() {{
 
 function showNational() {{
   resetView();
-  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebar')?.classList.remove('open');
 }}
 
 function resetView() {{
@@ -2815,6 +2770,7 @@ const _origShowUni = showUni;
      hand: regenerating the pages silently deleted the sidebar from both, and
      only the consistency check noticed. A generated file is never the place to
      put anything by hand. -->
+<script src="/analytics-beacon.js" defer></script>
 <script src="/sidebar.js"></script>
 <script src="/chat-widget.js"></script>
 </body>

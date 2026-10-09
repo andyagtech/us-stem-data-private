@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Louisiana: who the graduate programmes are for</title>
+<meta name="description" content="Every degree-granting institution in Louisiana, the research doctorates each awards, how many go to non-residents, and the federal research money that arrives. Built from IPEDS, NSF and NCSES.">
+<meta property="og:title" content="Louisiana: who the graduate programmes are for">
+<meta property="og:description" content="Every degree-granting institution in Louisiana, the research doctorates each awards, how many go to non-residents, and the federal research money that arrives. Built from IPEDS, NSF and NCSES.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og/concentration.png">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.9rem; margin: 0 0 .7rem; line-height: 1.2; }
+  .page-head p { color: var(--text-muted); max-width: 72ch; line-height: 1.65; font-size: .95rem; margin: 0 0 .6rem; }
+  .kicker { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin: 0 0 .6rem; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin: 1.6rem 0 0; }
+  .stat { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; background: var(--surface); }
+  .stat .n { font-size: 1.7rem; font-weight: 800; color: var(--hl); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: .82rem; line-height: 1.45; margin: .3rem 0 0; }
+  .stat .s { font-size: .72rem; color: var(--text-muted); margin: .45rem 0 0; }
+  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+  section.block { margin-top: 2.8rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  section.block h2 { font-size: 1.2rem; margin: 0 0 .45rem; }
+  .lede { color: var(--text-muted); max-width: 74ch; line-height: 1.6; font-size: .92rem; margin: 0 0 1rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55; max-width: 82ch; margin: .9rem 0 0; }
+  .table-wrap { overflow-x: auto; }
+  table.t { width: 100%; border-collapse: collapse; font-size: .84rem; margin: .6rem 0 0; }
+  table.t th { text-align: left; font-size: .71rem; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--text-muted); font-weight: 600; padding: .4rem .5rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  table.t td { padding: .42rem .5rem; border-bottom: 1px solid var(--border); }
+  table.t td.num, table.t th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.t td.muted { color: var(--text-muted); }
+  table.t td.share { font-weight: 600; color: var(--hl); }
+  table.t th.share-col { color: var(--hl); }
+  table.t td.share, table.t th.share-col {
+    background: color-mix(in srgb, var(--hl) 7%, transparent); }
+  table.t th.sortable { cursor: pointer; }
+  .scale { display: flex; align-items: center; gap: .7rem; margin: 1rem 0 0; flex-wrap: wrap; }
+  .scale .seg { font-size: .8rem; }
+  .barpair { margin: 1rem 0 0; }
+  .barpair .row { display: grid; grid-template-columns: 11rem 1fr auto; gap: .6rem; align-items: center;
+    padding: .3rem 0; font-size: .86rem; }
+  .barpair .lab { color: var(--text-muted); }
+  /* display:block on both. A <span> is inline by default, so width and
+     height are ignored on it -- every fill rendered at zero width inside a
+     full-width track, which made a 2.9% bar and a 47.4% bar look identical. */
+  .barpair .track { display: block; background: rgba(148,163,184,0.14);
+    border-radius: 3px; height: 16px; overflow: hidden; }
+  .barpair .fill { display: block; height: 100%; border-radius: 3px;
+    background: #3987e5; min-width: 2px; }
+  .barpair .fill.nat { background: rgba(148,163,184,0.55); }
+  .barpair .v { font-variant-numeric: tabular-nums; font-weight: 600; }
+  /* The state bar sits directly above its national counterpart, so each pair
+     is one comparison. A gap after the pair keeps the eye from reading all
+     four as a single ranked list. */
+  .barpair .row.pair-end { margin-bottom: .55rem; }
+  @media (max-width: 620px) { .barpair .row { grid-template-columns: 1fr auto; } .barpair .track { display: none; } }
+  .callout { border: 1px solid var(--border); border-left-width: 3px; border-radius: 10px;
+    padding: 1rem 1.1rem; margin: 1rem 0 0; background: var(--surface); }
+  .callout h3 { margin: 0 0 .35rem; font-size: 1rem; }
+  .callout p { margin: 0 0 .5rem; font-size: .88rem; line-height: 1.55; color: var(--text-muted); }
+</style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+</head>
+<body data-page="state" data-state-name="Louisiana" data-state-abbr="LA">
+<a class="skip-link" href="#institutions">Skip to the institutions</a>
+<main id="main">
+<div class="wrap">
+
+  <div class="page-head">
+    <p class="kicker">State profile &middot; LA</p>
+    <h1 id="la-graduate-programmes">Louisiana</h1>
+    <p>Louisiana has <strong>28</strong> degree-granting
+    institutions in this data. Between them they award
+    <strong>1,841</strong> research doctorates and
+    <strong>6,527</strong> master&rsquo;s degrees over the
+    window, and take <strong>$484.8m</strong> in federal
+    research and development money.</p>
+    <p>This page counts every institution in the state, including the ones that
+    award no graduate degree at all. Leaving those out would make a state look
+    like its flagship.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">28</div>
+      <p class="l">institutions in the state</p>
+      <p class="s">16 award a research doctorate.
+        1 enrol no graduate students at all.</p></div>
+    <div class="stat"><div class="n">42.1%</div>
+      <p class="l">of research doctorates go to
+        <span data-term="nra">non-residents</span></p>
+      <p class="s">775 of
+        1,841. National figure: 38.9%.</p></div>
+    <div class="stat"><div class="n">8.6%</div>
+      <p class="l">of graduate enrolment is non-resident</p>
+      <p class="s">3,284 of
+        38,073 graduate students.</p></div>
+    <div class="stat"><div class="n">$484.8m</div>
+      <p class="l">federal research and development money</p>
+      <p class="s">Across 15 institutions.
+        $197.3m in total federal obligations.</p></div>
+  </div>
+
+  <section class="block" id="against-the-country">
+    <h2>Where Louisiana sits</h2>
+    <p class="lede">The non-resident share of research doctorates, against the
+    same figure for the country. That is <strong>3.2 points above</strong> the national figure of 38.9%.</p>
+    <div class="barpair">
+      <div class="row"><span class="lab">Louisiana</span>
+        <span class="track"><span class="fill" style="width:100.0%"></span></span>
+        <span class="v">42.1%</span></div>
+      <div class="row"><span class="lab">United States</span>
+        <span class="track"><span class="fill nat" style="width:92.4%"></span></span>
+        <span class="v">38.9%</span></div>
+    </div>
+    <p class="note">Louisiana ranks <strong>19</strong> of 52
+    states on that share, and <strong>28</strong> of 56 on the
+    number of research doctorates it awards. Rank 1 is the highest. Only states
+    that award doctorates are ranked.</p>
+  </section>
+
+  
+  <section class="block" id="levels">
+    <h2>Undergraduate and graduate, side by side</h2>
+    <p class="lede">The same institutions at two levels. Undergraduate is the
+    remainder once graduate enrolment is taken out of the total, and both
+    levels carry their own non-resident count.
+    In Louisiana the graduate share is <strong>6.6 points higher</strong> than the undergraduate share.</p>
+    <div class="barpair">
+      <div class="row"><span class="lab">Undergraduate</span>
+        <span class="track"><span class="fill" style="width:11.7%"></span></span>
+        <span class="v">2.0%</span></div>
+      <div class="row pair-end"><span class="lab">US undergraduate</span>
+        <span class="track"><span class="fill nat" style="width:21.1%"></span></span>
+        <span class="v">3.6%</span></div>
+      <div class="row"><span class="lab">Graduate</span>
+        <span class="track"><span class="fill" style="width:50.3%"></span></span>
+        <span class="v">8.6%</span></div>
+      <div class="row"><span class="lab">US graduate</span>
+        <span class="track"><span class="fill nat" style="width:100.0%"></span></span>
+        <span class="v">17.1%</span></div>
+    </div>
+    <p class="note" style="margin:0 0 .4rem">Click any column heading to sort.
+    Click it again to reverse. The panel under the table narrows what is shown
+    &mdash; everything is shown until you ask for less.</p>
+    <div class="table-wrap"><table class="t" data-sortable data-controls>
+      <thead><tr><th>Institution</th>
+        <th class="num">Undergraduates</th><th class="num">Non-res</th>
+        <th class="num share-col">Share</th>
+        <th class="num">Graduates</th><th class="num">Non-res</th>
+        <th class="num share-col">Share</th>
+        <th class="num">State funding</th><th class="num">Federal R&amp;D</th></tr></thead>
+      <tbody><tr data-has-grad="1"><td data-sort="louisiana state university and agricultural &amp; mechanical college">Louisiana State University and Agricultural &amp; Mechanical College</td><td class="num" data-sort="32574">32,574</td><td class="num" data-sort="479">479</td><td class="num share" data-sort="1.5">1.5%</td><td class="num" data-sort="6844">6,844</td><td class="num" data-sort="1148">1,148</td><td class="num share" data-sort="16.8">16.8%</td><td class="num" data-sort="326659725">$326.7m</td><td class="num" data-sort="431439000">$431.4m</td></tr><tr data-has-grad="1"><td data-sort="university of louisiana at lafayette">University of Louisiana at Lafayette</td><td class="num" data-sort="13179">13,179</td><td class="num" data-sort="100">100</td><td class="num share" data-sort="0.8">0.8%</td><td class="num" data-sort="2166">2,166</td><td class="num" data-sort="329">329</td><td class="num share" data-sort="15.2">15.2%</td><td class="num" data-sort="95256683">$95.3m</td><td class="num" data-sort="254883000">$254.9m</td></tr><tr data-has-grad="1"><td data-sort="southeastern louisiana university">Southeastern Louisiana University</td><td class="num" data-sort="12684">12,684</td><td class="num" data-sort="165">165</td><td class="num share" data-sort="1.3">1.3%</td><td class="num" data-sort="1177">1,177</td><td class="num" data-sort="52">52</td><td class="num share" data-sort="4.4">4.4%</td><td class="num" data-sort="40115835">$40.1m</td><td class="num" data-sort="5577000">$5.6m</td></tr><tr data-has-grad="1"><td data-sort="tulane university of louisiana">Tulane University of Louisiana</td><td class="num" data-sort="8077">8,077</td><td class="num" data-sort="511">511</td><td class="num share" data-sort="6.3">6.3%</td><td class="num" data-sort="5001">5,001</td><td class="num" data-sort="835">835</td><td class="num share" data-sort="16.7">16.7%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="275885000">$275.9m</td></tr><tr data-has-grad="1"><td data-sort="louisiana tech university">Louisiana Tech University</td><td class="num" data-sort="10401">10,401</td><td class="num" data-sort="124">124</td><td class="num share" data-sort="1.2">1.2%</td><td class="num" data-sort="1026">1,026</td><td class="num" data-sort="85">85</td><td class="num share" data-sort="8.3">8.3%</td><td class="num" data-sort="39709351">$39.7m</td><td class="num" data-sort="31247000">$31.2m</td></tr><tr data-has-grad="0"><td data-sort="baton rouge community college">Baton Rouge Community College</td><td class="num" data-sort="10859">10,859</td><td class="num" data-sort="113">113</td><td class="num share" data-sort="1.0">1.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="19603870">$19.6m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="louisiana state university-shreveport">Louisiana State University-Shreveport</td><td class="num" data-sort="2548">2,548</td><td class="num" data-sort="98">98</td><td class="num share" data-sort="3.8">3.8%</td><td class="num" data-sort="7188">7,188</td><td class="num" data-sort="280">280</td><td class="num share" data-sort="3.9">3.9%</td><td class="num" data-sort="14935240">$14.9m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="northwestern state university of louisiana">Northwestern State University of Louisiana</td><td class="num" data-sort="7898">7,898</td><td class="num" data-sort="135">135</td><td class="num share" data-sort="1.7">1.7%</td><td class="num" data-sort="949">949</td><td class="num" data-sort="15">15</td><td class="num share" data-sort="1.6">1.6%</td><td class="num" data-sort="30181635">$30.2m</td><td class="num" data-sort="798000">$798,000</td></tr><tr data-has-grad="1"><td data-sort="university of louisiana at monroe">University of Louisiana at Monroe</td><td class="num" data-sort="6550">6,550</td><td class="num" data-sort="301">301</td><td class="num share" data-sort="4.6">4.6%</td><td class="num" data-sort="1722">1,722</td><td class="num" data-sort="65">65</td><td class="num share" data-sort="3.8">3.8%</td><td class="num" data-sort="36014980">$36.0m</td><td class="num" data-sort="2940000">$2.9m</td></tr><tr data-has-grad="1"><td data-sort="southern university and a &amp; m college">Southern University and A &amp; M College</td><td class="num" data-sort="6571">6,571</td><td class="num" data-sort="17">17</td><td class="num share" data-sort="0.3">0.3%</td><td class="num" data-sort="1678">1,678</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="41416897">$41.4m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="university of new orleans">University of New Orleans</td><td class="num" data-sort="5476">5,476</td><td class="num" data-sort="133">133</td><td class="num share" data-sort="2.4">2.4%</td><td class="num" data-sort="1125">1,125</td><td class="num" data-sort="138">138</td><td class="num share" data-sort="12.3">12.3%</td><td class="num" data-sort="34159792">$34.2m</td><td class="num" data-sort="19311000">$19.3m</td></tr><tr data-has-grad="1"><td data-sort="nicholls state university">Nicholls State University</td><td class="num" data-sort="5612">5,612</td><td class="num" data-sort="88">88</td><td class="num share" data-sort="1.6">1.6%</td><td class="num" data-sort="568">568</td><td class="num" data-sort="23">23</td><td class="num share" data-sort="4.0">4.0%</td><td class="num" data-sort="23005581">$23.0m</td><td class="num" data-sort="1120000">$1.1m</td></tr><tr data-has-grad="1"><td data-sort="mcneese state university">McNeese State University</td><td class="num" data-sort="5560">5,560</td><td class="num" data-sort="313">313</td><td class="num share" data-sort="5.6">5.6%</td><td class="num" data-sort="500">500</td><td class="num" data-sort="33">33</td><td class="num share" data-sort="6.6">6.6%</td><td class="num" data-sort="27058100">$27.1m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="grambling state university">Grambling State University</td><td class="num" data-sort="4279">4,279</td><td class="num" data-sort="85">85</td><td class="num share" data-sort="2.0">2.0%</td><td class="num" data-sort="835">835</td><td class="num" data-sort="20">20</td><td class="num share" data-sort="2.4">2.4%</td><td class="num" data-sort="19711994">$19.7m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="loyola university new orleans">Loyola University New Orleans</td><td class="num" data-sort="3205">3,205</td><td class="num" data-sort="135">135</td><td class="num share" data-sort="4.2">4.2%</td><td class="num" data-sort="1146">1,146</td><td class="num" data-sort="28">28</td><td class="num share" data-sort="2.4">2.4%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="xavier university of louisiana">Xavier University of Louisiana</td><td class="num" data-sort="2591">2,591</td><td class="num" data-sort="72">72</td><td class="num share" data-sort="2.8">2.8%</td><td class="num" data-sort="590">590</td><td class="num" data-sort="11">11</td><td class="num share" data-sort="1.9">1.9%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="15955000">$16.0m</td></tr><tr data-has-grad="1"><td data-sort="louisiana state university health sciences center-new orleans">Louisiana State University Health Sciences Center-New Orleans</td><td class="num" data-sort="843">843</td><td class="num" data-sort="5">5</td><td class="num share" data-sort="0.6">0.6%</td><td class="num" data-sort="1840">1,840</td><td class="num" data-sort="38">38</td><td class="num share" data-sort="2.1">2.1%</td><td class="num" data-sort="99310073">$99.3m</td><td class="num" data-sort="79680000">$79.7m</td></tr><tr data-has-grad="1"><td data-sort="new orleans baptist theological seminary">New Orleans Baptist Theological Seminary</td><td class="num" data-sort="770">770</td><td class="num" data-sort="39">39</td><td class="num share" data-sort="5.1">5.1%</td><td class="num" data-sort="1496">1,496</td><td class="num" data-sort="109">109</td><td class="num share" data-sort="7.3">7.3%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="southern university at new orleans">Southern University at New Orleans</td><td class="num" data-sort="1773">1,773</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="286">286</td><td class="num" data-sort="1">1</td><td class="num share" data-sort="0.3">0.3%</td><td class="num" data-sort="10537499">$10.5m</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="franciscan missionaries of our lady university">Franciscan Missionaries of Our Lady University</td><td class="num" data-sort="862">862</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="342">342</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="university of holy cross">University of Holy Cross</td><td class="num" data-sort="806">806</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="346">346</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="dillard university">Dillard University</td><td class="num" data-sort="1117">1,117</td><td class="num" data-sort="17">17</td><td class="num share" data-sort="1.5">1.5%</td><td class="num" data-sort="5">5</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="3317000">$3.3m</td></tr><tr data-has-grad="1"><td data-sort="louisiana state university health sciences center-shreveport">Louisiana State University Health Sciences Center-Shreveport</td><td class="num" data-sort="20">20</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="1025">1,025</td><td class="num" data-sort="68">68</td><td class="num share" data-sort="6.6">6.6%</td><td class="num" data-sort="91138486">$91.1m</td><td class="num" data-sort="31887000">$31.9m</td></tr><tr data-has-grad="1"><td data-sort="louisiana christian university">Louisiana Christian University</td><td class="num" data-sort="803">803</td><td class="num" data-sort="50">50</td><td class="num share" data-sort="6.2">6.2%</td><td class="num" data-sort="147">147</td><td class="num" data-sort="6">6</td><td class="num share" data-sort="4.1">4.1%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="centenary college of louisiana">Centenary College of Louisiana</td><td class="num" data-sort="620">620</td><td class="num" data-sort="10">10</td><td class="num share" data-sort="1.6">1.6%</td><td class="num" data-sort="28">28</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="herzing university-new orleans">Herzing University-New Orleans</td><td class="num" data-sort="361">361</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="7">7</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="bridges christian college">Bridges Christian College</td><td class="num" data-sort="110">110</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="14">14</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="the chicago school at xavier university of louisiana">The Chicago School at Xavier University of Louisiana</td><td class="num" data-sort="0">0</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="22">22</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr></tbody></table></div>
+    <p class="lede">The two levels diverge most at <strong>Louisiana State University and Agricultural &amp; Mechanical College</strong>: <strong>1.5%</strong> of its 32,574 undergraduates and <strong>16.8%</strong> of its 6,844 graduate students. These are different admissions systems with different applicant pools, different money and different reasons to say yes, and a single state figure hides both.</p>
+    <p class="note">2,990 of 146,149 undergraduates and 3,284 of
+    38,073 graduate students.
+    IPEDS reports no graduate enrolment for 1 of these institutions; their rows show a dash rather than a zero, because the file not carrying a number is not the same as the number being none.</p>
+  </section>
+
+
+
+  
+  <section class="block" id="blend">
+    <h2>What the state figure is an average of</h2>
+    <p class="lede">The largest graduate enrolments in Louisiana, each with its
+    own non-resident share. Nothing here is excluded from the figures above.
+    The point is to show what they are made of.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Graduate students</th>
+        <th class="num">Share of the state</th>
+        <th class="num">Non-resident</th></tr></thead>
+      <tbody><tr><td>Louisiana State University-Shreveport</td><td class="num">7,188</td><td class="num muted">18.9%</td><td class="num share">3.9%</td></tr><tr><td>Louisiana State University and Agricultural &amp; Mechanical College</td><td class="num">6,844</td><td class="num muted">18.0%</td><td class="num share">16.8%</td></tr><tr><td>Tulane University of Louisiana</td><td class="num">5,001</td><td class="num muted">13.1%</td><td class="num share">16.7%</td></tr><tr><td>University of Louisiana at Lafayette</td><td class="num">2,166</td><td class="num muted">5.7%</td><td class="num share">15.2%</td></tr><tr><td>Louisiana State University Health Sciences Center-New Orleans</td><td class="num">1,840</td><td class="num muted">4.8%</td><td class="num share">2.1%</td></tr><tr><td>University of Louisiana at Monroe</td><td class="num">1,722</td><td class="num muted">4.5%</td><td class="num share">3.8%</td></tr></tbody></table></div>
+    <p class="note">No single institution decides this figure. The largest, Louisiana State University-Shreveport, holds 18.9% of the state&rsquo;s graduate enrolment, and removing it moves the state share from 8.6% to 9.7%.</p>
+  </section>
+
+
+  
+  <section class="block" id="training">
+    <h2>Practical training, and the other student visas</h2>
+    <p class="lede">A student visa does not end at graduation. Optional
+    Practical Training lets a graduate work on the same visa, and a STEM degree
+    adds a further twenty-four months. It applies at both levels, so the
+    undergraduate share above is not the end of the story.</p>
+    <p class="lede"><strong>No institution in Louisiana appears in
+    SEVP&rsquo;s published lists</strong>, which cover the top 100 and top 200
+    schools for OPT and STEM OPT. There is therefore no published practical
+    training figure for this state. That is a fact about what the agency
+    releases, not a statement that no one here is on OPT.</p>
+    <p class="note"><strong>J-1 physicians.</strong> Louisiana is not in the published top twelve states for J-1 physicians in graduate medical education, which is the only state breakdown ECFMG publishes. That is an absence from a short list, not a zero.</p>
+  </section>
+
+
+  
+  <section class="block" id="residency">
+    <h2>In-state against out-of-state</h2>
+    <p class="lede">Public four-year institutions, FY2024. Every foreign
+    student pays the out-of-state rate, so this is the price attached to the
+    non-resident column everywhere else on this page.</p>
+    <p class="lede">An out-of-state student in Louisiana is worth <strong>1.0&times;</strong> an in-state one to the institution. They are <strong>20.3%</strong> of the students and <strong>20.3%</strong> of the tuition revenue.</p>
+    <div class="table-wrap"><table class="t">
+      <thead><tr><th>Measure</th><th class="num">In-state</th>
+        <th class="num">Out-of-state</th></tr></thead>
+      <tbody><tr><td>Share of students (FTE)</td><td class="num">79.7%</td><td class="num">20.3%</td></tr><tr><td>Net tuition and fees collected per student</td><td class="num">$5,911</td><td class="num share">$5,911</td></tr><tr><td>Share of tuition revenue</td><td class="num">79.7%</td><td class="num share">20.3%</td></tr></tbody></table></div>
+    <p class="note"><strong>Out-of-state is not the same as foreign.</strong>
+    SHEEO counts international students and domestic students from other states
+    in one column. This shows what a non-resident pays, never how many of them
+    are foreign. Figures are <strong>net</strong> tuition and fee revenue per
+    full-time-equivalent student &mdash; what the institution actually
+    collected after its own aid, not the published price. Public four-year
+    institutions only; medical FTE excluded.
+    SHEEO records that Louisiana estimated part of this breakout for this year.</p>
+  </section>
+
+
+  <section class="block" id="institutions">
+    <h2>Every institution</h2>
+    <p class="lede">Largest first by total enrolment. A dash means the
+    institution awards none of that degree, or that no federal research money
+    was matched to it.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th>City</th><th>Control</th>
+        <th class="num">Enrolled</th><th class="num">Graduate</th>
+        <th class="num">Master&rsquo;s</th><th class="num">Non-res</th>
+        <th class="num">Doctorates</th><th class="num">Non-res</th>
+        <th class="num">Federal R&amp;D</th></tr></thead>
+      <tbody><tr><td>Louisiana State University and Agricultural &amp; Mechanical College</td><td class="muted">Baton Rouge</td><td class="muted">public</td><td class="num" data-sort="39418">39,418</td><td class="num" data-sort="6844">6,844</td><td class="num">1,017</td><td class="num share">368</td><td class="num">1,569</td><td class="num share">637</td><td class="num" data-sort="431439000">$431.4m</td></tr><tr><td>University of Louisiana at Lafayette</td><td class="muted">Lafayette</td><td class="muted">public</td><td class="num" data-sort="15345">15,345</td><td class="num" data-sort="2166">2,166</td><td class="num">680</td><td class="num share">268</td><td class="num">362</td><td class="num share">51</td><td class="num" data-sort="254883000">$254.9m</td></tr><tr><td>Southeastern Louisiana University</td><td class="muted">Hammond</td><td class="muted">public</td><td class="num" data-sort="13861">13,861</td><td class="num" data-sort="1177">1,177</td><td class="num">151</td><td class="num share">30</td><td class="num">62</td><td class="num share">0</td><td class="num" data-sort="5577000">$5.6m</td></tr><tr><td>Tulane University of Louisiana</td><td class="muted">New Orleans</td><td class="muted">private nonprofit</td><td class="num" data-sort="13078">13,078</td><td class="num" data-sort="5001">5,001</td><td class="num">2,072</td><td class="num share">602</td><td class="num">909</td><td class="num share">256</td><td class="num" data-sort="275885000">$275.9m</td></tr><tr><td>Louisiana Tech University</td><td class="muted">Ruston</td><td class="muted">public</td><td class="num" data-sort="11427">11,427</td><td class="num" data-sort="1026">1,026</td><td class="num">529</td><td class="num share">163</td><td class="num">222</td><td class="num share">84</td><td class="num" data-sort="31247000">$31.2m</td></tr><tr><td>Baton Rouge Community College</td><td class="muted">Baton Rouge</td><td class="muted">public</td><td class="num" data-sort="10859">10,859</td><td class="num" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Louisiana State University-Shreveport</td><td class="muted">Shreveport</td><td class="muted">public</td><td class="num" data-sort="9736">9,736</td><td class="num" data-sort="7188">7,188</td><td class="num">191</td><td class="num share">43</td><td class="num">52</td><td class="num share">3</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Northwestern State University of Louisiana</td><td class="muted">Natchitoches</td><td class="muted">public</td><td class="num" data-sort="8847">8,847</td><td class="num" data-sort="949">949</td><td class="num">44</td><td class="num share">3</td><td class="num">65</td><td class="num share">3</td><td class="num" data-sort="798000">$798,000</td></tr><tr><td>University of Louisiana at Monroe</td><td class="muted">Monroe</td><td class="muted">public</td><td class="num" data-sort="8272">8,272</td><td class="num" data-sort="1722">1,722</td><td class="num">395</td><td class="num share">19</td><td class="num">180</td><td class="num share">29</td><td class="num" data-sort="2940000">$2.9m</td></tr><tr><td>Southern University and A &amp; M College</td><td class="muted">Baton Rouge</td><td class="muted">public</td><td class="num" data-sort="8249">8,249</td><td class="num" data-sort="1678">1,678</td><td class="num">414</td><td class="num share">1</td><td class="num">154</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>University of New Orleans</td><td class="muted">New Orleans</td><td class="muted">public</td><td class="num" data-sort="6601">6,601</td><td class="num" data-sort="1125">1,125</td><td class="num">389</td><td class="num share">84</td><td class="num">179</td><td class="num share">65</td><td class="num" data-sort="19311000">$19.3m</td></tr><tr><td>Nicholls State University</td><td class="muted">Thibodaux</td><td class="muted">public</td><td class="num" data-sort="6180">6,180</td><td class="num" data-sort="568">568</td><td class="num">163</td><td class="num share">5</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="1120000">$1.1m</td></tr><tr><td>McNeese State University</td><td class="muted">Lake Charles</td><td class="muted">public</td><td class="num" data-sort="6060">6,060</td><td class="num" data-sort="500">500</td><td class="num">164</td><td class="num share">27</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Grambling State University</td><td class="muted">Grambling</td><td class="muted">public</td><td class="num" data-sort="5114">5,114</td><td class="num" data-sort="835">835</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num">25</td><td class="num share">1</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Loyola University New Orleans</td><td class="muted">New Orleans</td><td class="muted">private nonprofit</td><td class="num" data-sort="4351">4,351</td><td class="num" data-sort="1146">1,146</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Xavier University of Louisiana</td><td class="muted">New Orleans</td><td class="muted">private nonprofit</td><td class="num" data-sort="3181">3,181</td><td class="num" data-sort="590">590</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num">31</td><td class="num share">1</td><td class="num" data-sort="15955000">$16.0m</td></tr><tr><td>Louisiana State University Health Sciences Center-New Orleans</td><td class="muted">New Orleans</td><td class="muted">public</td><td class="num" data-sort="2683">2,683</td><td class="num" data-sort="1840">1,840</td><td class="num">20</td><td class="num share">2</td><td class="num">100</td><td class="num share">16</td><td class="num" data-sort="79680000">$79.7m</td></tr><tr><td>New Orleans Baptist Theological Seminary</td><td class="muted">New Orleans</td><td class="muted">private nonprofit</td><td class="num" data-sort="2266">2,266</td><td class="num" data-sort="1496">1,496</td><td class="num">78</td><td class="num share">0</td><td class="num">343</td><td class="num share">1</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Southern University at New Orleans</td><td class="muted">New Orleans</td><td class="muted">public</td><td class="num" data-sort="2059">2,059</td><td class="num" data-sort="286">286</td><td class="num">132</td><td class="num share">17</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Franciscan Missionaries of Our Lady University</td><td class="muted">Baton Rouge</td><td class="muted">private nonprofit</td><td class="num" data-sort="1204">1,204</td><td class="num" data-sort="342">342</td><td class="num">56</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>University of Holy Cross</td><td class="muted">New Orleans</td><td class="muted">private nonprofit</td><td class="num" data-sort="1152">1,152</td><td class="num" data-sort="346">346</td><td class="num">24</td><td class="num share">0</td><td class="num">157</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Dillard University</td><td class="muted">New Orleans</td><td class="muted">private nonprofit</td><td class="num" data-sort="1122">1,122</td><td class="num" data-sort="5">5</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="3317000">$3.3m</td></tr><tr><td>Louisiana State University Health Sciences Center-Shreveport</td><td class="muted">Shreveport</td><td class="muted">public</td><td class="num" data-sort="1045">1,045</td><td class="num" data-sort="1025">1,025</td><td class="num">8</td><td class="num share">2</td><td class="num">47</td><td class="num share">18</td><td class="num" data-sort="31887000">$31.9m</td></tr><tr><td>Louisiana Christian University</td><td class="muted">Pineville</td><td class="muted">private nonprofit</td><td class="num" data-sort="950">950</td><td class="num" data-sort="147">147</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Centenary College of Louisiana</td><td class="muted">Shreveport</td><td class="muted">private nonprofit</td><td class="num" data-sort="648">648</td><td class="num" data-sort="28">28</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Herzing University-New Orleans</td><td class="muted">Metairie</td><td class="muted">private nonprofit</td><td class="num" data-sort="368">368</td><td class="num" data-sort="7">7</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Bridges Christian College</td><td class="muted">New Orleans</td><td class="muted">private nonprofit</td><td class="num" data-sort="124">124</td><td class="num" data-sort="14">14</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>The Chicago School at Xavier University of Louisiana</td><td class="muted">New Orleans</td><td class="muted">private nonprofit</td><td class="num" data-sort="22">22</td><td class="num" data-sort="22">22</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr></tbody></table></div>
+    <p class="note">Degrees are pooled over
+    2021&ndash;2025. Enrolment
+    and federal money are the most recent year in the file. &ldquo;Non-res&rdquo;
+    means a student here on a temporary visa, almost always F-1 or J-1. A green
+    card holder is not counted in it.</p>
+  </section>
+
+  <section class="block" id="concentration">
+    <h2>How few institutions this is</h2>
+    <p class="lede">Of the 28 institutions in
+    Louisiana, <strong>16</strong> award a research doctorate at
+    all, and the largest two award 55.6% of them.
+    A state&rsquo;s graduate pipeline is a much smaller thing than its list of
+    colleges.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Research doctorates</th>
+        <th class="num">Non-resident</th><th class="num share-col">Share</th>
+        <th class="num">Share of the state&rsquo;s doctorates</th></tr></thead>
+      <tbody><tr><td>Louisiana State University and Agricultural &amp; Mechanical College</td><td class="num">1,569</td><td class="num">637</td><td class="num share">40.6%</td><td class="num muted">35.2%</td></tr><tr><td>Tulane University of Louisiana</td><td class="num">909</td><td class="num">256</td><td class="num share">28.2%</td><td class="num muted">20.4%</td></tr><tr><td>University of Louisiana at Lafayette</td><td class="num">362</td><td class="num">51</td><td class="num share">14.1%</td><td class="num muted">8.1%</td></tr><tr><td>New Orleans Baptist Theological Seminary</td><td class="num">343</td><td class="num">1</td><td class="num share">0.3%</td><td class="num muted">7.7%</td></tr><tr><td>Louisiana Tech University</td><td class="num">222</td><td class="num">84</td><td class="num share">37.8%</td><td class="num muted">5.0%</td></tr><tr><td>University of Louisiana at Monroe</td><td class="num">180</td><td class="num">29</td><td class="num share">16.1%</td><td class="num muted">4.0%</td></tr><tr><td>University of New Orleans</td><td class="num">179</td><td class="num">65</td><td class="num share">36.3%</td><td class="num muted">4.0%</td></tr><tr><td>University of Holy Cross</td><td class="num">157</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">3.5%</td></tr><tr><td>Southern University and A &amp; M College</td><td class="num">154</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">3.5%</td></tr><tr><td>Louisiana State University Health Sciences Center-New Orleans</td><td class="num">100</td><td class="num">16</td><td class="num share">16.0%</td><td class="num muted">2.2%</td></tr><tr><td>Northwestern State University of Louisiana</td><td class="num">65</td><td class="num">3</td><td class="num share">4.6%</td><td class="num muted">1.5%</td></tr><tr><td>Southeastern Louisiana University</td><td class="num">62</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">1.4%</td></tr><tr><td>Louisiana State University-Shreveport</td><td class="num">52</td><td class="num">3</td><td class="num share">5.8%</td><td class="num muted">1.2%</td></tr><tr><td>Louisiana State University Health Sciences Center-Shreveport</td><td class="num">47</td><td class="num">18</td><td class="num share">38.3%</td><td class="num muted">1.1%</td></tr><tr><td>Xavier University of Louisiana</td><td class="num">31</td><td class="num">1</td><td class="num share">3.2%</td><td class="num muted">0.7%</td></tr><tr><td>Grambling State University</td><td class="num">25</td><td class="num">1</td><td class="num share">4.0%</td><td class="num muted">0.6%</td></tr></tbody></table></div>
+  </section>
+  <section class="block" id="survey">
+    <h2>The foreign share of graduate students, where the survey reaches</h2>
+    <p class="lede">The NSF Survey of Graduate Students and Postdoctorates asks
+    institutions directly, and it covers 15 of the
+    28 institutions in Louisiana. It is a different
+    measure from the degree counts above: enrolled students rather than degrees
+    awarded.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Doctoral students foreign</th>
+        <th class="num">Master&rsquo;s students foreign</th></tr></thead>
+      <tbody><tr><td>University of Louisiana at Monroe</td><td class="num share">81.0%</td><td class="num">6.8%</td></tr><tr><td>Louisiana Tech University</td><td class="num share">63.9%</td><td class="num">39.5%</td></tr><tr><td>Louisiana State University and Agricultural &amp; Mechanical College</td><td class="num share">60.6%</td><td class="num">35.9%</td></tr><tr><td>Louisiana State University Health Sciences Center-Shreveport</td><td class="num share">53.6%</td><td class="num">5.3%</td></tr><tr><td>University of Louisiana at Lafayette</td><td class="num share">49.7%</td><td class="num">40.4%</td></tr><tr><td>Tulane University of Louisiana</td><td class="num share">48.5%</td><td class="num">21.6%</td></tr><tr><td>University of New Orleans</td><td class="num share">37.0%</td><td class="num">14.7%</td></tr><tr><td>Louisiana State University Health Sciences Center-New Orleans</td><td class="num share">34.2%</td><td class="num">13.9%</td></tr><tr><td>Southeastern Louisiana University</td><td class="num share">&mdash;%</td><td class="num">16.5%</td></tr><tr><td>Louisiana State University-Shreveport</td><td class="num share">&mdash;%</td><td class="num">52.2%</td></tr><tr><td>Northwestern State University of Louisiana</td><td class="num share">&mdash;%</td><td class="num">0.0%</td></tr><tr><td>Southern University and A &amp; M College</td><td class="num share">0.0%</td><td class="num">0.0%</td></tr><tr><td>Nicholls State University</td><td class="num share">&mdash;%</td><td class="num">3.9%</td></tr><tr><td>McNeese State University</td><td class="num share">&mdash;%</td><td class="num">7.1%</td></tr><tr><td>Southern University at New Orleans</td><td class="num share">&mdash;%</td><td class="num">26.2%</td></tr></tbody></table></div>
+    <div class="callout">
+      <h3>University of Louisiana at Monroe</h3>
+      <p>The highest foreign share of doctoral students in the state, at
+      <strong>81.0%</strong>. It is not the largest institution here
+      and it is not the one with the most federal money. Size and share are
+      different questions, and a state page that ranked only by size would not
+      show this.</p>
+    </div>
+  </section>
+  <section class="block" id="state-money">
+    <h2>What the state itself puts in</h2>
+    <p class="lede">State appropriations per full-time-equivalent student, from
+    the SHEEO finance survey, against the change in the foreign share of
+    graduate enrolment over the same window.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Measure</th><th class="num">First year</th>
+        <th class="num">Last year</th><th class="num">Change</th></tr></thead>
+      <tbody>
+        <tr><td>State appropriations per FTE student</td>
+          <td class="num">$9,325</td>
+          <td class="num">$7,232</td>
+          <td class="num share">-22.4%</td></tr>
+        <tr><td>Foreign share of graduate enrolment</td>
+          <td class="num">10.6%</td>
+          <td class="num">7.9%</td>
+          <td class="num share">-2.6 pts</td></tr>
+      </tbody></table></div>
+    <p class="note">These two rows move for their own reasons. Nothing here
+    shows that one caused the other, and the page does not say it did.</p>
+  </section>
+  <section class="block" id="departments">
+    <h2>Department by department</h2>
+    <p class="lede">The dissertation corpus reaches
+    2 institutions in this state,
+    covering 23 departments.
+    <strong>14</strong> of them are majority non-resident.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th>Department</th>
+        <th class="num">Doctorates</th><th class="num">Non-resident</th>
+        <th class="num share-col">Share</th></tr></thead>
+      <tbody><tr><td class="muted">LSU</td><td>Mechanical Engineering</td><td class="num">72</td><td class="num">60</td><td class="num share">83.3%</td></tr><tr><td class="muted">LSU</td><td>Petroleum Engineering</td><td class="num">38</td><td class="num">31</td><td class="num share">81.6%</td></tr><tr><td class="muted">LSU</td><td>Chemical Engineering</td><td class="num">62</td><td class="num">48</td><td class="num share">77.4%</td></tr><tr><td class="muted">LSU</td><td>Plant Pathology/Phytopathology</td><td class="num">21</td><td class="num">16</td><td class="num share">76.2%</td></tr><tr><td class="muted">LSU</td><td>Electrical and Electronics Engineering</td><td class="num">88</td><td class="num">67</td><td class="num share">76.1%</td></tr><tr><td class="muted">LSU</td><td>Engineering Science</td><td class="num">59</td><td class="num">42</td><td class="num share">71.2%</td></tr><tr><td class="muted">LSU</td><td>Civil Engineering, General</td><td class="num">92</td><td class="num">62</td><td class="num share">67.4%</td></tr><tr><td class="muted">LSU</td><td>Computer Science</td><td class="num">61</td><td class="num">39</td><td class="num share">63.9%</td></tr><tr><td class="muted">LSU</td><td>Biochemistry</td><td class="num">28</td><td class="num">17</td><td class="num share">60.7%</td></tr><tr><td class="muted">LSU</td><td>Oceanography, Chemical and Physical</td><td class="num">46</td><td class="num">26</td><td class="num share">56.5%</td></tr><tr><td class="muted">LSU</td><td>Entomology</td><td class="num">23</td><td class="num">12</td><td class="num share">52.2%</td></tr><tr><td class="muted">LSU</td><td>Physics, General</td><td class="num">113</td><td class="num">56</td><td class="num share">49.6%</td></tr><tr><td class="muted">LSU</td><td>Chemistry, General</td><td class="num">172</td><td class="num">76</td><td class="num share">44.2%</td></tr><tr><td class="muted">LSU</td><td>Mathematics, General</td><td class="num">87</td><td class="num">38</td><td class="num share">43.7%</td></tr><tr><td class="muted">LSU</td><td>Geology/Earth Science, General</td><td class="num">36</td><td class="num">15</td><td class="num share">41.7%</td></tr><tr><td class="muted">LSU</td><td>Biology/Biological Sciences, General</td><td class="num">110</td><td class="num">37</td><td class="num share">33.6%</td></tr><tr><td class="muted">LSU</td><td>Psychology, General</td><td class="num">124</td><td class="num">5</td><td class="num share">4.0%</td></tr><tr><td class="muted">Louisiana Tech</td><td>Engineering, General</td><td class="num">92</td><td class="num">71</td><td class="num share">77.2%</td></tr><tr><td class="muted">Louisiana Tech</td><td>Computer and Information Sciences and Support Services, Other</td><td class="num">36</td><td class="num">27</td><td class="num share">75.0%</td></tr><tr><td class="muted">Louisiana Tech</td><td>Bioengineering and Biomedical Engineering</td><td class="num">36</td><td class="num">24</td><td class="num share">66.7%</td></tr><tr><td class="muted">Louisiana Tech</td><td>Biological and Physical Sciences</td><td class="num">26</td><td class="num">13</td><td class="num share">50.0%</td></tr><tr><td class="muted">Louisiana Tech</td><td>Industrial and Organizational Psychology</td><td class="num">30</td><td class="num">3</td><td class="num share">10.0%</td></tr><tr><td class="muted">Louisiana Tech</td><td>Counseling Psychology</td><td class="num">38</td><td class="num">2</td><td class="num share">5.3%</td></tr></tbody></table></div>
+    <p class="note">From the dissertation corpus, which is built from what
+    universities publish about their own graduates. It covers the institutions
+    on this site, not every institution in the state, so it is a floor.</p>
+  </section>
+  <section class="block" id="not-published">
+    <h2>What is not published for a state this size</h2>
+    <p class="lede">Two of the measures this site uses elsewhere do not exist
+    at this scale, and the reason is the same in both cases: the agency
+    publishes a ranked extract rather than the whole file.</p>
+    <ul class="lede">
+      <li><strong>Practical training is not published here.</strong> SEVP
+      releases the top 100 and top 200 schools for OPT and STEM OPT, not every
+      school. An institution outside those lists has no published figure at
+      all. Its absence is a fact about the list, not about the institution, and
+      it must never be read as a zero.</li>
+      <li><strong>Student visa counts are not published by state.</strong> DHS
+      reports SEVIS records nationally and names a few states per region in its
+      commentary. For most states it publishes a percentage change and no
+      count, so the number of foreign students physically in a state cannot be
+      read off the federal release.</li>
+      <li><strong>Enrolment is the measure that does exist.</strong> IPEDS asks
+      every institution directly, which is why this page is built from it. It
+      counts students enrolled, not visas issued, and the two are different
+      questions.</li>
+    </ul>
+  </section>
+
+  <section class="block" id="method">
+    <h2>Method and limits</h2>
+    <ul class="lede">
+      <li><strong>Non-resident means here on a temporary visa.</strong> IPEDS
+      defines it as a person &ldquo;who is not a citizen or national of the
+      United States and who is in this country on a visa or temporary basis and
+      does not have the right to remain indefinitely.&rdquo; A green card holder
+      is therefore never counted here. Neither is a refugee or an asylee. Those
+      students are reported in the race and ethnicity categories alongside
+      citizens. For students the category is overwhelmingly F-1 and J-1.</li>
+      <li><strong>It is not ethnicity and not country of origin.</strong> A
+      US-born citizen of any background is never non-resident. The status is
+      recorded when the student enrols, for the enrolment figures, and when the
+      degree is awarded, for the degree counts. These files cannot be split any
+      other way.</li>
+      <li><strong>Degrees are pooled</strong> over
+      2021&ndash;2025, because a
+      single year at a small institution moves on one student.</li>
+      <li><strong>Enrolment and awards are different measures</strong> and will
+      not agree. One counts people on a given day; the other counts degrees
+      conferred over five years.</li>
+      <li><strong>Federal money is matched to a campus</strong>, and a system
+      that reports centrally can carry money its branches spend.</li>
+      <li><strong>This page shows composition, not displacement.</strong> It
+      records who received the degrees. It does not show that anyone was kept
+      out, and nothing here should be read that way.</li>
+    </ul>
+    <p class="note">Built by <code>scripts/build_state_pages.py</code> from
+    <a href="/data/institution_profiles.json">institution_profiles.json</a>,
+    <a href="/data/state_funding_and_enrolment.json">state_funding_and_enrolment.json</a>
+    and <a href="/data/university_distribution.json">university_distribution.json</a>.
+    Compare the country on <a href="/overview">the national overview</a>.</p>
+  </section>
+
+</div>
+</main>
+<script src="/analytics-beacon.js" defer></script>
+<script src="/states.js" defer></script>
+<script src="/anchors.js" defer></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

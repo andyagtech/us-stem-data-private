@@ -107,6 +107,31 @@
   <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
   <script defer src="/theme.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style id="conclusion-style">
+  /* The conclusion closes the page, so it is separated from the evidence
+     above it and from whatever the template puts below. An earlier version
+     had neither margin and collided with the next heading. */
+  .conclusion { border-top: 3px solid var(--hl); margin: 3.5rem 0 2.5rem;
+    padding: 1.6rem 0 0; clear: both; }
+  .conclusion h2 { font-size: 1.35rem; margin: 0 0 .5rem; }
+  .conclusion .cx-lede { font-size: 1.18rem; line-height: 1.55; font-weight: 600;
+    max-width: 60ch; margin: 0 0 1.1rem; }
+  .conclusion .cx-body p { font-size: 1rem; line-height: 1.7; max-width: 68ch;
+    margin: 0 0 .9rem; }
+  .conclusion .cx-body p:last-child { margin-bottom: 0; }
+  .cx-onward { margin: 1.8rem 0 0; padding: 1.1rem 0 0; border-top: 1px solid var(--border); }
+  .cx-onward-head { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--text-muted); margin: 0 0 .7rem; }
+  .cx-next-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: .7rem; }
+  .cx-next { display: block; text-decoration: none; color: inherit;
+    border: 1px solid var(--border); border-radius: 10px; padding: .75rem .9rem;
+    background: var(--surface); }
+  .cx-next:hover { border-color: var(--hl); }
+  .cx-label { display: block; font-weight: 650; font-size: .92rem; color: var(--hl); }
+  .cx-why { display: block; font-size: .8rem; line-height: 1.45; color: var(--text-muted);
+    margin-top: .2rem; }
+</style>
 </head>
 <body data-page="visa-schools">
 <main id="main">
@@ -116,26 +141,33 @@
     <p class="kicker">Federal records: IPEDS, IRS Form 990, State Department, DHS, USCIS</p>
     <h1 id="the-schools-that-launder-visas">The schools that launder visas</h1>
     <p>At a growing number of American colleges, foreign students are most of the
-      graduate enrolment. The school takes the tuition, pays recruiting firms to fill
-      the seats, issues the paperwork for the student visa, and signs off on the work
+      graduate enrolment. The school takes the tuition. It pays recruiting firms to fill
+      the seats. It issues the paperwork for the student visa, and signs off on the work
       permits that come with it. Most of these schools also collect federal student aid.</p>
+    <p class="note" style="margin-top:.9rem">Every step of that is lawful, and nothing on
+      this page says otherwise. A college may enrol whoever it admits. Paying a recruiter is
+      ordinary practice. Issuing an I-20 and recommending OPT is what a school certified by
+      the Student and Exchange Visitor Program is authorised to do, and holding a Title IV
+      agreement is a matter of public record. &ldquo;Launder&rdquo; is this site&rsquo;s word
+      for the pattern these records show. It is not a legal finding, and no school or firm
+      named here is accused of breaking a law.</p>
     <div class="stats" id="stats" aria-live="polite"><p class="loading">Loading the federal records…</p></div>
   </header>
 
   <section class="block" id="how-it-works">
-    <h2>How it works, at one school</h2>
+    <h2 id="how-it-works-at-one-school">How it works, at one school</h2>
     <p class="lede" id="case-lede">Trine University is a private nonprofit college in
       Angola, Indiana. Its main campus reports almost no foreign graduate students. A
       second record it files with the Department of Education reports almost nothing else.</p>
     <div class="case">
-      <div class="panel">
+      <div id="graduate-students-on-trine-s-second-federal" class="panel">
         <h3>Graduate students on Trine&rsquo;s second federal record</h3>
         <div id="case-enrol"></div>
         <div class="key"><span><i style="background:var(--hl)"></i>Foreign (non-resident)</span>
           <span><i style="background:var(--text-muted);opacity:.45"></i>Everyone else</span></div>
         <p class="note">IPEDS Fall Enrollment, UNITID 414878, &ldquo;Trine University-Regional/Non-Traditional Campuses&rdquo;.</p>
       </div>
-      <div class="panel">
+      <div id="what-trine-reported-paying-recruiting-firms" class="panel">
         <h3>What Trine reported paying recruiting firms</h3>
         <div id="case-990"></div>
         <p class="note">IRS Form 990, EIN 35-0715530, fiscal years ending 30 April. Services
@@ -145,7 +177,7 @@
   </section>
 
   <section class="block" id="schools">
-    <h2>Every school where foreign students are the majority</h2>
+    <h2 id="every-school-where-foreign-students-are-the">Every school where foreign students are the majority</h2>
     <p class="lede">Institutions with at least 100 graduate students where non-residents are
       half or more of them, fall 2024. Federal aid is what the school took in for its eligible
       students in 2022&ndash;23; foreign students cannot receive it. Recruiting payments are
@@ -185,10 +217,15 @@
   </section>
 
   <section class="block" id="visas">
-    <h2>When one visa tightens, the next one grows</h2>
-    <p class="lede">Each line is indexed to 2015. When H-1B adjudication hardened and entry was
-      suspended, graduates already here kept working on the student visa they held &mdash; OPT,
-      the STEM OPT extension and CPT need no new visa, and all three grew while visa issuance fell.</p>
+    <h2 id="the-student-route-is-now-bigger-than-the-work">The student route is now bigger than the work visa</h2>
+    <p class="lede">A graduate working on OPT or the STEM extension needs no new visa, no
+      consular appointment and no employer petition. It is work authorisation on an F-1
+      already issued. Set that against H-1B visas issued at a consulate, and the two have
+      changed places.</p>
+    <div class="table-wrap" style="margin-bottom:1.2rem"><table class="mini" id="route-scale"></table></div>
+    <p class="note" id="route-scale-note"></p>
+    <p class="lede" style="margin-top:1.4rem">The chart below indexes each series to 2015,
+      with the dated federal actions marked.</p>
     <div class="chart-box"><canvas id="chart-index" role="img" aria-label="Visa issuance and student work authorisations, indexed to 2015 equals 100, 2007 to 2024, with policy changes marked"></canvas></div>
     <div class="chart-box short"><canvas id="chart-denial" role="img" aria-label="H-1B initial petition denial rate by fiscal year"></canvas></div>
     <div class="windows" id="windows"></div>
@@ -206,21 +243,54 @@
   </section>
 
   <section class="block" id="cheaper">
-    <h2>Why an OPT hire costs an employer less</h2>
+    <h2 id="why-an-opt-hire-costs-an-employer-less">Why an OPT hire costs an employer less</h2>
     <p class="lede" id="opt-cost-lede"></p>
     <div class="windows" id="opt-cost"></div>
     <p class="note" id="opt-cost-note"></p>
   </section>
 
   <section class="block" id="tn">
-    <h2>TN is a different path, and the data hides it</h2>
+    <h2 id="tn-is-a-different-path-and-the-data-hides-it">TN is a different path, and the data hides it</h2>
     <p class="lede" id="tn-lede"></p>
     <div class="windows" id="tn-cards"></div>
     <p class="note" id="tn-note"></p>
   </section>
 
-  <section class="block" id="method">
-    <h2>Method and limits</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- conclusion:begin -->
+<section class="conclusion" id="what-this-means">
+  <h2>What this adds up to</h2>
+  <p class="cx-lede">These institutions take federal student aid Americans alone can use, and award most of their graduate seats to people who cannot.</p>
+  <div class="cx-body">
+    <p>These <!--auto:data:visa_schools.totals.schools|n-->57<!--/auto--> schools are not teaching Americans. Foreign students are most of their graduate enrollment, and at several of them it is nine in ten.</p>
+    <p>They are funded anyway. <!--auto:data:visa_schools.totals.take_federal_student_aid|n-->53<!--/auto--> of them take federal student aid, drawing <!--auto:data:visa_schools.totals.pell_dollars|usdm-->$388m<!--/auto--> in Pell grants and <!--auto:data:visa_schools.totals.federal_loan_dollars|usdm-->$618m<!--/auto--> in federal loans. Foreign students cannot receive either. That money is American students' aid, paid to institutions whose graduate programs are mostly not for them.</p>
+    <p>What the money buys is a work visa. The degree is the product and the visa is why it sells, and the American taxpayer is underwriting the machinery.</p>
+  </div>
+  <div class="cx-onward">
+    <p class="cx-onward-head">Where to look next</p>
+    <div class="cx-next-row">
+    <a class="cx-next" href="/bodyshops"><span class="cx-label">Who hires on the far side</span><span class="cx-why">The firms that supply the workers these degrees produce.</span></a>
+    <a class="cx-next" href="/institutions"><span class="cx-label">Compare any two institutions</span><span class="cx-why">The same measure for every institution large enough to count.</span></a>
+    </div>
+  </div>
+</section>
+<!-- conclusion:end -->
+
+<section class="block" id="method">
+    <h2 id="method-and-limits">Method and limits</h2>
     <ul class="caveats">
       <li>Enrolment is IPEDS Fall Enrollment part A: all graduate students (EFALEVEL 12, LSTUDY 3),
         non-residents from EFNRALT. Schools with fewer than 100 graduate students are left out,

@@ -1,5 +1,5 @@
 {
- "_comment": "Five industries the United States cannot import, and who it trains to run them.\n\nWHY THESE FIVE. Mining, petroleum, aerospace, batteries and nuclear are\nindustries where the work is physically here and cannot be offshored: an ore\nbody, a well, an airframe, a cell plant, a reactor. If the people who hold the\ndoctorates in those fields are overwhelmingly here on temporary visas, the\ncountry has a supply problem that no amount of hiring abroad fixes.\n\nWHAT RESTRICTS THE WORK, SAID PRECISELY. Some of this work carries federal\naccess restrictions, and they are three different regimes that are routinely\nrun together. They are not the same thing and this file does not treat them as\nthe same thing.\n\n  EXPORT CONTROL (ITAR, 22 CFR 120-130; EAR, 15 CFR 730-774) limits access to\n  controlled technical data to a \"U.S. person\" -- 22 CFR 120.62 -- which means\n  a citizen, a LAWFUL PERMANENT RESIDENT, or a protected individual under\n  8 USC 1324b(a)(3). It is NOT a security clearance and it does NOT require\n  citizenship. A green-card holder needs no authorisation to do ITAR work.\n\n  ACCESS AUTHORISATION at a commercial reactor (10 CFR 73.56) is a background\n  investigation and fitness-for-duty determination for unescorted access. It\n  is NOT a security clearance either.\n\n  A SECURITY CLEARANCE is eligibility for access to classified national\n  security information, adjudicated under EO 12968 and SEAD 4, and DOE's L and\n  Q access authorisations (10 CFR 710) are of this kind. These do require US\n  citizenship. Very little of what a doctorate holder does in these five\n  industries falls here.\n\nWHY THE DISTINCTION MATTERS FOR THIS DATA, and it is the one place it bites:\nIPEDS counts a permanent resident as domestic, so every \"non-resident alien\"\nin these counts is on a temporary visa and is therefore NOT a U.S. person for\nexport-control purposes. The export-control line falls exactly on the\npopulation this dataset measures. That is a statement about law, not about who\nwas hired: IPEDS records a degree awarded and nothing else.\n\nTHE MAP BELOW IS AN EDITORIAL CLAIM, not a federal category. IPEDS publishes\nCIP codes, and a CIP code is a field of study, not an industry. Four of these\nfive map onto codes that plainly belong to the industry. BATTERIES DO NOT:\nthere is no battery CIP, so that entry is a declared proxy built from materials\nprogrammes, and every page that shows it says so. A reader who disagrees with a\nmapping can see exactly which codes produced every number.\n\nTHE 2010 RECODE is handled by bases_for(), as everywhere else here. Counting\naward bases naively double-counts the transition years and inflates every\nprogramme by roughly a fifth.",
+ "_comment": "Five industries the United States cannot import, and who it trains to run them.\n\nWHY THESE FIVE. Mining, petroleum, aerospace, batteries and nuclear are\nindustries where the work is physically here and cannot be offshored: an ore\nbody, a well, an airframe, a cell plant, a reactor. If the people who hold the\ndoctorates in those fields are overwhelmingly here on temporary visas, the\ncountry has a supply problem that no amount of hiring abroad fixes.\n\nWHAT RESTRICTS THE WORK, SAID PRECISELY. Some of this work carries federal\naccess restrictions, and they are three different regimes that are routinely\nrun together. They are not the same thing and this file does not treat them as\nthe same thing.\n\n  EXPORT CONTROL. ITAR (22 CFR 120-130) limits access to controlled technical\n  data to a \"U.S. person\" -- 22 CFR 120.62 -- which means a citizen, a LAWFUL\n  PERMANENT RESIDENT, or a protected individual under 8 USC 1324b(a)(3). It is\n  NOT a security clearance and it does NOT require citizenship. A green-card\n  holder is inside that definition. A foreign person can be authorised by\n  licence or agreement. The EAR (15 CFR 730-774) governs commercial technology\n  and turns on a DIFFERENT test, so 120.62 must not be quoted for it.\n\n  ACCESS AUTHORISATION at a commercial reactor (10 CFR 73.56) is a background\n  investigation and fitness-for-duty determination for unescorted access. It\n  is NOT a security clearance either.\n\n  A SECURITY CLEARANCE is eligibility for access to classified national\n  security information, adjudicated under EO 12968 and SEAD 4, and DOE's L and\n  Q access authorisations (10 CFR 710) are of this kind. These do require US\n  citizenship. Very little of what a doctorate holder does in these five\n  industries falls here.\n\nWHY THE DISTINCTION MATTERS FOR THIS DATA, and it is the one place it bites:\nIPEDS counts a permanent resident as domestic, so every \"non-resident alien\"\nin these counts is on a temporary visa and is therefore NOT a U.S. person for\nexport-control purposes. The export-control line falls exactly on the\npopulation this dataset measures. That is a statement about law, not about who\nwas hired: IPEDS records a degree awarded and nothing else.\n\nTHE MAP BELOW IS AN EDITORIAL CLAIM, not a federal category. IPEDS publishes\nCIP codes, and a CIP code is a field of study, not an industry. Four of these\nfive map onto codes that plainly belong to the industry. BATTERIES DO NOT:\nthere is no battery CIP, so that entry is a declared proxy built from materials\nprogrammes, and every page that shows it says so. A reader who disagrees with a\nmapping can see exactly which codes produced every number.\n\nTHE 2010 RECODE is handled by bases_for(), as everywhere else here. Counting\naward bases naively double-counts the transition years and inflates every\nprogramme by roughly a fifth.",
  "source": "NCES IPEDS Completions, research doctorates, 2015-2022",
  "source_url": "https://nces.ed.gov/ipeds/use-the-data",
  "window": {
@@ -16,6 +16,7 @@
    "source_url": "https://www.youtube.com/watch?v=q7tq2y9QuvY",
    "source_note": "Quoted from the video's original-language automatic caption track (en-orig), retrieved 2026-10-01. Automatic captions carry transcription errors; the wording is as captioned, and a second English track on the same video is a machine translation of a Russian dub and was not used.",
    "quote": "The current estimate is that last year we graduated less than 300 graduates across the 17 remaining schools of mines.",
+   "scope_note": "Both rows count the same programme, mining and mineral engineering. \"School of mines\" is not an IPEDS category, so the institution count is the closest equivalent this data holds: colleges awarding a credential in that programme. Adding metallurgical engineering would raise the institution count to 18 and the graduate count past 400, which is why the two rows are kept to one programme.",
    "checks": [
     {
      "label": "Mining and mineral engineering credentials awarded nationally, all levels",
@@ -27,12 +28,11 @@
      "year": 2025
     },
     {
-     "label": "Institutions awarding mining or metallurgy credentials",
+     "label": "Institutions awarding those credentials",
      "stated": "17",
-     "found": 18,
+     "found": 15,
      "cip": [
-      "14.2101",
-      "14.2001"
+      "14.2101"
      ],
      "year": 2025
     }
@@ -114,7 +114,7 @@
    "name": "Petroleum",
    "restriction": null,
    "restriction_note": "No export-control or access-authorisation regime applies by default. Open to anyone with the right to work in the United States.",
-   "why": "Reservoir engineering, drilling and production. The degree is specific to the industry: there is no other career for a petroleum engineering doctorate.",
+   "why": "Reservoir engineering, drilling and production. The degree is named for the industry, which is rare: most engineering doctorates carry no industry in their title.",
    "proxy": null,
    "url": "/industries/petroleum.html",
    "cips": [
@@ -343,8 +343,8 @@
    "slug": "ai",
    "name": "Artificial intelligence",
    "restriction": null,
-   "restriction_note": "No export-control or access-authorisation regime applies to the field as such. Specific defence or intelligence work carries its own rules, and some frontier model weights and semiconductor design tools fall under export control, but a computer science doctorate does not.",
-   "why": "The models and the people who build them. Computer science carries the volume; the named AI and data science codes are newer and smaller, and are counted separately on this page so neither is hidden inside the other.",
+   "restriction_note": "No export-control or access-authorisation regime applies to the field as such. Specific defence and intelligence work carries its own rules. Some frontier model weights and semiconductor design tools are export-controlled. A computer science doctorate is not.",
+   "why": "The models and the people who build them. Computer science carries the volume. The named AI and data science codes are newer and much smaller. All three are listed separately below, so neither hides inside the other.",
    "proxy": null,
    "url": "/industries/ai.html",
    "cips": [
@@ -677,7 +677,7 @@
    "name": "Mining and metals",
    "restriction": null,
    "restriction_note": "No export-control or access-authorisation regime applies by default. Some critical-minerals work carries federal funding conditions, which are grant terms and not a personnel restriction.",
-   "why": "The people who open mines and process ore. Geology is deliberately excluded: most geologists never work in mining, and including them would describe earth science instead.",
+   "why": "The people who open mines and process ore. Geology is excluded deliberately. It is fifteen times the volume and spans hydrology, climate and petroleum work, so including it would describe earth science rather than mining.",
    "proxy": null,
    "url": "/industries/mining.html",
    "cips": [
@@ -1171,8 +1171,8 @@
    "slug": "aerospace",
    "name": "Aerospace",
    "restriction": "Export control",
-   "restriction_note": "Much of this work is export-controlled. ITAR (22 CFR 120-130) limits access to defence articles and technical data to a 'U.S. person' as defined at 22 CFR 120.62: a citizen, a lawful permanent resident, or a protected individual. This is not a security clearance and it does not require citizenship -- a permanent resident qualifies. It does exclude someone on a temporary visa, which is exactly who IPEDS counts as a non-resident alien.",
-   "why": "Airframes, propulsion and spacecraft. The clearest case of a field trained one way and employed another.",
+   "restriction_note": "Much of this work is export-controlled. ITAR (22 CFR 120-130) limits access to defence articles and technical data to a 'U.S. person' as defined at 22 CFR 120.62: a citizen, a lawful permanent resident, or a protected individual. This is not a security clearance and it does not require citizenship: a permanent resident qualifies. Someone on a temporary visa is outside that definition, and a licence or agreement is then needed to give them access. That temporary-visa population is exactly who IPEDS counts as a non-resident alien.",
+   "why": "Airframes, propulsion and spacecraft. The field where the gap between who earns the degree and who the rules admit to the work is widest.",
    "proxy": null,
    "url": "/industries/aerospace.html",
    "cips": [
@@ -1712,7 +1712,7 @@
   "The battery entry is a proxy built from materials programmes, because IPEDS publishes no battery category.",
   "Shares are of degrees awarded, not of the current workforce. A doctorate awarded in 2016 may have left the country or the field.",
   "'Non-resident alien' is the IPEDS reporting category: a student on a temporary visa. Permanent residents are counted as domestic.",
-  "The restriction note states the law as written. It is not an observed hiring outcome: this data cannot show who was employed, under what authorisation, or whether they stayed.",
+  "The restriction note states the law as written. It is not an observed hiring outcome. This data cannot show who was employed, under what authorisation, or whether they stayed.",
   "Export control, access authorisation and a security clearance are three different things. Only a DOE L or Q access authorisation requires US citizenship."
  ]
 }

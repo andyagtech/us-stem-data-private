@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>District of Columbia: who the graduate programmes are for</title>
+<meta name="description" content="Every degree-granting institution in District of Columbia, the research doctorates each awards, how many go to non-residents, and the federal research money that arrives. Built from IPEDS, NSF and NCSES.">
+<meta property="og:title" content="District of Columbia: who the graduate programmes are for">
+<meta property="og:description" content="Every degree-granting institution in District of Columbia, the research doctorates each awards, how many go to non-residents, and the federal research money that arrives. Built from IPEDS, NSF and NCSES.">
+<meta property="og:image" content="https://phd-demographics.andy-barr.com/og/concentration.png">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.9rem; margin: 0 0 .7rem; line-height: 1.2; }
+  .page-head p { color: var(--text-muted); max-width: 72ch; line-height: 1.65; font-size: .95rem; margin: 0 0 .6rem; }
+  .kicker { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin: 0 0 .6rem; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin: 1.6rem 0 0; }
+  .stat { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; background: var(--surface); }
+  .stat .n { font-size: 1.7rem; font-weight: 800; color: var(--hl); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: .82rem; line-height: 1.45; margin: .3rem 0 0; }
+  .stat .s { font-size: .72rem; color: var(--text-muted); margin: .45rem 0 0; }
+  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+  section.block { margin-top: 2.8rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  section.block h2 { font-size: 1.2rem; margin: 0 0 .45rem; }
+  .lede { color: var(--text-muted); max-width: 74ch; line-height: 1.6; font-size: .92rem; margin: 0 0 1rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55; max-width: 82ch; margin: .9rem 0 0; }
+  .table-wrap { overflow-x: auto; }
+  table.t { width: 100%; border-collapse: collapse; font-size: .84rem; margin: .6rem 0 0; }
+  table.t th { text-align: left; font-size: .71rem; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--text-muted); font-weight: 600; padding: .4rem .5rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  table.t td { padding: .42rem .5rem; border-bottom: 1px solid var(--border); }
+  table.t td.num, table.t th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.t td.muted { color: var(--text-muted); }
+  table.t td.share { font-weight: 600; color: var(--hl); }
+  table.t th.share-col { color: var(--hl); }
+  table.t td.share, table.t th.share-col {
+    background: color-mix(in srgb, var(--hl) 7%, transparent); }
+  table.t th.sortable { cursor: pointer; }
+  .scale { display: flex; align-items: center; gap: .7rem; margin: 1rem 0 0; flex-wrap: wrap; }
+  .scale .seg { font-size: .8rem; }
+  .barpair { margin: 1rem 0 0; }
+  .barpair .row { display: grid; grid-template-columns: 11rem 1fr auto; gap: .6rem; align-items: center;
+    padding: .3rem 0; font-size: .86rem; }
+  .barpair .lab { color: var(--text-muted); }
+  /* display:block on both. A <span> is inline by default, so width and
+     height are ignored on it -- every fill rendered at zero width inside a
+     full-width track, which made a 2.9% bar and a 47.4% bar look identical. */
+  .barpair .track { display: block; background: rgba(148,163,184,0.14);
+    border-radius: 3px; height: 16px; overflow: hidden; }
+  .barpair .fill { display: block; height: 100%; border-radius: 3px;
+    background: #3987e5; min-width: 2px; }
+  .barpair .fill.nat { background: rgba(148,163,184,0.55); }
+  .barpair .v { font-variant-numeric: tabular-nums; font-weight: 600; }
+  /* The state bar sits directly above its national counterpart, so each pair
+     is one comparison. A gap after the pair keeps the eye from reading all
+     four as a single ranked list. */
+  .barpair .row.pair-end { margin-bottom: .55rem; }
+  @media (max-width: 620px) { .barpair .row { grid-template-columns: 1fr auto; } .barpair .track { display: none; } }
+  .callout { border: 1px solid var(--border); border-left-width: 3px; border-radius: 10px;
+    padding: 1rem 1.1rem; margin: 1rem 0 0; background: var(--surface); }
+  .callout h3 { margin: 0 0 .35rem; font-size: 1rem; }
+  .callout p { margin: 0 0 .5rem; font-size: .88rem; line-height: 1.55; color: var(--text-muted); }
+</style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+</head>
+<body data-page="state" data-state-name="District of Columbia" data-state-abbr="DC">
+<a class="skip-link" href="#institutions">Skip to the institutions</a>
+<main id="main">
+<div class="wrap">
+
+  <div class="page-head">
+    <p class="kicker">State profile &middot; DC</p>
+    <h1 id="dc-graduate-programmes">District of Columbia</h1>
+    <p>District of Columbia has <strong>17</strong> degree-granting
+    institutions in this data. Between them they award
+    <strong>1,372</strong> research doctorates and
+    <strong>12,137</strong> master&rsquo;s degrees over the
+    window, and take <strong>$454.1m</strong> in federal
+    research and development money.</p>
+    <p>This page counts every institution in the state, including the ones that
+    award no graduate degree at all. Leaving those out would make a state look
+    like its flagship.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">17</div>
+      <p class="l">institutions in the state</p>
+      <p class="s">10 award a research doctorate.
+        1 enrol no graduate students at all.</p></div>
+    <div class="stat"><div class="n">31.9%</div>
+      <p class="l">of research doctorates go to
+        <span data-term="nra">non-residents</span></p>
+      <p class="s">438 of
+        1,372. National figure: 38.9%.</p></div>
+    <div class="stat"><div class="n">15.5%</div>
+      <p class="l">of graduate enrolment is non-resident</p>
+      <p class="s">6,619 of
+        42,708 graduate students.</p></div>
+    <div class="stat"><div class="n">$454.1m</div>
+      <p class="l">federal research and development money</p>
+      <p class="s">Across 7 institutions.
+        $276.1m in total federal obligations.</p></div>
+  </div>
+
+  <section class="block" id="against-the-country">
+    <h2>Where District of Columbia sits</h2>
+    <p class="lede">The non-resident share of research doctorates, against the
+    same figure for the country. That is <strong>7.0 points below</strong> the national figure of 38.9%. The pattern this site measures nationally is weaker here, not stronger.</p>
+    <div class="barpair">
+      <div class="row"><span class="lab">District of Columbia</span>
+        <span class="track"><span class="fill" style="width:82.0%"></span></span>
+        <span class="v">31.9%</span></div>
+      <div class="row"><span class="lab">United States</span>
+        <span class="track"><span class="fill nat" style="width:100.0%"></span></span>
+        <span class="v">38.9%</span></div>
+    </div>
+    <p class="note">District of Columbia ranks <strong>39</strong> of 52
+    states on that share, and <strong>33</strong> of 56 on the
+    number of research doctorates it awards. Rank 1 is the highest. Only states
+    that award doctorates are ranked.</p>
+  </section>
+
+  
+  <section class="block" id="levels">
+    <h2>Undergraduate and graduate, side by side</h2>
+    <p class="lede">The same institutions at two levels. Undergraduate is the
+    remainder once graduate enrolment is taken out of the total, and both
+    levels carry their own non-resident count.
+    In District of Columbia the graduate share is <strong>9.3 points higher</strong> than the undergraduate share.</p>
+    <div class="barpair">
+      <div class="row"><span class="lab">Undergraduate</span>
+        <span class="track"><span class="fill" style="width:36.3%"></span></span>
+        <span class="v">6.2%</span></div>
+      <div class="row pair-end"><span class="lab">US undergraduate</span>
+        <span class="track"><span class="fill nat" style="width:21.1%"></span></span>
+        <span class="v">3.6%</span></div>
+      <div class="row"><span class="lab">Graduate</span>
+        <span class="track"><span class="fill" style="width:90.6%"></span></span>
+        <span class="v">15.5%</span></div>
+      <div class="row"><span class="lab">US graduate</span>
+        <span class="track"><span class="fill nat" style="width:100.0%"></span></span>
+        <span class="v">17.1%</span></div>
+    </div>
+    <p class="note" style="margin:0 0 .4rem">Click any column heading to sort.
+    Click it again to reverse. The panel under the table narrows what is shown
+    &mdash; everything is shown until you ask for less.</p>
+    <div class="table-wrap"><table class="t" data-sortable data-controls>
+      <thead><tr><th>Institution</th>
+        <th class="num">Undergraduates</th><th class="num">Non-res</th>
+        <th class="num share-col">Share</th>
+        <th class="num">Graduates</th><th class="num">Non-res</th>
+        <th class="num share-col">Share</th>
+        <th class="num">State funding</th><th class="num">Federal R&amp;D</th></tr></thead>
+      <tbody><tr data-has-grad="1"><td data-sort="george washington university">George Washington University</td><td class="num" data-sort="11387">11,387</td><td class="num" data-sort="937">937</td><td class="num share" data-sort="8.2">8.2%</td><td class="num" data-sort="14181">14,181</td><td class="num" data-sort="2731">2,731</td><td class="num share" data-sort="19.3">19.3%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="381582000">$381.6m</td></tr><tr data-has-grad="1"><td data-sort="georgetown university">Georgetown University</td><td class="num" data-sort="7968">7,968</td><td class="num" data-sort="1127">1,127</td><td class="num share" data-sort="14.1">14.1%</td><td class="num" data-sort="12424">12,424</td><td class="num" data-sort="2350">2,350</td><td class="num share" data-sort="18.9">18.9%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="376600000">$376.6m</td></tr><tr data-has-grad="1"><td data-sort="howard university">Howard University</td><td class="num" data-sort="10190">10,190</td><td class="num" data-sort="474">474</td><td class="num share" data-sort="4.7">4.7%</td><td class="num" data-sort="3226">3,226</td><td class="num" data-sort="202">202</td><td class="num share" data-sort="6.3">6.3%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="101815000">$101.8m</td></tr><tr data-has-grad="1"><td data-sort="american university">American University</td><td class="num" data-sort="7817">7,817</td><td class="num" data-sort="630">630</td><td class="num share" data-sort="8.1">8.1%</td><td class="num" data-sort="5202">5,202</td><td class="num" data-sort="669">669</td><td class="num share" data-sort="12.9">12.9%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="78356000">$78.4m</td></tr><tr data-has-grad="1"><td data-sort="strayer university-global region">Strayer University-Global Region</td><td class="num" data-sort="10093">10,093</td><td class="num" data-sort="2">2</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="2689">2,689</td><td class="num" data-sort="4">4</td><td class="num share" data-sort="0.1">0.1%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="the catholic university of america">The Catholic University of America</td><td class="num" data-sort="3139">3,139</td><td class="num" data-sort="111">111</td><td class="num share" data-sort="3.5">3.5%</td><td class="num" data-sort="2032">2,032</td><td class="num" data-sort="393">393</td><td class="num share" data-sort="19.3">19.3%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="57705000">$57.7m</td></tr><tr data-has-grad="1"><td data-sort="university of the district of columbia">University of the District of Columbia</td><td class="num" data-sort="3297">3,297</td><td class="num" data-sort="111">111</td><td class="num share" data-sort="3.4">3.4%</td><td class="num" data-sort="558">558</td><td class="num" data-sort="39">39</td><td class="num share" data-sort="7.0">7.0%</td><td class="num" data-sort="101463185">$101.5m</td><td class="num" data-sort="9386000">$9.4m</td></tr><tr data-has-grad="1"><td data-sort="trinity washington university">Trinity Washington University</td><td class="num" data-sort="1604">1,604</td><td class="num" data-sort="16">16</td><td class="num share" data-sort="1.0">1.0%</td><td class="num" data-sort="261">261</td><td class="num" data-sort="3">3</td><td class="num share" data-sort="1.1">1.1%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="gallaudet university">Gallaudet University</td><td class="num" data-sort="919">919</td><td class="num" data-sort="42">42</td><td class="num share" data-sort="4.6">4.6%</td><td class="num" data-sort="445">445</td><td class="num" data-sort="23">23</td><td class="num share" data-sort="5.2">5.2%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num" data-sort="9524000">$9.5m</td></tr><tr data-has-grad="1"><td data-sort="the chicago school at washington dc">The Chicago School at Washington DC</td><td class="num" data-sort="0">0</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="615">615</td><td class="num" data-sort="24">24</td><td class="num share" data-sort="3.9">3.9%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="university of the potomac-washington dc campus">University of the Potomac-Washington DC Campus</td><td class="num" data-sort="266">266</td><td class="num" data-sort="59">59</td><td class="num share" data-sort="22.2">22.2%</td><td class="num" data-sort="327">327</td><td class="num" data-sort="135">135</td><td class="num share" data-sort="41.3">41.3%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="wesley theological seminary">Wesley Theological Seminary</td><td class="num" data-sort="0">0</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="450">450</td><td class="num" data-sort="31">31</td><td class="num share" data-sort="6.9">6.9%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="strayer university-district of columbia">Strayer University-District of Columbia</td><td class="num" data-sort="310">310</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num" data-sort="43">43</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="institute of world politics">Institute of World Politics</td><td class="num" data-sort="0">0</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="119">119</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="0.0">0.0%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="pontifical faculty of the immaculate conception at the dominican house of studies">Pontifical Faculty of the Immaculate Conception at the Dominican House of Studies</td><td class="num" data-sort="0">0</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="73">73</td><td class="num" data-sort="4">4</td><td class="num share" data-sort="5.5">5.5%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="1"><td data-sort="pontifical john paul ii institute for studies on marriage and family">Pontifical John Paul II Institute for Studies on Marriage and Family</td><td class="num" data-sort="0">0</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="-1">&mdash;</td><td class="num" data-sort="63">63</td><td class="num" data-sort="11">11</td><td class="num share" data-sort="17.5">17.5%</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr data-has-grad="0"><td data-sort="windsor university">Windsor University</td><td class="num" data-sort="0">0</td><td class="num" data-sort="0">0</td><td class="num share" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num share" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr></tbody></table></div>
+    <p class="lede">The two levels diverge most at <strong>University of the Potomac-Washington DC Campus</strong>: <strong>22.2%</strong> of its 266 undergraduates and <strong>41.3%</strong> of its 327 graduate students. These are different admissions systems with different applicant pools, different money and different reasons to say yes, and a single state figure hides both.</p>
+    <p class="note">3,509 of 56,990 undergraduates and 6,619 of
+    42,708 graduate students.
+    IPEDS reports no graduate enrolment for 1 of these institutions; their rows show a dash rather than a zero, because the file not carrying a number is not the same as the number being none.</p>
+  </section>
+
+
+
+  
+  <section class="block" id="blend">
+    <h2>What the state figure is an average of</h2>
+    <p class="lede">The largest graduate enrolments in District of Columbia, each with its
+    own non-resident share. Nothing here is excluded from the figures above.
+    The point is to show what they are made of.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Graduate students</th>
+        <th class="num">Share of the state</th>
+        <th class="num">Non-resident</th></tr></thead>
+      <tbody><tr><td>George Washington University</td><td class="num">14,181</td><td class="num muted">33.2%</td><td class="num share">19.3%</td></tr><tr><td>Georgetown University</td><td class="num">12,424</td><td class="num muted">29.1%</td><td class="num share">18.9%</td></tr><tr><td>American University</td><td class="num">5,202</td><td class="num muted">12.2%</td><td class="num share">12.9%</td></tr><tr><td>Howard University</td><td class="num">3,226</td><td class="num muted">7.6%</td><td class="num share">6.3%</td></tr><tr><td>Strayer University-Global Region</td><td class="num">2,689</td><td class="num muted">6.3%</td><td class="num share">0.1%</td></tr><tr><td>The Catholic University of America</td><td class="num">2,032</td><td class="num muted">4.8%</td><td class="num share">19.3%</td></tr></tbody></table></div>
+    <div class="callout"><h3>One institution is moving this figure</h3><p><strong>George Washington University</strong> holds <strong>33.2%</strong> of the graduate enrolment in District of Columbia and is <strong>19.3%</strong> non-resident. Take it out and the rest of the state is <strong>13.6%</strong>, against 15.5% with it in. A state average is not a description of its universities when one of them is most of the state.</p></div>
+  </section>
+
+
+  
+  <section class="block" id="training">
+    <h2>Practical training, and the other student visas</h2>
+    <p class="lede">A student visa does not end at graduation. Optional
+    Practical Training lets a graduate work on the same visa, and a STEM degree
+    adds a further twenty-four months. It applies at both levels, so the
+    undergraduate share above is not the end of the story.</p>
+    <p class="lede"><strong>No institution in District of Columbia appears in
+    SEVP&rsquo;s published lists</strong>, which cover the top 100 and top 200
+    schools for OPT and STEM OPT. There is therefore no published practical
+    training figure for this state. That is a fact about what the agency
+    releases, not a statement that no one here is on OPT.</p>
+    <p class="note"><strong>J-1 physicians.</strong> District of Columbia is not in the published top twelve states for J-1 physicians in graduate medical education, which is the only state breakdown ECFMG publishes. That is an absence from a short list, not a zero.</p>
+  </section>
+
+
+  
+  <section class="block" id="residency">
+    <h2>In-state against out-of-state</h2>
+    <p class="lede">Public four-year institutions, FY2024. Every foreign
+    student pays the out-of-state rate, so this is the price attached to the
+    non-resident column everywhere else on this page.</p>
+    <p class="lede">An out-of-state student in District of Columbia is worth <strong>1.86&times;</strong> an in-state one to the institution. They are <strong>20.2%</strong> of the students and <strong>34.7%</strong> of the tuition revenue.</p>
+    <div class="table-wrap"><table class="t">
+      <thead><tr><th>Measure</th><th class="num">In-state</th>
+        <th class="num">Out-of-state</th></tr></thead>
+      <tbody><tr><td>Share of students (FTE)</td><td class="num">70.5%</td><td class="num">20.2%</td></tr><tr><td>Net tuition and fees collected per student</td><td class="num">$4,838</td><td class="num share">$8,986</td></tr><tr><td>Share of tuition revenue</td><td class="num">65.3%</td><td class="num share">34.7%</td></tr></tbody></table></div>
+    <p class="note"><strong>Out-of-state is not the same as foreign.</strong>
+    SHEEO counts international students and domestic students from other states
+    in one column. This shows what a non-resident pays, never how many of them
+    are foreign. Figures are <strong>net</strong> tuition and fee revenue per
+    full-time-equivalent student &mdash; what the institution actually
+    collected after its own aid, not the published price. Public four-year
+    institutions only; medical FTE excluded.
+    </p>
+  </section>
+
+
+  <section class="block" id="institutions">
+    <h2>Every institution</h2>
+    <p class="lede">Largest first by total enrolment. A dash means the
+    institution awards none of that degree, or that no federal research money
+    was matched to it.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th>City</th><th>Control</th>
+        <th class="num">Enrolled</th><th class="num">Graduate</th>
+        <th class="num">Master&rsquo;s</th><th class="num">Non-res</th>
+        <th class="num">Doctorates</th><th class="num">Non-res</th>
+        <th class="num">Federal R&amp;D</th></tr></thead>
+      <tbody><tr><td>George Washington University</td><td class="muted">Washington</td><td class="muted">private nonprofit</td><td class="num" data-sort="25568">25,568</td><td class="num" data-sort="14181">14,181</td><td class="num">5,969</td><td class="num share">2,158</td><td class="num">1,203</td><td class="num share">333</td><td class="num" data-sort="381582000">$381.6m</td></tr><tr><td>Georgetown University</td><td class="muted">Washington</td><td class="muted">private nonprofit</td><td class="num" data-sort="20392">20,392</td><td class="num" data-sort="12424">12,424</td><td class="num">4,258</td><td class="num share">1,202</td><td class="num">906</td><td class="num share">231</td><td class="num" data-sort="376600000">$376.6m</td></tr><tr><td>Howard University</td><td class="muted">Washington</td><td class="muted">private nonprofit</td><td class="num" data-sort="13416">13,416</td><td class="num" data-sort="3226">3,226</td><td class="num">116</td><td class="num share">17</td><td class="num">483</td><td class="num share">102</td><td class="num" data-sort="101815000">$101.8m</td></tr><tr><td>American University</td><td class="muted">Washington</td><td class="muted">private nonprofit</td><td class="num" data-sort="13019">13,019</td><td class="num" data-sort="5202">5,202</td><td class="num">666</td><td class="num share">208</td><td class="num">343</td><td class="num share">68</td><td class="num" data-sort="78356000">$78.4m</td></tr><tr><td>Strayer University-Global Region</td><td class="muted">Washington</td><td class="muted">private for-profit</td><td class="num" data-sort="12782">12,782</td><td class="num" data-sort="2689">2,689</td><td class="num">198</td><td class="num share">1</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>The Catholic University of America</td><td class="muted">Washington</td><td class="muted">private nonprofit</td><td class="num" data-sort="5171">5,171</td><td class="num" data-sort="2032">2,032</td><td class="num">506</td><td class="num share">222</td><td class="num">458</td><td class="num share">122</td><td class="num" data-sort="57705000">$57.7m</td></tr><tr><td>University of the District of Columbia</td><td class="muted">Washington</td><td class="muted">public</td><td class="num" data-sort="3855">3,855</td><td class="num" data-sort="558">558</td><td class="num">83</td><td class="num share">38</td><td class="num">17</td><td class="num share">0</td><td class="num" data-sort="9386000">$9.4m</td></tr><tr><td>Trinity Washington University</td><td class="muted">Washington</td><td class="muted">private nonprofit</td><td class="num" data-sort="1865">1,865</td><td class="num" data-sort="261">261</td><td class="num">23</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Gallaudet University</td><td class="muted">Washington</td><td class="muted">private nonprofit</td><td class="num" data-sort="1364">1,364</td><td class="num" data-sort="445">445</td><td class="num">47</td><td class="num share">4</td><td class="num">61</td><td class="num share">2</td><td class="num" data-sort="9524000">$9.5m</td></tr><tr><td>The Chicago School at Washington DC</td><td class="muted">Washington</td><td class="muted">private nonprofit</td><td class="num" data-sort="615">615</td><td class="num" data-sort="615">615</td><td class="num">248</td><td class="num share">7</td><td class="num">91</td><td class="num share">7</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>University of the Potomac-Washington DC Campus</td><td class="muted">Washington</td><td class="muted">private for-profit</td><td class="num" data-sort="593">593</td><td class="num" data-sort="327">327</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num">11</td><td class="num share">1</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Wesley Theological Seminary</td><td class="muted">Washington</td><td class="muted">private nonprofit</td><td class="num" data-sort="450">450</td><td class="num" data-sort="450">450</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Strayer University-District of Columbia</td><td class="muted">Washington</td><td class="muted">private for-profit</td><td class="num" data-sort="353">353</td><td class="num" data-sort="43">43</td><td class="num">23</td><td class="num share">0</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Institute of World Politics</td><td class="muted">Washington</td><td class="muted">private nonprofit</td><td class="num" data-sort="119">119</td><td class="num" data-sort="119">119</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Pontifical Faculty of the Immaculate Conception at the Dominican House of Studies</td><td class="muted">Washington</td><td class="muted">private nonprofit</td><td class="num" data-sort="73">73</td><td class="num" data-sort="73">73</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Pontifical John Paul II Institute for Studies on Marriage and Family</td><td class="muted">Washington</td><td class="muted">private nonprofit</td><td class="num" data-sort="63">63</td><td class="num" data-sort="63">63</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num">17</td><td class="num share">5</td><td class="num muted" data-sort="-1">&mdash;</td></tr><tr><td>Windsor University</td><td class="muted">Washington</td><td class="muted">private for-profit</td><td class="num" data-sort="0">0</td><td class="num" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td><td class="num muted" data-sort="-1">&mdash;</td></tr></tbody></table></div>
+    <p class="note">Degrees are pooled over
+    2021&ndash;2025. Enrolment
+    and federal money are the most recent year in the file. &ldquo;Non-res&rdquo;
+    means a student here on a temporary visa, almost always F-1 or J-1. A green
+    card holder is not counted in it.</p>
+  </section>
+
+  <section class="block" id="concentration">
+    <h2>How few institutions this is</h2>
+    <p class="lede">Of the 17 institutions in
+    District of Columbia, <strong>10</strong> award a research doctorate at
+    all, and the largest two award 58.7% of them.
+    A state&rsquo;s graduate pipeline is a much smaller thing than its list of
+    colleges.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Research doctorates</th>
+        <th class="num">Non-resident</th><th class="num share-col">Share</th>
+        <th class="num">Share of the state&rsquo;s doctorates</th></tr></thead>
+      <tbody><tr><td>George Washington University</td><td class="num">1,203</td><td class="num">333</td><td class="num share">27.7%</td><td class="num muted">33.5%</td></tr><tr><td>Georgetown University</td><td class="num">906</td><td class="num">231</td><td class="num share">25.5%</td><td class="num muted">25.2%</td></tr><tr><td>Howard University</td><td class="num">483</td><td class="num">102</td><td class="num share">21.1%</td><td class="num muted">13.5%</td></tr><tr><td>The Catholic University of America</td><td class="num">458</td><td class="num">122</td><td class="num share">26.6%</td><td class="num muted">12.8%</td></tr><tr><td>American University</td><td class="num">343</td><td class="num">68</td><td class="num share">19.8%</td><td class="num muted">9.6%</td></tr><tr><td>The Chicago School at Washington DC</td><td class="num">91</td><td class="num">7</td><td class="num share">7.7%</td><td class="num muted">2.5%</td></tr><tr><td>Gallaudet University</td><td class="num">61</td><td class="num">2</td><td class="num share">3.3%</td><td class="num muted">1.7%</td></tr><tr><td>University of the District of Columbia</td><td class="num">17</td><td class="num">0</td><td class="num share">0.0%</td><td class="num muted">0.5%</td></tr><tr><td>Pontifical John Paul II Institute for Studies on Marriage and Family</td><td class="num">17</td><td class="num">5</td><td class="num share">29.4%</td><td class="num muted">0.5%</td></tr><tr><td>University of the Potomac-Washington DC Campus</td><td class="num">11</td><td class="num">1</td><td class="num share">9.1%</td><td class="num muted">0.3%</td></tr></tbody></table></div>
+  </section>
+  <section class="block" id="survey">
+    <h2>The foreign share of graduate students, where the survey reaches</h2>
+    <p class="lede">The NSF Survey of Graduate Students and Postdoctorates asks
+    institutions directly, and it covers 7 of the
+    17 institutions in District of Columbia. It is a different
+    measure from the degree counts above: enrolled students rather than degrees
+    awarded.</p>
+    <div class="table-wrap"><table class="t" data-sortable>
+      <thead><tr><th>Institution</th><th class="num">Doctoral students foreign</th>
+        <th class="num">Master&rsquo;s students foreign</th></tr></thead>
+      <tbody><tr><td>The Catholic University of America</td><td class="num share">55.8%</td><td class="num">72.3%</td></tr><tr><td>Georgetown University</td><td class="num share">40.3%</td><td class="num">35.3%</td></tr><tr><td>American University</td><td class="num share">33.0%</td><td class="num">21.9%</td></tr><tr><td>Howard University</td><td class="num share">32.0%</td><td class="num">11.5%</td></tr><tr><td>George Washington University</td><td class="num share">26.1%</td><td class="num">42.7%</td></tr><tr><td>University of the District of Columbia</td><td class="num share">6.7%</td><td class="num">15.3%</td></tr><tr><td>Gallaudet University</td><td class="num share">5.9%</td><td class="num">0.0%</td></tr></tbody></table></div>
+    <div class="callout">
+      <h3>The Catholic University of America</h3>
+      <p>The highest foreign share of doctoral students in the state, at
+      <strong>55.8%</strong>. It is not the largest institution here
+      and it is not the one with the most federal money. Size and share are
+      different questions, and a state page that ranked only by size would not
+      show this.</p>
+    </div>
+  </section>
+  <section class="block" id="not-published">
+    <h2>What is not published for a state this size</h2>
+    <p class="lede">Two of the measures this site uses elsewhere do not exist
+    at this scale, and the reason is the same in both cases: the agency
+    publishes a ranked extract rather than the whole file.</p>
+    <ul class="lede">
+      <li><strong>Practical training is not published here.</strong> SEVP
+      releases the top 100 and top 200 schools for OPT and STEM OPT, not every
+      school. An institution outside those lists has no published figure at
+      all. Its absence is a fact about the list, not about the institution, and
+      it must never be read as a zero.</li>
+      <li><strong>Student visa counts are not published by state.</strong> DHS
+      reports SEVIS records nationally and names a few states per region in its
+      commentary. For most states it publishes a percentage change and no
+      count, so the number of foreign students physically in a state cannot be
+      read off the federal release.</li>
+      <li><strong>Enrolment is the measure that does exist.</strong> IPEDS asks
+      every institution directly, which is why this page is built from it. It
+      counts students enrolled, not visas issued, and the two are different
+      questions.</li>
+    </ul>
+  </section>
+
+  <section class="block" id="method">
+    <h2>Method and limits</h2>
+    <ul class="lede">
+      <li><strong>Non-resident means here on a temporary visa.</strong> IPEDS
+      defines it as a person &ldquo;who is not a citizen or national of the
+      United States and who is in this country on a visa or temporary basis and
+      does not have the right to remain indefinitely.&rdquo; A green card holder
+      is therefore never counted here. Neither is a refugee or an asylee. Those
+      students are reported in the race and ethnicity categories alongside
+      citizens. For students the category is overwhelmingly F-1 and J-1.</li>
+      <li><strong>It is not ethnicity and not country of origin.</strong> A
+      US-born citizen of any background is never non-resident. The status is
+      recorded when the student enrols, for the enrolment figures, and when the
+      degree is awarded, for the degree counts. These files cannot be split any
+      other way.</li>
+      <li><strong>Degrees are pooled</strong> over
+      2021&ndash;2025, because a
+      single year at a small institution moves on one student.</li>
+      <li><strong>Enrolment and awards are different measures</strong> and will
+      not agree. One counts people on a given day; the other counts degrees
+      conferred over five years.</li>
+      <li><strong>Federal money is matched to a campus</strong>, and a system
+      that reports centrally can carry money its branches spend.</li>
+      <li><strong>This page shows composition, not displacement.</strong> It
+      records who received the degrees. It does not show that anyone was kept
+      out, and nothing here should be read that way.</li>
+    </ul>
+    <p class="note">Built by <code>scripts/build_state_pages.py</code> from
+    <a href="/data/institution_profiles.json">institution_profiles.json</a>,
+    <a href="/data/state_funding_and_enrolment.json">state_funding_and_enrolment.json</a>
+    and <a href="/data/university_distribution.json">university_distribution.json</a>.
+    Compare the country on <a href="/overview">the national overview</a>.</p>
+  </section>
+
+</div>
+</main>
+<script src="/analytics-beacon.js" defer></script>
+<script src="/states.js" defer></script>
+<script src="/anchors.js" defer></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

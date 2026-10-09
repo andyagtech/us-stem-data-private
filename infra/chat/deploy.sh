@@ -45,6 +45,9 @@ python3 "$REPO/scripts/build_chat_facts.py"
 # here rather than trusted from whenever someone last ran them.
 python3 "$REPO/scripts/build_summary.py" --check
 python3 "$REPO/scripts/build_chat_lookups.py"
+# The public-sector PERM cut. 18 MB published, 213 KB here: the tools read
+# totals, per-state figures and the 87 state-agency filings, never the records.
+python3 "$REPO/scripts/build_chat_public_sector.py"
 
 # The record search index is NOT cheap to build, so it was left out of this
 # block -- and then shipped untouched for a month while the corpus grew by
@@ -66,7 +69,7 @@ echo "Syncing handler source into lambda/ ..."
 for f in handler.py prompt.py tools.py blocks.py data_store.py realtime.py cache.py facts.py budget.py \
          knowledge_figures.py \
          tools_joins.py tools_demographics.py tools_search.py tools_provenance.py \
-         tools_levels.py tools_summary.py; do
+         tools_levels.py tools_summary.py tools_public_sector.py; do
     cp "$SRC/$f" "$SCRIPT_DIR/lambda/$f"
 done
 # The module list above is hand-maintained and has silently omitted a new
@@ -154,7 +157,8 @@ ls -la "$SCRIPT_DIR/lambda/chat_data"
 for required in nra_index.csv.gz cip_titles.csv hd_names.csv \
                 universities_compact.json national_series.json site_map.json \
                 search_index.bin sheeo_state_compact.json.gz \
-                summary.json institutions_compact.json; do
+                summary.json institutions_compact.json \
+                public_employer_perm_compact.json; do
     if [[ ! -s "$SCRIPT_DIR/lambda/chat_data/$required" ]]; then
         echo "ERROR: chat_data/$required is missing or empty."
         exit 1

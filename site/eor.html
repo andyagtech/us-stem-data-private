@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hiring a foreigner with no visa</title>
+<meta name="description" content="An employer of record lets an American company employ a foreign worker with no visa, no petition and no cap, because the worker never enters the United States. No federal file records it. The vendors make the H-1B comparison themselves.">
+<meta property="og:title" content="Hiring a foreigner with no visa">
+<meta property="og:description" content="The fourth route. No LCA, no I-129, no SEVIS record — and the vendors publish pages called 'h1b-visa-alternative' to sell it.">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .page-head h1 { font-size: 1.9rem; margin: 0 0 .7rem; line-height: 1.2; max-width: 22ch; }
+  .page-head p { color: var(--text-muted); max-width: 70ch; line-height: 1.65; font-size: .95rem; margin: 0 0 .6rem; }
+  .kicker { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin: 0 0 .6rem; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin: 1.6rem 0 0; }
+  .stat { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; background: var(--surface); }
+  .stat .n { font-size: 1.7rem; font-weight: 800; color: var(--hl); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: .82rem; line-height: 1.45; margin: .3rem 0 0; }
+  .stat .s { font-size: .72rem; color: var(--text-muted); margin: .45rem 0 0; }
+  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+
+  section.block { margin-top: 2.8rem; border-top: 1px solid var(--border); padding-top: 1.6rem; }
+  section.block h2 { font-size: 1.2rem; margin: 0 0 .45rem; }
+  .lede { color: var(--text-muted); max-width: 72ch; line-height: 1.6; font-size: .92rem; margin: 0 0 1rem; }
+  .note { color: var(--text-muted); font-size: .78rem; line-height: 1.55; max-width: 80ch; margin: .9rem 0 0; }
+
+  .forms { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; margin: 1.1rem 0 0; }
+  .form { border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1rem; }
+  .form .f { font-weight: 700; font-size: .95rem; }
+  .form .w { font-size: .8rem; color: var(--text-muted); margin: .3rem 0 .55rem; line-height: 1.45; }
+  .form .x { font-size: .78rem; color: var(--s2); font-weight: 600; }
+  @media (max-width: 760px) { .forms { grid-template-columns: 1fr; } }
+
+  .vendor { margin: 0 0 1.4rem; }
+  .vendor h3 { font-size: .95rem; margin: 0 0 .15rem; }
+  .vendor .host { font-size: .74rem; color: var(--text-muted); margin: 0 0 .5rem; }
+  ul.slugs { margin: 0; padding: 0; list-style: none; }
+  ul.slugs li { padding: .2rem 0; font-size: .84rem; line-height: 1.45; }
+  ul.slugs code { font-size: .82rem; word-break: break-word; }
+
+  table.net { width: 100%; border-collapse: collapse; font-size: .86rem; margin: 1rem 0 0; }
+  table.net th { text-align: left; font-size: .72rem; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--text-muted); font-weight: 600; padding: .4rem .5rem; border-bottom: 1px solid var(--border); }
+  table.net td { padding: .45rem .5rem; border-bottom: 1px solid var(--border); }
+  table.net td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .tag { display: inline-block; font-size: .68rem; text-transform: uppercase; letter-spacing: .05em;
+    padding: .12rem .45rem; border-radius: 999px; border: 1px solid var(--border); color: var(--text-muted);
+    white-space: nowrap; }
+  .tag.eor { border-color: var(--s2); color: var(--s2); }
+  .scroller { overflow-x: auto; }
+  .loading { color: var(--text-muted); font-size: .88rem; }
+</style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+<style id="conclusion-style">
+  /* The conclusion closes the page, so it is separated from the evidence
+     above it and from whatever the template puts below. An earlier version
+     had neither margin and collided with the next heading. */
+  .conclusion { border-top: 3px solid var(--hl); margin: 3.5rem 0 2.5rem;
+    padding: 1.6rem 0 0; clear: both; }
+  .conclusion h2 { font-size: 1.35rem; margin: 0 0 .5rem; }
+  .conclusion .cx-lede { font-size: 1.18rem; line-height: 1.55; font-weight: 600;
+    max-width: 60ch; margin: 0 0 1.1rem; }
+  .conclusion .cx-body p { font-size: 1rem; line-height: 1.7; max-width: 68ch;
+    margin: 0 0 .9rem; }
+  .conclusion .cx-body p:last-child { margin-bottom: 0; }
+  .cx-onward { margin: 1.8rem 0 0; padding: 1.1rem 0 0; border-top: 1px solid var(--border); }
+  .cx-onward-head { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--text-muted); margin: 0 0 .7rem; }
+  .cx-next-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: .7rem; }
+  .cx-next { display: block; text-decoration: none; color: inherit;
+    border: 1px solid var(--border); border-radius: 10px; padding: .75rem .9rem;
+    background: var(--surface); }
+  .cx-next:hover { border-color: var(--hl); }
+  .cx-label { display: block; font-weight: 650; font-size: .92rem; color: var(--hl); }
+  .cx-why { display: block; font-size: .8rem; line-height: 1.45; color: var(--text-muted);
+    margin-top: .2rem; }
+</style>
+</head>
+<body data-page="eor">
+<a class="skip-link" href="#their-words">Skip to what the vendors publish</a>
+<main id="main">
+<div class="wrap">
+
+  <div class="page-head">
+    <p class="kicker">Employer of record</p>
+    <h1 id="hiring-a-foreigner-with-no-visa">Hiring a foreigner with no visa</h1>
+    <p>An American company that wants a particular foreign worker has three
+    routes on the rest of this site. Sponsor an H-1B. Hire a graduate on OPT.
+    Wait on a green card. There is a fourth, and it is different in kind.</p>
+    <p>An employer of record is a company already incorporated in the
+    worker&rsquo;s country. It signs the employment contract, runs the local
+    payroll and carries the local liability. The American firm directs the work
+    and pays an invoice. The worker never enters the United States. There is no
+    petition, no cap, no lottery and no consulate.</p>
+    <p>So there is no file. That is the whole point of this page.</p>
+  </div>
+
+  <div class="stats" id="totals"></div>
+
+  <section class="block" id="no-file">
+    <h2 id="the-route-that-files-nothing">The route that files nothing</h2>
+    <p class="lede">Every number elsewhere on this site exists because somebody
+    filed a form. Here is what this route does not generate.</p>
+    <div class="forms">
+      <div class="form">
+        <p class="f">No LCA</p>
+        <p class="w">A Labor Condition Application is an employer promising a
+        wage for work <em>in</em> the United States. No work happens here.</p>
+        <p class="x">So no wage is promised, and no wage is recorded</p>
+      </div>
+      <div class="form">
+        <p class="f">No I-129</p>
+        <p class="w">The petition asks to admit a person. Nobody is asking to
+        admit anyone.</p>
+        <p class="x">So the worker is in no USCIS count</p>
+      </div>
+      <div class="form">
+        <p class="f">No SEVIS record</p>
+        <p class="w">A SEVIS record exists because a school enrolled a student.
+        This route does not pass through a school.</p>
+        <p class="x">So the hire is in no DHS count</p>
+      </div>
+    </div>
+    <p class="lede" style="margin-top:1.2rem">This is not a dataset with a gap
+    in it. It is a route that is unmeasured by construction, and no amount of
+    care with the federal files will ever count it. That bounds everything else
+    here. <strong>The visa figures on this site are a floor on how many foreign
+    workers American companies employ. They are never a total.</strong></p>
+  </section>
+
+  <section class="block" id="their-words">
+    <h2 id="they-make-the-comparison-themselves">They make the comparison themselves</h2>
+    <p class="lede">These are pages whose own web address contains
+    &ldquo;h1b&rdquo;, taken from each vendor&rsquo;s published sitemap. No
+    paraphrase and no reading between lines: a company chose each of these
+    addresses, and the address is the claim.</p>
+    <div id="h1b-host"><p class="loading">Loading&hellip;</p></div>
+    <p class="note" id="h1b-note"></p>
+  </section>
+
+  <section class="block" id="network">
+    <h2 id="who-references-whom">Who references whom</h2>
+    <p class="lede">A vendor publishes a page naming a competitor, and the
+    competitor&rsquo;s name is in the address. That is the edge. Reading it from
+    the URL rather than from the marketing copy means no judgement of mine
+    decides who references whom.</p>
+    <div class="scroller"><table class="net" id="net-table"></table></div>
+    <p class="note">Employer-of-record firms sell employment in countries where
+    the client has no company. US payroll and PEO firms sell a domestic
+    product and appear here only because the employer-of-record vendors compare
+    themselves to them. The rest is identity, spend and ERP software, kept in
+    because leaving it out would make the cluster look tighter than it is.</p>
+  </section>
+
+  <section class="block" id="coverage">
+    <h2 id="how-many-countries-each-one-publishes-for">How many countries each one publishes for</h2>
+    <p class="lede">Counted from the country guides in each vendor&rsquo;s own
+    sitemap, not from the number on the front of the website. A page per
+    country is a claim to operate there, which is a weaker thing than operating
+    there, and it is the one that can be checked.</p>
+    <div class="scroller"><table class="net" id="country-table"></table></div>
+  </section>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- conclusion:begin -->
+<section class="conclusion" id="what-this-means">
+  <h2>What this adds up to</h2>
+  <p class="cx-lede">The visa figures everywhere else on this site are a floor, and this is why.</p>
+  <div class="cx-body">
+    <p>The visa figures elsewhere on this site are a floor, and this is why. An employer-of-record firm lets an American company hire someone abroad and never file for a visa at all. No federal agency counts that route, and no federal agency can.</p>
+    <p>The American worker competing against it has no way to see it. There is no disclosure file, no certified application, no wage floor, and no record that the job existed. The jobs leave and the statistics do not move.</p>
+  </div>
+  <div class="cx-onward">
+    <p class="cx-onward-head">Where to look next</p>
+    <div class="cx-next-row">
+    <a class="cx-next" href="/bodyshops"><span class="cx-label">The route that is counted</span><span class="cx-why">What the disclosure files do capture.</span></a>
+    <a class="cx-next" href="/data_requests"><span class="cx-label">What cannot be counted</span><span class="cx-why">There is no federal count of this route and there cannot be.</span></a>
+    </div>
+  </div>
+</section>
+<!-- conclusion:end -->
+
+<section class="block" id="method">
+    <h2 id="method-and-limits">Method and limits</h2>
+    <ul class="lede">
+      <li><strong>This counts marketing, not employment.</strong> A sitemap is a
+      list of claims a company chose to publish. No figure on this page is a
+      count of workers, and none of it should be read as one.</li>
+      <li><strong>One vendor could not be read</strong> and is recorded as
+      unavailable, never as zero. A zero would be a claim about that company.</li>
+      <li><strong>A company is a node only if it is declared</strong> in the
+      builder&rsquo;s registry. Every comparison URL that resolves to no
+      declared company is published as a remainder, so the coverage is visible
+      rather than assumed.</li>
+      <li><strong>Translations are not counted twice.</strong> The same page
+      published under a dozen locales is one claim, and a page that exists only
+      in translation is counted apart from the rest.</li>
+      <li><strong>Nothing here says any of this is unlawful.</strong> Employing
+      someone in their own country through a local employer is ordinary
+      commerce. The point is that it is invisible to the files, not that it is
+      wrong.</li>
+    </ul>
+    <p class="note">Each vendor&rsquo;s robots.txt was read before anything was
+    fetched; none disallows the sitemap or the paths counted here. Only the URL
+    lists are kept, never page bodies &mdash; the addresses are the evidence.
+    Built by <code>scripts/build_eor_market.py</code> into
+    <a href="/data/eor_market.json">/data/eor_market.json</a>.</p>
+  </section>
+
+</div>
+</main>
+<script src="/eor.js" defer></script>
+<script src="/anchors.js" defer></script>
+<script src="/analytics-beacon.js" defer></script>
+<script src="/sidebar.js"></script>
+</body>
+</html>

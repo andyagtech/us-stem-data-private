@@ -12,17 +12,28 @@
 <link rel="stylesheet" href="/style.css">
 <style>
   :root{
-    --live-bg:#0d0f0e; --live-panel:#151817; --live-edge:#242a28;
-    --live-ink:#eef1ef; --live-dim:#93a09a; --live-faint:#5c6864;
-    --dom:#2AA3C4; --nra:#DE5C6B; --accent:#B58A2C;
-    --live-grid:#1e2422;
+    /* UNIFIED WITH THE SITE. This page carried its own fixed dark palette
+       and its own serif, so it ignored the reader's theme entirely and
+       looked like a different product. The local names are kept because the
+       rest of this file's CSS is written against them; they now resolve to
+       the shared tokens in style.css, which already handle light, dark and
+       an explicit choice.
+
+       --dom and --nra stay local: they are the two chart series and have to
+       stay distinguishable from each other in both themes, which is a
+       different job from the interface colours. */
+    --live-bg:var(--bg); --live-panel:var(--surface); --live-edge:var(--border);
+    --live-ink:var(--text); --live-dim:var(--text-muted);
+    --live-faint:var(--text-muted);
+    --dom:#2AA3C4; --nra:var(--hl);
+    --live-grid:var(--border);
   }
   .live-wrap{background:var(--live-bg);color:var(--live-ink);min-height:100vh;
     font-family:'Public Sans',system-ui,sans-serif;padding:0 0 3rem;}
   .live-head{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.5rem;
     border-bottom:1px solid var(--live-edge);position:sticky;top:0;z-index:20;
-    background:rgba(13,15,14,.94);backdrop-filter:blur(8px);flex-wrap:wrap;}
-  .live-title{font-family:Newsreader,Georgia,serif;font-size:1.25rem;margin:0;
+    background:color-mix(in srgb, var(--bg) 94%, transparent);backdrop-filter:blur(8px);flex-wrap:wrap;}
+  .live-title{font-family:'Public Sans',system-ui,sans-serif;font-size:1.25rem;margin:0;
     letter-spacing:-.01em;}
   .live-title span{color:var(--live-dim);font-size:.85rem;font-family:inherit;
     display:block;font-weight:400;margin-top:.15rem;}
@@ -48,7 +59,7 @@
     display:flex;flex-direction:column;}
   .board-head{display:flex;align-items:baseline;gap:.75rem;margin-bottom:.2rem;
     flex-wrap:wrap;}
-  .board-title{font-family:Newsreader,Georgia,serif;font-size:1.35rem;margin:0;}
+  .board-title{font-family:'Public Sans',system-ui,sans-serif;font-size:1.35rem;margin:0;}
   .board-sub{color:var(--live-dim);font-size:.85rem;margin:.15rem 0 1rem;}
   .chart-holder{flex:1;min-height:300px;position:relative;}
   svg.chart{width:100%;height:340px;display:block;overflow:visible;}
@@ -72,7 +83,7 @@
     border-radius:14px;padding:1.1rem 1.15rem;}
   .kpi-label{color:var(--live-dim);font-size:.75rem;text-transform:uppercase;
     letter-spacing:.08em;margin:0 0 .3rem;}
-  .kpi-value{font-family:Newsreader,Georgia,serif;font-size:2.4rem;line-height:1;
+  .kpi-value{font-family:'Public Sans',system-ui,sans-serif;font-size:2.4rem;line-height:1;
     margin:0;font-variant-numeric:tabular-nums;}
   .kpi-cap{color:var(--live-dim);font-size:.82rem;margin:.5rem 0 0;line-height:1.45;}
 

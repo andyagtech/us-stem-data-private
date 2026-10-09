@@ -45,6 +45,7 @@
   "opt": "OPT",
   "stem_opt": "STEM OPT extension",
   "cpt": "CPT",
+  "total_sevis_with_opt": "students holding any OPT",
   "h1b_initial_denial_rate_pct": "H-1B initial denial rate"
  },
  "issuance": {
@@ -249,6 +250,26 @@
    "2022": 129849,
    "2023": 131117,
    "2024": 130586
+  },
+  "total_sevis_with_opt": {
+   "2007": 24838,
+   "2008": 47432,
+   "2009": 51985,
+   "2010": 60348,
+   "2011": 69804,
+   "2012": 78364,
+   "2013": 86284,
+   "2014": 98825,
+   "2015": 126509,
+   "2016": 171593,
+   "2017": 204633,
+   "2018": 200162,
+   "2019": 197331,
+   "2020": 176836,
+   "2021": 164528,
+   "2022": 171635,
+   "2023": 214397,
+   "2024": 269323
   }
  },
  "h1b_initial_denial_rate_pct": {
@@ -299,6 +320,189 @@
    "o1_2024": 19457,
    "o1_record": true
   }
+ },
+ "route_scale": {
+  "years": [
+   {
+    "year": "2007",
+    "student_work": 24838,
+    "h1b_issued": 154053,
+    "ratio": 0.16,
+    "authorisations": 24840,
+    "double_counted": 2
+   },
+   {
+    "year": "2008",
+    "student_work": 47432,
+    "h1b_issued": 129464,
+    "ratio": 0.37,
+    "authorisations": 47485,
+    "double_counted": 53
+   },
+   {
+    "year": "2009",
+    "student_work": 51985,
+    "h1b_issued": 110367,
+    "ratio": 0.47,
+    "authorisations": 52067,
+    "double_counted": 82
+   },
+   {
+    "year": "2010",
+    "student_work": 60348,
+    "h1b_issued": 117409,
+    "ratio": 0.51,
+    "authorisations": 60436,
+    "double_counted": 88
+   },
+   {
+    "year": "2011",
+    "student_work": 69804,
+    "h1b_issued": 129134,
+    "ratio": 0.54,
+    "authorisations": 69925,
+    "double_counted": 121
+   },
+   {
+    "year": "2012",
+    "student_work": 78364,
+    "h1b_issued": 135530,
+    "ratio": 0.58,
+    "authorisations": 78565,
+    "double_counted": 201
+   },
+   {
+    "year": "2013",
+    "student_work": 86284,
+    "h1b_issued": 153223,
+    "ratio": 0.56,
+    "authorisations": 86522,
+    "double_counted": 238
+   },
+   {
+    "year": "2014",
+    "student_work": 98825,
+    "h1b_issued": 161369,
+    "ratio": 0.61,
+    "authorisations": 99075,
+    "double_counted": 250
+   },
+   {
+    "year": "2015",
+    "student_work": 126509,
+    "h1b_issued": 172748,
+    "ratio": 0.73,
+    "authorisations": 126816,
+    "double_counted": 307
+   },
+   {
+    "year": "2016",
+    "student_work": 171593,
+    "h1b_issued": 180057,
+    "ratio": 0.95,
+    "authorisations": 179352,
+    "double_counted": 7759
+   },
+   {
+    "year": "2017",
+    "student_work": 204633,
+    "h1b_issued": 179049,
+    "ratio": 1.14,
+    "authorisations": 217162,
+    "double_counted": 12529
+   },
+   {
+    "year": "2018",
+    "student_work": 200162,
+    "h1b_issued": 179660,
+    "ratio": 1.11,
+    "authorisations": 215214,
+    "double_counted": 15052
+   },
+   {
+    "year": "2019",
+    "student_work": 197331,
+    "h1b_issued": 188123,
+    "ratio": 1.05,
+    "authorisations": 211014,
+    "double_counted": 13683
+   },
+   {
+    "year": "2020",
+    "student_work": 176836,
+    "h1b_issued": 124983,
+    "ratio": 1.41,
+    "authorisations": 186605,
+    "double_counted": 9769
+   },
+   {
+    "year": "2021",
+    "student_work": 164528,
+    "h1b_issued": 61569,
+    "ratio": 2.67,
+    "authorisations": 177194,
+    "double_counted": 12666
+   },
+   {
+    "year": "2022",
+    "student_work": 171635,
+    "h1b_issued": 206002,
+    "ratio": 0.83,
+    "authorisations": 182145,
+    "double_counted": 10510
+   },
+   {
+    "year": "2023",
+    "student_work": 214397,
+    "h1b_issued": 265777,
+    "ratio": 0.81,
+    "authorisations": 222663,
+    "double_counted": 8266
+   },
+   {
+    "year": "2024",
+    "student_work": 269323,
+    "h1b_issued": 219659,
+    "ratio": 1.23,
+    "authorisations": 289938,
+    "double_counted": 20615
+   }
+  ],
+  "note": "The student-route figure counts STUDENTS holding any OPT in the year, the distinct count SEVP publishes, so a graduate who holds OPT and then the STEM extension is counted once. H-1B issuance is visas issued at a consulate, and a visa is re-stamped for travel, so it is a count of issuances rather than of people.",
+  "first": {
+   "year": "2007",
+   "student_work": 24838,
+   "h1b_issued": 154053,
+   "ratio": 0.16,
+   "authorisations": 24840,
+   "double_counted": 2
+  },
+  "latest": {
+   "year": "2024",
+   "student_work": 269323,
+   "h1b_issued": 219659,
+   "ratio": 1.23,
+   "authorisations": 289938,
+   "double_counted": 20615
+  },
+  "peak": {
+   "year": "2021",
+   "student_work": 164528,
+   "h1b_issued": 61569,
+   "ratio": 2.67,
+   "authorisations": 177194,
+   "double_counted": 12666
+  },
+  "years_student_route_larger": 6,
+  "years_counted": 18
+ },
+ "stem_opt_rule": {
+  "from_months": 17,
+  "to_months": 24,
+  "rule_date": "2016-03-11",
+  "ratio_from_duration": 1.41,
+  "change_pct_2015_2019": 162.3,
+  "note": "Part of this is duration rather than uptake. The March 2016 rule lengthened the STEM extension from 17 months to 24, and a 41% longer authorisation raises the number of people holding one at any moment even if no one changes their plans."
  },
  "tn": {
   "issuance_year": "2024",
