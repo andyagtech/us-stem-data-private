@@ -143,6 +143,13 @@ def build_html(all_data, mode='stem'):
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <title>{"Non-STEM " if is_nonstem else ""}Thesis &amp; Dissertation Lists — High NRA Universities</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<!-- THE SHARED STYLESHEET FIRST, then this page's own rules. The tokens are
+     defined once in style.css and the block below only overrides what this
+     page genuinely needs. An earlier version omitted this link and carried a
+     full private copy of the palette, which is how stem.html came to define
+     --bg without --hl and render a button transparent on white. A rebuild
+     puts the link back, so the fix survives regeneration. -->
+<link rel="stylesheet" href="/style.css">
 <style>
   :root {{
     --bg: #0f172a; --surface: #1e293b; --surface2: #334155;
@@ -2803,6 +2810,9 @@ def load_all(stem_filter='stem'):
     return [(e[0], e[1], e[2], e[3]) for e in data_by_key.values()]
 
 
+from clean_author_name import clean_author_name
+
+
 def write_data_files(all_data, data_dir, is_nonstem=False):
     """Write per-university JSON files and a search index."""
     import json
@@ -2813,13 +2823,20 @@ def write_data_files(all_data, data_dir, is_nonstem=False):
     for uni_key, uni_name, nra, records in all_data:
         compact = []
         for r in records:
+            # CLEAN THE NAME HERE, not in the page script. Some repositories
+            # put the degree and the awarding institution inside the author
+            # field, so the harvest honestly recorded "Chen, Hongge,Ph.
+            # D.Massachusetts Institute of Technology." Cleaning at this
+            # point means the page, the search index, the chat tool and the
+            # exports all get the same name. The raw harvest is untouched.
+            nm = clean_author_name(r['name'])
             compact.append([
-                r['dept'], r['year'], r['name'],
+                r['dept'], r['year'], nm,
                 r['classification'] or '', r['confidence'] or '',
                 r['title'][:90], r['url'], r.get('degree', ''),
             ])
             # Add to search index: just name + dept, enough for matching
-            search_entries.append([uni_key, r['name'], r['dept'], r['year']])
+            search_entries.append([uni_key, nm, r['dept'], r['year']])
 
         # MERGE-NOT-OVERWRITE: preserve enrichment fields from prior runs.
         # generate is responsible for `key`, `name`, `nra`, `records`.

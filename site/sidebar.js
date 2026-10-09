@@ -196,6 +196,13 @@
       { href: '/filers', label: 'Who Files The Visas' },
     ]},
     { title: '4 · Who profits', items: [
+      { href: '/name-lists', label: 'Thesis & Dissertation Lists', anchors: [
+        { hash: 'open', label: 'Open the lists' },
+        { hash: 'how', label: 'How to read one' },
+        { hash: 'largest', label: 'The largest collections' },
+        { hash: 'highest-nra', label: 'Highest non-resident share' },
+        { hash: 'limits', label: 'What this record is not' },
+      ]},
       { href: '/postdocs', label: 'Postdocs & Citizenship', anchors: [
         { hash: 'the-finding', label: 'Americans are a minority' },
         { hash: 'the-nine', label: 'The nine named universities' },

@@ -28,6 +28,12 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <title>Thesis &amp; Dissertation Lists — High NRA Universities</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<!-- THE SHARED STYLESHEET FIRST, then this page's own rules. The tokens are
+     defined once in style.css and the block below only overrides what this
+     page genuinely needs. An earlier version omitted this link and carried a
+     full private copy of the palette, which is how stem.html came to define
+     --bg without --hl and render a button transparent on white. A rebuild
+     puts the link back, so the fix survives regeneration. -->
 <link rel="stylesheet" href="/style.css">
 <style>
   :root {
@@ -175,8 +181,8 @@
     color: var(--text-muted); width: 100%; text-align: center; padding-top: 6px; }
   body.no-uni .toggle-wrap { cursor: not-allowed; }
   .degree-badge { font-size: 0.65rem; font-weight: 700; padding: 1px 4px; border-radius: 3px; margin-right: 4px; vertical-align: 1px; }
-  .degree-phd { background: rgba(74,222,128,0.15); color: var(--green); }
-  .degree-ms { background: rgba(251,191,36,0.15); color: var(--yellow); }
+  .degree-phd { background: rgba(74,222,128,0.15); color: #4ade80; }
+  .degree-ms { background: rgba(251,191,36,0.15); color: #fbbf24; }
 
   .ms-group { margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--surface2); }
   .ms-group-header { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 4px 0; }
@@ -203,7 +209,7 @@
   .nat-stat.red .num { color: #ef4444; }
   .nat-stat.blue .num { color: var(--accent); }
   .nat-stat.pink .num { color: #f472b6; }
-  .nat-stat.orange .num { color: var(--orange); }
+  .nat-stat.orange .num { color: #fb923c; }
   .nat-charts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
   .nat-chart-box { background: var(--surface); border: 1px solid var(--surface2); border-radius: 10px; padding: 14px; }
   .nat-chart-box h3 { font-size: 0.85rem; margin-bottom: 2px; }
@@ -292,11 +298,11 @@
   .coach-tooltip .coach-arrow.left { left: -7px; top: 50%; transform: translateY(-50%) rotate(-45deg); }
   .coach-tooltip .coach-arrow.right { right: -7px; top: 50%; transform: translateY(-50%) rotate(135deg); }
   .coach-tooltip .coach-arrow.top { top: -7px; left: 30px; transform: rotate(45deg); }
-  .coach-dismiss { display: inline-block; margin-top: 10px; background: var(--accent); color: var(--bg); border: none; padding: 5px 14px; border-radius: 5px; font-size: 0.78rem; font-weight: 600; cursor: pointer; }
+  .coach-dismiss { display: inline-block; margin-top: 10px; background: var(--accent); color: #0f172a; border: none; padding: 5px 14px; border-radius: 5px; font-size: 0.78rem; font-weight: 600; cursor: pointer; }
   @keyframes coach-pulse { 0%,100% { box-shadow: 0 0 0 4px var(--accent), 0 0 20px rgba(56,189,248,0.4); } 50% { box-shadow: 0 0 0 8px var(--accent), 0 0 30px rgba(56,189,248,0.6); } }
   .coach-highlight { animation: coach-pulse 1.5s ease-in-out infinite; }
 
-  .mobile-menu-btn { display: none; position: fixed; bottom: 16px; left: 16px; z-index: 98; background: var(--accent); color: var(--bg); border: none; border-radius: 50%; width: 48px; height: 48px; font-size: 1.3rem; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.3); align-items: center; justify-content: center; }
+  .mobile-menu-btn { display: none; position: fixed; bottom: 16px; left: 16px; z-index: 98; background: var(--accent); color: #0f172a; border: none; border-radius: 50%; width: 48px; height: 48px; font-size: 1.3rem; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.3); align-items: center; justify-content: center; }
 
   /* General dept visual distinction */
   .dept-section.dept-general { border-style: dashed; opacity: 0.85; }
@@ -309,59 +315,31 @@
 
   .nav-item-wrap { display: flex; align-items: center; }
   .nav-item-wrap .nav-item { flex: 1; }
-
-@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
---bg:#ffffff;--surface:#f6f7f9;--border:#d8dee6;--text:#111827;
---text-muted:#4b5563;--accent:#1d4ed8;color-scheme:light;}}
-:root[data-theme="light"]{
---bg:#ffffff;--surface:#f6f7f9;--border:#d8dee6;--text:#111827;
---text-muted:#4b5563;--accent:#1d4ed8;color-scheme:light;}
-/* phd-light-status */
-@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--surface2:#e5e7eb;--red:#b91c1c;--orange:#c2410c;--yellow:#a16207;--green:#15803d;--blue:#1d4ed8;}}
-:root[data-theme="light"]{--surface2:#e5e7eb;--red:#b91c1c;--orange:#c2410c;--yellow:#a16207;--green:#15803d;--blue:#1d4ed8;}
-/* /phd-light-status */
 </style>
   <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
   <script defer src="/theme.js"></script>
-<style id="stem-tour-style">
-  .st-tour { position: fixed; right: 1.2rem; bottom: 1.2rem; width: min(30rem, calc(100vw - 2.4rem));
-    background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--hl);
-    border-radius: 12px; padding: 1rem 1.1rem; box-shadow: 0 8px 32px rgba(0,0,0,.18);
-    z-index: 1200; display: none; }
-  .st-tour.open { display: block; }
-  .st-count { font-size: .68rem; text-transform: uppercase; letter-spacing: .08em;
-    color: var(--text-muted); margin: 0 0 .35rem; }
-  .st-title { font-weight: 700; font-size: 1rem; margin: 0 0 .4rem; }
-  .st-say { font-size: .89rem; line-height: 1.6; color: var(--text); margin: 0 0 .8rem; }
-  .st-row { display: flex; gap: .5rem; align-items: center; }
-  .st-tour button:disabled { opacity: .4; cursor: default; }
-  .st-keys { font-size: .68rem; color: var(--text-muted); margin: .6rem 0 0; }
-  .st-tour button { font: inherit; font-size: .85rem; padding: .4rem 1rem; border-radius: 999px;
-    cursor: pointer; border: 1px solid var(--border); background: var(--bg); color: inherit; }
-  .st-next { background: var(--hl) !important; color: var(--bg) !important; border-color: var(--hl) !important;
-    font-weight: 650; }
-  /* The ring is a sibling of the page, not a border on the chart: adding a
-     border to a canvas container reflows it and the chart redraws. */
-  .st-ring { position: absolute; border: 3px solid var(--hl); border-radius: 10px;
-    pointer-events: none; z-index: 1100; display: none; transition: all .25s ease; }
-  .top-nav-btn.tour { background: var(--hl); color: var(--bg); border-color: var(--hl); font-weight: 650; }
-</style>
 </head>
 <body class="flags-hidden ms-hidden old-hidden no-uni">
 
-<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:0;z-index:999;background:var(--accent);color:var(--bg);padding:8px 16px;font-size:0.85rem;text-decoration:none;" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">Skip to content</a>
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:0;z-index:999;background:var(--accent);color:#0f172a;padding:8px 16px;font-size:0.85rem;text-decoration:none;" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">Skip to content</a>
 
 <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="Open navigation menu">☰</button>
+<!-- The navigation is sidebar.js, shared with every other page on the
+     site. These pages used to bake in their own 21 KB copy, which
+     diverged from the shared one and meant a reader arriving on a
+     university page -- the most likely landing page from a shared
+     link -- saw a different site. 2.1 MB of duplicated markup. -->
+
 <main class="main" id="main-content">
   <header class="top-nav" role="banner">
     <a href="index" class="top-nav-btn">Education Index</a>
     <a href="non_stem.html" class="top-nav-btn">Non-STEM View</a>
     <a href="data_sources" class="top-nav-btn">Data Sources</a>
-    <a href="#" class="top-nav-btn tour" data-stem-tour>Take the tour</a>
   </header>
   <h1>Thesis &amp; Dissertation Lists — High NRA Universities</h1>
   <p class="subtitle" style="font-size:0.78rem;color:var(--text-muted);margin-top:-2px;">NRA = Non-Resident Alien. Universities ranked by NRA share of STEM doctoral completions (IPEDS).</p>
   <p class="subtitle">Every name links to the university's institutional repository for direct verification. 509,072 total records across 106 schools.</p>
+  <div style="background:rgba(251,191,36,0.12);border:1px solid rgba(251,191,36,0.3);border-radius:8px;padding:8px 14px;margin:10px 0 4px;font-size:0.82rem;color:#fbbf24;">Data scraping still in progress. Record counts may change as new data is collected.</div>
 
   <div id="info-section">
     <!-- National stats hero cards -->
@@ -436,7 +414,7 @@
           "Theses and Dissertations" collections. These typically include <strong>both doctoral dissertations
           and master's theses</strong>. Only Caltech has explicit PhD-only filtering.
           Where possible, records are labeled
-          <span style="color:var(--green);">PhD</span> or <span style="color:var(--yellow);">MS</span>
+          <span style="color:#4ade80;">PhD</span> or <span style="color:#fbbf24;">MS</span>
           based on available metadata, but many records cannot be distinguished.
           Each name links directly to the original record for verification.
         </p>
@@ -580,13 +558,13 @@
     </div>
   </div>
 
-  <footer class="site-footer" style="text-align:center;padding:28px 16px 32px;font-size:0.74rem;color:#64748b;border-top:1px solid var(--surface2);margin-top:32px;line-height:1.7;">
-    A project by <a href="https://andy-barr.com" target="_blank" rel="noopener" style="color:var(--text-muted);text-decoration:none;font-weight:600;">Andy Barr</a>. Data from US federal agencies (NCES, NSF, DOL, DHS) and university institutional repositories.<br>
-    <a href="about" style="color:var(--accent);text-decoration:none;">About</a> &middot;
-    <a href="data_sources" style="color:var(--accent);text-decoration:none;">Methodology</a> &middot;
-    <a href="submit" style="color:var(--accent);text-decoration:none;">Tip Line</a> &middot;
-    <a href="https://x.com/andy_barr_data" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">Follow on X</a> &middot;
-    <a href="https://buymeacoffee.com/andybarr" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">Support this Page</a>
+  <footer class="site-footer" style="text-align:center;padding:28px 16px 32px;font-size:0.74rem;color:#64748b;border-top:1px solid #334155;margin-top:32px;line-height:1.7;">
+    A project by <a href="https://andy-barr.com" target="_blank" rel="noopener" style="color:#94a3b8;text-decoration:none;font-weight:600;">Andy Barr</a>. Data from US federal agencies (NCES, NSF, DOL, DHS) and university institutional repositories.<br>
+    <a href="about" style="color:#38bdf8;text-decoration:none;">About</a> &middot;
+    <a href="data_sources" style="color:#38bdf8;text-decoration:none;">Methodology</a> &middot;
+    <a href="submit" style="color:#38bdf8;text-decoration:none;">Tip Line</a> &middot;
+    <a href="https://x.com/andy_barr_data" target="_blank" rel="noopener" style="color:#38bdf8;text-decoration:none;">Follow on X</a> &middot;
+    <a href="https://buymeacoffee.com/andybarr" target="_blank" rel="noopener" style="color:#38bdf8;text-decoration:none;">Support this Page</a>
   </footer>
 </main>
 
@@ -6628,8 +6606,7 @@ function renderUni(uni) {
   return html;
 }
 
-function toggleSidebar(){ /* the shared sidebar owns this now */ }
-function __retiredToggleSidebar() {
+function toggleSidebar() {
   document.getElementById('sidebar')?.classList.toggle('open');
 }
 
@@ -8209,9 +8186,8 @@ const _origShowUni = showUni;
      hand: regenerating the pages silently deleted the sidebar from both, and
      only the consistency check noticed. A generated file is never the place to
      put anything by hand. -->
-<script src="/stem-tour.js" defer></script>
+<script src="/analytics-beacon.js" defer></script>
 <script src="/sidebar.js"></script>
 <script src="/chat-widget.js"></script>
-<script src="/analytics-beacon.js" defer></script>
 </body>
 </html>

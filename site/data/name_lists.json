@@ -1,0 +1,203 @@
+{
+  "source": "Built from site/data/{stem,nonstem}/*.json, the harvested thesis and dissertation records",
+  "total_records": 708393,
+  "stem_records": 509072,
+  "nonstem_records": 199321,
+  "universities": 106,
+  "departments": 1522,
+  "first_year": 1966,
+  "last_year": 2026,
+  "largest": [
+    {
+      "key": "mit",
+      "name": "MIT",
+      "records": 24998
+    },
+    {
+      "key": "utaustin",
+      "name": "UT Austin",
+      "records": 24283
+    },
+    {
+      "key": "ncstate",
+      "name": "NC State",
+      "records": 18997
+    },
+    {
+      "key": "purdue",
+      "name": "Purdue",
+      "records": 18290
+    },
+    {
+      "key": "penn_state",
+      "name": "Penn State",
+      "records": 17926
+    },
+    {
+      "key": "uf",
+      "name": "U Florida",
+      "records": 17848
+    },
+    {
+      "key": "vt",
+      "name": "Virginia Tech",
+      "records": 16297
+    },
+    {
+      "key": "uarizona",
+      "name": "U Arizona",
+      "records": 15775
+    },
+    {
+      "key": "umn",
+      "name": "U Minnesota",
+      "records": 15188
+    },
+    {
+      "key": "stanford",
+      "name": "Stanford",
+      "records": 14940
+    },
+    {
+      "key": "ucla",
+      "name": "UCLA",
+      "records": 14437
+    },
+    {
+      "key": "ucberkeley",
+      "name": "UC Berkeley",
+      "records": 13591
+    },
+    {
+      "key": "ucsd",
+      "name": "UC San Diego",
+      "records": 13547
+    },
+    {
+      "key": "cornell",
+      "name": "Cornell",
+      "records": 11479
+    },
+    {
+      "key": "columbia",
+      "name": "Columbia",
+      "records": 11453
+    },
+    {
+      "key": "msu",
+      "name": "Michigan State",
+      "records": 11393
+    },
+    {
+      "key": "bu",
+      "name": "Boston U",
+      "records": 11359
+    },
+    {
+      "key": "gatech",
+      "name": "Georgia Tech",
+      "records": 11248
+    },
+    {
+      "key": "umissouri",
+      "name": "U Missouri",
+      "records": 10454
+    },
+    {
+      "key": "montana_state",
+      "name": "Montana State U",
+      "records": 10335
+    },
+    {
+      "key": "uw_seattle",
+      "name": "UW Seattle",
+      "records": 10006
+    },
+    {
+      "key": "gmu",
+      "name": "George Mason",
+      "records": 9941
+    },
+    {
+      "key": "ttu",
+      "name": "Texas Tech",
+      "records": 9410
+    },
+    {
+      "key": "harvard",
+      "name": "Harvard",
+      "records": 9124
+    },
+    {
+      "key": "lsu",
+      "name": "LSU",
+      "records": 8987
+    }
+  ],
+  "highest_nra": [
+    {
+      "key": "missouri_st",
+      "name": "Missouri S&T",
+      "nra": 74.3
+    },
+    {
+      "key": "njit",
+      "name": "NJIT",
+      "nra": 70.7
+    },
+    {
+      "key": "mtu",
+      "name": "Michigan Tech",
+      "nra": 66.7
+    },
+    {
+      "key": "utdallas",
+      "name": "UT Dallas",
+      "nra": 66.1
+    },
+    {
+      "key": "utarlington",
+      "name": "UT Arlington",
+      "nra": 65.5
+    },
+    {
+      "key": "uhouston",
+      "name": "U Houston",
+      "nra": 64.5
+    },
+    {
+      "key": "sdsu",
+      "name": "SD State",
+      "nra": 64.5
+    },
+    {
+      "key": "smu",
+      "name": "SMU",
+      "nra": 61.3
+    },
+    {
+      "key": "purdue",
+      "name": "Purdue",
+      "nra": 60.3
+    },
+    {
+      "key": "stony_brook",
+      "name": "Stony Brook",
+      "nra": 58.8
+    },
+    {
+      "key": "kstate",
+      "name": "Kansas State",
+      "nra": 58.3
+    },
+    {
+      "key": "ttu",
+      "name": "Texas Tech",
+      "nra": 57.4
+    }
+  ],
+  "caveats": [
+    "No university is required to publish a dissertation or to list the ones it has awarded, so coverage is a floor and not a total.",
+    "A university with fewer records here may publish less rather than award less. Institutions must not be ranked on record count alone."
+  ]
+}
