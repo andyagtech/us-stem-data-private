@@ -365,6 +365,7 @@
     'H-1B and labor visas': 'h1b',
     'States': 'states',
     'International': 'international',
+    'Explore': 'explore',
     'Reference': 'reference',
     'The public payroll': 'h1b',
     'Who files': 'h1b',

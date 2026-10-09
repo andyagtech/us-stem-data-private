@@ -289,6 +289,26 @@
              "citizen of one country born in another is invisible in every " +
              "one of them." }
     ],
+    explore: [
+      { page: '/query', anchor: 'data-query',
+        say: "Everything on this site is built from these tables, and you " +
+             "can query them yourself. They load into your browser \u2014 " +
+             "nothing is sent to a server." },
+      { page: '/query', anchor: 'exampleQueries',
+        say: "Start with the grey buttons under Run. They are worked " +
+             "examples for whichever table is selected, and the ones marked " +
+             "'join' cross two tables \u2014 which employer sits in which " +
+             "industry, which public employers file both a green card and " +
+             "an H-1B." },
+      { page: '/live',
+        say: "The live dashboard is the same data, spoken. Ask it a " +
+             "question out loud and it draws the answer, or click a board " +
+             "to pull one up without speaking." },
+      { page: '/data_requests', anchor: 'no-requirement',
+        say: "And this is where the record stops. No university is " +
+             "required to publish a dissertation or even to list the ones " +
+             "it awarded, so everything you just queried is a floor." }
+    ],
     reference: [
       { page: '/data_sources', anchor: 'federal',
         say: "Every federal source this site reads, named, with what each " +

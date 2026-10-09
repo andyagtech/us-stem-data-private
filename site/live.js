@@ -35,6 +35,8 @@
   'use strict';
 
   var BUNDLE_URL = '/data/live_bundle.json';
+  var BOARDS_URL = '/data/live_boards.json';
+  var BOARDS = null;
   var VOICE_ENABLED = true;
   // The budgeted /realtime route on phd-chat-prod. Same function as the typed
   // assistant, same daily ledger, different upstream API.
@@ -234,6 +236,65 @@
   /* ---------------------------------------------------------- tool impls */
 
   var TOOLS = {
+    /* A named board. The catalogue carries the title, subtitle and headline
+       already computed from the same bundle the chart draws, so the words on
+       screen cannot disagree with the line on it. The board delegates the
+       actual drawing to the primitive it names. */
+    show_board: function (a) {
+      if (!BOARDS) return { ok: false, error: 'boards not loaded yet' };
+      var id = String(a.id || '');
+      var b = null;
+      for (var i = 0; i < BOARDS.boards.length; i++) {
+        if (BOARDS.boards[i].id === id) { b = BOARDS.boards[i]; break; }
+      }
+      if (!b) return { ok: false, error: 'no board with that id' };
+      var fn = TOOLS[b.tool];
+      if (!fn) return { ok: false, error: 'board names an unknown tool' };
+      var r = fn(b.args || {});
+      if (r && r.ok === false) return r;
+      setBoard(b.title, b.subtitle);
+      if (b.headline) {
+        setKpi(b.headline.label, b.headline.value, b.hook || '');
+      }
+      return { ok: true, board: b.id, title: b.title,
+               headline: b.headline, hook: b.hook };
+    },
+
+    list_boards: function (a) {
+      if (!BOARDS) return { ok: false, error: 'boards not loaded yet' };
+      var q = String(a && a.query || '').toLowerCase();
+      var out = [];
+      for (var i = 0; i < BOARDS.boards.length; i++) {
+        var b = BOARDS.boards[i];
+        if (q) {
+          var hay = (b.id + ' ' + b.title + ' ' + (b.tags || []).join(' ')).toLowerCase();
+          if (hay.indexOf(q) === -1) continue;
+        }
+        out.push({ id: b.id, title: b.title, headline: b.headline.value });
+      }
+      return { ok: true, count: out.length, boards: out.slice(0, 40) };
+    },
+
+    /* Open a page for the listener. A new tab, deliberately: the voice
+       session lives in this one and navigating away would end it mid
+       sentence. Only paths the catalogue lists are accepted, so the model
+       cannot invent one. */
+    navigate: function (a) {
+      if (!BOARDS) return { ok: false, error: 'destinations not loaded yet' };
+      var path = String(a && a.path || '');
+      var known = false;
+      for (var i = 0; i < BOARDS.destinations.length; i++) {
+        if (BOARDS.destinations[i].path === path) { known = true; break; }
+      }
+      if (!known) return { ok: false, error: 'unknown path; call list_boards or use a listed page' };
+      var w = window.open(path, '_blank', 'noopener');
+      say('System', 'Opened ' + path + (a.because ? ' \u2014 ' + a.because : ''));
+      if (typeof send === 'function') {
+        send({ type: 'voice_navigate', target: path, because: a.because || '' });
+      }
+      return { ok: true, opened: path, blocked: !w };
+    },
+
     show_series: function (a) {
       var cip = String(a.field || '11').replace(/\D/g, '').padStart(2, '0');
       var level = a.level === 'doctorate' ? 'doctorate' : 'masters';
@@ -493,8 +554,69 @@
         TOOLS.show_series({ field: '11', level: 'doctorate' }); } }
   ];
 
+  // The eight shown without asking. Chosen to span the argument rather
+  // than to rank: a counts view, a share view, both levels, a ranking, and
+  // the visa series that explains why degrees and visas disagree.
+  var CHIP_BOARDS = ['11-masters', '11-masters-share', '14-doctorate',
+                     'rank-share-masters', 'rank-share-doctorate',
+                     'rank-nra-doctorate', 'f1-china-india', '40-doctorate'];
+
+  function openBoardPicker() {
+    var box = $('prompts');
+    if (!box || !BOARDS) return;
+    var open = document.getElementById('board-picker');
+    if (open) { open.remove(); return; }
+    var d = document.createElement('div');
+    d.id = 'board-picker';
+    d.className = 'board-picker';
+    BOARDS.boards.forEach(function (b) {
+      var r = document.createElement('button');
+      r.type = 'button';
+      r.className = 'board-pick';
+      r.innerHTML = '<span class="bp-t"></span><span class="bp-v"></span>';
+      r.querySelector('.bp-t').textContent = b.title;
+      r.querySelector('.bp-v').textContent = b.headline ? b.headline.value : '';
+      r.setAttribute('data-track', 'live.board.' + b.id);
+      r.addEventListener('click', function () {
+        TOOLS.show_board({ id: b.id });
+        d.remove();
+      });
+      d.appendChild(r);
+    });
+    box.parentNode.insertBefore(d, box.nextSibling);
+  }
+
   function buildChips() {
     var box = $('prompts');
+    if (!box) return;
+    box.innerHTML = '';
+    // Once the catalogue is loaded the chips ARE the boards, so what a
+    // reader can click and what the voice can summon are the same set and
+    // cannot drift apart. Before then, the hand-written few.
+    if (BOARDS && BOARDS.boards && BOARDS.boards.length) {
+      var pick = CHIP_BOARDS.filter(function (id) {
+        return BOARDS.boards.some(function (b) { return b.id === id; });
+      });
+      pick.forEach(function (id) {
+        var b = BOARDS.boards.filter(function (x) { return x.id === id; })[0];
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'prompt-chip';
+        btn.textContent = b.title;
+        btn.title = b.hook || '';
+        btn.setAttribute('data-track', 'live.board.' + id);
+        btn.addEventListener('click', function () { TOOLS.show_board({ id: id }); });
+        box.appendChild(btn);
+      });
+      var more = document.createElement('button');
+      more.type = 'button';
+      more.className = 'prompt-chip prompt-chip-more';
+      more.textContent = 'All ' + BOARDS.boards.length + ' boards \u25be';
+      more.setAttribute('data-track', 'live.board.all');
+      more.addEventListener('click', openBoardPicker);
+      box.appendChild(more);
+      return;
+    }
     CHIPS.forEach(function (c) {
       var b = document.createElement('button');
       b.type = 'button';
@@ -523,6 +645,13 @@
       .then(function (r) { return r.json(); })
       .then(function (j) {
         data = j;
+        // The board catalogue is a separate, smaller file. The dashboard is
+        // fully usable without it -- the primitives and the chips still
+        // work -- so a failure here must not block the opening render.
+        fetch(BOARDS_URL, { credentials: 'omit' })
+          .then(function (r) { return r.json(); })
+          .then(function (bj) { BOARDS = bj; buildChips(); })
+          .catch(function () { /* primitives only */ });
         buildChips();
         opening();
         if (VOICE_ENABLED && TOKEN_URL && $('mic')) {

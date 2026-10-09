@@ -1,0 +1,939 @@
+{
+  "source": "Built from site/data/live_bundle.json",
+  "note": "Every title, headline and hook here is computed from the same bundle the dashboard draws, so a board cannot describe something the chart does not show.",
+  "count": 40,
+  "boards": [
+    {
+      "id": "26-masters",
+      "title": "Biological sciences master's degrees",
+      "subtitle": "Domestic and non-resident recipients, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "26",
+        "level": "masters",
+        "mode": "counts"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "18%"
+      },
+      "hook": "Domestic rose 161% while non-resident rose 279%.",
+      "tags": [
+        "biological sciences",
+        "masters",
+        "lower share"
+      ]
+    },
+    {
+      "id": "26-doctorate",
+      "title": "Biological sciences doctorates",
+      "subtitle": "Domestic and non-resident recipients, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "26",
+        "level": "doctorate",
+        "mode": "counts"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "19%"
+      },
+      "hook": "Domestic rose 35% while non-resident rose 2%.",
+      "tags": [
+        "biological sciences",
+        "doctorate",
+        "lower share"
+      ]
+    },
+    {
+      "id": "11-masters",
+      "title": "Computer science master's degrees",
+      "subtitle": "Domestic and non-resident recipients, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "11",
+        "level": "masters",
+        "mode": "counts"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "39%"
+      },
+      "hook": "Domestic rose 492% while non-resident rose 796%.",
+      "tags": [
+        "computer science",
+        "masters",
+        "lower share"
+      ]
+    },
+    {
+      "id": "11-doctorate",
+      "title": "Computer science doctorates",
+      "subtitle": "Domestic and non-resident recipients, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "11",
+        "level": "doctorate",
+        "mode": "counts"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "36%"
+      },
+      "hook": "Domestic rose 124% while non-resident rose 107%.",
+      "tags": [
+        "computer science",
+        "doctorate",
+        "lower share"
+      ]
+    },
+    {
+      "id": "14-masters",
+      "title": "Engineering master's degrees",
+      "subtitle": "Domestic and non-resident recipients, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "14",
+        "level": "masters",
+        "mode": "counts"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "33%"
+      },
+      "hook": "Domestic rose 72% while non-resident rose 107%.",
+      "tags": [
+        "engineering",
+        "masters",
+        "lower share"
+      ]
+    },
+    {
+      "id": "14-doctorate",
+      "title": "Engineering doctorates",
+      "subtitle": "Domestic and non-resident recipients, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "14",
+        "level": "doctorate",
+        "mode": "counts"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "35%"
+      },
+      "hook": "Domestic rose 49% while non-resident rose 35%.",
+      "tags": [
+        "engineering",
+        "doctorate",
+        "lower share"
+      ]
+    },
+    {
+      "id": "15-masters",
+      "title": "Engineering tech master's degrees",
+      "subtitle": "Domestic and non-resident recipients, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "15",
+        "level": "masters",
+        "mode": "counts"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "35%"
+      },
+      "hook": "Domestic rose 215% while non-resident rose 500%.",
+      "tags": [
+        "engineering tech",
+        "masters",
+        "lower share"
+      ]
+    },
+    {
+      "id": "15-doctorate",
+      "title": "Engineering tech doctorates",
+      "subtitle": "Domestic and non-resident recipients, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "15",
+        "level": "doctorate",
+        "mode": "counts"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "30%"
+      },
+      "hook": "Domestic rose 246% while non-resident rose 212%.",
+      "tags": [
+        "engineering tech",
+        "doctorate",
+        "lower share"
+      ]
+    },
+    {
+      "id": "30-masters",
+      "title": "Interdisciplinary master's degrees",
+      "subtitle": "Domestic and non-resident recipients, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "30",
+        "level": "masters",
+        "mode": "counts"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "31%"
+      },
+      "hook": "Domestic rose 559% while non-resident rose 2717%.",
+      "tags": [
+        "interdisciplinary",
+        "masters",
+        "lower share"
+      ]
+    },
+    {
+      "id": "30-doctorate",
+      "title": "Interdisciplinary doctorates",
+      "subtitle": "Domestic and non-resident recipients, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "30",
+        "level": "doctorate",
+        "mode": "counts"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "21%"
+      },
+      "hook": "Domestic rose 32% while non-resident rose 59%.",
+      "tags": [
+        "interdisciplinary",
+        "doctorate",
+        "lower share"
+      ]
+    },
+    {
+      "id": "27-masters",
+      "title": "Math & statistics master's degrees",
+      "subtitle": "Domestic and non-resident recipients, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "27",
+        "level": "masters",
+        "mode": "counts"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "35%"
+      },
+      "hook": "Domestic rose 152% while non-resident rose 281%.",
+      "tags": [
+        "math & statistics",
+        "masters",
+        "lower share"
+      ]
+    },
+    {
+      "id": "27-doctorate",
+      "title": "Math & statistics doctorates",
+      "subtitle": "Domestic and non-resident recipients, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "27",
+        "level": "doctorate",
+        "mode": "counts"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "34%"
+      },
+      "hook": "Domestic rose 57% while non-resident rose 63%.",
+      "tags": [
+        "math & statistics",
+        "doctorate",
+        "lower share"
+      ]
+    },
+    {
+      "id": "40-masters",
+      "title": "Physical sciences master's degrees",
+      "subtitle": "Domestic and non-resident recipients, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "40",
+        "level": "masters",
+        "mode": "counts"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "25%"
+      },
+      "hook": "Domestic rose 31% while non-resident rose 56%.",
+      "tags": [
+        "physical sciences",
+        "masters",
+        "lower share"
+      ]
+    },
+    {
+      "id": "40-doctorate",
+      "title": "Physical sciences doctorates",
+      "subtitle": "Domestic and non-resident recipients, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "40",
+        "level": "doctorate",
+        "mode": "counts"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "28%"
+      },
+      "hook": "Domestic rose 33% while non-resident rose 15%.",
+      "tags": [
+        "physical sciences",
+        "doctorate",
+        "lower share"
+      ]
+    },
+    {
+      "id": "42-masters",
+      "title": "Psychology master's degrees",
+      "subtitle": "Domestic and non-resident recipients, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "42",
+        "level": "masters",
+        "mode": "counts"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "5%"
+      },
+      "hook": "Domestic rose 82% while non-resident rose 179%.",
+      "tags": [
+        "psychology",
+        "masters",
+        "lower share"
+      ]
+    },
+    {
+      "id": "42-doctorate",
+      "title": "Psychology doctorates",
+      "subtitle": "Domestic and non-resident recipients, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "42",
+        "level": "doctorate",
+        "mode": "counts"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "8%"
+      },
+      "hook": "Domestic rose 9% while non-resident rose 48%.",
+      "tags": [
+        "psychology",
+        "doctorate",
+        "lower share"
+      ]
+    },
+    {
+      "id": "26-masters-share",
+      "title": "Biological sciences master's degrees: the share",
+      "subtitle": "Non-resident percentage, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "26",
+        "level": "masters",
+        "mode": "share"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "18%"
+      },
+      "hook": "Moved from 14% to 18%.",
+      "tags": [
+        "biological sciences",
+        "masters",
+        "share"
+      ]
+    },
+    {
+      "id": "26-doctorate-share",
+      "title": "Biological sciences doctorates: the share",
+      "subtitle": "Non-resident percentage, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "26",
+        "level": "doctorate",
+        "mode": "share"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "19%"
+      },
+      "hook": "Moved from 23% to 19%.",
+      "tags": [
+        "biological sciences",
+        "doctorate",
+        "share"
+      ]
+    },
+    {
+      "id": "11-masters-share",
+      "title": "Computer science master's degrees: the share",
+      "subtitle": "Non-resident percentage, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "11",
+        "level": "masters",
+        "mode": "share"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "39%"
+      },
+      "hook": "Moved from 30% to 39%.",
+      "tags": [
+        "computer science",
+        "masters",
+        "share"
+      ]
+    },
+    {
+      "id": "11-doctorate-share",
+      "title": "Computer science doctorates: the share",
+      "subtitle": "Non-resident percentage, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "11",
+        "level": "doctorate",
+        "mode": "share"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "36%"
+      },
+      "hook": "Moved from 38% to 36%.",
+      "tags": [
+        "computer science",
+        "doctorate",
+        "share"
+      ]
+    },
+    {
+      "id": "14-masters-share",
+      "title": "Engineering master's degrees: the share",
+      "subtitle": "Non-resident percentage, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "14",
+        "level": "masters",
+        "mode": "share"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "33%"
+      },
+      "hook": "Moved from 29% to 33%.",
+      "tags": [
+        "engineering",
+        "masters",
+        "share"
+      ]
+    },
+    {
+      "id": "14-doctorate-share",
+      "title": "Engineering doctorates: the share",
+      "subtitle": "Non-resident percentage, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "14",
+        "level": "doctorate",
+        "mode": "share"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "35%"
+      },
+      "hook": "Moved from 38% to 35%.",
+      "tags": [
+        "engineering",
+        "doctorate",
+        "share"
+      ]
+    },
+    {
+      "id": "15-masters-share",
+      "title": "Engineering tech master's degrees: the share",
+      "subtitle": "Non-resident percentage, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "15",
+        "level": "masters",
+        "mode": "share"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "35%"
+      },
+      "hook": "Moved from 22% to 35%.",
+      "tags": [
+        "engineering tech",
+        "masters",
+        "share"
+      ]
+    },
+    {
+      "id": "15-doctorate-share",
+      "title": "Engineering tech doctorates: the share",
+      "subtitle": "Non-resident percentage, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "15",
+        "level": "doctorate",
+        "mode": "share"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "30%"
+      },
+      "hook": "Moved from 32% to 30%.",
+      "tags": [
+        "engineering tech",
+        "doctorate",
+        "share"
+      ]
+    },
+    {
+      "id": "30-masters-share",
+      "title": "Interdisciplinary master's degrees: the share",
+      "subtitle": "Non-resident percentage, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "30",
+        "level": "masters",
+        "mode": "share"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "31%"
+      },
+      "hook": "Moved from 10% to 31%.",
+      "tags": [
+        "interdisciplinary",
+        "masters",
+        "share"
+      ]
+    },
+    {
+      "id": "30-doctorate-share",
+      "title": "Interdisciplinary doctorates: the share",
+      "subtitle": "Non-resident percentage, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "30",
+        "level": "doctorate",
+        "mode": "share"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "21%"
+      },
+      "hook": "Moved from 18% to 21%.",
+      "tags": [
+        "interdisciplinary",
+        "doctorate",
+        "share"
+      ]
+    },
+    {
+      "id": "27-masters-share",
+      "title": "Math & statistics master's degrees: the share",
+      "subtitle": "Non-resident percentage, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "27",
+        "level": "masters",
+        "mode": "share"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "35%"
+      },
+      "hook": "Moved from 26% to 35%.",
+      "tags": [
+        "math & statistics",
+        "masters",
+        "share"
+      ]
+    },
+    {
+      "id": "27-doctorate-share",
+      "title": "Math & statistics doctorates: the share",
+      "subtitle": "Non-resident percentage, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "27",
+        "level": "doctorate",
+        "mode": "share"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "34%"
+      },
+      "hook": "Moved from 34% to 34%.",
+      "tags": [
+        "math & statistics",
+        "doctorate",
+        "share"
+      ]
+    },
+    {
+      "id": "40-masters-share",
+      "title": "Physical sciences master's degrees: the share",
+      "subtitle": "Non-resident percentage, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "40",
+        "level": "masters",
+        "mode": "share"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "25%"
+      },
+      "hook": "Moved from 21% to 25%.",
+      "tags": [
+        "physical sciences",
+        "masters",
+        "share"
+      ]
+    },
+    {
+      "id": "40-doctorate-share",
+      "title": "Physical sciences doctorates: the share",
+      "subtitle": "Non-resident percentage, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "40",
+        "level": "doctorate",
+        "mode": "share"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "28%"
+      },
+      "hook": "Moved from 30% to 28%.",
+      "tags": [
+        "physical sciences",
+        "doctorate",
+        "share"
+      ]
+    },
+    {
+      "id": "42-masters-share",
+      "title": "Psychology master's degrees: the share",
+      "subtitle": "Non-resident percentage, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "42",
+        "level": "masters",
+        "mode": "share"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "5%"
+      },
+      "hook": "Moved from 3% to 5%.",
+      "tags": [
+        "psychology",
+        "masters",
+        "share"
+      ]
+    },
+    {
+      "id": "42-doctorate-share",
+      "title": "Psychology doctorates: the share",
+      "subtitle": "Non-resident percentage, 2008\u20132025",
+      "tool": "show_series",
+      "args": {
+        "field": "42",
+        "level": "doctorate",
+        "mode": "share"
+      },
+      "headline": {
+        "label": "Non-resident share, 2025",
+        "value": "8%"
+      },
+      "hook": "Moved from 6% to 8%.",
+      "tags": [
+        "psychology",
+        "doctorate",
+        "share"
+      ]
+    },
+    {
+      "id": "rank-share-masters",
+      "title": "Which master's degrees go to non-residents",
+      "subtitle": "Non-resident share by field, 2025",
+      "tool": "compare_fields",
+      "args": {
+        "fields": [
+          "11",
+          "27",
+          "15",
+          "14",
+          "30",
+          "40",
+          "26",
+          "42"
+        ],
+        "level": "masters",
+        "measure": "share"
+      },
+      "headline": {
+        "label": "Highest: Computer science",
+        "value": "39%"
+      },
+      "hook": "Computer science is highest at 39%; Psychology lowest at 5%.",
+      "tags": [
+        "ranking",
+        "masters",
+        "share"
+      ]
+    },
+    {
+      "id": "rank-domestic-masters",
+      "title": "Where American master's degrees grew least",
+      "subtitle": "Change in domestic recipients since 2008",
+      "tool": "compare_fields",
+      "args": {
+        "fields": [
+          "40",
+          "14",
+          "42",
+          "27",
+          "26",
+          "15",
+          "11",
+          "30"
+        ],
+        "level": "masters",
+        "measure": "growth_domestic"
+      },
+      "headline": {
+        "label": "Physical sciences",
+        "value": "+31%"
+      },
+      "hook": "Physical sciences moved +31% for domestic students over the period.",
+      "tags": [
+        "ranking",
+        "masters",
+        "domestic"
+      ]
+    },
+    {
+      "id": "rank-nra-masters",
+      "title": "Where non-resident master's degrees grew fastest",
+      "subtitle": "Change in non-resident recipients since 2008",
+      "tool": "compare_fields",
+      "args": {
+        "fields": [
+          "30",
+          "11",
+          "15",
+          "27",
+          "26",
+          "42",
+          "14",
+          "40"
+        ],
+        "level": "masters",
+        "measure": "growth_nra"
+      },
+      "headline": {
+        "label": "Interdisciplinary",
+        "value": "+2717%"
+      },
+      "hook": "Interdisciplinary grew +2717% in non-resident recipients.",
+      "tags": [
+        "ranking",
+        "masters",
+        "non-resident"
+      ]
+    },
+    {
+      "id": "rank-share-doctorate",
+      "title": "Which doctorates go to non-residents",
+      "subtitle": "Non-resident share by field, 2025",
+      "tool": "compare_fields",
+      "args": {
+        "fields": [
+          "11",
+          "14",
+          "27",
+          "15",
+          "40",
+          "30",
+          "26",
+          "42"
+        ],
+        "level": "doctorate",
+        "measure": "share"
+      },
+      "headline": {
+        "label": "Highest: Computer science",
+        "value": "36%"
+      },
+      "hook": "Computer science is highest at 36%; Psychology lowest at 8%.",
+      "tags": [
+        "ranking",
+        "doctorate",
+        "share"
+      ]
+    },
+    {
+      "id": "rank-domestic-doctorate",
+      "title": "Where American doctorates grew least",
+      "subtitle": "Change in domestic recipients since 2008",
+      "tool": "compare_fields",
+      "args": {
+        "fields": [
+          "42",
+          "30",
+          "40",
+          "26",
+          "14",
+          "27",
+          "11",
+          "15"
+        ],
+        "level": "doctorate",
+        "measure": "growth_domestic"
+      },
+      "headline": {
+        "label": "Psychology",
+        "value": "+9%"
+      },
+      "hook": "Psychology moved +9% for domestic students over the period.",
+      "tags": [
+        "ranking",
+        "doctorate",
+        "domestic"
+      ]
+    },
+    {
+      "id": "rank-nra-doctorate",
+      "title": "Where non-resident doctorates grew fastest",
+      "subtitle": "Change in non-resident recipients since 2008",
+      "tool": "compare_fields",
+      "args": {
+        "fields": [
+          "15",
+          "11",
+          "27",
+          "30",
+          "42",
+          "14",
+          "40",
+          "26"
+        ],
+        "level": "doctorate",
+        "measure": "growth_nra"
+      },
+      "headline": {
+        "label": "Engineering tech",
+        "value": "+212%"
+      },
+      "hook": "Engineering tech grew +212% in non-resident recipients.",
+      "tags": [
+        "ranking",
+        "doctorate",
+        "non-resident"
+      ]
+    },
+    {
+      "id": "f1-total",
+      "title": "F-1 student visas issued",
+      "subtitle": "By fiscal year, 1997\u20132024",
+      "tool": "show_f1",
+      "args": {},
+      "headline": {
+        "label": "Issued 2024",
+        "value": "400,737"
+      },
+      "hook": "A visa is issued once; a degree is counted on completion.",
+      "tags": [
+        "visas",
+        "f1"
+      ]
+    },
+    {
+      "id": "f1-china-india",
+      "title": "F-1 visas: China against India",
+      "subtitle": "By fiscal year, 1997\u20132024",
+      "tool": "show_f1",
+      "args": {
+        "countries": [
+          "china",
+          "india"
+        ]
+      },
+      "headline": {
+        "label": "Two countries",
+        "value": "China & India"
+      },
+      "hook": "The two largest senders moved in opposite directions.",
+      "tags": [
+        "visas",
+        "f1",
+        "countries"
+      ]
+    }
+  ],
+  "destinations": [
+    {
+      "path": "/overview",
+      "describes": "the measured finding, with the charts behind it"
+    },
+    {
+      "path": "/postdocs",
+      "describes": "who holds the postdoc jobs, by citizenship"
+    },
+    {
+      "path": "/name-lists",
+      "describes": "the thesis and dissertation lists, by name"
+    },
+    {
+      "path": "/stem",
+      "describes": "every STEM thesis, by university and department"
+    },
+    {
+      "path": "/expansion",
+      "describes": "the master's expansion"
+    },
+    {
+      "path": "/visa-schools",
+      "describes": "the schools where foreign students are most of the intake"
+    },
+    {
+      "path": "/bodyshops",
+      "describes": "the staffing firms that file the most visas"
+    },
+    {
+      "path": "/public-sector-visas",
+      "describes": "green cards sponsored by public employers"
+    },
+    {
+      "path": "/query",
+      "describes": "the SQL console, to check any of it"
+    },
+    {
+      "path": "/data_requests",
+      "describes": "what the government does not publish"
+    }
+  ]
+}

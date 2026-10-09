@@ -53,6 +53,42 @@
   .live-main{max-width:1180px;margin:0 auto;padding:1.5rem;
     display:grid;grid-template-columns:1fr 300px;gap:1.25rem;align-items:start;}
   @media(max-width:900px){.live-main{grid-template-columns:1fr;}}
+  /* THE BOARD PICKER. Forty boards is too many for a chip row, so the
+     eight most useful sit inline and the rest open in a scrolling grid
+     underneath. It is a disclosure, not a dialog: no overlay, no focus
+     trap, and clicking the opener again closes it. */
+  .board-picker{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+    gap:.4rem;margin-top:.7rem;max-height:46vh;overflow-y:auto;padding:.6rem;
+    border:1px solid var(--live-edge);border-radius:10px;background:var(--live-panel);}
+  .board-pick{display:flex;justify-content:space-between;gap:.6rem;align-items:baseline;
+    text-align:left;background:none;border:1px solid var(--live-edge);border-radius:7px;
+    padding:.45rem .6rem;cursor:pointer;color:var(--live-ink);
+    font-family:inherit;font-size:.78rem;line-height:1.35;}
+  .board-pick:hover{border-color:var(--nra);}
+  .bp-t{flex:1;min-width:0;}
+  .bp-v{color:var(--nra);font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .prompt-chip-more{font-weight:600;}
+
+  /* RESPONSIVE. The single breakpoint at 900px stacked the rail under the
+     chart and stopped there, so on a phone the chart kept a 300px minimum
+     height inside a 1.5rem padded grid and the KPI stayed at 2.4rem --
+     a number wider than the column it sat in. */
+  @media(max-width:620px){
+    .live-main{padding:1rem .85rem;gap:1rem;}
+    .board{padding:1rem .9rem;}
+    .board-title{font-size:1.1rem;}
+    .chart-holder{min-height:240px;}
+    .kpi-value{font-size:1.9rem;}
+    .prompts{gap:.4rem;}
+    .prompt-chip{font-size:.74rem;padding:.35rem .55rem;}
+    .board-picker{grid-template-columns:1fr;max-height:50vh;}
+    .transcript{max-height:34vh;}
+  }
+  @media(max-width:420px){
+    .live-title{font-size:1.1rem;}
+    .kpi-value{font-size:1.6rem;}
+    .chart-holder{min-height:210px;}
+  }
 
   .board{background:var(--live-panel);border:1px solid var(--live-edge);
     border-radius:14px;padding:1.25rem 1.35rem 1rem;min-height:420px;
