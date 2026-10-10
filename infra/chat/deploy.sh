@@ -69,7 +69,8 @@ echo "Syncing handler source into lambda/ ..."
 for f in handler.py prompt.py tools.py blocks.py data_store.py realtime.py cache.py facts.py budget.py \
          knowledge_figures.py \
          tools_joins.py tools_demographics.py tools_search.py tools_provenance.py \
-         tools_levels.py tools_summary.py tools_public_sector.py; do
+         tools_levels.py tools_summary.py tools_public_sector.py \
+         tools_field_extremes.py; do
     cp "$SRC/$f" "$SCRIPT_DIR/lambda/$f"
 done
 # The module list above is hand-maintained and has silently omitted a new
