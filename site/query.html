@@ -367,7 +367,7 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
       <p class="guide-tip">Pick a table in the left rail to see its own
       examples.</p>
 
-      <h2>The six tables</h2>
+      <h2>The tables</h2>
       <dl class="guide-tables">
         <dt>stem_records</dt>
         <dd>509,072 STEM theses and dissertations. One row per award:
@@ -388,12 +388,61 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
         <dd>38,836 employers with their filing counts and wage levels.</dd>
       </dl>
 
+      <h2>Reference tables</h2>
+      <p>These exist so the others can be joined. Each one is built by a
+      script in this repository and the
+      <a href="/methodology" target="_blank" rel="noopener">data
+      methodology</a> describes how &mdash; what was normalised, what was
+      merged, and what was deliberately left apart.</p>
+      <dl class="guide-tables">
+        <dt>field_by_institution</dt>
+        <dd>12,594 rows, pre-summed, with the field name spelled out. Non-resident share of doctorates for
+        one field at one university, over 2015&ndash;2022 on a single award
+        basis, with the institution name already joined in. <strong>Start
+        here.</strong> The same question against <code>ipeds_awards</code>
+        takes about two seconds; this answers in under a tenth.</dd>
+        <dt>ipeds_awards</dt>
+        <dd>260,170 rows: year, institution, field code, award basis,
+        awards, non-residents. Every share published on this site is
+        computed from this table, so any of them can be recomputed here.
+        Use it when you need a different window, a different basis, or a
+        year-by-year series. The year column is
+        <code>award_year</code>, not <code>year</code>, because the SQL
+        engine treats <code>YEAR</code> as a keyword and
+        <code>a.year</code> fails to parse inside a join.
+        <strong>Never sum across <code>basis</code></strong>: IPEDS
+        recoded award levels in 2010 and the transition years appear
+        under both, so adding them counts those years twice.</dd>
+        <dt>institutions</dt>
+        <dd>2,290 institutions with their IPEDS identifier, state, control
+        and enrolment. The join key for everything above.</dd>
+        <dt>field_shares</dt>
+        <dd>268 ranked institution&ndash;field pairs: the six critical
+        sectors and the wider STEM search list. The
+        <code>restriction</code> column is null for the STEM list, which
+        means no claim is made, not that no regime applies.</dd>
+        <dt>department_pages</dt>
+        <dd>The department pages resolved and verified for those fields,
+        and which roster each publishes. Every URL was fetched and
+        checked, including for pages that answer 200 with a
+        &ldquo;not found&rdquo; body.</dd>
+        <dt>cap_exempt</dt>
+        <dd>2,403 cap-exempt employers.</dd>
+      </dl>
+
       <h2>Joining them</h2>
       <p><code>h1b_employers.naics</code> joins to
       <code>h1b_industry.naics</code>. <code>h1b_perm_public.employer</code>
       joins to <code>h1b_employers.employer</code> once both sides are
       upper-cased. <code>university</code> is the same key in both record
       tables.</p>
+      <p><code>ipeds_awards.unitid</code> joins to
+      <code>institutions.unitid</code>, and
+      <code>field_shares.institution</code> to
+      <code>department_pages.institution</code>. Prefer
+      <code>field_by_institution</code> where it will do: it has the
+      institution name in it already, so the commonest question needs no
+      join at all.</p>
       <p>The examples marked <strong>join</strong> show each of these.</p>
 
       <h2>Reading the numbers honestly</h2>
@@ -453,6 +502,17 @@ const KNOWN_EXPORTS = [
   { file: 'h1b_industry.parquet',     label: 'H-1B by industry (4.8K NAICS)' },
   { file: 'h1b_occupation.parquet',   label: 'H-1B by occupation (1K SOC)' },
   { file: 'h1b_employers.parquet',    label: 'H-1B employers (39K)' },
+
+  // The reference tables. These exist so the others can be JOINED: there
+  // was no institution table and no field-level enrolment, so a question
+  // like "universities with a high non-resident share in electrical
+  // engineering that also sponsor H-1Bs" could not be asked at all.
+  { file: 'ipeds_awards.parquet',     label: 'IPEDS awards by field (260K)' },
+  { file: 'institutions.parquet',     label: 'Institutions (2.3K)' },
+  { file: 'field_by_institution.parquet', label: 'Field x institution, pre-summed (13K)' },
+  { file: 'field_shares.parquet',     label: 'Non-resident share by field (268)' },
+  { file: 'department_pages.parquet', label: 'Department pages and rosters (181)' },
+  { file: 'cap_exempt.parquet',       label: 'Cap-exempt employers (2.4K)' },
 ];
 const CANDIDATE_BASES = ['data/exports/', '/data/exports/'];
 let EXPORTS_BASE = null;
@@ -833,6 +893,38 @@ const TABLE_QUERIES = {
     { label: 'Lowest-paid occupations', sql: `SELECT soc, soc_title, filings, employers, median_wage\nFROM h1b_occupation\nWHERE filings >= 100 AND median_wage IS NOT NULL\nORDER BY median_wage ASC\nLIMIT 30` },
     { label: 'Jobs nobody expects on H-1B', sql: `SELECT soc, soc_title, filings, employers, median_wage, top_employer\nFROM h1b_occupation\nWHERE soc LIKE '35-%' OR soc LIKE '37-%' OR soc LIKE '39-%' OR soc LIKE '45-%'\nORDER BY filings DESC` },
     { label: 'Teaching occupations', sql: `SELECT soc, soc_title, filings, employers, median_wage\nFROM h1b_occupation\nWHERE soc LIKE '25-%'\nORDER BY filings DESC` },
+  ],
+  'ipeds_awards': [
+    { label: 'Preview', sql: `SELECT *\nFROM ipeds_awards\nLIMIT 100` },
+    { label: 'NEVER sum across basis', sql: `-- IPEDS recoded award levels in 2010. The transition years are\n-- carried under BOTH bases, so summing across this column counts\n-- them twice and every program reads about a fifth too high.\n-- Pick one basis. aw17 is the post-2010 one.\nSELECT basis, min(award_year) AS first_year, max(award_year) AS last_year,\n       SUM(awards) AS awards\nFROM ipeds_awards\nGROUP BY basis\nORDER BY basis` },
+    { label: 'Recompute any published share', sql: `-- Every non-resident share on this site comes out of this table.\n-- One basis, one window, one field code: the arithmetic is here.\nSELECT SUM(awards) AS doctorates,\n       SUM(nonresident) AS nonresident,\n       round(SUM(nonresident) * 100.0 / SUM(awards), 1) AS pct\nFROM ipeds_awards\nWHERE basis = 'aw17' AND award_year BETWEEN 2015 AND 2022\n  AND cipcode = '14.2501'` },
+    { label: 'join: the field share, named', sql: `SELECT i.name AS institution, i.state,\n       SUM(a.awards) AS doctorates,\n       SUM(a.nonresident) AS nonresident,\n       round(SUM(a.nonresident) * 100.0 / SUM(a.awards), 1) AS pct\nFROM ipeds_awards a\nJOIN institutions i ON a.unitid = i.unitid\nWHERE a.basis = 'aw17' AND a.award_year BETWEEN 2015 AND 2022\n  AND a.cipcode LIKE '14.10%'\nGROUP BY i.name, i.state\nHAVING SUM(a.awards) >= 20\nORDER BY pct DESC\nLIMIT 40` },
+    { label: 'A field over time', sql: `SELECT award_year,\n       SUM(awards) AS doctorates,\n       SUM(nonresident) AS nonresident,\n       round(SUM(nonresident) * 100.0 / SUM(awards), 1) AS pct\nFROM ipeds_awards\nWHERE basis = 'aw17' AND cipcode LIKE '11.%'\nGROUP BY award_year\nORDER BY award_year` },
+  ],
+  'institutions': [
+    { label: 'Preview', sql: `SELECT *\nFROM institutions\nLIMIT 100` },
+    { label: 'By state', sql: `SELECT state, COUNT(*) AS institutions\nFROM institutions\nWHERE state <> ''\nGROUP BY state\nORDER BY institutions DESC` },
+  ],
+  'field_by_institution': [
+    { label: 'Preview', sql: `SELECT *\nFROM field_by_institution\nLIMIT 100` },
+    { label: 'Highest non-resident share in one field', sql: `-- Pre-summed over 2015-2022 on one award basis, with the\n-- institution name already joined in. The same question against\n-- ipeds_awards takes about two seconds; this is immediate.\n-- 14.10 is electrical engineering.\nSELECT institution, state, field, awards, nonresident, nonresident_pct\nFROM field_by_institution\nWHERE cip4 = '14.10' AND awards >= 20\nORDER BY nonresident_pct DESC\nLIMIT 40` },
+    { label: 'Where no American finished', sql: `SELECT institution, state, field, awards, nonresident\nFROM field_by_institution\nWHERE nonresident_pct = 100 AND awards >= 20\nORDER BY awards DESC` },
+    { label: 'One university, every field', sql: `SELECT field, cipcode, awards, nonresident, nonresident_pct\nFROM field_by_institution\nWHERE institution LIKE '%Houston%' AND awards >= 10\nORDER BY nonresident_pct DESC` },
+    { label: 'By broad discipline', sql: `-- cip2 is the two-digit rollup: 11 computing, 14 engineering,\n-- 26 biology, 27 maths, 40 physical sciences.\nSELECT cip2, SUM(awards) AS awards, SUM(nonresident) AS nonresident,\n       round(SUM(nonresident) * 100.0 / SUM(awards), 1) AS pct\nFROM field_by_institution\nGROUP BY cip2\nHAVING SUM(awards) >= 500\nORDER BY pct DESC` },
+    { label: 'join: which of these publish a roster', sql: `SELECT f.institution, f.cipcode, f.nonresident_pct, f.awards,\n       d.students_url, d.faculty_url\nFROM field_by_institution f\nJOIN department_pages d ON f.institution = d.institution\nWHERE f.nonresident_pct >= 85 AND f.awards >= 20\nORDER BY f.nonresident_pct DESC` },
+  ],
+  'field_shares': [
+    { label: 'Preview', sql: `SELECT *\nFROM field_shares\nORDER BY nonresident_pct DESC\nLIMIT 100` },
+    { label: 'Where no American finished', sql: `-- Fields and institutions where every doctorate in the window went\n-- to a non-resident. Awards, not people: this counts degrees\n-- conferred, not individuals, and says nothing about anyone's origin.\nSELECT institution, field_name, doctorates, nonresident, nonresident_pct\nFROM field_shares\nWHERE nonresident_pct >= 95\nORDER BY doctorates DESC` },
+    { label: 'join: which of these publish a roster', sql: `SELECT f.institution, f.field_name, f.nonresident_pct, f.doctorates,\n       d.students_url, d.faculty_url\nFROM field_shares f\nLEFT JOIN department_pages d\n  ON f.institution = d.institution AND f.field = d.field\nWHERE f.nonresident_pct >= 85\nORDER BY f.nonresident_pct DESC` },
+    { label: 'By field', sql: `SELECT field_name,\n       COUNT(*) AS institutions,\n       round(median(nonresident_pct), 1) AS median_pct,\n       max(nonresident_pct) AS highest\nFROM field_shares\nGROUP BY field_name\nORDER BY median_pct DESC` },
+  ],
+  'department_pages': [
+    { label: 'Preview', sql: `SELECT *\nFROM department_pages\nLIMIT 100` },
+    { label: 'Who publishes a student roster', sql: `SELECT field, COUNT(*) AS departments,\n       SUM(CASE WHEN publishes_student_roster THEN 1 ELSE 0 END) AS with_students,\n       SUM(CASE WHEN publishes_faculty_page THEN 1 ELSE 0 END) AS with_faculty\nFROM department_pages\nGROUP BY field\nORDER BY departments DESC` },
+  ],
+  'cap_exempt': [
+    { label: 'Preview', sql: `SELECT *\nFROM cap_exempt\nLIMIT 100` },
   ],
   'h1b_employers': [
     { label: 'join: what industry each big filer sits in', sql: `SELECT e.employer, e.employer_filings, i.naics, i.top_title,\n       i.median_wage AS industry_median\nFROM h1b_employers e\nJOIN h1b_industry i ON e.naics = i.naics\nWHERE e.employer_filings >= 500\nORDER BY e.employer_filings DESC\nLIMIT 50` },
