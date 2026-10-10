@@ -34,6 +34,23 @@
     return text.toLowerCase();
   }
 
+  // DRILL-DOWN TABLES. A sortable table may also be a drill-down, where each
+  // row is followed by a hidden detail row holding what it opens onto. Those
+  // detail rows are not rows of the table in any sense a reader would mean:
+  // they are not sorted, not counted, and not limited. They move with the row
+  // they belong to.
+  function isDetail(tr) {
+    return !!tr && tr.classList && tr.classList.contains('detail');
+  }
+
+  function detailFor(tr) {
+    var next = tr.nextElementSibling;
+    if (isDetail(next)) return next;
+    // The public-sector page names a detail row after its own row rather than
+    // carrying a second copy of the id on the row, for page weight.
+    return tr.id ? document.getElementById('d-' + tr.id) : null;
+  }
+
   function el(tag, cls, text) {
     var n = document.createElement(tag);
     if (cls) n.className = cls;
@@ -58,11 +75,16 @@
         var off = !!state.hidden[i];
         th.style.display = off ? 'none' : '';
         Array.prototype.forEach.call(body.rows, function (r) {
+          if (isDetail(r)) return;
           if (r.cells[i]) r.cells[i].style.display = off ? 'none' : '';
         });
       });
       var shown = 0;
       Array.prototype.forEach.call(body.rows, function (r) {
+        // A drill-down's detail row is part of the row above it, not a row of
+        // its own. It must not count against a limit, and it must not have
+        // its display forced -- the `hidden` attribute is what opens it.
+        if (isDetail(r)) return;
         var ok = true;
         if (state.gradOnly && r.dataset.hasGrad !== '1') ok = false;
         if (ok && state.limit && shown >= state.limit) ok = false;
@@ -70,8 +92,10 @@
         r.style.display = ok ? '' : 'none';
       });
       if (table.__count) {
-        table.__count.textContent = shown + ' of ' + body.rows.length
-          + ' institution' + (body.rows.length === 1 ? '' : 's') + ' shown';
+        var total = Array.prototype.filter.call(
+          body.rows, function (r) { return !isDetail(r); }).length;
+        table.__count.textContent = shown + ' of ' + total
+          + ' institution' + (total === 1 ? '' : 's') + ' shown';
       }
     }
     table.__apply = apply;
@@ -86,7 +110,12 @@
       function sort() {
         state.dir = state.col === i ? -state.dir : 1;
         state.col = i;
-        var rows = Array.prototype.slice.call(body.querySelectorAll('tr'));
+        // `body.rows` is this tbody's own rows. querySelectorAll('tr') was
+        // every descendant row, so a table nested inside a drill-down's
+        // detail cell had its ten filing rows sorted into the outer table and
+        // lost -- the inner table was left with an empty tbody.
+        var rows = Array.prototype.filter.call(
+          body.rows, function (r) { return !isDetail(r); });
         rows.sort(function (a, b) {
           var x = keyOf(a.cells[i]), y = keyOf(b.cells[i]);
           if (typeof x === 'number' && typeof y === 'number') {
@@ -94,7 +123,16 @@
           }
           return String(x).localeCompare(String(y)) * state.dir;
         });
-        rows.forEach(function (r) { body.appendChild(r); });
+        // A detail row follows the row it belongs to. Sorting the two
+        // independently would file every open drill-down under the wrong
+        // employer, which is worse than not sorting at all. The pairs are
+        // read before anything moves: nextElementSibling is not stable once
+        // rows start being re-appended.
+        var pairs = rows.map(function (r) { return [r, detailFor(r)]; });
+        pairs.forEach(function (p) {
+          body.appendChild(p[0]);
+          if (p[1]) body.appendChild(p[1]);
+        });
         headers.forEach(function (h, j) {
           h.setAttribute('aria-sort', j === i
             ? (state.dir === 1 ? 'ascending' : 'descending') : 'none');

@@ -502,7 +502,7 @@ async function probeAndLoadExports() {
   `).join('');
 
   exportList.querySelectorAll('.export-item').forEach(el => {
-    el.addEventListener('click', () => loadExport(el));
+    el.addEventListener('click', () => loadExport(el, true));
   });
 
   // Auto-load all available exports
@@ -511,12 +511,16 @@ async function probeAndLoadExports() {
   }
 }
 
-async function loadExport(el) {
+async function loadExport(el, userClicked) {
   const file = el.dataset.file;
   const tableName = file.replace(/\.parq(uet)?$/i, '').replace(/[^a-zA-Z0-9_]/g, '_');
   if (tables[tableName]) {
     // Already loaded — set as active, update examples, and run preview
     setActiveTable(tableName);
+    // Only a click asks for a preview. An automatic load -- the startup
+    // probe, or a table pulled in to satisfy a deep link -- must not
+    // write over the query the reader actually came for.
+    if (!userClicked) return;
     queryEditor.value = `SELECT *\nFROM ${tableName}\nLIMIT 100`;
     runQuery();
     return;
@@ -610,10 +614,14 @@ async function loadParquetBuffer(arrayBuffer, tableName) {
   // If the link named this table, switch to it the moment it is available.
   if (!hashTableApplied) setTimeout(activateTableFromHash, 0);
 
-  // Auto-run a preview query for the first table loaded
-  if (Object.keys(tables).length === 1) {
-    queryEditor.value = `SELECT *\nFROM ${tableName}\nLIMIT 100`;
-    runQuery();
+  // Auto-run a preview query for the first table loaded -- UNLESS the URL
+  // carried a query, in which case that is what the reader came for and
+  // the preview would overwrite it.
+  if (Object.keys(tables).length === 1 && !pendingUrlSql) {
+    if (!(window.queryFromUrl && window.queryFromUrl())) {
+      queryEditor.value = `SELECT *\nFROM ${tableName}\nLIMIT 100`;
+      runQuery();
+    }
   }
 }
 
@@ -973,9 +981,14 @@ window.addEventListener('chat-fill-sql', (e) => {
 // setActiveTable() has always written the table name into the hash; this makes
 // the round trip work, so a shared link lands on the same table.
 let hashTableApplied = false;
+// Set while a URL query is waiting for its tables. Every place that would
+// write a preview into the editor checks this first, so the outcome does
+// not depend on which promise happens to settle first.
+let pendingUrlSql = null;
 function activateTableFromHash() {
   const want = decodeURIComponent((location.hash || '').replace(/^#/, '')).split('?')[0];
   if (!want || !tables[want]) return false;
+  if (pendingUrlSql || urlQueryApplied) return true;  // deep link owns the editor
   if (hashTableApplied && activeTable === want) return true;
   hashTableApplied = true;
   setActiveTable(want);
@@ -986,6 +999,97 @@ function activateTableFromHash() {
 }
 window.ANCHOR_HOOKS = (window.ANCHOR_HOOKS || []).concat(activateTableFromHash);
 window.addEventListener('hashchange', activateTableFromHash);
+
+// ---- Deep link: a whole query in the URL ----------------------------------
+// query.html?sql=<urlencoded SQL>  runs that query on load.
+// query.html?q=<slug>              runs a named query from NAMED_QUERIES.
+//
+// WHY BOTH. ?sql= is general and needs nothing registered, so any page can
+// link to any query. But a long SQL string makes an unreadable URL that mail
+// clients and chat apps wrap and break, so the queries this site cites from
+// its own prose use a short named slug instead. The slug is resolved here,
+// not on the server, so a named link still works offline.
+//
+// The query is shown in the editor before it runs. A reader can see exactly
+// what was asked, change it, and re-run -- which is the point of linking to
+// a query rather than to a screenshot of its result.
+const NAMED_QUERIES = {};
+
+let urlQueryApplied = false;
+function queryFromUrl() {
+  if (urlQueryApplied) return true;
+  // Accept the parameters after a "?" in either the search or the hash, so
+  // that "#lca_disclosures?sql=..." keeps working alongside the table hash
+  // handler above.
+  const qs = new URLSearchParams(location.search || '');
+  const hashQ = (location.hash || '').split('?')[1];
+  if (hashQ) {
+    new URLSearchParams(hashQ).forEach((v, k) => {
+      if (!qs.has(k)) qs.set(k, v);
+    });
+  }
+  let sql = qs.get('sql');
+  const slug = qs.get('q');
+  if (!sql && slug && NAMED_QUERIES[slug]) sql = NAMED_QUERIES[slug].sql;
+  if (!sql) return false;
+
+  // LOAD WHAT THE QUERY NEEDS. Tables are fetched on demand, so a deep
+  // link that names h1b_employers lands on a page where only the default
+  // table is loaded and the query returns nothing. Read the table names
+  // out of the SQL and click their loaders first.
+  const named = new Set();
+  (sql.match(/\b(?:from|join)\s+([a-zA-Z_][a-zA-Z0-9_]*)/gi) || [])
+    .forEach(m => named.add(m.split(/\s+/).pop().toLowerCase()));
+  const toLoad = [].slice.call(document.querySelectorAll('.export-item'))
+    .filter(el => {
+      const t = el.dataset.file.replace(/\.parq(uet)?$/i, '')
+                 .replace(/[^a-zA-Z0-9_]/g, '_').toLowerCase();
+      return named.has(t) && !tables[t];
+    });
+  if (toLoad.length) {
+    // Show the SQL while the Parquet downloads, then run it once the
+    // tables are in. pendingUrlSql tells every other place that writes
+    // the editor to leave it alone until then -- loading a table sets
+    // the active table, which writes the hash, which fires hashchange,
+    // which ran the table preview straight over the reader's query.
+    queryEditor.value = sql;
+    pendingUrlSql = sql;
+    Promise.all(toLoad.map(el => loadExport(el))).then(() => {
+      urlQueryApplied = true;
+      pendingUrlSql = null;
+      queryEditor.value = sql;
+      if (qs.get('run') !== '0') runQuery();
+    });
+    return true;
+  }
+
+  // Show the SQL immediately -- a reader should see what was asked even
+  // while the Parquet files are still downloading.
+  queryEditor.value = sql;
+
+  // But do not RUN it until there is something to run it against. This
+  // is called once on DOMContentLoaded and again as each table lands;
+  // the early call fills the editor, a later one executes.
+  if (!Object.keys(tables).length) return false;
+  urlQueryApplied = true;
+  // Scroll the editor into view: a reader arriving from another page should
+  // land on the query, not on whatever sits at the top of this one.
+  try {
+    queryEditor.scrollIntoView({ block: 'center', behavior: 'instant' });
+  } catch (e) { /* older browsers reject the options object */ }
+  if (qs.get('run') !== '0') runQuery();
+  return true;
+}
+// The anchor dispatcher only runs its hooks when there IS a hash, so a
+// bare "?sql=..." with no "#" would never fire. Register the hook for the
+// hash case AND call it directly for the search-string case.
+window.queryFromUrl = queryFromUrl;
+window.ANCHOR_HOOKS = (window.ANCHOR_HOOKS || []).concat(queryFromUrl);
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', queryFromUrl);
+} else {
+  queryFromUrl();
+}
 
 </script>
 <script src="cached-answers.js"></script>
