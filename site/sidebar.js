@@ -329,6 +329,7 @@
       { href: '/data_sources', label: 'Data Sources & Methodology' },
       { href: '/briefing', label: 'The Briefing (PDF)' },
       { href: '/executive-brief.pdf', label: 'Executive Brief (4pp)' },
+      { href: '/press-conference', label: 'The Press Conference' },
       { href: '/data_requests', label: 'Data Asks', anchors: [
         { hash: 'how-to-read', label: 'How to read an ask' },
         { hash: 'asks', label: 'The asks' },

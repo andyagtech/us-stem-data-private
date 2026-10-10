@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Press Conference</title>
+<meta name="description" content="The 8 October 2026 White House press conference on visa fraud, moment by moment, with the federal data behind each claim.">
+<meta property="og:title" content="The Press Conference">
+<meta property="og:description" content="The 8 October 2026 White House press conference on visa fraud, moment by moment, with the federal data behind each claim.">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 1.75rem 1.25rem 4rem; }
+  .page-head h1 { font-size: 2rem; margin: 0 0 .6rem; line-height: 1.18; }
+  .page-head p { color: var(--text-muted); max-width: 70ch; line-height: 1.68;
+    margin: 0 0 .6rem; }
+  .kicker { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--text-muted); margin: 0 0 .5rem; }
+
+  /* THE PLAYER STAYS, THE TRANSCRIPT MOVES. Sticky rather than fixed, so it
+     scrolls away naturally at the foot of the page instead of covering the
+     method note. Below 900px it sits at the top and un-sticks: a sticky
+     16:9 video on a phone eats half the screen. */
+  .cols { display: grid; grid-template-columns: minmax(0,1fr) 420px;
+    gap: 2rem; align-items: start; margin-top: 1.5rem; }
+  .rail { position: sticky; top: 1rem; }
+  @media (max-width: 900px) {
+    .cols { grid-template-columns: 1fr; gap: 1.25rem; }
+    .rail { position: static; order: -1; }
+  }
+  .player { position: relative; aspect-ratio: 16/9; background: #000;
+    border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .player iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .poster { position: absolute; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: .6rem; cursor: pointer;
+    background: var(--surface); color: var(--text); border: 0; width: 100%;
+    font: inherit; }
+  .poster .play { font-size: 2.2rem; color: var(--hl); }
+  .poster .cap { font-size: .8rem; color: var(--text-muted); max-width: 30ch;
+    text-align: center; line-height: 1.5; }
+  .rail .src { font-size: .75rem; color: var(--text-muted); margin: .6rem 0 0;
+    line-height: 1.5; }
+  .jumps { display: flex; flex-direction: column; gap: .15rem; margin: 1rem 0 0;
+    max-height: 42vh; overflow-y: auto; }
+  .jump { text-align: left; background: none; border: 0; cursor: pointer;
+    font: inherit; font-size: .78rem; color: var(--text-muted);
+    padding: .3rem .4rem; border-radius: 6px; border-left: 2px solid transparent; }
+  .jump:hover { color: var(--hl); background: var(--surface); }
+  .jump.on { color: var(--hl); border-left-color: var(--hl);
+    background: var(--surface); }
+
+  .mo { border-top: 1px solid var(--border); padding: 1.6rem 0 .4rem;
+    scroll-margin-top: 1rem; }
+  .mo-head { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem;
+    margin: 0 0 .7rem; }
+  .ts { background: var(--hl); color: #fff; border: 0; border-radius: 999px;
+    padding: .2rem .65rem; font: inherit; font-size: .76rem; font-weight: 600;
+    cursor: pointer; font-variant-numeric: tabular-nums; }
+  .ts:hover { filter: brightness(1.1); }
+  .who { font-size: .76rem; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--text-muted); font-weight: 600; }
+  .vd { font-size: .68rem; text-transform: uppercase; letter-spacing: .05em;
+    padding: .12rem .5rem; border-radius: 999px; font-weight: 700; }
+  .vd.ok { background: rgba(34,160,90,.14); color: #1a7f48; }
+  .vd.no { background: rgba(200,120,0,.15); color: #9a5b00; }
+  :root:not([data-theme="light"]) .vd.ok { color: #5fd99a; }
+  :root:not([data-theme="light"]) .vd.no { color: #ffb454; }
+  :root[data-theme="dark"] .vd.ok { color: #5fd99a; }
+  :root[data-theme="dark"] .vd.no { color: #ffb454; }
+  blockquote { margin: 0 0 1rem; padding: 0 0 0 1rem;
+    border-left: 3px solid var(--border); font-size: 1.04rem; line-height: 1.6;
+    max-width: 62ch; }
+  .mo h2 { font-size: 1.08rem; margin: 0 0 .6rem; }
+  .ev { list-style: none; padding: 0; margin: 0 0 .9rem; display: grid;
+    gap: .35rem; }
+  .ev li { display: flex; flex-wrap: wrap; gap: .6rem; align-items: baseline; }
+  .ev .v { color: var(--hl); font-weight: 800; font-size: 1.05rem;
+    font-variant-numeric: tabular-nums; min-width: 5.5rem; }
+  .ev .l { font-size: .86rem; color: var(--text-muted); flex: 1; min-width: 0;
+    line-height: 1.5; }
+  .note { font-size: .9rem; line-height: 1.68; max-width: 66ch;
+    margin: 0 0 .8rem; }
+  .links { display: flex; flex-wrap: wrap; gap: .9rem; margin: 0; }
+  .go { font-size: .84rem; font-weight: 600; color: var(--hl);
+    text-decoration: none; }
+  .go:hover { text-decoration: underline; }
+  .method { margin-top: 2.6rem; border-top: 3px solid var(--hl);
+    padding-top: 1.2rem; }
+  .method p { font-size: .88rem; line-height: 1.7; max-width: 70ch;
+    margin: 0 0 .7rem; color: var(--text-muted); }
+</style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+</head>
+<body data-page="press-conference">
+<main class="wrap">
+<div class="page-head">
+  <p class="kicker">The White House &middot; 8 October 2026</p>
+  <h1>The press conference, claim by claim</h1>
+  <p>On 8 October 2026 the administration announced PERM suspensions for eight
+  companies and a J-1 investigation into nine universities. Most of what was
+  said is checkable against federal data, and this site holds much of it.</p>
+  <p>Each moment below quotes the recording, says who said it, and sets out
+  what this site's data can and cannot show. Press a timestamp to hear it.
+  Where our figures agree, it says so. Where they differ, it says that
+  too.</p>
+</div>
+
+<div class="cols">
+  <div class="stream">
+<section class="mo" id="t26" data-t="26">
+  <div class="mo-head">
+    <button class="ts" type="button" data-seek="26"
+            data-track="press.seek.26"
+            aria-label="Play from 0:26">&#9654; 0:26</button>
+    <span class="who">Vice President JD Vance</span>
+  </div>
+  <blockquote>This is a great day for American workers because we are taking some very concrete actions to cut down on some of the H-1B and J1 visa fraud that we&#x27;ve been tracking over the past several months.</blockquote>
+  <h2>What was announced</h2>
+  
+  <p class="note">Three things followed: PERM suspensions for eight named companies, a J-1 investigation into nine named universities, and a visa-fraud strike team. The rest of this page takes the claims in the order they were made.</p>
+  
+</section>
+<section class="mo" id="t104" data-t="104">
+  <div class="mo-head">
+    <button class="ts" type="button" data-seek="104"
+            data-track="press.seek.104"
+            aria-label="Play from 1:44">&#9654; 1:44</button>
+    <span class="who">Vice President JD Vance</span>
+  </div>
+  <blockquote>They will say, maybe they&#x27;ll put an advertisement in a small town newspaper... and they will use that lack of a response to then go and replace American workers.</blockquote>
+  <h2>The recruitment test</h2>
+  
+  <p class="note">This describes the PERM labour-market test: before sponsoring a worker for permanent residence an employer must advertise the role and show no qualified American applied. The disclosure files record that a test happened. They do not record the advertisement, the applicants, or why they were rejected, so the claim cannot be checked from published data. That gap is an ask on this site.</p>
+  <p class="links"><a class="go" href="/data_requests">What the record does not hold &rarr;</a></p>
+</section>
+<section class="mo" id="t117" data-t="117">
+  <div class="mo-head">
+    <button class="ts" type="button" data-seek="117"
+            data-track="press.seek.117"
+            aria-label="Play from 1:57">&#9654; 1:57</button>
+    <span class="who">Vice President JD Vance</span>
+  </div>
+  <blockquote>When somebody comes in on an H-1B, they are completely subordinate to that company. If they lose that job, they have to leave the country.</blockquote>
+  <h2>Why the tie to one employer matters</h2>
+  <ul class="ev"><li><span class="v">$15,300</span><span class="l">forgone per $100,000 of payroll, employer and employee side together</span></li></ul>
+  <p class="note">Status depends on the job, which is a fact of the visa rather than a finding in the data. What the data does show is the price attached: an employer owes no Social Security or Medicare tax on a student working under practical training, and neither does the worker.</p>
+  <p class="links"><a class="go" href="/visa-schools#cheaper">Why an OPT hire costs less &rarr;</a></p>
+</section>
+<section class="mo" id="t141" data-t="141">
+  <div class="mo-head">
+    <button class="ts" type="button" data-seek="141"
+            data-track="press.seek.141"
+            aria-label="Play from 2:21">&#9654; 2:21</button>
+    <span class="who">Vice President JD Vance</span><span class="vd ok">Our data agrees</span>
+  </div>
+  <blockquote>The H-1B visa is how the people get into the United States in the first place, and then a PERM program is how those employees stay.</blockquote>
+  <h2>PERM is the step this site can see</h2>
+  <ul class="ev"><li><span class="v">42,833</span><span class="l">certified public-employer filings, FY2013–FY2024</span></li></ul>
+  <p class="note">PERM is the only federal disclosure file that records a worker&#x27;s citizenship, which is why this site can say who public employers sponsor and the H-1B files cannot. The series ends with FY2024: the Department of Labor removed every worker field from the FY2025 file, 155 columns down to 137.</p>
+  <p class="links"><a class="go" href="/public-sector-visas">Who the public sector sponsors &rarr;</a><a class="go" href="/data_requests">The ask to restore those fields &rarr;</a></p>
+</section>
+<section class="mo" id="t182" data-t="182">
+  <div class="mo-head">
+    <button class="ts" type="button" data-seek="182"
+            data-track="press.seek.182"
+            aria-label="Play from 3:02">&#9654; 3:02</button>
+    <span class="who">Vice President JD Vance</span>
+  </div>
+  <blockquote>Microsoft laid off last year 6,000 American workers. At the same time, the company benefited from 6,300 H1B visas and almost 3,000 green cards.</blockquote>
+  <h2>The Microsoft figures</h2>
+  
+  <p class="note">This site does not hold layoff counts, so the comparison cannot be reproduced here. It does hold what Microsoft filed. Note that H-1B approvals must never be added across initial and continuing: a continuing approval is the same person renewed, so summing them counts one worker once a year for as long as they stay.</p>
+  <p class="links"><a class="go" href="/query">Check the filings yourself &rarr;</a></p>
+</section>
+<section class="mo" id="t322" data-t="322">
+  <div class="mo-head">
+    <button class="ts" type="button" data-seek="322"
+            data-track="press.seek.322"
+            aria-label="Play from 5:22">&#9654; 5:22</button>
+    <span class="who">Vice President JD Vance</span><span class="vd ok">Our data agrees</span>
+  </div>
+  <blockquote>These firms that help corporations apply and find H-1B visa candidates. They&#x27;re commonly called the witches, the four major outsourcing firms.</blockquote>
+  <h2>The staffing firms</h2>
+  <ul class="ev"><li><span class="v">1,106</span><span class="l">employers that meet this site’s staffing-firm test</span></li><li><span class="v">252,806</span><span class="l">certified filings they account for</span></li></ul>
+  <p class="note">This site identifies these firms from the disclosure files rather than from a list. Joining employers to their industry puts Infosys, Tata Consultancy, Cognizant, Wipro, HCL and Capgemini at the top of filing volume — the same firms suspended from PERM later in this press conference.</p>
+  <p class="links"><a class="go" href="/bodyshops">The firms that meet the test &rarr;</a><a class="go" href="/query">Run the join &rarr;</a></p>
+</section>
+<section class="mo" id="t348" data-t="348">
+  <div class="mo-head">
+    <button class="ts" type="button" data-seek="348"
+            data-track="press.seek.348"
+            aria-label="Play from 5:48">&#9654; 5:48</button>
+    <span class="who">Vice President JD Vance</span>
+  </div>
+  <blockquote>If you are working as an H-1B visa in the United States of America, you&#x27;re earning $20,000 less than an American citizen hired in the same position. If you were brought in by one of these foreign outsourcing firms, you&#x27;re making $48,000 less.</blockquote>
+  <h2>The wage gap</h2>
+  
+  <p class="note">Every wage this site holds is an OFFERED wage, because that is the only wage published. What a worker is actually paid appears on a W-2, which Treasury holds and the Department of Labor does not. So a gap of this kind cannot be confirmed or refuted from the public record, and asking for the matched tabulation is an ask on this site.</p>
+  <p class="links"><a class="go" href="/data_requests">Wages actually paid, not offered &rarr;</a></p>
+</section>
+<section class="mo" id="t411" data-t="411">
+  <div class="mo-head">
+    <button class="ts" type="button" data-seek="411"
+            data-track="press.seek.411"
+            aria-label="Play from 6:51">&#9654; 6:51</button>
+    <span class="who">Vice President JD Vance</span>
+  </div>
+  <blockquote>There are nine universities in particular that we believe merit an investigation. Those universities are Harvard, Yale, Stanford, Brown, the University of Pittsburgh, UC Davis, Caltech, Arizona State, and MIT.</blockquote>
+  <h2>The nine universities</h2>
+  
+  <p class="note">An investigation was announced on this date. This page reports that it was announced and what the federal survey counts. It makes no claim that any of these institutions broke a law.</p>
+  <p class="links"><a class="go" href="/postdocs#the-nine">All nine, with their postdoc counts &rarr;</a></p>
+</section>
+<section class="mo" id="t434" data-t="434">
+  <div class="mo-head">
+    <button class="ts" type="button" data-seek="434"
+            data-track="press.seek.434"
+            aria-label="Play from 7:14">&#9654; 7:14</button>
+    <span class="who">Vice President JD Vance</span><span class="vd no">Partly differs</span>
+  </div>
+  <blockquote>These universities are employing J1 visas for federally funded grants at a rate of about 61%. The national average is 38%.</blockquote>
+  <h2>The 61% checks out. The 38% does not match this survey.</h2>
+  <ul class="ev"><li><span class="v">60.7%</span><span class="l">the nine named universities, share of postdocs holding a temporary visa</span></li><li><span class="v">58.3%</span><span class="l">every institution in the survey</span></li><li><span class="v">69,877</span><span class="l">postdoctoral appointees counted</span></li><li><span class="v">48.1%</span><span class="l">of those posts are federally supported</span></li></ul>
+  <p class="note">Computed from the NSF Survey of Graduate Students and Postdoctorates, the nine named universities come to the figure given. The national average on the same measure is not 38%. That difference decides what the story is: if the nine sat far above a low national average they would be outliers, and an enforcement action against nine institutions would address it. They do not. The American postdoctoral workforce is a minority of itself almost everywhere, and the nine look much like the rest of the country. That is the larger finding, and it is closer to the argument being made than the figure quoted.</p>
+  <p class="links"><a class="go" href="/postdocs">Who holds the postdoc jobs &rarr;</a></p>
+</section>
+<section class="mo" id="t656" data-t="656">
+  <div class="mo-head">
+    <button class="ts" type="button" data-seek="656"
+            data-track="press.seek.656"
+            aria-label="Play from 10:56">&#9654; 10:56</button>
+    <span class="who">Labor Secretary Keith Sonderling</span>
+  </div>
+  <blockquote>I am hereby suspending from the permanent labor certification program some of the largest IT outsourcing firms in the world. Cognizant, Infosys, Tata, Whipro, HCL, and Capgeemini. And also due to multiple active federal investigations, the Department of Labor suspending Microsoft and Adobe from the program.</blockquote>
+  <h2>Eight companies suspended from PERM</h2>
+  
+  <p class="note">PERM is the mechanism described earlier as how an H-1B holder stays permanently. Suspension stops new and pending applications from these employers. It does not affect anyone already holding permanent residence.</p>
+  <p class="links"><a class="go" href="/bodyshops">What the filings show about these firms &rarr;</a></p>
+</section>
+<section class="mo" id="t757" data-t="757">
+  <div class="mo-head">
+    <button class="ts" type="button" data-seek="757"
+            data-track="press.seek.757"
+            aria-label="Play from 12:37">&#9654; 12:37</button>
+    <span class="who">Attorney General Todd Blanch</span>
+  </div>
+  <blockquote>This announcement today should send and does send a strong signal to every single employer in the United States that the Trump administration will not tolerate discrimination against American workers.</blockquote>
+  <h2>The enforcement frame</h2>
+  
+  <p class="note">No published federal source records graduate applications or admissions by citizenship, so whether American applicants are declining, being declined, or not applying cannot be determined from the data. This site asks for that collection.</p>
+  <p class="links"><a class="go" href="/data_requests">Graduate admissions by citizenship &rarr;</a></p>
+</section>
+<section class="mo" id="t998" data-t="998">
+  <div class="mo-head">
+    <button class="ts" type="button" data-seek="998"
+            data-track="press.seek.998"
+            aria-label="Play from 16:38">&#9654; 16:38</button>
+    <span class="who">Deputy Chief of Staff Stephen Miller</span>
+  </div>
+  <blockquote>He had at his rallies American workers in good paying middle class jobs with pensions who were laid off and forced to train their foreign replacements as the condition of their severance.</blockquote>
+  <h2>Training your replacement</h2>
+  
+  <p class="note">Not a measurable claim in the disclosure files, which record filings rather than what happened in an office. Included here because it was said, and because a reader comparing the recording with this page should find every substantive passage accounted for.</p>
+  
+</section>
+<section class="mo" id="t1265" data-t="1265">
+  <div class="mo-head">
+    <button class="ts" type="button" data-seek="1265"
+            data-track="press.seek.1265"
+            aria-label="Play from 21:05">&#9654; 21:05</button>
+    <span class="who">Labor Inspector General Anthony Desposito</span>
+  </div>
+  <blockquote>Subpoenas have been served, investigations are underway, and nobody will be getting a free pass because their name is carved into an expensive building.</blockquote>
+  <h2>The investigation is live</h2>
+  
+  <p class="note">Reported as a fact with a date. The outcome is unknown and this page draws no conclusion from the existence of an investigation.</p>
+  
+</section>
+<section class="mo" id="t1316" data-t="1316">
+  <div class="mo-head">
+    <button class="ts" type="button" data-seek="1316"
+            data-track="press.seek.1316"
+            aria-label="Play from 21:56">&#9654; 21:56</button>
+    <span class="who">Labor Inspector General Anthony Desposito</span>
+  </div>
+  <blockquote>The Chinese Communist Party doesn&#x27;t need to kick down the doors of America&#x27;s research laboratories if our own institutions are willing to leave the doors wide open.</blockquote>
+  <h2>The research-security argument</h2>
+  <ul class="ev"><li><span class="v">72.8%</span><span class="l">non-resident share of petroleum engineering doctorates</span></li></ul>
+  <p class="note">This site measures who is in the laboratories, not what leaves them. A citizenship share is not evidence of anything improper by any individual, and nothing here should be read that way. What it does show is the scale: in several strategic fields the graduate pipeline is overwhelmingly non-resident.</p>
+  <p class="links"><a class="go" href="/industries/petroleum">Petroleum engineering &rarr;</a><a class="go" href="/postdocs#federal">Who pays for the posts &rarr;</a></p>
+</section>
+<section class="mo" id="t1544" data-t="1544">
+  <div class="mo-head">
+    <button class="ts" type="button" data-seek="1544"
+            data-track="press.seek.1544"
+            aria-label="Play from 25:44">&#9654; 25:44</button>
+    <span class="who">FTC Chairman Andrew Ferguson</span>
+  </div>
+  <blockquote>America is not a jobs program for the rest of the world. We didn&#x27;t build our institutions for the rest of the world. We built them for Americans.</blockquote>
+  <h2>The thesis, stated from the podium</h2>
+  <ul class="ev"><li><span class="v">708,393</span><span class="l">doctoral and master’s theses from 106 American universities</span></li><li><span class="v">29,131</span><span class="l">postdoctoral appointees who are American citizens or permanent residents</span></li></ul>
+  <p class="note">This is the argument this site was built to test with federal data. The measured finding sits on one page and the argument on another, deliberately, because a reader may reject the argument and accept every figure in it.</p>
+  <p class="links"><a class="go" href="/overview">The measured finding &rarr;</a><a class="go" href="/name-lists">The dissertations themselves &rarr;</a></p>
+</section>
+<section class="mo" id="t1774" data-t="1774">
+  <div class="mo-head">
+    <button class="ts" type="button" data-seek="1774"
+            data-track="press.seek.1774"
+            aria-label="Play from 29:34">&#9654; 29:34</button>
+    <span class="who">Vice President JD Vance</span>
+  </div>
+  <blockquote>Never believe the lie that Americans are not good enough to build a future for Americans.</blockquote>
+  <h2>The close</h2>
+  
+  
+  
+</section>
+<section class="mo" id="t2529" data-t="2529">
+  <div class="mo-head">
+    <button class="ts" type="button" data-seek="2529"
+            data-track="press.seek.2529"
+            aria-label="Play from 42:09">&#9654; 42:09</button>
+    <span class="who">Vice President JD Vance</span>
+  </div>
+  <blockquote>The nature of the fraud is fundamentally that when you apply for these visa programs, you make a couple of certifications. One of those certifications is that the person that you&#x27;re bringing in has a hyper specialized, hyper capable skill set. And that&#x27;s clearly not the case if you&#x27;re just replacing one American worker with a foreign indentured servant.</blockquote>
+  <h2>Asked directly: what is the fraud?</h2>
+  <ul class="ev"><li><span class="v">8,081,883</span><span class="l">certified H-1B applications in the disclosure files</span></li></ul>
+  <p class="note">A reporter asked whether this was illegal conduct or a legal pathway the administration objects to. The answer rests on the specialty-occupation certification. This site can show what occupations and wages were certified; it cannot show intent, and it makes no claim about any employer&#x27;s state of mind.</p>
+  <p class="links"><a class="go" href="/industries">What was certified, by industry &rarr;</a><a class="go" href="/query">The occupation and wage tables &rarr;</a></p>
+</section>
+
+  <section class="method" id="method">
+    <h2>How to read this page</h2>
+    <p><strong>The quotations are verbatim</strong>, taken from the published
+    captions with their timestamps, so any one of them can be heard in
+    context by pressing the time.</p>
+    <p><strong>Six people spoke</strong> and each quotation names its
+    speaker. Attributing one person's words to another would be the worst
+    error this page could make.</p>
+    <p><strong>Every figure on this page resolves from a built dataset</strong>
+    when the page is rendered. None is typed, and a figure that stops
+    resolving fails the build rather than appearing as a dash.</p>
+    <p><strong>An investigation was announced.</strong> That is a fact with a
+    date. Nothing here says any institution or company broke a law, and a
+    citizenship share is not evidence of wrongdoing by anyone.</p>
+    <p>Source:
+    <a href="https://www.youtube.com/watch?v=7QAu9FOEOv8" target="_blank" rel="noopener">Vice President JD Vance Holds Press Conference on Fighting Visa Fraud</a>,
+    The White House, 8 October 2026.</p>
+  </section>
+  </div>
+
+  <aside class="rail">
+    <div class="player" id="player">
+      <button class="poster" id="poster" type="button"
+              data-track="press.play"
+              aria-label="Load and play the recording">
+        <span class="play">&#9654;</span>
+        <span class="cap">Play the recording. Nothing is requested from
+        YouTube until you press this.</span>
+      </button>
+    </div>
+    <p class="src">Vice President JD Vance Holds Press Conference on Fighting Visa Fraud<br>The White House, 8 October 2026</p>
+    <div class="jumps"><button type="button" class="jump" data-seek="26" data-track="press.jump.26">0:26 &middot; What was announced</button><button type="button" class="jump" data-seek="104" data-track="press.jump.104">1:44 &middot; The recruitment test</button><button type="button" class="jump" data-seek="117" data-track="press.jump.117">1:57 &middot; Why the tie to one employer matters</button><button type="button" class="jump" data-seek="141" data-track="press.jump.141">2:21 &middot; PERM is the step this site can see</button><button type="button" class="jump" data-seek="182" data-track="press.jump.182">3:02 &middot; The Microsoft figures</button><button type="button" class="jump" data-seek="322" data-track="press.jump.322">5:22 &middot; The staffing firms</button><button type="button" class="jump" data-seek="348" data-track="press.jump.348">5:48 &middot; The wage gap</button><button type="button" class="jump" data-seek="411" data-track="press.jump.411">6:51 &middot; The nine universities</button><button type="button" class="jump" data-seek="434" data-track="press.jump.434">7:14 &middot; The 61% checks out. The 38% does not match this survey.</button><button type="button" class="jump" data-seek="656" data-track="press.jump.656">10:56 &middot; Eight companies suspended from PERM</button><button type="button" class="jump" data-seek="757" data-track="press.jump.757">12:37 &middot; The enforcement frame</button><button type="button" class="jump" data-seek="998" data-track="press.jump.998">16:38 &middot; Training your replacement</button><button type="button" class="jump" data-seek="1265" data-track="press.jump.1265">21:05 &middot; The investigation is live</button><button type="button" class="jump" data-seek="1316" data-track="press.jump.1316">21:56 &middot; The research-security argument</button><button type="button" class="jump" data-seek="1544" data-track="press.jump.1544">25:44 &middot; The thesis, stated from the podium</button><button type="button" class="jump" data-seek="1774" data-track="press.jump.1774">29:34 &middot; The close</button><button type="button" class="jump" data-seek="2529" data-track="press.jump.2529">42:09 &middot; Asked directly: what is the fraud?</button></div>
+  </aside>
+</div>
+</main>
+
+<script>
+/* The embed is created on demand. Until the reader presses play there is no
+   iframe, so no request reaches YouTube and nothing is set in their browser
+   by a third party on a page about federal data. */
+(function () {
+  var VIDEO = "7QAu9FOEOv8";
+  var frame = null;
+
+  function mount(at) {
+    var box = document.getElementById('player');
+    var poster = document.getElementById('poster');
+    if (poster) poster.remove();
+    frame = document.createElement('iframe');
+    frame.allow = 'accelerometer; encrypted-media; picture-in-picture';
+    frame.allowFullscreen = true;
+    frame.title = "Vice President JD Vance Holds Press Conference on Fighting Visa Fraud";
+    frame.src = 'https://www.youtube-nocookie.com/embed/' + VIDEO +
+                '?start=' + (at || 0) + '&autoplay=1&rel=0&enablejsapi=1';
+    box.appendChild(frame);
+  }
+
+  function seek(at) {
+    if (!frame) { mount(at); return; }
+    // postMessage avoids rebuilding the iframe, which would restart the
+    // download and lose the reader's place.
+    try {
+      frame.contentWindow.postMessage(JSON.stringify(
+        {event: 'command', func: 'seekTo', args: [at, true]}), '*');
+      frame.contentWindow.postMessage(JSON.stringify(
+        {event: 'command', func: 'playVideo', args: []}), '*');
+    } catch (e) {
+      frame.src = 'https://www.youtube-nocookie.com/embed/' + VIDEO +
+                  '?start=' + at + '&autoplay=1&rel=0&enablejsapi=1';
+    }
+    var r = document.querySelector('.rail');
+    if (r && window.innerWidth < 900) r.scrollIntoView({behavior: 'smooth', block: 'start'});
+  }
+
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-seek]');
+    if (b) { seek(parseInt(b.dataset.seek, 10) || 0); return; }
+    if (e.target.closest('#poster')) mount(0);
+  });
+
+  // Mark the moment the reader is looking at, so the jump list tracks the
+  // page rather than only driving it.
+  var secs = [].slice.call(document.querySelectorAll('.mo'));
+  var jumps = [].slice.call(document.querySelectorAll('.jump'));
+  if ('IntersectionObserver' in window && secs.length) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var t = en.target.dataset.t;
+        jumps.forEach(function (j) {
+          j.classList.toggle('on', j.dataset.seek === t);
+        });
+      });
+    }, {rootMargin: '-20% 0px -70% 0px'});
+    secs.forEach(function (s) { io.observe(s); });
+  }
+})();
+</script>
+<script src="/analytics-beacon.js" defer></script>
+<script src="/anchors.js" defer></script>
+<script src="/sidebar.js"></script>
+<script src="/chat-widget.js"></script>
+</body>
+</html>
