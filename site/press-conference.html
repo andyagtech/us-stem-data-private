@@ -83,6 +83,32 @@
   .go { font-size: .84rem; font-weight: 600; color: var(--hl);
     text-decoration: none; }
   .go:hover { text-decoration: underline; }
+  .dist h3 { font-size: .95rem; margin: 1.4rem 0 .5rem; }
+  .hist { display: grid; gap: .22rem; margin: .6rem 0 .5rem; max-width: 60ch; }
+  .hrow { display: grid; grid-template-columns: 4.6rem 1fr 2.2rem;
+    gap: .55rem; align-items: center; font-size: .78rem; }
+  .hb { color: var(--text-muted); font-variant-numeric: tabular-nums;
+    text-align: right; }
+  .ht { background: var(--border); border-radius: 3px; height: .95rem;
+    overflow: hidden; }
+  .hf { display: block; height: 100%; background: var(--text-muted);
+    opacity: .55; border-radius: 3px 0 0 3px; }
+  .hf.hot { background: var(--hl); opacity: 1; }
+  .hn { font-variant-numeric: tabular-nums; font-weight: 600;
+    font-size: .76rem; }
+  .cap { font-size: .78rem; color: var(--text-muted); line-height: 1.6;
+    max-width: 68ch; margin: .5rem 0 .4rem; }
+  .table-wrap { overflow-x: auto; }
+  table.t { width: 100%; border-collapse: collapse; font-size: .82rem;
+    margin: .4rem 0 0; }
+  table.t th { text-align: left; font-size: .68rem; text-transform: uppercase;
+    letter-spacing: .05em; color: var(--text-muted); font-weight: 700;
+    padding: .35rem .5rem; border-bottom: 1px solid var(--border);
+    white-space: nowrap; }
+  table.t td { padding: .34rem .5rem; border-bottom: 1px solid var(--border); }
+  table.t td.num, table.t th.num { text-align: right;
+    font-variant-numeric: tabular-nums; white-space: nowrap; }
+  table.t td.hi { color: var(--hl); font-weight: 700; }
   .method { margin-top: 2.6rem; border-top: 3px solid var(--hl);
     padding-top: 1.2rem; }
   .method p { font-size: .88rem; line-height: 1.7; max-width: 70ch;
@@ -328,6 +354,53 @@
   <ul class="ev"><li><span class="v">8,081,883</span><span class="l">certified H-1B applications in the disclosure files</span></li></ul>
   <p class="note">A reporter asked whether this was illegal conduct or a legal pathway the administration objects to. The answer rests on the specialty-occupation certification. This site can show what occupations and wages were certified; it cannot show intent, and it makes no claim about any employer&#x27;s state of mind.</p>
   <p class="links"><a class="go" href="/industries">What was certified, by industry &rarr;</a><a class="go" href="/query">The occupation and wage tables &rarr;</a></p>
+</section>
+  
+<section class="mo dist" id="distributions">
+  <div class="mo-head"><span class="who">Context</span>
+    <span class="vd ok">Federal data on this</span></div>
+  <h2>What the averages hide</h2>
+  <p class="note">Every share quoted from a podium is an average, and an
+  average is the one statistic that cannot show an outlier. The national
+  postdoc figure is 58.3%. The <strong>median institution</strong>
+  is 60.9% &mdash; higher &mdash; because the largest universities
+  pull the weighted average down. At the typical American institution the
+  position is worse than the national number suggests.</p>
+
+  <ul class="ev">
+    <li><span class="v">134</span><span class="l">of
+      175 institutions have a MAJORITY of postdocs on a
+      temporary visa, covering
+      56,990 posts</span></li>
+    <li><span class="v">98</span><span class="l">sit
+      above the national average of 58.3%</span></li>
+    <li><span class="v">6</span><span class="l">are at
+      80% or higher</span></li>
+    <li><span class="v">94.6%</span><span class="l">the highest
+      single institution; the lowest is 5.8%</span></li>
+  </ul>
+
+  <h3>Institutions by share of postdocs on a temporary visa</h3>
+  <div class="hist"><div class="hrow"><span class="hb">0–20%</span><span class="ht"><span class="hf" style="width:10.0%"></span></span><span class="hn">6</span></div><div class="hrow"><span class="hb">20–30%</span><span class="ht"><span class="hf" style="width:6.7%"></span></span><span class="hn">4</span></div><div class="hrow"><span class="hb">30–40%</span><span class="ht"><span class="hf" style="width:15.0%"></span></span><span class="hn">9</span></div><div class="hrow"><span class="hb">40–50%</span><span class="ht"><span class="hf" style="width:36.7%"></span></span><span class="hn">22</span></div><div class="hrow"><span class="hb">50–60%</span><span class="ht"><span class="hf" style="width:71.7%"></span></span><span class="hn">43</span></div><div class="hrow"><span class="hb">60–70%</span><span class="ht"><span class="hf" style="width:100.0%"></span></span><span class="hn">60</span></div><div class="hrow"><span class="hb">70–80%</span><span class="ht"><span class="hf hot" style="width:41.7%"></span></span><span class="hn">25</span></div><div class="hrow"><span class="hb">80–90%</span><span class="ht"><span class="hf hot" style="width:8.3%"></span></span><span class="hn">5</span></div><div class="hrow"><span class="hb">90–100%</span><span class="ht"><span class="hf hot" style="width:1.7%"></span></span><span class="hn">1</span></div></div>
+  <p class="cap">Each bar is a count of institutions. The nine named sit at
+  60.7% combined, inside the main body of this distribution
+  rather than at its edge &mdash; which is the point: they are not unusual.
+  The unusual institutions are further right.</p>
+
+  <h3>Where the distribution runs out</h3>
+  <div class="table-wrap">
+  <table class="t">
+  <thead><tr><th>Institution</th><th class="num">Postdocs</th>
+  <th class="num">Temporary visa</th><th class="num">Share</th></tr></thead>
+  <tbody><tr><td>Missouri University of Science and Technology</td><td class="num">56</td><td class="num">53</td><td class="num hi">94.6%</td></tr><tr><td>University of Texas M. D. Anderson Cancer Center, The</td><td class="num">595</td><td class="num">513</td><td class="num hi">86.2%</td></tr><tr><td>University of Tennessee, The, Health Science Center</td><td class="num">90</td><td class="num">77</td><td class="num hi">85.6%</td></tr><tr><td>Augusta University</td><td class="num">133</td><td class="num">113</td><td class="num hi">85.0%</td></tr><tr><td>University of Missouri, Columbia</td><td class="num">381</td><td class="num">322</td><td class="num hi">84.5%</td></tr><tr><td>University of Texas Health Science Center at Houston, The</td><td class="num">369</td><td class="num">301</td><td class="num hi">81.6%</td></tr><tr><td>University of Texas Southwestern Medical Center, The</td><td class="num">602</td><td class="num">480</td><td class="num hi">79.7%</td></tr><tr><td>Case Western Reserve University</td><td class="num">243</td><td class="num">193</td><td class="num hi">79.4%</td></tr></tbody></table>
+  </div>
+  <p class="cap">Percentiles across the 175 institutions
+  reporting at least 50 postdocs:
+  10th 39.3% &middot; 25th 51.0% &middot; median
+  60.9% &middot; 75th 66.7% &middot; 90th 74.0%.</p>
+  <p class="links"><a class="go" href="/postdocs#ranking">Every institution
+  ranked &rarr;</a><a class="go" href="/distributions">Distributions across
+  the rest of the data &rarr;</a></p>
 </section>
 
   <section class="method" id="method">

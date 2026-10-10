@@ -77,6 +77,16 @@
   const H1B_HOST = /^h-?1b\./i.test(location.hostname);
 
   const H1B_SECTIONS = [
+    { title: "VP Vance's Press Conference", items: [
+      { href: '/press-conference', label: 'The 8 October Announcement', anchors: [
+        { hash: 't411', label: 'The nine universities' },
+        { hash: 't434', label: 'The postdoc share' },
+        { hash: 't656', label: 'Eight companies suspended' },
+        { hash: 't322', label: 'The staffing firms' },
+        { hash: 'distributions', label: 'What the averages hide' },
+        { hash: 'method', label: 'How to read this page' },
+      ]},
+    ]},
     { title: 'Start here', items: [
       { href: '/h1b', label: 'The H-1B Explorer', anchors: [
         { hash: 'cases', label: 'The filings nobody expects' },
@@ -115,6 +125,16 @@
   ];
 
   const STEM_SECTIONS = [
+    { title: "VP Vance's Press Conference", items: [
+      { href: '/press-conference', label: 'The 8 October Announcement', anchors: [
+        { hash: 't411', label: 'The nine universities' },
+        { hash: 't434', label: 'The postdoc share' },
+        { hash: 't656', label: 'Eight companies suspended' },
+        { hash: 't322', label: 'The staffing firms' },
+        { hash: 'distributions', label: 'What the averages hide' },
+        { hash: 'method', label: 'How to read this page' },
+      ]},
+    ]},
     { title: 'Start here', items: [
       { href: '/overview', label: 'National Overview' },
       { href: '/stem', label: 'National Charts', anchors: [
@@ -329,7 +349,6 @@
       { href: '/data_sources', label: 'Data Sources & Methodology' },
       { href: '/briefing', label: 'The Briefing (PDF)' },
       { href: '/executive-brief.pdf', label: 'Executive Brief (4pp)' },
-      { href: '/press-conference', label: 'The Press Conference' },
       { href: '/data_requests', label: 'Data Asks', anchors: [
         { hash: 'how-to-read', label: 'How to read an ask' },
         { hash: 'asks', label: 'The asks' },

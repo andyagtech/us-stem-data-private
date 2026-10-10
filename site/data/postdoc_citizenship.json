@@ -491,5 +491,154 @@
       }
     ],
     "ranked_institutions": 175
+  },
+  "distribution": {
+    "floor": 50,
+    "institutions": 175,
+    "note": "Every institution reporting at least 50 postdocs. The national share is a weighted average over all of them and necessarily sits inside this range; it cannot show where the extremes are.",
+    "histogram": [
+      {
+        "from": 0,
+        "to": 20,
+        "institutions": 6,
+        "postdocs": 1232
+      },
+      {
+        "from": 20,
+        "to": 30,
+        "institutions": 4,
+        "postdocs": 584
+      },
+      {
+        "from": 30,
+        "to": 40,
+        "institutions": 9,
+        "postdocs": 3255
+      },
+      {
+        "from": 40,
+        "to": 50,
+        "institutions": 22,
+        "postdocs": 5541
+      },
+      {
+        "from": 50,
+        "to": 60,
+        "institutions": 43,
+        "postdocs": 21527
+      },
+      {
+        "from": 60,
+        "to": 70,
+        "institutions": 60,
+        "postdocs": 26189
+      },
+      {
+        "from": 70,
+        "to": 80,
+        "institutions": 25,
+        "postdocs": 7650
+      },
+      {
+        "from": 80,
+        "to": 90,
+        "institutions": 5,
+        "postdocs": 1568
+      },
+      {
+        "from": 90,
+        "to": 100,
+        "institutions": 1,
+        "postdocs": 56
+      }
+    ],
+    "percentiles": {
+      "p10": 39.3,
+      "p25": 51.0,
+      "median": 60.9,
+      "p75": 66.7,
+      "p90": 74.0,
+      "p99": 85.6
+    },
+    "min": 5.8,
+    "max": 94.6,
+    "above_national": 98,
+    "majority_foreign": 134,
+    "majority_foreign_postdocs": 56990,
+    "at_or_above_80": 6,
+    "outliers": [
+      {
+        "institution": "Missouri University of Science and Technology",
+        "share": 94.6,
+        "postdocs": 56,
+        "foreign": 53
+      },
+      {
+        "institution": "University of Texas M. D. Anderson Cancer Center, The",
+        "share": 86.2,
+        "postdocs": 595,
+        "foreign": 513
+      },
+      {
+        "institution": "University of Tennessee, The, Health Science Center",
+        "share": 85.6,
+        "postdocs": 90,
+        "foreign": 77
+      },
+      {
+        "institution": "Augusta University",
+        "share": 85.0,
+        "postdocs": 133,
+        "foreign": 113
+      },
+      {
+        "institution": "University of Missouri, Columbia",
+        "share": 84.5,
+        "postdocs": 381,
+        "foreign": 322
+      },
+      {
+        "institution": "University of Texas Health Science Center at Houston, The",
+        "share": 81.6,
+        "postdocs": 369,
+        "foreign": 301
+      },
+      {
+        "institution": "University of Texas Southwestern Medical Center, The",
+        "share": 79.7,
+        "postdocs": 602,
+        "foreign": 480
+      },
+      {
+        "institution": "Case Western Reserve University",
+        "share": 79.4,
+        "postdocs": 243,
+        "foreign": 193
+      },
+      {
+        "institution": "Albert Einstein College of Medicine",
+        "share": 78.8,
+        "postdocs": 240,
+        "foreign": 189
+      },
+      {
+        "institution": "Cornell University",
+        "share": 78.5,
+        "postdocs": 488,
+        "foreign": 383
+      },
+      {
+        "institution": "University of Oklahoma, The",
+        "share": 78.2,
+        "postdocs": 87,
+        "foreign": 68
+      },
+      {
+        "institution": "Rice University",
+        "share": 77.1,
+        "postdocs": 231,
+        "foreign": 178
+      }
+    ]
   }
 }
