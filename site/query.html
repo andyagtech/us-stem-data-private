@@ -125,6 +125,14 @@
      with long employer names -- and on a phone that scrolled the whole
      page sideways instead of the table. The scroll belongs to the table's
      own container. */
+  /* The sample-query chips are a flex row of buttons with long labels.
+     They sized to their text and ran 121px past a 375px phone. Allowed to
+     wrap and to shrink, with the label ellipsised rather than the page
+     widened. */
+  .example-queries { flex-wrap: wrap; min-width: 0; max-width: 100%; }
+  .example-btn { max-width: 100%; overflow: hidden; text-overflow: ellipsis;
+    white-space: nowrap; }
+  @media (max-width: 620px) { .example-btn { max-width: 14rem; } }
   .results-area { overflow-x: auto; }
   .results-area table { min-width: max-content; }
   @media (max-width: 760px) {

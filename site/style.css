@@ -174,3 +174,18 @@ th { color: var(--text-muted); font-weight: 600; }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
+
+
+/* A FLEX ITEM WILL NOT SHRINK BELOW ITS CONTENT.
+   min-width defaults to auto, so .main held itself at 986px beside a 260px
+   sidebar inside a 1024px iPad, and the page scrolled sideways by 222px.
+   The same default caused the press-conference rail to overflow a phone.
+   It looks like a wrapping problem and is not: the track has to be allowed
+   to shrink before anything inside it will.
+
+   Scoped to body.has-sidebar so it only applies where sidebar.js has taken
+   over the layout, and written with two classes so it outranks the plain
+   .main rule each generated page carries in its own <style>. */
+body.has-sidebar .main { min-width: 0; }
+body.has-sidebar .main table,
+body.has-sidebar .main pre { max-width: 100%; }

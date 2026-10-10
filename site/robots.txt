@@ -10,5 +10,6 @@ Allow: /
 # See scripts/private_pages.py -- the single declaration all four read.
 Disallow: /analytics.html
 Disallow: /chat-admin.html
+Disallow: /lab-directory.html
 
 Sitemap: https://phd-demographics.andy-barr.com/sitemap.xml
