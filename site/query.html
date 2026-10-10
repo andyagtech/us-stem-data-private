@@ -401,6 +401,12 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
         basis, with the institution name already joined in. <strong>Start
         here.</strong> The same question against <code>ipeds_awards</code>
         takes about two seconds; this answers in under a tenth.</dd>
+        <dt>field_trend</dt>
+        <dd>231 fields, each with its non-resident share in 2011&ndash;2016
+        and again in 2017&ndash;2022 and the change between them. Both
+        windows sit after the 2010 recode, so the comparison is like for
+        like. Fields under 200 awards in either window are left out: a
+        small denominator turns noise into a trend.</dd>
         <dt>ipeds_awards</dt>
         <dd>260,170 rows: year, institution, field code, award basis,
         awards, non-residents. Every share published on this site is
@@ -510,6 +516,7 @@ const KNOWN_EXPORTS = [
   { file: 'ipeds_awards.parquet',     label: 'IPEDS awards by field (260K)' },
   { file: 'institutions.parquet',     label: 'Institutions (2.3K)' },
   { file: 'field_by_institution.parquet', label: 'Field x institution, pre-summed (13K)' },
+  { file: 'field_trend.parquet',      label: 'Field trend, then vs now (231)' },
   { file: 'field_shares.parquet',     label: 'Non-resident share by field (268)' },
   { file: 'department_pages.parquet', label: 'Department pages and rosters (181)' },
   { file: 'cap_exempt.parquet',       label: 'Cap-exempt employers (2.4K)' },
@@ -873,6 +880,7 @@ const TABLE_QUERIES = {
     { label: 'join: public sponsors that also file H-1Bs', sql: `SELECT p.employer, p.sector,\n       COUNT(*) AS perm_filings,\n       max(e.employer_filings) AS h1b_filings\nFROM h1b_perm_public p\nJOIN h1b_employers e ON upper(p.employer) = upper(e.employer)\nGROUP BY p.employer, p.sector\nORDER BY perm_filings DESC\nLIMIT 40` },
     { label: 'Preview', sql: `SELECT *\nFROM h1b_perm_public\nLIMIT 100` },
     { label: 'Who the public sector sponsors, by country', sql: `SELECT citizenship, COUNT(*) AS filings\nFROM h1b_perm_public\nWHERE citizenship <> ''\nGROUP BY citizenship\nORDER BY filings DESC\nLIMIT 25` },
+    { label: 'Who universities sponsor, by country', sql: `SELECT citizenship, COUNT(*) AS filings\nFROM h1b_perm_public\nWHERE sector = 'universities' AND citizenship <> ''\nGROUP BY citizenship\nORDER BY filings DESC\nLIMIT 25` },
     { label: 'Every state-agency filing, with nationality', sql: `SELECT fiscal_year, state, employer, job_title, citizenship, birth_country, wage\nFROM h1b_perm_public\nWHERE sector = 'state_agencies'\nORDER BY fiscal_year DESC, state` },
     { label: 'Citizenship differs from country of birth', sql: `SELECT citizenship, birth_country, COUNT(*) AS filings\nFROM h1b_perm_public\nWHERE birth_country <> '' AND citizenship <> ''\n  AND lower(citizenship) <> lower(birth_country)\nGROUP BY citizenship, birth_country\nORDER BY filings DESC\nLIMIT 30` },
     { label: 'Sponsored while on a tourist visa', sql: `SELECT fiscal_year, sector, employer, job_title, citizenship, visa_held\nFROM h1b_perm_public\nWHERE visa_held IN ('B-1','B-2','F-2','J-2','M-1','TPS','PAROLEE','EWI')\nORDER BY fiscal_year DESC` },
@@ -910,13 +918,24 @@ const TABLE_QUERIES = {
     { label: 'Highest non-resident share in one field', sql: `-- Pre-summed over 2015-2022 on one award basis, with the\n-- institution name already joined in. The same question against\n-- ipeds_awards takes about two seconds; this is immediate.\n-- 14.10 is electrical engineering.\nSELECT institution, state, field, awards, nonresident, nonresident_pct\nFROM field_by_institution\nWHERE cip4 = '14.10' AND awards >= 20\nORDER BY nonresident_pct DESC\nLIMIT 40` },
     { label: 'Where no American finished', sql: `SELECT institution, state, field, awards, nonresident\nFROM field_by_institution\nWHERE nonresident_pct = 100 AND awards >= 20\nORDER BY awards DESC` },
     { label: 'One university, every field', sql: `SELECT field, cipcode, awards, nonresident, nonresident_pct\nFROM field_by_institution\nWHERE institution LIKE '%Houston%' AND awards >= 10\nORDER BY nonresident_pct DESC` },
+    { label: 'Public universities, highest share', sql: `-- Public money, public institutions. control comes from IPEDS.\nSELECT institution, state, field, awards, nonresident, nonresident_pct\nFROM field_by_institution\nWHERE control LIKE '%public%' AND awards >= 40\nORDER BY nonresident_pct DESC\nLIMIT 40` },
+    { label: 'Concentration: who makes a field', sql: `-- The twenty universities producing the most non-resident\n-- engineering doctorates. cip2 = '14' is engineering. Compare the\n-- column against the field total below it.\nSELECT institution, state,\n       SUM(nonresident) AS nonresident_doctorates,\n       SUM(awards) AS all_doctorates\nFROM field_by_institution\nWHERE cip2 = '14'\nGROUP BY institution, state\nORDER BY nonresident_doctorates DESC\nLIMIT 20` },
+    { label: 'That field in total', sql: `SELECT SUM(nonresident) AS nonresident_doctorates,\n       SUM(awards) AS all_doctorates,\n       COUNT(DISTINCT institution) AS institutions\nFROM field_by_institution\nWHERE cip2 = '14'` },
+    { label: 'One state, every field', sql: `SELECT institution, field, awards, nonresident_pct\nFROM field_by_institution\nWHERE state = 'TX' AND awards >= 25\nORDER BY nonresident_pct DESC\nLIMIT 50` },
     { label: 'By broad discipline', sql: `-- cip2 is the two-digit rollup: 11 computing, 14 engineering,\n-- 26 biology, 27 maths, 40 physical sciences.\nSELECT cip2, SUM(awards) AS awards, SUM(nonresident) AS nonresident,\n       round(SUM(nonresident) * 100.0 / SUM(awards), 1) AS pct\nFROM field_by_institution\nGROUP BY cip2\nHAVING SUM(awards) >= 500\nORDER BY pct DESC` },
     { label: 'join: which of these publish a roster', sql: `SELECT f.institution, f.cipcode, f.nonresident_pct, f.awards,\n       d.students_url, d.faculty_url\nFROM field_by_institution f\nJOIN department_pages d ON f.institution = d.institution\nWHERE f.nonresident_pct >= 85 AND f.awards >= 20\nORDER BY f.nonresident_pct DESC` },
+  ],
+  'field_trend': [
+    { label: 'Which fields rose fastest', sql: `-- Pre-computed: 2011-2016 against 2017-2022, both on the\n-- post-2010 award basis so the comparison is like for like.\n-- Fields under 200 awards in either window are excluded, because\n-- a small denominator turns noise into a trend.\nSELECT field, early_pct, late_pct, change_pct_points, late_awards\nFROM field_trend\nORDER BY change_pct_points DESC\nLIMIT 30` },
+    { label: 'Which fell', sql: `SELECT field, early_pct, late_pct, change_pct_points, late_awards\nFROM field_trend\nORDER BY change_pct_points ASC\nLIMIT 30` },
+    { label: 'Already high, and still rising', sql: `SELECT field, early_pct, late_pct, change_pct_points, late_awards\nFROM field_trend\nWHERE late_pct >= 60 AND change_pct_points > 0\nORDER BY late_pct DESC` },
+    { label: 'Engineering and computing only', sql: `SELECT field, early_pct, late_pct, change_pct_points, late_awards\nFROM field_trend\nWHERE cip2 IN ('11', '14')\nORDER BY late_pct DESC` },
   ],
   'field_shares': [
     { label: 'Preview', sql: `SELECT *\nFROM field_shares\nORDER BY nonresident_pct DESC\nLIMIT 100` },
     { label: 'Where no American finished', sql: `-- Fields and institutions where every doctorate in the window went\n-- to a non-resident. Awards, not people: this counts degrees\n-- conferred, not individuals, and says nothing about anyone's origin.\nSELECT institution, field_name, doctorates, nonresident, nonresident_pct\nFROM field_shares\nWHERE nonresident_pct >= 95\nORDER BY doctorates DESC` },
     { label: 'join: which of these publish a roster', sql: `SELECT f.institution, f.field_name, f.nonresident_pct, f.doctorates,\n       d.students_url, d.faculty_url\nFROM field_shares f\nLEFT JOIN department_pages d\n  ON f.institution = d.institution AND f.field = d.field\nWHERE f.nonresident_pct >= 85\nORDER BY f.nonresident_pct DESC` },
+    { label: 'High share, and no public roster', sql: `-- The absence is the finding. These departments have among the\n-- highest non-resident shares on the site and publish neither a\n-- graduate roster nor a directory, so who is in them is not public.\nSELECT f.institution, f.field_name, f.nonresident_pct, f.doctorates\nFROM field_shares f\nLEFT JOIN department_pages d\n  ON f.institution = d.institution AND f.field = d.field\nWHERE f.nonresident_pct >= 85\n  AND d.students_url IS NULL AND d.directory_url IS NULL\nORDER BY f.nonresident_pct DESC` },
     { label: 'By field', sql: `SELECT field_name,\n       COUNT(*) AS institutions,\n       round(median(nonresident_pct), 1) AS median_pct,\n       max(nonresident_pct) AS highest\nFROM field_shares\nGROUP BY field_name\nORDER BY median_pct DESC` },
   ],
   'department_pages': [
