@@ -597,7 +597,7 @@
     </div>
     <p class="src">Vice President JD Vance Holds Press Conference on Fighting Visa Fraud<br>The White House, 8 October 2026</p>
     <nav class="speakers" aria-label="Jump to a speaker">
-      <h2 class="rail-h">Who spoke</h2><a class="sp-jump" href="#speaker-vance">Vice President JD Vance<span class="sp-when">0:26&ndash;7:14</span></a><a class="sp-jump" href="#speaker-sonderling">Labor Secretary Keith Sonderling<span class="sp-when">10:56</span></a><a class="sp-jump" href="#speaker-blanche">Attorney General Todd Blanche<span class="sp-when">12:37</span></a><a class="sp-jump" href="#speaker-miller">Deputy Chief of Staff Stephen Miller<span class="sp-when">16:38</span></a><a class="sp-jump" href="#speaker-desposito">Labor Inspector General Anthony D’Esposito<span class="sp-when">21:05&ndash;21:56</span></a><a class="sp-jump" href="#speaker-ferguson">FTC Chairman Andrew Ferguson<span class="sp-when">25:44</span></a><a class="sp-jump" href="#speaker-vance-at-29m34">Vice President JD Vance<span class="sp-when">29:34&ndash;42:09</span></a></nav>
+      <h2 class="rail-h">Who spoke</h2><a class="sp-jump" href="#speaker-vance" data-seek="26" data-track="press.speaker.vance">Vice President JD Vance<span class="sp-when">0:26&ndash;7:14</span></a><a class="sp-jump" href="#speaker-sonderling" data-seek="656" data-track="press.speaker.sonderling">Labor Secretary Keith Sonderling<span class="sp-when">10:56</span></a><a class="sp-jump" href="#speaker-blanche" data-seek="757" data-track="press.speaker.blanche">Attorney General Todd Blanche<span class="sp-when">12:37</span></a><a class="sp-jump" href="#speaker-miller" data-seek="998" data-track="press.speaker.miller">Deputy Chief of Staff Stephen Miller<span class="sp-when">16:38</span></a><a class="sp-jump" href="#speaker-desposito" data-seek="1265" data-track="press.speaker.desposito">Labor Inspector General Anthony D’Esposito<span class="sp-when">21:05&ndash;21:56</span></a><a class="sp-jump" href="#speaker-ferguson" data-seek="1544" data-track="press.speaker.ferguson">FTC Chairman Andrew Ferguson<span class="sp-when">25:44</span></a><a class="sp-jump" href="#speaker-vance-at-29m34" data-seek="1774" data-track="press.speaker.vance-at-29m34">Vice President JD Vance<span class="sp-when">29:34&ndash;42:09</span></a></nav>
     <div class="jumps"><button type="button" class="jump" data-seek="26" data-track="press.jump.26">0:26 &middot; What was announced</button><button type="button" class="jump" data-seek="104" data-track="press.jump.104">1:44 &middot; The recruitment test</button><button type="button" class="jump" data-seek="117" data-track="press.jump.117">1:57 &middot; Why the tie to one employer matters</button><button type="button" class="jump" data-seek="141" data-track="press.jump.141">2:21 &middot; PERM is the step this site can see</button><button type="button" class="jump" data-seek="182" data-track="press.jump.182">3:02 &middot; The Microsoft figures</button><button type="button" class="jump" data-seek="322" data-track="press.jump.322">5:22 &middot; The staffing firms</button><button type="button" class="jump" data-seek="348" data-track="press.jump.348">5:48 &middot; The wage gap</button><button type="button" class="jump" data-seek="411" data-track="press.jump.411">6:51 &middot; The nine universities</button><button type="button" class="jump" data-seek="434" data-track="press.jump.434">7:14 &middot; The nine are at 60.7%. Nationally it is 58.3%.</button><button type="button" class="jump" data-seek="656" data-track="press.jump.656">10:56 &middot; Eight companies suspended from PERM</button><button type="button" class="jump" data-seek="757" data-track="press.jump.757">12:37 &middot; The enforcement frame</button><button type="button" class="jump" data-seek="998" data-track="press.jump.998">16:38 &middot; Training your replacement</button><button type="button" class="jump" data-seek="1265" data-track="press.jump.1265">21:05 &middot; The investigation is live</button><button type="button" class="jump" data-seek="1316" data-track="press.jump.1316">21:56 &middot; The research-security argument</button><button type="button" class="jump" data-seek="1544" data-track="press.jump.1544">25:44 &middot; The thesis, stated from the podium</button><button type="button" class="jump" data-seek="1774" data-track="press.jump.1774">29:34 &middot; The close</button><button type="button" class="jump" data-seek="2529" data-track="press.jump.2529">42:09 &middot; Asked directly: what is the fraud?</button></div>
   </aside>
 </div>
@@ -641,9 +641,39 @@
     if (r && window.innerWidth < 900) r.scrollIntoView({behavior: 'smooth', block: 'start'});
   }
 
+
+  /* A speaker anchor moves the recording too. The rail links carry
+     data-seek and go through the handler above, but the site sidebar
+     is generated elsewhere and emits a plain href, so the hash is the
+     one signal both of them share. A link someone was sent works the
+     same way.
+
+     NOT ON FIRST LOAD. Arriving at a URL is not a request to play
+     audio, and mounting the iframe is the moment this page first
+     contacts YouTube. The reader presses play, or clicks a speaker,
+     and only then. */
+  var SPEAKER_AT = {"vance": 26, "sonderling": 656, "blanche": 757, "miller": 998, "desposito": 1265, "ferguson": 1544, "vance-at-29m34": 1774};
+  function seekFromHash() {
+    var id = (location.hash || '').replace(/^#/, '');
+    if (!id) return;
+    var at = SPEAKER_AT[id.replace(/^speaker-/, '')];
+    if (at !== undefined) seek(at);
+  }
+  window.addEventListener('hashchange', seekFromHash);
+
   document.addEventListener('click', function (e) {
     var b = e.target.closest('[data-seek]');
     if (b) { seek(parseInt(b.dataset.seek, 10) || 0); return; }
+    // A speaker link from anywhere on the page, including the site
+    // sidebar. Caught on the click as well as on hashchange, because
+    // clicking the link you are already on fires no hashchange and the
+    // reader would see nothing happen.
+    var a = e.target.closest('a[href*="#speaker-"]');
+    if (a) {
+      var at = SPEAKER_AT[a.getAttribute('href').split('#speaker-')[1]];
+      if (at !== undefined) seek(at);
+      return;
+    }
     if (e.target.closest('#poster')) mount(0);
   });
 
