@@ -197,7 +197,13 @@
     font-family: var(--mono); font-size: 0.65rem; opacity: 0.6;
     background: rgba(0,0,0,0.2); padding: 1px 5px; border-radius: 3px;
   }
-  .query-status {
+  .dl { display: inline-flex; gap: .3rem; align-items: center; }
+    .dl-btn { font: inherit; font-size: 0.7rem; padding: 3px 9px;
+      border: 1px solid var(--border); border-radius: 5px; cursor: pointer;
+      background: transparent; color: var(--text-muted); }
+    .dl-btn:hover { color: var(--text); border-color: var(--text-muted); }
+    .dl-btn:disabled { opacity: .5; cursor: progress; }
+    .query-status {
     font-size: 0.72rem; color: var(--muted); margin-left: 4px;
   }
   .query-status.error { color: var(--red); }
@@ -334,6 +340,12 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
       <div class="query-bar">
         <button class="run-btn" id="runBtn" data-track="btn.runBtn">&#9654; Run <kbd>&#8984;&#9166;</kbd></button>
         <span class="query-status" id="queryStatus"></span>
+        <span class="dl" id="downloads" hidden>
+          <button class="dl-btn" id="dlCsv" data-track="btn.dlCsv"
+                  title="Download every row of this result as CSV">CSV</button>
+          <button class="dl-btn" id="dlParquet" data-track="btn.dlParquet"
+                  title="Download every row of this result as Parquet">Parquet</button>
+        </span>
         <div class="example-queries" id="exampleQueries"></div>
       </div>
     </div>
@@ -714,6 +726,12 @@ function hideRunning() {
   runningIndicator.classList.remove('active');
 }
 
+// The last result set, held so it can be exported. renderResults draws
+// every row it is given, so what downloads is exactly what is on screen
+// -- there is no separate "displayed" subset to get out of step with.
+let lastRows = null;
+let lastQuery = '';
+
 async function runQuery() {
   const query = queryEditor.value.trim();
   if (!query) return;
@@ -731,6 +749,10 @@ async function runQuery() {
     const rows = await collect(asyncRows);
     const elapsed = ((performance.now() - t0) / 1000).toFixed(3);
 
+    lastRows = rows;
+    lastQuery = query;
+    downloads.hidden = rows.length === 0;
+
     if (rows.length === 0) {
       resultsArea.innerHTML = '<div class="empty-state"><div>Query returned 0 rows</div></div>';
       setStatus(`0 rows in ${elapsed}s`, 'success');
@@ -739,6 +761,8 @@ async function runQuery() {
       setStatus(`${rows.length.toLocaleString()} row${rows.length > 1 ? 's' : ''} in ${elapsed}s`, 'success');
     }
   } catch (err) {
+    lastRows = null;
+    downloads.hidden = true;
     setStatus(err.message, 'error');
     resultsArea.innerHTML = `<div class="empty-state" style="color:var(--red)"><div style="font-size:1.5rem">&#9888;</div><div>${escapeHtml(err.message)}</div></div>`;
     console.error(err);
@@ -747,6 +771,100 @@ async function runQuery() {
     hideRunning();
   }
 }
+
+// ============================================================
+// EXPORT THE RESULT
+// ============================================================
+// Both formats write the WHOLE result set, not the rows currently in
+// view, and both are produced in the browser from the rows already in
+// memory. Nothing is re-queried and nothing is sent anywhere.
+
+const downloads = document.getElementById('downloads');
+
+function saveBlob(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  // Revoke on the next tick: revoking synchronously cancels the
+  // download in Safari.
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function exportName(ext) {
+  // Name the file after the table the query reads, so a folder of
+  // downloads is readable. Falls back to the date.
+  const m = lastQuery.match(/\bfrom\s+([a-zA-Z_][a-zA-Z0-9_]*)/i);
+  const stem = m ? m[1] : 'query';
+  const d = new Date().toISOString().slice(0, 10);
+  return `${stem}-${d}.${ext}`;
+}
+
+function csvCell(v) {
+  if (v === null || v === undefined) return '';
+  // BigInt is what the Parquet reader hands back for 64-bit integers and
+  // it has no toJSON; String() is correct and lossless for both it and
+  // every other scalar here.
+  const s = String(v);
+  // RFC 4180: quote if the value carries a comma, a quote, or a line
+  // break, and double any quote inside. Skipping this turns one job
+  // title with a comma in it into two columns.
+  return /[",\r\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+}
+
+function toCsv(rows) {
+  const cols = Object.keys(rows[0]);
+  const out = [cols.map(csvCell).join(',')];
+  for (const row of rows) out.push(cols.map(c => csvCell(row[c])).join(','));
+  // A trailing newline, because a file without one appends to the next
+  // line when concatenated.
+  return out.join('\r\n') + '\r\n';
+}
+
+document.getElementById('dlCsv').addEventListener('click', () => {
+  if (!lastRows || !lastRows.length) return;
+  // The BOM makes Excel read it as UTF-8. Without it, every accented
+  // name in the dissertation corpus arrives mangled.
+  const blob = new Blob(['\uFEFF' + toCsv(lastRows)],
+                        { type: 'text/csv;charset=utf-8' });
+  saveBlob(blob, exportName('csv'));
+});
+
+document.getElementById('dlParquet').addEventListener('click', async (e) => {
+  if (!lastRows || !lastRows.length) return;
+  const btn = e.currentTarget;
+  btn.disabled = true;
+  const was = btn.textContent;
+  btn.textContent = 'Writing...';
+  try {
+    // Loaded on demand. Most readers never export, and this is another
+    // module over the network.
+    const { parquetWriteBuffer } = await import(
+      'https://esm.sh/hyparquet-writer@0.16.11');
+    const cols = Object.keys(lastRows[0]);
+    const columnData = cols.map(name => {
+      const data = lastRows.map(r => {
+        const v = r[name];
+        return v === undefined ? null : v;
+      });
+      return { name, data };
+    });
+    const buf = parquetWriteBuffer({ columnData });
+    saveBlob(new Blob([buf], { type: 'application/vnd.apache.parquet' }),
+             exportName('parquet'));
+  } catch (err) {
+    // Say so in the status line rather than failing silently: a
+    // download that never arrives looks like a broken button.
+    setStatus('Parquet export failed: ' + err.message, 'error');
+    console.error(err);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = was;
+  }
+});
 
 // Run on click or Cmd/Ctrl+Enter
 runBtn.addEventListener('click', runQuery);
