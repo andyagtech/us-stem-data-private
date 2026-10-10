@@ -77,8 +77,15 @@
   const H1B_HOST = /^h-?1b\./i.test(location.hostname);
 
   const H1B_SECTIONS = [
-    { title: "VP Vance's Press Conference", items: [
-      { href: '/press-conference', label: 'The 8 October Announcement', anchors: [
+    { title: "VP Vance's Task Force", items: [
+      { href: '/press-conference', label: 'October 8 Press Conference', anchors: [
+        { hash: 'speaker-vance', label: 'VP Vance' },
+        { hash: 'speaker-sonderling', label: 'Sec. Sonderling' },
+        { hash: 'speaker-blanche', label: 'AG Blanche' },
+        { hash: 'speaker-miller', label: 'Stephen Miller' },
+        { hash: 'speaker-desposito', label: "IG D\u2019Esposito" },
+        { hash: 'speaker-ferguson', label: 'Chairman Ferguson' },
+        { hash: 'speaker-vance-at-29m34', label: 'VP Vance, closing' },
         { hash: 't411', label: 'The nine universities' },
         { hash: 't434', label: 'The postdoc share' },
         { hash: 't656', label: 'Eight companies suspended' },
@@ -125,8 +132,15 @@
   ];
 
   const STEM_SECTIONS = [
-    { title: "VP Vance's Press Conference", items: [
-      { href: '/press-conference', label: 'The 8 October Announcement', anchors: [
+    { title: "VP Vance's Task Force", items: [
+      { href: '/press-conference', label: 'October 8 Press Conference', anchors: [
+        { hash: 'speaker-vance', label: 'VP Vance' },
+        { hash: 'speaker-sonderling', label: 'Sec. Sonderling' },
+        { hash: 'speaker-blanche', label: 'AG Blanche' },
+        { hash: 'speaker-miller', label: 'Stephen Miller' },
+        { hash: 'speaker-desposito', label: "IG D\u2019Esposito" },
+        { hash: 'speaker-ferguson', label: 'Chairman Ferguson' },
+        { hash: 'speaker-vance-at-29m34', label: 'VP Vance, closing' },
         { hash: 't411', label: 'The nine universities' },
         { hash: 't434', label: 'The postdoc share' },
         { hash: 't656', label: 'Eight companies suspended' },

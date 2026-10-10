@@ -84,6 +84,41 @@
   .jump.on { color: var(--hl); border-left-color: var(--hl);
     background: var(--surface); }
 
+  /* One collapsible block per run at the podium. */
+  .speakers { display: flex; flex-wrap: wrap; gap: .4rem;
+    margin: 0 0 1.4rem; }
+  .sp-jump { display: inline-flex; flex-direction: column; gap: .1rem;
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: .35rem .7rem; font-size: .8rem; text-decoration: none;
+    color: var(--text); background: var(--surface); line-height: 1.3; }
+  .sp-jump:hover { border-color: var(--hl); color: var(--hl); }
+  .sp-when { font-size: .68rem; color: var(--text-muted);
+    font-variant-numeric: tabular-nums; }
+  .spk { border-top: 2px solid var(--hl); margin: 1.6rem 0 0; }
+  .spk > summary { cursor: pointer; list-style: none; padding: .6rem 0;
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem; }
+  .spk > summary::-webkit-details-marker { display: none; }
+  .spk > summary::before { content: "\25bc"; font-size: .6rem;
+    color: var(--text-muted); transition: transform .15s; }
+  .spk:not([open]) > summary::before { transform: rotate(-90deg); }
+  .sp-name { font-weight: 700; font-size: 1rem; }
+  .sp-meta { font-size: .76rem; color: var(--text-muted);
+    font-variant-numeric: tabular-nums; }
+  .spk > summary:hover .sp-name { color: var(--hl); }
+  .spk .mo:first-of-type { border-top: 0; padding-top: .4rem; }
+  .pts { margin: .4rem 0 0; padding-left: 1.1rem; font-size: .92rem;
+    line-height: 1.7; color: var(--text); }
+  .pts li { margin: 0 0 .15rem; }
+  /* THE ASK IS THE POINT OF THE PAGE, not an aside. Each one names a
+     specific federal request and links straight to it. */
+  .ask { margin: .8rem 0 0; }
+  .ask a { display: block; color: var(--hl); text-decoration: none;
+    font-size: .9rem; line-height: 1.6; border-left: 3px solid var(--hl);
+    padding: .55rem .9rem; border-radius: 0 8px 8px 0;
+    background: color-mix(in srgb, var(--hl) 7%, transparent); }
+  .ask a:hover { background: color-mix(in srgb, var(--hl) 13%, transparent); }
+  .ask-tag { display: block; font-size: .66rem; font-weight: 800;
+    text-transform: uppercase; letter-spacing: .09em; margin-bottom: .2rem; }
   .mo { border-top: 1px solid var(--border); padding: 1.6rem 0 .4rem;
     scroll-margin-top: 1rem; }
   .mo-head { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem;
@@ -169,7 +204,8 @@
 </div>
 
 <div class="cols">
-  <div class="stream">
+  <nav class="speakers" aria-label="Jump to a speaker"><a class="sp-jump" href="#speaker-vance">Vice President JD Vance<span class="sp-when">0:26&ndash;7:14</span></a><a class="sp-jump" href="#speaker-sonderling">Labor Secretary Keith Sonderling<span class="sp-when">10:56</span></a><a class="sp-jump" href="#speaker-blanche">Attorney General Todd Blanche<span class="sp-when">12:37</span></a><a class="sp-jump" href="#speaker-miller">Deputy Chief of Staff Stephen Miller<span class="sp-when">16:38</span></a><a class="sp-jump" href="#speaker-desposito">Labor Inspector General Anthony D’Esposito<span class="sp-when">21:05&ndash;21:56</span></a><a class="sp-jump" href="#speaker-ferguson">FTC Chairman Andrew Ferguson<span class="sp-when">25:44</span></a><a class="sp-jump" href="#speaker-vance-at-29m34">Vice President JD Vance<span class="sp-when">29:34&ndash;42:09</span></a></nav>
+  <div class="stream"><details class="spk" id="speaker-vance" open><summary><span class="sp-name">Vice President JD Vance</span><span class="sp-meta">0:26&ndash;7:14 &middot; 9 passages</span></summary>
 <section class="mo" id="t26" data-t="26">
   <div class="mo-head">
     <button class="ts" type="button" data-seek="26"
@@ -180,7 +216,9 @@
   <blockquote>This is a great day for American workers because we are taking some very concrete actions to cut down on some of the H-1B and J1 visa fraud that we&#x27;ve been tracking over the past several months.</blockquote>
   <h2>What was announced</h2>
   
-  <p class="note">Three things followed: PERM suspensions for eight named companies, a J-1 investigation into nine named universities, and a visa-fraud strike team. The rest of this page takes the claims in the order they were made.</p>
+  <p class="note">Three things followed.</p>
+  <ul class="pts"><li>PERM suspensions for eight named companies.</li><li>A J-1 investigation into nine named universities.</li><li>A visa-fraud strike team.</li></ul>
+  
   
   
 </section>
@@ -194,7 +232,9 @@
   <blockquote>They will say, maybe they&#x27;ll put an advertisement in a small town newspaper... and they will use that lack of a response to then go and replace American workers.</blockquote>
   <h2>The recruitment test</h2>
   
-  <p class="note">This is the PERM labour-market test: before sponsoring a worker for permanent residence an employer must advertise the role and show that no qualified American applied. The disclosure files record that a test took place. They do not record the advertisement, how many Americans applied, or why any were rejected — the Department of Labor holds that detail on the ETA-9089 and does not publish it. Releasing it would put evidence behind this passage. It is the first request on this site’s list.</p>
+  <p class="note">This is the PERM labour-market test: before sponsoring a worker for permanent residence an employer must advertise the role and show that no qualified American applied. The disclosure files record that a test took place. They do not record the advertisement, how many Americans applied, or why any were rejected. The Department of Labor holds that detail on the ETA-9089 and does not publish it.</p>
+  
+  <p class="ask"><a href="/data_requests#department-of-labor"><span class="ask-tag">The ask</span>Publish the recruitment detail from the ETA-9089: the advertisement, the number of American applicants, and the reason each was rejected. The employer already answers these questions on the form. Releasing them would settle this passage outright. &rarr;</a></p>
   
   <p class="links"><a class="go" href="/data_requests" target="_blank" rel="noopener">What the record does not hold &rarr;</a></p>
 </section>
@@ -210,6 +250,8 @@
   <ul class="ev"><li><span class="v">$15,300</span><span class="l">forgone per $100,000 of payroll, employer and employee side together</span></li></ul>
   <p class="note">Status depends on the job, which is a fact of the visa rather than a finding in the data. What the data does show is the price attached: an employer owes no Social Security or Medicare tax on a student working under practical training, and neither does the worker.</p>
   
+  
+  
   <p class="links"><a class="go" href="/visa-schools#cheaper" target="_blank" rel="noopener">Why an OPT hire costs less &rarr;</a></p>
 </section>
 <section class="mo" id="t141" data-t="141">
@@ -223,6 +265,8 @@
   <h2>PERM is the step this site can see</h2>
   <ul class="ev"><li><span class="v">42,833</span><span class="l">certified public-employer filings, FY2013–FY2024</span></li></ul>
   <p class="note">PERM is the only federal disclosure file that records a worker&#x27;s citizenship, which is why this site can say who public employers sponsor and the H-1B files cannot. The series ends with FY2024: the Department of Labor removed every worker field from the FY2025 file, 155 columns down to 137.</p>
+  
+  
   <details class="panel"><summary>Public-employer permanent-residence filings by sector</summary><div class="panel-body"><svg class="chart" viewBox="0 0 620 112" role="img" preserveAspectRatio="xMinYMin meet"><text class="lab" x="220" y="21.16" text-anchor="end">Universities</text><rect class="bar" x="230" y="8" width="324.0" height="15" rx="2"/><text class="val" x="560.0" y="21.16">32,121</text><text class="lab" x="220" y="47.16" text-anchor="end">School Districts</text><rect class="bar" x="230" y="34" width="78.7" height="15" rx="2"/><text class="val" x="314.717848136733" y="47.16">7,804</text><text class="lab" x="220" y="73.16" text-anchor="end">Utilities</text><rect class="bar" x="230" y="60" width="28.5" height="15" rx="2"/><text class="val" x="264.4550294200056" y="73.16">2,821</text><text class="lab" x="220" y="99.16" text-anchor="end">State Agencies</text><rect class="bar" x="230" y="86" width="2.0" height="15" rx="2"/><text class="val" x="238" y="99.16">87</text></svg><p class="cap">Certified PERM filings, FY2013–FY2024. This is the only federal disclosure file that records the worker’s citizenship.</p></div></details>
   <p class="links"><a class="go" href="/public-sector-visas" target="_blank" rel="noopener">Who the public sector sponsors &rarr;</a><a class="go" href="/data_requests" target="_blank" rel="noopener">The ask to restore those fields &rarr;</a></p>
 </section>
@@ -238,6 +282,8 @@
   
   <p class="note">Layoff counts are not a federal disclosure, so that half of the comparison comes from company reporting rather than from this site. What is public is everything Microsoft filed, by year, occupation and wage level, and it can be read here directly. One caution when citing approval totals: initial and continuing approvals must never be summed, because a continuing approval is the same worker renewed and adding them counts one person once a year for as long as they stay.</p>
   
+  
+  
   <p class="links"><a class="go" href="/query?sql=--%20Everything%20Microsoft%20filed%2C%20from%20the%20DOL%20disclosure%20files.%0A--%20Filings%2C%20not%20people%3A%20a%20certified%20application%20is%20permission%20to%0A--%20employ%2C%20never%20proof%20of%20a%20hire%2C%20and%20never%20a%20count%20of%20workers.%0ASELECT%20employer%2C%0A%20%20%20%20%20%20%20employer_filings%2C%0A%20%20%20%20%20%20%20median_wage%2C%0A%20%20%20%20%20%20%20low_level_pct%20AS%20pct_at_the_two_lowest_wage_levels%0AFROM%20h1b_employers%0AWHERE%20upper%28employer%29%20LIKE%20%27%25MICROSOFT%25%27%0AORDER%20BY%20employer_filings%20DESC" target="_blank" rel="noopener">Check the filings yourself &rarr;</a></p>
 </section>
 <section class="mo" id="t322" data-t="322">
@@ -251,6 +297,8 @@
   <h2>The staffing firms</h2>
   <ul class="ev"><li><span class="v">1,106</span><span class="l">employers that meet this site’s staffing-firm test</span></li><li><span class="v">252,806</span><span class="l">certified filings they account for</span></li></ul>
   <p class="note">This site identifies these firms from the disclosure files rather than from a list. Joining employers to their industry puts Infosys, Tata Consultancy, Cognizant, Wipro, HCL and Capgemini at the top of filing volume — the same firms suspended from PERM later in this press conference.</p>
+  
+  
   <details class="panel"><summary>Certified filings by statutory wage level, nationally</summary><div class="panel-body"><svg class="chart" viewBox="0 0 620 112" role="img" preserveAspectRatio="xMinYMin meet"><text class="lab" x="220" y="21.16" text-anchor="end">Level I</text><rect class="bar hot" x="230" y="8" width="139.6" height="15" rx="2"/><text class="val hot" x="375.6269625833881" y="21.16">353,554</text><text class="lab" x="220" y="47.16" text-anchor="end">Level II</text><rect class="bar hot" x="230" y="34" width="324.0" height="15" rx="2"/><text class="val hot" x="560.0" y="47.16">820,411</text><text class="lab" x="220" y="73.16" text-anchor="end">Level III</text><rect class="bar" x="230" y="60" width="162.3" height="15" rx="2"/><text class="val" x="398.3350930204495" y="73.16">411,054</text><text class="lab" x="220" y="99.16" text-anchor="end">Level IV</text><rect class="bar" x="230" y="86" width="132.2" height="15" rx="2"/><text class="val" x="368.15184096751506" y="99.16">334,626</text></svg><p class="cap">Levels I and II are the two lowest the statute defines. They carry 61.2% of all certified filings.</p></div></details>
   <p class="links"><a class="go" href="/bodyshops" target="_blank" rel="noopener">The firms that meet the test &rarr;</a><a class="go" href="/query?sql=--%20The%20staffing%20firms%20named%20in%20the%20press%20conference%2C%20joined%20to%20the%0A--%20industry%20they%20file%20under.%20Counted%20by%20APPLICATION%2C%20never%20by%0A--%20position%3A%20one%20application%20can%20cover%20forty%20workers%2C%20and%20weighting%0A--%20by%20positions%20hands%20every%20share%20to%20the%20bulk%20filers.%0ASELECT%20e.employer%2C%0A%20%20%20%20%20%20%20e.employer_filings%2C%0A%20%20%20%20%20%20%20e.median_wage%2C%0A%20%20%20%20%20%20%20e.low_level_pct%20AS%20pct_at_the_two_lowest_wage_levels%2C%0A%20%20%20%20%20%20%20i.naics%2C%0A%20%20%20%20%20%20%20i.top_title%0AFROM%20h1b_employers%20e%0ALEFT%20JOIN%20h1b_industry%20i%20ON%20e.naics%20%3D%20i.naics%0AWHERE%20upper%28e.employer%29%20LIKE%20%27%25INFOSYS%25%27%0A%20%20%20OR%20upper%28e.employer%29%20LIKE%20%27%25TATA%20CONSULTANCY%25%27%0A%20%20%20OR%20upper%28e.employer%29%20LIKE%20%27%25COGNIZANT%25%27%0A%20%20%20OR%20upper%28e.employer%29%20LIKE%20%27%25WIPRO%25%27%0A%20%20%20OR%20upper%28e.employer%29%20LIKE%20%27%25HCL%20%25%27%0A%20%20%20OR%20upper%28e.employer%29%20LIKE%20%27%25CAPGEMINI%25%27%0AORDER%20BY%20e.employer_filings%20DESC" target="_blank" rel="noopener">Run the join &rarr;</a></p>
 </section>
@@ -266,6 +314,8 @@
   
   <p class="note">The disclosure files publish the wage an employer OFFERS, not the wage paid, so the offered figures understate any gap rather than overstate it. What this site can show at scale is where the offers sit: the staffing firms named a moment later file overwhelmingly at the lowest statutory wage levels. The figure that would settle the question outright is a Treasury tabulation of W-2 wages against the prevailing wage for the same occupation and area. Treasury holds it. Nobody has published it.</p>
   
+  
+  
   <p class="links"><a class="go" href="/data_requests" target="_blank" rel="noopener">Wages actually paid, not offered &rarr;</a></p>
 </section>
 <section class="mo" id="t411" data-t="411">
@@ -278,7 +328,9 @@
   <blockquote>There are nine universities in particular that we believe merit an investigation. Those universities are Harvard, Yale, Stanford, Brown, the University of Pittsburgh, UC Davis, Caltech, Arizona State, and MIT.</blockquote>
   <h2>The nine universities</h2>
   <ul class="ev"><li><span class="v">14,080</span><span class="l">postdoctoral appointees across the nine</span></li><li><span class="v">8,545</span><span class="l">of them hold a temporary visa</span></li></ul>
-  <p class="note">An investigation was announced on this date. This page reports that it was announced and what the federal survey counts. It makes no claim that any of these institutions broke a law.</p>
+  <p class="note">An investigation was announced on this date. The federal postdoc survey counts what these nine institutions reported themselves, and the figures below are their own returns.</p>
+  
+  
   <details class="panel"><summary>Each of the nine, by share of postdocs on a temporary visa</summary><div class="panel-body"><svg class="chart" viewBox="0 0 620 242" role="img" preserveAspectRatio="xMinYMin meet"><text class="lab" x="220" y="21.16" text-anchor="end">Yale University</text><rect class="bar hot" x="230" y="8" width="324.0" height="15" rx="2"/><text class="val hot" x="560.0" y="21.16">69.6%</text><text class="lab" x="220" y="47.16" text-anchor="end">Massachusetts Institute of Techno…</text><rect class="bar hot" x="230" y="34" width="316.6" height="15" rx="2"/><text class="val hot" x="552.551724137931" y="47.16">68.0%</text><text class="lab" x="220" y="73.16" text-anchor="end">California Institute of Technology</text><rect class="bar hot" x="230" y="60" width="314.7" height="15" rx="2"/><text class="val hot" x="550.6896551724137" y="73.16">67.6%</text><text class="lab" x="220" y="99.16" text-anchor="end">Stanford University</text><rect class="bar hot" x="230" y="86" width="303.1" height="15" rx="2"/><text class="val hot" x="539.051724137931" y="99.16">65.1%</text><text class="lab" x="220" y="125.16" text-anchor="end">University of California, Davis</text><rect class="bar" x="230" y="112" width="302.1" height="15" rx="2"/><text class="val" x="538.1206896551724" y="125.16">64.9%</text><text class="lab" x="220" y="151.16" text-anchor="end">Arizona State University</text><rect class="bar" x="230" y="138" width="289.1" height="15" rx="2"/><text class="val" x="525.0862068965517" y="151.16">62.1%</text><text class="lab" x="220" y="177.16" text-anchor="end">University of Pittsburgh</text><rect class="bar" x="230" y="164" width="271.9" height="15" rx="2"/><text class="val" x="507.86206896551727" y="177.16">58.4%</text><text class="lab" x="220" y="203.16" text-anchor="end">Harvard University</text><rect class="bar" x="230" y="190" width="251.8" height="15" rx="2"/><text class="val" x="487.8448275862069" y="203.16">54.1%</text><text class="lab" x="220" y="229.16" text-anchor="end">Brown University</text><rect class="bar" x="230" y="216" width="250.0" height="15" rx="2"/><text class="val" x="485.9827586206897" y="229.16">53.7%</text></svg><p class="cap">Combined they are 60.7%. Every one of the nine is above half.</p></div></details>
   <p class="links"><a class="go" href="/postdocs#the-nine" target="_blank" rel="noopener">All nine, with their postdoc counts &rarr;</a></p>
 </section>
@@ -293,9 +345,11 @@
   <h2>The nine are at 60.7%. Nationally it is 58.3%.</h2>
   <ul class="ev"><li><span class="v">60.7%</span><span class="l">the nine named universities, share of postdocs holding a temporary visa</span></li><li><span class="v">58.3%</span><span class="l">every institution in the survey</span></li><li><span class="v">69,877</span><span class="l">postdoctoral appointees counted</span></li><li><span class="v">48.1%</span><span class="l">of those posts are federally supported</span></li></ul>
   <p class="note">The NSF Survey of Graduate Students and Postdoctorates puts the nine named universities at the share given from the podium. The same survey shows this is not confined to them: across every institution it covers, most postdoctoral appointments in the United States are held on a temporary visa. American citizens and permanent residents are a minority of the postdoctoral workforce nationally — in a workforce where roughly half the posts are paid for by federal research money. The nine are where the investigation starts, and the pattern runs through the whole system.</p>
+  
+  
   <details class="panel"><summary>Where every institution falls, not just the nine</summary><div class="panel-body"><svg class="chart" viewBox="0 0 620 242" role="img" preserveAspectRatio="xMinYMin meet"><text class="lab" x="220" y="21.16" text-anchor="end">0–20%</text><rect class="bar" x="230" y="8" width="32.4" height="15" rx="2"/><text class="val" x="268.4" y="21.16">6</text><text class="lab" x="220" y="47.16" text-anchor="end">20–30%</text><rect class="bar" x="230" y="34" width="21.6" height="15" rx="2"/><text class="val" x="257.6" y="47.16">4</text><text class="lab" x="220" y="73.16" text-anchor="end">30–40%</text><rect class="bar" x="230" y="60" width="48.6" height="15" rx="2"/><text class="val" x="284.6" y="73.16">9</text><text class="lab" x="220" y="99.16" text-anchor="end">40–50%</text><rect class="bar" x="230" y="86" width="118.8" height="15" rx="2"/><text class="val" x="354.8" y="99.16">22</text><text class="lab" x="220" y="125.16" text-anchor="end">50–60%</text><rect class="bar" x="230" y="112" width="232.2" height="15" rx="2"/><text class="val" x="468.2" y="125.16">43</text><text class="lab" x="220" y="151.16" text-anchor="end">60–70%</text><rect class="bar" x="230" y="138" width="324.0" height="15" rx="2"/><text class="val" x="560.0" y="151.16">60</text><text class="lab" x="220" y="177.16" text-anchor="end">70–80%</text><rect class="bar hot" x="230" y="164" width="135.0" height="15" rx="2"/><text class="val hot" x="371.0" y="177.16">25</text><text class="lab" x="220" y="203.16" text-anchor="end">80–90%</text><rect class="bar hot" x="230" y="190" width="27.0" height="15" rx="2"/><text class="val hot" x="263.0" y="203.16">5</text><text class="lab" x="220" y="229.16" text-anchor="end">90–100%</text><rect class="bar hot" x="230" y="216" width="5.4" height="15" rx="2"/><text class="val hot" x="241.4" y="229.16">1</text></svg><p class="cap">175 institutions reporting at least 50 postdocs. The bars right of 70% are the ones no announcement has named.</p></div></details>
   <p class="links"><a class="go" href="/postdocs" target="_blank" rel="noopener">Who holds the postdoc jobs &rarr;</a></p>
-</section>
+</section></details><details class="spk" id="speaker-sonderling" open><summary><span class="sp-name">Labor Secretary Keith Sonderling</span><span class="sp-meta">10:56 &middot; 1 passage</span></summary>
 <section class="mo" id="t656" data-t="656">
   <div class="mo-head">
     <button class="ts" type="button" data-seek="656"
@@ -307,23 +361,27 @@
   <h2>Eight companies suspended from PERM</h2>
   <ul class="ev"><li><span class="v">252,806</span><span class="l">certified H-1B filings by firms meeting this site’s staffing-firm test</span></li><li><span class="v">12.2%</span><span class="l">of all certified filings in the country</span></li><li><span class="v">61.2%</span><span class="l">of all certified filings sit at the two lowest statutory wage levels</span></li></ul>
   <p class="note">PERM is the mechanism described earlier as how an H-1B holder stays permanently. Suspension stops new and pending applications from these employers. It does not affect anyone already holding permanent residence.</p>
+  
+  
   <details class="panel"><summary>Employers by share of their workforce that is H-1B dependent</summary><div class="panel-body"><svg class="chart" viewBox="0 0 620 294" role="img" preserveAspectRatio="xMinYMin meet"><text class="lab" x="220" y="21.16" text-anchor="end">0-9</text><rect class="bar" x="230" y="8" width="324.0" height="15" rx="2"/><text class="val" x="560.0" y="21.16">5,995</text><text class="lab" x="220" y="47.16" text-anchor="end">10-19</text><rect class="bar" x="230" y="34" width="7.2" height="15" rx="2"/><text class="val" x="243.242035029191" y="47.16">134</text><text class="lab" x="220" y="73.16" text-anchor="end">20-29</text><rect class="bar" x="230" y="60" width="7.8" height="15" rx="2"/><text class="val" x="243.83653044203504" y="73.16">145</text><text class="lab" x="220" y="99.16" text-anchor="end">30-39</text><rect class="bar" x="230" y="86" width="6.9" height="15" rx="2"/><text class="val" x="242.91776480400333" y="99.16">128</text><text class="lab" x="220" y="125.16" text-anchor="end">40-49</text><rect class="bar" x="230" y="112" width="7.4" height="15" rx="2"/><text class="val" x="243.40417014178482" y="125.16">137</text><text class="lab" x="220" y="151.16" text-anchor="end">50-59</text><rect class="bar" x="230" y="138" width="7.6" height="15" rx="2"/><text class="val" x="243.56630525437865" y="151.16">140</text><text class="lab" x="220" y="177.16" text-anchor="end">60-69</text><rect class="bar" x="230" y="164" width="8.1" height="15" rx="2"/><text class="val" x="244.05271059216014" y="177.16">149</text><text class="lab" x="220" y="203.16" text-anchor="end">70-79</text><rect class="bar" x="230" y="190" width="7.9" height="15" rx="2"/><text class="val" x="243.8905754795663" y="203.16">146</text><text class="lab" x="220" y="229.16" text-anchor="end">80-89</text><rect class="bar" x="230" y="216" width="10.6" height="15" rx="2"/><text class="val" x="246.6468723936614" y="229.16">197</text><text class="lab" x="220" y="255.16" text-anchor="end">90-99</text><rect class="bar hot" x="230" y="242" width="42.3" height="15" rx="2"/><text class="val hot" x="278.31726438698917" y="255.16">783</text><text class="lab" x="220" y="281.16" text-anchor="end">100%</text><rect class="bar hot" x="230" y="268" width="85.8" height="15" rx="2"/><text class="val hot" x="321.7694745621351" y="281.16">1,587</text></svg><p class="cap">1,587 employers report a workforce that is entirely H-1B dependent, and 783 more are above nine tenths. The distribution is bimodal: most employers barely use the program, and a cluster runs on almost nothing else.</p></div></details>
   <p class="links"><a class="go" href="/bodyshops" target="_blank" rel="noopener">What the filings show about these firms &rarr;</a></p>
-</section>
+</section></details><details class="spk" id="speaker-blanche" open><summary><span class="sp-name">Attorney General Todd Blanche</span><span class="sp-meta">12:37 &middot; 1 passage</span></summary>
 <section class="mo" id="t757" data-t="757">
   <div class="mo-head">
     <button class="ts" type="button" data-seek="757"
             data-track="press.seek.757"
             aria-label="Play from 12:37">&#9654; 12:37</button>
-    <span class="who">Attorney General Todd Blanch</span><span class="vd ok">Federal data on this</span>
+    <span class="who">Attorney General Todd Blanche</span><span class="vd ok">Federal data on this</span>
   </div>
   <blockquote>This announcement today should send and does send a strong signal to every single employer in the United States that the Trump administration will not tolerate discrimination against American workers.</blockquote>
   <h2>The enforcement frame</h2>
   <ul class="ev"><li><span class="v">32,121</span><span class="l">permanent-residence filings by universities, FY2013–FY2024</span></li><li><span class="v">7,804</span><span class="l">by public school districts</span></li></ul>
   <p class="note">No published federal source records graduate applications or admissions by citizenship, so whether American applicants are declining, being declined, or not applying cannot be determined from the data. This site asks for that collection.</p>
   
+  
+  
   <p class="links"><a class="go" href="/data_requests" target="_blank" rel="noopener">Graduate admissions by citizenship &rarr;</a></p>
-</section>
+</section></details><details class="spk" id="speaker-miller" open><summary><span class="sp-name">Deputy Chief of Staff Stephen Miller</span><span class="sp-meta">16:38 &middot; 1 passage</span></summary>
 <section class="mo" id="t998" data-t="998">
   <div class="mo-head">
     <button class="ts" type="button" data-seek="998"
@@ -334,21 +392,25 @@
   <blockquote>He had at his rallies American workers in good paying middle class jobs with pensions who were laid off and forced to train their foreign replacements as the condition of their severance.</blockquote>
   <h2>Training your replacement</h2>
   
-  <p class="note">Not a measurable claim in the disclosure files, which record filings rather than what happened in an office. Included here because it was said, and because a reader comparing the recording with this page should find every substantive passage accounted for.</p>
+  <p class="note">No federal file records what happens in an office after a filing is certified. The disclosure files stop at the paperwork. Whether a displaced worker trained their replacement is exactly the kind of fact no agency collects, and that gap is itself the finding: the public record ends where the consequence begins.</p>
   
   
-</section>
+  
+  
+</section></details><details class="spk" id="speaker-desposito" open><summary><span class="sp-name">Labor Inspector General Anthony D’Esposito</span><span class="sp-meta">21:05&ndash;21:56 &middot; 2 passages</span></summary>
 <section class="mo" id="t1265" data-t="1265">
   <div class="mo-head">
     <button class="ts" type="button" data-seek="1265"
             data-track="press.seek.1265"
             aria-label="Play from 21:05">&#9654; 21:05</button>
-    <span class="who">Labor Inspector General Anthony Desposito</span>
+    <span class="who">Labor Inspector General Anthony D’Esposito</span>
   </div>
   <blockquote>Subpoenas have been served, investigations are underway, and nobody will be getting a free pass because their name is carved into an expensive building.</blockquote>
   <h2>The investigation is live</h2>
   
-  <p class="note">Reported as a fact with a date. The outcome is unknown and this page draws no conclusion from the existence of an investigation.</p>
+  <p class="note">An investigation was opened, on the record, on this date. Its outcome will be whatever the investigators find. What this page supplies is the federal data the investigators and the public can both read now.</p>
+  
+  
   
   
 </section>
@@ -357,15 +419,17 @@
     <button class="ts" type="button" data-seek="1316"
             data-track="press.seek.1316"
             aria-label="Play from 21:56">&#9654; 21:56</button>
-    <span class="who">Labor Inspector General Anthony Desposito</span><span class="vd ok">Federal data on this</span>
+    <span class="who">Labor Inspector General Anthony D’Esposito</span><span class="vd ok">Federal data on this</span>
   </div>
   <blockquote>The Chinese Communist Party doesn&#x27;t need to kick down the doors of America&#x27;s research laboratories if our own institutions are willing to leave the doors wide open.</blockquote>
   <h2>The research-security argument</h2>
   <ul class="ev"><li><span class="v">72.8%</span><span class="l">non-resident share of petroleum engineering doctorates</span></li></ul>
-  <p class="note">This site measures who is in the laboratories, not what leaves them. A citizenship share is not evidence of anything improper by any individual, and nothing here should be read that way. What it does show is the scale: in several strategic fields the graduate pipeline is overwhelmingly non-resident.</p>
+  <p class="note">This site measures who is in the laboratories. In several strategic fields the graduate pipeline is overwhelmingly non-resident, and in a handful of programs every doctorate awarded in the window went to a non-resident. These are counts of degrees conferred, reported by the institutions themselves to the federal government.</p>
+  
+  
   
   <p class="links"><a class="go" href="/industries/petroleum" target="_blank" rel="noopener">Petroleum engineering &rarr;</a><a class="go" href="/postdocs#federal" target="_blank" rel="noopener">Who pays for the posts &rarr;</a></p>
-</section>
+</section></details><details class="spk" id="speaker-ferguson" open><summary><span class="sp-name">FTC Chairman Andrew Ferguson</span><span class="sp-meta">25:44 &middot; 1 passage</span></summary>
 <section class="mo" id="t1544" data-t="1544">
   <div class="mo-head">
     <button class="ts" type="button" data-seek="1544"
@@ -378,8 +442,10 @@
   <ul class="ev"><li><span class="v">708,393</span><span class="l">doctoral and master’s theses from 106 American universities</span></li><li><span class="v">29,131</span><span class="l">postdoctoral appointees who are American citizens or permanent residents</span></li></ul>
   <p class="note">This is the argument this site was built to test with federal data. The measured finding sits on one page and the argument on another, deliberately, because a reader may reject the argument and accept every figure in it.</p>
   
+  
+  
   <p class="links"><a class="go" href="/overview" target="_blank" rel="noopener">The measured finding &rarr;</a><a class="go" href="/name-lists" target="_blank" rel="noopener">The dissertations themselves &rarr;</a></p>
-</section>
+</section></details><details class="spk" id="speaker-vance-at-29m34" open><summary><span class="sp-name">Vice President JD Vance</span><span class="sp-meta">29:34&ndash;42:09 &middot; 2 passages</span></summary>
 <section class="mo" id="t1774" data-t="1774">
   <div class="mo-head">
     <button class="ts" type="button" data-seek="1774"
@@ -391,6 +457,8 @@
   <h2>The close</h2>
   <ul class="ev"><li><span class="v">586,177</span><span class="l">research doctorates awarded in the window this site covers</span></li><li><span class="v">106</span><span class="l">American universities whose dissertation record is published here</span></li><li><span class="v">7</span><span class="l">of them publish nothing a reader can search</span></li></ul>
   <p class="note">The last figure is the one worth acting on. No federal rule requires a university to publish a dissertation or even to list the ones it awarded, so the record of what American institutions produced had to be assembled one university at a time and remains a floor. A deposit requirement attached to federal research money would fix it.</p>
+  
+  
   
   <p class="links"><a class="go" href="/name-lists" target="_blank" rel="noopener">The dissertations themselves &rarr;</a><a class="go" href="/data_requests#no-requirement" target="_blank" rel="noopener">The deposit requirement &rarr;</a></p>
 </section>
@@ -404,10 +472,12 @@
   <blockquote>The nature of the fraud is fundamentally that when you apply for these visa programs, you make a couple of certifications. One of those certifications is that the person that you&#x27;re bringing in has a hyper specialized, hyper capable skill set. And that&#x27;s clearly not the case if you&#x27;re just replacing one American worker with a foreign indentured servant.</blockquote>
   <h2>Asked directly: what is the fraud?</h2>
   <ul class="ev"><li><span class="v">8,081,883</span><span class="l">certified H-1B applications in the disclosure files</span></li></ul>
-  <p class="note">A reporter asked whether this was illegal conduct or a legal pathway the administration objects to. The answer rests on the specialty-occupation certification. This site can show what occupations and wages were certified; it cannot show intent, and it makes no claim about any employer&#x27;s state of mind.</p>
+  <p class="note">A reporter asked whether this was illegal conduct or a legal pathway the administration objects to. The answer rests on the specialty-occupation certification. This site can show what occupations and wages were certified. Data about attempts to find American workers are not published by the relevant agencies. The recruitment an employer says it carried out before filing is attested on the form and never released, so no outside party can check it.</p>
   
-  <p class="links"><a class="go" href="/industries" target="_blank" rel="noopener">What was certified, by industry &rarr;</a><a class="go" href="/query?sql=--%20What%20was%20certified%20as%20a%20speciality%20occupation%2C%20and%20at%20what%20wage.%0A--%20This%20shows%20the%20occupation%20and%20the%20money.%20It%20cannot%20show%20intent%2C%0A--%20and%20makes%20no%20claim%20about%20any%20employer%27s%20state%20of%20mind.%0ASELECT%20soc%2C%0A%20%20%20%20%20%20%20soc_title%2C%0A%20%20%20%20%20%20%20filings%2C%0A%20%20%20%20%20%20%20employers%2C%0A%20%20%20%20%20%20%20median_wage%2C%0A%20%20%20%20%20%20%20top_employer%0AFROM%20h1b_occupation%0AWHERE%20filings%20%3E%3D%20100%0AORDER%20BY%20median_wage%20ASC%0ALIMIT%2060" target="_blank" rel="noopener">The occupation and wage tables &rarr;</a></p>
-</section>
+  
+  
+  <p class="links"><a class="go" href="/industries" target="_blank" rel="noopener">What was certified, by industry &rarr;</a><a class="go" href="/query?sql=--%20What%20was%20certified%20as%20a%20speciality%20occupation%2C%20and%20at%20what%20wage.%0A--%20The%20lowest-paid%20certified%20occupations%2C%20by%20median%20offered%20wage.%0A--%20The%20wage%20here%20is%20what%20the%20employer%20OFFERED%20on%20the%20form%2C%20not%20what%0A--%20was%20paid%2C%20so%20any%20gap%20against%20the%20American%20rate%20is%20understated.%0ASELECT%20soc%2C%0A%20%20%20%20%20%20%20soc_title%2C%0A%20%20%20%20%20%20%20filings%2C%0A%20%20%20%20%20%20%20employers%2C%0A%20%20%20%20%20%20%20median_wage%2C%0A%20%20%20%20%20%20%20top_employer%0AFROM%20h1b_occupation%0AWHERE%20filings%20%3E%3D%20100%0AORDER%20BY%20median_wage%20ASC%0ALIMIT%2060" target="_blank" rel="noopener">The occupation and wage tables &rarr;</a></p>
+</section></details>
   
 <section class="mo dist" id="distributions">
   <div class="mo-head"><span class="who">Context</span>
