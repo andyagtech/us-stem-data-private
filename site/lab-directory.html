@@ -100,6 +100,16 @@
   #t-stem th:nth-child(4) { width: 10%; }
   #t-stem th:nth-child(5) { width: 30%; }
   #t-stem th:nth-child(6) { width: 16%; }
+  /* A group inside a larger one is indented under it. Listing both as
+     peers counts the same laboratory twice. */
+  #t-labs tr.kid td:first-child { padding-left: 1.9rem; position: relative; }
+  #t-labs tr.kid td:first-child::before { content: "\21b3";
+    position: absolute; left: .7rem; color: var(--text-muted);
+    font-size: .8rem; }
+  .also { font-size: .72rem; color: var(--text-muted);
+    text-decoration: none; border-bottom: 1px dotted currentColor;
+    margin-left: .4rem; white-space: nowrap; }
+  .also:hover { color: var(--hl); }
   #t-labs th:nth-child(1) { width: 38%; }
   #t-labs th:nth-child(2) { width: 28%; }
   #t-labs th:nth-child(3) { width: 22%; }
@@ -287,7 +297,7 @@
 
 <details class="sec" id="labs-found" open>
 <summary><h2>Research Labs with Major Statistical Differences to the US Population</h2><a class="sec-anchor" href="#labs-found" title="Link to this section" aria-label="Link to this section">#</a></summary>
-<p class="sub">13 labs at 9 institutions, found by
+<p class="sub">11 labs at 9 institutions, found by
 reading 91 public member lists. This counts the people a named
 principal investigator lists on their own laboratory page, which is a
 different thing from the degree counts above: those are a federal
@@ -296,7 +306,7 @@ census, this is what a group publishes about itself.</p>
   <input class="ff" type="search" placeholder="Filter&hellip;"
          aria-label="Filter rows">
   <select class="fs" aria-label="Filter by field">
-    <option value="">All fields</option><option value="ai">AI &amp; computing</option><option value="chemeng">Chemical eng</option><option value="ee">Electrical &amp; computer eng</option><option value="math">Mathematics</option><option value="physics">Physics</option></select>
+    <option value="">All fields</option><option value="ai">AI &amp; computing</option><option value="chemeng">Chemical eng</option><option value="ee">Electrical &amp; computer eng</option><option value="math">Mathematics</option></select>
   <label class="chk"><input type="checkbox" class="fr"> Hide unresolved</label>
   <span class="spacer"></span>
   <label class="chk">Rows
@@ -310,7 +320,7 @@ census, this is what a group publishes about itself.</p>
 <thead><tr><th class="so">Research lab</th><th class="so">Institution</th>
 <th class="so">Field</th><th class="num so" data-t="n" data-dir="-1">Members
 </th></tr></thead>
-<tbody><tr data-field="math" data-inst="duke university"><td><a href="https://sites.math.duke.edu/~jianfeng/group.htm" target="_blank" rel="noopener">Jianfeng Lu’s Research Group</a></td><td class="mut">Duke University</td><td><span class="chip s-math">Mathematics</span></td><td class="num">23</td></tr><tr data-field="ai" data-inst="university of north carolina at chapel hill"><td><a href="https://lavi-lab.github.io/symposium2026/" target="_blank" rel="noopener">LAVI Lab</a></td><td class="mut">University of North Carolina at Chapel Hill</td><td><span class="chip s-ai">AI &amp; computing</span></td><td class="num">21</td></tr><tr data-field="ai" data-inst="duke university"><td><a href="https://nlplab.cs.duke.edu/people/" target="_blank" rel="noopener">DukeNLP</a></td><td class="mut">Duke University</td><td><span class="chip s-ai">AI &amp; computing</span></td><td class="num">23</td></tr><tr data-field="ai" data-inst="pennsylvania state university-main campus"><td><a href="https://csl.cse.psu.edu/members/" target="_blank" rel="noopener">Computer Systems Lab</a></td><td class="mut">Pennsylvania State University-Main Campus</td><td><span class="chip s-ai">AI &amp; computing</span></td><td class="num">14</td></tr><tr data-field="ai" data-inst="stony brook university"><td><a href="https://alps-lab.github.io/" target="_blank" rel="noopener">Ting Wang’s Research Group</a></td><td class="mut">Stony Brook University</td><td><span class="chip s-ai">AI &amp; computing</span></td><td class="num">14</td></tr><tr data-field="chemeng" data-inst="lamar university"><td><a href="https://www.lamar.edu/engineering/chemical/faculty/qiang-xu/people.html" target="_blank" rel="noopener">Qiang Xu’s Research Group</a></td><td class="mut">Lamar University</td><td><span class="chip s-chemeng">Chemical eng</span></td><td class="num">44</td></tr><tr data-field="physics" data-inst="duke university"><td><a href="https://rubinsteinlab.pratt.duke.edu/people" target="_blank" rel="noopener">Rubinstein Lab</a></td><td class="mut">Duke University</td><td><span class="chip s-physics">Physics</span></td><td class="num">11</td></tr><tr data-field="ee" data-inst="lehigh university"><td><a href="https://wordpress.lehigh.edu/inspcrl/people-2/" target="_blank" rel="noopener">Signal Processing &amp; Communication Research Lab</a></td><td class="mut">Lehigh University</td><td><span class="chip s-ee">Electrical &amp; computer eng</span></td><td class="num">58</td></tr><tr data-field="ai" data-inst="michigan technological university"><td><a href="https://pages.mtu.edu/~shene/NSF-3/" target="_blank" rel="noopener">Concurrent Computing Project</a></td><td class="mut">Michigan Technological University</td><td><span class="chip s-ai">AI &amp; computing</span></td><td class="num">13</td></tr><tr data-field="ai" data-inst="cornell university"><td><a href="https://emprise.cs.cornell.edu/people/" target="_blank" rel="noopener">People &amp; Robots</a></td><td class="mut">Cornell University</td><td><span class="chip s-ai">AI &amp; computing</span></td><td class="num">54</td></tr><tr data-field="ai" data-inst="university of north carolina at chapel hill"><td><a href="https://www.cs.unc.edu/~mbansal/#students" target="_blank" rel="noopener">Mohit Bansal’s Research Group</a></td><td class="mut">University of North Carolina at Chapel Hill</td><td><span class="chip s-ai">AI &amp; computing</span></td><td class="num">18</td></tr><tr data-field="ai" data-inst="university of california-santa barbara"><td><a href="https://embeddedethics.cs.ucsb.edu/people" target="_blank" rel="noopener">Embedded Ethics Lab</a></td><td class="mut">University of California-Santa Barbara</td><td><span class="chip s-ai">AI &amp; computing</span></td><td class="num">16</td></tr><tr data-field="ai" data-inst="duke university"><td><a href="https://users.cs.duke.edu/~bdhingra/#prospective" target="_blank" rel="noopener">Bhuwan Dhingra’s Research Group</a></td><td class="mut">Duke University</td><td><span class="chip s-ai">AI &amp; computing</span></td><td class="num">26</td></tr></tbody></table></div>
+<tbody><tr class="" data-field="math" data-inst="duke university"><td><a href="https://sites.math.duke.edu/~jianfeng/group.htm" target="_blank" rel="noopener">Jianfeng Lu’s Research Group</a></td><td class="mut">Duke University</td><td><span class="chip s-math">Mathematics</span></td><td class="num">23</td></tr><tr class="" data-field="ai" data-inst="duke university"><td><a href="https://nlplab.cs.duke.edu/people/" target="_blank" rel="noopener">DukeNLP</a></td><td class="mut">Duke University</td><td><span class="chip s-ai">AI &amp; computing</span></td><td class="num">23</td></tr><tr class="kid" data-field="ai" data-inst="duke university"><td><a href="https://users.cs.duke.edu/~bdhingra/#prospective" target="_blank" rel="noopener">Bhuwan Dhingra’s Research Group</a></td><td class="mut">Duke University</td><td><span class="chip s-ai">AI &amp; computing</span></td><td class="num">26</td></tr><tr class="" data-field="ai" data-inst="pennsylvania state university-main campus"><td><a href="https://csl.cse.psu.edu/members/" target="_blank" rel="noopener">Computer Systems Lab</a></td><td class="mut">Pennsylvania State University-Main Campus</td><td><span class="chip s-ai">AI &amp; computing</span></td><td class="num">14</td></tr><tr class="" data-field="ai" data-inst="stony brook university"><td><a href="https://alps-lab.github.io/" target="_blank" rel="noopener">Ting Wang’s Research Group</a></td><td class="mut">Stony Brook University</td><td><span class="chip s-ai">AI &amp; computing</span></td><td class="num">14</td></tr><tr class="" data-field="chemeng" data-inst="lamar university"><td><a href="https://www.lamar.edu/engineering/chemical/faculty/qiang-xu/people.html" target="_blank" rel="noopener">Qiang Xu’s Research Group</a></td><td class="mut">Lamar University</td><td><span class="chip s-chemeng">Chemical eng</span></td><td class="num">44</td></tr><tr class="" data-field="ee" data-inst="lehigh university"><td><a href="https://wordpress.lehigh.edu/inspcrl/people-2/" target="_blank" rel="noopener">Signal Processing &amp; Communication Research Lab</a></td><td class="mut">Lehigh University</td><td><span class="chip s-ee">Electrical &amp; computer eng</span></td><td class="num">58</td></tr><tr class="" data-field="ai" data-inst="michigan technological university"><td><a href="https://pages.mtu.edu/~shene/NSF-2/index.html" target="_blank" rel="noopener">Concurrent Computing Project</a> <a class="also" href="https://pages.mtu.edu/~shene/PUBLICATIONS/index.html" target="_blank" rel="noopener">Publications</a></td><td class="mut">Michigan Technological University</td><td><span class="chip s-ai">AI &amp; computing</span></td><td class="num">13</td></tr><tr class="" data-field="ai" data-inst="cornell university"><td><a href="https://emprise.cs.cornell.edu/people/" target="_blank" rel="noopener">People &amp; Robots</a></td><td class="mut">Cornell University</td><td><span class="chip s-ai">AI &amp; computing</span></td><td class="num">54</td></tr><tr class="" data-field="ai" data-inst="university of north carolina at chapel hill"><td><a href="https://www.cs.unc.edu/~mbansal/#students" target="_blank" rel="noopener">Mohit Bansal’s Research Group</a></td><td class="mut">University of North Carolina at Chapel Hill</td><td><span class="chip s-ai">AI &amp; computing</span></td><td class="num">18</td></tr><tr class="" data-field="ai" data-inst="university of california-santa barbara"><td><a href="https://embeddedethics.cs.ucsb.edu/people" target="_blank" rel="noopener">Embedded Ethics Lab</a></td><td class="mut">University of California-Santa Barbara</td><td><span class="chip s-ai">AI &amp; computing</span></td><td class="num">16</td></tr></tbody></table></div>
 </details>
 
 
@@ -687,11 +697,32 @@ document.querySelectorAll('.ctl').forEach(function (bar) {
         var n = parseFloat(v.replace(/[^0-9.-]/g, ''));
         return isNaN(n) ? -Infinity : n;
       }
-      rows.sort(function (a, b) {
+      /* A NESTED ROW MOVES WITH ITS PARENT. Sorting the flat list
+         would strand an indented child under whatever row happened to
+         land above it, which reads as a claim about that row. */
+      var tops = rows.filter(function (r) {
+        return !r.classList.contains('kid'); });
+      /* keyed on the element, not its row index -- an index shifts
+         as soon as the first row is re-appended */
+      var kids = new Map();
+      var owner = null;
+      rows.forEach(function (r) {
+        if (r.classList.contains('kid')) {
+          if (owner) {
+            if (!kids.has(owner)) kids.set(owner, []);
+            kids.get(owner).push(r);
+          }
+        } else { owner = r; }
+      });
+      tops.sort(function (a, b) {
         var ka = key(a), kb = key(b);
         return ka < kb ? -dir : ka > kb ? dir : 0;
       });
-      rows.forEach(function (tr) { tbody.appendChild(tr); });
+      tops.forEach(function (tr) {
+        tbody.appendChild(tr);
+        (kids.get(tr) || []).forEach(function (k) { tbody.appendChild(k); });
+      });
+      rows = [].slice.call(tbody.rows);
       apply();
     }
     th.addEventListener('click', go);
