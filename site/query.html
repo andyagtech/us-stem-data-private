@@ -197,7 +197,14 @@
     font-family: var(--mono); font-size: 0.65rem; opacity: 0.6;
     background: rgba(0,0,0,0.2); padding: 1px 5px; border-radius: 3px;
   }
-  .dl { display: inline-flex; gap: .3rem; align-items: center; }
+      .dl { display: inline-flex; gap: .3rem; align-items: center;
+      flex-wrap: wrap; }
+    /* The export buttons pushed the run bar 6px past a 360px screen.
+       The bar itself has to be allowed to wrap, not just its contents. */
+    @media (max-width: 620px) {
+      .query-bar { flex-wrap: wrap; row-gap: 6px; }
+      .dl { order: 3; }
+    }
     .dl-btn { font: inherit; font-size: 0.7rem; padding: 3px 9px;
       border: 1px solid var(--border); border-radius: 5px; cursor: pointer;
       background: transparent; color: var(--text-muted); }
