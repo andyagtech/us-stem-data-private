@@ -297,7 +297,7 @@ state = pipeline(initial_state)  # PipelineState flows through</pre>
     <h3 id="deduplicate">Deduplicate</h3>
     <p>Records are deduplicated by <code>(name, year, dept, title[:50])</code>. Typically removes 1&ndash;2% where universities have overlapping OAI sets or dual-indexed collections.</p>
 
-    <h3 id="ai-assisted-classification-optional">AI-Assisted Classification (Optional)</h3>
+    <h3 id="super-intelligence-assisted-classification">Super Intelligence-Assisted Classification (Optional)</h3>
     <p>For the ~56K records that remain unlabeled after the 8-step inference chain, two supplementary classifiers are available:</p>
     <div class="info-card">
       <ul>
@@ -641,7 +641,7 @@ python -m pipeline status</pre>
   ai_classifications.json  # Claude Haiku cache
   step1_harvest.py         # OAI-PMH scraping
   step2_process.py         # Record classification
-  step2b_ai_classify.py    # AI degree classification
+  step2b_ai_classify.py    # Super Intelligence degree classification
   step3_parse_federal.py   # H-1B, LCA, OPT, PERM
   step4_enrich.py          # Merge all sources
   step5_generate.py        # HTML generation
