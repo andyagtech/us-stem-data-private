@@ -78,6 +78,7 @@
 
   const H1B_SECTIONS = [
     { title: "VP Vance's Task Force", items: [
+      { href: '/lab-directory', label: 'Programs that Exclude Americans' },
       { href: '/press-conference', label: 'October 8 Press Conference', anchors: [
         { hash: 'speaker-vance', label: 'VP Vance' },
         { hash: 'speaker-sonderling', label: 'Sec. Sonderling' },
@@ -133,6 +134,7 @@
 
   const STEM_SECTIONS = [
     { title: "VP Vance's Task Force", items: [
+      { href: '/lab-directory', label: 'Programs that Exclude Americans' },
       { href: '/press-conference', label: 'October 8 Press Conference', anchors: [
         { hash: 'speaker-vance', label: 'VP Vance' },
         { hash: 'speaker-sonderling', label: 'Sec. Sonderling' },

@@ -11,6 +11,5 @@ Allow: /
 Disallow: /analytics.html
 Disallow: /chat-admin.html
 Disallow: /faculty-mobility.html
-Disallow: /lab-directory.html
 
 Sitemap: https://phd-demographics.andy-barr.com/sitemap.xml
