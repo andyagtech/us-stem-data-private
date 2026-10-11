@@ -78,7 +78,6 @@
 
   const H1B_SECTIONS = [
     { title: "VP Vance's Task Force", items: [
-      { href: '/lab-directory', label: 'Programs that Exclude Americans' },
       { href: '/press-conference', label: 'October 8 Press Conference', anchors: [
         { hash: 'speaker-vance', label: 'VP Vance' },
         { hash: 'speaker-sonderling', label: 'Sec. Sonderling' },
@@ -94,6 +93,7 @@
         { hash: 'distributions', label: 'What the averages hide' },
         { hash: 'method', label: 'How to read this page' },
       ]},
+      { href: '/lab-directory', label: 'Programs that Exclude Americans' },
     ]},
     { title: 'Start here', items: [
       { href: '/h1b', label: 'The H-1B Explorer', anchors: [
@@ -134,7 +134,6 @@
 
   const STEM_SECTIONS = [
     { title: "VP Vance's Task Force", items: [
-      { href: '/lab-directory', label: 'Programs that Exclude Americans' },
       { href: '/press-conference', label: 'October 8 Press Conference', anchors: [
         { hash: 'speaker-vance', label: 'VP Vance' },
         { hash: 'speaker-sonderling', label: 'Sec. Sonderling' },
@@ -150,6 +149,7 @@
         { hash: 'distributions', label: 'What the averages hide' },
         { hash: 'method', label: 'How to read this page' },
       ]},
+      { href: '/lab-directory', label: 'Programs that Exclude Americans' },
     ]},
     { title: 'Start here', items: [
       { href: '/overview', label: 'National Overview' },
