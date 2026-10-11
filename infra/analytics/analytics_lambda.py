@@ -74,6 +74,7 @@ SITES = {
     "h1b.andy-barr.com": "h1b",
     "h-1b.andy-barr.com": "h1b",
     "seattle-radicalism.andy-barr.com": "seattle-radicalism",
+    "8090.andy-barr.com": "8090-atlas",
     "localhost": "local",
     "127.0.0.1": "local",
 }
