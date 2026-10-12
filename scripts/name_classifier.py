@@ -426,6 +426,55 @@ _ARABIC_AL_CONSONANTS = set('bcdfghjkmnqrstvwxyz')
 # fmt: on
 
 
+
+#: AFRICAN SURNAMES. The one origin this file had no list for, which
+#: mattered once labs were scored on their non-European share: a name
+#: like Kabengele or Adeyemi fell into 'other' beside Smith and Weiss,
+#: so an African-majority group read as European.
+#:
+#: Coverage is WEST AND EAST AFRICAN and deliberately narrow. Names
+#: carried from colonial languages -- a Lusophone Silva, a Francophone
+#: Martin -- are not here and cannot be separated from the European
+#: names they match. This list under-counts and never guesses.
+AFRICAN_SURNAMES = {
+    # Yoruba
+    'adeyemi', 'adebayo', 'adewale', 'adeleke', 'adeniyi', 'adeola',
+    'adesanya', 'adegoke', 'adetunji', 'afolabi', 'ajayi', 'akande',
+    'akinwale', 'akinyemi', 'alabi', 'babatunde', 'balogun', 'bamidele',
+    'fadairo', 'fagbemi', 'ogunleye', 'ogundipe', 'ogunbiyi', 'oladipo',
+    'oladele', 'olatunji', 'olawale', 'olayinka', 'olumide', 'omotoso',
+    'oyelaran', 'oyedepo', 'oluwaseun', 'shoyinka', 'soyinka',
+    # Igbo
+    'achebe', 'adichie', 'agu', 'amadi', 'anyanwu', 'chukwu',
+    'chukwuma', 'eze', 'ezeani', 'ibekwe', 'ifeanyi', 'ikenna',
+    'nnamdi', 'nwachukwu', 'nwankwo', 'nwosu', 'obi', 'obiora',
+    'okafor', 'okeke', 'okonkwo', 'okoro', 'okoye', 'onyeka',
+    'onyekwere', 'udoka', 'ugwu', 'uzoma',
+    # Akan / Ghanaian
+    'acheampong', 'addo', 'agyeman', 'amoah', 'ampofo', 'annan',
+    'appiah', 'asante', 'asamoah', 'boateng', 'danquah', 'darko',
+    'frimpong', 'gyasi', 'kufuor', 'mensah', 'nkrumah', 'ofori',
+    'opoku', 'osei', 'owusu', 'quartey', 'sarpong', 'yeboah',
+    # East African
+    'abebe', 'bekele', 'desta', 'gebre', 'gebremariam', 'girma',
+    'haile', 'hailu', 'kebede', 'mekonnen', 'tadesse', 'tesfaye',
+    'wolde', 'yohannes', 'zeleke',
+    'kamau', 'kariuki', 'kimani', 'macharia', 'mbugua', 'mwangi',
+    'njoroge', 'ochieng', 'odhiambo', 'omondi', 'otieno', 'wanjiru',
+    'mutua', 'muthoni', 'wafula',
+    # Central / Southern
+    'banda', 'chirwa', 'dlamini', 'kabengele', 'kalonji', 'khumalo',
+    'lubaki', 'mabaso', 'makhanya', 'mandela', 'mbeki', 'mhlanga',
+    'mkhize', 'mofokeng', 'mokoena', 'moyo', 'mthembu', 'mubarak',
+    'ndlovu', 'ngcobo', 'nkomo', 'ntuli', 'nyirenda', 'phiri',
+    'sibanda', 'sithole', 'tshabalala', 'zulu', 'zuma',
+    # Senegal / Mali / Sahel
+    'bamba', 'camara', 'cisse', 'coulibaly', 'diagne', 'diallo',
+    'diarra', 'diop', 'doumbia', 'fall', 'gueye', 'keita', 'konate',
+    'ndiaye', 'sall', 'sangare', 'sarr', 'sow', 'toure', 'traore',
+}
+
+
 def get_surname(name_str: str) -> str:
     """Extract surname from 'Last, First' or 'First Last' format.
     For hyphenated surnames like 'Ebrahimi-Asl', returns the base part 'ebrahimi'."""
@@ -470,12 +519,15 @@ def classify(name_str: str) -> tuple:
     Returns:
         (category, confidence) where category is one of:
         'chinese', 'korean', 'vietnamese', 'indian', 'iranian', 'turkish',
-        'arabic', 'excluded_ambiguous', 'other'
+        'arabic', 'african', 'excluded_ambiguous', 'other'
         and confidence is 'high', 'medium', or 'n/a'
     """
     surname = get_surname(name_str)
     if not surname:
         return ('other', 'n/a')
+
+    if surname in AFRICAN_SURNAMES:
+        return ('african', 'high')
 
     if surname in EXCLUDE_SURNAMES:
         return ('excluded_ambiguous', 'n/a')
