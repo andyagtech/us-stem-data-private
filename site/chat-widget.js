@@ -67,7 +67,10 @@
     md: 4000,
     chartDatasets: 4,
     chartPoints: 40,
-    tableColumns: 8,
+    // The panel is 420px wide. Three columns is what fits without a
+    // horizontal scrollbar: one label plus two measures. The server rejects
+    // a fourth (blocks.MAX_COLUMNS) -- this is the client's own floor.
+    tableColumns: 3,
     tableRows: 25,
     cell: 120,
     statItems: 4,
@@ -482,18 +485,99 @@
   var TOKEN_SPLIT = /(\[\[[^\]\n]{0,320}\]\])/g;
   var INLINE_RE = /`([^`\n]+)`|\*\*([^*]+?)\*\*|\*([^*\n]+?)\*|\[([^\]\n]+)\]\(([^)\s]+)\)/g;
 
+  /**
+   * The markdown subset the panel renders. Deliberately small, and the
+   * prompt tells the model exactly this much (cloud/chat/RENDERING.md).
+   *
+   *   ### heading      h1-h3
+   *   - item / * item / 1. item    lists, one level of nesting
+   *   | a | b |        a pipe table, if a |---| rule follows the header
+   *   everything else  a paragraph
+   *
+   * Three markers used to fall through to the paragraph branch and come out
+   * as run-on text: `*` bullets, `1.` numbers, and pipe tables. A `*` list
+   * was the worst of the three, because the inline italic rule then matched
+   * across the line and rendered the whole list in italics.
+   */
+  var BULLET_RE = /^(?:[-*+•])\s+(.+)$/;
+  var NUMBER_RE = /^(\d{1,2})[.)]\s+(.+)$/;
+
+  /** `|---|---|` and its alignment variants. Structural, never text. */
+  function isTableRule(line) {
+    var s = line.replace(/\s+/g, '');
+    return s.indexOf('|') !== -1 && /^[|:-]+$/.test(s)
+      && (s.match(/-/g) || []).length >= 3;
+  }
+
+  function pipeCells(line) {
+    var inner = line.replace(/^\s*\|/, '').replace(/\|\s*$/, '');
+    var out = [];
+    var parts = inner.split('|');
+    for (var i = 0; i < parts.length; i++) out.push(parts[i].trim());
+    return out;
+  }
+
   function parseMdBlocks(md) {
     var lines = String(md).split('\n');
     var out = [], para = [], list = null;
     function flushPara() { if (para.length) { out.push({ t: 'p', text: para.join(' ') }); para = []; } }
-    function flushList() { if (list) { out.push({ t: 'ul', items: list }); list = null; } }
+    function flushList() { if (list) { out.push(list); list = null; } }
+    function listFor(ordered) {
+      if (!list || list.ordered !== ordered) {
+        flushList();
+        list = { t: 'list', ordered: ordered, items: [] };
+      }
+      return list;
+    }
     for (var i = 0; i < lines.length; i++) {
-      var line = lines[i].trim();
+      var rawLine = lines[i].replace(/\t/g, '  ');
+      var line = rawLine.trim();
       if (!line) { flushPara(); flushList(); continue; }
+
       var h = line.match(/^(#{1,3})\s+(.+)$/);
       if (h) { flushPara(); flushList(); out.push({ t: 'h', level: h[1].length, text: h[2] }); continue; }
-      var li = line.match(/^(?:[-•])\s+(.+)$/);
-      if (li) { flushPara(); if (!list) list = []; list.push(li[1]); continue; }
+
+      // A rule with no header above it is not a table, and `---` on its own
+      // is a horizontal rule. Both end the paragraph; neither is text. Left
+      // in, they joined the paragraphs either side into one run-on line.
+      if (isTableRule(line) || /^([-_*])\1{2,}$/.test(line.replace(/\s+/g, ''))) {
+        flushPara(); flushList();
+        continue;
+      }
+
+      if (line.indexOf('|') !== -1 && i + 1 < lines.length
+          && isTableRule(lines[i + 1].trim())) {
+        flushPara(); flushList();
+        var head = pipeCells(line);
+        var body = [];
+        i += 1;                                   // consume the rule
+        while (i + 1 < lines.length) {
+          var peek = lines[i + 1].trim();
+          if (!peek || peek.indexOf('|') === -1 || isTableRule(peek)) break;
+          i += 1;
+          body.push(pipeCells(peek));
+        }
+        out.push({ t: 'mdtable', head: head, rows: body });
+        continue;
+      }
+
+      var bullet = line.match(BULLET_RE);
+      var numbered = bullet ? null : line.match(NUMBER_RE);
+      if (bullet || numbered) {
+        flushPara();
+        var lst = listFor(!!numbered);
+        var itemText = bullet ? bullet[1] : numbered[2];
+        var indent = rawLine.length - rawLine.replace(/^\s+/, '').length;
+        if (indent >= 2 && lst.items.length) {
+          var parentItem = lst.items[lst.items.length - 1];
+          if (!parentItem.children) parentItem.children = [];
+          parentItem.children.push(itemText);
+        } else {
+          lst.items.push({ text: itemText });
+        }
+        continue;
+      }
+
       flushList();
       para.push(line);
     }
@@ -581,6 +665,71 @@
     }
   }
 
+  /**
+   * Even column widths, with the first column given the larger share: it
+   * holds the label (an institution, a field) and the rest hold numbers.
+   * Needed because table-layout:fixed otherwise splits the panel evenly and
+   * a two-digit percentage gets as much room as "University of California".
+   */
+  function colGroupFor(n) {
+    var cg = el('colgroup');
+    for (var i = 0; i < n; i++) {
+      var c = el('col');
+      if (n > 1) c.style.width = (i === 0 ? 100 - (n - 1) * 27 : 27) + '%';
+      cg.appendChild(c);
+    }
+    return cg;
+  }
+
+  /** Sets the text and, when it may be clipped, the full value in title=. */
+  function cellText(td, value) {
+    td.textContent = value;
+    if (String(value).length > 14) td.setAttribute('title', value);
+  }
+
+  /** A pipe table written in prose. Same look as a show_table block. */
+  function mdTableNode(b) {
+    var head = b.head.slice(0, CAP.tableColumns);
+    var scroll = el('div', 'cb-table-scroll');
+    var table = el('table', 'cb-table');
+    table.appendChild(colGroupFor(head.length));
+    var thead = el('thead');
+    var htr = el('tr');
+    for (var c = 0; c < head.length; c++) {
+      htr.appendChild(el('th', c === 0 ? null : 'cb-r', plain(head[c], 40)));
+    }
+    thead.appendChild(htr);
+    table.appendChild(thead);
+    var tbody = el('tbody');
+    for (var r = 0; r < b.rows.length && r < CAP.tableRows; r++) {
+      var tr = el('tr');
+      for (var k = 0; k < head.length; k++) {
+        var td = el('td', k === 0 ? null : 'cb-r');
+        cellText(td, plain(b.rows[r][k] === undefined ? '' : b.rows[r][k], CAP.cell));
+        tr.appendChild(td);
+      }
+      tbody.appendChild(tr);
+    }
+    table.appendChild(tbody);
+    scroll.appendChild(table);
+    return scroll;
+  }
+
+  function listItemNode(item) {
+    var li = el('li');
+    renderInline(item.text, li);
+    if (item.children && item.children.length) {
+      var sub = el('ul', 'cb-sub');
+      for (var k = 0; k < item.children.length; k++) {
+        var sli = el('li');
+        renderInline(item.children[k], sli);
+        sub.appendChild(sli);
+      }
+      li.appendChild(sub);
+    }
+    return li;
+  }
+
   function mdToNodes(md) {
     var frag = document.createDocumentFragment();
     var blocks = parseMdBlocks(multiline(md, CAP.md));
@@ -590,14 +739,14 @@
         var h = el('div', 'cb-h cb-h' + b.level);
         renderInline(b.text, h);
         frag.appendChild(h);
-      } else if (b.t === 'ul') {
-        var ul = el('ul', 'cb-ul');
+      } else if (b.t === 'list') {
+        var lst = el(b.ordered ? 'ol' : 'ul', b.ordered ? 'cb-ol' : 'cb-ul');
         for (var j = 0; j < b.items.length; j++) {
-          var li = el('li');
-          renderInline(b.items[j], li);
-          ul.appendChild(li);
+          lst.appendChild(listItemNode(b.items[j]));
         }
-        frag.appendChild(ul);
+        frag.appendChild(lst);
+      } else if (b.t === 'mdtable') {
+        frag.appendChild(mdTableNode(b));
       } else {
         var p = el('p', 'cb-p');
         renderInline(b.text, p);
@@ -925,12 +1074,13 @@
     '#chat-panel .chat-typing{color:var(--cb-muted);font-size:.78rem;padding:4px 0;}',
 
     '#chat-panel .cb-p{margin:0 0 6px;overflow-wrap:anywhere;}',
-    '#chat-panel .cb-ul li,#chat-panel .cb-h,#chat-panel .cb-blocktitle,#chat-panel .cb-caption{overflow-wrap:anywhere;}',
+    '#chat-panel .cb-ul li,#chat-panel .cb-ol li,#chat-panel .cb-h,#chat-panel .cb-blocktitle,#chat-panel .cb-caption{overflow-wrap:anywhere;}',
     '#chat-panel .cb-p:last-child{margin-bottom:0;}',
     '#chat-panel .cb-h{font-weight:700;color:var(--cb-text);margin:8px 0 4px;}',
     '#chat-panel .cb-h1{font-size:.95rem;}#chat-panel .cb-h2{font-size:.88rem;}#chat-panel .cb-h3{font-size:.83rem;}',
-    '#chat-panel .cb-ul{margin:4px 0 6px;padding-left:18px;}',
-    '#chat-panel .cb-ul li{margin-bottom:2px;}',
+    '#chat-panel .cb-ul,#chat-panel .cb-ol{margin:4px 0 6px;padding-left:18px;}',
+    '#chat-panel .cb-ul li,#chat-panel .cb-ol li{margin-bottom:2px;}',
+    '#chat-panel .cb-sub{margin:2px 0 0;padding-left:16px;list-style:circle;}',
     '#chat-panel .cb-code{background:var(--cb-border);padding:1px 4px;border-radius:3px;font-size:.95em;}',
     '#chat-panel .cb-block{margin-top:8px;}',
     '#chat-panel .cb-block:first-child{margin-top:0;}',
@@ -948,9 +1098,12 @@
     '#chat-panel .cb-chart.cb-chart-tall{height:240px;}',
 
     '#chat-panel .cb-table-scroll{overflow-x:auto;border:1px solid var(--cb-border);border-radius:6px;}',
-    '#chat-panel .cb-table{border-collapse:collapse;width:100%;font-size:.72rem;}',
-    '#chat-panel .cb-table th{position:sticky;top:0;background:var(--cb-panel);color:var(--cb-muted);font-weight:600;text-align:left;padding:5px 8px;border-bottom:1px solid var(--cb-border);white-space:nowrap;}',
-    '#chat-panel .cb-table td{padding:4px 8px;border-bottom:1px solid var(--cb-border);white-space:nowrap;}',
+    // table-layout:fixed keeps a long institution name from widening its
+    // column past the panel. Cells clip with an ellipsis and carry the full
+    // value in title=, so nothing is lost -- it is one hover away.
+    '#chat-panel .cb-table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:.72rem;}',
+    '#chat-panel .cb-table th{position:sticky;top:0;background:var(--cb-panel);color:var(--cb-muted);font-weight:600;text-align:left;padding:5px 8px;border-bottom:1px solid var(--cb-border);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}',
+    '#chat-panel .cb-table td{padding:4px 8px;border-bottom:1px solid var(--cb-border);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:0;}',
     '#chat-panel .cb-table tr:nth-child(even) td{background:var(--cb-zebra);}',
     '#chat-panel .cb-table td.cb-em{color:var(--cb-accent);font-weight:600;}',
     '#chat-panel .cb-table td.cb-r,#chat-panel .cb-table th.cb-r{text-align:right;}',
@@ -1261,6 +1414,7 @@
 
     var scroll = el('div', 'cb-table-scroll');
     var table = el('table', 'cb-table');
+    table.appendChild(colGroupFor(cols.length));
     var thead = el('thead');
     var htr = el('tr');
     var alignCls = [];
@@ -1292,7 +1446,7 @@
           ? fmtNum(raw, cdef.format)
           : plain(raw === null || raw === undefined ? '—' : raw, CAP.cell);
         if (k === firstLeft && row.nav) navChipInto(td, row.nav, text);
-        else td.textContent = text;
+        else cellText(td, text);
         tr.appendChild(td);
       }
       tbody.appendChild(tr);
@@ -1304,6 +1458,12 @@
     if (Array.isArray(b.rows) && b.rows.length > CAP.tableRows) {
       host.appendChild(el('div', 'cb-caption',
         'Showing first ' + CAP.tableRows + ' of ' + b.rows.length + ' rows.'));
+    }
+    // The server caps columns at 3 too, so this only fires for a block built
+    // by an older bundle. Say it rather than hide a measure in silence.
+    if (Array.isArray(b.columns) && b.columns.length > CAP.tableColumns) {
+      host.appendChild(el('div', 'cb-caption',
+        'Showing ' + CAP.tableColumns + ' of ' + b.columns.length + ' columns.'));
     }
     if (b.note) host.appendChild(el('div', 'cb-caption', plain(b.note, 160)));
     if (b.source) host.appendChild(el('div', 'cb-caption', plain(b.source, 120)));
