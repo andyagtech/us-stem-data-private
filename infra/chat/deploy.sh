@@ -67,6 +67,7 @@ echo "Syncing handler source into lambda/ ..."
 # Extension modules are listed explicitly rather than globbed so that a
 # stray file in cloud/chat/ never ships to the Lambda by accident.
 for f in handler.py prompt.py tools.py blocks.py data_store.py realtime.py cache.py facts.py budget.py \
+         followups.py \
          knowledge_figures.py \
          tools_joins.py tools_demographics.py tools_search.py tools_provenance.py \
          tools_levels.py tools_summary.py tools_public_sector.py \
