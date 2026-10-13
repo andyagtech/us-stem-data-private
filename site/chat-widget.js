@@ -2264,7 +2264,18 @@
     text.addEventListener('click', tourRestart);
     hint.appendChild(text);
     hint.appendChild(close);
-    document.body.appendChild(hint);
+    // INSIDE the widget root, not on document.body. Every colour in this
+    // file is a var() defined on #phd-chat-root, so a node parented to the
+    // body resolved background, colour and border to nothing: the hint was a
+    // TRANSPARENT card with the page's own text showing through it. Invisible
+    // on a wide screen, where it floats over margin, and unreadable on a
+    // phone, where it lands on the second stat card. It is the one element on
+    // the page whose whole job is to tell a first-time reader what they can
+    // do here, and it was the one element that could not be read.
+    // position:fixed still pins it to the viewport; the root sets no
+    // transform, filter or contain, which are the only things that would
+    // change that.
+    root.appendChild(hint);
     tourBtn.classList.add('nudge');
     // It is a hint, not a demand: it goes away on its own. The flag is NOT
     // set here -- a reader who never looked at the corner should get one more

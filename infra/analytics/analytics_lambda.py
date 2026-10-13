@@ -440,7 +440,18 @@ def page_label(page: str, path: str) -> str:
     data-page is a label on most pages ("index", "briefing") and a path on the
     generated ones ("/stem.html#njit"), so the same page arrived under several
     names and split its own counter. Labels win; a path is reduced to one.
+
+    THE LITERAL "unknown" IS NOT A LABEL. The beacon sends `data-page` or the
+    string "unknown", and "unknown" is truthy, so `page or path` took it and
+    never looked at the path beside it. 32 of 59 pages carry no data-page, so
+    on 2026-10-09 -- the day the site was shared into a government Teams
+    channel -- 62 of 208 human pageviews were filed as a page called
+    "unknown", including every view of /about, /overview, /china and /india.
+    Every one of those rows carried a perfectly good path. The bucket was
+    second only to the homepage, and it was an artefact.
     """
+    if (page or "").strip().lower() == "unknown":
+        page = ""
     v = (page or path or "").strip()
     v = v.split("#")[0].split("?")[0].lstrip("/")
     if v.endswith(".html"):

@@ -19,7 +19,11 @@
 (function () {
   'use strict';
   var API = 'https://analytics.andy-barr.com/collect';
-  var PAGE = (document.body && document.body.dataset.page) || 'unknown';
+  // Empty, never the string 'unknown'. The collector falls back to the path
+  // when this is absent, and a literal label blocked that fallback: a page
+  // with no data-page was filed under a page called "unknown" instead of
+  // under itself.
+  var PAGE = (document.body && document.body.dataset.page) || '';
 
   var sid;
   try {
