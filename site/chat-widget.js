@@ -107,7 +107,11 @@
     external: 'M14 4h6v6M20 4 11 13M18 14v6H4V4h6',
     run:      'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4',
     send:     'M4 12h15M13 6l6 6-6 6',
-    retry:    'M20 11a8 8 0 1 0-2.3 6.3M20 5v6h-6'
+    retry:    'M20 11a8 8 0 1 0-2.3 6.3M20 5v6h-6',
+    //: the phone launcher. Its own glyph, because the cluster it opens
+    //: contains the chat bubble -- one speech bubble opening another
+    //: reads as a bug.
+    more:     'M5 12h.01M12 12h.01M19 12h.01'
   };
 
   /* ===================================================================== */
@@ -1022,6 +1026,36 @@
     'font:700 21px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;}',
     '#phd-tour-btn:hover{transform:scale(1.08);border-color:var(--cb-accent);}',
     '#phd-tour-btn:focus-visible{outline:2px solid var(--cb-accent);outline-offset:3px;}',
+
+    /* ONE CONTROL ON A PHONE.
+     * At 390px the chat bubble, the tour button and the theme pill are three
+     * fixed circles stacked over the bottom-right of the page, and on the
+     * landing page they land squarely on the second stat card's text. Three
+     * controls competing for the same corner is also three chances to cover
+     * the thing the reader came for.
+     * Below 520px they collapse behind one button. Open it and they fan up
+     * the right edge with their labels; tap again, or tap anything else, and
+     * they fold away. Nothing is removed -- it is one tap deeper. */
+    '#phd-fab{display:none;position:fixed;bottom:20px;right:20px;z-index:1001;',
+    'width:52px;height:52px;border-radius:50%;background:var(--cb-accent);',
+    'border:none;color:var(--cb-accent-ink);cursor:pointer;padding:0;',
+    'box-shadow:0 4px 16px rgba(0,0,0,0.3);align-items:center;',
+    'justify-content:center;transition:transform .18s;}',
+    '#phd-fab:focus-visible{outline:2px solid var(--cb-text);outline-offset:3px;}',
+    '#phd-chat-root.fab-open #phd-fab{transform:rotate(90deg);}',
+    '@media (max-width:520px){',
+      '#phd-fab{display:flex;}',
+      '#chat-bubble,#phd-tour-btn{display:none;}',
+      'body.phd-has-fab .themebtn{display:none;}',
+      '#phd-chat-root.fab-open #chat-bubble{display:flex;bottom:84px;right:20px;}',
+      '#phd-chat-root.fab-open #phd-tour-btn{display:flex;bottom:148px;right:20px;}',
+      'body.phd-fab-open .themebtn{display:inline-flex;bottom:212px;right:20px;}',
+      // One control instead of three means the hint can sit lower, over the
+      // page's margin rather than across a card. And while the cluster is
+      // open it would land on the tour button, so it steps aside.
+      '#phd-tour-hint{bottom:84px;}',
+      '#phd-chat-root.fab-open #phd-tour-hint{display:none;}',
+    '}',
     /* First-visit hint. A label, not a modal: it names the thing the button
      * does and gets out of the way. It sits to the LEFT so it never covers
      * either circle. */
@@ -1049,10 +1083,11 @@
     '#phd-tour-btn,#chat-bubble{transition:none;}}',
     /* On a narrow screen the hint would have nowhere to go beside the
      * buttons, so it sits above them and spans the width instead. */
-    /* 128px, not 84px: the theme pill also sits at bottom:84px and spans the
-     * same right-hand area, so the hint covered it. This clears the pill's
-     * full height. */
-    '@media (max-width:520px){#phd-tour-hint{right:20px;left:20px;bottom:128px;',
+    /* It used to sit at 128px to clear the theme pill at 84px. Below 520px
+     * the pill now hides behind the launcher, so the corner is empty and the
+     * hint can drop to 84px -- clear of the launcher, and low enough to land
+     * on the page's own margin instead of across a stat card. */
+    '@media (max-width:520px){#phd-tour-hint{right:20px;left:20px;bottom:84px;',
     'max-width:none;}}',
 
     '#chat-panel{position:fixed;bottom:84px;right:20px;z-index:1000;width:420px;max-height:min(640px,80vh);background:var(--cb-panel);border:1px solid var(--cb-border);border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.45);display:none;flex-direction:column;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--cb-text);}',
@@ -1235,12 +1270,49 @@
   panel.appendChild(header);
   panel.appendChild(messagesEl);
   panel.appendChild(inputRow);
+  var fab = el('button');
+  fab.id = 'phd-fab';
+  fab.setAttribute('type', 'button');
+  fab.setAttribute('aria-label', 'Open the site controls');
+  fab.setAttribute('aria-expanded', 'false');
+  fab.appendChild(icon(ICON.more, 26));
+
+  function setFab(open) {
+    root.classList.toggle('fab-open', open);
+    // The theme pill belongs to theme.js and is a child of <body>, so the
+    // widget cannot style it from inside its own root. A class on <body> is
+    // the one handle both files share.
+    document.body.classList.toggle('phd-fab-open', open);
+    fab.setAttribute('aria-expanded', open ? 'true' : 'false');
+    fab.setAttribute('aria-label', open ? 'Close the site controls'
+                                        : 'Open the site controls');
+  }
+  fab.addEventListener('click', function (ev) {
+    ev.stopPropagation();
+    setFab(!root.classList.contains('fab-open'));
+  });
+  // Tapping the page closes it. A control cluster that stays open while the
+  // reader scrolls is the problem it was meant to solve.
+  document.addEventListener('click', function (ev) {
+    if (!root.classList.contains('fab-open')) return;
+    if (root.contains(ev.target)) return;
+    if (ev.target.closest && ev.target.closest('.themebtn')) return;
+    setFab(false);
+  }, { passive: true });
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Escape' && root.classList.contains('fab-open')) setFab(false);
+  });
+
   root.appendChild(bubble);
   root.appendChild(tourBtn);
+  root.appendChild(fab);
   root.appendChild(panel);
 
   function mount() {
     document.body.appendChild(root);
+    // Marks that a collapsed cluster exists, so theme.js's pill hides with
+    // the rest below 520px instead of floating on its own.
+    document.body.classList.add('phd-has-fab');
     restoreHistory();
   }
   // NB: mount() is invoked at the very bottom of this IIFE, after the
