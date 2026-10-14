@@ -102,6 +102,8 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 :root[data-theme="light"]{--accent2:#be185d;--accent3:#6d28d9;--accent4:#047857;--danger:#b91c1c;--orange:#c2410c;}
 /* /phd-light-status */
 </style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 <!-- og:cards -->
 <meta property="og:title" content="Tip Line: Send Links and Corrections">
 <meta property="og:description" content="Send missing department directories, data corrections, new federal sources or bug reports straight to the maintainer.">
@@ -120,8 +122,6 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 <meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og/submit.png">
 <meta name="twitter:image:alt" content="Send a link, a correction, or a bug — What is most useful">
 <!-- /og:cards -->
-  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
-  <script defer src="/theme.js"></script>
 </head>
 <body>
 <!-- Navigation provided by /nav.js drawer -->

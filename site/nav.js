@@ -10,8 +10,8 @@
 (function() {
   const PAGES = [
     { section: 'Graduate Names' },
-    { title: 'STEM Graduate Names', href: '/stem.html', desc: '105 universities, 334K records' },
-    { title: 'Non-STEM Graduate Names', href: '/non_stem.html', desc: '136K records' },
+    { title: 'STEM Graduate Names', href: '/departments-stem.html', desc: '105 universities, 334K records' },
+    { title: 'Non-STEM Graduate Names', href: '/departments-nonstem.html', desc: '136K records' },
     { title: 'Approximate Classifications', href: '/stem_dashboard.html', desc: 'Surname-based estimates' },
     { section: 'National Overview' },
     { title: 'National Overview', href: '/overview.html', desc: 'NSF SED trends, countries, funding' },
@@ -31,9 +31,9 @@
     { title: 'Home', href: '/index.html' },
   ];
 
-  // Don't inject on stem.html/non_stem.html — they have their own sidebar
+  // Don't inject on departments-stem.html/departments-nonstem.html — they have their own sidebar
   const path = location.pathname;
-  if (path.endsWith('/stem.html') || path.endsWith('/non_stem.html') || path.endsWith('/name_lists.html')) {
+  if (path.endsWith('/departments-stem.html') || path.endsWith('/departments-nonstem.html') || path.endsWith('/name_lists.html')) {
     return;
   }
 

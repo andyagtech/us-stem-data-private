@@ -567,6 +567,22 @@ def _deploy_locked(state: PipelineState, base_dir: Path,
     for line in theme.stdout.strip().splitlines():
         print(f"  {line.strip()}")
 
+    # Same reason, same place: most pages here are written by a builder, so a
+    # <title> corrected in the HTML lasts until the next rebuild. An audit on
+    # 2026-10-13 found three conventions across 59 titles -- 20 ending
+    # "PhD Demographics", 29 ending with nothing, and one still ending
+    # "USDS China", a brand the project had renamed away from. Idempotent, and
+    # it leaves the homepage and the redirect stubs alone.
+    titles = subprocess.run(
+        [sys.executable, str(base_dir / "scripts" / "normalise_titles.py"), "--write"],
+        cwd=base_dir, capture_output=True, text=True)
+    if titles.returncode != 0:
+        return state.with_outcome(StepOutcome.err(
+            "deploy", message=f"title pass failed: {titles.stderr.strip()[:200]}"))
+    tail = titles.stdout.strip().splitlines()
+    if tail:
+        print(f"  {tail[-1].strip()}")
+
     # The pass above has twice written `--x: var(--x)` cycles -- 482 of them on
     # 2026-08-28, and one on 2026-09-14 that made the analytics spend chart
     # invisible in dark mode -- and both times the deploy published them,

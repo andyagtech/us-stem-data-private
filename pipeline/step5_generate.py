@@ -5,7 +5,7 @@ This step ONLY reads from site/data/ and writes HTML files.
 It NEVER modifies per-university JSON files.
 
 Input:  site/data/{stem,nonstem}/{key}.json (enriched)
-Output: site/stem.html, site/non_stem.html
+Output: site/departments-stem.html, site/departments-nonstem.html
 """
 from __future__ import annotations
 import subprocess
@@ -19,7 +19,7 @@ from .state import PipelineState, StepOutcome
 def step5_generate(state: PipelineState) -> PipelineState:
     """Generate HTML pages by calling the existing generator script.
 
-    The generator creates stem.html and non_stem.html from the
+    The generator creates departments-stem.html and departments-nonstem.html from the
     per-university JSON files. It also creates the JSON files
     as a side effect — but since we run step4_enrich AFTER this,
     the enrichment data is preserved.

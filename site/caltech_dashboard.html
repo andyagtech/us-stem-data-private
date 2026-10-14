@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Caltech PhD Demographics Dashboard</title>
+<title>Caltech PhD Demographics Dashboard — PhD Demographics</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <link rel="stylesheet" href="/style.css">
 <style>
@@ -59,6 +59,8 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 :root[data-theme="light"]{--muted:#4b5563;--accent2:#1d4ed8;--accent3:#15803d;--accent4:#b45309;}
 /* /phd-light-status */
 </style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 <!-- og:cards -->
 <meta property="og:title" content="Caltech PhD Demographics, 1911–2026">
 <meta property="og:description" content="Name-based classification of 10,732 Caltech doctoral dissertations, charting Chinese-origin share by year, era, degree type and field.">
@@ -77,8 +79,6 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 <meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og/caltech_dashboard.png">
 <meta name="twitter:image:alt" content="One in three Caltech PhDs in 2024 — Chinese share of Caltech PhDs">
 <!-- /og:cards -->
-  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
-  <script defer src="/theme.js"></script>
 </head>
 <body>
 <div class="container">

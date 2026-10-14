@@ -104,6 +104,8 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 :root[data-theme="light"]{--green:#15803d;--red:#b91c1c;--purple:#6d28d9;--orange:#c2410c;--pink:#be185d;--teal:#0f766e;--yellow:#a16207;}
 /* /phd-light-status */
 </style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 <!-- og:cards -->
 <meta property="og:title" content="How the Pipeline Is Built">
 <meta property="og:description" content="The six-step functional pipeline that harvests, classifies, enriches and deploys thesis metadata from 101 university repositories.">
@@ -122,8 +124,6 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 <meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og/implementation.png">
 <meta name="twitter:image:alt" content="A six-step pipeline over 101 repositories — Federal coverage by dataset">
 <!-- /og:cards -->
-  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
-  <script defer src="/theme.js"></script>
 </head>
 <body>
 

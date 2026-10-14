@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STEM PhD Demographics by Field & University (IPEDS 2015-2024)</title>
+<title>STEM PhD Demographics by Field & University (IPEDS 2015-2024) — PhD Demographics</title>
 <link rel="stylesheet" href="/style.css">
 <style>
   :root { --bg: #fff; --card: #fff; --border: #e2e8f0; --text: var(--surface); --muted: #64748b; --head-bg: #f8fafc; }
@@ -51,6 +51,8 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 :root[data-theme="light"]{--muted:#4b5563;}
 /* /phd-light-status */
 </style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 <!-- og:cards -->
 <meta property="og:title" content="17 Universities Ranked by Foreign PhD Share">
 <meta property="og:description" content="Printable IPEDS tables giving the full race and ethnicity breakdown of STEM doctorates by field for 17 West Coast universities.">
@@ -69,8 +71,6 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 <meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og/caltech_ipeds_tables.png">
 <meta name="twitter:image:alt" content="17 universities, ranked by foreign PhD share — Foreign share of STEM doctorates">
 <!-- /og:cards -->
-  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
-  <script defer src="/theme.js"></script>
 </head>
 <body>
 <div class="container">

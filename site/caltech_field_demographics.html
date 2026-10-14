@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STEM PhD Demographics by Field & University (2015-2024)</title>
+<title>STEM PhD Demographics by Field & University (2015-2024) — PhD Demographics</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <link rel="stylesheet" href="/style.css">
 <style>
@@ -66,6 +66,8 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 :root[data-theme="light"]{--muted:#4b5563;--blue:#1d4ed8;--green:#15803d;}
 /* /phd-light-status */
 </style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 <!-- og:cards -->
 <meta property="og:title" content="STEM PhD Demographics by Field and University">
 <meta property="og:description" content="An IPEDS explorer comparing race, ethnicity and international share of STEM doctorates across 17 West Coast universities by field.">
@@ -84,8 +86,6 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 <meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og/caltech_field_demographics.png">
 <meta name="twitter:image:alt" content="Half of UC engineering PhDs are foreign — NRA share by STEM field">
 <!-- /og:cards -->
-  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
-  <script defer src="/theme.js"></script>
 </head>
 <body>
 <div class="container">

@@ -278,6 +278,8 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 :root[data-theme="light"]{--surface2:#e5e7eb;--accent2:#4338ca;--green:#047857;--orange:#c2410c;--red:#b91c1c;}
 /* /phd-light-status */
 </style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 <!-- og:cards -->
 <meta property="og:title" content="Query the Dissertation Data with SQL">
 <meta property="og:description" content="An in-browser SQL workspace over the project&#x27;s STEM and non-STEM thesis Parquet exports — no server, no account.">
@@ -296,8 +298,6 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 <meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og/query.png">
 <meta name="twitter:image:alt" content="Run SQL on 427K dissertation records — Queryable Parquet tables">
 <!-- /og:cards -->
-  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
-  <script defer src="/theme.js"></script>
 </head>
 <body data-page="query">
 

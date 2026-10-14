@@ -146,7 +146,7 @@ def build_html(all_data, mode='stem'):
 <!-- THE SHARED STYLESHEET FIRST, then this page's own rules. The tokens are
      defined once in style.css and the block below only overrides what this
      page genuinely needs. An earlier version omitted this link and carried a
-     full private copy of the palette, which is how stem.html came to define
+     full private copy of the palette, which is how departments-stem.html came to define
      --bg without --hl and render a button transparent on white. A rebuild
      puts the link back, so the fix survives regeneration. -->
 <link rel="stylesheet" href="/style.css">
@@ -446,7 +446,7 @@ def build_html(all_data, mode='stem'):
 <main class="main" id="main-content">
   <header class="top-nav" role="banner">
     <a href="index" class="top-nav-btn">Education Index</a>
-    <a href="{"stem.html" if is_nonstem else "non_stem.html"}" class="top-nav-btn">{"STEM View" if is_nonstem else "Non-STEM View"}</a>
+    <a href="{"departments-stem.html" if is_nonstem else "departments-nonstem.html"}" class="top-nav-btn">{"STEM View" if is_nonstem else "Non-STEM View"}</a>
     <a href="data_sources" class="top-nav-btn">Data Sources</a>
   </header>
   <h1>{"Non-STEM " if is_nonstem else ""}Thesis &amp; Dissertation Lists — High NRA Universities</h1>
@@ -2334,7 +2334,7 @@ let _pendingUntil = 0;
 // THE PANELS RENDER AFTER THE URL IS READ, so a panel named in a link has to
 // be remembered and opened later, exactly as the anchor above is.
 //
-// Measured on /stem#mit--funding: DOMContentLoaded at 1031ms, load at
+// Measured on /departments-stem#mit--funding: DOMContentLoaded at 1031ms, load at
 // 1097ms, and the funding container first appears at 1183ms. Every
 // turnOn() in the old code ran before that -- the boot IIFE at parse time,
 // and a setTimeout(120) that expired some 900ms early -- so each one
@@ -2829,7 +2829,7 @@ const _origShowUni = showUni;
 }})();
 </script>
 <!-- The shared navigation. This tag used to be absent here and present in the
-     generated file, because it was added to stem.html and non_stem.html by
+     generated file, because it was added to departments-stem.html and departments-nonstem.html by
      hand: regenerating the pages silently deleted the sidebar from both, and
      only the consistency check noticed. A generated file is never the place to
      put anything by hand. -->
@@ -2959,8 +2959,12 @@ def write_data_files(all_data, data_dir, is_nonstem=False):
 
 def main():
     for label, stem_filter, html_file, data_subdir in [
-        ("STEM", "stem", "site/stem.html", "site/data/stem"),
-        ("NON-STEM", "non-stem", "site/non_stem.html", "site/data/nonstem"),
+        # Renamed 2026-10-13. "stem" was the oldest name on the site and the
+        # page had outgrown it: it is the department and dissertation browser,
+        # and the only route to the 106 university pages. The old paths stay
+        # as canonical+noindex stubs, so every shared URL still resolves.
+        ("STEM", "stem", "site/departments-stem.html", "site/data/stem"),
+        ("NON-STEM", "non-stem", "site/departments-nonstem.html", "site/data/nonstem"),
     ]:
         print(f"=== {label} ===", flush=True)
         data = load_all(stem_filter)

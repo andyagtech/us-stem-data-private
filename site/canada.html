@@ -80,6 +80,8 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 :root[data-theme="light"]{--red:#b91c1c;--green:#15803d;--orange:#c2410c;}
 /* /phd-light-status */
 </style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 <!-- og:cards -->
 <meta property="og:title" content="Canada&#x27;s Million International Students">
 <meta property="og:description" content="Canada&#x27;s study-permit stock reached 996,375 at the end of 2024 after peaking above a million in 2023.">
@@ -98,12 +100,10 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 <meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og/canada.png">
 <meta name="twitter:image:alt" content="Canada hit a million international students — Study permit holders in Canada">
 <!-- /og:cards -->
-  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
-  <script defer src="/theme.js"></script>
 </head>
 <body>
 <div class="page">
-  <a href="stem.html" class="back-link">&larr; Back to STEM Dashboard</a>
+  <a href="departments-stem.html" class="back-link">&larr; Back to STEM Dashboard</a>
   <h1 id="canada-international-student-pipeline">Canada — International Student Pipeline</h1>
   <div class="subtitle">Study permit holders, top source countries, and post-graduation work permits</div>
   <div class="sources">Source: <a href="https://open.canada.ca/data/en/dataset/90115b00-f9b8-49e8-afa3-b4cff8facaee" target="_blank">Immigration, Refugees and Citizenship Canada (IRCC)</a> Open Data — Study Permit Holders Monthly Updates</div>

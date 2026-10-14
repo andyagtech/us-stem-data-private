@@ -1,8 +1,8 @@
 // Shared sidebar + footer for all pages
 (function() {
   const currentPath = location.pathname;
-  // "/" is the homepage. This fell back to 'stem.html', left over from when
-  // that was the landing page; once stem.html became a drawer page the site's
+  // "/" is the homepage. This fell back to 'departments-stem.html', left over from when
+  // that was the landing page; once departments-stem.html became a drawer page the site's
   // front door lost its sidebar and showed a corner hamburger instead -- at
   // "/" only, which is the URL every shared link lands on, while /index.html
   // looked fine and was the one every check loaded.
@@ -16,7 +16,7 @@
   const uniMatch = currentPath.match(/\/universities\/([a-z0-9_]+)\.html/);
   const currentUniKey = uniMatch ? uniMatch[1] : null;
   // A reader who arrived at one university -- /universities/njit.html, or
-  // /stem.html#njit, which is the same destination reached through the STEM
+  // /departments-stem.html#njit, which is the same destination reached through the STEM
   // table -- came in from outside, usually on a shared link, and has seen
   // nothing else on the site. A compact rail is right for someone working
   // through the argument in order and wrong for someone who landed in the
@@ -28,12 +28,12 @@
   // Pages where sidebar should be a floating drawer (closed by default,
   // doesn't take horizontal space). Used for pages whose own layout
   // already pins a workspace-specific left panel.
-  // stem.html and non_stem.html pin their own <nav id="sidebar"> of 220px,
+  // departments-stem.html and departments-nonstem.html pin their own <nav id="sidebar"> of 220px,
   // which lists the universities -- navigation this one cannot replace. They
   // get the shared sidebar as a drawer so the page has one pinned panel, not
   // two. presentation.html is a slide deck: a 220px column would squash every
   // slide, so it opens on demand too.
-  // stem.html and non_stem.html used to pin their own 220px nav of
+  // departments-stem.html and departments-nonstem.html used to pin their own 220px nav of
   // universities, so the shared sidebar was given to them as a drawer to
   // avoid two pinned panels. They no longer bake in a nav -- they use this
   // one -- so the drawer is gone and they look like every other page.
@@ -41,7 +41,7 @@
   const isDrawerMode = DRAWER_PAGES.has(currentPage);
   // On pages with their own workspace sidebar, also pin the hamburger
   // hint to the lower-left so it doesn't collide.
-  const CORNER_PAGES = new Set(['query.html', 'stem.html', 'non_stem.html']);
+  const CORNER_PAGES = new Set(['query.html', 'departments-stem.html', 'departments-nonstem.html']);
   const isCornerHint = CORNER_PAGES.has(currentPage);
 
   // COLLAPSE STATE IS NOT PERSISTED ACROSS NAVIGATIONS, deliberately.
@@ -153,7 +153,7 @@
     ]},
     { title: 'Start here', items: [
       { href: '/overview', label: 'National Overview' },
-      { href: '/stem', label: 'National Charts', anchors: [
+      { href: '/departments-stem', label: 'National Charts', anchors: [
         { hash: 'nat-phd', label: 'STEM PhD by Citizenship' },
         { hash: 'nat-opt', label: 'OPT Pipeline' },
         { hash: 'nat-funding', label: 'R&D vs American PhDs' },
@@ -176,7 +176,7 @@
         { hash: 'programmes', label: 'By programme' },
         { hash: 'universities', label: 'Inside one university' },
       ]},
-      { href: '/non_stem', label: 'Non-STEM Lists' },
+      { href: '/departments-nonstem', label: 'Non-STEM Lists' },
       { href: '/rankings', label: 'Where The Share Is Highest', anchors: [
         { hash: 'institutions', label: 'Institutions' },
         { hash: 'programmes', label: 'Programmes' },
@@ -550,7 +550,7 @@
     });
 
     // Insert Universities group between National and International
-    // Use stem.html#key so the full SPA (with toggles/panels) handles each university
+    // Use departments-stem.html#key so the full SPA (with toggles/panels) handles each university
     // Ranked by the figure each row shows. The list used to arrive in config
     // order -- 74.3%, 66.7%, 64.5%, 66.1%, 58.8%, 46.9%, 48.7% -- which reads
     // as a ranking and is not one. Ties share a rank (1, 2, 2, 4) and are
@@ -567,7 +567,7 @@
       // One decimal throughout, so a ranked column reads as one column: the
       // data holds 56 for Iowa State and 55.9 for the school below it.
       const nra = hasNra ? `${u.nra.toFixed(1)}%` : '\u2014';
-      return `<a href="/stem.html#${u.key}" class="sb-item sb-uni${active}" data-key="${u.key}"><span class="sb-uni-rank">${rank}</span><span class="sb-uni-name">${u.name}</span><span class="sb-uni-meta"><span class="sb-uni-nra">${nra}</span>${dot}</span></a>`;
+      return `<a href="/departments-stem.html#${u.key}" class="sb-item sb-uni${active}" data-key="${u.key}"><span class="sb-uni-rank">${rank}</span><span class="sb-uni-name">${u.name}</span><span class="sb-uni-meta"><span class="sb-uni-nra">${nra}</span>${dot}</span></a>`;
     }).join('');
     const uniCollapsed = collapsedSections.has('Universities') ? ' collapsed' : '';
     const uniGroup = `<div class="sb-group${uniCollapsed}" data-section="Universities">
@@ -961,7 +961,7 @@
   footer.className = 'site-footer';
   footer.innerHTML = 'A project by <a href="https://andy-barr.com" target="_blank" rel="noopener noreferrer">Andy Barr</a>. Data from US federal agencies (NCES, NSF, DOL, DHS) and university institutional repositories.<br>Last updated: <!--auto:data_last_updated-->October 2026<!--/auto--> \u00B7 <a href="data_sources">Methodology</a> \u00B7 <a href="submit">Tip Line</a> \u00B7 <a href="https://x.com/andy_barr_data" target="_blank" rel="noopener noreferrer">Follow on X</a> \u00B7 <a href="catalog.json">API</a>';
   // A <body> that is itself a flex or grid container turns anything appended
-  // to it into a track of that layout. On stem.html and non_stem.html, whose
+  // to it into a track of that layout. On departments-stem.html and departments-nonstem.html, whose
   // body is display:flex with flex-wrap:nowrap, the footer joined the row
   // beside the nav and main: it shrank to 104px and hung 64px off the right
   // edge at phone width. Inside the main content element it is a normal

@@ -2218,7 +2218,7 @@
   var tourLoading = null;
 
   /* sidebar.js injects tour.js, but the widget also loads on pages that have
-   * their own navigation and never run sidebar.js -- stem.html among them,
+   * their own navigation and never run sidebar.js -- departments-stem.html among them,
    * which is the busiest page on the site. The widget therefore loads its own
    * dependency rather than depending on another script having done it, so the
    * "?" is never a button that does nothing.

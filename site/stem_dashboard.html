@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STEM PhD Name Classification Dashboard</title>
+<title>STEM PhD Name Classification Dashboard — PhD Demographics</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <link rel="stylesheet" href="/style.css">
 <style>
@@ -113,6 +113,8 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 :root[data-theme="light"]{--text3:#4b5563;--green:#15803d;--red:#b91c1c;--amber:#b45309;--purple:#6d28d9;--chi-color:#b91c1c;--ind-color:#b45309;--kor-color:#6d28d9;--viet-color:#15803d;}
 /* /phd-light-status */
 </style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 <!-- og:cards -->
 <meta property="og:title" content="Name Origins Across 438K STEM Records">
 <meta property="og:description" content="Surname-based origin classification of 438,353 STEM dissertation records: 52,149 Chinese-origin names and 14,236 Indian.">
@@ -131,8 +133,6 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 <meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og/stem_dashboard.png">
 <meta name="twitter:image:alt" content="Name origins across 438K STEM records — Chinese-origin share of STEM records">
 <!-- /og:cards -->
-  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
-  <script defer src="/theme.js"></script>
 </head>
 <body>
 

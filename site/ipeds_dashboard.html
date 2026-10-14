@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IPEDS STEM PhD Dashboard</title>
+<title>IPEDS STEM PhD Dashboard — PhD Demographics</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <link rel="stylesheet" href="/style.css">
 <style>
@@ -66,6 +66,8 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 :root[data-theme="light"]{--green:#15803d;--red:#b91c1c;--yellow:#a16207;--purple:#6d28d9;--pink:#be185d;--orange:#c2410c;--teal:#0f766e;--indigo:#4338ca;}
 /* /phd-light-status */
 </style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 <!-- og:cards -->
 <meta property="og:title" content="41 Years of US STEM Doctorates">
 <meta property="og:description" content="Every STEM and clinical research doctorate reported to IPEDS from 1984 to 2024 — 849 institutions, by field, race, gender and state.">
@@ -84,8 +86,6 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 <meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og/ipeds_dashboard.png">
 <meta name="twitter:image:alt" content="41 years of US STEM doctorates — National STEM doctorate completions">
 <!-- /og:cards -->
-  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
-  <script defer src="/theme.js"></script>
 </head>
 <body>
 

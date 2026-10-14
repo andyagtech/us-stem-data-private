@@ -64,6 +64,8 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 :root[data-theme="light"]{--red:#b91c1c;--green:#15803d;--orange:#c2410c;}
 /* /phd-light-status */
 </style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 <!-- og:cards -->
 <meta property="og:title" content="The UK&#x27;s International Student Peak">
 <meta property="og:description" content="UK international enrolment reached 732,285 in 2023/24, up 67% in eight years, with India and China supplying 43% of it.">
@@ -82,12 +84,10 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 <meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og/uk.png">
 <meta name="twitter:image:alt" content="The UK’s 732K international student peak — UK international enrolment, HESA">
 <!-- /og:cards -->
-  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
-  <script defer src="/theme.js"></script>
 </head>
 <body>
 <div class="page">
-  <a href="stem.html" class="back-link">&larr; Back to STEM Dashboard</a>
+  <a href="departments-stem.html" class="back-link">&larr; Back to STEM Dashboard</a>
   <h1 id="united-kingdom-international-student-pipeline">United Kingdom — International Student Pipeline</h1>
   <div class="subtitle">HESA enrollment, student visa grants, and Graduate Route post-study work visas</div>
   <div class="sources">Sources: <a href="https://www.hesa.ac.uk/data-and-analysis/students/where-from" target="_blank">HESA</a> (enrollment) · <a href="https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables" target="_blank">Home Office</a> (visas)</div>

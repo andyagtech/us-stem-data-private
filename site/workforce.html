@@ -52,6 +52,8 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 :root[data-theme="light"]{--red:#b91c1c;--green:#15803d;--orange:#c2410c;--purple:#6d28d9;--yellow:#a16207;}
 /* /phd-light-status */
 </style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 <!-- og:cards -->
 <meta property="og:title" content="The Foreign-Born US Doctoral STEM Workforce">
 <meta property="og:description" content="NSF Survey of Doctorate Recipients 2023: 38.1% of the 908,700-strong US doctoral workforce is foreign-born, rising to 70.5% in ECE.">
@@ -70,8 +72,6 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 <meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og/workforce.png">
 <meta name="twitter:image:alt" content="38% of US PhD scientists are foreign-born — Foreign-born share by field">
 <!-- /og:cards -->
-  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
-  <script defer src="/theme.js"></script>
 </head>
 <body>
 <div class="page">

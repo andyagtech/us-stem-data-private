@@ -70,6 +70,8 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 :root[data-theme="light"]{--red:#b91c1c;--green:#15803d;--orange:#c2410c;--purple:#6d28d9;}
 /* /phd-light-status */
 </style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 <!-- og:cards -->
 <meta property="og:title" content="Visa Waiver Countries Overstay Five Times Less">
 <meta property="og:description" content="The 41 Visa Waiver Program countries overstay at 0.43% against 2.22% for non-VWP countries, and take 69,200 naturalizations a year.">
@@ -88,12 +90,10 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 <meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og/vwp.png">
 <meta name="twitter:image:alt" content="Visa waiver countries overstay 5x less — VWP naturalizations by year">
 <!-- /og:cards -->
-  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
-  <script defer src="/theme.js"></script>
 </head>
 <body>
 <div class="page">
-  <a href="stem.html" class="back-link">&larr; Back to STEM Dashboard</a>
+  <a href="departments-stem.html" class="back-link">&larr; Back to STEM Dashboard</a>
   <h1 id="visa-waiver-program-vwp-immigration-data">Visa Waiver Program (VWP) — Immigration Data</h1>
   <div class="subtitle">41 countries whose citizens can enter the US without a visa via ESTA. Primarily European + Japan, South Korea, Taiwan, Australia, NZ, Singapore, Chile, Israel.</div>
   <div class="sources">Sources: <a href="https://ohss.dhs.gov/topics/immigration/yearbook/2023" target="_blank">DHS Yearbook 2023</a> · <a href="https://www.dhs.gov/publication/entryexit-overstay-report" target="_blank">DHS Overstay Reports</a> · <a href="https://studyinthestates.dhs.gov/sevis-by-the-numbers" target="_blank">SEVP SEVIS</a></div>

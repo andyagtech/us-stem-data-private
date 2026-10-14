@@ -91,6 +91,19 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 :root[data-theme="light"]{--accent2:#be185d;--accent3:#6d28d9;--accent4:#047857;--danger:#b91c1c;--orange:#c2410c;}
 /* /phd-light-status */
 </style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
+<style id="repo-style">
+  .rp-note { font-size: .78rem; color: var(--text-muted); font-style: italic; }
+  table.t { width: 100%; border-collapse: collapse; font-size: .85rem; margin: .8rem 0 0; }
+  table.t th { text-align: left; font-size: .7rem; text-transform: uppercase;
+    letter-spacing: .05em; color: var(--text-muted); padding: .4rem .5rem;
+    border-bottom: 1px solid var(--border); }
+  table.t td { padding: .35rem .5rem; border-bottom: 1px solid var(--border); }
+  table.t td.num, table.t th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.t th.sortable { cursor: pointer; }
+  .table-wrap { overflow-x: auto; }
+</style>
 <!-- og:cards -->
 <meta property="og:title" content="Data Sources &amp; Methodology">
 <meta property="og:description" content="Every federal and repository source behind the site, how citizenship categories differ between surveys, and the known limitations.">
@@ -109,19 +122,6 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 <meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og/data_sources.png">
 <meta name="twitter:image:alt" content="What “domestic” actually means in the data — Who “domestic” PhDs really are">
 <!-- /og:cards -->
-  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
-  <script defer src="/theme.js"></script>
-<style id="repo-style">
-  .rp-note { font-size: .78rem; color: var(--text-muted); font-style: italic; }
-  table.t { width: 100%; border-collapse: collapse; font-size: .85rem; margin: .8rem 0 0; }
-  table.t th { text-align: left; font-size: .7rem; text-transform: uppercase;
-    letter-spacing: .05em; color: var(--text-muted); padding: .4rem .5rem;
-    border-bottom: 1px solid var(--border); }
-  table.t td { padding: .35rem .5rem; border-bottom: 1px solid var(--border); }
-  table.t td.num, table.t th.num { text-align: right; font-variant-numeric: tabular-nums; }
-  table.t th.sortable { cursor: pointer; }
-  .table-wrap { overflow-x: auto; }
-</style>
 </head>
 <body data-page="data_sources">
 <!-- Navigation provided by /nav.js drawer -->

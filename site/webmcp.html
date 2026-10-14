@@ -51,6 +51,8 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 .themebtn .ic{font-size:13px;line-height:1;}
 @media print{.themebtn{display:none;}}
 </style>
+  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <script defer src="/theme.js"></script>
 <!-- og:cards -->
 <meta property="og:title" content="WebMCP Tools for AI Agents">
 <meta property="og:description" content="The WebMCP tools and plain-HTTP endpoints that let AI agents query this site&#x27;s university, thesis and taxonomy data as JSON.">
@@ -69,8 +71,6 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
 <meta name="twitter:image" content="https://phd-demographics.andy-barr.com/og/webmcp.png">
 <meta name="twitter:image:alt" content="Five WebMCP tools for AI agents — Agent surface area">
 <!-- /og:cards -->
-  <script id="phd-theme-boot">(function(){try{var t=localStorage.getItem("phd-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
-  <script defer src="/theme.js"></script>
 </head>
 <body>
 <div class="container">
@@ -85,7 +85,7 @@ Roboto,sans-serif;letter-spacing:.02em;text-transform:lowercase;}
     for querying data directly.
   </p>
   <p>
-    This site registers WebMCP tools on the <a href="/stem">STEM</a> and <a href="/non_stem">Non-STEM</a>
+    This site registers WebMCP tools on the <a href="/departments-stem">STEM</a> and <a href="/departments-nonstem">Non-STEM</a>
     name list pages. When an AI agent with WebMCP support visits these pages, it can programmatically
     list universities, fetch records, and navigate the interface.
   </p>
