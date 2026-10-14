@@ -313,7 +313,7 @@
       { page: '/data_sources', anchor: 'federal',
         say: "Every federal source this site reads, named, with what each " +
              "one can and cannot support." },
-      { page: '/methodology', anchor: 'institutional-repositories',
+      { page: '/data_sources', anchor: 'institutional-repositories',
         say: "And every institutional repository the harvest read \u2014 99 " +
              "of 106 with a direct link, so any dissertation can be checked " +
              "at its source." },
